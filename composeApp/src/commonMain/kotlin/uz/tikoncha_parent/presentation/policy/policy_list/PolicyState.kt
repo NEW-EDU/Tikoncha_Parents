@@ -1,14 +1,16 @@
 package uz.tikoncha_parent.presentation.policy.policy_list
 
-import kotlin.time.Clock
-import kotlin.time.Instant
 import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.SubscriptionLimit
 import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.domain.model.permission_status.PermissionIssue
 import uz.tikoncha_parent.domain.model.policy.PolicyKind
 import uz.tikoncha_parent.domain.model.policy.PolicyPreset
+import uz.tikoncha_parent.domain.model.policy.QuickBlockEntry
+import uz.tikoncha_parent.presentation.policy.app_site_selection.AppSelectionUi
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
+import kotlin.time.Clock
+import kotlin.time.Instant
 
 data class PolicyState(
     val policyResponseState: ResponseState<Nothing> = ResponseState.Idle,
@@ -27,6 +29,9 @@ data class PolicyState(
     val actionInProgress: Set<String> = emptySet(),
     /** Pauza menyusi ochiq bo'lgan jadval id si. */
     val pauseSheetFor: String? = null,
+    val quickBlocks: List<QuickBlockEntry> = emptyList(),
+    /** Paket → nom va ikonka (bola qurilmasidagi ilovalar). */
+    val childApps: Map<String, AppSelectionUi> = emptyMap(),
 ) {
     /** Tezkor blok va himoya paketlari "Jadvallar" ro'yxatiga kirmaydi. */
     val standardPolicies: List<PolicyItemUi>
@@ -51,4 +56,23 @@ data class PolicyState(
     val canCreatePolicy: Boolean get() = activeStandardCount < subscriptionLimit.policyCount
 
     val hasDeviceIssue: Boolean get() = permissionIssueList.isNotEmpty()
+    /** Ilovasi bor tezkor bloklar — siznikilar birinchi. */
+    val visibleQuickBlocks: List<QuickBlockEntry>
+        get() = quickBlocks
+            .filter { it.targets.packages.isNotEmpty() }
+            .sortedByDescending { it.isMine(myUserId) }
+
+    /** Yoqilgan himoya paketlari nomlari — "Himoya" qatori ostida ko'rsatiladi. */
+    val enabledProtectionNames: List<String>
+        get() = policies
+            .filter { it.preset == PolicyPreset.PROTECTION && it.isActive }
+            .map { it.policyName }
+            .distinct()
+
+    fun isQuickBlockBusy(packageName: String): Boolean = quickBlockKey(packageName) in actionInProgress
+
+    companion object {
+        /** `actionInProgress` da jadval id lari bilan to'qnashmasligi uchun prefiks. */
+        fun quickBlockKey(packageName: String) = "qb:$packageName"
+    }
 }

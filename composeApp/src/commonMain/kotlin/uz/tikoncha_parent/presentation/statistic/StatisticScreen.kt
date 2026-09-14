@@ -3,7 +3,13 @@
 package uz.tikoncha_parent.presentation.statistic
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
@@ -13,11 +19,16 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,16 +41,42 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import tikoncha_parents.composeapp.generated.resources.*
-import uz.tikoncha_parent.App
+import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.boshqa_ota_ona_bloklagan
+import tikoncha_parents.composeapp.generated.resources.dialog_failed
+import tikoncha_parents.composeapp.generated.resources.eng_kop_foydalanilgan
+import tikoncha_parents.composeapp.generated.resources.farzand_ozi_bloklagan
+import tikoncha_parents.composeapp.generated.resources.farzandingizni_tanlang
+import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
+import tikoncha_parents.composeapp.generated.resources.haftalik
+import tikoncha_parents.composeapp.generated.resources.kunlik
+import tikoncha_parents.composeapp.generated.resources.statistika
+import tikoncha_parents.composeapp.generated.resources.xatolik
 import uz.tikoncha_parent.platform.openUrl
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
-import uz.tikoncha_parent.presentation.base.*
+import uz.tikoncha_parent.presentation.base.ChildSelectionButton
+import uz.tikoncha_parent.presentation.base.CustomDialog
+import uz.tikoncha_parent.presentation.base.CustomHeader
+import uz.tikoncha_parent.presentation.base.LoadingDialog
+import uz.tikoncha_parent.presentation.base.LocalToastHost
+import uz.tikoncha_parent.presentation.base.PermissionWarningCard
+import uz.tikoncha_parent.presentation.base.PillSegmentedButton
+import uz.tikoncha_parent.presentation.base.PillSegmentedItem
+import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
+import uz.tikoncha_parent.presentation.base.ToastData
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import uz.tikoncha_parent.presentation.base.ToastType
+import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
-import uz.tikoncha_parent.presentation.policy.common.SegmentedTabBar
+import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 import uz.tikoncha_parent.presentation.ui_state.errorText
-import uz.tikoncha_parent.ui.*
+import uz.tikoncha_parent.ui.ContainerPadding
+import uz.tikoncha_parent.ui.Space
+import uz.tikoncha_parent.ui.SpaceLarge
+import uz.tikoncha_parent.ui.SpaceMedium
+import uz.tikoncha_parent.ui.SpaceSmall
+import uz.tikoncha_parent.ui.TextFieldCornerRadius
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
@@ -53,7 +90,9 @@ class StatisticScreen : Screen {
         val navigator = LocalNavigator.current ?: return
         val viewModel = navigator.koinNavigatorScreenModel<StatisticViewModel>()
         val state by viewModel.state.collectAsStateWithLifecycle()
-        StatisticUi(navigator, state, viewModel::onEvent)
+        ToastProvider {
+            StatisticUi(navigator, state, viewModel::onEvent)
+        }
     }
 }
 
@@ -67,6 +106,10 @@ fun StatisticUi(
     var isRefreshing by remember { mutableStateOf(false) }
     var showChildSheet by remember { mutableStateOf(false) }
     var showErrorDialog by remember { mutableStateOf(false) }
+    val toast = LocalToastHost.current
+    val toastScope = rememberCoroutineScope()
+    val blockedByChildText = stringResource(Res.string.farzand_ozi_bloklagan)
+    val blockedByParentText = stringResource(Res.string.boshqa_ota_ona_bloklagan)
 
     val appUsageErrorText = state.appUsageResponseState.errorText()
     val appUsageLoading = state.appUsageResponseState is ResponseState.Loading
@@ -107,6 +150,27 @@ fun StatisticUi(
         title = stringResource(Res.string.xatolik),
         message = appUsageErrorText,
         onButtonClick = { showErrorDialog = false }
+    )
+
+    // Tezkor blok xatosi (tizim paketi, tarmoq)
+    CustomDialog(
+        painter = painterResource(Res.drawable.dialog_failed),
+        onDismiss = { event(StatisticEvent.DismissQuickBlockFailure) },
+        show = state.quickBlockFailure != null,
+        title = stringResource(Res.string.xatolik),
+        message = state.quickBlockFailure?.asText().orEmpty(),
+        onButtonClick = { event(StatisticEvent.DismissQuickBlockFailure) },
+    )
+
+    // Tezkor blok pullik
+    SubscriptionBottomDialog(
+        show = state.quickBlockPremiumFailure != null,
+        message = state.quickBlockPremiumFailure?.asText().orEmpty(),
+        onConfirm = {
+            event(StatisticEvent.DismissQuickBlockFailure)
+            navigator?.push(SubscriptionPaymentScreen())
+        },
+        onDismiss = { event(StatisticEvent.DismissQuickBlockFailure) },
     )
 
     // Bar click dialog
@@ -248,7 +312,34 @@ fun StatisticUi(
                             .then(contentModifier)
                     ) {
                         state.topApps.forEachIndexed { i, app ->
-                            TopAppItem(app = app)
+                            TopAppItem(
+                                app = app,
+                                lockState = when {
+                                    state.blockedByMe(app.packageName) -> QuickBlockLockState.BLOCKED_BY_ME
+                                    state.blockedByOthers(app.packageName) -> QuickBlockLockState.BLOCKED_BY_OTHERS
+                                    else -> QuickBlockLockState.OPEN
+                                },
+                                busy = app.packageName in state.quickBlockInProgress,
+                                onLockClick = {
+                                    val onlyOthers = !state.blockedByMe(app.packageName) &&
+                                            state.blockedByOthers(app.packageName)
+                                    if (onlyOthers) {
+                                        val text =
+                                            if (state.blockedByChild(app.packageName)) blockedByChildText
+                                            else blockedByParentText
+                                        toastScope.launch {
+                                            toast.show(
+                                                ToastData(
+                                                    ToastType.Info,
+                                                    text
+                                                )
+                                            )
+                                        }
+                                    } else {
+                                        event(StatisticEvent.ToggleQuickBlock(app.packageName))
+                                    }
+                                },
+                            )
                             if (i < state.topApps.lastIndex)
                                 HorizontalDivider(
                                     thickness = 1.dp,
@@ -331,11 +422,13 @@ private fun PagerBlock(
 @Composable
 private fun StatisticScreenPreview_Daily_WithData() {
     TikonchaParentTheme(ThemeMode.LIGHT) {
-        StatisticUi(
-            navigator = null,
-            state = previewStateDaily(),
-            event = {},
-        )
+        ToastProvider {
+            StatisticUi(
+                navigator = null,
+                state = previewStateDaily(),
+                event = {},
+            )
+        }
     }
 }
 

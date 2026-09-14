@@ -865,4 +865,18 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="ertagacha">Ertagacha</string>
     <string name="dushanbagacha">Dushanbagacha</string>
     <string name="davom_ettirish">Davom ettirish</string>
+    <string name="farzand_ozi_bloklagan">Bu ilovani farzandingizning o‘zi bloklagan</string>
+    <string name="boshqa_ota_ona_bloklagan">Bu ilovani boshqa ota-ona bloklagan</string>
+    <string name="tezkor_bloklar">Tezkor bloklar</string>
+    <string name="himoya_paketlari">Himoya paketlari</string>
+    <string name="boshqa_ota_ona_yoqqan">Boshqa ota-ona yoqqan</string>
+    <string name="farzand_ozi_yoqqan">Farzandingiz o‘zi yoqqan</string>
+    <plurals name="ilova_soni">
+        <item quantity="one">%1$d ta ilova</item>
+        <item quantity="other">%1$d ta ilova</item>
+    </plurals>
+    <plurals name="sayt_soni">
+        <item quantity="one">%1$d ta sayt</item>
+        <item quantity="other">%1$d ta sayt</item>
+    </plurals>
 </resources>

@@ -17,5 +17,8 @@ sealed interface StatisticEvent {
     data class BarClicked(val bar: ChartBarUi) : StatisticEvent
     data object DismissUsageDetailsDialog : StatisticEvent
 
+    data class ToggleQuickBlock(val packageName: String) : StatisticEvent
+    data object DismissQuickBlockFailure : StatisticEvent
+
     data object ClearAll : StatisticEvent
 }

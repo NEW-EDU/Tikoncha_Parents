@@ -852,4 +852,22 @@
     <string name="ertagacha">До завтра</string>
     <string name="dushanbagacha">До понедельника</string>
     <string name="davom_ettirish">Возобновить</string>
+    <string name="farzand_ozi_bloklagan">Это приложение заблокировал сам ребёнок</string>
+    <string name="boshqa_ota_ona_bloklagan">Это приложение заблокировал другой родитель</string>
+    <string name="tezkor_bloklar">Быстрые блокировки</string>
+    <string name="himoya_paketlari">Пакеты защиты</string>
+    <string name="boshqa_ota_ona_yoqqan">Включил другой родитель</string>
+    <string name="farzand_ozi_yoqqan">Включил сам ребёнок</string>
+    <plurals name="ilova_soni">
+        <item quantity="one">%1$d приложение</item>
+        <item quantity="few">%1$d приложения</item>
+        <item quantity="many">%1$d приложений</item>
+        <item quantity="other">%1$d приложения</item>
+    </plurals>
+    <plurals name="sayt_soni">
+        <item quantity="one">%1$d сайт</item>
+        <item quantity="few">%1$d сайта</item>
+        <item quantity="many">%1$d сайтов</item>
+        <item quantity="other">%1$d сайта</item>
+    </plurals>
 </resources>

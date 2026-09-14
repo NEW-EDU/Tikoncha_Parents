@@ -16,11 +16,17 @@ import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.domain.model.SubscriptionLimit
+import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.permission_status.PermissionStatusType
+import uz.tikoncha_parent.domain.model.policy.QuickBlockTarget
 import uz.tikoncha_parent.domain.repository.ChildRepository
 import uz.tikoncha_parent.domain.repository.PaymentRepository
 import uz.tikoncha_parent.domain.repository.PermissionStatusRepository
+import uz.tikoncha_parent.domain.use_case.policy.AddQuickBlockUseCase
+import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlocksUseCase
+import uz.tikoncha_parent.domain.use_case.policy.RefreshQuickBlocksUseCase
+import uz.tikoncha_parent.domain.use_case.policy.RemoveQuickBlockUseCase
 import uz.tikoncha_parent.platform.Logger
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 import kotlin.time.Clock
@@ -30,6 +36,10 @@ class StatisticViewModel(
     private val paymentRepository: PaymentRepository,
     private val childRepository: ChildRepository,
     private val permissionStatusRepository: PermissionStatusRepository,
+    private val observeQuickBlocks: ObserveQuickBlocksUseCase,
+    private val refreshQuickBlocks: RefreshQuickBlocksUseCase,
+    private val addQuickBlock: AddQuickBlockUseCase,
+    private val removeQuickBlock: RemoveQuickBlockUseCase,
 ) : ScreenModel {
 
     private val TAG = "StatisticViewModel"
@@ -41,12 +51,14 @@ class StatisticViewModel(
     private var appUsageJob: Job? = null
     private var permissionJob: Job? = null
     private var recomputeJob: Job? = null
+    private var quickBlockObserveJob: Job? = null
+    private var observedQuickBlockChildId: String? = null
 
     init {
         Logger.d(TAG, "INIT")
         val today = Clock.System.now()
             .toLocalDateTime(TimeZone.currentSystemDefault()).date
-        _state.update { it.copy(today = today) }
+        _state.update { it.copy(today = today, myUserId = AppSettings.userId) }
     }
 
     fun onEvent(event: StatisticEvent) {
@@ -67,6 +79,7 @@ class StatisticViewModel(
                         showBlur = shouldShowBlur(limit)
                     )
                 }
+                loadQuickBlocks()
             }
 
             is StatisticEvent.OnChildSelected            -> selectChild(event.child)
@@ -77,8 +90,15 @@ class StatisticViewModel(
             StatisticEvent.DismissUsageDetailsDialog ->
                 _state.update { it.copy(showUsageDetailsDialog = false) }
 
+            is StatisticEvent.ToggleQuickBlock -> toggleQuickBlock(event.packageName)
+
+            StatisticEvent.DismissQuickBlockFailure ->
+                _state.update { it.copy(quickBlockFailure = null, quickBlockPremiumFailure = null) }
+
             StatisticEvent.ClearAll -> {
-                _state.update { StatisticState(today = it.today) }
+                quickBlockObserveJob?.cancel()
+                observedQuickBlockChildId = null
+                _state.update { StatisticState(today = it.today, myUserId = it.myUserId) }
             }
         }
     }
@@ -113,6 +133,7 @@ class StatisticViewModel(
                     }
                     loadAppUsages()
                     loadPermissionStatus()
+                    loadQuickBlocks()
                 }
             }
         }
@@ -137,15 +158,16 @@ class StatisticViewModel(
                 appUsageList = emptyList(),
                 pages = emptyList(),
                 bars = emptyBars(it.dateSelectionType),
-                topApps = emptyList()
+                topApps = emptyList(),
+                quickBlocks = emptyList(),
             )
         }
         loadAppUsages()
         loadPermissionStatus()
+        loadQuickBlocks()
     }
 
     /* ---------------- APP USAGE ---------------- */
-
     private fun loadAppUsages() {
         val childId = state.value.selectedChild?.userId
         if (childId.isNullOrEmpty()) return
@@ -174,8 +196,62 @@ class StatisticViewModel(
         }
     }
 
-    /* ---------------- PERMISSION ---------------- */
+    /* ---------------- QUICK BLOCK ---------------- */
+    /** Keshni kuzatadi va serverdan yangilaydi. Bola o'zgarmagan bo'lsa kuzatuv qayta boshlanmaydi. */
+    private fun loadQuickBlocks() {
+        val childId = _state.value.selectedChild?.userId
+        if (childId.isNullOrBlank()) {
+            quickBlockObserveJob?.cancel()
+            observedQuickBlockChildId = null
+            _state.update { it.copy(quickBlocks = emptyList()) }
+            return
+        }
 
+        if (observedQuickBlockChildId != childId || quickBlockObserveJob?.isActive != true) {
+            quickBlockObserveJob?.cancel()
+            observedQuickBlockChildId = childId
+            quickBlockObserveJob = screenModelScope.launch {
+                observeQuickBlocks(childId).collect { list ->
+                    _state.update { it.copy(quickBlocks = list) }
+                }
+            }
+        }
+
+        screenModelScope.launch {
+            val res = refreshQuickBlocks(childId)
+            if (res is Outcome.Failure) Logger.d(TAG, "quick-block refresh xato: ${res.cause}")
+        }
+    }
+
+    private fun toggleQuickBlock(packageName: String) {
+        val s = _state.value
+        val childId = s.selectedChild?.userId
+        if (childId.isNullOrBlank() || packageName.isBlank()) return
+        if (packageName in s.quickBlockInProgress) return
+
+        val mine = s.blockedByMe(packageName)
+        // Faqat boshqa ota-ona yoki bola bloklagan — o'zgartirmaymiz, UI xabar ko'rsatadi.
+        if (!mine && s.blockedByOthers(packageName)) return
+
+        screenModelScope.launch {
+            _state.update { it.copy(quickBlockInProgress = it.quickBlockInProgress + packageName) }
+
+            val target = QuickBlockTarget.app(packageName)
+            val res = if (mine) removeQuickBlock(childId, target) else addQuickBlock(childId, target)
+
+            _state.update { it.copy(quickBlockInProgress = it.quickBlockInProgress - packageName) }
+
+            // Muvaffaqiyatda holat o'zi keladi: repozitoriy refresh() qiladi → kuzatuv oqimi yangilanadi.
+            if (res is Outcome.Failure) {
+                _state.update {
+                    if (res.cause is ErrorCause.PremiumRequired) it.copy(quickBlockPremiumFailure = res)
+                    else it.copy(quickBlockFailure = res)
+                }
+            }
+        }
+    }
+
+    /* ---------------- PERMISSION ---------------- */
     private fun loadPermissionStatus() {
         val childId = _state.value.selectedChild?.userId ?: return
         permissionJob?.cancel()
@@ -191,7 +267,6 @@ class StatisticViewModel(
     }
 
     /* ---------------- SUBSCRIPTION ---------------- */
-
     private fun refreshSubscriptionLimit() {
         screenModelScope.launch {
             paymentRepository.syncSubscriptionLimits()
@@ -221,7 +296,6 @@ class StatisticViewModel(
     }
 
     /* ---------------- MODE / PAGE ---------------- */
-
     private fun changeMode(newMode: DateSelectionType) {
         if (newMode == _state.value.dateSelectionType) return
         _state.update { it.copy(dateSelectionType = newMode) }
@@ -271,7 +345,6 @@ class StatisticViewModel(
     }
 
     /* ---------------- BAR CLICK ---------------- */
-
     private fun handleBarClick(bar: ChartBarUi) {
         if (bar.totalMillis <= 0L) return
         if (_state.value.showBlur) return        // blur ostida click ishlamaydi

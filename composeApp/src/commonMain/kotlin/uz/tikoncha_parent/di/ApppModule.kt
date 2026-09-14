@@ -109,6 +109,7 @@ import uz.tikoncha_parent.presentation.policy.app_site_selection.AppWebViewModel
 import uz.tikoncha_parent.presentation.policy.limit_rule.setup.LimitRuleSetupViewModel
 import uz.tikoncha_parent.presentation.policy.policy_list.PolicyViewModel
 import uz.tikoncha_parent.presentation.policy.policy_setup.PolicySetupViewModel
+import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksViewModel
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedModel
 import uz.tikoncha_parent.presentation.policy.template.sleep.SleepTemplateSetupViewModel
 import uz.tikoncha_parent.presentation.policy.time_rule.setup.TimeRuleSetupViewModel
@@ -236,7 +237,17 @@ val sharedModule = module {
     factory { TaskListViewModel(get(), get(), get()) }
     factory { CreateTaskViewModel(get(), get(), get()) }
     factory { CompletedTaskViewModel(get()) }
-    factory { StatisticViewModel(get(), get(), get()) }
+    factory {
+        StatisticViewModel(
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+        )
+    }
     factory {
         HomeViewModel(
             get(),
@@ -249,7 +260,6 @@ val sharedModule = module {
             get()
         )
     }
-
     factory { ChatViewModel(get(), get()) }
     factory {
         ChatRoomViewModel(
@@ -260,26 +270,27 @@ val sharedModule = module {
             get(),
         )
     }
-
     factory {
         PolicyViewModel(get(),
             get(),
             get(),
             get(),
             get(),
-            get()
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
         )
     }
-
+    factory { ProtectionPacksViewModel(get(), get(), get()) }
     factory { NotificationViewModel(get()) }
     factory { TimeRuleSetupViewModel() }
     factory { LimitRuleSetupViewModel() }
-
     factory { PolicySetupViewModel(get(), get(), get()) }
     single { PolicySharedModel() }
     factory { AppWebViewModel(get()) }
     factory { SleepTemplateSetupViewModel(get(), get(), get()) }
-
     factory { PaymentViewModel(get(), get(), get()) }
     factory { SubscriptionPaymentViewModel(get()) }
     factory { CoinsViewModel(get(), get(), get()) }

@@ -854,4 +854,18 @@ This information is used only for these features and is not shared with third pa
     <string name="ertagacha">Until tomorrow</string>
     <string name="dushanbagacha">Until Monday</string>
     <string name="davom_ettirish">Resume</string>
+    <string name="farzand_ozi_bloklagan">Your child blocked this app themselves</string>
+    <string name="boshqa_ota_ona_bloklagan">Another parent blocked this app</string>
+    <string name="tezkor_bloklar">Quick blocks</string>
+    <string name="himoya_paketlari">Protection packs</string>
+    <string name="boshqa_ota_ona_yoqqan">Enabled by another parent</string>
+    <string name="farzand_ozi_yoqqan">Enabled by your child</string>
+    <plurals name="ilova_soni">
+        <item quantity="one">%1$d app</item>
+        <item quantity="other">%1$d apps</item>
+    </plurals>
+    <plurals name="sayt_soni">
+        <item quantity="one">%1$d site</item>
+        <item quantity="other">%1$d sites</item>
+    </plurals>
 </resources>

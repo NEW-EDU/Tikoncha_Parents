@@ -76,6 +76,8 @@ import uz.tikoncha_parent.presentation.base.rememberInternetCheck
 import uz.tikoncha_parent.presentation.base.simpleShadow
 import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
 import uz.tikoncha_parent.presentation.policy.policy_setup.PolicySetupScreen
+import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionEntrySection
+import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksScreen
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedEvent
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedModel
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedState
@@ -435,6 +437,26 @@ fun PolicyListUi(
                         onMoreClick = {
                             event(PolicyEvent.OpenPauseSheet(it.policyId))
                         },
+                    )
+                }
+
+
+                if (state.visibleQuickBlocks.isNotEmpty()) {
+                    item(key = "quick_blocks") {
+                        QuickBlockSection(
+                            entries = state.visibleQuickBlocks,
+                            myUserId = state.myUserId,
+                            apps = state.childApps,
+                            isBusy = { pkg -> state.isQuickBlockBusy(pkg) },
+                            onRemove = { pkg -> event(PolicyEvent.RemoveQuickBlock(pkg)) },
+                        )
+                    }
+                }
+
+                item(key = "protection") {
+                    ProtectionEntrySection(
+                        enabledNames = state.enabledProtectionNames,
+                        onClick = { navigator?.push(ProtectionPacksScreen()) },
                     )
                 }
             }

@@ -13,6 +13,7 @@ sealed class PolicyEvent {
     data class OpenPauseSheet(val policyId: String?) : PolicyEvent()
     data class PausePolicy(val policyId: String, val option: PauseOption) : PolicyEvent()
     data class ResumePolicy(val policyId: String) : PolicyEvent()
+    data class RemoveQuickBlock(val packageName: String) : PolicyEvent()
     /** Holat yorliqlarini qayta hisoblash (pauza tugaganini ushlash uchun). */
     data object Tick : PolicyEvent()
 }

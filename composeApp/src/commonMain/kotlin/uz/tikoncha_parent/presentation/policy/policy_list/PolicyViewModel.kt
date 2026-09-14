@@ -27,6 +27,12 @@ import uz.tikoncha_parent.domain.use_case.policy.RefreshPoliciesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.presentation.policy.toItemUi
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
+import uz.tikoncha_parent.data.mapper.toAppSelectionUi
+import uz.tikoncha_parent.domain.model.policy.QuickBlockTarget
+import uz.tikoncha_parent.domain.repository.policy.PolicyRepository
+import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlocksUseCase
+import uz.tikoncha_parent.domain.use_case.policy.RefreshQuickBlocksUseCase
+import uz.tikoncha_parent.domain.use_case.policy.RemoveQuickBlockUseCase
 
 class PolicyViewModel(
     private val observePolicies: ObservePoliciesUseCase,
@@ -35,6 +41,10 @@ class PolicyViewModel(
     private val pausePolicy: PausePolicyUseCase,
     private val permissionStatusRepository: PermissionStatusRepository,
     private val childRepository: ChildRepository,
+    private val observeQuickBlocks: ObserveQuickBlocksUseCase,
+    private val refreshQuickBlocks: RefreshQuickBlocksUseCase,
+    private val removeQuickBlock: RemoveQuickBlockUseCase,
+    private val policyRepository: PolicyRepository,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(PolicyState())
@@ -50,6 +60,9 @@ class PolicyViewModel(
     private var policyJob: Job? = null
     private var permissionJob: Job? = null
     private var childrenJob: Job? = null
+    private var quickBlockObserveJob: Job? = null
+    private var childAppsJob: Job? = null
+    private var childAppsLoadedFor: String? = null
 
     init {
         _state.update {
@@ -76,9 +89,13 @@ class PolicyViewModel(
             PolicyEvent.GetChildren -> loadChildren()
 
             is PolicyEvent.OnChildSelected -> {
-                _state.update { it.copy(selectedChild = event.child) }
+                _state.update {
+                    it.copy(selectedChild = event.child, quickBlocks = emptyList(), childApps = emptyMap())
+                }
                 AppSettings.selectedChildId = event.child.userId
                 AppSettings.selectedChild = event.child
+                childAppsJob?.cancel()
+                childAppsLoadedFor = null
                 observeSelectedChild()
                 getSubscriptionLimit()
                 getPolicies()
@@ -96,19 +113,21 @@ class PolicyViewModel(
 
             is PolicyEvent.ResumePolicy -> pause(event.policyId, option = null)
 
+            is PolicyEvent.RemoveQuickBlock -> removeQuickBlockFor(event.packageName)
+
             PolicyEvent.Tick -> remapPolicies()
         }
     }
 
     // ── Kesh kuzatuvi ─────────────────────────────────────────
-
     private fun observeSelectedChild() {
         observeJob?.cancel()
+        quickBlockObserveJob?.cancel()
         val childId = _state.value.selectedChild?.userId
 
         if (childId.isNullOrBlank()) {
             domainPolicies = emptyList()
-            _state.update { it.copy(policies = emptyList()) }
+            _state.update { it.copy(policies = emptyList(), quickBlocks = emptyList(), childApps = emptyMap()) }
             return
         }
 
@@ -116,6 +135,14 @@ class PolicyViewModel(
             observePolicies(childId).collect { list ->
                 domainPolicies = list
                 remapPolicies()
+            }
+        }
+
+        quickBlockObserveJob = screenModelScope.launch {
+            observeQuickBlocks(childId).collect { list ->
+                _state.update { it.copy(quickBlocks = list) }
+                // Nomlar faqat ko'rsatadigan blok bo'lsagina kerak — ortiqcha so'rov yo'q.
+                if (list.any { entry -> entry.targets.packages.isNotEmpty() }) loadChildApps(childId)
             }
         }
     }
@@ -143,7 +170,6 @@ class PolicyViewModel(
     }
 
     // ── Amallar ───────────────────────────────────────────────
-
     private fun toggle(policyId: String, enabled: Boolean) {
         if (policyId.isBlank()) return
         screenModelScope.launch {
@@ -188,12 +214,12 @@ class PolicyViewModel(
     }
 
     // ── Yuklashlar (o'zgarmadi) ───────────────────────────────
-
     private fun getPolicies() {
         policyJob?.cancel()
         policyJob = screenModelScope.launch {
             val childId = _state.value.selectedChild?.userId
             if (childId.isNullOrBlank()) return@launch
+            launch { refreshQuickBlocks(childId) }
 
             if (!_state.value.isInitialLoadDone) {
                 _state.update { it.copy(policyResponseState = ResponseState.Loading) }
@@ -273,6 +299,36 @@ class PolicyViewModel(
             )) {
                 is Outcome.Success -> _state.update { it.copy(permissionIssueList = res.data) }
                 is Outcome.Failure -> _state.update { it.copy(permissionIssueList = emptyList()) }
+            }
+        }
+    }
+
+    private fun removeQuickBlockFor(packageName: String) {
+        val childId = _state.value.selectedChild?.userId
+        if (childId.isNullOrBlank() || packageName.isBlank()) return
+
+        val key = PolicyState.quickBlockKey(packageName)
+        if (key in _state.value.actionInProgress) return
+
+        screenModelScope.launch {
+            markInProgress(key, true)
+            val res = removeQuickBlock(childId, QuickBlockTarget.app(packageName))
+            markInProgress(key, false)
+            // ABSENT ham muvaffaqiyat; ro'yxat repozitoriy refresh() orqali o'zi yangilanadi.
+            if (res is Outcome.Failure) emitFailure(res)
+        }
+    }
+
+    /** Bir bola uchun bir marta; xato bo'lsa kartada paket nomi ko'rinadi. */
+    private fun loadChildApps(childId: String) {
+        if (childAppsLoadedFor == childId || childAppsJob?.isActive == true) return
+        childAppsJob = screenModelScope.launch {
+            val res = policyRepository.childApps(childId)
+            if (res is Outcome.Success) {
+                childAppsLoadedFor = childId
+                _state.update { st ->
+                    st.copy(childApps = res.data.map { it.toAppSelectionUi() }.associateBy { it.packageName })
+                }
             }
         }
     }
