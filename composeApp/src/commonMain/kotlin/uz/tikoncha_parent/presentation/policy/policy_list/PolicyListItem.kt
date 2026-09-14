@@ -20,19 +20,28 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.apps_play
+import tikoncha_parents.composeapp.generated.resources.boshqa_ota_ona
 import tikoncha_parents.composeapp.generated.resources.category_point
 import tikoncha_parents.composeapp.generated.resources.dot
 import tikoncha_parents.composeapp.generated.resources.faol
 import tikoncha_parents.composeapp.generated.resources.faol_emas
+import tikoncha_parents.composeapp.generated.resources.farzandingiz
 import tikoncha_parents.composeapp.generated.resources.global
 import tikoncha_parents.composeapp.generated.resources.ilovalar
+import tikoncha_parents.composeapp.generated.resources.jadval_toxtatilgan_gacha
 import tikoncha_parents.composeapp.generated.resources.kategoriyalar
+import tikoncha_parents.composeapp.generated.resources.maktab
+import tikoncha_parents.composeapp.generated.resources.muddati_tugagan
 import tikoncha_parents.composeapp.generated.resources.ta
+import tikoncha_parents.composeapp.generated.resources.umumiy
 import tikoncha_parents.composeapp.generated.resources.vebsaytlar
+import tikoncha_parents.composeapp.generated.resources.vertical_menu
 import uz.tikoncha_parent.domain.model.GeoType
 import uz.tikoncha_parent.domain.model.HourMinute
 import uz.tikoncha_parent.domain.model.LocationRule
@@ -42,7 +51,9 @@ import uz.tikoncha_parent.domain.model.policy.PolicyAction
 import uz.tikoncha_parent.domain.model.policy.PolicyEffectiveState
 import uz.tikoncha_parent.domain.model.policy.PolicyKind
 import uz.tikoncha_parent.domain.model.policy.PolicyTargets
+import uz.tikoncha_parent.presentation.base.CustomSwitch
 import uz.tikoncha_parent.presentation.base.simpleShadow
+import uz.tikoncha_parent.presentation.policy.common.toHhMm
 import uz.tikoncha_parent.presentation.policy.limit_rule.LimitRuleUi
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
 import uz.tikoncha_parent.ui.ContainerPadding
@@ -58,16 +69,41 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 fun PolicyListItem(
     modifier: Modifier = Modifier,
     policy: PolicyItemUi,
+    /** Server javobini kutyapti — switch bloklanadi. */
+    busy: Boolean = false,
     onClick: () -> Unit,
+    onToggle: (Boolean) -> Unit = {},
+    onMoreClick: () -> Unit = {},
 ) {
-    val statusBgColor = if (policy.isActive) AppColors.bg.primaryContainer
+    val pausedUntilText = policy.pausedUntil
+        ?.toLocalDateTime(TimeZone.currentSystemDefault())
+        ?.time
+        ?.toHhMm()
+        .orEmpty()
+
+    val stateText = when (policy.effectiveState) {
+        PolicyEffectiveState.ACTIVE -> stringResource(Res.string.faol)
+        PolicyEffectiveState.PAUSED -> stringResource(Res.string.jadval_toxtatilgan_gacha, pausedUntilText)
+        PolicyEffectiveState.EXPIRED -> stringResource(Res.string.muddati_tugagan)
+        PolicyEffectiveState.OFF -> stringResource(Res.string.faol_emas)
+    }
+
+    // Rang faqat ACTIVE da "yoqilgan" ko'rinishda — pauza va muddat tugashi ham o'chiq holat.
+    val isLive = policy.effectiveState == PolicyEffectiveState.ACTIVE
+
+    val statusBgColor = if (isLive) AppColors.bg.primaryContainer
     else AppColors.action.disabledTertiary
 
-    val statusTextColor = if (policy.isActive) AppColors.text.accentEmphasis
+    val statusTextColor = if (isLive) AppColors.text.accentEmphasis
     else AppColors.text.disabledTertiary
 
-    val activeText = if (policy.isActive) stringResource(Res.string.faol)
-    else stringResource(Res.string.faol_emas)
+    /** Tahrirlash mumkin bo'lmagan jadval kimga tegishli ekani. */
+    val scopeLabel = when (policy.policyType) {
+        PolicyType.PARENT_CHILD -> stringResource(Res.string.boshqa_ota_ona)
+        PolicyType.STUDENT -> stringResource(Res.string.farzandingiz)
+        PolicyType.SCHOOL -> stringResource(Res.string.maktab)
+        PolicyType.ALL -> stringResource(Res.string.umumiy)
+    }
 
     Column(
         modifier = modifier
@@ -89,34 +125,73 @@ fun PolicyListItem(
                 .padding(horizontal = ContainerPadding),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text(
-                modifier = Modifier.weight(1f),
-                text = policy.policyName,
-                style = AppTypography.titleLgSemiBold,
-                color = AppColors.text.primary,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = 1,
-            )
-            SpaceSmall()
-            Row(
-                modifier = Modifier
-                    .background(statusBgColor, CircleShape)
-                    .padding(horizontal = 10.dp, vertical = 5.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(
-                    painter = painterResource(Res.drawable.dot),
-                    contentDescription = null,
-                    tint = statusTextColor,
-                    modifier = Modifier.size(8.dp),
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = policy.policyName,
+                    style = AppTypography.titleLgSemiBold,
+                    color = AppColors.text.primary,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
                 )
-                SpaceUltraSmall()
+                if (!policy.canEdit) {
+                    Text(
+                        text = scopeLabel,
+                        style = AppTypography.bodySmMedium,
+                        color = AppColors.text.secondary,
+                        maxLines = 1,
+                    )
+                }
+            }
+
+            SpaceSmall()
+
+            if (policy.canEdit) {
                 Text(
                     maxLines = 1,
-                    text = activeText,
-                    style = AppTypography.bodyMdMedium,
+                    text = stateText,
+                    style = AppTypography.bodySmMedium,
                     color = statusTextColor,
                 )
+                SpaceSmall()
+                CustomSwitch(
+                    checked = policy.isActive,
+                    enabled = !busy,
+                    onCheckedChange = onToggle,
+                )
+                Icon(
+                    painter = painterResource(Res.drawable.vertical_menu),
+                    contentDescription = null,
+                    tint = AppColors.icon.secondary,
+                    modifier = Modifier
+                        .padding(start = 4.dp)
+                        .size(20.dp)
+                        .clickable(
+                            interactionSource = null,
+                            indication = null,
+                            onClick = onMoreClick,
+                        ),
+                )
+            } else {
+                Row(
+                    modifier = Modifier
+                        .background(statusBgColor, CircleShape)
+                        .padding(horizontal = 10.dp, vertical = 5.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        painter = painterResource(Res.drawable.dot),
+                        contentDescription = null,
+                        tint = statusTextColor,
+                        modifier = Modifier.size(8.dp),
+                    )
+                    SpaceUltraSmall()
+                    Text(
+                        maxLines = 1,
+                        text = stateText,
+                        style = AppTypography.bodyMdMedium,
+                        color = statusTextColor,
+                    )
+                }
             }
         }
 

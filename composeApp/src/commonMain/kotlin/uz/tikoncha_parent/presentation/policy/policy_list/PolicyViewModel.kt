@@ -3,31 +3,48 @@ package uz.tikoncha_parent.presentation.policy.policy_list
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlin.time.Clock
+import kotlin.time.Instant
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.datetime.TimeZone
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.domain.model.SubscriptionLimit
+import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.permission_status.PermissionStatusType
+import uz.tikoncha_parent.domain.model.policy.Policy
 import uz.tikoncha_parent.domain.repository.ChildRepository
 import uz.tikoncha_parent.domain.repository.PermissionStatusRepository
 import uz.tikoncha_parent.domain.use_case.policy.ObservePoliciesUseCase
+import uz.tikoncha_parent.domain.use_case.policy.PausePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RefreshPoliciesUseCase
+import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.presentation.policy.toItemUi
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 
 class PolicyViewModel(
     private val observePolicies: ObservePoliciesUseCase,
     private val refreshPolicies: RefreshPoliciesUseCase,
+    private val togglePolicy: TogglePolicyUseCase,
+    private val pausePolicy: PausePolicyUseCase,
     private val permissionStatusRepository: PermissionStatusRepository,
     private val childRepository: ChildRepository,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(PolicyState())
     val state = _state.asStateFlow()
+
+    private val _effect = Channel<PolicyListEffect>(Channel.BUFFERED)
+    val effect = _effect.receiveAsFlow()
+
+    /** Domain ro'yxati saqlanadi — Tick da yorliqlarni qayta hisoblash uchun kerak. */
+    private var domainPolicies: List<Policy> = emptyList()
 
     private var observeJob: Job? = null
     private var policyJob: Job? = null
@@ -45,6 +62,7 @@ class PolicyViewModel(
 
         observeSelectedChild()
         loadPermissionStatus()
+        startTicker()
     }
 
     fun onEvent(event: PolicyEvent) {
@@ -68,32 +86,108 @@ class PolicyViewModel(
 
             is PolicyEvent.OnTypeSelected ->
                 _state.update { it.copy(selectedTypeIndex = event.index) }
+
+            is PolicyEvent.TogglePolicy -> toggle(event.policyId, event.enabled)
+
+            is PolicyEvent.OpenPauseSheet ->
+                _state.update { it.copy(pauseSheetFor = event.policyId) }
+
+            is PolicyEvent.PausePolicy -> pause(event.policyId, event.option)
+
+            is PolicyEvent.ResumePolicy -> pause(event.policyId, option = null)
+
+            PolicyEvent.Tick -> remapPolicies()
         }
     }
 
-    /** Keshni kuzatish — bola almashganda eski kuzatuv bekor qilinadi. */
+    // ── Kesh kuzatuvi ─────────────────────────────────────────
+
     private fun observeSelectedChild() {
         observeJob?.cancel()
         val childId = _state.value.selectedChild?.userId
+
         if (childId.isNullOrBlank()) {
+            domainPolicies = emptyList()
             _state.update { it.copy(policies = emptyList()) }
             return
         }
 
         observeJob = screenModelScope.launch {
             observePolicies(childId).collect { list ->
-                val now = Clock.System.now()
-                _state.update { current ->
-                    current.copy(
-                        policies = list
-                            .map { it.toItemUi(current.myUserId, now) }
-                            .sortedByDescending { it.policyType.order },
-                        now = now,
-                    )
-                }
+                domainPolicies = list
+                remapPolicies()
             }
         }
     }
+
+    /** Domain → UI. `now` o'zgarganda holat yorliqlari ham qayta hisoblanadi. */
+    private fun remapPolicies(now: Instant = Clock.System.now()) {
+        _state.update { current ->
+            current.copy(
+                policies = domainPolicies
+                    .map { it.toItemUi(current.myUserId, now) }
+                    .sortedByDescending { it.policyType.order },
+                now = now,
+            )
+        }
+    }
+
+    /** Pauza tugaganini o'zi sezishi uchun — daqiqada bir marta. */
+    private fun startTicker() {
+        screenModelScope.launch {
+            while (true) {
+                delay(TICK_INTERVAL_MS)
+                remapPolicies()
+            }
+        }
+    }
+
+    // ── Amallar ───────────────────────────────────────────────
+
+    private fun toggle(policyId: String, enabled: Boolean) {
+        if (policyId.isBlank()) return
+        screenModelScope.launch {
+            markInProgress(policyId, true)
+            val res = togglePolicy(policyId, enabled)
+            markInProgress(policyId, false)
+            if (res is Outcome.Failure) emitFailure(res)
+        }
+    }
+
+    /** [option] `null` — pauzani bekor qilish. */
+    private fun pause(policyId: String, option: PauseOption?) {
+        if (policyId.isBlank()) return
+        screenModelScope.launch {
+            _state.update { it.copy(pauseSheetFor = null) }
+            markInProgress(policyId, true)
+
+            val until = option?.until(Clock.System.now(), TimeZone.currentSystemDefault())
+            val res = pausePolicy(policyId, until)
+
+            markInProgress(policyId, false)
+            if (res is Outcome.Failure) emitFailure(res)
+        }
+    }
+
+    private fun markInProgress(policyId: String, busy: Boolean) {
+        _state.update {
+            it.copy(
+                actionInProgress =
+                    if (busy) it.actionInProgress + policyId else it.actionInProgress - policyId
+            )
+        }
+    }
+
+    private fun emitFailure(failure: Outcome.Failure) {
+        val cause = failure.cause
+        if (cause is ErrorCause.PremiumRequired) {
+            _effect.trySend(PolicyListEffect.ShowPremium(cause.feature, failure))
+        } else {
+            _effect.trySend(PolicyListEffect.ShowError(failure))
+        }
+    }
+
+    // ── Yuklashlar (o'zgarmadi) ───────────────────────────────
 
     private fun getPolicies() {
         policyJob?.cancel()
@@ -170,10 +264,6 @@ class PolicyViewModel(
         }
     }
 
-    /**
-     * Ruxsat holati endi `isActive` ni O'ZGARTIRMAYDI — u serverdagi jadval holati.
-     * Bu yerda faqat banner uchun ma'lumot yig'iladi.
-     */
     private fun loadPermissionStatus() {
         permissionJob?.cancel()
         permissionJob = screenModelScope.launch {
@@ -186,4 +276,6 @@ class PolicyViewModel(
             }
         }
     }
+
+    private companion object { const val TICK_INTERVAL_MS = 60_000L }
 }

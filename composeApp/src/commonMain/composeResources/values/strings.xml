@@ -855,4 +855,14 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
         <item quantity="one">%1$d soat</item>
         <item quantity="other">%1$d soat</item>
     </plurals>
+    <string name="jadval_toxtatilgan_gacha">To‘xtatilgan — %1$s gacha</string>
+    <string name="maktab_umumiy">Maktab / Umumiy</string>
+    <string name="umumiy">Umumiy</string>
+    <string name="boshqa_ota_ona">Boshqa ota-ona</string>
+    <string name="vaqtincha_toxtatish">Vaqtincha to‘xtatish</string>
+    <string name="bir_soatga">1 soatga</string>
+    <string name="uch_soatga">3 soatga</string>
+    <string name="ertagacha">Ertagacha</string>
+    <string name="dushanbagacha">Dushanbagacha</string>
+    <string name="davom_ettirish">Davom ettirish</string>
 </resources>

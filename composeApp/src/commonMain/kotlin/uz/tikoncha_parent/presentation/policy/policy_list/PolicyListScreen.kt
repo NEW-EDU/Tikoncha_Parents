@@ -37,6 +37,8 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.internal.BackHandler
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -49,11 +51,13 @@ import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.jadval_limit_tugadi_plus
 import tikoncha_parents.composeapp.generated.resources.jadval_qoshish
 import tikoncha_parents.composeapp.generated.resources.limit_tugadi
-import tikoncha_parents.composeapp.generated.resources.maktab
+import tikoncha_parents.composeapp.generated.resources.maktab_umumiy
 import tikoncha_parents.composeapp.generated.resources.media_play
 import tikoncha_parents.composeapp.generated.resources.siz
 import tikoncha_parents.composeapp.generated.resources.xatolik
+import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.permission_status.PermissionIssue
+import uz.tikoncha_parent.domain.model.policy.PolicyEffectiveState
 import uz.tikoncha_parent.platform.openUrl
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
 import uz.tikoncha_parent.presentation.base.ChildSelectionButton
@@ -67,6 +71,7 @@ import uz.tikoncha_parent.presentation.base.PillSegmentedButton
 import uz.tikoncha_parent.presentation.base.PillSegmentedButtonDefaults
 import uz.tikoncha_parent.presentation.base.PillSegmentedItem
 import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
+import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.rememberInternetCheck
 import uz.tikoncha_parent.presentation.base.simpleShadow
 import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
@@ -86,7 +91,6 @@ import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
-
 
 @OptIn(InternalVoyagerApi::class)
 class PolicyListScreen : Screen {
@@ -119,6 +123,7 @@ class PolicyListScreen : Screen {
             navigator = navigator,
             sharedEvent = sharedEvent,
             event = event,
+            effect = viewModel.effect,
             state = state,
             sharedState = sharedState,
         )
@@ -131,6 +136,7 @@ fun PolicyListUi(
     state: PolicyState,
     sharedState: PolicySharedState,
     event: (PolicyEvent) -> Unit = {},
+    effect: Flow<PolicyListEffect> = emptyFlow(),
     sharedEvent: (PolicySharedEvent) -> Unit = {},
 ) {
     val errorText = state.policyResponseState.errorText()
@@ -141,6 +147,18 @@ fun PolicyListUi(
     val refreshScope = rememberCoroutineScope()
     val internetCheck = rememberInternetCheck(refreshScope)
     var showDialog by remember { mutableStateOf(false) }
+
+    var actionFailure by remember { mutableStateOf<Outcome.Failure?>(null) }
+    var premiumFailure by remember { mutableStateOf<Outcome.Failure?>(null) }
+
+    LaunchedEffect(Unit) {
+        effect.collect { eff ->
+            when (eff) {
+                is PolicyListEffect.ShowError -> actionFailure = eff.failure
+                is PolicyListEffect.ShowPremium -> premiumFailure = eff.failure
+            }
+        }
+    }
 
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.secondary,
@@ -195,6 +213,36 @@ fun PolicyListUi(
         }
     )
 
+    // Toggle / pauza xatosi — server matni asText() orqali
+    CustomDialog(
+        painter = painterResource(Res.drawable.dialog_failed),
+        title = stringResource(Res.string.xatolik),
+        message = actionFailure?.asText().orEmpty(),
+        show = actionFailure != null,
+        onDismiss = { actionFailure = null },
+        onButtonClick = { actionFailure = null },
+    )
+
+    SubscriptionBottomDialog(
+        show = premiumFailure != null,
+        message = premiumFailure?.asText().orEmpty(),
+        onConfirm = {
+            premiumFailure = null
+            navigator?.push(SubscriptionPaymentScreen())
+        },
+        onDismiss = { premiumFailure = null },
+    )
+
+    state.pauseSheetFor?.let { policyId ->
+        val policy = state.policies.firstOrNull { it.policyId == policyId }
+        PausePolicySheet(
+            isPaused = policy?.effectiveState == PolicyEffectiveState.PAUSED,
+            onSelect = { option -> event(PolicyEvent.PausePolicy(policyId, option)) },
+            onResume = { event(PolicyEvent.ResumePolicy(policyId)) },
+            onDismiss = { event(PolicyEvent.OpenPauseSheet(null)) },
+        )
+    }
+
     PullToRefreshBox(
         isRefreshing = isRefreshing,
         onRefresh = {
@@ -247,7 +295,7 @@ fun PolicyListUi(
 
             val siz = stringResource(Res.string.siz)
             val farzandingiz = stringResource(Res.string.farzandingiz)
-            val maktab = stringResource(Res.string.maktab)
+            val maktab = stringResource(Res.string.maktab_umumiy)
             val options by remember {
                 mutableStateOf(
                     listOf(
@@ -371,6 +419,7 @@ fun PolicyListUi(
                     PolicyListItem(
                         modifier = Modifier,
                         policy = it,
+                        busy = it.policyId in state.actionInProgress,
                         onClick = {
                             sharedEvent(PolicySharedEvent.ClearData)
                             state.selectedChild?.let { child ->
@@ -379,51 +428,15 @@ fun PolicyListUi(
                             sharedEvent(PolicySharedEvent.SetSubscriptionLimit(state.subscriptionLimit))
                             sharedEvent(PolicySharedEvent.SetPolicy(it))
                             navigator?.push(PolicySetupScreen())
-                        }
+                        },
+                        onToggle = { enabled ->
+                            event(PolicyEvent.TogglePolicy(it.policyId, enabled))
+                        },
+                        onMoreClick = {
+                            event(PolicyEvent.OpenPauseSheet(it.policyId))
+                        },
                     )
                 }
-
-//                item {
-//                    Space(16.dp)
-//                    Text(
-//                        text = stringResource(Res.string.shablonlar),
-//                        color = AppColors.text.primary,
-//                        style = AppTypography.titleLgSemiBold
-//                    )
-//                    Space(12.dp)
-//                    PolicyTemplateEmptyItem(
-//                        icon = painterResource(Res.drawable.time_large_icon),
-//                        title = stringResource(Res.string.uyqu_vaqti_rejasi),
-//                        desc = stringResource(Res.string.farzandingiz_kun_davomida_telefondan_qancha),
-//                        onClick = {
-//                            if (state.canCreatePolicy) {
-//                                sharedEvent(PolicySharedEvent.ClearData)
-//                                sharedEvent(PolicySharedEvent.SetSubscriptionLimit(state.subscriptionLimit))
-//                                state.selectedChild?.let { child ->
-//                                    sharedEvent(PolicySharedEvent.SetSelectedChild(child))
-//                                    sharedEvent(PolicySharedEvent.SetPolicyAction(PolicyAction.ALLOW))
-//                                }
-//                                navigator?.push(SleepTemplateSetupScreen())
-//                            } else {
-//                                showPolicyLimitDialog = true
-//                            }
-//                        }
-//                    )
-//                    Space(8.dp)
-//                    PolicyTemplateEmptyItem(
-//                        icon = painterResource(Res.drawable.timer_policy),
-//                        title = stringResource(Res.string.ilova_taymeri),
-//                        desc = stringResource(Res.string.ilovalarni_tanlang_va_ular_uchun_umumiy),
-//                        onClick = {}
-//                    )
-//                    Space(8.dp)
-//                    PolicyTemplateEmptyItem(
-//                        icon = painterResource(Res.drawable.internet),
-//                        title = stringResource(Res.string.kontent_cheklovlari),
-//                        desc = stringResource(Res.string.farzandingizni_nomaqbul_kontentdan_himoya_qiling),
-//                        onClick = {}
-//                    )
-//                }
             }
 
             if (state.policies.isNotEmpty()) {

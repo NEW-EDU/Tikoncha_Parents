@@ -23,6 +23,10 @@ data class PolicyState(
     val showPolicyTutorialCard: Boolean = false,
     val myUserId: String = "",
     val now: Instant = Clock.System.now(),
+    /** Server javobini kutayotgan jadval id lari — tugma bloklanadi. */
+    val actionInProgress: Set<String> = emptySet(),
+    /** Pauza menyusi ochiq bo'lgan jadval id si. */
+    val pauseSheetFor: String? = null,
 ) {
     /** Tezkor blok va himoya paketlari "Jadvallar" ro'yxatiga kirmaydi. */
     val standardPolicies: List<PolicyItemUi>

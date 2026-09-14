@@ -842,4 +842,14 @@
         <item quantity="many">%1$d часов</item>
         <item quantity="other">%1$d часа</item>
     </plurals>
+    <string name="jadval_toxtatilgan_gacha">Приостановлено — до %1$s</string>
+    <string name="maktab_umumiy">Школа / Общие</string>
+    <string name="umumiy">Общие</string>
+    <string name="boshqa_ota_ona">Другой родитель</string>
+    <string name="vaqtincha_toxtatish">Приостановить</string>
+    <string name="bir_soatga">На 1 час</string>
+    <string name="uch_soatga">На 3 часа</string>
+    <string name="ertagacha">До завтра</string>
+    <string name="dushanbagacha">До понедельника</string>
+    <string name="davom_ettirish">Возобновить</string>
 </resources>

@@ -261,8 +261,17 @@ val sharedModule = module {
         )
     }
 
+    factory {
+        PolicyViewModel(get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get()
+        )
+    }
+
     factory { NotificationViewModel(get()) }
-    factory { PolicyViewModel(get(), get(), get(), get()) }
     factory { TimeRuleSetupViewModel() }
     factory { LimitRuleSetupViewModel() }
 

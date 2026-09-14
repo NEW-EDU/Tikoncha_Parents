@@ -844,4 +844,14 @@ This information is used only for these features and is not shared with third pa
         <item quantity="one">%1$d hour</item>
         <item quantity="other">%1$d hours</item>
     </plurals>
+    <string name="jadval_toxtatilgan_gacha">Paused — until %1$s</string>
+    <string name="maktab_umumiy">School / General</string>
+    <string name="umumiy">General</string>
+    <string name="boshqa_ota_ona">Other parent</string>
+    <string name="vaqtincha_toxtatish">Pause</string>
+    <string name="bir_soatga">For 1 hour</string>
+    <string name="uch_soatga">For 3 hours</string>
+    <string name="ertagacha">Until tomorrow</string>
+    <string name="dushanbagacha">Until Monday</string>
+    <string name="davom_ettirish">Resume</string>
 </resources>
