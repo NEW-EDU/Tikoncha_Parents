@@ -891,7 +891,13 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="tarix_resumed">Davom ettirildi</string>
     <string name="muddat">Muddat</string>
     <string name="muddatsiz">Muddatsiz</string>
-    <string name="ikki_soatga">2 soatga</string>
     <string name="muddat_tavsif">Belgilangan vaqt tugagach jadval o‘zi to‘xtaydi</string>
     <string name="vaqtincha_ruxsat">Vaqtincha ruxsat</string>
+    <string name="faqat_jadval_egasi_ozgartira_oladi">Bu jadvalni faqat uni yaratgan ota-ona o‘zgartira oladi</string>
+    <string name="hech_narsa_ozgarmadi">Hech narsa o‘zgarmadi</string>
+    <string name="muddat_bir_soat">1 soatdan keyin tugaydi</string>
+    <string name="muddat_ikki_soat">2 soatdan keyin tugaydi</string>
+    <string name="muddat_uch_soat">3 soatdan keyin tugaydi</string>
+    <string name="muddat_bugun_oxiri">Bugun kun oxirida tugaydi</string>
+    <string name="muddat_dushanba">Dushanba boshlanganda tugaydi</string>
 </resources>

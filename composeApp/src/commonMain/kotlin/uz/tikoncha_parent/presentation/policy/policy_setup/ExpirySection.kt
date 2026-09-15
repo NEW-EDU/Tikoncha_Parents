@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -28,18 +29,18 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.arrow_right_rounded
-import tikoncha_parents.composeapp.generated.resources.bir_soatga
 import tikoncha_parents.composeapp.generated.resources.bugun
-import tikoncha_parents.composeapp.generated.resources.dushanbagacha
-import tikoncha_parents.composeapp.generated.resources.ertagacha
-import tikoncha_parents.composeapp.generated.resources.ikki_soatga
 import tikoncha_parents.composeapp.generated.resources.kecha
 import tikoncha_parents.composeapp.generated.resources.muddat
+import tikoncha_parents.composeapp.generated.resources.muddat_bir_soat
+import tikoncha_parents.composeapp.generated.resources.muddat_bugun_oxiri
+import tikoncha_parents.composeapp.generated.resources.muddat_dushanba
+import tikoncha_parents.composeapp.generated.resources.muddat_ikki_soat
 import tikoncha_parents.composeapp.generated.resources.muddat_tavsif
+import tikoncha_parents.composeapp.generated.resources.muddat_uch_soat
 import tikoncha_parents.composeapp.generated.resources.muddati_tugagan
 import tikoncha_parents.composeapp.generated.resources.muddatsiz
 import tikoncha_parents.composeapp.generated.resources.tugaydi_format
-import tikoncha_parents.composeapp.generated.resources.uch_soatga
 import uz.tikoncha_parent.common.DateTimeUtil
 import uz.tikoncha_parent.presentation.base.simpleShadow
 import uz.tikoncha_parent.presentation.base.singleClick
@@ -56,7 +57,7 @@ import kotlin.time.Instant
 /**
  * "Muddat" kartasi — jadval qachongacha amal qilishi. Faqat qora ro'yxatda ko'rsatiladi (§5.7).
  *
- * Qiymat: shu sessiyada tanlangan variant ("2 soatga") → aks holda serverdagi aniq vaqt
+ * Qiymat: shu sessiyada tanlangan variant ("2 soatdan keyin tugaydi") → aks holda serverdagi aniq vaqt
  * ("Tugaydi: Bugun, 14:30") → muddat yo'q bo'lsa "Muddatsiz".
  */
 @Composable
@@ -105,12 +106,16 @@ fun ExpirySection(
                 text = stringResource(Res.string.muddat),
                 style = AppTypography.titleLgSemiBold,
                 color = AppColors.text.primary,
-                modifier = Modifier.weight(1f),
+                modifier = Modifier.padding(end = 8.dp),
             )
+            // Qiymat qolgan joyni egallaydi va uzun bo'lsa 2 qatorga o'tadi — sarlavha siqilmaydi.
             Text(
                 text = valueText,
                 style = AppTypography.titleSmMedium,
                 color = if (hasExpiry) AppColors.text.accentEmphasis else AppColors.text.secondary,
+                textAlign = TextAlign.End,
+                maxLines = 2,
+                modifier = Modifier.weight(1f),
             )
             if (enabled) {
                 SpaceUltraSmall()
@@ -161,6 +166,15 @@ fun ExpiryOptionSheet(
                 color = AppColors.text.primary,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
             )
+            Spacer(Modifier.height(4.dp))
+            // Pauza oynasidan farqlash uchun: bu jadvalni vaqtincha to'xtatish emas, tugatish.
+            Text(
+                text = stringResource(Res.string.muddat_tavsif),
+                style = AppTypography.bodyMdRegular,
+                color = AppColors.text.secondary,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth(),
+            )
             Spacer(Modifier.height(16.dp))
 
             ExpirySheetRow(
@@ -186,11 +200,11 @@ fun ExpiryOptionSheet(
 
 @Composable
 private fun ExpiryOption.label(): String = when (this) {
-    ExpiryOption.ONE_HOUR -> stringResource(Res.string.bir_soatga)
-    ExpiryOption.TWO_HOURS -> stringResource(Res.string.ikki_soatga)
-    ExpiryOption.THREE_HOURS -> stringResource(Res.string.uch_soatga)
-    ExpiryOption.UNTIL_TOMORROW -> stringResource(Res.string.ertagacha)
-    ExpiryOption.UNTIL_MONDAY -> stringResource(Res.string.dushanbagacha)
+    ExpiryOption.ONE_HOUR -> stringResource(Res.string.muddat_bir_soat)
+    ExpiryOption.TWO_HOURS -> stringResource(Res.string.muddat_ikki_soat)
+    ExpiryOption.THREE_HOURS -> stringResource(Res.string.muddat_uch_soat)
+    ExpiryOption.UNTIL_TOMORROW -> stringResource(Res.string.muddat_bugun_oxiri)
+    ExpiryOption.UNTIL_MONDAY -> stringResource(Res.string.muddat_dushanba)
 }
 
 @Composable

@@ -880,7 +880,13 @@ This information is used only for these features and is not shared with third pa
     <string name="tarix_resumed">Resumed</string>
     <string name="muddat">Duration</string>
     <string name="muddatsiz">No end date</string>
-    <string name="ikki_soatga">For 2 hours</string>
     <string name="muddat_tavsif">The schedule stops automatically when the time is up</string>
     <string name="vaqtincha_ruxsat">Temporary access</string>
+    <string name="faqat_jadval_egasi_ozgartira_oladi">Only the parent who created it can change this schedule</string>
+    <string name="hech_narsa_ozgarmadi">Nothing changed</string>
+    <string name="muddat_bir_soat">Ends in 1 hour</string>
+    <string name="muddat_ikki_soat">Ends in 2 hours</string>
+    <string name="muddat_uch_soat">Ends in 3 hours</string>
+    <string name="muddat_bugun_oxiri">Ends at the end of today</string>
+    <string name="muddat_dushanba">Ends when Monday begins</string>
 </resources>

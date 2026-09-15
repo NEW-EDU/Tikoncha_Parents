@@ -87,10 +87,10 @@ class PolicySetupViewModel(
             val policyId = shared.selectedPolicy?.policyId.orEmpty()
             val patch = shared.toPatch()
 
-            // Saqlash tugmasi hasChanges bilan boshqariladi, lekin himoya sifatida:
-            // bo'sh PATCH ni serverga yubormaymiz.
+            // Bo'sh PATCH serverga yuborilmaydi. "Tahrirlandi" deyish ham noto'g'ri —
+            // ekranda qolib, "Hech narsa o'zgarmadi" xabari ko'rsatiladi.
             if (patch.isEmpty) {
-                _state.update { it.copy(updateState = ResponseState.Success()) }
+                _effect.trySend(PolicySetupEffect.NothingChangedToast)
                 return@launch
             }
 

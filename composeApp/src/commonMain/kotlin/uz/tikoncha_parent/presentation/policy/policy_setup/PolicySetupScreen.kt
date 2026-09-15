@@ -64,6 +64,7 @@ import tikoncha_parents.composeapp.generated.resources.dialog_failed
 import tikoncha_parents.composeapp.generated.resources.dialog_success
 import tikoncha_parents.composeapp.generated.resources.edite_pen_ilne
 import tikoncha_parents.composeapp.generated.resources.har_kuni
+import tikoncha_parents.composeapp.generated.resources.hech_narsa_ozgarmadi
 import tikoncha_parents.composeapp.generated.resources.ilovalar
 import tikoncha_parents.composeapp.generated.resources.jadval_muvaffaqiyatli_o_chirildi
 import tikoncha_parents.composeapp.generated.resources.jadval_muvaffaqiyatli_tahrirlandi
@@ -197,6 +198,7 @@ fun PolicySetupUi(
     val noTitleMessage = stringResource(Res.string.jadval_nomini_kiriting)
     val noRuleMessage = stringResource(Res.string.kamida_1_ta_shart_kiriting)
     val noAppWebMessage = stringResource(Res.string.kamida_1_ta_ilova_kategoriya_yoki_sayt_tanlang)
+    val nothingChangedMessage = stringResource(Res.string.hech_narsa_ozgarmadi)
     val toast = LocalToastHost.current
 
     LaunchedEffect(Unit) {
@@ -223,6 +225,14 @@ fun PolicySetupUi(
                         toast = ToastData(
                             type = ToastType.Warning,
                             title = noAppWebMessage
+                        )
+                    )
+                }
+                PolicySetupEffect.NothingChangedToast -> {
+                    toast.show(
+                        toast = ToastData(
+                            type = ToastType.Info,
+                            title = nothingChangedMessage
                         )
                     )
                 }
@@ -501,6 +511,15 @@ fun PolicySetupUi(
 
             }
         )
+
+        // ── Holat (faqat tahrirda) ───────────
+        sharedState.selectedPolicy?.let { policy ->
+            PolicySetupStatus(
+                policy = policy,
+                canEdit = sharedState.canUpdate,
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
+        }
         Space(20.dp)
 
         Column(

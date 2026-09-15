@@ -882,7 +882,13 @@
     <string name="tarix_resumed">Возобновлено</string>
     <string name="muddat">Срок действия</string>
     <string name="muddatsiz">Бессрочно</string>
-    <string name="ikki_soatga">На 2 часа</string>
     <string name="muddat_tavsif">Когда срок истечёт, расписание перестанет действовать</string>
     <string name="vaqtincha_ruxsat">Временный доступ</string>
+    <string name="faqat_jadval_egasi_ozgartira_oladi">Изменить расписание может только создавший его родитель</string>
+    <string name="hech_narsa_ozgarmadi">Ничего не изменилось</string>
+    <string name="muddat_bir_soat">Закончится через 1 час</string>
+    <string name="muddat_ikki_soat">Закончится через 2 часа</string>
+    <string name="muddat_uch_soat">Закончится через 3 часа</string>
+    <string name="muddat_bugun_oxiri">Закончится в конце дня</string>
+    <string name="muddat_dushanba">Закончится с началом понедельника</string>
 </resources>
