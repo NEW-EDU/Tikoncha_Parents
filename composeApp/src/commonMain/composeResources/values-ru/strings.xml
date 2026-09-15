@@ -884,4 +884,5 @@
     <string name="muddatsiz">Бессрочно</string>
     <string name="ikki_soatga">На 2 часа</string>
     <string name="muddat_tavsif">Когда срок истечёт, расписание перестанет действовать</string>
+    <string name="vaqtincha_ruxsat">Временный доступ</string>
 </resources>

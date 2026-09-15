@@ -20,5 +20,11 @@ sealed interface StatisticEvent {
     data class ToggleQuickBlock(val packageName: String) : StatisticEvent
     data object DismissQuickBlockFailure : StatisticEvent
 
+    data class GrantBonusTime(
+        val packageName: String,
+        val policyName: String,
+        val minutes: Int,
+    ) : StatisticEvent
+
     data object ClearAll : StatisticEvent
 }

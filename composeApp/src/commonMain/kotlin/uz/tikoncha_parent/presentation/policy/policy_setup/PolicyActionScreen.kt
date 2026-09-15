@@ -17,6 +17,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -36,7 +39,9 @@ import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.bloklash_rejimi_tanlang
 import tikoncha_parents.composeapp.generated.resources.davom_etish
 import tikoncha_parents.composeapp.generated.resources.ilovalarni_belgilash
+import tikoncha_parents.composeapp.generated.resources.obuna_dialog_message
 import tikoncha_parents.composeapp.generated.resources.oq_royhat
+import tikoncha_parents.composeapp.generated.resources.premium
 import tikoncha_parents.composeapp.generated.resources.qora_ro_yxat
 import tikoncha_parents.composeapp.generated.resources.secret_cod_method_icon
 import tikoncha_parents.composeapp.generated.resources.tanlangan_ilovalar_bloklanadi
@@ -47,10 +52,12 @@ import uz.tikoncha_parent.presentation.base.CustomButton
 import uz.tikoncha_parent.presentation.base.CustomButtonNew
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.CustomRadio
+import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.singleClick
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedEvent
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedModel
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedState
+import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
 import uz.tikoncha_parent.ui.CardCornerRadius
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.SpaceLarge
@@ -96,6 +103,27 @@ fun PolicyActionUi(
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.page,
         navigationBarColor = AppColors.bg.page
+    )
+
+    var showAllowPremium by remember { mutableStateOf(false) }
+
+    // FREE tarifda oq ro'yxat pullik — server 403 kutilmaydi, darhol obuna oynasi (§5.2).
+    val onAllowClick: () -> Unit = {
+        if (sharedState.canSelectAllowMode) {
+            sharedEvent(PolicySharedEvent.SetPolicyAction(PolicyAction.ALLOW))
+        } else {
+            showAllowPremium = true
+        }
+    }
+
+    SubscriptionBottomDialog(
+        show = showAllowPremium,
+        message = stringResource(Res.string.obuna_dialog_message),
+        onConfirm = {
+            showAllowPremium = false
+            navigator?.push(SubscriptionPaymentScreen())
+        },
+        onDismiss = { showAllowPremium = false },
     )
 
     Column(
@@ -200,15 +228,26 @@ fun PolicyActionUi(
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(1f)
-                        .singleClick {
-                            sharedEvent(PolicySharedEvent.SetPolicyAction(PolicyAction.ALLOW))
-                        },
+                        .singleClick { onAllowClick() },
                 ) {
-                    Text(
-                        text = stringResource(Res.string.oq_royhat),
-                        style = AppTypography.titleMdSemiBold,
-                        color = AppColors.text.primary,
-                    )
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = stringResource(Res.string.oq_royhat),
+                            style = AppTypography.titleMdSemiBold,
+                            color = AppColors.text.primary,
+                        )
+                        if (!sharedState.canSelectAllowMode) {
+                            SpaceSmall()
+                            Text(
+                                text = stringResource(Res.string.premium),
+                                style = AppTypography.bodySmMedium,
+                                color = AppColors.text.accentWarning,
+                                modifier = Modifier
+                                    .background(AppColors.bg.accentWarningContainer, RoundedCornerShape(8.dp))
+                                    .padding(horizontal = 8.dp, vertical = 3.dp),
+                            )
+                        }
+                    }
                     SpaceUltraSmall()
                     Text(
                         text = stringResource(Res.string.tanlangan_ilovalar_ochiq),
@@ -218,7 +257,7 @@ fun PolicyActionUi(
                 }
                 CustomRadio(
                     checked = !isDENY,
-                    onChecked = { sharedEvent(PolicySharedEvent.SetPolicyAction(PolicyAction.ALLOW)) },
+                    onChecked = { onAllowClick() },
                 )
             }
         }

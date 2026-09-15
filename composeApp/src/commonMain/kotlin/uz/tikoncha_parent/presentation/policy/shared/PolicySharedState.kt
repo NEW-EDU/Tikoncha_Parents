@@ -145,6 +145,11 @@ data class PolicySharedState(
     val canSelectFeature: Boolean
         get() = subscriptionLimitEntity?.subscriptionType != SubscriptionType.FREE
 
+
+    /** Oq ro'yxat (ALLOW) — FREE tarifda pullik (server 403 `policy_allow_mode_paid`). */
+    val canSelectAllowMode: Boolean
+        get() = subscriptionLimitEntity?.subscriptionType != SubscriptionType.FREE
+
     val canSaveAppWebSelection: Boolean
         get() = selectedPkgs.isNotEmpty() ||
                 selectedSites.isNotEmpty() ||

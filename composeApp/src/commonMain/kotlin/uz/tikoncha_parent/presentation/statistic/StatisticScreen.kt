@@ -51,7 +51,9 @@ import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.haftalik
 import tikoncha_parents.composeapp.generated.resources.kunlik
 import tikoncha_parents.composeapp.generated.resources.statistika
+import tikoncha_parents.composeapp.generated.resources.vaqtincha_ruxsat
 import tikoncha_parents.composeapp.generated.resources.xatolik
+import uz.tikoncha_parent.core.FeatureFlags
 import uz.tikoncha_parent.platform.openUrl
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
 import uz.tikoncha_parent.presentation.base.ChildSelectionButton
@@ -106,11 +108,12 @@ fun StatisticUi(
     var isRefreshing by remember { mutableStateOf(false) }
     var showChildSheet by remember { mutableStateOf(false) }
     var showErrorDialog by remember { mutableStateOf(false) }
+    var bonusSheetApp by remember { mutableStateOf<TopAppUi?>(null) }
     val toast = LocalToastHost.current
     val toastScope = rememberCoroutineScope()
     val blockedByChildText = stringResource(Res.string.farzand_ozi_bloklagan)
     val blockedByParentText = stringResource(Res.string.boshqa_ota_ona_bloklagan)
-
+    val temporaryAccessText = stringResource(Res.string.vaqtincha_ruxsat)
     val appUsageErrorText = state.appUsageResponseState.errorText()
     val appUsageLoading = state.appUsageResponseState is ResponseState.Loading
 
@@ -179,6 +182,25 @@ fun StatisticUi(
         show = state.showUsageDetailsDialog,
         onDismiss = { event(StatisticEvent.DismissUsageDetailsDialog) }
     )
+
+
+    // Bonus vaqt — FeatureFlags.BONUS_TIME = false bo'lganda hech qachon ochilmaydi
+    bonusSheetApp?.let { app ->
+        BonusTimeSheet(
+            appName = app.name,
+            onSelect = { minutes ->
+                event(
+                    StatisticEvent.GrantBonusTime(
+                        packageName = app.packageName,
+                        policyName = "$temporaryAccessText: ${app.name}",
+                        minutes = minutes,
+                    )
+                )
+                bonusSheetApp = null
+            },
+            onDismiss = { bonusSheetApp = null },
+        )
+    }
 
     PullToRefreshBox(
         isRefreshing = isRefreshing,
@@ -339,6 +361,7 @@ fun StatisticUi(
                                         event(StatisticEvent.ToggleQuickBlock(app.packageName))
                                     }
                                 },
+                                onLongClick = if (FeatureFlags.BONUS_TIME) ({ bonusSheetApp = app }) else null,
                             )
                             if (i < state.topApps.lastIndex)
                                 HorizontalDivider(

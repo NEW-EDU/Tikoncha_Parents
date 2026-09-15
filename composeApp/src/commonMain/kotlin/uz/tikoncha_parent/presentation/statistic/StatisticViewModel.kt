@@ -14,6 +14,7 @@ import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
+import uz.tikoncha_parent.core.FeatureFlags
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.domain.model.SubscriptionLimit
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
@@ -24,6 +25,7 @@ import uz.tikoncha_parent.domain.repository.ChildRepository
 import uz.tikoncha_parent.domain.repository.PaymentRepository
 import uz.tikoncha_parent.domain.repository.PermissionStatusRepository
 import uz.tikoncha_parent.domain.use_case.policy.AddQuickBlockUseCase
+import uz.tikoncha_parent.domain.use_case.policy.GrantBonusTimeUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlocksUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RefreshQuickBlocksUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RemoveQuickBlockUseCase
@@ -40,6 +42,7 @@ class StatisticViewModel(
     private val refreshQuickBlocks: RefreshQuickBlocksUseCase,
     private val addQuickBlock: AddQuickBlockUseCase,
     private val removeQuickBlock: RemoveQuickBlockUseCase,
+    private val grantBonusTime: GrantBonusTimeUseCase,
 ) : ScreenModel {
 
     private val TAG = "StatisticViewModel"
@@ -53,6 +56,7 @@ class StatisticViewModel(
     private var recomputeJob: Job? = null
     private var quickBlockObserveJob: Job? = null
     private var observedQuickBlockChildId: String? = null
+    private val bonusInProgress = mutableSetOf<String>()
 
     init {
         Logger.d(TAG, "INIT")
@@ -92,8 +96,14 @@ class StatisticViewModel(
 
             is StatisticEvent.ToggleQuickBlock -> toggleQuickBlock(event.packageName)
 
-            StatisticEvent.DismissQuickBlockFailure ->
+            StatisticEvent.DismissQuickBlockFailure -> {
                 _state.update { it.copy(quickBlockFailure = null, quickBlockPremiumFailure = null) }
+            }
+
+
+            is StatisticEvent.GrantBonusTime -> {
+                grantBonus(event.packageName, event.policyName, event.minutes)
+            }
 
             StatisticEvent.ClearAll -> {
                 quickBlockObserveJob?.cancel()
@@ -242,6 +252,29 @@ class StatisticViewModel(
             _state.update { it.copy(quickBlockInProgress = it.quickBlockInProgress - packageName) }
 
             // Muvaffaqiyatda holat o'zi keladi: repozitoriy refresh() qiladi → kuzatuv oqimi yangilanadi.
+            if (res is Outcome.Failure) {
+                _state.update {
+                    if (res.cause is ErrorCause.PremiumRequired) it.copy(quickBlockPremiumFailure = res)
+                    else it.copy(quickBlockFailure = res)
+                }
+            }
+        }
+    }
+
+
+    /* ---------------- BONUS VAQT (FeatureFlags.BONUS_TIME) ---------------- */
+    private fun grantBonus(packageName: String, policyName: String, minutes: Int) {
+        if (!FeatureFlags.BONUS_TIME) return
+        val childId = _state.value.selectedChild?.userId
+        if (childId.isNullOrBlank() || packageName.isBlank()) return
+        if (!bonusInProgress.add(packageName)) return
+
+        screenModelScope.launch {
+            val res = grantBonusTime(childId, listOf(packageName), minutes, policyName)
+            bonusInProgress.remove(packageName)
+
+            // Muvaffaqiyatda jadval keshga tushadi va "Cheklovlar" da muddati bilan ko'rinadi.
+            // Xato dialoglari tezkor blok bilan umumiy — ikkalasi ham ilova qatoridagi amal.
             if (res is Outcome.Failure) {
                 _state.update {
                     if (res.cause is ErrorCause.PremiumRequired) it.copy(quickBlockPremiumFailure = res)

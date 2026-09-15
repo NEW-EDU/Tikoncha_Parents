@@ -38,7 +38,7 @@ import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
-
+import androidx.compose.foundation.combinedClickable
 
 /** Ilova qatoridagi qulf holati. [HIDDEN] — qulf ko'rsatilmaydi (previewlar va boshqa joylar uchun). */
 enum class QuickBlockLockState { HIDDEN, OPEN, BLOCKED_BY_ME, BLOCKED_BY_OTHERS }
@@ -48,12 +48,26 @@ fun TopAppItem(
     app: TopAppUi,
     modifier: Modifier = Modifier,
     lockState: QuickBlockLockState = QuickBlockLockState.HIDDEN,
-    /** Server javobini kutyapti — qulf xira va bosilmaydi. */
     busy: Boolean = false,
     onLockClick: () -> Unit = {},
+    onLongClick: (() -> Unit)? = null,
 ) {
     Row(
-        modifier = modifier.fillMaxWidth().padding(vertical = 10.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .then(
+                if (onLongClick != null) {
+                    Modifier.combinedClickable(
+                        indication = null,
+                        interactionSource = null,
+                        onClick = {},
+                        onLongClick = onLongClick,
+                    )
+                } else {
+                    Modifier
+                }
+            )
+            .padding(vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(

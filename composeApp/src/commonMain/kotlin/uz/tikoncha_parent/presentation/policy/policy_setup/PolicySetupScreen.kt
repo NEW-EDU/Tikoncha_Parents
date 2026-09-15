@@ -81,6 +81,7 @@ import tikoncha_parents.composeapp.generated.resources.kun_davomida
 import tikoncha_parents.composeapp.generated.resources.kunlik
 import tikoncha_parents.composeapp.generated.resources.kunlik_yoki_soatlik_foydalanish_vaqtini_cheklash
 import tikoncha_parents.composeapp.generated.resources.limit
+import tikoncha_parents.composeapp.generated.resources.limit_tugadi
 import tikoncha_parents.composeapp.generated.resources.locked
 import tikoncha_parents.composeapp.generated.resources.malum_hududga_kirilganda_ilovalarni_bloklash
 import tikoncha_parents.composeapp.generated.resources.message_delete
@@ -103,12 +104,15 @@ import tikoncha_parents.composeapp.generated.resources.tahrirlash
 import tikoncha_parents.composeapp.generated.resources.tanlangan_kun_va_soatlarda_avtomatik_bloklash
 import tikoncha_parents.composeapp.generated.resources.tashqarida
 import tikoncha_parents.composeapp.generated.resources.time_square
+import tikoncha_parents.composeapp.generated.resources.to_liq_nazoratni_yoqing
 import tikoncha_parents.composeapp.generated.resources.vaqt
 import tikoncha_parents.composeapp.generated.resources.whitelist
 import tikoncha_parents.composeapp.generated.resources.xatolik
 import uz.tikoncha_parent.domain.model.DayHour
 import uz.tikoncha_parent.domain.model.GeoType
 import uz.tikoncha_parent.domain.model.LocationRule
+import uz.tikoncha_parent.domain.model.app_error.ErrorCause
+import uz.tikoncha_parent.domain.model.app_error.PaidFeature
 import uz.tikoncha_parent.domain.model.policy.PolicyAction
 import uz.tikoncha_parent.domain.model.weekdayLabel
 import uz.tikoncha_parent.presentation.base.CustomBottomDialog
@@ -118,9 +122,11 @@ import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.CustomTextField
 import uz.tikoncha_parent.presentation.base.LoadingDialog
 import uz.tikoncha_parent.presentation.base.LocalToastHost
+import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.ToastData
 import uz.tikoncha_parent.presentation.base.ToastProvider
 import uz.tikoncha_parent.presentation.base.ToastType
+import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.simpleShadow
 import uz.tikoncha_parent.presentation.base.singleClick
 import uz.tikoncha_parent.presentation.policy.app_site_selection.AppWebSelectionScreen
@@ -131,6 +137,7 @@ import uz.tikoncha_parent.presentation.policy.shared.PolicySharedEvent
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedModel
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedState
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleListScreen
+import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 import uz.tikoncha_parent.presentation.ui_state.errorText
 import uz.tikoncha_parent.ui.ContainerPadding
@@ -233,6 +240,11 @@ fun PolicySetupUi(
     val updateErrorText = state.updateState.errorText()
     val deleteErrorText = state.deleteState.errorText()
 
+    // 403 PremiumRequired faqat yaratishda keladi (PATCH 403 — Forbidden, PolicyErrorMapper).
+    val premiumFailure = (state.createState as? ResponseState.Error)?.failure
+        ?.takeIf { it.cause is ErrorCause.PremiumRequired }
+    val isPolicyCountLimit =
+        (premiumFailure?.cause as? ErrorCause.PremiumRequired)?.feature == PaidFeature.POLICY_COUNT
     val createSuccess = state.createState is ResponseState.Success
     val updateSuccess = state.updateState is ResponseState.Success
     val deleteSuccess = state.deleteState is ResponseState.Success
@@ -251,8 +263,11 @@ fun PolicySetupUi(
     }
 
     // ── Error dialog trigger ─────────────────
+    // Pullik xato umumiy xato oynasida ko'rsatilmaydi — uning uchun obuna oynasi bor.
     LaunchedEffect(createErrorText, updateErrorText, deleteErrorText) {
-        if (createErrorText.isNotEmpty() || updateErrorText.isNotEmpty() || deleteErrorText.isNotEmpty()) {
+        if (premiumFailure == null &&
+            (createErrorText.isNotEmpty() || updateErrorText.isNotEmpty() || deleteErrorText.isNotEmpty())
+        ) {
             showErrorDialog = true
         }
     }
@@ -294,6 +309,20 @@ fun PolicySetupUi(
         showCloseButton = false,
         onDismiss = { showErrorDialog = false },
         onButtonClick = { showErrorDialog = false },
+    )
+
+
+    // Pullik imkoniyat — PolicyListScreen dagi obuna oynasi bilan bir xil
+    SubscriptionBottomDialog(
+        show = premiumFailure != null,
+        title = if (isPolicyCountLimit) stringResource(Res.string.limit_tugadi)
+        else stringResource(Res.string.to_liq_nazoratni_yoqing),
+        message = premiumFailure?.asText().orEmpty(),
+        onConfirm = {
+            event(PolicySetupEvent.ResetResponseState)
+            navigator?.push(SubscriptionPaymentScreen())
+        },
+        onDismiss = { event(PolicySetupEvent.ResetResponseState) },
     )
 
     CustomDialog(

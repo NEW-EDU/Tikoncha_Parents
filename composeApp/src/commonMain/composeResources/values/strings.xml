@@ -893,4 +893,5 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="muddatsiz">Muddatsiz</string>
     <string name="ikki_soatga">2 soatga</string>
     <string name="muddat_tavsif">Belgilangan vaqt tugagach jadval o‘zi to‘xtaydi</string>
+    <string name="vaqtincha_ruxsat">Vaqtincha ruxsat</string>
 </resources>
