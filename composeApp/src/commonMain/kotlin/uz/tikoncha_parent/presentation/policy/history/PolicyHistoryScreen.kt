@@ -36,22 +36,30 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.internal.BackHandler
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.todayIn
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.boshqa_yozuvlar_yoq
+import tikoncha_parents.composeapp.generated.resources.bugun
 import tikoncha_parents.composeapp.generated.resources.circle_clock
+import tikoncha_parents.composeapp.generated.resources.kecha
 import tikoncha_parents.composeapp.generated.resources.ozgarishlar_tarixi
 import tikoncha_parents.composeapp.generated.resources.qayta_urinish
 import tikoncha_parents.composeapp.generated.resources.tarix_bosh
 import tikoncha_parents.composeapp.generated.resources.xatolik_yuz_berdi
+import uz.tikoncha_parent.common.DateTimeUtil
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.singleClick
+import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
+import kotlin.time.Clock
 
 @OptIn(InternalVoyagerApi::class)
 class PolicyHistoryScreen : Screen {
@@ -129,60 +137,102 @@ fun PolicyHistoryUi(
 
                 state.showEmpty -> HistoryEmpty()
 
-                else -> LazyColumn(
-                    state = listState,
-                    modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(
-                        start = ContainerPadding,
-                        end = ContainerPadding,
-                        top = 12.dp,
-                        bottom = 24.dp,
-                    ),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    items(items = state.items, key = { it.id }) { item ->
-                        PolicyHistoryItem(item = item)
-                    }
+                else -> {
+                    // Server yozuvlarni yangidan eskiga beradi — groupBy kunlar tartibini saqlaydi.
+                    // Butun ro'yxat guruhlanadi, shuning uchun keyingi sahifa sarlavhani takrorlamaydi.
+                    val days = remember(state.items) { state.items.groupBy { it.createdAt.date } }
 
-                    if (state.isLoadingMore) {
-                        item(key = "loading_more") {
-                            HistoryLoader(
-                                Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 16.dp)
-                            )
+                    LazyColumn(
+                        state = listState,
+                        modifier = Modifier.fillMaxSize(),
+                        // Gorizontal padding kartalarda — sarlavha foni to'liq kenglikni yopishi uchun.
+                        contentPadding = PaddingValues(bottom = 24.dp),
+                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        days.forEach { (date, dayItems) ->
+                            stickyHeader(key = "day_$date", contentType = "day_header") {
+                                HistoryDayHeader(date = date)
+                            }
+
+                            items(
+                                items = dayItems,
+                                key = { it.id },
+                                contentType = { "event" },
+                            ) { item ->
+                                PolicyHistoryItem(
+                                    item = item,
+                                    modifier = Modifier.padding(horizontal = ContainerPadding),
+                                )
+                            }
                         }
-                    }
 
-                    state.paginationError?.let { failure ->
-                        item(key = "pagination_error") {
-                            HistoryError(
-                                message = failure.asText(),
-                                onRetry = { event(PolicyHistoryEvent.RetryPagination) },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 8.dp),
-                            )
+                        if (state.isLoadingMore) {
+                            item(key = "loading_more") {
+                                HistoryLoader(
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 16.dp)
+                                )
+                            }
                         }
-                    }
 
-                    if (state.showEndOfList) {
-                        item(key = "end_of_list") {
-                            Text(
-                                text = stringResource(Res.string.boshqa_yozuvlar_yoq),
-                                style = AppTypography.bodySmRegular,
-                                color = AppColors.text.tertiary,
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 16.dp),
-                            )
+                        state.paginationError?.let { failure ->
+                            item(key = "pagination_error") {
+                                HistoryError(
+                                    message = failure.asText(),
+                                    onRetry = { event(PolicyHistoryEvent.RetryPagination) },
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 8.dp),
+                                )
+                            }
+                        }
+
+                        if (state.showEndOfList) {
+                            item(key = "end_of_list") {
+                                Text(
+                                    text = stringResource(Res.string.boshqa_yozuvlar_yoq),
+                                    style = AppTypography.bodySmRegular,
+                                    color = AppColors.text.tertiary,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(vertical = 16.dp),
+                                )
+                            }
                         }
                     }
                 }
             }
         }
     }
+}
+
+/** Kun sarlavhasi: "Bugun", "Kecha", "11 Sentyabr"; o'tgan yillar uchun yil bilan. */
+@Composable
+private fun HistoryDayHeader(date: LocalDate) {
+    val lang = remember { LanguagePrefs.loadOrDefault() }
+    val today = stringResource(Res.string.bugun)
+    val yesterday = stringResource(Res.string.kecha)
+    val currentYear = remember { Clock.System.todayIn(TimeZone.currentSystemDefault()).year }
+
+    val dayMonth = DateTimeUtil.formatDayMonthLocalized(date, lang, today, yesterday)
+    val label = if (dayMonth != today && dayMonth != yesterday && date.year != currentYear) {
+        "$dayMonth ${date.year}"
+    } else {
+        dayMonth
+    }
+
+    // Fon shaffof bo'lmasligi shart — ostidan o'tayotgan kartalar ko'rinmasin.
+    Text(
+        text = label,
+        style = AppTypography.bodyLgMedium,
+        color = AppColors.text.secondary,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(AppColors.bg.secondary)
+            .padding(start = ContainerPadding, end = ContainerPadding, top = 12.dp, bottom = 4.dp),
+    )
 }
 
 @Composable

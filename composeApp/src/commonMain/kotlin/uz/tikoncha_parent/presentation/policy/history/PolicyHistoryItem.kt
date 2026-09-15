@@ -21,20 +21,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import kotlinx.datetime.LocalDateTime
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.boshqa_ota_ona
-import tikoncha_parents.composeapp.generated.resources.bugun
 import tikoncha_parents.composeapp.generated.resources.circle_clock
 import tikoncha_parents.composeapp.generated.resources.close_circle
 import tikoncha_parents.composeapp.generated.resources.edit_pen
 import tikoncha_parents.composeapp.generated.resources.farzandingiz
 import tikoncha_parents.composeapp.generated.resources.jadval_toxtatilgan_gacha
-import tikoncha_parents.composeapp.generated.resources.kecha
 import tikoncha_parents.composeapp.generated.resources.locked
 import tikoncha_parents.composeapp.generated.resources.message_delete
 import tikoncha_parents.composeapp.generated.resources.pause
@@ -55,7 +52,6 @@ import tikoncha_parents.composeapp.generated.resources.unlocked
 import uz.tikoncha_parent.common.DateTimeUtil
 import uz.tikoncha_parent.domain.model.policy.PolicyEventType
 import uz.tikoncha_parent.presentation.base.simpleShadow
-import uz.tikoncha_parent.presentation.domain.model.LanguageType
 import uz.tikoncha_parent.presentation.policy.common.toHhMm
 import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 import uz.tikoncha_parent.ui.ContainerPadding
@@ -68,10 +64,9 @@ fun PolicyHistoryItem(
     modifier: Modifier = Modifier,
 ) {
     val lang = remember { LanguagePrefs.loadOrDefault() }
-    val today = stringResource(Res.string.bugun)
-    val yesterday = stringResource(Res.string.kecha)
 
-    val createdText = item.createdAt.toHistoryText(lang, today, yesterday)
+    // Sana kun sarlavhasida — kartada faqat vaqt.
+    val timeText = item.createdAt.time.toHhMm()
 
     // Pauza yozilgan kunning o'zida tugasa — faqat soat, aks holda sana bilan.
     val pausedText = item.pausedUntil?.let {
@@ -95,7 +90,7 @@ fun PolicyHistoryItem(
         HistoryActor.OTHER_PARENT -> stringResource(Res.string.boshqa_ota_ona)
         HistoryActor.UNKNOWN -> null
     }
-    val meta = listOfNotNull(actorText, createdText).joinToString(" · ")
+    val meta = listOfNotNull(actorText, timeText).joinToString(" · ")
 
     // Nom o'zgargan bo'lsa "eski → yangi", tezkor blokda ilova, aks holda jadval nomi.
     val secondLine = when {
@@ -167,9 +162,6 @@ fun PolicyHistoryItem(
         }
     }
 }
-
-private fun LocalDateTime.toHistoryText(lang: LanguageType, today: String, yesterday: String): String =
-    DateTimeUtil.formatDayMonthLocalized(date, lang, today, yesterday) + ", " + time.toHhMm()
 
 private fun PolicyEventType.labelRes(): StringResource = when (this) {
     PolicyEventType.CREATED -> Res.string.tarix_created
