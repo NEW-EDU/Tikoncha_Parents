@@ -44,6 +44,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.cheklovlar
+import tikoncha_parents.composeapp.generated.resources.circle_clock
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
 import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
 import tikoncha_parents.composeapp.generated.resources.farzandingiz
@@ -75,6 +76,7 @@ import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.rememberInternetCheck
 import uz.tikoncha_parent.presentation.base.simpleShadow
 import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
+import uz.tikoncha_parent.presentation.policy.history.PolicyHistoryScreen
 import uz.tikoncha_parent.presentation.policy.policy_setup.PolicySetupScreen
 import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionEntrySection
 import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksScreen
@@ -271,6 +273,27 @@ fun PolicyListUi(
                 },
                 modifier = Modifier.fillMaxWidth(),
                 trailingIcon = {
+                    if (state.selectedChild != null) {
+                        IconButton(
+                            onClick = {
+                                navigator?.push(PolicyHistoryScreen())
+                            },
+                            modifier = Modifier
+                                .size(44.dp),
+                            colors = IconButtonDefaults.iconButtonColors(
+                                containerColor = AppColors.bg.surfaceTertiary,
+                                contentColor = AppColors.icon.accentPrimary
+                            )
+                        ) {
+                            Icon(
+                                painter = painterResource(Res.drawable.circle_clock),
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .size(NormalIconSize)
+                            )
+                        }
+                        SpaceUltraSmall()
+                    }
                     if (!state.showPolicyTutorialCard){
                         IconButton(
                             onClick = {

@@ -106,6 +106,7 @@ import uz.tikoncha_parent.presentation.notification.NotificationViewModel
 import uz.tikoncha_parent.presentation.otp.OtpViewmodel
 import uz.tikoncha_parent.presentation.player.PlayerScreenModel
 import uz.tikoncha_parent.presentation.policy.app_site_selection.AppWebViewModel
+import uz.tikoncha_parent.presentation.policy.history.PolicyHistoryViewModel
 import uz.tikoncha_parent.presentation.policy.limit_rule.setup.LimitRuleSetupViewModel
 import uz.tikoncha_parent.presentation.policy.policy_list.PolicyViewModel
 import uz.tikoncha_parent.presentation.policy.policy_setup.PolicySetupViewModel
@@ -284,6 +285,7 @@ val sharedModule = module {
         )
     }
     factory { ProtectionPacksViewModel(get(), get(), get()) }
+    factory { PolicyHistoryViewModel(get(), get()) }
     factory { NotificationViewModel(get()) }
     factory { TimeRuleSetupViewModel() }
     factory { LimitRuleSetupViewModel() }

@@ -870,4 +870,14 @@
         <item quantity="many">%1$d сайтов</item>
         <item quantity="other">%1$d сайта</item>
     </plurals>
+    <string name="ozgarishlar_tarixi">История изменений</string>
+    <string name="tarix_created">Создано</string>
+    <string name="tarix_enabled">Включено</string>
+    <string name="tarix_disabled">Выключено</string>
+    <string name="tarix_paused">Приостановлено</string>
+    <string name="tarix_deleted">Удалено</string>
+    <string name="tarix_quick_block_add">Быстрая блокировка добавлена</string>
+    <string name="tarix_quick_block_remove">Быстрая блокировка снята</string>
+    <string name="tarix_bosh">Изменений пока нет</string>
+    <string name="tarix_resumed">Возобновлено</string>
 </resources>

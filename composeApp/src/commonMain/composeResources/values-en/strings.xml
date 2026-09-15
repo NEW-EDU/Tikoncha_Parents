@@ -868,4 +868,14 @@ This information is used only for these features and is not shared with third pa
         <item quantity="one">%1$d site</item>
         <item quantity="other">%1$d sites</item>
     </plurals>
+    <string name="ozgarishlar_tarixi">Change history</string>
+    <string name="tarix_created">Created</string>
+    <string name="tarix_enabled">Enabled</string>
+    <string name="tarix_disabled">Disabled</string>
+    <string name="tarix_paused">Paused</string>
+    <string name="tarix_deleted">Deleted</string>
+    <string name="tarix_quick_block_add">Quick block added</string>
+    <string name="tarix_quick_block_remove">Quick block removed</string>
+    <string name="tarix_bosh">No changes yet</string>
+    <string name="tarix_resumed">Resumed</string>
 </resources>

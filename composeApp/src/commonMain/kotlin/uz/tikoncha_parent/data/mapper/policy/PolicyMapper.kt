@@ -347,12 +347,17 @@ internal fun String.toInstantOrNow(): Instant = toInstantOrNull() ?: run {
     Clock.System.now()
 }
 
-/** M9: {"is_active": {"from": true, "to": false}} → {"is_active" to ("true" to "false")}. */
+/** M9: {"is_active": {"from": true, "to": false}} → {"is_active" to ("true" to "false")}.
+ * from/to obyekti bo'lmagan qiymat ({"key": "com.app"}, {"pack": "GAMBLING_APPS"}) — `to` ga tushadi.*/
 internal fun JsonObject?.toDiffMap(): Map<String, Pair<String?, String?>> {
     if (this == null) return emptyMap()
     return mapValues { (_, value) ->
         val obj = value as? JsonObject
-        obj?.get("from").asDiffText() to obj?.get("to").asDiffText()
+        if (obj != null && ("from" in obj || "to" in obj)) {
+            obj["from"].asDiffText() to obj["to"].asDiffText()
+        } else {
+            null to value.asDiffText()
+        }
     }
 }
 
