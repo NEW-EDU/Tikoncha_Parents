@@ -1,7 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.shared
 
 import uz.tikoncha_parent.domain.model.LocationRule
-import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.SubscriptionLimit
 import uz.tikoncha_parent.domain.model.SubscriptionType
 import uz.tikoncha_parent.domain.model.UserInfo
@@ -11,6 +10,7 @@ import uz.tikoncha_parent.domain.model.policy.PolicyPreset
 import uz.tikoncha_parent.domain.model.policy.WifiCondition
 import uz.tikoncha_parent.presentation.policy.limit_rule.LimitRuleUi
 import uz.tikoncha_parent.presentation.policy.policy_list.PolicyItemUi
+import uz.tikoncha_parent.presentation.policy.policy_setup.ExpiryOption
 import uz.tikoncha_parent.presentation.policy.policy_setup.PolicyDraftSnapshot
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
 import kotlin.time.Instant
@@ -49,6 +49,8 @@ data class PolicySharedState(
     val isActive: Boolean = true,
     val pausedUntil: Instant? = null,
     val expiresAt: Instant? = null,
+    /** Shu sessiyada tanlangan tayyor variant — aniq vaqt saqlash paytida hisoblanadi. */
+    val expiryOption: ExpiryOption? = null,
     /** WiFi ekrani hali "soon" — faqat saqlanadi. */
     val wifiList: List<WifiCondition> = emptyList(),
     /** 2+ lokatsiya — UI bittasini ko'rsatadi, qolgani saqlanadi. */
@@ -121,6 +123,8 @@ data class PolicySharedState(
         categories = selectedCategories.toList(),
         sites = selectedSites.toList(),
         features = selectedFeatures.toList(),
+        expiresAt = expiresAt,
+        expiryOption = expiryOption,
     )
 
     val hasChanges: Boolean

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import uz.tikoncha_parent.domain.model.policy.PolicyAction
 import uz.tikoncha_parent.presentation.policy.app_site_selection.AppFeatures
 import uz.tikoncha_parent.presentation.policy.limit_rule.LimitRuleUi
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
@@ -77,6 +78,7 @@ class PolicySharedModel() : ViewModel() {
                         isActive = policy.isActive,
                         pausedUntil = policy.pausedUntil,
                         expiresAt = policy.expiresAt,
+                        expiryOption = null,
                         wifiList = policy.wifiRule,
                         extraLocations = policy.extraLocations,
                         launchLimits = policy.launchLimits,
@@ -90,7 +92,18 @@ class PolicySharedModel() : ViewModel() {
             is PolicySharedEvent.SetPolicyTitle ->
                 _state.update { it.copy(policyTitle = event.title) }
             is PolicySharedEvent.SetPolicyAction ->
-                _state.update { it.copy(policyAction = event.action) }
+                _state.update {
+                    // Muddat faqat qora ro'yxat uchun (§5.7) — oq ro'yxatga O'TGANDA olib tashlanadi.
+                    if (event.action == PolicyAction.ALLOW && it.policyAction != PolicyAction.ALLOW) {
+                        it.copy(policyAction = event.action, expiryOption = null, expiresAt = null)
+                    } else {
+                        it.copy(policyAction = event.action)
+                    }
+                }
+
+            is PolicySharedEvent.SetExpiryOption ->
+                // Yangi variant eski aniq vaqt o'rnini egallaydi; null — muddatsiz.
+                _state.update { it.copy(expiryOption = event.option, expiresAt = null) }
             is PolicySharedEvent.SetSubscriptionLimit ->
                 _state.update { it.copy(subscriptionLimitEntity = event.limit) }
 

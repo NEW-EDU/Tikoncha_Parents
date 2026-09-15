@@ -4,6 +4,7 @@ import uz.tikoncha_parent.domain.model.LocationRule
 import uz.tikoncha_parent.domain.model.policy.PolicyAction
 import uz.tikoncha_parent.presentation.policy.limit_rule.LimitRuleUi
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
+import kotlin.time.Instant
 
 data class PolicyDraftSnapshot(
     val title: String,
@@ -15,4 +16,6 @@ data class PolicyDraftSnapshot(
     val categories: List<String>,
     val sites: List<String>,
     val features: List<String>,
+    val expiresAt: Instant?,
+    val expiryOption: ExpiryOption?,
 )

@@ -880,4 +880,8 @@
     <string name="tarix_quick_block_remove">Быстрая блокировка снята</string>
     <string name="tarix_bosh">Изменений пока нет</string>
     <string name="tarix_resumed">Возобновлено</string>
+    <string name="muddat">Срок действия</string>
+    <string name="muddatsiz">Бессрочно</string>
+    <string name="ikki_soatga">На 2 часа</string>
+    <string name="muddat_tavsif">Когда срок истечёт, расписание перестанет действовать</string>
 </resources>

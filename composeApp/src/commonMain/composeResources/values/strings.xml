@@ -889,4 +889,8 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="tarix_quick_block_remove">Tezkor blok olib tashlandi</string>
     <string name="tarix_bosh">Hozircha o‘zgarishlar yo‘q</string>
     <string name="tarix_resumed">Davom ettirildi</string>
+    <string name="muddat">Muddat</string>
+    <string name="muddatsiz">Muddatsiz</string>
+    <string name="ikki_soatga">2 soatga</string>
+    <string name="muddat_tavsif">Belgilangan vaqt tugagach jadval o‘zi to‘xtaydi</string>
 </resources>

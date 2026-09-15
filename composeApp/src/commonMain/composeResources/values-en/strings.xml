@@ -878,4 +878,8 @@ This information is used only for these features and is not shared with third pa
     <string name="tarix_quick_block_remove">Quick block removed</string>
     <string name="tarix_bosh">No changes yet</string>
     <string name="tarix_resumed">Resumed</string>
+    <string name="muddat">Duration</string>
+    <string name="muddatsiz">No end date</string>
+    <string name="ikki_soatga">For 2 hours</string>
+    <string name="muddat_tavsif">The schedule stops automatically when the time is up</string>
 </resources>

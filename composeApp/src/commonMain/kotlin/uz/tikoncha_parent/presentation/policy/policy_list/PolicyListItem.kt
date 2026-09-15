@@ -13,6 +13,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,7 +28,9 @@ import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.apps_play
 import tikoncha_parents.composeapp.generated.resources.boshqa_ota_ona
+import tikoncha_parents.composeapp.generated.resources.bugun
 import tikoncha_parents.composeapp.generated.resources.category_point
+import tikoncha_parents.composeapp.generated.resources.circle_clock
 import tikoncha_parents.composeapp.generated.resources.dot
 import tikoncha_parents.composeapp.generated.resources.faol
 import tikoncha_parents.composeapp.generated.resources.faol_emas
@@ -36,12 +39,15 @@ import tikoncha_parents.composeapp.generated.resources.global
 import tikoncha_parents.composeapp.generated.resources.ilovalar
 import tikoncha_parents.composeapp.generated.resources.jadval_toxtatilgan_gacha
 import tikoncha_parents.composeapp.generated.resources.kategoriyalar
+import tikoncha_parents.composeapp.generated.resources.kecha
 import tikoncha_parents.composeapp.generated.resources.maktab
 import tikoncha_parents.composeapp.generated.resources.muddati_tugagan
 import tikoncha_parents.composeapp.generated.resources.ta
+import tikoncha_parents.composeapp.generated.resources.tugaydi_format
 import tikoncha_parents.composeapp.generated.resources.umumiy
 import tikoncha_parents.composeapp.generated.resources.vebsaytlar
 import tikoncha_parents.composeapp.generated.resources.vertical_menu
+import uz.tikoncha_parent.common.DateTimeUtil
 import uz.tikoncha_parent.domain.model.GeoType
 import uz.tikoncha_parent.domain.model.HourMinute
 import uz.tikoncha_parent.domain.model.LocationRule
@@ -56,6 +62,7 @@ import uz.tikoncha_parent.presentation.base.simpleShadow
 import uz.tikoncha_parent.presentation.policy.common.toHhMm
 import uz.tikoncha_parent.presentation.policy.limit_rule.LimitRuleUi
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
+import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.Space
 import uz.tikoncha_parent.ui.SpaceSmall
@@ -80,6 +87,18 @@ fun PolicyListItem(
         ?.time
         ?.toHhMm()
         .orEmpty()
+
+
+    val lang = remember { LanguagePrefs.loadOrDefault() }
+    val today = stringResource(Res.string.bugun)
+    val yesterday = stringResource(Res.string.kecha)
+    val expiresLocal = policy.expiresAt?.toLocalDateTime(TimeZone.currentSystemDefault())
+    val expiresDateText = expiresLocal?.let {
+        DateTimeUtil.formatDayMonthLocalized(it.date, lang, today, yesterday) + ", " + it.time.toHhMm()
+    }
+    val expiresText = stringResource(Res.string.tugaydi_format, expiresDateText.orEmpty())
+    // Muddati tugagan kartada holat yorlig'i "Muddati tugagan" deydi — qator takrorlanmaydi.
+    val showExpiry = expiresLocal != null && policy.effectiveState != PolicyEffectiveState.EXPIRED
 
     val stateText = when (policy.effectiveState) {
         PolicyEffectiveState.ACTIVE -> stringResource(Res.string.faol)
@@ -192,6 +211,33 @@ fun PolicyListItem(
                         color = statusTextColor,
                     )
                 }
+            }
+        }
+
+
+        // ── Muddat ───────────────────────────
+        if (showExpiry) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = ContainerPadding)
+                    .padding(top = 6.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    painter = painterResource(Res.drawable.circle_clock),
+                    contentDescription = null,
+                    tint = AppColors.icon.secondary,
+                    modifier = Modifier.size(14.dp),
+                )
+                Space(4.dp)
+                Text(
+                    text = expiresText,
+                    style = AppTypography.bodySmMedium,
+                    color = AppColors.text.secondary,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
             }
         }
 

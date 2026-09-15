@@ -1,6 +1,7 @@
 package uz.tikoncha_parent.presentation.policy
 
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.TimeZone
 import uz.tikoncha_parent.domain.model.DayHour
 import uz.tikoncha_parent.domain.model.HourMinute
 import uz.tikoncha_parent.domain.model.LimitWindow
@@ -19,6 +20,7 @@ import uz.tikoncha_parent.presentation.policy.policy_list.PolicyItemUi
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedState
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
 import kotlin.time.Instant
+import kotlin.time.Clock
 
 fun Policy.toItemUi(myUserId: String, now: Instant): PolicyItemUi = PolicyItemUi(
     policyId = id,
@@ -80,13 +82,19 @@ private fun Int.toLocalTimeClamped(): LocalTime =
 
 
 // ── Presentation → domain: saqlash uchun ──────────────────────
-fun PolicySharedState.toDraft(): PolicyDraft = PolicyDraft(
+/**
+ * [now] — tayyor muddat varianti shu paytdan hisoblanadi (saqlash tugmasi bosilgan payt).
+ */
+fun PolicySharedState.toDraft(
+    now: Instant = Clock.System.now(),
+    zone: TimeZone = TimeZone.currentSystemDefault(),
+): PolicyDraft = PolicyDraft(
     name = policyTitle.trim(),
     action = policyAction,
     preset = preset,
     isActive = isActive,
     pausedUntil = pausedUntil,
-    expiresAt = expiresAt,
+    expiresAt = expiryOption?.until(now, zone) ?: expiresAt,
     targets = PolicyTargets(
         packages = selectedPkgs.toList(),
         categories = selectedCategories.toList(),
@@ -128,9 +136,15 @@ fun PolicySharedState.toPatch(): PolicyPatch {
 
     val limitsChanged = initial == null || initial.limitList != limitList
 
+    // Muddat faqat ota-ona uni o'zgartirganda yuboriladi. Aks holda muddati o'tgan jadvalni
+    // boshqa sabab bilan tahrirlaganda eski (o'tgan) vaqt qayta ketib, server 422 qaytarardi.
+    val expiryChanged = expiryOption != null ||
+            (initial != null && initial.expiresAt != expiresAt)
+
     return PolicyPatch(
         name = if (initial == null || initial.title != draft.name) Patch.Value(draft.name) else Patch.Unset,
         action = if (initial == null || initial.action != draft.action) Patch.Value(draft.action) else Patch.Unset,
+        expiresAt = if (expiryChanged) Patch.Value(draft.expiresAt) else Patch.Unset,
         targets = if (targetsChanged) Patch.Value(draft.targets) else Patch.Unset,
         conditions = if (conditionsChanged) Patch.Value(draft.conditions) else Patch.Unset,
         limits = if (limitsChanged) Patch.Value(draft.limits) else Patch.Unset,

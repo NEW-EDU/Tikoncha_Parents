@@ -243,6 +243,7 @@ fun PolicySetupUi(
 
     var showPopupMenu by remember { mutableStateOf(false) }
     var showPolicyNameUpdateDialog by remember { mutableStateOf(false) }
+    var showExpirySheet by remember { mutableStateOf(false) }
 
     // ── Initial snapshot lock ────────────────
     LaunchedEffect(Unit) {
@@ -359,6 +360,19 @@ fun PolicySetupUi(
             showPolicyNameUpdateDialog = false
         },
     )
+
+
+    if (showExpirySheet) {
+        ExpiryOptionSheet(
+            selected = sharedState.expiryOption,
+            hasExpiry = sharedState.expiryOption != null || sharedState.expiresAt != null,
+            onSelect = { option ->
+                sharedEvent(PolicySharedEvent.SetExpiryOption(option))
+                showExpirySheet = false
+            },
+            onDismiss = { showExpirySheet = false },
+        )
+    }
 
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.secondary,
@@ -789,6 +803,16 @@ fun PolicySetupUi(
                 }
             }
 
+            // ── Muddat (faqat qora ro'yxat, §5.7) ──
+            if (sharedState.policyAction == PolicyAction.DENY) {
+                Spacer(Modifier.height(12.dp))
+                ExpirySection(
+                    expiryOption = sharedState.expiryOption,
+                    expiresAt = sharedState.expiresAt,
+                    enabled = sharedState.canUpdate,
+                    onClick = { showExpirySheet = true },
+                )
+            }
             SpaceLarge()
         }
 
