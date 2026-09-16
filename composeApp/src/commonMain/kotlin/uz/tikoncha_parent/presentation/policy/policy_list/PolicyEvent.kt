@@ -4,6 +4,7 @@ import uz.tikoncha_parent.domain.model.UserInfo
 
 sealed class PolicyEvent {
     data object RefreshPolicies : PolicyEvent()
+    data object PullRefresh : PolicyEvent()
     data class OnChildSelected(val child: UserInfo) : PolicyEvent()
     data object GetChildren : PolicyEvent()
     data class OnTypeSelected(val index: Int) : PolicyEvent()

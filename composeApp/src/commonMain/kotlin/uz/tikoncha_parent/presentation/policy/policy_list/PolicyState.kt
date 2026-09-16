@@ -18,6 +18,7 @@ data class PolicyState(
     val selectedChild: UserInfo? = null,
     val subscriptionLimit: SubscriptionLimit = SubscriptionLimit(),
     val isInitialLoadDone: Boolean = false,
+    val isRefreshing: Boolean = false,
     val permissionIssueList: List<PermissionIssue> = emptyList(),
     val childrenList: List<UserInfo> = emptyList(),
     val childrenResponseState: ResponseState<Nothing> = ResponseState.Idle,

@@ -67,23 +67,17 @@ class StatisticViewModel(
 
     fun onEvent(event: StatisticEvent) {
         when (event) {
-            StatisticEvent.Init                          -> { /* Screen LaunchedEffect dan kirsa */ loadChildren() }
+            StatisticEvent.Init                          -> { loadChildren() }
             StatisticEvent.GetChildren                   -> loadChildren()
             StatisticEvent.GetAppUsage                   -> loadAppUsages()
             StatisticEvent.RefreshSubscriptionLimit      -> refreshSubscriptionLimit()
 
-            StatisticEvent.RefreshChild -> {
-                val limit = AppSettings.subscriptionLimitList
-                    .find { it.childId == AppSettings.selectedChild?.userId }
-                    ?: SubscriptionLimit()
-                _state.update {
-                    it.copy(
-                        selectedChild = AppSettings.selectedChild,
-                        subscriptionLimit = limit,
-                        showBlur = shouldShowBlur(limit)
-                    )
-                }
-                loadQuickBlocks()
+            StatisticEvent.RefreshChild -> refreshChild()
+
+            StatisticEvent.PullRefresh -> {
+                _state.update { it.copy(isRefreshing = true) }
+                refreshChild()
+                loadAppUsages()
             }
 
             is StatisticEvent.OnChildSelected            -> selectChild(event.child)
@@ -113,8 +107,23 @@ class StatisticViewModel(
         }
     }
 
-    /* ---------------- CHILDREN ---------------- */
 
+    /** Tanlangan bola, obuna limiti va tezkor bloklarni qayta o'qiydi. */
+    private fun refreshChild() {
+        val limit = AppSettings.subscriptionLimitList
+            .find { it.childId == AppSettings.selectedChild?.userId }
+            ?: SubscriptionLimit()
+        _state.update {
+            it.copy(
+                selectedChild = AppSettings.selectedChild,
+                subscriptionLimit = limit,
+                showBlur = shouldShowBlur(limit)
+            )
+        }
+        loadQuickBlocks()
+    }
+
+    /* ---------------- CHILDREN ---------------- */
     private fun loadChildren() {
         childrenJob?.cancel()
         childrenJob = screenModelScope.launch {
@@ -180,7 +189,10 @@ class StatisticViewModel(
     /* ---------------- APP USAGE ---------------- */
     private fun loadAppUsages() {
         val childId = state.value.selectedChild?.userId
-        if (childId.isNullOrEmpty()) return
+        if (childId.isNullOrEmpty()) {
+            _state.update { it.copy(isRefreshing = false) }
+            return
+        }
 
         appUsageJob?.cancel()
         appUsageJob = screenModelScope.launch {
@@ -191,13 +203,17 @@ class StatisticViewModel(
 
             when (val res = childRepository.appUsages(childId, from = from, to = today)) {
                 is Outcome.Failure -> _state.update {
-                    it.copy(appUsageResponseState = ResponseState.Error(failure = res))
+                    it.copy(
+                        appUsageResponseState = ResponseState.Error(failure = res),
+                        isRefreshing = false,
+                    )
                 }
                 is Outcome.Success -> {
                     _state.update {
                         it.copy(
                             appUsageResponseState = ResponseState.Success(),
-                            appUsageList = res.data
+                            appUsageList = res.data,
+                            isRefreshing = false,
                         )
                     }
                     rebuildPagesForCurrentMode()

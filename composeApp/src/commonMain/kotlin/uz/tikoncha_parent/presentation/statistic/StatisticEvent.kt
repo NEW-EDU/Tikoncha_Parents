@@ -6,6 +6,7 @@ sealed interface StatisticEvent {
     data object Init : StatisticEvent
     data object GetChildren : StatisticEvent
     data object RefreshChild : StatisticEvent
+    data object PullRefresh : StatisticEvent
     data object GetAppUsage : StatisticEvent
     data object RefreshSubscriptionLimit : StatisticEvent
 

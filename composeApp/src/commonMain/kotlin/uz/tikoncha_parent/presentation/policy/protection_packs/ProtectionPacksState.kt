@@ -6,6 +6,7 @@ import uz.tikoncha_parent.presentation.ui_state.ResponseState
 
 data class ProtectionPacksState(
     val responseState: ResponseState<Nothing> = ResponseState.Idle,
+    val isRefreshing: Boolean = false,
     val selectedChild: UserInfo? = null,
     val childrenList: List<UserInfo> = emptyList(),
     val packs: List<ProtectionPackUi> = emptyList(),

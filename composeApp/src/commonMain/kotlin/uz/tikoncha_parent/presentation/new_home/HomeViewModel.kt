@@ -78,6 +78,13 @@ class HomeViewModel(
 
             HomeEvent.GetChildren -> loadChildren()
             HomeEvent.ReloadUserInfo -> reloadUserInfo()
+
+            HomeEvent.PullRefresh -> {
+                _state.update { it.copy(isRefreshing = true) }
+                reloadUserInfo()
+                loadChildren()
+            }
+
             HomeEvent.RefreshParentRequest -> {
                 loadProtectionStatus()
             }
@@ -95,16 +102,16 @@ class HomeViewModel(
         }
     }
 
-    private fun loadAll(){
+    private fun loadAll() {
         val selectedChildId = _state.value.selectedChild?.userId
-        if (hasTaskLoaded.value != selectedChildId){
+        if (hasTaskLoaded.value != selectedChildId) {
             loadTasks()
         }
         observePolicyCount()
-        if (hasPolicyLoaded.value != selectedChildId){
+        if (hasPolicyLoaded.value != selectedChildId) {
             loadPolicies()
         }
-        if (hasAppUsageLoaded.value != selectedChildId){
+        if (hasAppUsageLoaded.value != selectedChildId) {
             loadTodayUsage()
         }
         loadProtectionStatus()
@@ -136,6 +143,7 @@ class HomeViewModel(
                         protectionPermissionOffCount = res.data.missingRequiredPermissionCount(),
                     )
                 }
+
                 is Outcome.Failure -> Unit
             }
         }
@@ -172,8 +180,10 @@ class HomeViewModel(
                         // Aks holda farzand bor bo'lsa ham "Farzand qo'shilmagan" chiqadi.
                         childrenList = it.childrenList.ifEmpty { AppSettings.children },
                         selectedChild = it.selectedChild ?: AppSettings.selectedChild,
+                        isRefreshing = false,
                     )
                 }
+
                 is Outcome.Success -> {
                     val children = res.data
                     val previousChildId = _state.value.selectedChild?.userId
@@ -188,6 +198,7 @@ class HomeViewModel(
                             childrenResponseState = ResponseState.Success(),
                             childrenList = AppSettings.children,
                             selectedChild = AppSettings.selectedChild,
+                            isRefreshing = false,
                         )
                     }
 
@@ -219,6 +230,7 @@ class HomeViewModel(
                 }
                 hasTaskLoaded.value = _state.value.selectedChild?.userId
             }
+
             is Outcome.Failure -> Unit
         }
     }
@@ -268,6 +280,7 @@ class HomeViewModel(
                     _state.update { it.copy(todayUsage = res.data) }
                     hasAppUsageLoaded.value = _state.value.selectedChild?.userId
                 }
+
                 is Outcome.Failure -> Unit
             }
         }

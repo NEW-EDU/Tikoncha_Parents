@@ -17,7 +17,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -36,7 +35,6 @@ import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.internal.BackHandler
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import org.jetbrains.compose.resources.painterResource
@@ -71,6 +69,7 @@ import uz.tikoncha_parent.presentation.base.PermissionWarningCard
 import uz.tikoncha_parent.presentation.base.PillSegmentedButton
 import uz.tikoncha_parent.presentation.base.PillSegmentedButtonDefaults
 import uz.tikoncha_parent.presentation.base.PillSegmentedItem
+import uz.tikoncha_parent.presentation.base.PullToRefreshBox
 import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.rememberInternetCheck
@@ -147,7 +146,6 @@ fun PolicyListUi(
     var showErrorText by remember { mutableStateOf(false) }
     val loading = state.policyResponseState is ResponseState.Loading
     var showPolicyLimitDialog by remember { mutableStateOf(false) }
-    var isRefreshing by remember { mutableStateOf(false) }
     val refreshScope = rememberCoroutineScope()
     val internetCheck = rememberInternetCheck(refreshScope)
     var showDialog by remember { mutableStateOf(false) }
@@ -248,14 +246,10 @@ fun PolicyListUi(
     }
 
     PullToRefreshBox(
-        isRefreshing = isRefreshing,
+        // Indikator server javobiga bog'langan: sekin tarmoqda javob kelguncha aylanadi.
+        isRefreshing = state.isRefreshing,
         onRefresh = {
-            internetCheck.check {
-                isRefreshing = true
-                event(PolicyEvent.RefreshPolicies)
-                delay(500)
-                isRefreshing = false
-            }
+            internetCheck.check { event(PolicyEvent.PullRefresh) }
         }
     ) {
         Column(

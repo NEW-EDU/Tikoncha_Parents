@@ -18,7 +18,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
-import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -37,7 +36,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -64,6 +62,7 @@ import uz.tikoncha_parent.presentation.base.LocalToastHost
 import uz.tikoncha_parent.presentation.base.PermissionWarningCard
 import uz.tikoncha_parent.presentation.base.PillSegmentedButton
 import uz.tikoncha_parent.presentation.base.PillSegmentedItem
+import uz.tikoncha_parent.presentation.base.PullToRefreshBox
 import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.ToastData
 import uz.tikoncha_parent.presentation.base.ToastProvider
@@ -104,8 +103,6 @@ fun StatisticUi(
     state: StatisticState,
     event: (StatisticEvent) -> Unit,
 ) {
-    val refreshScope = rememberCoroutineScope()
-    var isRefreshing by remember { mutableStateOf(false) }
     var showChildSheet by remember { mutableStateOf(false) }
     var showErrorDialog by remember { mutableStateOf(false) }
     var bonusSheetApp by remember { mutableStateOf<TopAppUi?>(null) }
@@ -122,7 +119,7 @@ fun StatisticUi(
         navigationBarColor = AppColors.bg.secondary,
     )
 
-    LoadingDialog(appUsageLoading && !isRefreshing)
+    LoadingDialog(appUsageLoading && !state.isRefreshing)
 
     LaunchedEffect(Unit) { event(StatisticEvent.GetChildren) }
 
@@ -203,16 +200,8 @@ fun StatisticUi(
     }
 
     PullToRefreshBox(
-        isRefreshing = isRefreshing,
-        onRefresh = {
-            refreshScope.launch {
-                isRefreshing = true
-                event(StatisticEvent.RefreshChild)
-                event(StatisticEvent.GetAppUsage)
-                delay(500)
-                isRefreshing = false
-            }
-        }
+        isRefreshing = state.isRefreshing,
+        onRefresh = { event(StatisticEvent.PullRefresh) }
     ) {
         Column(
             modifier = Modifier

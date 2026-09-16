@@ -6,6 +6,7 @@ import uz.tikoncha_parent.presentation.ui_state.ResponseState
 
 data class HomeState(
     val childrenResponseState: ResponseState<Nothing> = ResponseState.Idle,
+    val isRefreshing: Boolean = false,
     val childrenList: List<UserInfo> = emptyList(),
     val selectedChild: UserInfo? = null,
 

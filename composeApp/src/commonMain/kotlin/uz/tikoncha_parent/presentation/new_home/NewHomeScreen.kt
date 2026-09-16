@@ -22,7 +22,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -43,7 +42,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -72,6 +70,7 @@ import uz.tikoncha_parent.presentation.add_child.AddChildScreen
 import uz.tikoncha_parent.presentation.base.ChildSelectionButton
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.NoInternetDialog
+import uz.tikoncha_parent.presentation.base.PullToRefreshBox
 import uz.tikoncha_parent.presentation.base.rememberInternetCheck
 import uz.tikoncha_parent.presentation.base.singleClick
 import uz.tikoncha_parent.presentation.chat.chat_list.ChatScreen
@@ -159,7 +158,6 @@ fun NewHomeUi(
     val tableCount = state.parentPolicyCount
     val refreshScope = rememberCoroutineScope()
     var showDialog by remember { mutableStateOf(false) }
-    var isRefreshing by remember { mutableStateOf(false) }
     var showChildDialog by remember { mutableStateOf(false) }
 
     val systemBars = rememberScreenSystemBars(
@@ -204,15 +202,9 @@ fun NewHomeUi(
     )
 
     PullToRefreshBox(
-        isRefreshing = isRefreshing,
+        isRefreshing = state.isRefreshing,
         onRefresh = {
-            internetCheck.check {
-                isRefreshing = true
-                event(HomeEvent.GetChildren)
-                event(HomeEvent.ReloadUserInfo)
-                delay(500)
-                isRefreshing = false
-            }
+            internetCheck.check { event(HomeEvent.PullRefresh) }
         }
     ) {
         Column(

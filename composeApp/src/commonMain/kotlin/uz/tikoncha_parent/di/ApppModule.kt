@@ -93,7 +93,7 @@ import uz.tikoncha_parent.domain.use_case.todo.DeleteTodoUseCase
 import uz.tikoncha_parent.domain.use_case.todo.GetTodosUseCase
 import uz.tikoncha_parent.domain.use_case.todo.UpdateTodoUseCase
 import uz.tikoncha_parent.platform.PlatformPurchaseService
-import uz.tikoncha_parent.presentation.add_child.AddChildScreenModel
+import uz.tikoncha_parent.presentation.add_child.AddChildViewModel
 import uz.tikoncha_parent.presentation.chat.ChatConnectionManager
 import uz.tikoncha_parent.presentation.chat.chat_details.ChatDetailsViewModel
 import uz.tikoncha_parent.presentation.chat.chat_list.ChatViewModel
@@ -233,7 +233,7 @@ val sharedModule = module {
     factory { OtpViewmodel(get(), get()) }
     factory { RegisterViewmodel(get(), get()) }
     factory { ProfileViewModel(get(), get(), get(), get()) }
-    factory { AddChildScreenModel(get()) }
+    factory { AddChildViewModel(get()) }
     factory { ChildConfirmViewModel() }
     factory { TaskListViewModel(get(), get(), get()) }
     factory { CreateTaskViewModel(get(), get(), get()) }

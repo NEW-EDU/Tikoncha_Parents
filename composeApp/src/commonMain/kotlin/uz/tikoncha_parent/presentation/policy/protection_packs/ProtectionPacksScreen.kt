@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -26,7 +25,6 @@ import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.internal.BackHandler
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 import org.jetbrains.compose.resources.painterResource
@@ -44,6 +42,7 @@ import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.LoadingDialog
 import uz.tikoncha_parent.presentation.base.NoInternetDialog
+import uz.tikoncha_parent.presentation.base.PullToRefreshBox
 import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.rememberInternetCheck
@@ -83,13 +82,12 @@ fun ProtectionPacksUi(
 ) {
     val refreshScope = rememberCoroutineScope()
     val internetCheck = rememberInternetCheck(refreshScope)
-    var isRefreshing by remember { mutableStateOf(false) }
     var showChildSheet by remember { mutableStateOf(false) }
     var showLoadError by remember { mutableStateOf(false) }
     var actionFailure by remember { mutableStateOf<Outcome.Failure?>(null) }
 
     val loadErrorText = state.responseState.errorText()
-    val loading = state.responseState is ResponseState.Loading && !isRefreshing
+    val loading = state.responseState is ResponseState.Loading && !state.isRefreshing
 
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.secondary,
@@ -154,14 +152,9 @@ fun ProtectionPacksUi(
     )
 
     PullToRefreshBox(
-        isRefreshing = isRefreshing,
+        isRefreshing = state.isRefreshing,
         onRefresh = {
-            internetCheck.check {
-                isRefreshing = true
-                event(ProtectionPacksEvent.Load)
-                delay(500)
-                isRefreshing = false
-            }
+            internetCheck.check { event(ProtectionPacksEvent.PullRefresh) }
         },
     ) {
         Column(

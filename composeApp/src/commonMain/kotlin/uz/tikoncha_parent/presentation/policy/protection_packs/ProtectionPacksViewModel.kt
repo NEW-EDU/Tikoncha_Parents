@@ -50,6 +50,11 @@ class ProtectionPacksViewModel(
         when (event) {
             ProtectionPacksEvent.Load -> load(refresh = true)
 
+            ProtectionPacksEvent.PullRefresh -> {
+                _state.update { it.copy(isRefreshing = true) }
+                load(refresh = true)
+            }
+
             is ProtectionPacksEvent.OnChildSelected -> {
                 if (event.child.userId == _state.value.selectedChild?.userId) return
                 AppSettings.selectedChildId = event.child.userId
@@ -77,7 +82,10 @@ class ProtectionPacksViewModel(
      */
     private fun load(refresh: Boolean) {
         val childId = _state.value.selectedChild?.userId
-        if (childId.isNullOrBlank()) return
+        if (childId.isNullOrBlank()) {
+            _state.update { it.copy(isRefreshing = false) }
+            return
+        }
 
         loadJob?.cancel()
         loadJob = screenModelScope.launch {
@@ -88,14 +96,22 @@ class ProtectionPacksViewModel(
             if (refresh) {
                 val refreshed = refreshPolicies(childId)
                 if (refreshed is Outcome.Failure) {
-                    _state.update { it.copy(responseState = ResponseState.Error(failure = refreshed)) }
+                    _state.update {
+                        it.copy(
+                            responseState = ResponseState.Error(failure = refreshed),
+                            isRefreshing = false,
+                        )
+                    }
                     return@launch
                 }
             }
 
             when (val res = getStatuses(childId, myUserId)) {
                 is Outcome.Failure -> _state.update {
-                    it.copy(responseState = ResponseState.Error(failure = res))
+                    it.copy(
+                        responseState = ResponseState.Error(failure = res),
+                        isRefreshing = false,
+                    )
                 }
 
                 is Outcome.Success -> {
@@ -104,6 +120,7 @@ class ProtectionPacksViewModel(
                     _state.update {
                         it.copy(
                             responseState = ResponseState.Success(),
+                            isRefreshing = false,
                             packs = res.data
                                 .filter { status -> status.pack.isActive }
                                 .map { status -> status.toUi(lang, status.pack.code in busy) },

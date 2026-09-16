@@ -80,11 +80,9 @@ class PolicyViewModel(
 
     fun onEvent(event: PolicyEvent) {
         when (event) {
-            PolicyEvent.RefreshPolicies -> {
-                getSubscriptionLimit()
-                loadPermissionStatus()
-                getPolicies()
-            }
+            PolicyEvent.RefreshPolicies -> refreshAll(fromPull = false)
+
+            PolicyEvent.PullRefresh -> refreshAll(fromPull = true)
 
             PolicyEvent.GetChildren -> loadChildren()
 
@@ -117,6 +115,18 @@ class PolicyViewModel(
 
             PolicyEvent.Tick -> remapPolicies()
         }
+    }
+
+
+    /**
+     * [fromPull] — foydalanuvchi pastga tortdi: indikator so'rov tugaguncha aylanadi.
+     * Ekran ochilganda esa to'liq ekranli yuklanish oynasi ishlaydi, indikator kerak emas.
+     */
+    private fun refreshAll(fromPull: Boolean) {
+        if (fromPull) _state.update { it.copy(isRefreshing = true) }
+        getSubscriptionLimit()
+        loadPermissionStatus()
+        getPolicies()
     }
 
     // ── Kesh kuzatuvi ─────────────────────────────────────────
@@ -218,7 +228,10 @@ class PolicyViewModel(
         policyJob?.cancel()
         policyJob = screenModelScope.launch {
             val childId = _state.value.selectedChild?.userId
-            if (childId.isNullOrBlank()) return@launch
+            if (childId.isNullOrBlank()) {
+                _state.update { it.copy(isRefreshing = false) }
+                return@launch
+            }
             launch { refreshQuickBlocks(childId) }
 
             if (!_state.value.isInitialLoadDone) {
@@ -230,6 +243,7 @@ class PolicyViewModel(
                     it.copy(
                         policyResponseState = ResponseState.Error(failure = res),
                         isInitialLoadDone = true,
+                        isRefreshing = false,
                     )
                 }
 
@@ -237,6 +251,7 @@ class PolicyViewModel(
                     it.copy(
                         policyResponseState = ResponseState.Success(),
                         isInitialLoadDone = true,
+                        isRefreshing = false,
                     )
                 }
             }

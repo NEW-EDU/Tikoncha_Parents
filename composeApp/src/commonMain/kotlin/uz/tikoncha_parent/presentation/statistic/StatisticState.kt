@@ -13,7 +13,7 @@ data class StatisticState(
     /* ----- Async holatlar ----- */
     val childrenResponseState: ResponseState<Nothing> = ResponseState.Idle,
     val appUsageResponseState: ResponseState<Nothing> = ResponseState.Idle,
-
+    val isRefreshing: Boolean = false,
     /* ----- Child ----- */
     val childrenList: List<UserInfo> = emptyList(),
     val selectedChild: UserInfo? = null,
