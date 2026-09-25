@@ -39,12 +39,18 @@ data class ChartBarUi(
     val totalMillis: Long
 )
 
-data class TopAppUi(
+/**
+ * Ro'yxat qatori. [share] — eng ko'p ishlatilgan ilovaga nisbatan (0..1), qator
+ * chizilishida hisoblanmasin deb bir marta tayyorlanadi. [perDayMillis] — haftalikda
+ * "kuniga ~" (oraliqdagi ma'lumotli kunlarga bo'lingan).
+ */
+data class StatAppUi(
     val packageName: String,
     val name: String,
     val iconUrl: String?,
-    val usageMillis: Long,
-    val usage: HourMinute
+    val millis: Long,
+    val perDayMillis: Long,
+    val share: Float,
 )
 
 sealed class UsageDetailsTitle {
@@ -69,7 +75,6 @@ data class UsageDetailItem(
     val name: String,
     val iconUrl: String?,
     val usageMillis: Long,
-    val usage: HourMinute
 )
 
 data class UsageDetailsUi(

@@ -854,8 +854,6 @@ This information is used only for these features and is not shared with third pa
     <string name="ertagacha">Until tomorrow</string>
     <string name="dushanbagacha">Until Monday</string>
     <string name="davom_ettirish">Resume</string>
-    <string name="farzand_ozi_bloklagan">Your child blocked this app themselves</string>
-    <string name="boshqa_ota_ona_bloklagan">Another parent blocked this app</string>
     <string name="tezkor_bloklar">Quick blocks</string>
     <string name="himoya_paketlari">Protection packs</string>
     <string name="boshqa_ota_ona_yoqqan">Enabled by another parent</string>
@@ -882,7 +880,6 @@ This information is used only for these features and is not shared with third pa
     <string name="muddat">Duration</string>
     <string name="muddatsiz">No end date</string>
     <string name="muddat_tavsif">The schedule stops automatically when the time is up</string>
-    <string name="vaqtincha_ruxsat">Temporary access</string>
     <string name="faqat_jadval_egasi_ozgartira_oladi">Only the parent who created it can change this schedule</string>
     <string name="hech_narsa_ozgarmadi">Nothing changed</string>
     <string name="muddat_bir_soat">Ends in 1 hour</string>
@@ -903,4 +900,28 @@ This information is used only for these features and is not shared with third pa
         <item quantity="other">%1$d permissions disabled</item>
     </plurals>
     <string name="hammasi_joyida">All good</string>
+
+    <!-- Statistika: ilovalar ro‘yxati va tezkor blok qulfi -->
+    <string name="stat_row_hour_min">%1$d h %2$d min</string>
+    <string name="stat_row_min">%1$d min</string>
+    <string name="stat_row_sec">%1$d sec</string>
+    <string name="stat_hour_only">%1$d h</string>
+    <string name="stat_per_day">~%1$s a day</string>
+    <string name="stat_quick_blocked">In quick block</string>
+    <string name="stat_quick_blocked_paused">In quick block · paused</string>
+    <string name="stat_quick_blocked_inactive">In quick block · needs Plus</string>
+    <string name="stat_blocked_by_child">Blocked by the child</string>
+    <string name="stat_blocked_by_child_paused">Blocked by the child · paused</string>
+    <string name="stat_blocked_by_child_inactive">Blocked by the child · needs Plus</string>
+    <string name="stat_blocked_by_coparent">Blocked by the other parent</string>
+    <string name="stat_blocked_by_coparent_paused">Blocked by the other parent · paused</string>
+    <string name="stat_blocked_by_coparent_inactive">Blocked by the other parent · needs Plus</string>
+    <string name="stat_lock_hint">The lock adds an app to quick block or removes it</string>
+    <string name="stat_quick_add_cd">Add to quick block</string>
+    <string name="stat_quick_remove_cd">Remove from quick block</string>
+    <string name="stat_reenable_title">Quick block will turn on</string>
+    <string name="stat_reenable_message">Quick block is off. Blocking this app turns it back on, and the other apps on its list will be blocked too: %1$d.</string>
+    <string name="stat_reenable_confirm">Block</string>
+    <string name="stat_quick_paywall_title">Subscription required</string>
+    <string name="stat_quick_paywall_message">Blocking an app with one tap requires a Tikoncha Plus subscription.</string>
 </resources>

@@ -132,7 +132,7 @@ private fun UsageDetailRow(item: UsageDetailItem, rowHeight: androidx.compose.ui
         )
         Spacer(Modifier.width(6.dp))
         Text(
-            text = durationString(item.usage),
+            text = rowDuration(item.usageMillis),
             style = AppTypography.bodyMdMedium,
             color = AppColors.text.secondary,
             maxLines = 1,

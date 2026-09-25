@@ -9,6 +9,8 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Tebranish: tizim "Teginish tebranishi" o'chiq bo'lsa AppHaptics o'z vibratoridan foydalanadi -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <queries>
         <intent>

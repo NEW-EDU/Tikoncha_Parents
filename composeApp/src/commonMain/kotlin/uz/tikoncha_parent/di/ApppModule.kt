@@ -76,7 +76,6 @@ import uz.tikoncha_parent.domain.use_case.policy.CreatePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.DeletePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetPolicyEventsUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetProtectionPackStatusesUseCase
-import uz.tikoncha_parent.domain.use_case.policy.GrantBonusTimeUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ObservePoliciesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlocksUseCase
 import uz.tikoncha_parent.domain.use_case.policy.PausePolicyUseCase
@@ -218,7 +217,6 @@ val sharedModule = module {
     single { DeletePolicyUseCase(get()) }
     single { TogglePolicyUseCase(get()) }
     single { PausePolicyUseCase(get()) }
-    single { GrantBonusTimeUseCase(get()) }
     single { GetPolicyEventsUseCase(get()) }
     // Tezkor blok
     single { ObserveQuickBlocksUseCase(get()) }
@@ -246,14 +244,13 @@ val sharedModule = module {
     factory { ChatViewModel(get(), get()) }
     factory {
         StatisticViewModel(
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
+            childRepository = get(),
+            permissionStatusRepository = get(),
+            getUsageHistory = get(),
+            observeQuickBlockSnapshot = get(),
+            refreshQuickBlocks = get(),
+            toggleQuickBlock = get(),
+            childPaidStatus = get(),
         )
     }
     factory {

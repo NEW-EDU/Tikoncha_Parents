@@ -3,12 +3,11 @@ package uz.tikoncha_parent.presentation.statistic
 import uz.tikoncha_parent.domain.model.UserInfo
 
 sealed interface StatisticEvent {
-    data object Init : StatisticEvent
     data object GetChildren : StatisticEvent
-    data object RefreshChild : StatisticEvent
     data object PullRefresh : StatisticEvent
-    data object GetAppUsage : StatisticEvent
-    data object RefreshSubscriptionLimit : StatisticEvent
+
+    /** Ilova qayta ko'rindi — tarif va tezkor bloklar qayta o'qiladi (sotib olgach darhol ishlasin). */
+    data object Resumed : StatisticEvent
 
     data class OnChildSelected(val child: UserInfo) : StatisticEvent
 
@@ -20,12 +19,4 @@ sealed interface StatisticEvent {
 
     data class ToggleQuickBlock(val packageName: String) : StatisticEvent
     data object DismissQuickBlockFailure : StatisticEvent
-
-    data class GrantBonusTime(
-        val packageName: String,
-        val policyName: String,
-        val minutes: Int,
-    ) : StatisticEvent
-
-    data object ClearAll : StatisticEvent
 }

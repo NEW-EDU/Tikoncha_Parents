@@ -3,6 +3,24 @@
 package uz.tikoncha_parent.presentation.statistic
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Icon
+import androidx.compose.runtime.key
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
+import tikoncha_parents.composeapp.generated.resources.stat_lock_hint
+import tikoncha_parents.composeapp.generated.resources.stat_quick_paywall_message
+import tikoncha_parents.composeapp.generated.resources.stat_quick_paywall_title
+import tikoncha_parents.composeapp.generated.resources.stat_reenable_confirm
+import tikoncha_parents.composeapp.generated.resources.stat_reenable_message
+import tikoncha_parents.composeapp.generated.resources.stat_reenable_title
+import uz.tikoncha_parent.presentation.base.CustomBottomDialog
+import uz.tikoncha_parent.presentation.base.haptics.ErrorHaptic
+import uz.tikoncha_parent.presentation.base.haptics.PagerSwipeHaptic
+import uz.tikoncha_parent.presentation.base.haptics.rememberAppHaptics
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,18 +34,15 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,37 +51,29 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.boshqa_ota_ona_bloklagan
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
 import tikoncha_parents.composeapp.generated.resources.eng_kop_foydalanilgan
-import tikoncha_parents.composeapp.generated.resources.farzand_ozi_bloklagan
 import tikoncha_parents.composeapp.generated.resources.farzandingizni_tanlang
 import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.haftalik
 import tikoncha_parents.composeapp.generated.resources.kunlik
 import tikoncha_parents.composeapp.generated.resources.statistika
-import tikoncha_parents.composeapp.generated.resources.vaqtincha_ruxsat
 import tikoncha_parents.composeapp.generated.resources.xatolik
-import uz.tikoncha_parent.core.FeatureFlags
 import uz.tikoncha_parent.platform.openUrl
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
 import uz.tikoncha_parent.presentation.base.ChildSelectionButton
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.LoadingDialog
-import uz.tikoncha_parent.presentation.base.LocalToastHost
 import uz.tikoncha_parent.presentation.base.PermissionWarningCard
 import uz.tikoncha_parent.presentation.base.PillSegmentedButton
 import uz.tikoncha_parent.presentation.base.PillSegmentedItem
 import uz.tikoncha_parent.presentation.base.PullToRefreshBox
 import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
-import uz.tikoncha_parent.presentation.base.ToastData
 import uz.tikoncha_parent.presentation.base.ToastProvider
-import uz.tikoncha_parent.presentation.base.ToastType
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
 import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
@@ -105,12 +112,10 @@ fun StatisticUi(
 ) {
     var showChildSheet by remember { mutableStateOf(false) }
     var showErrorDialog by remember { mutableStateOf(false) }
-    var bonusSheetApp by remember { mutableStateOf<TopAppUi?>(null) }
-    val toast = LocalToastHost.current
-    val toastScope = rememberCoroutineScope()
-    val blockedByChildText = stringResource(Res.string.farzand_ozi_bloklagan)
-    val blockedByParentText = stringResource(Res.string.boshqa_ota_ona_bloklagan)
-    val temporaryAccessText = stringResource(Res.string.vaqtincha_ruxsat)
+    var showQuickPaywall by remember { mutableStateOf(false) }
+    /** Qayta yoqish so'ralayotgan ilova va u bilan birga yopiladigan boshqa ilovalar soni. */
+    var reenableFor by remember { mutableStateOf<Pair<String, Int>?>(null) }
+    val haptics = rememberAppHaptics()
     val appUsageErrorText = state.appUsageResponseState.errorText()
     val appUsageLoading = state.appUsageResponseState is ResponseState.Loading
 
@@ -121,10 +126,25 @@ fun StatisticUi(
 
     LoadingDialog(appUsageLoading && !state.isRefreshing)
 
+    // Ekran har ko'ringanda (Voyager'da orqaga qaytganda ham) — bolalar, foydalanish, tarif
     LaunchedEffect(Unit) { event(StatisticEvent.GetChildren) }
+    // Ilova fondan qaytdi (masalan, to'lovdan) — tarif va tezkor bloklar
+    LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { event(StatisticEvent.Resumed) }
 
     LaunchedEffect(appUsageErrorText) {
         if (appUsageErrorText.isNotEmpty()) showErrorDialog = true
+    }
+    ErrorHaptic(appUsageErrorText.takeIf { it.isNotEmpty() })
+    ErrorHaptic(state.quickBlockFailure)
+
+    // Qaror State'da (domen): olib tashlash doim bepul, qo'shish — Plus, o'chiq blok — so'raladi
+    val onQuickBlock: (String) -> Unit = { packageName ->
+        val others = state.reenableCount(packageName)
+        when {
+            state.needsPaywall(packageName) -> showQuickPaywall = true
+            others > 0 -> reenableFor = packageName to others
+            else -> event(StatisticEvent.ToggleQuickBlock(packageName))
+        }
     }
 
     // Child selection sheet
@@ -162,15 +182,34 @@ fun StatisticUi(
         onButtonClick = { event(StatisticEvent.DismissQuickBlockFailure) },
     )
 
-    // Tezkor blok pullik
+    // Tezkor blok pullik: oldindan (lokal tarif) yoki server 403 bergandan keyin
     SubscriptionBottomDialog(
-        show = state.quickBlockPremiumFailure != null,
-        message = state.quickBlockPremiumFailure?.asText().orEmpty(),
+        show = showQuickPaywall || state.quickBlockPremiumFailure != null,
+        title = stringResource(Res.string.stat_quick_paywall_title),
+        message = stringResource(Res.string.stat_quick_paywall_message),
         onConfirm = {
+            showQuickPaywall = false
             event(StatisticEvent.DismissQuickBlockFailure)
             navigator?.push(SubscriptionPaymentScreen())
         },
-        onDismiss = { event(StatisticEvent.DismissQuickBlockFailure) },
+        onDismiss = {
+            showQuickPaywall = false
+            event(StatisticEvent.DismissQuickBlockFailure)
+        },
+    )
+
+    // O'chiq tezkor blokka qo'shish uni qayta yoqadi — boshqa ilovalar ham yopiladi
+    val reenable = reenableFor
+    CustomBottomDialog(
+        show = reenable != null,
+        title = stringResource(Res.string.stat_reenable_title),
+        message = stringResource(Res.string.stat_reenable_message, reenable?.second ?: 0),
+        confirmButtonText = stringResource(Res.string.stat_reenable_confirm),
+        onDismiss = { reenableFor = null },
+        onConfirm = {
+            reenable?.let { event(StatisticEvent.ToggleQuickBlock(it.first)) }
+            reenableFor = null
+        },
     )
 
     // Bar click dialog
@@ -179,25 +218,6 @@ fun StatisticUi(
         show = state.showUsageDetailsDialog,
         onDismiss = { event(StatisticEvent.DismissUsageDetailsDialog) }
     )
-
-
-    // Bonus vaqt — FeatureFlags.BONUS_TIME = false bo'lganda hech qachon ochilmaydi
-    bonusSheetApp?.let { app ->
-        BonusTimeSheet(
-            appName = app.name,
-            onSelect = { minutes ->
-                event(
-                    StatisticEvent.GrantBonusTime(
-                        packageName = app.packageName,
-                        policyName = "$temporaryAccessText: ${app.name}",
-                        minutes = minutes,
-                    )
-                )
-                bonusSheetApp = null
-            },
-            onDismiss = { bonusSheetApp = null },
-        )
-    }
 
     PullToRefreshBox(
         isRefreshing = state.isRefreshing,
@@ -228,9 +248,6 @@ fun StatisticUi(
                 }
             )
 
-            // showBlur bo'lsa pastki blokga blur qo'llanadi
-            val contentModifier = if (state.showBlur) Modifier.blur(10.dp) else Modifier
-
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -259,24 +276,19 @@ fun StatisticUi(
                         .fillMaxWidth()
                         .background(AppColors.bg.surface, RoundedCornerShape(TextFieldCornerRadius))
                         .padding(ContainerPadding)
-                        .then(contentModifier)
                 ) {
                     // Toggle DAILY / WEEKLY
                     val selectedIdx = if (state.dateSelectionType == DateSelectionType.DAY) 0 else 1
                     PillSegmentedButton(
                         items = listOf(
-                            PillSegmentedItem(
-                                label = stringResource(Res.string.kunlik)
-                            ),
-                            PillSegmentedItem(
-                                label = stringResource(Res.string.haftalik)
-                            )
+                            PillSegmentedItem(label = stringResource(Res.string.kunlik)),
+                            PillSegmentedItem(label = stringResource(Res.string.haftalik)),
                         ),
                         selectedIndex = selectedIdx,
                         modifier = Modifier.fillMaxWidth(),
                         onSelected = { idx ->
-                            val mode =
-                                if (idx == 0) DateSelectionType.DAY else DateSelectionType.WEEK
+                            if (idx != selectedIdx) haptics.tick()
+                            val mode = if (idx == 0) DateSelectionType.DAY else DateSelectionType.WEEK
                             event(StatisticEvent.ChangeMode(mode))
                         }
                     )
@@ -303,8 +315,8 @@ fun StatisticUi(
 
                 SpaceMedium()
 
-                /* ============ Top apps ============ */
-                if (state.topApps.isNotEmpty()) {
+                /* ============ Ilovalar ============ */
+                if (state.apps.isNotEmpty()) {
                     Text(
                         text = stringResource(Res.string.eng_kop_foydalanilgan),
                         color = AppColors.text.primary,
@@ -315,55 +327,54 @@ fun StatisticUi(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(
-                                AppColors.bg.surface,
-                                RoundedCornerShape(TextFieldCornerRadius)
-                            )
+                            .background(AppColors.bg.surface, RoundedCornerShape(TextFieldCornerRadius))
                             .padding(horizontal = ContainerPadding)
-                            .then(contentModifier)
                     ) {
-                        state.topApps.forEachIndexed { i, app ->
-                            TopAppItem(
-                                app = app,
-                                lockState = when {
-                                    state.blockedByMe(app.packageName) -> QuickBlockLockState.BLOCKED_BY_ME
-                                    state.blockedByOthers(app.packageName) -> QuickBlockLockState.BLOCKED_BY_OTHERS
-                                    else -> QuickBlockLockState.OPEN
-                                },
-                                busy = app.packageName in state.quickBlockInProgress,
-                                onLockClick = {
-                                    val onlyOthers = !state.blockedByMe(app.packageName) &&
-                                            state.blockedByOthers(app.packageName)
-                                    if (onlyOthers) {
-                                        val text =
-                                            if (state.blockedByChild(app.packageName)) blockedByChildText
-                                            else blockedByParentText
-                                        toastScope.launch {
-                                            toast.show(
-                                                ToastData(
-                                                    ToastType.Info,
-                                                    text
-                                                )
-                                            )
-                                        }
-                                    } else {
-                                        event(StatisticEvent.ToggleQuickBlock(app.packageName))
-                                    }
-                                },
-                                onLongClick = if (FeatureFlags.BONUS_TIME) ({ bonusSheetApp = app }) else null,
-                            )
-                            if (i < state.topApps.lastIndex)
-                                HorizontalDivider(
-                                    thickness = 1.dp,
-                                    color = AppColors.border.secondary
+                        state.apps.forEachIndexed { i, app ->
+                            key(app.packageName) {
+                                StatAppRow(
+                                    app = app,
+                                    weekly = state.weekly,
+                                    showDivider = i < state.apps.lastIndex,
+                                    badge = state.quickBadge(app.packageName),
+                                    lock = state.quickLock(app.packageName),
+                                    isBlockBusy = app.packageName in state.quickBlockInProgress,
+                                    onQuickBlockClick = { onQuickBlock(app.packageName) },
                                 )
+                            }
                         }
                     }
+                    LockHint()
                 }
 
                 SpaceLarge()
             }
         }
+    }
+}
+
+/** Ro'yxat ostida bir qator: qulf nima qilishini aytadi. */
+@Composable
+private fun LockHint() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 12.dp, bottom = 8.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            imageVector = LockOpenRounded,
+            contentDescription = null,
+            modifier = Modifier.size(14.dp),
+            tint = AppColors.text.tertiary,
+        )
+        Spacer(modifier = Modifier.width(6.dp))
+        Text(
+            text = stringResource(Res.string.stat_lock_hint),
+            style = AppTypography.emphasizedXsRegular,
+            color = AppColors.text.tertiary,
+        )
     }
 }
 
@@ -387,6 +398,9 @@ private fun PagerBlock(
         val target = state.selectedPageIndex.coerceIn(0, state.pages.lastIndex)
         if (pagerState.currentPage != target) pagerState.scrollToPage(target)
     }
+
+    // Barmoq bilan sahifa almashganda — tik (dasturiy o'tish jim)
+    PagerSwipeHaptic(pagerState)
 
     // pager → state
     LaunchedEffect(pagerState.settledPage) {
@@ -475,18 +489,6 @@ private fun StatisticScreenPreview_Dark() {
         StatisticUi(
             navigator = null,
             state = previewStateDaily(),
-            event = {},
-        )
-    }
-}
-
-@Preview
-@Composable
-private fun StatisticScreenPreview_Blurred() {
-    TikonchaParentTheme(ThemeMode.LIGHT) {
-        StatisticUi(
-            navigator = null,
-            state = previewStateDaily().copy(showBlur = true),
             event = {},
         )
     }

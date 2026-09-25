@@ -865,8 +865,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="ertagacha">Ertagacha</string>
     <string name="dushanbagacha">Dushanbagacha</string>
     <string name="davom_ettirish">Davom ettirish</string>
-    <string name="farzand_ozi_bloklagan">Bu ilovani farzandingizning o‘zi bloklagan</string>
-    <string name="boshqa_ota_ona_bloklagan">Bu ilovani boshqa ota-ona bloklagan</string>
     <string name="tezkor_bloklar">Tezkor bloklar</string>
     <string name="himoya_paketlari">Himoya paketlari</string>
     <string name="boshqa_ota_ona_yoqqan">Boshqa ota-ona yoqqan</string>
@@ -892,7 +890,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="muddat">Muddat</string>
     <string name="muddatsiz">Muddatsiz</string>
     <string name="muddat_tavsif">Belgilangan vaqt tugagach jadval o‘zi to‘xtaydi</string>
-    <string name="vaqtincha_ruxsat">Vaqtincha ruxsat</string>
     <string name="faqat_jadval_egasi_ozgartira_oladi">Bu jadvalni faqat uni yaratgan ota-ona o‘zgartira oladi</string>
     <string name="hech_narsa_ozgarmadi">Hech narsa o‘zgarmadi</string>
     <string name="muddat_bir_soat">1 soatdan keyin tugaydi</string>
@@ -913,4 +910,28 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
         <item quantity="other">%1$d ta ruxsat o‘chirilgan</item>
     </plurals>
     <string name="hammasi_joyida">Hammasi joyida</string>
+
+    <!-- Statistika: ilovalar ro‘yxati va tezkor blok qulfi -->
+    <string name="stat_row_hour_min">%1$d soat %2$d daq</string>
+    <string name="stat_row_min">%1$d daq</string>
+    <string name="stat_row_sec">%1$d soniya</string>
+    <string name="stat_hour_only">%1$d soat</string>
+    <string name="stat_per_day">kuniga ~%1$s</string>
+    <string name="stat_quick_blocked">Tezkor blokda</string>
+    <string name="stat_quick_blocked_paused">Tezkor blokda · to‘xtatilgan</string>
+    <string name="stat_quick_blocked_inactive">Tezkor blokda · Plus kerak</string>
+    <string name="stat_blocked_by_child">Farzand o‘zi bloklagan</string>
+    <string name="stat_blocked_by_child_paused">Farzand o‘zi bloklagan · to‘xtatilgan</string>
+    <string name="stat_blocked_by_child_inactive">Farzand o‘zi bloklagan · Plus kerak</string>
+    <string name="stat_blocked_by_coparent">Boshqa ota-ona bloklagan</string>
+    <string name="stat_blocked_by_coparent_paused">Boshqa ota-ona bloklagan · to‘xtatilgan</string>
+    <string name="stat_blocked_by_coparent_inactive">Boshqa ota-ona bloklagan · Plus kerak</string>
+    <string name="stat_lock_hint">Qulf ilovani tezkor blokka qo‘shadi yoki chiqaradi</string>
+    <string name="stat_quick_add_cd">Tezkor blokka qo‘shish</string>
+    <string name="stat_quick_remove_cd">Tezkor blokdan chiqarish</string>
+    <string name="stat_reenable_title">Tezkor blok yoqiladi</string>
+    <string name="stat_reenable_message">Tezkor blok hozir o‘chiq. Bu ilovani bloklasangiz, u qayta yoqiladi va ro‘yxatdagi yana %1$d ta ilova ham yopiladi.</string>
+    <string name="stat_reenable_confirm">Bloklash</string>
+    <string name="stat_quick_paywall_title">Obuna kerak</string>
+    <string name="stat_quick_paywall_message">Ilovani bir bosishda yopish Tikoncha Plus obunasi bilan ishlaydi.</string>
 </resources>

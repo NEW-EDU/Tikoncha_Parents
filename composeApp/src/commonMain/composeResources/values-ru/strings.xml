@@ -852,8 +852,6 @@
     <string name="ertagacha">До завтра</string>
     <string name="dushanbagacha">До понедельника</string>
     <string name="davom_ettirish">Возобновить</string>
-    <string name="farzand_ozi_bloklagan">Это приложение заблокировал сам ребёнок</string>
-    <string name="boshqa_ota_ona_bloklagan">Это приложение заблокировал другой родитель</string>
     <string name="tezkor_bloklar">Быстрые блокировки</string>
     <string name="himoya_paketlari">Пакеты защиты</string>
     <string name="boshqa_ota_ona_yoqqan">Включил другой родитель</string>
@@ -883,7 +881,6 @@
     <string name="muddat">Срок действия</string>
     <string name="muddatsiz">Бессрочно</string>
     <string name="muddat_tavsif">Когда срок истечёт, расписание перестанет действовать</string>
-    <string name="vaqtincha_ruxsat">Временный доступ</string>
     <string name="faqat_jadval_egasi_ozgartira_oladi">Изменить расписание может только создавший его родитель</string>
     <string name="hech_narsa_ozgarmadi">Ничего не изменилось</string>
     <string name="muddat_bir_soat">Закончится через 1 час</string>
@@ -908,4 +905,28 @@
         <item quantity="other">%1$d разрешения отключено</item>
     </plurals>
     <string name="hammasi_joyida">Всё в порядке</string>
+
+    <!-- Statistika: ilovalar ro‘yxati va tezkor blok qulfi -->
+    <string name="stat_row_hour_min">%1$d ч %2$d мин</string>
+    <string name="stat_row_min">%1$d мин</string>
+    <string name="stat_row_sec">%1$d сек</string>
+    <string name="stat_hour_only">%1$d ч</string>
+    <string name="stat_per_day">~%1$s в день</string>
+    <string name="stat_quick_blocked">В быстрой блокировке</string>
+    <string name="stat_quick_blocked_paused">В быстрой блокировке · на паузе</string>
+    <string name="stat_quick_blocked_inactive">В быстрой блокировке · нужен Plus</string>
+    <string name="stat_blocked_by_child">Заблокировал сам ребёнок</string>
+    <string name="stat_blocked_by_child_paused">Заблокировал сам ребёнок · на паузе</string>
+    <string name="stat_blocked_by_child_inactive">Заблокировал сам ребёнок · нужен Plus</string>
+    <string name="stat_blocked_by_coparent">Заблокировал другой родитель</string>
+    <string name="stat_blocked_by_coparent_paused">Заблокировал другой родитель · на паузе</string>
+    <string name="stat_blocked_by_coparent_inactive">Заблокировал другой родитель · нужен Plus</string>
+    <string name="stat_lock_hint">Замок добавляет приложение в быструю блокировку или убирает</string>
+    <string name="stat_quick_add_cd">Добавить в быструю блокировку</string>
+    <string name="stat_quick_remove_cd">Убрать из быстрой блокировки</string>
+    <string name="stat_reenable_title">Быстрая блокировка включится</string>
+    <string name="stat_reenable_message">Быстрая блокировка сейчас выключена. Если заблокировать это приложение, она снова включится, и закроются ещё приложения из списка: %1$d.</string>
+    <string name="stat_reenable_confirm">Заблокировать</string>
+    <string name="stat_quick_paywall_title">Нужна подписка</string>
+    <string name="stat_quick_paywall_message">Блокировка приложения одним нажатием работает с подпиской Tikoncha Plus.</string>
 </resources>

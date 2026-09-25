@@ -3,7 +3,12 @@ package uz.tikoncha_parent.presentation.statistic
 import kotlinx.datetime.LocalDate
 import uz.tikoncha_parent.domain.model.GenderType
 import uz.tikoncha_parent.domain.model.HourMinute
+import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.UserInfo
+import uz.tikoncha_parent.domain.model.policy.PolicyTargets
+import uz.tikoncha_parent.domain.model.policy.QuickBlockEntry
+import uz.tikoncha_parent.domain.model.policy.QuickBlockSnapshot
+import kotlin.time.Instant
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 
 // ============ PAGES ============
@@ -49,7 +54,8 @@ internal fun previewStateDaily(): StatisticState {
         pages = pages,
         selectedPageIndex = pages.lastIndex,
         bars = previewDailyBars(),
-        topApps = previewTopApps(),
+        apps = previewApps(),
+        quick = previewQuickBlocks(),
         appUsageResponseState = ResponseState.Success(),
         childrenResponseState = ResponseState.Success(),
         selectedChild = previewChild(),
@@ -82,7 +88,8 @@ internal fun previewStateWeekly(): StatisticState {
         pages = pages,
         selectedPageIndex = pages.lastIndex,
         bars = previewWeeklyBars(),
-        topApps = previewTopApps(),
+        apps = previewApps(),
+        quick = previewQuickBlocks(),
         appUsageResponseState = ResponseState.Success(),
         childrenResponseState = ResponseState.Success(),
         selectedChild = previewChild(),
@@ -105,7 +112,7 @@ internal fun previewStateEmpty(): StatisticState = StatisticState(
     ),
     selectedPageIndex = 0,
     bars = emptyBars(DateSelectionType.DAY),
-    topApps = emptyList(),
+    apps = emptyList(),
     appUsageResponseState = ResponseState.Success(),
     childrenResponseState = ResponseState.Success(),
     selectedChild = previewChild(),
@@ -141,20 +148,30 @@ internal fun previewWeeklyBars(): List<ChartBarUi> = listOf(
 
 // ============ APPS ============
 
-internal fun previewTopApps(): List<TopAppUi> = listOf(
-    TopAppUi("com.android.chrome",      "Chrome",      null, 9_800_000L, HourMinute(2, 43)),
-    TopAppUi("com.instagram.android",   "Instagram",   null, 6_300_000L, HourMinute(1, 45)),
-    TopAppUi("com.whatsapp",            "WhatsApp",    null, 3_600_000L, HourMinute(1, 0)),
-    TopAppUi("com.google.youtube",      "YouTube",     null, 2_100_000L, HourMinute(0, 35)),
-    TopAppUi("com.telegram.android",    "Telegram",    null, 1_200_000L, HourMinute(0, 20)),
+internal fun previewApps(): List<StatAppUi> = listOf(
+    StatAppUi("com.android.chrome", "Chrome", null, 9_800_000L, 2_450_000L, 1f),
+    StatAppUi("com.instagram.android", "Instagram", null, 6_300_000L, 1_575_000L, 0.64f),
+    StatAppUi("com.whatsapp", "WhatsApp", null, 3_600_000L, 900_000L, 0.37f),
+    StatAppUi("com.google.youtube", "YouTube", null, 2_100_000L, 525_000L, 0.21f),
+    StatAppUi("com.telegram.android", "Telegram", null, 45_000L, 11_250L, 0.005f),
+)
+
+/** Instagram — men bloklaganman; WhatsApp — farzandning o'zi. */
+internal fun previewQuickBlocks(): QuickBlockSnapshot = QuickBlockSnapshot(
+    entries = listOf(
+        QuickBlockEntry("qb-me", PolicyType.PARENT_CHILD, "me", PolicyTargets(packages = listOf("com.instagram.android")), Instant.DISTANT_PAST),
+        QuickBlockEntry("qb-child", PolicyType.STUDENT, null, PolicyTargets(packages = listOf("com.whatsapp")), Instant.DISTANT_PAST),
+    ),
+    myUserId = "me",
+    paid = true,
 )
 
 internal fun previewDetailItems(): List<UsageDetailItem> = listOf(
-    UsageDetailItem("com.android.chrome", "Chrome", null, 5_400_000L, HourMinute(1, 30)),
-    UsageDetailItem("com.instagram.android", "Instagram", null, 2_400_000L, HourMinute(0, 40)),
-    UsageDetailItem("com.whatsapp",          "WhatsApp",  null, 1_800_000L, HourMinute(0, 30)),
-    UsageDetailItem("com.telegram.android",  "Telegram",  null, 1_200_000L, HourMinute(0, 20)),
-    UsageDetailItem("com.google.youtube",    "YouTube",   null,   840_000L, HourMinute(0, 14)),
+    UsageDetailItem("com.android.chrome", "Chrome", null, 5_400_000L),
+    UsageDetailItem("com.instagram.android", "Instagram", null, 2_400_000L),
+    UsageDetailItem("com.whatsapp", "WhatsApp", null, 1_800_000L),
+    UsageDetailItem("com.telegram.android", "Telegram", null, 1_200_000L),
+    UsageDetailItem("com.google.youtube", "YouTube", null, 840_000L),
 )
 
 // ============ CHILD ============
