@@ -32,11 +32,11 @@ actual val targetModule = module {
 
     factory {
         TrackingScreenModel(
-            childrenLocationUseCase = get(),
+            childRepository = get(),
             locationTracker = get(),
             permissionsController = get(),
-            subscriptionLimitUseCase = get(),
-            permissionStatusUseCase = get()
+            paymentRepository = get(),
+            permissionStatusRepository = get()
         )
     }
 

@@ -3,7 +3,6 @@ package uz.tikoncha_parent.presentation.policy.time_rule
 import cafe.adriel.voyager.core.lifecycle.JavaSerializable
 import kotlinx.datetime.LocalTime
 import kotlinx.serialization.Serializable
-import uz.tikoncha_parent.domain.model.MinuteRange
 import uz.tikoncha_parent.domain.model.WeekDay
 
 @Serializable

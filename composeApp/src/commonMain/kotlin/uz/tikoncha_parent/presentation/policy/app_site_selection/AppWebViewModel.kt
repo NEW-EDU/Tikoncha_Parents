@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import uz.tikoncha_parent.data.mapper.toAppSelectionUi
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.apps.AppCategory
-import uz.tikoncha_parent.domain.repository.PolicyRepository
+import uz.tikoncha_parent.domain.repository.policy.PolicyRepository
 import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 

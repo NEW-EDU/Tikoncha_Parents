@@ -13,11 +13,11 @@ import uz.tikoncha_parent.data.remote.MyCoinsApiService
 import uz.tikoncha_parent.data.remote.NewApiService
 import uz.tikoncha_parent.data.remote.PaymentApiService
 import uz.tikoncha_parent.data.remote.PermissionStatusApiService
-import uz.tikoncha_parent.data.remote.PolicyApiService
 import uz.tikoncha_parent.data.remote.ProtectionApiService
 import uz.tikoncha_parent.data.remote.TikonchaClient
 import uz.tikoncha_parent.data.remote.TodoApiService
 import uz.tikoncha_parent.data.remote.TutorialApiService
+import uz.tikoncha_parent.data.remote.policy.PolicyApiService
 import uz.tikoncha_parent.data.repository.AuthRepositoryImpl
 import uz.tikoncha_parent.data.repository.AvatarRepositoryImpl
 import uz.tikoncha_parent.data.repository.ChatRepositoryImpl
@@ -28,13 +28,16 @@ import uz.tikoncha_parent.data.repository.MyCoinsRepositoryImpl
 import uz.tikoncha_parent.data.repository.NewsRepositoryImpl
 import uz.tikoncha_parent.data.repository.PaymentRepositoryImpl
 import uz.tikoncha_parent.data.repository.PlayerRepositoryImpl
-import uz.tikoncha_parent.data.repository.PolicyRepositoryImpl
 import uz.tikoncha_parent.data.repository.ProtectionRepositoryImpl
 import uz.tikoncha_parent.data.repository.SessionRepositoryImpl
 import uz.tikoncha_parent.data.repository.TelegramAuthRepositoryImpl
 import uz.tikoncha_parent.data.repository.TodoRepositoryImpl
 import uz.tikoncha_parent.data.repository.TutorialRepositoryImpl
 import uz.tikoncha_parent.data.repository.UpdateRepositoryImpl
+import uz.tikoncha_parent.data.repository.policy.PolicyAuditRepositoryImpl
+import uz.tikoncha_parent.data.repository.policy.PolicyRepositoryImpl
+import uz.tikoncha_parent.data.repository.policy.ProtectionPackRepositoryImpl
+import uz.tikoncha_parent.data.repository.policy.QuickBlockRepositoryImpl
 import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.domain.repository.AuthRepository
 import uz.tikoncha_parent.domain.repository.AvatarRepository
@@ -47,13 +50,16 @@ import uz.tikoncha_parent.domain.repository.NewsRepository
 import uz.tikoncha_parent.domain.repository.PaymentRepository
 import uz.tikoncha_parent.domain.repository.PermissionStatusRepository
 import uz.tikoncha_parent.domain.repository.PlayerRepository
-import uz.tikoncha_parent.domain.repository.PolicyRepository
 import uz.tikoncha_parent.domain.repository.ProtectionRepository
 import uz.tikoncha_parent.domain.repository.SessionRepository
 import uz.tikoncha_parent.domain.repository.TelegramAuthRepository
 import uz.tikoncha_parent.domain.repository.TodoRepository
 import uz.tikoncha_parent.domain.repository.TutorialRepository
 import uz.tikoncha_parent.domain.repository.UpdateRepository
+import uz.tikoncha_parent.domain.repository.policy.PolicyAuditRepository
+import uz.tikoncha_parent.domain.repository.policy.PolicyRepository
+import uz.tikoncha_parent.domain.repository.policy.ProtectionPackRepository
+import uz.tikoncha_parent.domain.repository.policy.QuickBlockRepository
 import uz.tikoncha_parent.domain.use_case.app_usage.TodayUsageUseCase
 import uz.tikoncha_parent.domain.use_case.chat.GetChatMessagesFromServerUseCase
 import uz.tikoncha_parent.domain.use_case.chat.ObserveChatStatusUseCase
@@ -64,13 +70,30 @@ import uz.tikoncha_parent.domain.use_case.in_app_update.CompleteFlexibleUpdateUs
 import uz.tikoncha_parent.domain.use_case.in_app_update.ObserveInstallEventsUseCase
 import uz.tikoncha_parent.domain.use_case.payment.GetPaymentTransactionsUseCase
 import uz.tikoncha_parent.domain.use_case.payment.PurchaseIApPremiumUseCase
+import uz.tikoncha_parent.domain.use_case.policy.AddQuickBlockUseCase
+import uz.tikoncha_parent.domain.use_case.policy.CreatePolicyUseCase
+import uz.tikoncha_parent.domain.use_case.policy.CreateTimedBlockUseCase
+import uz.tikoncha_parent.domain.use_case.policy.DeletePolicyUseCase
+import uz.tikoncha_parent.domain.use_case.policy.EvaluatePolicyUseCase
+import uz.tikoncha_parent.domain.use_case.policy.GetPolicyEventsUseCase
+import uz.tikoncha_parent.domain.use_case.policy.GetProtectionPackStatusesUseCase
+import uz.tikoncha_parent.domain.use_case.policy.GrantBonusTimeUseCase
+import uz.tikoncha_parent.domain.use_case.policy.ObservePoliciesUseCase
+import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlocksUseCase
+import uz.tikoncha_parent.domain.use_case.policy.PausePolicyUseCase
+import uz.tikoncha_parent.domain.use_case.policy.RefreshPoliciesUseCase
+import uz.tikoncha_parent.domain.use_case.policy.RefreshQuickBlocksUseCase
+import uz.tikoncha_parent.domain.use_case.policy.RemoveQuickBlockUseCase
+import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
+import uz.tikoncha_parent.domain.use_case.policy.ToggleProtectionPackUseCase
+import uz.tikoncha_parent.domain.use_case.policy.UpdatePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.todo.CompleteTodoUseCase
 import uz.tikoncha_parent.domain.use_case.todo.CreateTodoUseCase
 import uz.tikoncha_parent.domain.use_case.todo.DeleteTodoUseCase
 import uz.tikoncha_parent.domain.use_case.todo.GetTodosUseCase
 import uz.tikoncha_parent.domain.use_case.todo.UpdateTodoUseCase
 import uz.tikoncha_parent.platform.PlatformPurchaseService
-import uz.tikoncha_parent.presentation.add_child.AddChildScreenModel
+import uz.tikoncha_parent.presentation.add_child.AddChildViewModel
 import uz.tikoncha_parent.presentation.chat.ChatConnectionManager
 import uz.tikoncha_parent.presentation.chat.chat_details.ChatDetailsViewModel
 import uz.tikoncha_parent.presentation.chat.chat_list.ChatViewModel
@@ -83,9 +106,11 @@ import uz.tikoncha_parent.presentation.notification.NotificationViewModel
 import uz.tikoncha_parent.presentation.otp.OtpViewmodel
 import uz.tikoncha_parent.presentation.player.PlayerScreenModel
 import uz.tikoncha_parent.presentation.policy.app_site_selection.AppWebViewModel
+import uz.tikoncha_parent.presentation.policy.history.PolicyHistoryViewModel
 import uz.tikoncha_parent.presentation.policy.limit_rule.setup.LimitRuleSetupViewModel
 import uz.tikoncha_parent.presentation.policy.policy_list.PolicyViewModel
 import uz.tikoncha_parent.presentation.policy.policy_setup.PolicySetupViewModel
+import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksViewModel
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedModel
 import uz.tikoncha_parent.presentation.policy.template.sleep.SleepTemplateSetupViewModel
 import uz.tikoncha_parent.presentation.policy.time_rule.setup.TimeRuleSetupViewModel
@@ -93,6 +118,7 @@ import uz.tikoncha_parent.presentation.profile.ProfileViewModel
 import uz.tikoncha_parent.presentation.profile.child_user_edit.ChildInfoEditViewModel
 import uz.tikoncha_parent.presentation.profile.coin_purchase.CoinPurchaseViewModel
 import uz.tikoncha_parent.presentation.profile.coins.CoinsViewModel
+import uz.tikoncha_parent.presentation.profile.logout.LogoutViewModel
 import uz.tikoncha_parent.presentation.profile.payment_history.PaymentHistoryScreenModel
 import uz.tikoncha_parent.presentation.profile.subscription.payment.PaymentViewModel
 import uz.tikoncha_parent.presentation.profile.subscription.subscription_info.SubscriptionViewModel
@@ -147,6 +173,9 @@ val sharedModule = module {
     single<NewsRepository> { NewsRepositoryImpl(get()) }
     single<MyCoinsRepository> { MyCoinsRepositoryImpl(get()) }
     single<PolicyRepository> { PolicyRepositoryImpl(get()) }
+    single<QuickBlockRepository> { QuickBlockRepositoryImpl(get()) }
+    single<ProtectionPackRepository> { ProtectionPackRepositoryImpl(get()) }
+    single<PolicyAuditRepository> { PolicyAuditRepositoryImpl(get()) }
     single<PaymentRepository> { PaymentRepositoryImpl(get()) }
     single<UpdateRepository> { UpdateRepositoryImpl(get()) }
     single<PermissionStatusRepository> { PermissionStatusRepositoryImpl(get()) }
@@ -179,22 +208,63 @@ val sharedModule = module {
     single { DeleteTodoUseCase(get()) }
     single { CompleteTodoUseCase(get()) }
     single { TodayUsageUseCase(get()) }
-
+    // Jadvallar
+    single { ObservePoliciesUseCase(get()) }
+    single { RefreshPoliciesUseCase(get(), get()) }
+    single { CreatePolicyUseCase(get()) }
+    single { UpdatePolicyUseCase(get()) }
+    single { DeletePolicyUseCase(get()) }
+    single { TogglePolicyUseCase(get()) }
+    single { PausePolicyUseCase(get()) }
+    single { CreateTimedBlockUseCase(get()) }
+    single { GrantBonusTimeUseCase(get()) }
+    single { EvaluatePolicyUseCase(get()) }
+    single { GetPolicyEventsUseCase(get()) }
+    // Tezkor blok
+    single { ObserveQuickBlocksUseCase(get()) }
+    single { RefreshQuickBlocksUseCase(get()) }
+    single { AddQuickBlockUseCase(get()) }
+    single { RemoveQuickBlockUseCase(get()) }
+    // Himoya paketlari
+    single { GetProtectionPackStatusesUseCase(get(), get()) }
+    single { ToggleProtectionPackUseCase(get()) }
 
     // ViewModel
     factory { LoginViewModel(get(), get(), get()) }
     factory { OtpViewmodel(get(), get()) }
     factory { RegisterViewmodel(get(), get()) }
     factory { ProfileViewModel(get(), get(), get(), get()) }
-    factory { AddChildScreenModel(get()) }
+    factory { LogoutViewModel(get()) }
+    factory { AddChildViewModel(get()) }
     factory { ChildConfirmViewModel() }
     factory { TaskListViewModel(get(), get(), get()) }
     factory { CreateTaskViewModel(get(), get(), get()) }
     factory { CompletedTaskViewModel(get()) }
-    factory { StatisticViewModel(get(), get(), get()) }
-    factory { HomeViewModel(get(), get(), get(), get(), get(), get(), get()) }
-
     factory { ChatViewModel(get(), get()) }
+    factory {
+        StatisticViewModel(
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+        )
+    }
+    factory {
+        HomeViewModel(
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get()
+        )
+    }
     factory {
         ChatRoomViewModel(
             get(),
@@ -204,17 +274,28 @@ val sharedModule = module {
             get(),
         )
     }
-
+    factory {
+        PolicyViewModel(get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+        )
+    }
+    factory { ProtectionPacksViewModel(get(), get(), get()) }
+    factory { PolicyHistoryViewModel(get(), get()) }
     factory { NotificationViewModel(get()) }
-    factory { PolicyViewModel(get(), get(), get()) }
     factory { TimeRuleSetupViewModel() }
     factory { LimitRuleSetupViewModel() }
-
-    factory { PolicySetupViewModel(get()) }
+    factory { PolicySetupViewModel(get(), get(), get()) }
     single { PolicySharedModel() }
     factory { AppWebViewModel(get()) }
-    factory { SleepTemplateSetupViewModel(get()) }
-
+    factory { SleepTemplateSetupViewModel(get(), get(), get()) }
     factory { PaymentViewModel(get(), get(), get()) }
     factory { SubscriptionPaymentViewModel(get()) }
     factory { CoinsViewModel(get(), get(), get()) }

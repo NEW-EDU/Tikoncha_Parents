@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalTime
-import uz.tikoncha_parent.data.mapper.buildTimeRanges
 import uz.tikoncha_parent.presentation.policy.common.buildWeekdayChips
 import uz.tikoncha_parent.presentation.policy.common.occupiedTimeDays
 import uz.tikoncha_parent.presentation.policy.common.selectedDays
@@ -17,7 +16,6 @@ import uz.tikoncha_parent.presentation.policy.common.toggleDay
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
 import uz.tikoncha_parent.presentation.policy.time_rule.setup.TimeRuleSetupState.Companion.DEFAULT_END_TIME
 import uz.tikoncha_parent.presentation.policy.time_rule.setup.TimeRuleSetupState.Companion.DEFAULT_START_TIME
-import kotlin.compareTo
 
 class TimeRuleSetupViewModel : ScreenModel {
 

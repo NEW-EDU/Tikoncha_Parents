@@ -17,11 +17,15 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.SaveableStateHolder
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
@@ -49,9 +53,34 @@ private const val REPLACE_DURATION = 220
 
 @Composable
 fun SwipeBackContent(navigator: Navigator) {
+    // Ekranlarning rememberSaveable holati (scroll va h.k.) boshqa ekranga o'tib qaytganda saqlansin.
+    // navigator.saveableState() ishlatilmaydi — u Android'da har ekranga alohida
+    // Lifecycle/ViewModelStore berib, koinViewModel'lar umrini o'zgartiradi.
+    val stateHolder = rememberSaveableStateHolder()
+
+    // AnimatedContent hozir chizib turgan ekranlar kaliti — swipe'da bir kalit ikki joyda ishlatilmasin.
+    val animatedKeys = remember { mutableSetOf<String>() }
+
+    // Ekran kaliti klass nomi: stack'dan chiqqan ekran holati o'chirilmasa,
+    // o'sha ekran keyinroq yangidan ochilganda eski holat tiklanib qoladi.
+    val stackKeys = navigator.items.map { it.key }.toSet()
+    val savedKeys = remember { mutableSetOf<String>() }
+    SideEffect {
+        if (savedKeys != stackKeys) {
+            (savedKeys - stackKeys).forEach { stateHolder.removeState(it) }
+            savedKeys.clear()
+            savedKeys += stackKeys
+        }
+    }
+
     // Swipe ishlamasa ham push/pop animatsiya bo'lishi kerak
     if (!isSwipeBackEnabled || !navigator.canPop) {
-        AnimatedScreenContent(navigator, skipAnimation = false)
+        AnimatedScreenContent(
+            navigator = navigator,
+            skipAnimation = false,
+            stateHolder = stateHolder,
+            animatedKeys = animatedKeys,
+        )
         return
     }
 
@@ -90,7 +119,17 @@ fun SwipeBackContent(navigator: Navigator) {
                     .fillMaxSize()
                     .offset { IntOffset(prevOffset, 0) }
             ) {
-                previousScreen.Content()
+                // Ochilish animatsiyasi tugamagan bo'lsa bu ekran AnimatedContent'da ham chizilib turadi —
+                // bir kalit ikki joyda ishlatilsa Compose xato beradi, shuning uchun holatsiz chiziladi.
+                val canRestore = previousScreen.key != navigator.lastItem.key &&
+                        previousScreen.key !in animatedKeys
+                if (canRestore) {
+                    stateHolder.SaveableStateProvider(previousScreen.key) {
+                        previousScreen.Content()
+                    }
+                } else {
+                    previousScreen.Content()
+                }
             }
 
             // Qorong'ulashish overlay
@@ -197,7 +236,9 @@ fun SwipeBackContent(navigator: Navigator) {
             // (chunki swipe o'zi qo'lda render qilyapti)
             AnimatedScreenContent(
                 navigator = navigator,
-                skipAnimation = isSwiping || skipNextAnim
+                skipAnimation = isSwiping || skipNextAnim,
+                stateHolder = stateHolder,
+                animatedKeys = animatedKeys,
             )
         }
     }
@@ -211,6 +252,8 @@ fun SwipeBackContent(navigator: Navigator) {
 private fun AnimatedScreenContent(
     navigator: Navigator,
     skipAnimation: Boolean,
+    stateHolder: SaveableStateHolder,
+    animatedKeys: MutableSet<String>,
 ) {
     AnimatedContent(
         targetState = navigator.lastItem,
@@ -242,6 +285,12 @@ private fun AnimatedScreenContent(
         },
         label = "ScreenTransition"
     ) { screen: Screen ->
-        screen.Content()
+        DisposableEffect(screen.key) {
+            animatedKeys += screen.key
+            onDispose { animatedKeys -= screen.key }
+        }
+        stateHolder.SaveableStateProvider(screen.key) {
+            screen.Content()
+        }
     }
 }

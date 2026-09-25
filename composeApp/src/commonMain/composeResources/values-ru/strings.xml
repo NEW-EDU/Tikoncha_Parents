@@ -263,8 +263,8 @@
     <string name="chegaralash_ishlatish_marta">Ограничить запуск выбранного приложения определённое количество раз в день или в час</string>
     <string name="chegaralash_kun_soat_va_daqiqa">Ограничить использование в определённые часы дня или на определённое количество минут в час</string>
     <string name="cheklovlar">Ограничения</string>
-    <string name="d">д</string>
-    <string name="s">с</string>
+    <string name="d">мин</string>
+    <string name="s">ч</string>
     <string name="daqiqa">минута</string>
     <string name="diqqat">Внимание!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Теперь у вас есть эта подписка</string>
@@ -828,6 +828,7 @@
     <string name="farzand_tanlanmagan">Ребёнок не выбран</string>
     <string name="vazifa_id_topilmadi">Идентификатор задачи не найден</string>
     <string name="tahrirlangan">изменено</string>
+    <string name="jadval_topilmadi">Расписание не найдено.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d минута</item>
         <item quantity="few">%1$d минуты</item>
@@ -841,4 +842,70 @@
         <item quantity="many">%1$d часов</item>
         <item quantity="other">%1$d часа</item>
     </plurals>
+    <string name="jadval_toxtatilgan_gacha">Приостановлено — до %1$s</string>
+    <string name="maktab_umumiy">Школа / Общие</string>
+    <string name="umumiy">Общие</string>
+    <string name="boshqa_ota_ona">Другой родитель</string>
+    <string name="vaqtincha_toxtatish">Приостановить</string>
+    <string name="bir_soatga">На 1 час</string>
+    <string name="uch_soatga">На 3 часа</string>
+    <string name="ertagacha">До завтра</string>
+    <string name="dushanbagacha">До понедельника</string>
+    <string name="davom_ettirish">Возобновить</string>
+    <string name="farzand_ozi_bloklagan">Это приложение заблокировал сам ребёнок</string>
+    <string name="boshqa_ota_ona_bloklagan">Это приложение заблокировал другой родитель</string>
+    <string name="tezkor_bloklar">Быстрые блокировки</string>
+    <string name="himoya_paketlari">Пакеты защиты</string>
+    <string name="boshqa_ota_ona_yoqqan">Включил другой родитель</string>
+    <string name="farzand_ozi_yoqqan">Включил сам ребёнок</string>
+    <plurals name="ilova_soni">
+        <item quantity="one">%1$d приложение</item>
+        <item quantity="few">%1$d приложения</item>
+        <item quantity="many">%1$d приложений</item>
+        <item quantity="other">%1$d приложения</item>
+    </plurals>
+    <plurals name="sayt_soni">
+        <item quantity="one">%1$d сайт</item>
+        <item quantity="few">%1$d сайта</item>
+        <item quantity="many">%1$d сайтов</item>
+        <item quantity="other">%1$d сайта</item>
+    </plurals>
+    <string name="ozgarishlar_tarixi">История изменений</string>
+    <string name="tarix_created">Создано</string>
+    <string name="tarix_enabled">Включено</string>
+    <string name="tarix_disabled">Выключено</string>
+    <string name="tarix_paused">Приостановлено</string>
+    <string name="tarix_deleted">Удалено</string>
+    <string name="tarix_quick_block_add">Быстрая блокировка добавлена</string>
+    <string name="tarix_quick_block_remove">Быстрая блокировка снята</string>
+    <string name="tarix_bosh">Изменений пока нет</string>
+    <string name="tarix_resumed">Возобновлено</string>
+    <string name="muddat">Срок действия</string>
+    <string name="muddatsiz">Бессрочно</string>
+    <string name="muddat_tavsif">Когда срок истечёт, расписание перестанет действовать</string>
+    <string name="vaqtincha_ruxsat">Временный доступ</string>
+    <string name="faqat_jadval_egasi_ozgartira_oladi">Изменить расписание может только создавший его родитель</string>
+    <string name="hech_narsa_ozgarmadi">Ничего не изменилось</string>
+    <string name="muddat_bir_soat">Закончится через 1 час</string>
+    <string name="muddat_ikki_soat">Закончится через 2 часа</string>
+    <string name="muddat_uch_soat">Закончится через 3 часа</string>
+    <string name="muddat_bugun_oxiri">Закончится в конце дня</string>
+    <string name="muddat_dushanba">Закончится с началом понедельника</string>
+    <string name="ertalabdan">Утром</string>
+    <string name="tushlikdan">После обеда</string>
+    <string name="suhbat_bildirishnomalari_ochirildi">Уведомления для этого чата отключены</string>
+    <string name="suhbat_bildirishnomalari_yoqildi">Уведомления для этого чата включены</string>
+    <plurals name="ta_yangi_sorov_kutilmoqda">
+        <item quantity="one">Ожидается %1$d новый запрос</item>
+        <item quantity="few">Ожидаются %1$d новых запроса</item>
+        <item quantity="many">Ожидается %1$d новых запросов</item>
+        <item quantity="other">Ожидается %1$d новых запроса</item>
+    </plurals>
+    <plurals name="ta_ruxsat_ochirilgan">
+        <item quantity="one">%1$d разрешение отключено</item>
+        <item quantity="few">%1$d разрешения отключены</item>
+        <item quantity="many">%1$d разрешений отключено</item>
+        <item quantity="other">%1$d разрешения отключено</item>
+    </plurals>
+    <string name="hammasi_joyida">Всё в порядке</string>
 </resources>

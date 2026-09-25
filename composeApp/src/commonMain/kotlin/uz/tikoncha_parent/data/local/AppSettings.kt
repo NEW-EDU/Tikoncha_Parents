@@ -8,7 +8,6 @@ import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 import uz.tikoncha_parent.domain.model.SubscriptionLimit
 import uz.tikoncha_parent.domain.model.UserInfo
-import uz.tikoncha_parent.platform.Logger
 
 object AppSettings {
 
@@ -75,10 +74,6 @@ object AppSettings {
             if (value.isBlank()) settings.remove(KEY_SELECTED_CHILD_ID)
             else settings.set(KEY_SELECTED_CHILD_ID, value)
         }
-
-    var policyId: String
-        get() = settings.get(KEY_POLICY_ID) ?: ""
-        set(value) = settings.set(KEY_POLICY_ID, value)
 
     var hasUserLogin: Boolean
         get() = settings.get(KEY_HAS_USER_LOGIN) ?: false

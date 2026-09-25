@@ -53,16 +53,18 @@ fun durationStringShort(hm: HourMinute): String {
     }.joinToString("  ")
 }
 
-/** HomeScreen uchun: bo'sh holatda "0 soat" ko'rsatadi. */
+/**
+ * Soat ham, daqiqa ham bo'lsa qisqa: "1 s 24 d".
+ * Bittasi bo'lsa to'liq: "45 daqiqa", "2 soat".
+ */
 @Composable
-fun durationStringWithZero(hm: HourMinute): String {
-    val hour = stringResource(Res.string.soat)
-    val min = stringResource(Res.string.daqiqa)
-    if (hm.isEmpty()) return "0 $hour"
-    return buildList {
-        if (hm.hour > 0)   add("${hm.hour} $hour")
-        if (hm.minute > 0) add("${hm.minute} $min")
-    }.joinToString(" ")
+fun durationStringCompact(hm: HourMinute): String {
+    if (hm.hour > 0 && hm.minute > 0) {
+        val hour = stringResource(Res.string.s)
+        val min = stringResource(Res.string.d)
+        return "${hm.hour} $hour  ${hm.minute} $min"
+    }
+    return durationString(hm)
 }
 
 @Composable

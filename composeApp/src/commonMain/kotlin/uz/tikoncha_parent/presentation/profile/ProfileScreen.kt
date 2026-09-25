@@ -43,21 +43,20 @@ import tikoncha_parents.composeapp.generated.resources.add
 import tikoncha_parents.composeapp.generated.resources.bekor_qilish
 import tikoncha_parents.composeapp.generated.resources.biz_bilan_aloqa
 import tikoncha_parents.composeapp.generated.resources.biz_haqimizda
-import tikoncha_parents.composeapp.generated.resources.chat_group
+import tikoncha_parents.composeapp.generated.resources.call_filled
 import tikoncha_parents.composeapp.generated.resources.chiqish
-import tikoncha_parents.composeapp.generated.resources.chiqishni_xohlaysizmi
 import tikoncha_parents.composeapp.generated.resources.coin_3d
 import tikoncha_parents.composeapp.generated.resources.coins_profile
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
+import tikoncha_parents.composeapp.generated.resources.family
 import tikoncha_parents.composeapp.generated.resources.faol_vazifalar
 import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
 import tikoncha_parents.composeapp.generated.resources.farzandlarim
 import tikoncha_parents.composeapp.generated.resources.file_3d
 import tikoncha_parents.composeapp.generated.resources.global
-import tikoncha_parents.composeapp.generated.resources.hisobdan_chiqishni_tasdiqlaysizmi
+import tikoncha_parents.composeapp.generated.resources.id_card
 import tikoncha_parents.composeapp.generated.resources.info_profile_us
 import tikoncha_parents.composeapp.generated.resources.logout
-import tikoncha_parents.composeapp.generated.resources.money_light
 import tikoncha_parents.composeapp.generated.resources.obuna
 import tikoncha_parents.composeapp.generated.resources.ochirish
 import tikoncha_parents.composeapp.generated.resources.ok
@@ -65,14 +64,13 @@ import tikoncha_parents.composeapp.generated.resources.person
 import tikoncha_parents.composeapp.generated.resources.profil
 import tikoncha_parents.composeapp.generated.resources.profil_rasmi_olib_tashlanadi
 import tikoncha_parents.composeapp.generated.resources.rasmni_ochirish
-import tikoncha_parents.composeapp.generated.resources.settings
 import tikoncha_parents.composeapp.generated.resources.shaxsiy_malumotlar
-import tikoncha_parents.composeapp.generated.resources.sozlamalar
-import tikoncha_parents.composeapp.generated.resources.support_icon
+import tikoncha_parents.composeapp.generated.resources.star_vector
 import tikoncha_parents.composeapp.generated.resources.ta
 import tikoncha_parents.composeapp.generated.resources.tangachalar
 import tikoncha_parents.composeapp.generated.resources.tangachalaringiz
-import tikoncha_parents.composeapp.generated.resources.telegrams_star
+import tikoncha_parents.composeapp.generated.resources.tema
+import tikoncha_parents.composeapp.generated.resources.theme_mode
 import tikoncha_parents.composeapp.generated.resources.til
 import tikoncha_parents.composeapp.generated.resources.tolovlar_tarixi
 import tikoncha_parents.composeapp.generated.resources.versiya
@@ -92,15 +90,15 @@ import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.LoadingDialog
 import uz.tikoncha_parent.presentation.common.TransparentQrScreen
-import uz.tikoncha_parent.presentation.login.LoginScreen
 import uz.tikoncha_parent.presentation.profile.about_us.AboutUsScreen
 import uz.tikoncha_parent.presentation.profile.children.ChildrenSelectScreen
 import uz.tikoncha_parent.presentation.profile.coins.CoinsScreen
 import uz.tikoncha_parent.presentation.profile.coins.CoinsViewModel
 import uz.tikoncha_parent.presentation.profile.language.LanguageScreen
+import uz.tikoncha_parent.presentation.profile.logout.LogoutScreen
 import uz.tikoncha_parent.presentation.profile.payment_history.PaymentHistoryScreen
 import uz.tikoncha_parent.presentation.profile.personal_information.PersonalInformationScreen
-import uz.tikoncha_parent.presentation.profile.settings.SettingsScreen
+import uz.tikoncha_parent.presentation.profile.settings.theme.ThemeScreen
 import uz.tikoncha_parent.presentation.profile.subscription.info.SubscriptionScreen
 import uz.tikoncha_parent.presentation.task.TaskListEvent
 import uz.tikoncha_parent.presentation.task.TaskListViewModel
@@ -175,9 +173,6 @@ fun ProfileUi(
     event: (ProfileEvent) -> Unit
 ) {
     var showQrCode by remember { mutableStateOf(false) }
-    var showLogoutDialog by remember { mutableStateOf(false) }
-    var showLogoutErrorDialog by remember { mutableStateOf(false) }
-
     var showFullscreenAvatar by remember { mutableStateOf(false) }
     var showDeleteAvatarDialog by remember { mutableStateOf(false) }
     var showDeleteAvatarErrorDialog by remember { mutableStateOf(false) }
@@ -190,26 +185,10 @@ fun ProfileUi(
         event(ProfileEvent.OnAvatarPhotoSelected(picked.toUploadPart("avatar.jpg")))
     }
 
-    val logoutLoading = state.logoutState is ResponseState.Loading
-    val logoutError = state.logoutState.errorText()
-    val logoutSuccess = state.logoutState is ResponseState.Success
-
     val deleteAvatarLoading = state.deleteAvatarState is ResponseState.Loading
     val deleteAvatarError = state.deleteAvatarState.errorText()
     val deleteAvatarSuccess = state.deleteAvatarState is ResponseState.Success
     val hasAvatar = (state.profileImageUrl?.isNotEmpty() == true) || state.localAvatar != null
-
-    LaunchedEffect(logoutError) {
-        if (logoutError.isNotEmpty()) {
-            showLogoutErrorDialog = true
-        }
-    }
-
-    LaunchedEffect(logoutSuccess) {
-        if (logoutSuccess) {
-            navigator?.replaceAll(LoginScreen())
-        }
-    }
 
     LaunchedEffect(deleteAvatarSuccess) {
         if (deleteAvatarSuccess) {
@@ -222,7 +201,7 @@ fun ProfileUi(
         if (deleteAvatarError.isNotEmpty()) showDeleteAvatarErrorDialog = true
     }
 
-    LoadingDialog(logoutLoading || deleteAvatarLoading)
+    LoadingDialog(deleteAvatarLoading)
 
     CustomDialog(
         show = showDeleteAvatarErrorDialog,
@@ -240,22 +219,6 @@ fun ProfileUi(
         }
     )
 
-    CustomDialog(
-        show = showLogoutErrorDialog,
-        title = stringResource(Res.string.xatolik),
-        message = logoutError,
-        buttonText = stringResource(Res.string.ok),
-        painter = painterResource(Res.drawable.dialog_failed),
-        onDismiss = {
-            event(ProfileEvent.Clear)
-            showLogoutErrorDialog = false
-        },
-        onButtonClick = {
-            event(ProfileEvent.Clear)
-            showLogoutErrorDialog = false
-        }
-    )
-
     val painter = rememberQrKitPainter(data = "There will be url or smth like this")
 
     if (showQrCode) {
@@ -266,21 +229,6 @@ fun ProfileUi(
             }
         )
     }
-
-    CustomBottomDialog(
-        show = showLogoutDialog,
-        title = stringResource(Res.string.chiqishni_xohlaysizmi),
-        message = stringResource(Res.string.hisobdan_chiqishni_tasdiqlaysizmi),
-        showCancelButton = true,
-        confirmButtonText = stringResource(Res.string.chiqish),
-        dismissButtonText = stringResource(Res.string.bekor_qilish),
-        confirmButtonColor = AppColors.button.accentDanger,
-        onConfirm = {
-            showLogoutDialog = true
-            event(ProfileEvent.RequestLogout)
-        },
-        onDismiss = { showLogoutDialog = false }
-    )
 
     CustomBottomDialog(
         showCancelButton = true,
@@ -400,17 +348,17 @@ fun ProfileUi(
 
                     ProfileSectionItem(
                         title = stringResource(Res.string.farzandlarim),
-                        icon = painterResource(Res.drawable.chat_group),
+                        icon = painterResource(Res.drawable.family),
                         onItemClick = {
                             navigator?.push(ChildrenSelectScreen())
                         }
                     )
 
                     ProfileSectionItem(
-                        title = stringResource(Res.string.sozlamalar),
-                        icon = painterResource(Res.drawable.settings),
+                        title = stringResource(Res.string.tema),
+                        icon = painterResource(Res.drawable.theme_mode),
                         onItemClick = {
-                            navigator?.push(SettingsScreen())
+                            navigator?.push(ThemeScreen())
                         }
                     )
 
@@ -424,10 +372,9 @@ fun ProfileUi(
 
                     ProfileSectionItem(
                         title = stringResource(Res.string.obuna),
-                        icon = painterResource(Res.drawable.telegrams_star),
+                        icon = painterResource(Res.drawable.star_vector),
                         onItemClick = {
                             navigator?.push(SubscriptionScreen())
-//                            navigator?.push(SubscriptionPaymentScreen())
                         }
                     )
 
@@ -440,7 +387,7 @@ fun ProfileUi(
                     )
                     ProfileSectionItem(
                         title = stringResource(Res.string.tolovlar_tarixi),
-                        icon = painterResource(Res.drawable.money_light),
+                        icon = painterResource(Res.drawable.id_card),
                         onItemClick = {
                             navigator?.push(PaymentHistoryScreen())
                         }
@@ -456,7 +403,7 @@ fun ProfileUi(
 
                     ProfileSectionItem(
                         title = stringResource(Res.string.biz_bilan_aloqa),
-                        icon = painterResource(Res.drawable.support_icon),
+                        icon = painterResource(Res.drawable.call_filled),
                         onItemClick = {
                             openUrl("https://t.me/tikoncha_support")
                         }
@@ -469,7 +416,7 @@ fun ProfileUi(
                         iconColor = AppColors.icon.accentDanger,
                         textColor = AppColors.text.accentDanger,
                         onItemClick = {
-                            showLogoutDialog = true
+                            navigator?.push(LogoutScreen())
                         }
                     )
                 }

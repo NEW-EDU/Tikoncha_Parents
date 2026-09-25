@@ -9,6 +9,6 @@ import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
 
 sealed interface PolicySetupEvent {
     data class SavePolicy(val sharedState: PolicySharedState) : PolicySetupEvent
-    data class DeletePolicy(val ruleId: String) : PolicySetupEvent
+    data class DeletePolicy(val policyId: String) : PolicySetupEvent
     data object ResetResponseState : PolicySetupEvent
 }

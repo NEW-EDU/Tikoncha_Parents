@@ -10,14 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,10 +29,19 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import tikoncha_parents.composeapp.generated.resources.*
+import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.davom_etish
+import tikoncha_parents.composeapp.generated.resources.dialog_failed
+import tikoncha_parents.composeapp.generated.resources.kodni_kiriting
+import tikoncha_parents.composeapp.generated.resources.ok
+import tikoncha_parents.composeapp.generated.resources.otp_enter_code_with_phone
+import tikoncha_parents.composeapp.generated.resources.qayta_yuborish
+import tikoncha_parents.composeapp.generated.resources.sahifaga_otish
+import tikoncha_parents.composeapp.generated.resources.sekund
+import tikoncha_parents.composeapp.generated.resources.xato_kod_kiritdingiz
+import tikoncha_parents.composeapp.generated.resources.xatolik
 import uz.tikoncha_parent.common.Util.maskPhone
 import uz.tikoncha_parent.platform.openUrl
-import uz.tikoncha_parent.presentation.base.CustomBottomDialog
 import uz.tikoncha_parent.presentation.base.CustomButton
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.LoadingDialog
@@ -43,12 +50,12 @@ import uz.tikoncha_parent.presentation.new_home.NewHomeScreen
 import uz.tikoncha_parent.presentation.register.RegisterScreen
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 import uz.tikoncha_parent.presentation.ui_state.errorText
-import uz.tikoncha_parent.ui.*
+import uz.tikoncha_parent.ui.ButtonHeight
+import uz.tikoncha_parent.ui.SpaceUltraSmall
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
-import uz.tikoncha_parent.ui.theme.extendedColor
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
 
 private const val OTP_LENGTH = 6
@@ -80,18 +87,12 @@ fun OtpUi(
     val maskedPhone = remember(state.phoneNumber) { maskPhone(state.phoneNumber) }
     val formattedTime = state.timeLife.toString().padStart(2, '0')
 
-    val borderColor = when {
-        state.hasInputError -> OtpErrorColor
-        isOtpCodeValid -> PrimaryColor
-        else -> MaterialTheme.extendedColor.borderColor
-    }
-
     val showLoading = state.responseState is ResponseState.Loading || state.isSendingOtp
     val errorText = state.responseState.errorText()
     val isSuccess = state.responseState is ResponseState.Success
 
     var showErrorDialog by remember { mutableStateOf(false) }
-    var hasNavigated by rememberSaveable { mutableStateOf(false) }
+    var hasNavigated by remember { mutableStateOf(false) }
 
     LaunchedEffect(errorText) {
         if (errorText.isNotEmpty()) showErrorDialog = true

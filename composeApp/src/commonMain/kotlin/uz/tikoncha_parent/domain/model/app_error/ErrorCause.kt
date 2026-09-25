@@ -20,6 +20,16 @@ sealed interface ErrorCause {
     /** 403 — token to'g'ri, lekin ruxsat yo'q. */
     data object Forbidden : ErrorCause
 
+
+    /** 403 — pullik imkoniyat yoki tarif limiti. Qaysi imkoniyat ekani [feature] da. */
+    data class PremiumRequired(val feature: PaidFeature) : ErrorCause
+
+    /** 404 — obyekt (jadval, paket) topilmadi. */
+    data object NotFound : ErrorCause
+
+    /** 422 — server validatsiyasi rad etdi; tushuntirish matni serverdan keladi. */
+    data object Validation : ErrorCause
+
     /** Server xato qaytardi. [code] null bo'lishi mumkin. */
     data class Server(val code: Int? = null) : ErrorCause
 
@@ -61,4 +71,17 @@ sealed interface ErrorCause {
      */
     val isRetryable: Boolean
         get() = this == NoInternet || this == Timeout || this is Server
+}
+
+
+/** [ErrorCause.PremiumRequired] qaysi pullik imkoniyat haqida ekani. */
+enum class PaidFeature {
+    /** Statistikadan bir bosishda blok. */
+    QUICK_BLOCK,
+    /** Tayyor himoya paketlari (qimor, kattalar saytlari). */
+    PROTECTION_PACKS,
+    /** ALLOW rejimi — faqat ro'yxatdagini ochish. */
+    ALLOW_MODE,
+    /** Bepul tarifdagi jadvallar soni limiti. */
+    POLICY_COUNT,
 }

@@ -13,5 +13,6 @@ sealed interface AddChildEvent {
     data object PlayTutorial : AddChildEvent
     data object DismissError : AddChildEvent
     data object DismissSnackbar : AddChildEvent
+    data object SuccessAcknowledged : AddChildEvent
     data object NavigateBack : AddChildEvent
 }

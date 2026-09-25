@@ -45,6 +45,11 @@ class CoinsViewModel(
                 getCoinPackagesList()
             }
 
+            CoinsEvent.PullRefresh -> {
+                _state.update { it.copy(isRefreshing = true) }
+                getCoinPackagesList()
+            }
+
             is CoinsEvent.OnCoinsChanged -> {
                 _state.update {
                     it.copy(
@@ -96,6 +101,7 @@ class CoinsViewModel(
                         it.copy(
                             error = null,
                             isLoading = false,
+                            isRefreshing = false,
                             coinPrice = coinPrice,
                             coinPackageList = list
                         )
@@ -104,7 +110,7 @@ class CoinsViewModel(
 
                 is Outcome.Failure -> {
                     _state.update {
-                        it.copy(isLoading = false, error = res)
+                        it.copy(isLoading = false, isRefreshing = false, error = res)
                     }
                 }
             }

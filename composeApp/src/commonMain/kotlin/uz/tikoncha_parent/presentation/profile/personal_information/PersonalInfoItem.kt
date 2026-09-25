@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.resources.painterResource
 import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.ui.AppIconInnerPadding
@@ -21,13 +22,14 @@ import uz.tikoncha_parent.ui.CardCornerRadius
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.SpaceUltraSmall
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.ayol
 import tikoncha_parents.composeapp.generated.resources.calendar
 import tikoncha_parents.composeapp.generated.resources.class_icon
 import tikoncha_parents.composeapp.generated.resources.edit_pen
 import tikoncha_parents.composeapp.generated.resources.erkak
+import tikoncha_parents.composeapp.generated.resources.gender_female
+import tikoncha_parents.composeapp.generated.resources.gender_male
 import tikoncha_parents.composeapp.generated.resources.ism
 import tikoncha_parents.composeapp.generated.resources.jins
 import tikoncha_parents.composeapp.generated.resources.maktab
@@ -54,7 +56,7 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 fun PersonalInfoItem(
     userInfo: UserInfo?,
     onEdit: () -> Unit = {}
-){
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -65,11 +67,11 @@ fun PersonalInfoItem(
         PersonalInformationItemRow(
             icon = Res.drawable.profile,
             title = stringResource(Res.string.ism),
-            value = userInfo?.name?:""
+            value = userInfo?.name ?: ""
         )
         SpaceUltraSmall()
 
-        if (userInfo?.age != 0 && userInfo?.age != null){
+        if (userInfo?.age != 0 && userInfo?.age != null) {
             PersonalInformationItemRow(
                 icon = Res.drawable.calendar,
                 title = stringResource(Res.string.yosh),
@@ -78,18 +80,24 @@ fun PersonalInfoItem(
             SpaceUltraSmall()
         }
 
-        val genderRes = when (userInfo?.genderType){
+        val genderRes = when (userInfo?.genderType) {
             GenderType.MALE -> {
                 stringResource(Res.string.erkak)
             }
+
             GenderType.FEMALE -> {
                 stringResource(Res.string.ayol)
             }
+
             null -> ""
         }
 
         PersonalInformationItemRow(
-            icon = Res.drawable.two_users,
+            icon = if (userInfo?.genderType == GenderType.FEMALE) {
+                Res.drawable.gender_female
+            } else {
+                Res.drawable.gender_male
+            },
             title = stringResource(Res.string.jins),
             value = genderRes
         )
@@ -102,27 +110,30 @@ fun PersonalInfoItem(
         )
         SpaceUltraSmall()
 
-        if (userInfo?.schoolName != null){
+        if (userInfo?.schoolName != null) {
             Column {
 
                 PersonalInformationItemRow(
                     icon = Res.drawable.school_icon,
                     title = stringResource(Res.string.maktab),
-                    value = userInfo.schoolName?:""
+                    value = userInfo.schoolName
                 )
                 SpaceUltraSmall()
 
                 PersonalInformationItemRow(
                     icon = Res.drawable.class_icon,
                     title = stringResource(Res.string.sinf),
-                    value = userInfo.schoolClassName?:""
+                    value = userInfo.schoolClassName ?: ""
                 )
                 SpaceUltraSmall()
 
                 PersonalInformationItemRow(
                     icon = Res.drawable.shift_clock,
                     title = stringResource(Res.string.smena),
-                    value = userInfo.shift?:""
+                    value = ShiftType.getShiftByKey(userInfo.shift)
+                        ?.let { stringResource(it.resId) }
+                        ?: userInfo.shift
+                        ?: ""
                 )
             }
         }
@@ -148,7 +159,7 @@ fun PersonalInfoItem(
     }
 }
 
-@Preview(name = "Phone",  "spec:width=360dp,height=800dp,dpi=420")
+@Preview(name = "Phone", "spec:width=360dp,height=800dp,dpi=420")
 //@Preview(name = "Small",  "spec:width=320dp,height=640dp,dpi=420")
 //@Preview(name = "Tablet", "spec:width=800dp,height=1280dp,dpi=240")
 //@Preview(name = "Landscape", "spec:width=800dp,height=360dp,dpi=420")
@@ -156,7 +167,7 @@ fun PersonalInfoItem(
 private fun PreviewPersonalInformationScreen() {
     TikonchaParentTheme(
         ThemeMode.DARK
-    ){
+    ) {
         PersonalInfoItem(
             userInfo = UserInfo(
                 userId = "",

@@ -1,15 +1,19 @@
 package uz.tikoncha_parent.presentation.policy.shared
 
 import uz.tikoncha_parent.domain.model.LocationRule
-import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.SubscriptionLimit
 import uz.tikoncha_parent.domain.model.SubscriptionType
 import uz.tikoncha_parent.domain.model.UserInfo
+import uz.tikoncha_parent.domain.model.policy.LaunchLimit
 import uz.tikoncha_parent.domain.model.policy.PolicyAction
-import uz.tikoncha_parent.presentation.policy.policy_list.PolicyItemUi
+import uz.tikoncha_parent.domain.model.policy.PolicyPreset
+import uz.tikoncha_parent.domain.model.policy.WifiCondition
 import uz.tikoncha_parent.presentation.policy.limit_rule.LimitRuleUi
+import uz.tikoncha_parent.presentation.policy.policy_list.PolicyItemUi
+import uz.tikoncha_parent.presentation.policy.policy_setup.ExpiryOption
 import uz.tikoncha_parent.presentation.policy.policy_setup.PolicyDraftSnapshot
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
+import kotlin.time.Instant
 
 data class PolicySharedState(
     val selectedChild: UserInfo? = null,
@@ -38,9 +42,26 @@ data class PolicySharedState(
 
     val initialDraftSnapshot: PolicyDraftSnapshot? = null,
     val canUpdateInitialDraftSnapshot: Boolean = true,
+
+
+    // ── v2: tahrirda yo'qolmasligi kerak bo'lgan qismlar ──
+    val preset: PolicyPreset? = null,
+    val isActive: Boolean = true,
+    val pausedUntil: Instant? = null,
+    val expiresAt: Instant? = null,
+    /** Shu sessiyada tanlangan tayyor variant — aniq vaqt saqlash paytida hisoblanadi. */
+    val expiryOption: ExpiryOption? = null,
+    /** WiFi ekrani hali "soon" — faqat saqlanadi. */
+    val wifiList: List<WifiCondition> = emptyList(),
+    /** 2+ lokatsiya — UI bittasini ko'rsatadi, qolgani saqlanadi. */
+    val extraLocations: List<LocationRule> = emptyList(),
+    val launchLimits: List<LaunchLimit> = emptyList(),
+    /** iOS ilova tanlovi — Parents UI'da yo'q. */
+    val iosSelectionIds: List<String> = emptyList(),
+    val packs: List<String> = emptyList(),
 ) {
     val isEditable: Boolean
-        get() = selectedPolicy == null || selectedPolicy.policyType == PolicyType.PARENT_CHILD
+        get() = selectedPolicy == null || selectedPolicy.canEdit
 
     val isEditMode: Boolean
         get() = selectedPolicy != null
@@ -62,7 +83,9 @@ data class PolicySharedState(
                 selectedPkgs.isNotEmpty() ||
                         selectedCategories.isNotEmpty() ||
                         selectedSites.isNotEmpty() ||
-                        selectedFeatures.isNotEmpty()
+                        selectedFeatures.isNotEmpty() ||
+                        iosSelectionIds.isNotEmpty() ||
+                        packs.isNotEmpty()
             return hasRule && hasResource && policyTitle.isNotBlank()
         }
 
@@ -100,6 +123,8 @@ data class PolicySharedState(
         categories = selectedCategories.toList(),
         sites = selectedSites.toList(),
         features = selectedFeatures.toList(),
+        expiresAt = expiresAt,
+        expiryOption = expiryOption,
     )
 
     val hasChanges: Boolean
@@ -118,6 +143,11 @@ data class PolicySharedState(
         get() = subscriptionLimitEntity?.subscriptionType != SubscriptionType.FREE
 
     val canSelectFeature: Boolean
+        get() = subscriptionLimitEntity?.subscriptionType != SubscriptionType.FREE
+
+
+    /** Oq ro'yxat (ALLOW) — FREE tarifda pullik (server 403 `policy_allow_mode_paid`). */
+    val canSelectAllowMode: Boolean
         get() = subscriptionLimitEntity?.subscriptionType != SubscriptionType.FREE
 
     val canSaveAppWebSelection: Boolean

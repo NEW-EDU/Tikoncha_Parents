@@ -48,12 +48,15 @@ import tikoncha_parents.composeapp.generated.resources.unlink_child_action
 import tikoncha_parents.composeapp.generated.resources.unlink_child_message
 import tikoncha_parents.composeapp.generated.resources.unlink_child_title
 import tikoncha_parents.composeapp.generated.resources.xatolik
+import uz.tikoncha_parent.domain.model.GenderType
+import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
 import uz.tikoncha_parent.presentation.base.CustomBottomDialog
 import uz.tikoncha_parent.presentation.base.CustomButtonDash
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.DashedBorderButton
+import uz.tikoncha_parent.presentation.base.LoadingDialog
 import uz.tikoncha_parent.presentation.profile.ProfileEvent
 import uz.tikoncha_parent.presentation.profile.ProfileState
 import uz.tikoncha_parent.presentation.profile.ProfileViewModel
@@ -76,7 +79,7 @@ class ChildrenSelectScreen : Screen {
 
         LifecycleStartEffect(Unit) {
             event(ProfileEvent.Refresh)
-            onStopOrDispose {  }
+            onStopOrDispose { }
         }
 
         ChildrenSelectUi(
@@ -112,6 +115,8 @@ fun ChildrenSelectUi(
         showErrorDialog = errorText.isNotEmpty()
     }
 
+    LoadingDialog(state.unlinkState is ResponseState.Loading)
+
     CustomDialog(
         painter = painterResource(Res.drawable.dialog_success),
         show = showSuccessDialog,
@@ -138,19 +143,21 @@ fun ChildrenSelectUi(
         buttonText = stringResource(Res.string.ok),
         showCloseButton = false,
         onDismiss = {
-            showDialog = false
-
+            showErrorDialog = false
+            event(ProfileEvent.ClearUnlinkState)
         },
         onButtonClick = {
-            showDialog = false
+            showErrorDialog = false
+            event(ProfileEvent.ClearUnlinkState)
         }
     )
 
     CustomBottomDialog(
         show = showDialog,
         title = stringResource(Res.string.unlink_child_title),
-        message = stringResource(Res.string.unlink_child_message, state.unlinkTarget?.name ?:""),
+        message = stringResource(Res.string.unlink_child_message, state.unlinkTarget?.name ?: ""),
         confirmButtonText = stringResource(Res.string.unlink_child_action),
+        confirmButtonColor = AppColors.button.accentDanger,
         onDismiss = {
             showDialog = false
             event(ProfileEvent.DismissUnlinkDialog)
@@ -258,6 +265,57 @@ private fun PreviewChildrenSelectScreen() {
         ChildrenSelectUi(
             navigator = null,
             state = ProfileState(),
+            event = {}
+        )
+    }
+}
+
+private val previewChildren = listOf(
+    UserInfo(
+        userId = "preview-1",
+        phoneNumber = "+998110467405",
+        fullName = "Abduraxmonov Ahrorbek",
+        name = "Ahrorbek",
+        lastName = "Abduraxmonov",
+        patronymic = "",
+        genderType = GenderType.MALE,
+        age = 10,
+        last_seen = "Bugun 10:05",
+        subscription = "PLUS",
+    ),
+    UserInfo(
+        userId = "preview-2",
+        phoneNumber = "+998901234567",
+        fullName = "Abduraxmonova Madina",
+        name = "Madina",
+        lastName = "Abduraxmonova",
+        patronymic = "",
+        genderType = GenderType.FEMALE,
+        age = 7,
+        last_seen = null,
+        subscription = "FREE",
+    ),
+)
+
+@Preview(name = "Farzandlar bor · Light")
+@Composable
+private fun PreviewChildrenSelectScreen_WithChildren_Light() {
+    TikonchaParentTheme(ThemeMode.LIGHT) {
+        ChildrenSelectUi(
+            navigator = null,
+            state = ProfileState(children = previewChildren),
+            event = {}
+        )
+    }
+}
+
+@Preview(name = "Farzandlar bor · Dark")
+@Composable
+private fun PreviewChildrenSelectScreen_WithChildren_Dark() {
+    TikonchaParentTheme(ThemeMode.DARK) {
+        ChildrenSelectUi(
+            navigator = null,
+            state = ProfileState(children = previewChildren),
             event = {}
         )
     }

@@ -2,10 +2,12 @@ package uz.tikoncha_parent.presentation.profile.about_us
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -28,7 +30,7 @@ import uz.tikoncha_parent.ui.theme.AppTypography
 fun AboutParagraph(text: org.jetbrains.compose.resources.StringResource) {
     Text(
         text = stringResource(text),
-        style = AppTypography.bodyMdRegular,
+        style = AppTypography.emphasizedMdRegular,
         color = AppColors.text.primary,
         modifier = Modifier.fillMaxWidth()
     )
@@ -63,7 +65,7 @@ fun AboutBullet(text: org.jetbrains.compose.resources.StringResource) {
         )
         Text(
             text = stringResource(text),
-            style = AppTypography.bodyMdRegular,
+            style = AppTypography.emphasizedMdRegular,
             color = AppColors.text.primary,
             modifier = Modifier.weight(1f)
         )
@@ -79,7 +81,12 @@ fun AboutQuote(text: org.jetbrains.compose.resources.StringResource) {
             .background(AppColors.bg.tertiary)
             .padding(16.dp)
     ) {
-        Row(verticalAlignment = Alignment.Top) {
+        // IntrinsicSize.Min — qator balandligi matnga teng bo'ladi, chiziq butun matn bo'ylab cho'ziladi.
+        // Busiz LazyColumn ichida fillMaxHeight() ishlamaydi va chiziq 24dp'da qoladi.
+        Row(
+            modifier = Modifier.height(IntrinsicSize.Min),
+            verticalAlignment = Alignment.Top,
+        ) {
             Box(
                 modifier = Modifier
                     .width(3.dp)
@@ -90,7 +97,7 @@ fun AboutQuote(text: org.jetbrains.compose.resources.StringResource) {
             Spacer(Modifier.width(12.dp))
             Text(
                 text = stringResource(text),
-                style = AppTypography.bodyMdMedium,
+                style = AppTypography.emphasizedMdMedium,
                 fontStyle = FontStyle.Italic,
                 color = AppColors.text.primary,
                 modifier = Modifier.weight(1f)

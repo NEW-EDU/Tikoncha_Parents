@@ -11,6 +11,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.suhbat_bildirishnomalari_ochirildi
+import tikoncha_parents.composeapp.generated.resources.suhbat_bildirishnomalari_yoqildi
 import uz.tikoncha_parent.common.DateTimeUtil
 import uz.tikoncha_parent.data.mapper.buildOptimisticTextMessage
 import uz.tikoncha_parent.data.mapper.stableKey
@@ -29,6 +32,7 @@ import uz.tikoncha_parent.presentation.chat.ChatDateTimeUtil
 import uz.tikoncha_parent.presentation.chat.model.DeliveryStatus
 import uz.tikoncha_parent.presentation.model.ChatMessageType
 import uz.tikoncha_parent.presentation.model.ChatMessageUi
+import uz.tikoncha_parent.presentation.model.ChatType
 import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 
 class ChatRoomViewModel(
@@ -46,6 +50,9 @@ class ChatRoomViewModel(
     val state = _state.asStateFlow()
 
     private var wsJob: Job? = null
+    private var notificationLoadJob: Job? = null
+
+    private val mutableChatTypes = setOf(ChatType.PARENT_CHILD, ChatType.SIBLINGS)
     private var chatStatusJob: Job? = null
     private val mergeMutex = Mutex()
 
@@ -71,11 +78,13 @@ class ChatRoomViewModel(
                         chatId = e.chatId,
                         chatTitle = e.chatTitle,
                         chatAvatar = e.chatAvatar,
-                        chatType = e.chatType
+                        chatType = e.chatType,
+                        notificationEnabled = null,
                     )
                 }
                 loadInitial()
                 observeChatStatus()
+                loadNotification()
             }
 
             ChatRoomEvent.LoadInitial -> loadInitial()
@@ -143,6 +152,51 @@ class ChatRoomViewModel(
 
             ChatRoomEvent.ConfirmDelete -> {
                 deleteMessage()
+            }
+
+
+            ChatRoomEvent.ToggleNotification -> toggleNotification()
+
+            ChatRoomEvent.NotificationNoticeShown -> {
+                _state.update { it.copy(notificationNotice = null, notificationError = null) }
+            }
+        }
+    }
+
+    private fun loadNotification() {
+        val chatId = state.value.chatId
+        if (chatId.isBlank() || state.value.chatType !in mutableChatTypes) return
+
+        notificationLoadJob?.cancel()
+        notificationLoadJob = screenModelScope.launch {
+            when (val res = repository.chatNotification(chatId)) {
+                is Outcome.Success -> _state.update { it.copy(notificationEnabled = res.data) }
+                // Holat olinmasa tugma ko'rinmaydi, suhbat odatdagidek ishlayveradi.
+                is Outcome.Failure -> Unit
+            }
+        }
+    }
+
+    private fun toggleNotification() {
+        val current = state.value.notificationEnabled ?: return
+        if (state.value.isNotificationUpdating) return
+
+        val chatId = state.value.chatId
+        _state.update { it.copy(isNotificationUpdating = true) }
+        screenModelScope.launch {
+            when (val res = repository.setChatNotification(chatId, enabled = !current)) {
+                is Outcome.Success -> _state.update {
+                    it.copy(
+                        notificationEnabled = res.data,
+                        isNotificationUpdating = false,
+                        notificationNotice = if (res.data) Res.string.suhbat_bildirishnomalari_yoqildi
+                        else Res.string.suhbat_bildirishnomalari_ochirildi,
+                    )
+                }
+
+                is Outcome.Failure -> _state.update {
+                    it.copy(isNotificationUpdating = false, notificationError = res)
+                }
             }
         }
     }
@@ -602,11 +656,12 @@ class ChatRoomViewModel(
 
     private fun markLastRead() {
         val chatId = state.value.chatId
-        val last = state.value.lastMessage ?: return
-        if (last.isMine || last.isRead) return
+        // Eng oxirgi xabar o'zimniki bo'lsa ham undan oldingi o'qilmagan xabarlar qolib ketmasin —
+        // eng yangi o'qilmagan kiruvchi xabarni belgilaymiz (allMessages yangidan eskiga tartiblangan).
+        val target = state.value.allMessages.firstOrNull { !it.isMine && !it.isRead } ?: return
 
         screenModelScope.launch {
-            repository.markRead(chatId = chatId, messageId = last.id)
+            repository.markRead(chatId = chatId, messageId = target.id)
         }
     }
 

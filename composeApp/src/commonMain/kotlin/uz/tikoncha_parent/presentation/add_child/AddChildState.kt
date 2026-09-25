@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.add_child
 
+import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.presentation.base.multi_phone_input.Country
 import uz.tikoncha_parent.presentation.base.multi_phone_input.DefaultCountry
@@ -14,7 +15,8 @@ data class AddChildState(
     val isLoading: Boolean = false,          // requesting / refreshing
     val showBindChildTutorial: Boolean = false,  // tutorial card -> header icon
     val error: Outcome.Failure? = null,    // error from Resource.Error
-    val showCopiedSnackbar: Boolean = false  // "Kod nusxalandi" toast
+    val showCopiedSnackbar: Boolean = false,  // "Kod nusxalandi" toast
+    val linkedChild: UserInfo? = null        // farzand kodni tasdiqladi -> muvaffaqiyat oynasi
 ) {
 
     val fullPhoneNumber : String get() =

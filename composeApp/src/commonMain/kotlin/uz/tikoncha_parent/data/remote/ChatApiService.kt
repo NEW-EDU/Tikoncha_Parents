@@ -6,6 +6,8 @@ import io.ktor.client.request.setBody
 import io.ktor.http.HttpMethod
 import uz.tikoncha_parent.data.remote.model.ChatListResponse
 import uz.tikoncha_parent.data.remote.model.ChatMessagesResponse
+import uz.tikoncha_parent.data.remote.model.ChatNotificationRequest
+import uz.tikoncha_parent.data.remote.model.ChatNotificationResponse
 import uz.tikoncha_parent.data.remote.model.ChatStatusResponse
 import uz.tikoncha_parent.data.remote.model.ChatUnreadCountResponse
 import uz.tikoncha_parent.data.remote.model.SendMessageRequest
@@ -57,6 +59,22 @@ class ChatApiService (
             url = "chat/unread-counts",
             block = {
 
+            }
+        )
+
+    suspend fun chatNotification(chatId: String): ChatNotificationResponse =
+        httpClient.safeRequest(
+            method = HttpMethod.Get,
+            url = "/chat/chats/$chatId/notification",
+            block = {}
+        )
+
+    suspend fun updateChatNotification(request: ChatNotificationRequest): ChatNotificationResponse =
+        httpClient.safeRequest(
+            method = HttpMethod.Post,
+            url = "/chat/chats/notification",
+            block = {
+                setBody(request)
             }
         )
 

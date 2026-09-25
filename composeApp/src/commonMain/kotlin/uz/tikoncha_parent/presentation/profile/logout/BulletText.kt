@@ -2,29 +2,32 @@ package uz.tikoncha_parent.presentation.profile.logout
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
-import uz.tikoncha_parent.presentation.base.CustomText
+import androidx.compose.ui.text.TextStyle
+import uz.tikoncha_parent.ui.theme.AppColors
+import uz.tikoncha_parent.ui.theme.AppTypography
 
 @Composable
 fun BulletTex(
     text: String,
-    fonSize: TextUnit = TextUnit.Unspecified,
-    fontWeight: FontWeight = FontWeight.Normal,
-){
+    style: TextStyle = AppTypography.bodyMdRegular,
+) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.Top
-    ){
-        CustomText(
-            text = "•  "
+    ) {
+        Text(
+            text = "•  ",
+            style = style,
+            color = AppColors.text.accentSuccess
         )
-        CustomText(
-            text = text
+        Text(
+            text = text,
+            style = style,
+            color = AppColors.text.secondary
         )
     }
 }

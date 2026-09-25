@@ -6,6 +6,7 @@ import uz.tikoncha_parent.presentation.ui_state.ResponseState
 
 data class CoinsState(
     val isLoading: Boolean = false,
+    val isRefreshing: Boolean = false,
     val error: Outcome.Failure? = null,
     val myCoins: Int = 0,
     val coinsToBuy: Int = 0,

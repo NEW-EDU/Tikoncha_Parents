@@ -7,11 +7,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -24,17 +23,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.link
+import tikoncha_parents.composeapp.generated.resources.ohirgi_faollik
 import tikoncha_parents.composeapp.generated.resources.plus_home_sheet_subscribe
 import tikoncha_parents.composeapp.generated.resources.profile_hedgehog_img
 import uz.tikoncha_parent.presentation.base.singleClick
 import uz.tikoncha_parent.ui.Space
-import uz.tikoncha_parent.ui.SuccessColor
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
@@ -54,21 +55,18 @@ fun ChildrenItem(
 ) {
     val hasSubscription = !subscription.isNullOrBlank() && subscription != "FREE"
 
-
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .height(73.dp)
+            .heightIn(min = 88.dp)
             .singleClick { onClick() }
             .background(AppColors.bg.surface, RoundedCornerShape(12.dp))
-            .padding(horizontal = 12.dp, vertical = 6.dp),
+            .padding(horizontal = 12.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         // ── Avatar: clip qilingan doira + yonida (kesilmaydigan) badge ──
         Box(
-            modifier = Modifier
-                .fillMaxHeight()
-                .aspectRatio(1f),
+            modifier = Modifier.size(61.dp),
             contentAlignment = Alignment.Center
         ) {
             // Doira + rasm (clip qilinadi, border shu yerda)
@@ -78,7 +76,7 @@ fun ChildrenItem(
                     .clip(CircleShape)
                     .then(
                         if (hasSubscription) {
-                            Modifier.border(2.dp, SuccessColor, CircleShape)
+                            Modifier.border(2.dp, AppColors.border.accentSuccess, CircleShape)
                         } else {
                             Modifier
                         }
@@ -116,32 +114,31 @@ fun ChildrenItem(
         }
         Space(18.dp)
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f),
-        ) {
+        // ── Ism → telefon → oxirgi faollik (har biri o'z qatorida) ──
+        Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = name,
                 style = AppTypography.titleMdSemiBold,
-                color = AppColors.text.primary
+                color = AppColors.text.primary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = gadget,
-                    style = AppTypography.titleSmMedium,
-                    color = AppColors.text.secondary
-                )
-                Space(18.dp)
+            Text(
+                text = gadget,
+                style = AppTypography.titleSmMedium,
+                color = AppColors.text.secondary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
 
+            if (lastSeen.isNotBlank()) {
                 Text(
-                    text = lastSeen,
-                    style = AppTypography.titleSmMedium,
-                    color = AppColors.text.secondary
+                    text = "${stringResource(Res.string.ohirgi_faollik)} $lastSeen",
+                    style = AppTypography.emphasizedSmRegular,
+                    color = AppColors.text.tertiary,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }
@@ -170,8 +167,9 @@ private fun Preview() {
     ) {
         ChildrenItem(
             name = "Jaloliddin",
-            gadget = "Samsung A12",
-            lastSeen = "Onlayn"
+            gadget = "+998901234567",
+            lastSeen = "Bugun 10:05",
+            subscription = "PLUS"
         )
     }
 }

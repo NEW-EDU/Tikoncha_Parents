@@ -11,6 +11,6 @@ sealed interface SleepTemplateSetupEvent {
     data class SetTimeRange(val start: LocalTime, val end: LocalTime) : SleepTemplateSetupEvent
 
     data class Save(val sharedState: PolicySharedState) : SleepTemplateSetupEvent
-    data class Delete(val ruleId: String) : SleepTemplateSetupEvent
+    data class Delete(val policyId: String) : SleepTemplateSetupEvent
     data object ResetResponseState : SleepTemplateSetupEvent
 }

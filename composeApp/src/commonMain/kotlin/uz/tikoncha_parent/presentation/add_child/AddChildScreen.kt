@@ -59,10 +59,12 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.dialog_success
 import tikoncha_parents.composeapp.generated.resources.dialog_warning
 import tikoncha_parents.composeapp.generated.resources.farzand_ilovasi
 import tikoncha_parents.composeapp.generated.resources.farzand_ilovasi_info
 import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
+import tikoncha_parents.composeapp.generated.resources.farzand_ulan_di
 import tikoncha_parents.composeapp.generated.resources.farzandingiz_raqami
 import tikoncha_parents.composeapp.generated.resources.farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash
 import tikoncha_parents.composeapp.generated.resources.hedgehog_heart
@@ -70,6 +72,7 @@ import tikoncha_parents.composeapp.generated.resources.kod_amal_qilish_muddati
 import tikoncha_parents.composeapp.generated.resources.kod_muddati_tugadi
 import tikoncha_parents.composeapp.generated.resources.kod_nusxalandi
 import tikoncha_parents.composeapp.generated.resources.media_play
+import tikoncha_parents.composeapp.generated.resources.muvaffaqiyatli
 import tikoncha_parents.composeapp.generated.resources.ochish
 import tikoncha_parents.composeapp.generated.resources.ok
 import tikoncha_parents.composeapp.generated.resources.operator_kodi_topilmadi
@@ -109,11 +112,8 @@ class AddChildScreen : Screen {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
 
-        // DI: agar Koin ishlatsangiz -> koinScreenModel<AddChildScreenModel>()
-        val screenModel = koinScreenModel<AddChildScreenModel>()
-
+        val screenModel = koinScreenModel<AddChildViewModel>()
         val state by screenModel.state.collectAsStateWithLifecycle()
-        val event = screenModel::onEvent
         val clipboardManager = LocalClipboard.current
         val coroutineScope = rememberCoroutineScope()
 
@@ -169,6 +169,17 @@ class AddChildScreen : Screen {
                 showCloseButton = false,
                 onDismiss = { screenModel.onEvent(AddChildEvent.DismissError) },
                 onButtonClick = { screenModel.onEvent(AddChildEvent.DismissError) },
+            )
+
+            CustomDialog(
+                painter = painterResource(Res.drawable.dialog_success),
+                show = state.linkedChild != null,
+                title = stringResource(Res.string.muvaffaqiyatli),
+                message = stringResource(Res.string.farzand_ulan_di),
+                buttonText = stringResource(Res.string.ok),
+                showCloseButton = false,
+                onDismiss = { screenModel.onEvent(AddChildEvent.SuccessAcknowledged) },
+                onButtonClick = { screenModel.onEvent(AddChildEvent.SuccessAcknowledged) },
             )
 
             AddChildContent(

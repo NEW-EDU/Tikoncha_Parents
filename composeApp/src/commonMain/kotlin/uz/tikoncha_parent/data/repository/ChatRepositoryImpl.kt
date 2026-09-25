@@ -12,6 +12,7 @@ import uz.tikoncha_parent.data.remote.model.SendMessageRequest
 import uz.tikoncha_parent.data.remote.model.WSSendMessage
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.repository.ChatRepository
+import uz.tikoncha_parent.data.remote.model.ChatNotificationRequest
 
 class ChatRepositoryImpl(
     private val socket: ChatSocketService,
@@ -57,6 +58,21 @@ class ChatRepositoryImpl(
         if (res.success) Outcome.Success(Unit)
         else Outcome.Failure(ApiErrorMapper.fromCode(res.code), res.error)
     }
+
+    override suspend fun chatNotification(chatId: String): Outcome<Boolean> = apiCall(TAG) {
+        val res = api.chatNotification(chatId)
+        val data = res.data
+        if (res.success && data != null) Outcome.Success(data.notification)
+        else Outcome.Failure(ApiErrorMapper.fromCode(res.code), res.error)
+    }
+
+    override suspend fun setChatNotification(chatId: String, enabled: Boolean): Outcome<Boolean> = apiCall(TAG) {
+        val res = api.updateChatNotification(ChatNotificationRequest(chat_id = chatId, notification = enabled))
+        val data = res.data
+        if (res.success && data != null) Outcome.Success(data.notification)
+        else Outcome.Failure(ApiErrorMapper.fromCode(res.code), res.error)
+    }
+
 
     // ---- WS boshqaruv: Outcome'siz, chunki fire-and-forget / Flow ----
 

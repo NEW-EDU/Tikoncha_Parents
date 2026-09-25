@@ -279,7 +279,7 @@ fun SleepTemplateSetupUi(
         onDismiss = { showDeleteConfirmDialog = false },
         onConfirm = {
             showDeleteConfirmDialog = false
-            state.editingPolicy?.ruleId?.let {
+            state.editingPolicy?.policyId?.let {
                 event(SleepTemplateSetupEvent.Delete(it))
             }
         },

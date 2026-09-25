@@ -17,6 +17,8 @@ import tikoncha_parents.composeapp.generated.resources.tugatish_vaqtini_tanlang
 import tikoncha_parents.composeapp.generated.resources.vazifa_id_topilmadi
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
+import tikoncha_parents.composeapp.generated.resources.jadval_topilmadi
+import tikoncha_parents.composeapp.generated.resources.obuna_dialog_message
 
 @Composable
 fun Outcome.Failure.asText(): String {
@@ -31,6 +33,9 @@ fun ErrorCause.asFallbackText(): String = when (this) {
     ErrorCause.SessionExpired -> stringResource(Res.string.token_eskirgan)
     ErrorCause.Forbidden,
     is ErrorCause.Server -> stringResource(Res.string.server_connection_error)
+    is ErrorCause.PremiumRequired -> stringResource(Res.string.obuna_dialog_message)
+    ErrorCause.NotFound -> stringResource(Res.string.jadval_topilmadi)
+    ErrorCause.Validation -> stringResource(Res.string.kutilmagan_xatolik_qayta_urining)
     is ErrorCause.AccountDeletionRequired -> stringResource(Res.string.server_connection_error)
     ErrorCause.InvalidResponse,
     ErrorCause.Unknown -> stringResource(Res.string.kutilmagan_xatolik_qayta_urining)

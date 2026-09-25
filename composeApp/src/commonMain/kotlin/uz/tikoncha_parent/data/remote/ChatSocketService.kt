@@ -37,6 +37,8 @@ import uz.tikoncha_parent.data.remote.model.WSSendMessage
 import uz.tikoncha_parent.platform.Logger
 import kotlin.concurrent.atomics.AtomicBoolean
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withTimeoutOrNull
 
 @OptIn(ExperimentalAtomicApi::class)
 class ChatSocketService(
@@ -149,8 +151,14 @@ class ChatSocketService(
     }
 
     private suspend fun sendText(payLoad: String) {
+        val current = session
+        if (current == null) {
+            // Avval bu holatda ham "WS-OUT" yozilardi va xabar jimgina yo'qolardi.
+            Logger.e(TAG, "WS-OUT yuborilmadi (ulanish yo'q): $payLoad")
+            return
+        }
         Logger.d(TAG, "WS-OUT: $payLoad")
-        session?.send(Frame.Text(payLoad))
+        current.send(Frame.Text(payLoad))
     }
 
     private fun handleIncoming(raw: String) {
@@ -199,8 +207,18 @@ class ChatSocketService(
         }
     }
 
+//    suspend fun sendPing() {
+//        val env = WSRequest<Any>(
+//            type = "ping",
+//            payload = null
+//        )
+//        sendText(json.encodeToString(env))
+//    }
+
     suspend fun sendPing() {
-        val env = WSRequest<Any>(
+        // WSRequest<Any> seriyalanmaydi ("Serializer for class 'Any' is not found"),
+        // runCatching xatoni yutgani uchun ping umuman ketmas edi. JsonElement'ning serializeri bor.
+        val env = WSRequest<JsonElement>(
             type = "ping",
             payload = null
         )
@@ -228,6 +246,11 @@ class ChatSocketService(
     }
 
     suspend fun markRead(chatId: String, messageId: String) {
+        // Ilova fondan qaytganda socket qayta ulanayotgan bo'ladi — "o'qildi" yo'qolmasin,
+        // ulanish tiklanishini kutamiz. Ulanmasa xato qaytadi (repository Outcome.Failure beradi).
+        withTimeoutOrNull(10_000) { connected.first { it } }
+            ?: error("Chat socket ulanmagan — read yuborilmadi")
+
         val readMessage = WSReadMessage(
             chat_id = chatId,
             message_id = messageId

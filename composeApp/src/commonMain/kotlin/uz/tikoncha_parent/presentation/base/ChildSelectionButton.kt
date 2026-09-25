@@ -28,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,7 +40,6 @@ import tikoncha_parents.composeapp.generated.resources.plus_symbol
 import tikoncha_parents.composeapp.generated.resources.profile_hedgehog_img
 import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.ui.ColorWhite
-import uz.tikoncha_parent.ui.DialogButtonHeight
 import uz.tikoncha_parent.ui.SuccessColor
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
@@ -70,19 +68,17 @@ fun ChildSelectionButton(
         modifier = modifier.fillMaxWidth()
     ) {
         val isCompact = maxWidth < 360.dp
-        val buttonHeight = if (isCompact) DialogButtonHeight.coerceAtMost(48.dp) else DialogButtonHeight
 
         Row(
             modifier = modifier
                 .fillMaxWidth()
-//                .height(buttonHeight)
                 .background(background, shape)
                 .clickable(
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() },
                     onClick = { onClick() }
                 )
-                .padding(start = 4.dp, end = 12.dp)
+                .padding(start = 2.dp, end = 12.dp)
                 .padding(vertical = 2.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -146,7 +142,7 @@ fun ChildSelectionButton(
                         contentDescription = null,
                         modifier = Modifier
                             .align(Alignment.TopEnd)
-                            .offset(x = (-2).dp, y = (-4).dp)
+                            .offset(x = (-2).dp, y = (-2).dp)
                             .height(18.dp)
                             .width(26.dp)
                     )

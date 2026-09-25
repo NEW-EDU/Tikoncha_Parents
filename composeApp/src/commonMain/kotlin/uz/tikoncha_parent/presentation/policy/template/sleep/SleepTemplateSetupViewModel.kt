@@ -8,22 +8,29 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import uz.tikoncha_parent.data.mapper.toTimeRuleDtoList
-import uz.tikoncha_parent.data.remote.model.CreatePolicyRequest
-import uz.tikoncha_parent.data.remote.model.UpdatePolicyRequest
-import uz.tikoncha_parent.domain.model.PolicyResourceType
-import uz.tikoncha_parent.domain.model.PolicyType
+import org.jetbrains.compose.resources.getString
+import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.uyqu_vaqti_rejasi
 import uz.tikoncha_parent.domain.model.WeekDay
 import uz.tikoncha_parent.domain.model.app_error.Outcome
-import uz.tikoncha_parent.domain.model.policy.PolicyAction
-import uz.tikoncha_parent.domain.model.policy.PolicyTemplate
-import uz.tikoncha_parent.domain.repository.PolicyRepository
+import uz.tikoncha_parent.domain.model.policy.Patch
+import uz.tikoncha_parent.domain.model.policy.PolicyConditions
+import uz.tikoncha_parent.domain.model.policy.PolicyDraft
+import uz.tikoncha_parent.domain.model.policy.PolicyPatch
+import uz.tikoncha_parent.domain.model.policy.PolicyPreset
+import uz.tikoncha_parent.domain.model.policy.PolicyTargets
+import uz.tikoncha_parent.domain.use_case.policy.CreatePolicyUseCase
+import uz.tikoncha_parent.domain.use_case.policy.DeletePolicyUseCase
+import uz.tikoncha_parent.domain.use_case.policy.UpdatePolicyUseCase
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedState
 import uz.tikoncha_parent.presentation.policy.time_rule.TimeRuleUi
+import uz.tikoncha_parent.presentation.policy.toCondition
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 
 class SleepTemplateSetupViewModel(
-    private val policyRepository: PolicyRepository
+    private val createPolicy: CreatePolicyUseCase,
+    private val updatePolicy: UpdatePolicyUseCase,
+    private val deletePolicy: DeletePolicyUseCase,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(SleepTemplateSetupState())
@@ -42,7 +49,7 @@ class SleepTemplateSetupViewModel(
             is SleepTemplateSetupEvent.SetTimeRange ->
                 _state.update { it.copy(startTime = event.start, endTime = event.end) }
             is SleepTemplateSetupEvent.Save -> save(event.sharedState)
-            is SleepTemplateSetupEvent.Delete -> delete(event.ruleId)
+            is SleepTemplateSetupEvent.Delete -> delete(event.policyId)
             SleepTemplateSetupEvent.ResetResponseState ->
                 _state.update {
                     it.copy(
@@ -98,99 +105,70 @@ class SleepTemplateSetupViewModel(
             weekDays = WeekDay.entries.toSet(),
         )
 
-        if (s.isEditMode) {
-            requestUpdate(s, shared, timeRule)
-        } else {
-            requestCreate(s, shared, timeRule)
-        }
+        if (s.isEditMode) requestUpdate(shared, timeRule) else requestCreate(shared, timeRule)
     }
 
-    private fun requestCreate(
-        s: SleepTemplateSetupState,
-        shared: PolicySharedState,
-        timeRule: TimeRuleUi,
-    ) {
+    private fun targetsOf(shared: PolicySharedState) = PolicyTargets(
+        packages = shared.selectedPkgs.toList(),
+        categories = shared.selectedCategories.toList(),
+        sites = shared.selectedSites.toList(),
+        features = shared.selectedFeatures.toList(),
+        iosSelectionIds = shared.iosSelectionIds,
+        packs = shared.packs,
+    )
+
+    private fun requestCreate(shared: PolicySharedState, timeRule: TimeRuleUi) {
         screenModelScope.launch {
             _state.update { it.copy(createState = ResponseState.Loading) }
 
-            val request = CreatePolicyRequest(
-                policy_name = "",
-                scope_id = shared.selectedChild?.userId,
-                rule_name = "",
-                scope_type = PolicyType.PARENT_CHILD.name,
-                policy_is_active = true,
-                resource_type = PolicyResourceType.APP.name,
-                action = PolicyAction.ALLOW.name,
-                priority = 100,
-                packages = shared.selectedPkgs.toList(),
-                categories = shared.selectedCategories.toList(),
-                features = shared.selectedFeatures.toList(),
-                sites = shared.selectedSites.toList(),
-                time_rule = listOf(timeRule).toTimeRuleDtoList(),
-                limit_rule = null,
-                location_rule = null,
-                wifi = null,
-                policy_template = PolicyTemplate.SLEEP.name,
+            // Bo'sh nom serverda 422 beradi — shablon nomini tildan olamiz.
+            val name = getString(Res.string.uyqu_vaqti_rejasi)
+
+            val draft = PolicyDraft(
+                name = name,
+                // ALLOW qattiq yozilmaydi — ekran qaysi rejimni tanlasa o'sha ketadi.
+                action = shared.policyAction,
+                preset = PolicyPreset.SLEEP,
+                targets = targetsOf(shared),
+                conditions = PolicyConditions(time = listOf(timeRule.toCondition())),
             )
 
-            when (val r = policyRepository.createPolicy(request)) {
-                is Outcome.Failure -> _state.update {
-                    it.copy(createState = ResponseState.Error(failure = r))
-                }
-                is Outcome.Success -> _state.update {
-                    it.copy(createState = ResponseState.Success())
-                }
+            when (val r = createPolicy(shared.selectedChild?.userId.orEmpty(), draft)) {
+                is Outcome.Failure -> _state.update { it.copy(createState = ResponseState.Error(failure = r)) }
+                is Outcome.Success -> _state.update { it.copy(createState = ResponseState.Success()) }
             }
         }
     }
 
-    private fun requestUpdate(
-        s: SleepTemplateSetupState,
-        shared: PolicySharedState,
-        timeRule: TimeRuleUi,
-    ) {
-        val ruleId = s.editingPolicy?.ruleId.orEmpty()
+    private fun requestUpdate(shared: PolicySharedState, timeRule: TimeRuleUi) {
+        val policyId = _state.value.editingPolicy?.policyId.orEmpty()
+
         screenModelScope.launch {
             _state.update { it.copy(updateState = ResponseState.Loading) }
 
-            val request = UpdatePolicyRequest(
-                name = "",
-                resource_type = PolicyResourceType.APP.name,
-                action = PolicyAction.ALLOW.name,
-                priority = 100,
-                packages = shared.selectedPkgs.toList(),
-                categories = shared.selectedCategories.toList(),
-                sites = shared.selectedSites.toList(),
-                features = shared.selectedFeatures.toList(),
-                time_rule = listOf(timeRule).toTimeRuleDtoList(),
-                limit_rule = null,
-                location_rule = null,
-                wifi = null,
-                policy_template = PolicyTemplate.SLEEP.name,
+            val name = getString(Res.string.uyqu_vaqti_rejasi)
+
+            val patch = PolicyPatch(
+                name = Patch.Value(name),
+                action = Patch.Value(shared.policyAction),
+                targets = Patch.Value(targetsOf(shared)),
+                conditions = Patch.Value(PolicyConditions(time = listOf(timeRule.toCondition()))),
             )
 
-            when (val r = policyRepository.updatePolicyInServer(request, ruleId)) {
-                is Outcome.Failure -> _state.update {
-                    it.copy(updateState = ResponseState.Error(failure = r))
-                }
-                is Outcome.Success -> _state.update {
-                    it.copy(updateState = ResponseState.Success())
-                }
+            when (val r = updatePolicy(policyId, patch)) {
+                is Outcome.Failure -> _state.update { it.copy(updateState = ResponseState.Error(failure = r)) }
+                is Outcome.Success -> _state.update { it.copy(updateState = ResponseState.Success()) }
             }
         }
     }
 
-    private fun delete(ruleId: String) {
+    private fun delete(policyId: String) {
         screenModelScope.launch {
             _state.update { it.copy(deleteState = ResponseState.Loading) }
 
-            when (val r = policyRepository.deletePolicyInServer(ruleId)) {
-                is Outcome.Failure -> _state.update {
-                    it.copy(deleteState = ResponseState.Error(failure = r))
-                }
-                is Outcome.Success -> _state.update {
-                    it.copy(deleteState = ResponseState.Success())
-                }
+            when (val r = deletePolicy(policyId)) {
+                is Outcome.Failure -> _state.update { it.copy(deleteState = ResponseState.Error(failure = r)) }
+                is Outcome.Success -> _state.update { it.copy(deleteState = ResponseState.Success()) }
             }
         }
     }

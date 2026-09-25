@@ -16,13 +16,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -32,8 +32,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,11 +45,12 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinNavigatorScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
-import kotlinx.coroutines.delay
+import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.android
 import tikoncha_parents.composeapp.generated.resources.bugun_sarfladi
 import tikoncha_parents.composeapp.generated.resources.cheklovlar
 import tikoncha_parents.composeapp.generated.resources.diqqat
@@ -58,13 +61,11 @@ import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.home_table
 import tikoncha_parents.composeapp.generated.resources.home_task
 import tikoncha_parents.composeapp.generated.resources.ilova_cheklangan
-import tikoncha_parents.composeapp.generated.resources.instagram_icon
-import tikoncha_parents.composeapp.generated.resources.linkedin_icon
 import tikoncha_parents.composeapp.generated.resources.media_play
 import tikoncha_parents.composeapp.generated.resources.support_icon
 import tikoncha_parents.composeapp.generated.resources.topshiriqlar
-import tikoncha_parents.composeapp.generated.resources.whatsapp_icon
 import uz.tikoncha_parent.domain.model.HourMinute
+import uz.tikoncha_parent.domain.model.app_usage.TopApp
 import uz.tikoncha_parent.platform.HandleUpdateEffect
 import uz.tikoncha_parent.platform.Logger
 import uz.tikoncha_parent.platform.openUrl
@@ -72,6 +73,7 @@ import uz.tikoncha_parent.presentation.add_child.AddChildScreen
 import uz.tikoncha_parent.presentation.base.ChildSelectionButton
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.NoInternetDialog
+import uz.tikoncha_parent.presentation.base.PullToRefreshBox
 import uz.tikoncha_parent.presentation.base.rememberInternetCheck
 import uz.tikoncha_parent.presentation.base.singleClick
 import uz.tikoncha_parent.presentation.chat.chat_list.ChatScreen
@@ -84,7 +86,7 @@ import uz.tikoncha_parent.presentation.policy.policy_list.PolicyListScreen
 import uz.tikoncha_parent.presentation.profile.ProfileScreen
 import uz.tikoncha_parent.presentation.protection.ProtectionScreen
 import uz.tikoncha_parent.presentation.statistic.StatisticScreen
-import uz.tikoncha_parent.presentation.statistic.durationStringWithZero
+import uz.tikoncha_parent.presentation.statistic.durationStringCompact
 import uz.tikoncha_parent.presentation.task.TaskScreen
 import uz.tikoncha_parent.presentation.tracking.TrackingScreen
 import uz.tikoncha_parent.presentation.video_tutorial.TutorialType
@@ -105,7 +107,6 @@ import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.extendedColor
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
-
 
 class NewHomeScreen : Screen {
 
@@ -159,7 +160,6 @@ fun NewHomeUi(
     val tableCount = state.parentPolicyCount
     val refreshScope = rememberCoroutineScope()
     var showDialog by remember { mutableStateOf(false) }
-    var isRefreshing by remember { mutableStateOf(false) }
     var showChildDialog by remember { mutableStateOf(false) }
 
     val systemBars = rememberScreenSystemBars(
@@ -204,15 +204,9 @@ fun NewHomeUi(
     )
 
     PullToRefreshBox(
-        isRefreshing = isRefreshing,
+        isRefreshing = state.isRefreshing,
         onRefresh = {
-            internetCheck.check {
-                isRefreshing = true
-                event(HomeEvent.GetChildren)
-                event(HomeEvent.ReloadUserInfo)
-                delay(500)
-                isRefreshing = false
-            }
+            internetCheck.check { event(HomeEvent.PullRefresh) }
         }
     ) {
         Column(
@@ -268,7 +262,7 @@ fun NewHomeUi(
                 ProfileCard(
                     modifier = Modifier.widthIn(140.dp, 160.dp),
                     name = state.userName,
-                    imageUrl = state.userImageUrl?:"",
+                    imageUrl = state.userImageUrl ?: "",
                     onClick = {
                         navigator?.push(ProfileScreen())
                     }
@@ -315,6 +309,9 @@ fun NewHomeUi(
                 // NewHomeUi'da — hozirgi "Farzandingiz so'rovlari" item'i o'rnida:
                 item {
                     ChildProtectionCard(
+                        isLoaded = state.protectionLoaded,
+                        modifier = Modifier.fillMaxWidth(),
+                        hasChild = state.childrenList.isNotEmpty(),
                         permissionOffCount = state.protectionPermissionOffCount,
                         pendingRequestCount = state.protectionPendingRequestCount,
                         onClick = {
@@ -323,54 +320,10 @@ fun NewHomeUi(
                             } else {
                                 navigator?.push(ProtectionScreen())
                             }
-                        },
-                        modifier = Modifier.fillMaxWidth(),
+                        }
                     )
                     Space(16.dp)
                 }
-
-//                item {
-//                    if (parentRequestCount > 0) {
-//                        Row(
-//                            modifier = Modifier
-//                                .fillMaxWidth()
-//                                .simpleShadow(RoundedCornerShape(CardCornerRadius))
-//                                .background(
-//                                    MaterialTheme.extendedColor.cardColor,
-//                                    RoundedCornerShape(CardCornerRadius)
-//                                )
-//                                .clip(RoundedCornerShape(CardCornerRadius))
-//                                .clickable {
-//                                    navigator?.push(ParentRequestScreen())
-//                                }
-//                                .padding(horizontal = CardCornerPadding, vertical = 8.dp),
-//                            verticalAlignment = Alignment.CenterVertically
-//                        ) {
-//                            Text(
-//                                text = stringResource(Res.string.farzandingiz_sorovlari),
-//                                style = AppTypography.titleSmMedium,
-//                                color = AppColors.text.primary,
-//                                modifier = Modifier.weight(1f)
-//                            )
-//                            if (parentRequestCount > 0) {
-//                                Box(
-//                                    modifier = Modifier
-//                                        .background(AppColors.bg.accentWarning, CircleShape)
-//                                        .size(24.dp),
-//                                    contentAlignment = Alignment.Center
-//                                ) {
-//                                    Text(
-//                                        text = if (parentRequestCount > 99) "99" else parentRequestCount.toString(),
-//                                        style = AppTypography.titleSmMedium,
-//                                        color = AppColors.text.inverse,
-//                                        maxLines = 1,
-//                                    )
-//                                }
-//                            }
-//                        }
-//                        Space(12.dp)
-//                    }
-//                }
 
                 item {
                     InAppUpdateCard(
@@ -403,7 +356,7 @@ fun NewHomeUi(
                     ) {
                         Column(modifier = Modifier.weight(1f)) {
                             Text(
-                                text = durationStringWithZero(state.todayUsage),
+                                text = durationStringCompact(state.todayUsage),
                                 color = AppColors.text.primary,
                                 style = AppTypography.displaySmRegular
                             )
@@ -416,61 +369,36 @@ fun NewHomeUi(
                             )
                         }
 
+                        // Bugun bo'sh bo'lsa oxirgi kunlarning ilovalari xira chiqadi; umuman yo'q bo'lsa — placeholder.
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(6.dp),
                             verticalAlignment = Alignment.Bottom,
                             modifier = Modifier.padding(end = 14.5.dp)
                         ) {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxHeight(0.5f)
-                                    .background(
-                                        MaterialTheme.extendedColor.backgroundColor,
-                                        RoundedCornerShape(LargeCardCornerRadius)
-                                    )
-                                    .padding(6.dp),
-                                contentAlignment = Alignment.BottomCenter
-                            ) {
-                                Image(
-                                    painter = painterResource(Res.drawable.linkedin_icon),
-                                    contentDescription = "",
-                                    modifier = Modifier.size(SmallIconSize),
-                                    alignment = Alignment.BottomCenter,
-                                )
-                            }
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxHeight(0.65f)
-                                    .background(
-                                        MaterialTheme.extendedColor.backgroundColor,
-                                        RoundedCornerShape(TextFieldCornerRadius)
-                                    )
-                                    .padding(6.dp),
-                                contentAlignment = Alignment.BottomCenter
-                            ) {
-                                Image(
-                                    painter = painterResource(Res.drawable.whatsapp_icon),
-                                    contentDescription = "",
-                                    modifier = Modifier.size(SmallIconSize),
-                                    alignment = Alignment.BottomCenter,
-                                )
-                            }
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxHeight(0.8f)
-                                    .background(
-                                        MaterialTheme.extendedColor.backgroundColor,
-                                        RoundedCornerShape(TextFieldCornerRadius)
-                                    )
-                                    .padding(6.dp),
-                                contentAlignment = Alignment.BottomCenter
-                            ) {
-                                Image(
-                                    painter = painterResource(Res.drawable.instagram_icon),
-                                    contentDescription = "",
-                                    modifier = Modifier.size(SmallIconSize),
-                                    alignment = Alignment.BottomCenter,
-                                )
+                            val barHeights = listOf(0.5f, 0.65f, 0.8f)
+                            val iconAlpha =
+                                if (state.topAppsFromRecentDays) RecentTopAppAlpha else 1f
+                            barHeights.forEachIndexed { index, heightFraction ->
+                                val app = state.topApps.getOrNull(barHeights.lastIndex - index)
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxHeight(heightFraction)
+                                        .background(
+                                            MaterialTheme.extendedColor.backgroundColor,
+                                            RoundedCornerShape(TextFieldCornerRadius)
+                                        )
+                                        .padding(6.dp),
+                                    contentAlignment = Alignment.BottomCenter
+                                ) {
+                                    if (app != null) {
+                                        TopAppIcon(
+                                            app = app,
+                                            modifier = Modifier.size(SmallIconSize).alpha(iconAlpha)
+                                        )
+                                    } else {
+                                        TopAppPlaceholder(modifier = Modifier.size(SmallIconSize))
+                                    }
+                                }
                             }
                         }
                     }
@@ -577,6 +505,41 @@ fun NewHomeUi(
                 }
             }
         }
+    }
+}
+
+/** Bugun bo'sh bo'lganda oxirgi kunlar ilovalari shu shaffoflikda chiziladi */
+private const val RecentTopAppAlpha = 0.35f
+private const val TopAppPlaceholderAlpha = 0.3f
+
+/** Ma'lumot yo'q yoki hali kelmagan — ustun bo'sh qolmasligi uchun xira kulrang doira */
+@Composable
+private fun TopAppPlaceholder(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .alpha(TopAppPlaceholderAlpha)
+            .background(AppColors.icon.secondary, CircleShape)
+    )
+}
+
+@Composable
+private fun TopAppIcon(app: TopApp, modifier: Modifier = Modifier) {
+    val iconModifier = modifier.clip(RoundedCornerShape(4.dp))
+    if (!app.iconUrl.isNullOrBlank()) {
+        AsyncImage(
+            model = app.iconUrl,
+            contentDescription = app.name,
+            modifier = iconModifier,
+            contentScale = ContentScale.Fit,
+            error = painterResource(Res.drawable.android),
+            placeholder = painterResource(Res.drawable.android),
+        )
+    } else {
+        Image(
+            painter = painterResource(Res.drawable.android),
+            contentDescription = app.name,
+            modifier = iconModifier,
+        )
     }
 }
 
