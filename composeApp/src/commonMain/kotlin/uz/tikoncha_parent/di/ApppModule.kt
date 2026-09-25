@@ -299,6 +299,21 @@ val sharedModule = module {
     }
     factory { ProtectionPacksViewModel(get(), get(), get()) }
     factory {
+        uz.tikoncha_parent.presentation.policy.list.PolicyListViewModel(
+            childRepository = get(),
+            observePolicies = get(),
+            refreshPolicies = get(),
+            observeQuickSnapshot = get(),
+            refreshQuickBlocks = get(),
+            getPackStatuses = get(),
+            togglePreset = get(),
+            togglePolicy = get(),
+            toggleProtection = get(),
+            updateOwnQuick = get(),
+            childPaidStatus = get(),
+        )
+    }
+    factory {
         QuickBlockViewModel(
             observeSnapshot = get(),
             refreshQuickBlocks = get(),
