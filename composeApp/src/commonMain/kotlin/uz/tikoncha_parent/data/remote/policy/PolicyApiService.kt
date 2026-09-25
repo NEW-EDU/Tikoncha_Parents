@@ -5,10 +5,8 @@ import io.ktor.client.request.parameter
 import io.ktor.client.request.setBody
 import io.ktor.http.HttpMethod
 import kotlinx.serialization.json.JsonObject
-import uz.tikoncha_parent.data.remote.model.AppsResponse
-import uz.tikoncha_parent.data.remote.model.policy.ApiEnvelope
-import uz.tikoncha_parent.data.remote.model.policy.EvaluateInDto
-import uz.tikoncha_parent.data.remote.model.policy.EvaluateOutDto
+import uz.tikoncha_parent.data.remote.model.AppsData
+import uz.tikoncha_parent.data.remote.model.ApiEnvelope
 import uz.tikoncha_parent.data.remote.model.policy.PacksListOutDto
 import uz.tikoncha_parent.data.remote.model.policy.PolicyCreateDto
 import uz.tikoncha_parent.data.remote.model.policy.PolicyDeleteOutDto
@@ -24,8 +22,8 @@ import uz.tikoncha_parent.domain.model.policy.TargetType
 
 class PolicyApiService(private val client: HttpClient) {
 
-    /** Bola qurilmasidagi ilovalar — v2 ga aloqasi yo'q, o'zgarmaydi. */
-    suspend fun childApps(userId: String): AppsResponse =
+    /** Bola qurilmasidagi ilovalar (bola ilovasi `/installed-apps/sync` bilan yuboradi). */
+    suspend fun childApps(userId: String): ApiEnvelope<AppsData> =
         client.safeRequest(HttpMethod.Get, "/installed-apps") {
             parameter("user_id", userId)
         }
@@ -36,9 +34,6 @@ class PolicyApiService(private val client: HttpClient) {
             parameter("child_id", childId)
             if (since != null) parameter("since", since)
         }
-
-    suspend fun get(policyId: String): ApiEnvelope<PolicyOutDto> =
-        client.safeRequest(HttpMethod.Get, "/v2/policies/$policyId")
 
     suspend fun create(body: PolicyCreateDto): ApiEnvelope<PolicyOutDto> =
         client.safeRequest(HttpMethod.Post, "/v2/policies") { setBody(body) }
@@ -71,9 +66,6 @@ class PolicyApiService(private val client: HttpClient) {
                 TargetType.FEATURE -> parameter("feature", target.key)
             }
         }
-
-    suspend fun evaluate(body: EvaluateInDto): ApiEnvelope<EvaluateOutDto> =
-        client.safeRequest(HttpMethod.Post, "/v2/policies/evaluate") { setBody(body) }
 
     suspend fun events(childId: String, limit: Int, offset: Int): ApiEnvelope<PolicyEventListOutDto> =
         client.safeRequest(HttpMethod.Get, "/v2/policies/events") {

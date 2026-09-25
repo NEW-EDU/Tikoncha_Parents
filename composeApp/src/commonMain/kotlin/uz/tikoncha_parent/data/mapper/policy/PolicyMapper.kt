@@ -5,8 +5,6 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
 import uz.tikoncha_parent.data.remote.model.policy.ConditionsDto
-import uz.tikoncha_parent.data.remote.model.policy.EvaluateInDto
-import uz.tikoncha_parent.data.remote.model.policy.EvaluateOutDto
 import uz.tikoncha_parent.data.remote.model.policy.LatLngDto
 import uz.tikoncha_parent.data.remote.model.policy.LaunchLimitDto
 import uz.tikoncha_parent.data.remote.model.policy.LimitsDto
@@ -30,10 +28,6 @@ import uz.tikoncha_parent.domain.model.LocationData
 import uz.tikoncha_parent.domain.model.LocationRule
 import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.WeekDay
-import uz.tikoncha_parent.domain.model.policy.EvalDecision
-import uz.tikoncha_parent.domain.model.policy.EvalReason
-import uz.tikoncha_parent.domain.model.policy.EvalResult
-import uz.tikoncha_parent.domain.model.policy.EvalTargetRef
 import uz.tikoncha_parent.domain.model.policy.LaunchLimit
 import uz.tikoncha_parent.domain.model.policy.PackCatalog
 import uz.tikoncha_parent.domain.model.policy.Policy
@@ -103,11 +97,12 @@ fun TargetsDto.toDomain(): PolicyTargets = PolicyTargets(
     features = features,
     iosSelectionIds = ios_selection_ids,
     packs = packs,
+    excludePackages = exclude_packages,
 )
 
 fun ConditionsDto.toDomain(): PolicyConditions = PolicyConditions(
-    time = time.mapNotNull { it.toDomain() },
-    location = location.mapNotNull { it.toDomain() },
+    time = time?.toDomain(),
+    location = location?.toDomain(),
     wifi = wifi.map { WifiCondition(ssid = it.ssid, include = it.include) },
 )
 
@@ -146,12 +141,12 @@ fun LocationConditionDto.toDomain(): LocationRule? = when (type.uppercase()) {
 }
 
 fun LimitsDto.toDomain(): PolicyLimits = PolicyLimits(
-    usage = usage.mapNotNull { dto ->
+    usage = usage?.let { dto ->
         val week = dto.days.toWeekDays()
         if (week.isEmpty()) null
         else UsageLimit(days = week, window = LimitWindow.from(dto.window), minutes = dto.minutes)
     },
-    launch = launch.mapNotNull { dto ->
+    launch = launch?.let { dto ->
         val week = dto.days.toWeekDays()
         if (week.isEmpty()) null else LaunchLimit(days = week, maxLaunches = dto.max_launches)
     },
@@ -163,6 +158,19 @@ fun QuickBlockEntryDto.toDomain(): QuickBlockEntry = QuickBlockEntry(
     actorUserId = actor_user_id,
     targets = targets.toDomain(),
     updatedAt = updated_at.toInstantOrNow(),
+    isActive = is_active,
+    pausedUntil = paused_until?.toInstantOrNull(),
+)
+
+/** `POST/DELETE quick-block` javobidagi butun jadval — ro'yxatdagi yozuv o'rniga qo'yiladi. */
+fun Policy.toQuickBlockEntry(): QuickBlockEntry = QuickBlockEntry(
+    policyId = id,
+    scope = scope,
+    actorUserId = actorUserId,
+    targets = targets,
+    updatedAt = updatedAt,
+    isActive = isActive,
+    pausedUntil = pausedUntil,
 )
 
 fun PackOutDto.toDomain(): ProtectionPack = ProtectionPack(
@@ -182,19 +190,6 @@ fun PacksListOutDto.toDomain(): PackCatalog = PackCatalog(
     version = version,
     asOf = as_of.toInstantOrNow(),
     categoriesMap = categories_map,
-)
-
-fun EvaluateOutDto.toDomain(): EvalResult = EvalResult(
-    decision = EvalDecision.from(decision),
-    reason = EvalReason.from(reason),
-    policyId = policy_id,
-    policyName = policy_name,
-    scope = scope_type?.let { PolicyType.from(it) },
-    action = action?.let { PolicyAction.valueToPolicyAction(it) },
-    dueToLimit = due_to_limit,
-    causes = causes,
-    limitsEvaluated = limits_evaluated,
-    asOf = as_of.toInstantOrNow(),
 )
 
 fun PolicyEventOutDto.toDomain(): PolicyAuditEvent = PolicyAuditEvent(
@@ -239,15 +234,16 @@ fun PolicyTargets.toDto(): TargetsDto = TargetsDto(
     features = features.map { it.trim().lowercase() }.filter { it.isNotEmpty() }.distinct(),
     ios_selection_ids = iosSelectionIds,
     packs = packs,
+    exclude_packages = excludePackages.map { it.trim() }.filter { it.isNotEmpty() }.distinct(),
 )
 
 fun PolicyConditions.toDto(): ConditionsDto = ConditionsDto(
-    time = time.mapNotNull { it.toDto() },
-    location = location.mapNotNull { it.toDto() },
+    time = time?.toDto(),
+    location = location?.toDto(),
     wifi = wifi.map { WifiConditionDto(ssid = it.ssid, include = it.include) },
 )
 
-/** M2: `startMin == endMin` — server 422 beradi, shuning uchun element tashlanadi. */
+/** M2: `startMin == endMin` — server 422 beradi, shuning uchun shart tashlanadi. */
 fun TimeCondition.toDto(): TimeConditionDto? {
     if (days.isEmpty() || startMin == endMin) return null
     return TimeConditionDto(
@@ -283,7 +279,7 @@ fun LocationRule.toDto(): LocationConditionDto? = when (geoType) {
 
 /** M4: HOUR oynasida 60 daqiqadan oshmaydi, DAY da 1440 dan. */
 fun PolicyLimits.toDto(): LimitsDto = LimitsDto(
-    usage = usage.mapNotNull { limit ->
+    usage = usage?.let { limit ->
         if (limit.days.isEmpty() || limit.minutes < 1) null
         else UsageLimitDto(
             days = limit.days.map { it.num }.sorted(),
@@ -294,7 +290,7 @@ fun PolicyLimits.toDto(): LimitsDto = LimitsDto(
             },
         )
     },
-    launch = launch.mapNotNull { limit ->
+    launch = launch?.let { limit ->
         if (limit.days.isEmpty() || limit.maxLaunches < 1) null
         else LaunchLimitDto(days = limit.days.map { it.num }.sorted(), max_launches = limit.maxLaunches)
     },
@@ -305,22 +301,6 @@ fun QuickBlockTarget.toDto(childId: String): QuickBlockInDto = when (type) {
     TargetType.SITE -> QuickBlockInDto(child_id = childId, site = key)
     TargetType.FEATURE -> QuickBlockInDto(child_id = childId, feature = key)
 }
-
-fun EvalTargetRef.toDto(
-    childId: String,
-    at: String? = null,
-    lat: Double? = null,
-    lng: Double? = null,
-    wifiSsid: String? = null,
-): EvaluateInDto = EvaluateInDto(
-    child_id = childId,
-    target_type = type.name,
-    key = key,
-    at = at,
-    lat = lat,
-    lng = lng,
-    wifi_ssid = wifiSsid,
-)
 
 // ── Yordamchilar ──────────────────────────────────────────────
 

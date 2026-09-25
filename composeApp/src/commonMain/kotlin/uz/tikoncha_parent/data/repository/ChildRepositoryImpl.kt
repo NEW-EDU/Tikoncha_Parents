@@ -1,6 +1,7 @@
 package uz.tikoncha_parent.data.repository
 
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format
 import kotlinx.datetime.format.char
 import uz.tikoncha_parent.data.mapper.toAppUsageList
@@ -10,9 +11,7 @@ import uz.tikoncha_parent.data.mapper.toUserInfo
 import uz.tikoncha_parent.data.remote.ChildApiService
 import uz.tikoncha_parent.data.remote.app_error.ApiErrorMapper
 import uz.tikoncha_parent.data.remote.model.AddChildRequest
-import uz.tikoncha_parent.data.remote.model.ChildrenLocationResponse
 import uz.tikoncha_parent.data.remote.model.UnlinkChildRequest
-import uz.tikoncha_parent.data.remote.model.UnlinkChildResponse
 import uz.tikoncha_parent.domain.model.ChildLinkCode
 import uz.tikoncha_parent.domain.model.ChildLocation
 import uz.tikoncha_parent.domain.model.UserInfo
@@ -53,11 +52,11 @@ class ChildRepositoryImpl(
     ): Outcome<List<AppUsage>> =
         apiCall(TAG) {
             val r = api.appUsages(
-                hashMapOf<String, Any>(
-                    "user_id"   to childId,
-                    "date_from" to from.format(DATE_FORMAT),
-                    "date_to"   to to.format(DATE_FORMAT),
-                )
+                userId = childId,
+                dateFrom = from.format(DATE_FORMAT),
+                dateTo = to.format(DATE_FORMAT),
+                // Busiz server UTC oladi: Toshkentda 00:00–05:00 orasida bugungi kun kesilib qolardi.
+                tz = TimeZone.currentSystemDefault().id,
             )
             val body = r.data
             when {

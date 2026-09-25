@@ -7,18 +7,6 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 
-/**
- * v2 javob envelope'i — barcha /v2 endpointlari uchun bitta generik sinf.
- * HTTP doim 200; haqiqiy status [code] da (200/201/403/422...).
- */
-@Serializable
-data class ApiEnvelope<T>(
-    val success: Boolean = false,
-    val data: T? = null,
-    val error: String? = null,
-    val code: Int? = null,
-)
-
 // ── targets / conditions / limits ─────────────────────────────
 
 @Serializable
@@ -29,6 +17,12 @@ data class TargetsDto(
     val features: List<String> = emptyList(),     // server lower qiladi ("youtube_shorts")
     val ios_selection_ids: List<String> = emptyList(),
     val packs: List<String> = emptyList(),        // ProtectionPack.code — havola, nusxa emas
+    /**
+     * v2.1: bu jadval hech qachon tegmaydigan paketlar — `"*"` yoki kategoriya uchun
+     * istisno ("ochiq qoladi" / "hisoblanmaydi"). Faqat DENY'da ishlaydi.
+     * Tahrirda albatta qaytarib yuboriladi — aks holda PATCH targets uni o'chiradi.
+     */
+    val exclude_packages: List<String> = emptyList(),
 )
 
 @Serializable
@@ -64,10 +58,14 @@ data class LocationConditionDto(
 @Serializable
 data class WifiConditionDto(val ssid: String, val include: Boolean = true)
 
+/**
+ * v2.1: har guruhda KO'PI BILAN BITTA shart — bitta vaqt oralig'i, bitta hudud.
+ * `null` = shart yo'q. Wi-Fi hali ro'yxat, lekin hech bir mijoz ishlatmaydi.
+ */
 @Serializable
 data class ConditionsDto(
-    val time: List<TimeConditionDto> = emptyList(),
-    val location: List<LocationConditionDto> = emptyList(),
+    val time: TimeConditionDto? = null,
+    val location: LocationConditionDto? = null,
     val wifi: List<WifiConditionDto> = emptyList(),
 )
 
@@ -82,10 +80,11 @@ data class UsageLimitDto(
 @Serializable
 data class LaunchLimitDto(val days: List<Int>, val max_launches: Int)
 
+/** v2.1: bitta foydalanish limiti va bitta ochish limiti. */
 @Serializable
 data class LimitsDto(
-    val usage: List<UsageLimitDto> = emptyList(),
-    val launch: List<LaunchLimitDto> = emptyList(),
+    val usage: UsageLimitDto? = null,
+    val launch: LaunchLimitDto? = null,
 )
 
 // ── policy ────────────────────────────────────────────────────
@@ -98,7 +97,7 @@ data class PolicyCreateDto(
     val action: String,                     // "ALLOW" | "DENY"
     val priority: Int = 100,                // 0..100000, katta = kuchli
     val is_active: Boolean = true,
-    val preset: String? = null,             // "SLEEP" | "APP_LIMIT" | "CONTENT" | "PROTECTION"
+    val preset: String? = null,             // "SLEEP" | "APP_LIMIT" | "SCHOOL" | "CONTENT" | "PROTECTION"
     val paused_until: String? = null,       // ISO-8601 UTC: "2026-09-10T05:00:00Z"
     val expires_at: String? = null,         // kelajakda bo'lishi shart
     val targets: TargetsDto,                // bo'sh bo'lmasin (422 policy_targets_required)
@@ -164,6 +163,8 @@ data class QuickBlockOutDto(
     val policy_id: String,
     val result: String,                     // "added" | "exists" | "removed" | "absent"
     val targets: TargetsDto = TargetsDto(),
+    /** O'zgarishdan keyingi butun tezkor blok — ro'yxatni qayta so'ramasdan yangilash uchun. */
+    val policy: PolicyOutDto? = null,
 )
 
 @Serializable
@@ -173,39 +174,15 @@ data class QuickBlockEntryDto(
     val actor_user_id: String? = null,      // PARENT_CHILD: qaysi ota-ona
     val targets: TargetsDto = TargetsDto(),
     val updated_at: String,
+    /** O'chirilgan yoki pauzadagi blok ro'yxatini saqlaydi, lekin hech narsani yopmaydi. */
+    val is_active: Boolean = true,
+    val paused_until: String? = null,
 )
 
 @Serializable
 data class QuickBlockListOutDto(
     val child_id: String,
     val items: List<QuickBlockEntryDto> = emptyList(),
-)
-
-// ── evaluate ──────────────────────────────────────────────────
-
-@Serializable
-data class EvaluateInDto(
-    val child_id: String,
-    val target_type: String,                // "APP" | "SITE" | "FEATURE"
-    val key: String,                        // paket | domen | feature kodi
-    val at: String? = null,                 // bolaning MAHALLIY vaqti: "2026-09-10T14:30:00"
-    val lat: Double? = null,
-    val lng: Double? = null,
-    val wifi_ssid: String? = null,
-)
-
-@Serializable
-data class EvaluateOutDto(
-    val decision: String,                   // "ALLOW" | "BLOCK"
-    val reason: String,
-    val policy_id: String? = null,
-    val policy_name: String? = null,
-    val scope_type: String? = null,
-    val action: String? = null,
-    val due_to_limit: Boolean = false,
-    val causes: List<String> = emptyList(), // TIME | LOCATION | WIFI | LIMIT | ALLOWLIST
-    val limits_evaluated: Boolean = false,
-    val as_of: String,
 )
 
 // ── packs ─────────────────────────────────────────────────────

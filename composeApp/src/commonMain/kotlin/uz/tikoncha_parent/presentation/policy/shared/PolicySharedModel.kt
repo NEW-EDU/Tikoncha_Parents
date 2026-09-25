@@ -80,10 +80,10 @@ class PolicySharedModel() : ViewModel() {
                         expiresAt = policy.expiresAt,
                         expiryOption = null,
                         wifiList = policy.wifiRule,
-                        extraLocations = policy.extraLocations,
-                        launchLimits = policy.launchLimits,
+                        launchLimit = policy.launchLimit,
                         iosSelectionIds = policy.targets.iosSelectionIds,
                         packs = policy.targets.packs,
+                        excludePackages = policy.targets.excludePackages,
                     )
                 }
                 _state.update { s -> s.copy(initialDraftSnapshot = s.toSnapshot()) }

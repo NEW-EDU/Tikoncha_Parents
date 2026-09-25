@@ -27,7 +27,7 @@ import uz.tikoncha_parent.domain.use_case.policy.RefreshPoliciesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.presentation.policy.toItemUi
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
-import uz.tikoncha_parent.data.mapper.toAppSelectionUi
+import uz.tikoncha_parent.presentation.policy.app_site_selection.toAppSelectionUi
 import uz.tikoncha_parent.domain.model.policy.QuickBlockTarget
 import uz.tikoncha_parent.domain.repository.policy.PolicyRepository
 import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlocksUseCase

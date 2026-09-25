@@ -53,12 +53,12 @@ data class PolicySharedState(
     val expiryOption: ExpiryOption? = null,
     /** WiFi ekrani hali "soon" — faqat saqlanadi. */
     val wifiList: List<WifiCondition> = emptyList(),
-    /** 2+ lokatsiya — UI bittasini ko'rsatadi, qolgani saqlanadi. */
-    val extraLocations: List<LocationRule> = emptyList(),
-    val launchLimits: List<LaunchLimit> = emptyList(),
+    val launchLimit: LaunchLimit? = null,
     /** iOS ilova tanlovi — Parents UI'da yo'q. */
     val iosSelectionIds: List<String> = emptyList(),
     val packs: List<String> = emptyList(),
+    /** "Ochiq qoladi" istisnolari — bu ekranda tahrirlanmaydi, PATCH targets'da yo'qolmasin. */
+    val excludePackages: List<String> = emptyList(),
 ) {
     val isEditable: Boolean
         get() = selectedPolicy == null || selectedPolicy.canEdit

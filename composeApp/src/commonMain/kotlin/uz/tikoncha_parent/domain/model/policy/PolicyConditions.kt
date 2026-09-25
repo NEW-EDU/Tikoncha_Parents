@@ -23,11 +23,15 @@ data class TimeCondition(
 @Serializable
 data class WifiCondition(val ssid: String, val include: Boolean = true): JavaSerializable
 
+/**
+ * Shartlar VA bilan birlashadi. v2.1: bitta jadval — bitta vaqt oralig'i, bitta hudud
+ * (`null` = shart yo'q). Wi-Fi hech bir mijozda ishlatilmaydi — faqat tahrirda yo'qolmasin.
+ */
 @Serializable
 data class PolicyConditions(
-    val time: List<TimeCondition> = emptyList(),
-    val location: List<LocationRule> = emptyList(),
+    val time: TimeCondition? = null,
+    val location: LocationRule? = null,
     val wifi: List<WifiCondition> = emptyList()
 ): JavaSerializable {
-    val isEmpty: Boolean get() = time.isEmpty() && location.isEmpty() && wifi.isEmpty()
+    val isEmpty: Boolean get() = time == null && location == null && wifi.isEmpty()
 }

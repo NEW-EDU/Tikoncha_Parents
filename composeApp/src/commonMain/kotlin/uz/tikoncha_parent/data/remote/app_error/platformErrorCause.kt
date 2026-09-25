@@ -3,6 +3,7 @@ package uz.tikoncha_parent.data.remote.app_error
 import io.ktor.client.network.sockets.ConnectTimeoutException
 import io.ktor.client.network.sockets.SocketTimeoutException
 import io.ktor.client.plugins.HttpRequestTimeoutException
+import io.ktor.serialization.ContentConvertException
 import kotlinx.io.IOException
 import kotlinx.serialization.SerializationException
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
@@ -27,7 +28,10 @@ object ApiErrorMapper {
         is SocketTimeoutException,
         is ConnectTimeoutException -> ErrorCause.Timeout
 
-        is SerializationException -> ErrorCause.InvalidResponse
+        // Ktor `body()` parse xatosini JsonConvertException'ga o'raydi — u SerializationException
+        // avlodi EMAS. Busiz server bilan format mos kelmasligi "noma'lum xato" bo'lib qolardi.
+        is SerializationException,
+        is ContentConvertException -> ErrorCause.InvalidResponse
 
         is IOException -> ErrorCause.NoInternet
 

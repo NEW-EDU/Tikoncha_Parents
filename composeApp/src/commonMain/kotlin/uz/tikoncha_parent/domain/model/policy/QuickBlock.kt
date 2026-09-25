@@ -20,16 +20,28 @@ enum class QuickBlockResult {
     }
 }
 
-/** Bitta shaxsning (bola yoki ota-ona) tezkor bloklari to'plami. */
+/**
+ * Bitta shaxsning (bola yoki ota-ona) tezkor bloklari to'plami.
+ *
+ * O'chirilgan ([isActive] = false) yoki pauzadagi blok ro'yxatini saqlaydi, lekin hech
+ * narsani yopmaydi — ekranda "yopiq" deb ko'rsatilmaydi.
+ */
 data class QuickBlockEntry(
     val policyId: String,
     val scope: PolicyType,
     val actorUserId: String?,
     val targets: PolicyTargets,
-    val updatedAt: Instant
+    val updatedAt: Instant,
+    val isActive: Boolean = true,
+    val pausedUntil: Instant? = null,
 ) {
     fun isMine(myUserId: String): Boolean =
         scope == PolicyType.PARENT_CHILD && actorUserId == myUserId
 
     val isChildOwner: Boolean get() = scope == PolicyType.STUDENT
+
+    fun isPaused(now: Instant): Boolean = pausedUntil != null && pausedUntil > now
+
+    /** Hozir haqiqatan yopyaptimi. */
+    fun isEnforced(now: Instant): Boolean = isActive && !isPaused(now)
 }

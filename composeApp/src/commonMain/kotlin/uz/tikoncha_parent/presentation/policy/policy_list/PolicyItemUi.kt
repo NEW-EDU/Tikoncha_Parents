@@ -37,10 +37,8 @@ data class PolicyItemUi(
     val timeRule: List<TimeRuleUi>,
     val limitRule: List<LimitRuleUi>,
     val locationRule: LocationRule?,
-    /** 2+ lokatsiya — UI ko'rsatmaydi, tahrirda qaytarib yuboriladi. */
-    val extraLocations: List<LocationRule> = emptyList(),
     val wifiRule: List<WifiCondition> = emptyList(),
-    val launchLimits: List<LaunchLimit> = emptyList(),
+    val launchLimit: LaunchLimit? = null,
 ) : JavaSerializable {
 
     val hasTimeRule: Boolean get() = timeRule.isNotEmpty()

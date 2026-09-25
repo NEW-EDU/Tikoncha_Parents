@@ -72,9 +72,7 @@ import uz.tikoncha_parent.domain.use_case.payment.GetPaymentTransactionsUseCase
 import uz.tikoncha_parent.domain.use_case.payment.PurchaseIApPremiumUseCase
 import uz.tikoncha_parent.domain.use_case.policy.AddQuickBlockUseCase
 import uz.tikoncha_parent.domain.use_case.policy.CreatePolicyUseCase
-import uz.tikoncha_parent.domain.use_case.policy.CreateTimedBlockUseCase
 import uz.tikoncha_parent.domain.use_case.policy.DeletePolicyUseCase
-import uz.tikoncha_parent.domain.use_case.policy.EvaluatePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetPolicyEventsUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetProtectionPackStatusesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GrantBonusTimeUseCase
@@ -112,7 +110,6 @@ import uz.tikoncha_parent.presentation.policy.policy_list.PolicyViewModel
 import uz.tikoncha_parent.presentation.policy.policy_setup.PolicySetupViewModel
 import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksViewModel
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedModel
-import uz.tikoncha_parent.presentation.policy.template.sleep.SleepTemplateSetupViewModel
 import uz.tikoncha_parent.presentation.policy.time_rule.setup.TimeRuleSetupViewModel
 import uz.tikoncha_parent.presentation.profile.ProfileViewModel
 import uz.tikoncha_parent.presentation.profile.child_user_edit.ChildInfoEditViewModel
@@ -216,9 +213,7 @@ val sharedModule = module {
     single { DeletePolicyUseCase(get()) }
     single { TogglePolicyUseCase(get()) }
     single { PausePolicyUseCase(get()) }
-    single { CreateTimedBlockUseCase(get()) }
     single { GrantBonusTimeUseCase(get()) }
-    single { EvaluatePolicyUseCase(get()) }
     single { GetPolicyEventsUseCase(get()) }
     // Tezkor blok
     single { ObserveQuickBlocksUseCase(get()) }
@@ -295,7 +290,6 @@ val sharedModule = module {
     factory { PolicySetupViewModel(get(), get(), get()) }
     single { PolicySharedModel() }
     factory { AppWebViewModel(get()) }
-    factory { SleepTemplateSetupViewModel(get(), get(), get()) }
     factory { PaymentViewModel(get(), get(), get()) }
     factory { SubscriptionPaymentViewModel(get()) }
     factory { CoinsViewModel(get(), get(), get()) }

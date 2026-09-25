@@ -47,11 +47,6 @@ data class Policy(
         expiresAt != null && expiresAt <= now -> PolicyEffectiveState.EXPIRED
         else -> PolicyEffectiveState.ACTIVE
     }
-
-    /** Server `count_standard_active` bilan bir xil: bepul tarif limitini yeydigan jadval. */
-    fun countsTowardsPolicyLimit(): Boolean =
-        isStandard && isActive &&
-                (scope == PolicyType.PARENT_CHILD || scope == PolicyType.STUDENT)
 }
 
 /** `GET /v2/policies` natijasi — delta sinxronizatsiya uchun [asOf] bilan. */

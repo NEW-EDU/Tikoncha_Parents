@@ -5,10 +5,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import uz.tikoncha_parent.data.mapper.policy.toDomain
 import uz.tikoncha_parent.data.mapper.policy.toDto
+import uz.tikoncha_parent.data.mapper.policy.toQuickBlockEntry
 import uz.tikoncha_parent.data.remote.app_error.PolicyCall
 import uz.tikoncha_parent.data.remote.app_error.PolicyErrorMapper
+import uz.tikoncha_parent.data.remote.model.ApiEnvelope
+import uz.tikoncha_parent.data.remote.model.policy.QuickBlockOutDto
 import uz.tikoncha_parent.data.remote.policy.PolicyApiService
 import uz.tikoncha_parent.data.repository.apiCall
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
@@ -24,66 +29,75 @@ class QuickBlockRepositoryImpl(
 
     private val entries = MutableStateFlow<Map<String, List<QuickBlockEntry>>>(emptyMap())
 
+    /**
+     * Barcha tezkor blok so'rovlari (ro'yxat ham) navbat bilan, bosilgan tartibda.
+     * Aks holda bir necha ilovani tez bossa javoblar aralash kelib, eski ro'yxat
+     * yangisini bosib qo'yardi. Server qatorni qulflaydi — yo'qolish bo'lmaydi,
+     * lekin keshga javoblar tartibi mijozda ta'minlanadi.
+     */
+    private val lock = Mutex()
+
     override fun observeQuickBlocks(childId: String): Flow<List<QuickBlockEntry>> =
         entries.map { it[childId].orEmpty() }.distinctUntilChanged()
 
-    override fun cachedQuickBlocks(childId: String): List<QuickBlockEntry> =
-        entries.value[childId].orEmpty()
-
     override suspend fun refresh(childId: String): Outcome<List<QuickBlockEntry>> =
-        apiCall(TAG) {
-            val r = api.quickBlocks(childId)
-            val body = r.data
-            when {
-                r.success && body != null -> {
-                    val items = body.items.map { it.toDomain() }
-                    entries.update { it + (childId to items) }
-                    Outcome.Success(items)
-                }
+        lock.withLock {
+            apiCall(TAG) {
+                val r = api.quickBlocks(childId)
+                val body = r.data
+                when {
+                    r.success && body != null -> {
+                        val items = body.items.map { it.toDomain() }
+                        entries.update { it + (childId to items) }
+                        Outcome.Success(items)
+                    }
 
-                r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.LIST, r.code), r.error)
+                    r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
+                    else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.LIST, r.code), r.error)
+                }
             }
         }
 
     override suspend fun add(childId: String, target: QuickBlockTarget): Outcome<QuickBlockResult> =
-        apiCall(TAG) {
-            val r = api.quickBlockAdd(target.toDto(childId))
-            val body = r.data
-            when {
-                r.success && body != null -> {
-                    refresh(childId)
-                    Outcome.Success(QuickBlockResult.Companion.from(body.result))
-                }
-
-                r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                else -> Outcome.Failure(
-                    PolicyErrorMapper.from(PolicyCall.QUICK_BLOCK_ADD, r.code),
-                    r.error,
-                )
-            }
+        lock.withLock {
+            apiCall(TAG) { apply(childId, PolicyCall.QUICK_BLOCK_ADD, api.quickBlockAdd(target.toDto(childId))) }
         }
 
     override suspend fun remove(childId: String, target: QuickBlockTarget): Outcome<QuickBlockResult> =
-        apiCall(TAG) {
-            val r = api.quickBlockRemove(childId, target)
-            val body = r.data
-            when {
-                r.success && body != null -> {
-                    refresh(childId)
-                    Outcome.Success(QuickBlockResult.Companion.from(body.result))
-                }
-
-                // Tezkor blok jadvali hali yaratilmagan — olib tashlash kerak bo'lgan narsa yo'q.
-                r.code == 404 -> Outcome.Success(QuickBlockResult.ABSENT)
-
-                r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                else -> Outcome.Failure(
-                    PolicyErrorMapper.from(PolicyCall.QUICK_BLOCK_REMOVE, r.code),
-                    r.error,
-                )
+        lock.withLock {
+            apiCall(TAG) {
+                val r = api.quickBlockRemove(childId, target)
+                // Mening tezkor blokim hali yaratilmagan — olib tashlanadigan narsa yo'q.
+                if (!r.success && r.code == 404) Outcome.Success(QuickBlockResult.ABSENT)
+                else apply(childId, PolicyCall.QUICK_BLOCK_REMOVE, r)
             }
         }
+
+    /** Javobdagi butun jadval keshdagi o'z yozuvi o'rniga qo'yiladi — qayta so'rov yo'q. */
+    private fun apply(childId: String, call: PolicyCall, r: ApiEnvelope<QuickBlockOutDto>): Outcome<QuickBlockResult> {
+        val body = r.data
+        return when {
+            r.success && body != null -> {
+                body.policy?.toDomain()?.toQuickBlockEntry()?.let { entry -> upsert(childId, entry) }
+                Outcome.Success(QuickBlockResult.from(body.result))
+            }
+
+            r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
+            else -> Outcome.Failure(PolicyErrorMapper.from(call, r.code), r.error)
+        }
+    }
+
+    private fun upsert(childId: String, entry: QuickBlockEntry) {
+        entries.update { map ->
+            val list = map[childId] ?: return@update map        // ro'yxat hali olinmagan — refresh olib keladi
+            val next = if (list.any { it.policyId == entry.policyId }) {
+                list.map { if (it.policyId == entry.policyId) entry else it }
+            } else {
+                list + entry
+            }
+            map + (childId to next)
+        }
+    }
 
     private companion object { const val TAG = "QuickBlockRepository" }
 }

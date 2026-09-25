@@ -6,7 +6,8 @@ import io.ktor.client.request.setBody
 import io.ktor.http.HttpMethod
 import uz.tikoncha_parent.data.remote.model.AddChildRequest
 import uz.tikoncha_parent.data.remote.model.AddChildResponse
-import uz.tikoncha_parent.data.remote.model.AppUsageResponse
+import uz.tikoncha_parent.data.remote.model.ApiEnvelope
+import uz.tikoncha_parent.data.remote.model.AppUsageDataDto
 import uz.tikoncha_parent.data.remote.model.ChildrenLocationResponse
 import uz.tikoncha_parent.data.remote.model.ChildrenResponse
 import uz.tikoncha_parent.data.remote.model.UnlinkChildRequest
@@ -31,14 +32,19 @@ class ChildApiService(private val client: HttpClient) {
 
             }
         )
-    suspend fun appUsages(params: Map<String, Any>): AppUsageResponse =
+    /**
+     * Soatlik foydalanish. Sanalar — bolaning mahalliy sanasi (YYYY-MM-DD, ikkalasi ham kiradi).
+     * [tz] — server "bugun"ni va obuna bo'yicha ruxsat etilgan kunlarni shu mintaqada hisoblaydi.
+     */
+    suspend fun appUsages(userId: String, dateFrom: String, dateTo: String, tz: String): ApiEnvelope<AppUsageDataDto> =
         client.safeRequest(
             method = HttpMethod.Get,
             url = "data-exchange",
             block = {
-                params.forEach {
-                    parameter(it.key, it.value)
-                }
+                parameter("user_id", userId)
+                parameter("date_from", dateFrom)
+                parameter("date_to", dateTo)
+                parameter("tz", tz)
             }
         )
 

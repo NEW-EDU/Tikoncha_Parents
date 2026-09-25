@@ -16,10 +16,11 @@ data class LaunchLimit(
     val days: Set<WeekDay>,
     val maxLaunches: Int
 ): JavaSerializable
+/** v2.1: bitta foydalanish limiti; ochishlar limiti Parent'da yaratilmaydi — faqat saqlanadi. */
 @Serializable
 data class PolicyLimits(
-    val usage: List<UsageLimit> = emptyList(),
-    val launch: List<LaunchLimit> = emptyList()
+    val usage: UsageLimit? = null,
+    val launch: LaunchLimit? = null
 ): JavaSerializable {
-    val isEmpty: Boolean get() = usage.isEmpty() && launch.isEmpty()
+    val isEmpty: Boolean get() = usage == null && launch == null
 }

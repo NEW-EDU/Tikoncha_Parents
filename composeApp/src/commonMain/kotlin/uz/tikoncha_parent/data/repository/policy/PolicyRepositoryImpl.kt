@@ -5,7 +5,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
-import kotlinx.datetime.LocalDateTime
 import uz.tikoncha_parent.data.mapper.policy.toCreateDto
 import uz.tikoncha_parent.data.mapper.policy.toDomain
 import uz.tikoncha_parent.data.mapper.policy.toDto
@@ -14,13 +13,12 @@ import uz.tikoncha_parent.data.mapper.policy.toJsonObject
 import uz.tikoncha_parent.data.remote.app_error.ApiErrorMapper
 import uz.tikoncha_parent.data.remote.app_error.PolicyCall
 import uz.tikoncha_parent.data.remote.app_error.PolicyErrorMapper
-import uz.tikoncha_parent.data.remote.model.AppDto
+import uz.tikoncha_parent.data.mapper.toDomain
+import uz.tikoncha_parent.domain.model.apps.InstalledApp
 import uz.tikoncha_parent.data.remote.policy.PolicyApiService
 import uz.tikoncha_parent.data.repository.apiCall
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
-import uz.tikoncha_parent.domain.model.policy.EvalResult
-import uz.tikoncha_parent.domain.model.policy.EvalTargetRef
 import uz.tikoncha_parent.domain.model.policy.Policy
 import uz.tikoncha_parent.domain.model.policy.PolicyDraft
 import uz.tikoncha_parent.domain.model.policy.PolicyListSnapshot
@@ -65,17 +63,6 @@ class PolicyRepositoryImpl(
                     Outcome.Success(snapshot)
                 }
 
-                r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.LIST, r.code), r.error)
-            }
-        }
-
-    override suspend fun getPolicy(policyId: String): Outcome<Policy> =
-        apiCall(TAG) {
-            val r = api.get(policyId)
-            val dto = r.data
-            when {
-                r.success && dto != null -> Outcome.Success(dto.toDomain())
                 r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
                 else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.LIST, r.code), r.error)
             }
@@ -127,24 +114,6 @@ class PolicyRepositoryImpl(
             }
         }
 
-    override suspend fun evaluate(
-        childId: String,
-        target: EvalTargetRef,
-        at: LocalDateTime?,
-    ): Outcome<EvalResult> =
-        apiCall(TAG) {
-            val r = api.evaluate(target.toDto(childId = childId, at = at?.toString()))
-            val dto = r.data
-            when {
-                r.success && dto != null -> Outcome.Success(dto.toDomain())
-                r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                else -> Outcome.Failure(
-                    PolicyErrorMapper.from(PolicyCall.EVALUATE, r.code),
-                    r.error
-                )
-            }
-        }
-
     // ── Kesh yordamchilari ────────────────────────────────────
 
     /** `deleted_at` bor satr keshdan chiqadi, qolgani id bo'yicha upsert bo'ladi. */
@@ -174,14 +143,12 @@ class PolicyRepositoryImpl(
         }
     }
 
-    // ── Eski v1 metodlari — 2-qadamda o'chadi ─────────────────
-
-    override suspend fun childApps(userId: String): Outcome<List<AppDto>> =
+    override suspend fun childApps(userId: String): Outcome<List<InstalledApp>> =
         apiCall(TAG) {
             val r = api.childApps(userId)
             val body = r.data
             when {
-                r.success && body != null -> Outcome.Success(body.items)
+                r.success && body != null -> Outcome.Success(body.items.map { it.toDomain() })
                 r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
                 else -> Outcome.Failure(ApiErrorMapper.fromCode(r.code), r.error)
             }

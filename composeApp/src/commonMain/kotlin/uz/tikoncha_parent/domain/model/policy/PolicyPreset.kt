@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 enum class PolicyPreset: JavaSerializable {
-    SLEEP, APP_LIMIT, CONTENT, PROTECTION;
+    SLEEP, APP_LIMIT, SCHOOL, CONTENT, PROTECTION;
     companion object {
         fun from(raw: String?): PolicyPreset? = entries.firstOrNull { it.name == raw }
     }

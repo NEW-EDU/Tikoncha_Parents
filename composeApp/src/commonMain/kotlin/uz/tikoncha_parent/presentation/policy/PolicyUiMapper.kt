@@ -38,12 +38,11 @@ fun Policy.toItemUi(myUserId: String, now: Instant): PolicyItemUi = PolicyItemUi
     pausedUntil = pausedUntil,
     expiresAt = expiresAt,
     targets = targets,
-    timeRule = conditions.time.mapIndexed { index, condition -> condition.toUi(index + 1) },
-    limitRule = limits.usage.mapIndexed { index, limit -> limit.toUi(index + 1) },
-    locationRule = conditions.location.firstOrNull(),
-    extraLocations = conditions.location.drop(1),
+    timeRule = listOfNotNull(conditions.time?.toUi(1)),
+    limitRule = listOfNotNull(limits.usage?.toUi(1)),
+    locationRule = conditions.location,
     wifiRule = conditions.wifi,
-    launchLimits = limits.launch,
+    launchLimit = limits.launch,
 )
 
 fun TimeCondition.toUi(id: Int): TimeRuleUi = TimeRuleUi(
@@ -102,15 +101,17 @@ fun PolicySharedState.toDraft(
         features = selectedFeatures.toList(),
         iosSelectionIds = iosSelectionIds,
         packs = packs,
+        excludePackages = excludePackages,
     ),
+    // v2.1: bitta jadvalda bitta vaqt va bitta limit — server ro'yxat qabul qilmaydi
     conditions = PolicyConditions(
-        time = timeList.map { it.toCondition() },
-        location = listOfNotNull(locationRule) + extraLocations,
+        time = timeList.firstOrNull()?.toCondition(),
+        location = locationRule,
         wifi = wifiList,
     ),
     limits = PolicyLimits(
-        usage = limitList.map { it.toLimit() },
-        launch = launchLimits,
+        usage = limitList.firstOrNull()?.toLimit(),
+        launch = launchLimit,
     ),
 )
 

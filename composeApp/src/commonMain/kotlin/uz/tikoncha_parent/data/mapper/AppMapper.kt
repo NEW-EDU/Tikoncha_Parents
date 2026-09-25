@@ -1,13 +1,12 @@
 package uz.tikoncha_parent.data.mapper
 
 import uz.tikoncha_parent.data.remote.model.AppDto
-import uz.tikoncha_parent.presentation.policy.app_site_selection.AppSelectionUi
-import uz.tikoncha_parent.presentation.policy.app_site_selection.CategoryLocalizer
+import uz.tikoncha_parent.domain.model.apps.InstalledApp
 
-fun AppDto.toAppSelectionUi(): AppSelectionUi = AppSelectionUi(
-    name = name ?: "",
+fun AppDto.toDomain(): InstalledApp = InstalledApp(
     packageName = `package`,
+    name = name?.takeIf { it.isNotBlank() } ?: `package`,
+    category = category?.takeIf { it.isNotBlank() },
     iconUrl = icon,
-    category = CategoryLocalizer.toCode(category ?: ""),
     order = order,
 )

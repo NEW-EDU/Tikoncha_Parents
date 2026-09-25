@@ -15,11 +15,15 @@ class CreatePolicyUseCase(
         if (draft.name.isBlank()) return Outcome.Failure(ErrorCause.EmptyTitle)
         if (draft.targets.isEmpty) return Outcome.Failure(ErrorCause.Validation)
 
-        val hasBrokenTime = draft.conditions.time.any { it.days.isEmpty() || it.startMin == it.endMin }
-        if (hasBrokenTime) return Outcome.Failure(ErrorCause.Validation)
+        val time = draft.conditions.time
+        if (time != null && (time.days.isEmpty() || time.startMin == time.endMin)) {
+            return Outcome.Failure(ErrorCause.Validation)
+        }
 
-        val hasBrokenLimit = draft.limits.usage.any { it.days.isEmpty() || it.minutes < 1 }
-        if (hasBrokenLimit) return Outcome.Failure(ErrorCause.Validation)
+        val usage = draft.limits.usage
+        if (usage != null && (usage.days.isEmpty() || usage.minutes < 1)) {
+            return Outcome.Failure(ErrorCause.Validation)
+        }
 
         return repository.createPolicy(childId, draft)
     }

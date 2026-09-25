@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import uz.tikoncha_parent.data.mapper.toAppSelectionUi
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.apps.AppCategory
 import uz.tikoncha_parent.domain.repository.policy.PolicyRepository

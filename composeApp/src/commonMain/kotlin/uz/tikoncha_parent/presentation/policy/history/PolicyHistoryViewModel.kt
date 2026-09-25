@@ -135,9 +135,7 @@ class PolicyHistoryViewModel(
     private suspend fun loadAppNames() {
         val res = policyRepository.childApps(childId)
         if (res is Outcome.Success) {
-            appNames = res.data.associate { app ->
-                app.`package` to (app.name?.takeIf { it.isNotBlank() } ?: app.`package`)
-            }
+            appNames = res.data.associate { app -> app.packageName to app.name }
         }
     }
 
