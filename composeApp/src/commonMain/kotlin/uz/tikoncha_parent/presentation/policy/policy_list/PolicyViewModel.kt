@@ -27,12 +27,8 @@ import uz.tikoncha_parent.domain.use_case.policy.RefreshPoliciesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.presentation.policy.toItemUi
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
-import uz.tikoncha_parent.presentation.policy.app_site_selection.toAppSelectionUi
-import uz.tikoncha_parent.domain.model.policy.QuickBlockTarget
-import uz.tikoncha_parent.domain.repository.policy.PolicyRepository
 import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlocksUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RefreshQuickBlocksUseCase
-import uz.tikoncha_parent.domain.use_case.policy.RemoveQuickBlockUseCase
 
 class PolicyViewModel(
     private val observePolicies: ObservePoliciesUseCase,
@@ -43,8 +39,6 @@ class PolicyViewModel(
     private val childRepository: ChildRepository,
     private val observeQuickBlocks: ObserveQuickBlocksUseCase,
     private val refreshQuickBlocks: RefreshQuickBlocksUseCase,
-    private val removeQuickBlock: RemoveQuickBlockUseCase,
-    private val policyRepository: PolicyRepository,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(PolicyState())
@@ -61,8 +55,6 @@ class PolicyViewModel(
     private var permissionJob: Job? = null
     private var childrenJob: Job? = null
     private var quickBlockObserveJob: Job? = null
-    private var childAppsJob: Job? = null
-    private var childAppsLoadedFor: String? = null
 
     init {
         _state.update {
@@ -88,12 +80,10 @@ class PolicyViewModel(
 
             is PolicyEvent.OnChildSelected -> {
                 _state.update {
-                    it.copy(selectedChild = event.child, quickBlocks = emptyList(), childApps = emptyMap())
+                    it.copy(selectedChild = event.child, quickBlocks = emptyList())
                 }
                 AppSettings.selectedChildId = event.child.userId
                 AppSettings.selectedChild = event.child
-                childAppsJob?.cancel()
-                childAppsLoadedFor = null
                 observeSelectedChild()
                 getSubscriptionLimit()
                 getPolicies()
@@ -110,8 +100,6 @@ class PolicyViewModel(
             is PolicyEvent.PausePolicy -> pause(event.policyId, event.option)
 
             is PolicyEvent.ResumePolicy -> pause(event.policyId, option = null)
-
-            is PolicyEvent.RemoveQuickBlock -> removeQuickBlockFor(event.packageName)
 
             PolicyEvent.Tick -> remapPolicies()
         }
@@ -137,7 +125,7 @@ class PolicyViewModel(
 
         if (childId.isNullOrBlank()) {
             domainPolicies = emptyList()
-            _state.update { it.copy(policies = emptyList(), quickBlocks = emptyList(), childApps = emptyMap()) }
+            _state.update { it.copy(policies = emptyList(), quickBlocks = emptyList()) }
             return
         }
 
@@ -151,8 +139,6 @@ class PolicyViewModel(
         quickBlockObserveJob = screenModelScope.launch {
             observeQuickBlocks(childId).collect { list ->
                 _state.update { it.copy(quickBlocks = list) }
-                // Nomlar faqat ko'rsatadigan blok bo'lsagina kerak — ortiqcha so'rov yo'q.
-                if (list.any { entry -> entry.targets.packages.isNotEmpty() }) loadChildApps(childId)
             }
         }
     }
@@ -314,36 +300,6 @@ class PolicyViewModel(
             )) {
                 is Outcome.Success -> _state.update { it.copy(permissionIssueList = res.data) }
                 is Outcome.Failure -> _state.update { it.copy(permissionIssueList = emptyList()) }
-            }
-        }
-    }
-
-    private fun removeQuickBlockFor(packageName: String) {
-        val childId = _state.value.selectedChild?.userId
-        if (childId.isNullOrBlank() || packageName.isBlank()) return
-
-        val key = PolicyState.quickBlockKey(packageName)
-        if (key in _state.value.actionInProgress) return
-
-        screenModelScope.launch {
-            markInProgress(key, true)
-            val res = removeQuickBlock(childId, QuickBlockTarget.app(packageName))
-            markInProgress(key, false)
-            // ABSENT ham muvaffaqiyat; ro'yxat repozitoriy refresh() orqali o'zi yangilanadi.
-            if (res is Outcome.Failure) emitFailure(res)
-        }
-    }
-
-    /** Bir bola uchun bir marta; xato bo'lsa kartada paket nomi ko'rinadi. */
-    private fun loadChildApps(childId: String) {
-        if (childAppsLoadedFor == childId || childAppsJob?.isActive == true) return
-        childAppsJob = screenModelScope.launch {
-            val res = policyRepository.childApps(childId)
-            if (res is Outcome.Success) {
-                childAppsLoadedFor = childId
-                _state.update { st ->
-                    st.copy(childApps = res.data.map { it.toAppSelectionUi() }.associateBy { it.packageName })
-                }
             }
         }
     }

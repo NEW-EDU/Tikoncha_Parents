@@ -85,6 +85,9 @@ import uz.tikoncha_parent.domain.use_case.policy.RemoveQuickBlockUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlockSnapshotUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ToggleQuickBlockUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ChildPaidStatusUseCase
+import uz.tikoncha_parent.domain.use_case.policy.UpdateOwnQuickBlockUseCase
+import uz.tikoncha_parent.domain.use_case.policy.AddQuickBlockAppsUseCase
+import uz.tikoncha_parent.domain.use_case.policy.GetBlockableChildAppsUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ToggleProtectionPackUseCase
 import uz.tikoncha_parent.domain.use_case.policy.UpdatePolicyUseCase
@@ -127,6 +130,7 @@ import uz.tikoncha_parent.presentation.profile.user_edit.UserInfoEditViewModel
 import uz.tikoncha_parent.presentation.protection.ProtectionViewModel
 import uz.tikoncha_parent.presentation.register.RegisterViewmodel
 import uz.tikoncha_parent.presentation.statistic.StatisticViewModel
+import uz.tikoncha_parent.presentation.policy.quick.QuickBlockViewModel
 import uz.tikoncha_parent.presentation.task.TaskListViewModel
 import uz.tikoncha_parent.presentation.task.completed_task.CompletedTaskViewModel
 import uz.tikoncha_parent.presentation.task.create_task.CreateTaskViewModel
@@ -226,6 +230,9 @@ val sharedModule = module {
     single { ObserveQuickBlockSnapshotUseCase(get()) }
     single { ToggleQuickBlockUseCase(get()) }
     single { ChildPaidStatusUseCase(get()) }
+    single { UpdateOwnQuickBlockUseCase(get()) }
+    single { AddQuickBlockAppsUseCase(get()) }
+    single { GetBlockableChildAppsUseCase(get()) }
     // Himoya paketlari
     single { GetProtectionPackStatusesUseCase(get(), get()) }
     single { ToggleProtectionPackUseCase(get()) }
@@ -275,19 +282,29 @@ val sharedModule = module {
         )
     }
     factory {
-        PolicyViewModel(get(),
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
-            get(),
+        PolicyViewModel(
+            observePolicies = get(),
+            refreshPolicies = get(),
+            togglePolicy = get(),
+            pausePolicy = get(),
+            permissionStatusRepository = get(),
+            childRepository = get(),
+            observeQuickBlocks = get(),
+            refreshQuickBlocks = get(),
         )
     }
     factory { ProtectionPacksViewModel(get(), get(), get()) }
+    factory {
+        QuickBlockViewModel(
+            observeSnapshot = get(),
+            refreshQuickBlocks = get(),
+            updateOwn = get(),
+            addApps = get(),
+            removeQuickBlock = get(),
+            getApps = get(),
+            childPaidStatus = get(),
+        )
+    }
     factory { PolicyHistoryViewModel(get(), get()) }
     factory { NotificationViewModel(get()) }
     factory { TimeRuleSetupViewModel() }

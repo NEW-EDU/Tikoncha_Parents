@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.test.runTest
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
+import uz.tikoncha_parent.domain.model.policy.Patch
+import uz.tikoncha_parent.domain.model.policy.PolicyPatch
 import uz.tikoncha_parent.domain.model.policy.QuickBlockEntry
 import uz.tikoncha_parent.domain.model.policy.QuickBlockResult
 import uz.tikoncha_parent.domain.model.policy.QuickBlockSnapshot
@@ -26,8 +28,11 @@ private class FakeQuickBlockRepository : QuickBlockRepository {
     override suspend fun remove(childId: String, target: QuickBlockTarget): Outcome<QuickBlockResult> {
         calls += "remove:${target.key}"; return Outcome.Success(QuickBlockResult.REMOVED)
     }
-    override suspend fun setEnabled(childId: String, policyId: String, enabled: Boolean): Outcome<QuickBlockEntry> {
-        calls += "enable:$policyId:$enabled"; return Outcome.Success(entry(QuickOwner.ME, id = policyId))
+    override suspend fun update(childId: String, policyId: String, patch: PolicyPatch): Outcome<QuickBlockEntry> {
+        val enabled = (patch.isActive as? Patch.Value)?.value
+        val paused = (patch.pausedUntil as? Patch.Value)?.let { "pause:${it.value}" }
+        calls += paused?.let { "$it:$policyId" } ?: "enable:$policyId:$enabled"
+        return Outcome.Success(entry(QuickOwner.ME, id = policyId))
     }
 }
 

@@ -854,7 +854,6 @@ This information is used only for these features and is not shared with third pa
     <string name="ertagacha">Until tomorrow</string>
     <string name="dushanbagacha">Until Monday</string>
     <string name="davom_ettirish">Resume</string>
-    <string name="tezkor_bloklar">Quick blocks</string>
     <string name="himoya_paketlari">Protection packs</string>
     <string name="boshqa_ota_ona_yoqqan">Enabled by another parent</string>
     <string name="farzand_ozi_yoqqan">Enabled by your child</string>
@@ -924,4 +923,27 @@ This information is used only for these features and is not shared with third pa
     <string name="stat_reenable_confirm">Block</string>
     <string name="stat_quick_paywall_title">Subscription required</string>
     <string name="stat_quick_paywall_message">Blocking an app with one tap requires a Tikoncha Plus subscription.</string>
+
+    <!-- Tezkor blok ekrani -->
+    <string name="quick_title">Quick block</string>
+    <string name="quick_enabled">On</string>
+    <string name="quick_pause">Pause</string>
+    <string name="quick_blocked_apps">Blocked apps</string>
+    <string name="quick_no_apps">No apps selected</string>
+    <string name="quick_add_app">Add app</string>
+    <string name="quick_add_count">Add (%1$d)</string>
+    <string name="quick_apps_empty">The list of apps on the child’s phone hasn’t arrived yet.</string>
+    <string name="quick_info_always">Apps on this list are always blocked, whatever the time or place.</string>
+    <string name="quick_info_off">It is off now — turn it on to block these apps.</string>
+    <string name="quick_info_paused">Paused until %1$s — nothing is blocked until then.</string>
+    <string name="quick_info_stats">You can also add or remove apps with one tap from the usage statistics.</string>
+    <string name="quick_info_readd">If quick block is off, adding an app turns it back on.</string>
+    <string name="quick_child_blocks">Blocked by the child</string>
+    <string name="quick_coparent_blocks">Blocked by the other parent</string>
+    <string name="quick_others_note">Only their owner can change these lists. Add the app to your own list if needed.</string>
+    <string name="quick_card_count">%1$d apps</string>
+    <string name="quick_card_on">on</string>
+    <string name="quick_card_off">off</string>
+    <string name="quick_card_paused">paused</string>
+    <string name="quick_card_others">Child: %1$d · Other parent: %2$d</string>
 </resources>

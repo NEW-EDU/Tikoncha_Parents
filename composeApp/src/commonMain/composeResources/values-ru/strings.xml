@@ -852,7 +852,6 @@
     <string name="ertagacha">До завтра</string>
     <string name="dushanbagacha">До понедельника</string>
     <string name="davom_ettirish">Возобновить</string>
-    <string name="tezkor_bloklar">Быстрые блокировки</string>
     <string name="himoya_paketlari">Пакеты защиты</string>
     <string name="boshqa_ota_ona_yoqqan">Включил другой родитель</string>
     <string name="farzand_ozi_yoqqan">Включил сам ребёнок</string>
@@ -929,4 +928,27 @@
     <string name="stat_reenable_confirm">Заблокировать</string>
     <string name="stat_quick_paywall_title">Нужна подписка</string>
     <string name="stat_quick_paywall_message">Блокировка приложения одним нажатием работает с подпиской Tikoncha Plus.</string>
+
+    <!-- Tezkor blok ekrani -->
+    <string name="quick_title">Быстрая блокировка</string>
+    <string name="quick_enabled">Включено</string>
+    <string name="quick_pause">Приостановить</string>
+    <string name="quick_blocked_apps">Блокируемые приложения</string>
+    <string name="quick_no_apps">Приложения не выбраны</string>
+    <string name="quick_add_app">Добавить приложение</string>
+    <string name="quick_add_count">Добавить (%1$d)</string>
+    <string name="quick_apps_empty">Список приложений с телефона ребёнка ещё не получен.</string>
+    <string name="quick_info_always">Приложения из списка закрыты всегда — независимо от времени и места.</string>
+    <string name="quick_info_off">Сейчас выключено — после включения эти приложения будут закрыты.</string>
+    <string name="quick_info_paused">Приостановлено до %1$s — до этого времени ничего не закрывается.</string>
+    <string name="quick_info_stats">Добавлять и убирать приложения можно и из статистики использования — одним нажатием.</string>
+    <string name="quick_info_readd">Если быстрая блокировка выключена, добавление приложения снова её включит.</string>
+    <string name="quick_child_blocks">Закрыл сам ребёнок</string>
+    <string name="quick_coparent_blocks">Закрыл другой родитель</string>
+    <string name="quick_others_note">Эти списки может менять только их владелец. При необходимости добавьте приложение в свой список.</string>
+    <string name="quick_card_count">Приложений: %1$d</string>
+    <string name="quick_card_on">включено</string>
+    <string name="quick_card_off">выключено</string>
+    <string name="quick_card_paused">на паузе</string>
+    <string name="quick_card_others">Ребёнок: %1$d · Другой родитель: %2$d</string>
 </resources>

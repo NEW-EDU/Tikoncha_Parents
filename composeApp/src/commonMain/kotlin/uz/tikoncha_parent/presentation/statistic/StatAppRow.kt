@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,15 +29,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.StringResource
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.android
 import tikoncha_parents.composeapp.generated.resources.stat_blocked_by_child
 import tikoncha_parents.composeapp.generated.resources.stat_blocked_by_child_inactive
 import tikoncha_parents.composeapp.generated.resources.stat_blocked_by_child_paused
@@ -57,6 +52,7 @@ import uz.tikoncha_parent.domain.model.policy.QuickBadge
 import uz.tikoncha_parent.domain.model.policy.QuickLock
 import uz.tikoncha_parent.domain.model.policy.QuickOwner
 import uz.tikoncha_parent.domain.model.policy.QuickStatus
+import uz.tikoncha_parent.presentation.base.ChildAppIcon
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
 
@@ -90,7 +86,7 @@ fun StatAppRow(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            StatAppIcon(iconUrl = app.iconUrl)
+            ChildAppIcon(iconUrl = app.iconUrl, size = StatIconSize)
 
             Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -156,35 +152,6 @@ fun StatAppRow(
 }
 
 private val StatIconSize = 40.dp
-
-@Composable
-private fun StatAppIcon(iconUrl: String?) {
-    Box(
-        modifier = Modifier
-            .size(StatIconSize)
-            .clip(RoundedCornerShape(12.dp))
-            .background(AppColors.bg.tertiary),
-        contentAlignment = Alignment.Center,
-    ) {
-        if (!iconUrl.isNullOrBlank()) {
-            AsyncImage(
-                model = iconUrl,
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Fit,
-                error = painterResource(Res.drawable.android),
-                placeholder = painterResource(Res.drawable.android),
-            )
-        } else {
-            Icon(
-                painter = painterResource(Res.drawable.android),
-                contentDescription = null,
-                tint = AppColors.icon.accentPrimary,
-                modifier = Modifier.padding(8.dp),
-            )
-        }
-    }
-}
 
 /** Ulush chizig'i: 4dp, animatsiyasiz. Juda kichik ulush ham nuqta bo'lib ko'rinadi. */
 @Composable

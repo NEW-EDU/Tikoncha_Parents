@@ -865,7 +865,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="ertagacha">Ertagacha</string>
     <string name="dushanbagacha">Dushanbagacha</string>
     <string name="davom_ettirish">Davom ettirish</string>
-    <string name="tezkor_bloklar">Tezkor bloklar</string>
     <string name="himoya_paketlari">Himoya paketlari</string>
     <string name="boshqa_ota_ona_yoqqan">Boshqa ota-ona yoqqan</string>
     <string name="farzand_ozi_yoqqan">Farzandingiz o‘zi yoqqan</string>
@@ -934,4 +933,27 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="stat_reenable_confirm">Bloklash</string>
     <string name="stat_quick_paywall_title">Obuna kerak</string>
     <string name="stat_quick_paywall_message">Ilovani bir bosishda yopish Tikoncha Plus obunasi bilan ishlaydi.</string>
+
+    <!-- Tezkor blok ekrani -->
+    <string name="quick_title">Tezkor blok</string>
+    <string name="quick_enabled">Yoqilgan</string>
+    <string name="quick_pause">To‘xtatish</string>
+    <string name="quick_blocked_apps">Yopiladigan ilovalar</string>
+    <string name="quick_no_apps">Ilova tanlanmagan</string>
+    <string name="quick_add_app">Ilova qo‘shish</string>
+    <string name="quick_add_count">Qo‘shish (%1$d)</string>
+    <string name="quick_apps_empty">Farzand telefonidagi ilovalar ro‘yxati hali kelmagan.</string>
+    <string name="quick_info_always">Ro‘yxatdagi ilovalar doim yopiq turadi — vaqt va joydan qat’i nazar.</string>
+    <string name="quick_info_off">Hozir o‘chiq — yoqsangiz, shu ilovalar yopiladi.</string>
+    <string name="quick_info_paused">%1$s gacha to‘xtatilgan — shu vaqtgacha hech narsa yopilmaydi.</string>
+    <string name="quick_info_stats">Ilovalar statistikasidan ham ilovani bir bosishda shu ro‘yxatga qo‘shish yoki olib tashlash mumkin.</string>
+    <string name="quick_info_readd">Tezkor blok o‘chiq bo‘lsa, ilova qo‘shish uni qayta yoqadi.</string>
+    <string name="quick_child_blocks">Farzand o‘zi yopgan</string>
+    <string name="quick_coparent_blocks">Boshqa ota-ona yopgan</string>
+    <string name="quick_others_note">Bu ro‘yxatlarni faqat ularning egasi o‘zgartira oladi. Kerak bo‘lsa, ilovani o‘z ro‘yxatingizga qo‘shing.</string>
+    <string name="quick_card_count">%1$d ta ilova</string>
+    <string name="quick_card_on">yoqilgan</string>
+    <string name="quick_card_off">o‘chiq</string>
+    <string name="quick_card_paused">to‘xtatilgan</string>
+    <string name="quick_card_others">Farzand: %1$d · Boshqa ota-ona: %2$d</string>
 </resources>

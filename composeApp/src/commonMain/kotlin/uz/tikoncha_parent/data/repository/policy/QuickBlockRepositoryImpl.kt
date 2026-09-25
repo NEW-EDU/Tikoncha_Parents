@@ -75,10 +75,10 @@ class QuickBlockRepositoryImpl(
             }
         }
 
-    override suspend fun setEnabled(childId: String, policyId: String, enabled: Boolean): Outcome<QuickBlockEntry> =
+    override suspend fun update(childId: String, policyId: String, patch: PolicyPatch): Outcome<QuickBlockEntry> =
         lock.withLock {
             apiCall(TAG) {
-                val r = api.patch(policyId, PolicyPatch.toggle(enabled).toJsonObject())
+                val r = api.patch(policyId, patch.toJsonObject())
                 val dto = r.data
                 when {
                     r.success && dto != null -> {

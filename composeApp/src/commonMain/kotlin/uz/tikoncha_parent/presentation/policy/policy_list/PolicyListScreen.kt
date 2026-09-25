@@ -79,6 +79,8 @@ import uz.tikoncha_parent.presentation.policy.history.PolicyHistoryScreen
 import uz.tikoncha_parent.presentation.policy.policy_setup.PolicySetupScreen
 import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionEntrySection
 import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksScreen
+import uz.tikoncha_parent.presentation.policy.quick.QuickBlockCard
+import uz.tikoncha_parent.presentation.policy.quick.QuickBlockScreen
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedEvent
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedModel
 import uz.tikoncha_parent.presentation.policy.shared.PolicySharedState
@@ -458,14 +460,13 @@ fun PolicyListUi(
                 }
 
 
-                if (state.visibleQuickBlocks.isNotEmpty()) {
-                    item(key = "quick_blocks") {
-                        QuickBlockSection(
-                            entries = state.visibleQuickBlocks,
-                            myUserId = state.myUserId,
-                            apps = state.childApps,
-                            isBusy = { pkg -> state.isQuickBlockBusy(pkg) },
-                            onRemove = { pkg -> event(PolicyEvent.RemoveQuickBlock(pkg)) },
+                state.selectedChild?.let { child ->
+                    item(key = "quick_block") {
+                        QuickBlockCard(
+                            quick = state.quick,
+                            now = state.now,
+                            onClick = { navigator?.push(QuickBlockScreen(child.userId)) },
+                            modifier = Modifier.padding(vertical = 8.dp),
                         )
                     }
                 }
