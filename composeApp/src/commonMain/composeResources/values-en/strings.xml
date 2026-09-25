@@ -1004,4 +1004,12 @@ This information is used only for these features and is not shared with third pa
     <string name="location_child_here">My child’s location</string>
     <string name="protection_section">What is protected</string>
     <string name="protection_footer">Tikoncha keeps the list up to date.</string>
+    <string name="location_show_area">Show area</string>
+    <string name="info_sites_shield">Sites are blocked only while Shield mode is on on your child’s phone.</string>
+    <string name="protection_shield_note">Content protection works only while Shield mode is on on your child’s phone.</string>
+    <string name="protection_shield_short">Works only in Shield mode</string>
+    <string name="info_features_shield">YouTube Shorts and Instagram Reels are blocked only while Shield mode is on on your child’s phone.</string>
+    <string name="protection_by_child">Your child turned it on — only your child can turn theirs off</string>
+    <string name="protection_by_coparent">The other parent turned it on — only they can turn theirs off</string>
+    <string name="protection_by_both">Your child and the other parent turned it on — only they can turn theirs off</string>
 </resources>

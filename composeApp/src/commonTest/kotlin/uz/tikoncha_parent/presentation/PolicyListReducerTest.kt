@@ -86,6 +86,22 @@ class PolicyListReducerTest {
     }
 
     @Test
+    fun emptyDefaultQuickBlocksOfOthersAreShownOff() {
+        // Server har egaga tezkor blokni oldindan yaratadi: o'chiq, bo'sh — ular ham ko'rinadi
+        val quick = QuickBlockSnapshot(
+            listOf(entry(QuickOwner.CHILD, active = false), entry(QuickOwner.CO_PARENT, active = false), entry(QuickOwner.ME, active = false)),
+            ME,
+            paid = true,
+        )
+        val s = input(emptyList(), quick = quick).reduce(PolicyListState())
+        assertTrue(PolicyTab.CHILD in s.tabs && PolicyTab.COPARENT in s.tabs)
+        assertEquals(0, s.childQuick.single().summary.appCount)
+        assertFalse(s.childQuick.single().isEnabled)
+        assertEquals(0, s.quickBlock.appCount)
+        assertFalse(s.quickBlock.isEnabled)
+    }
+
+    @Test
     fun myPresetPolicyBindsToTemplateAndLeavesMine() {
         val s = input(listOf(p("sleep", preset = PolicyPreset.SLEEP), p("x"))).reduce(PolicyListState())
         val sleep = s.presets.first { it.kind == PresetKind.SLEEP }

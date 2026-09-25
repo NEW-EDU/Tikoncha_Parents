@@ -111,10 +111,13 @@ class AddQuickBlockAppsUseCase(
 class GetBlockableChildAppsUseCase(
     private val repository: PolicyRepository,
 ) {
-    suspend operator fun invoke(childId: String): Outcome<List<InstalledApp>> {
+    suspend operator fun invoke(childId: String): Outcome<List<InstalledApp>> = all(childId).map(::blockable)
+
+    /** Bolaning hamma ilovalari (himoyalanganlari ham) — boshqaning jadvalini ko'rsatishda nom va ikonka uchun. */
+    suspend fun all(childId: String): Outcome<List<InstalledApp>> {
         if (childId.isBlank()) return Outcome.Failure(ErrorCause.ChildNotSelected)
-        return repository.childApps(childId).map { apps ->
-            apps.filter { ProtectedPackages.canBlock(it.packageName) }.sortedBy { it.name.lowercase() }
-        }
+        return repository.childApps(childId).map { apps -> apps.sortedBy { it.name.lowercase() } }
     }
+
+    fun blockable(apps: List<InstalledApp>): List<InstalledApp> = apps.filter { ProtectedPackages.canBlock(it.packageName) }
 }

@@ -119,7 +119,8 @@ fun PolicyListInput.reduce(previous: PolicyListState): PolicyListState {
             pausedUntil = it.pausedUntil,
         )
     } ?: QuickBlockUi()
-    val otherQuick = quick.entries.filter { !it.isMine(myUserId) && it.targets.packages.isNotEmpty() }
+    // Har egada tezkor blok doim bor (server oldindan yaratadi: o'chiq, bo'sh) — bo'shi ham ko'rinadi
+    val otherQuick = quick.entries.filter { !it.isMine(myUserId) }
 
     val child = standard.filter { it.ownership(myUserId) == Ownership.CHILD }.map { it.card() }
     val childQuick = otherQuick.filter { it.isChildOwner }.map { it.card(Ownership.CHILD) }

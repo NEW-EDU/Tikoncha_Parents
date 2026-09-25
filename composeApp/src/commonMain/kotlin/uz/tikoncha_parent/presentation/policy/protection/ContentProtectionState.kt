@@ -21,7 +21,9 @@ data class ContentProtectionState(
     val error: Outcome.Failure? = null,
 ) {
     val isEnabled: Boolean get() = packs.any { it.enabledByMe }
-    val byOthers: Boolean get() = packs.any { it.enabledByCoParent || it.enabledByChild }
+    val byChild: Boolean get() = packs.any { it.enabledByChild }
+    val byCoParent: Boolean get() = packs.any { it.enabledByCoParent }
+    val byOthers: Boolean get() = byChild || byCoParent
     val isAvailable: Boolean get() = packs.isNotEmpty()
 }
 

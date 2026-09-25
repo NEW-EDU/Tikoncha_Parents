@@ -36,6 +36,8 @@ fun PolicyCardBody(
     subtitle: String?,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    /** Qo'shimcha eslatma (masalan "Faqat Qalqon rejimida ishlaydi"). */
+    note: String? = null,
     trailing: @Composable () -> Unit,
 ) {
     Row(
@@ -65,6 +67,9 @@ fun PolicyCardBody(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
+            }
+            if (note != null) {
+                Text(text = note, style = PolicyText.subtitle, color = AppColors.text.accentWarning, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
         }
         trailing()

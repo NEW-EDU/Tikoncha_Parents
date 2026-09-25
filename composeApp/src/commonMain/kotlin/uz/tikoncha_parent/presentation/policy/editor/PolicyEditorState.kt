@@ -1,6 +1,7 @@
 package uz.tikoncha_parent.presentation.policy.editor
 
 import uz.tikoncha_parent.domain.model.LimitWindow
+import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.apps.InstalledApp
 import uz.tikoncha_parent.domain.model.policy.PolicyDraft
@@ -32,12 +33,16 @@ data class PolicyEditorState(
     val childId: String = "",
     val policyId: String? = null,
     val readOnly: Boolean = false,
+    /** Jadval kimniki (server scope); maktab jadvalining ro'yxati ko'rsatilmaydi — juda uzun. */
+    val scope: PolicyType? = null,
     val isEnabled: Boolean = false,
     val pausedUntil: Instant? = null,
     val now: Instant = Instant.DISTANT_PAST,
     val draft: PolicyDraft? = null,
     val saved: PolicyDraft? = null,
     val childApps: List<InstalledApp> = emptyList(),
+    /** Hamma ilovalar (himoyalanganlari ham) — ko'rish sahifasida nomlar uchun. */
+    val allChildApps: List<InstalledApp> = emptyList(),
     /** Oxirgi 7 kun ishlatilishi — nishon tanlashda tartib uchun. */
     val appUsage: Map<String, Long> = emptyMap(),
     val child: ChildPin? = null,
@@ -49,6 +54,8 @@ data class PolicyEditorState(
     val sheet: EditorSheet? = null,
     val dialog: EditorDialog? = null,
     val targets: TargetsEditorState? = null,
+    /** Farzand / ikkinchi ota-ona jadvali nimalarni yopishi — faqat ko'rish sahifasi. */
+    val viewTargets: Boolean = false,
     val location: LocationPickerState? = null,
     val menuOpen: Boolean = false,
     val saving: Boolean = false,
@@ -60,6 +67,7 @@ data class PolicyEditorState(
     val error: Outcome.Failure? = null,
 ) {
     val isDetail: Boolean get() = policyId != null
+    val canViewTargets: Boolean get() = readOnly && scope != PolicyType.SCHOOL && scope != PolicyType.ALL
     val isLoaded: Boolean get() = draft != null
     val isPaused: Boolean get() = pausedUntil != null && pausedUntil > now
 
@@ -100,6 +108,8 @@ sealed interface PolicyEditorEvent {
     data class Targets(val e: TargetsEditorEvent) : PolicyEditorEvent
     data object TargetsDone : PolicyEditorEvent
     data object TargetsClosed : PolicyEditorEvent
+    data object TargetsViewClicked : PolicyEditorEvent
+    data object TargetsViewClosed : PolicyEditorEvent
 
     // ── Qachon ──
     data object AddConditionClicked : PolicyEditorEvent
@@ -129,6 +139,8 @@ sealed interface PolicyEditorEvent {
     data class Location(val e: LocationPickerEvent) : PolicyEditorEvent
     data object LocationDone : PolicyEditorEvent
     data object LocationClosed : PolicyEditorEvent
+    /** Boshqaning jadvali hududi — xaritada faqat ko'rish. */
+    data object LocationViewClicked : PolicyEditorEvent
 
     // ── Nom, menyu, o'chirish ──
     data object MenuToggled : PolicyEditorEvent

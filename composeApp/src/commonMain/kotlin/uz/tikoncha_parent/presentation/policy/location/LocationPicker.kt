@@ -46,6 +46,7 @@ import tikoncha_parents.composeapp.generated.resources.arrow_back
 import tikoncha_parents.composeapp.generated.resources.editor_inside
 import tikoncha_parents.composeapp.generated.resources.editor_outside
 import tikoncha_parents.composeapp.generated.resources.location_child_here
+import tikoncha_parents.composeapp.generated.resources.location_show_area
 import tikoncha_parents.composeapp.generated.resources.radius
 import tikoncha_parents.composeapp.generated.resources.saqlash
 import uz.tikoncha_parent.presentation.base.CustomButtonNew
@@ -149,13 +150,15 @@ fun LocationPicker(
             modifier = Modifier.fillMaxSize(),
         )
 
-        // Markazdagi pin — hudud markazi
-        Icon(
-            imageVector = Icons.Default.LocationOn,
-            contentDescription = null,
-            tint = accent,
-            modifier = Modifier.align(Alignment.Center).size(48.dp).offset(y = (-24).dp),
-        )
+        // Markazdagi pin — hudud markazi (tahrirda; ko'rishda doira joyida turadi)
+        if (!state.readOnly) {
+            Icon(
+                imageVector = Icons.Default.LocationOn,
+                contentDescription = null,
+                tint = accent,
+                modifier = Modifier.align(Alignment.Center).size(48.dp).offset(y = (-24).dp),
+            )
+        }
 
         // Tepada: orqaga + sarlavha
         Row(
@@ -215,8 +218,12 @@ fun LocationPicker(
             }
         }
 
-        // Pastki panel: radius + Saqlash
-        Surface(
+        // Pastki panel: radius + Saqlash; ko'rishda — ichida/tashqarisida, radius va "Hududni ko'rsatish"
+        if (state.readOnly) ReadOnlyAreaPanel(
+            state = state,
+            onFocus = { event(LocationPickerEvent.AreaFocused) },
+            modifier = Modifier.align(Alignment.BottomCenter).padding(16.dp).fillMaxWidth(),
+        ) else Surface(
             modifier = Modifier.align(Alignment.BottomCenter).padding(16.dp).fillMaxWidth(),
             shape = RoundedCornerShape(24.dp),
             color = AppColors.modal.primary,
@@ -264,6 +271,24 @@ fun LocationPicker(
                     onClick = onDone,
                 )
             }
+        }
+    }
+}
+
+/** Boshqaning hududi — faqat ma'lumot. */
+@Composable
+private fun ReadOnlyAreaPanel(state: LocationPickerState, onFocus: () -> Unit, modifier: Modifier) {
+    Surface(modifier = modifier, shape = RoundedCornerShape(24.dp), color = AppColors.modal.primary, tonalElevation = 8.dp) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(
+                    text = stringResource(if (state.reverse) Res.string.editor_outside else Res.string.editor_inside),
+                    style = PolicyText.row,
+                    color = AppColors.text.primary,
+                )
+                Text(text = "${state.radiusMeters} m", style = PolicyText.rowStrong, color = AppColors.text.accentEmphasis)
+            }
+            CustomButtonNew(text = stringResource(Res.string.location_show_area), modifier = Modifier.fillMaxWidth(), onClick = onFocus)
         }
     }
 }

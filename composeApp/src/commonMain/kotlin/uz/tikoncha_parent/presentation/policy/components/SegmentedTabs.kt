@@ -23,7 +23,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
@@ -109,8 +108,9 @@ fun SegmentedTabs(
                     modifier = Modifier
                         .weight(weight)
                         .height(44.dp)
-                        .clip(RoundedCornerShape(topStart = start, bottomStart = start, topEnd = end, bottomEnd = end))
-                        .background(bg)
+                        // clip qatlami yo'q: Android 10 (Galaxy A31) da to'liq yumaloq burchakli kesilgan
+                        // qatlam matni bilan birga chizilmay qolardi — shakl faqat fonga beriladi
+                        .background(bg, RoundedCornerShape(topStart = start, bottomStart = start, topEnd = end, bottomEnd = end))
                         .selectable(selected = active, interactionSource = interaction, indication = null, role = Role.Tab) {
                             if (index != selectedIndex) haptics.tick()
                             onSelect(index)

@@ -92,6 +92,8 @@ class PolicyEditorViewModel(
                 s.copy(draft = editor.applyTo(draft, TargetsFlavor.Custom), targets = null)
             }
             PolicyEditorEvent.TargetsClosed -> _state.update { it.copy(targets = null) }
+            PolicyEditorEvent.TargetsViewClicked -> _state.update { if (it.canViewTargets) it.copy(viewTargets = true) else it }
+            PolicyEditorEvent.TargetsViewClosed -> _state.update { it.copy(viewTargets = false) }
 
             PolicyEditorEvent.AddConditionClicked -> _state.update { it.copy(sheet = EditorSheet.ADD_CONDITION, menuOpen = false) }
             is PolicyEditorEvent.ConditionPicked -> openCondition(e.kind)
@@ -170,6 +172,9 @@ class PolicyEditorViewModel(
                 s.copy(location = null, draft = s.draft?.let { it.copy(conditions = it.conditions.copy(location = rule)) })
             }
             PolicyEditorEvent.LocationClosed -> _state.update { it.copy(location = null) }
+            PolicyEditorEvent.LocationViewClicked -> _state.update { s ->
+                s.draft?.conditions?.location?.let { s.copy(location = LocationPickerState.from(it, s.child).copy(readOnly = true)) } ?: s
+            }
 
             PolicyEditorEvent.MenuToggled -> _state.update { it.copy(menuOpen = !it.menuOpen) }
             PolicyEditorEvent.RenameClicked -> _state.update { it.copy(dialog = EditorDialog.NAME, menuOpen = false) }
@@ -194,7 +199,9 @@ class PolicyEditorViewModel(
     /** Faqat ko'rish rejimida o'tkazilmaydigan hodisalar. */
     private fun PolicyEditorEvent.isEdit(): Boolean = when (this) {
         is PolicyEditorEvent.Init, PolicyEditorEvent.ErrorDismissed, PolicyEditorEvent.SheetDismissed,
-        PolicyEditorEvent.DialogDismissed, PolicyEditorEvent.MenuToggled, PolicyEditorEvent.PayWallDismissed -> false
+        PolicyEditorEvent.DialogDismissed, PolicyEditorEvent.MenuToggled, PolicyEditorEvent.PayWallDismissed,
+        PolicyEditorEvent.TargetsViewClicked, PolicyEditorEvent.TargetsViewClosed,
+        PolicyEditorEvent.LocationViewClicked, PolicyEditorEvent.LocationClosed, is PolicyEditorEvent.Location -> false
         else -> true
     }
 
@@ -225,6 +232,7 @@ class PolicyEditorViewModel(
                         s.copy(
                             policyId = policyId,
                             readOnly = !policy.canEdit(AppSettings.userId),
+                            scope = policy.scope,
                             isEnabled = policy.isActive,
                             pendingEnabled = s.pendingEnabled?.takeIf { it != policy.isActive },
                             pausedUntil = policy.pausedUntil,
@@ -237,7 +245,9 @@ class PolicyEditorViewModel(
             }
         }
         screenModelScope.launch {
-            getApps(childId).getOrNull()?.let { apps -> _state.update { it.copy(childApps = apps) } }
+            getApps.all(childId).getOrNull()?.let { all ->
+                _state.update { it.copy(allChildApps = all, childApps = getApps.blockable(all)) }
+            }
         }
         screenModelScope.launch {
             val pin = getChildLocation(childId)?.toPin()

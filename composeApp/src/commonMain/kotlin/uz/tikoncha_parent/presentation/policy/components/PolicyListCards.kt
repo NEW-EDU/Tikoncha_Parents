@@ -5,7 +5,7 @@ import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.apps_icon
+import tikoncha_parents.composeapp.generated.resources.ic_policy
 import tikoncha_parents.composeapp.generated.resources.bed_sleeping
 import tikoncha_parents.composeapp.generated.resources.blocklist
 import tikoncha_parents.composeapp.generated.resources.policy_content_protection
@@ -24,6 +24,7 @@ import uz.tikoncha_parent.presentation.policy.model.PolicySummary
 import uz.tikoncha_parent.presentation.policy.model.PresetKind
 import uz.tikoncha_parent.presentation.policy.model.PresetPolicyUi
 import uz.tikoncha_parent.presentation.policy.model.QuickBlockUi
+import tikoncha_parents.composeapp.generated.resources.protection_shield_short
 
 /* Ro'yxat kartalari — Student `PolicyCards` bilan bir xil. */
 
@@ -64,6 +65,7 @@ fun ContentProtectionCard(ui: ContentProtectionUi, busy: Boolean, onToggle: (Boo
         subtitle = stringResource(if (!ui.isEnabled && ui.byOthers) Res.string.policy_content_protection_others else Res.string.policy_content_protection_sub),
         onClick = onClick,
         modifier = modifier,
+        note = stringResource(Res.string.protection_shield_short),
     ) {
         PolicySwitch(checked = ui.isEnabled, onCheckedChange = onToggle, busy = busy, enabled = ui.isAvailable)
     }
@@ -92,10 +94,15 @@ fun QuickBlockCard(ui: QuickBlockUi, busy: Boolean, onToggle: (Boolean) -> Unit,
 @Composable
 fun PolicyCard(ui: PolicyCardUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier) {
     PolicyCardBody(
-        icon = if (ui.isQuickBlock) Res.drawable.blocklist else Res.drawable.apps_icon,
+        icon = if (ui.isQuickBlock) Res.drawable.blocklist else Res.drawable.ic_policy,
         tone = ui.ownership.tone(ui.isEnabled),
         title = if (ui.isQuickBlock) stringResource(Res.string.quick_title) else ui.title,
-        subtitle = if (ui.isPaused) stringResource(Res.string.policy_paused) else ui.summary.text().ifBlank { null },
+        subtitle = when {
+            ui.isPaused -> stringResource(Res.string.policy_paused)
+            // har egada tezkor blok doim bor (o'chiq, bo'sh) — bo'sh bo'lsa shuni aytamiz
+            ui.isQuickBlock -> ui.summary.text().ifBlank { stringResource(Res.string.quick_no_apps) }
+            else -> ui.summary.text().ifBlank { null }
+        },
         onClick = onClick,
         modifier = modifier,
     ) {

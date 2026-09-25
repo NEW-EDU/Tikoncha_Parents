@@ -41,7 +41,6 @@ import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
 import tikoncha_parents.composeapp.generated.resources.policy_content_protection
-import tikoncha_parents.composeapp.generated.resources.policy_content_protection_others
 import tikoncha_parents.composeapp.generated.resources.policy_n_apps
 import tikoncha_parents.composeapp.generated.resources.policy_n_categories
 import tikoncha_parents.composeapp.generated.resources.policy_n_sites
@@ -71,6 +70,11 @@ import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
+import tikoncha_parents.composeapp.generated.resources.protection_shield_note
+import uz.tikoncha_parent.presentation.policy.components.PolicyInfoBox
+import tikoncha_parents.composeapp.generated.resources.protection_by_both
+import tikoncha_parents.composeapp.generated.resources.protection_by_child
+import tikoncha_parents.composeapp.generated.resources.protection_by_coparent
 
 /** Kontent himoya — Student ekrani bilan bir xil: bitta switch, paketlar faqat ma'lumot. */
 @OptIn(InternalVoyagerApi::class)
@@ -126,7 +130,18 @@ fun ContentProtectionUi(
 
             // ── Mening himoyam; farzand / ikkinchi ota-ona yoqqani — alohida belgi ──
             SettingGroup {
-                if (state.byOthers) OthersBanner(stringResource(Res.string.policy_content_protection_others))
+                // Kim yoqqani aniq: farzand / ikkinchi ota-ona — ularnikini men o'chira olmayman
+                if (state.byOthers) {
+                    OthersBanner(
+                        stringResource(
+                            when {
+                                state.byChild && state.byCoParent -> Res.string.protection_by_both
+                                state.byChild -> Res.string.protection_by_child
+                                else -> Res.string.protection_by_coparent
+                            }
+                        )
+                    )
+                }
                 SettingRow(
                     title = stringResource(Res.string.preset_enabled),
                     trailing = {
@@ -139,6 +154,8 @@ fun ContentProtectionUi(
                     },
                 )
             }
+
+            PolicyInfoBox(lines = listOf(stringResource(Res.string.protection_shield_note)))
 
             // ── Nimalar himoya qilinadi — faqat ma'lumot ──
             Column(modifier = Modifier.alpha(if (active) 1f else 0.45f), verticalArrangement = Arrangement.spacedBy(10.dp)) {

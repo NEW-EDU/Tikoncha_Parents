@@ -74,8 +74,8 @@ import tikoncha_parents.composeapp.generated.resources.xatolik
 import uz.tikoncha_parent.domain.model.LimitWindow
 import uz.tikoncha_parent.domain.model.policy.PolicyDraft
 import uz.tikoncha_parent.domain.model.policy.PolicyTargets
-import uz.tikoncha_parent.presentation.base.CustomButtonNew
 import uz.tikoncha_parent.presentation.base.CustomDialog
+import uz.tikoncha_parent.presentation.base.CustomLoadingButton
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.haptics.ErrorHaptic
@@ -235,10 +235,12 @@ fun PresetPolicyUi(
             Spacer(modifier = Modifier.height(8.dp))
         }
 
-        CustomButtonNew(
+        CustomLoadingButton(
             text = stringResource(Res.string.saqlash),
             modifier = Modifier.fillMaxWidth().padding(horizontal = ContainerPadding, vertical = 12.dp),
+            color = AppColors.button.primary,
             enabled = state.hasChanges && !state.saving,
+            loading = state.saving,
             onClick = { event(PresetPolicyEvent.SaveClicked) },
         )
     }

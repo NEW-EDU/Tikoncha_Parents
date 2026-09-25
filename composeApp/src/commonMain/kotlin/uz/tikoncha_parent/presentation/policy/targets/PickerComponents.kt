@@ -101,6 +101,7 @@ import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.HeaderHeight
 import uz.tikoncha_parent.ui.NormalIconButtonSize
 import uz.tikoncha_parent.ui.theme.AppColors
+import tikoncha_parents.composeapp.generated.resources.protection_shield_short
 
 /*
  * Nishon tanlash qatorlari — Student `PickerComponents` bilan bir xil:
@@ -128,6 +129,9 @@ object PolicyAppFeatures {
     )
 
     fun featuresFor(packageName: String): List<PolicyAppFeature> = REGISTRY[packageName].orEmpty()
+
+    /** Kalit bo'yicha funksiya (`YOUTUBE_SHORTS` → YouTube Shorts). */
+    fun byKey(key: String): PolicyAppFeature? = REGISTRY.values.flatten().firstOrNull { it.key.equals(key, ignoreCase = true) }
 
     /** Qidiruvda: ilova nomi mos kelsa — hammasi, aks holda faqat mos funksiyalar. */
     fun visibleFeaturesFor(app: InstalledApp, query: String): List<PolicyAppFeature> {
@@ -381,14 +385,17 @@ fun PickerAppWithFeatures(
                     ) {
                         ChildAppIcon(iconUrl = app.iconUrl, size = IconSize)
                         Spacer(modifier = Modifier.width(16.dp))
-                        Text(
-                            text = f.name,
-                            modifier = Modifier.weight(1f),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                            color = AppColors.text.primary,
-                            style = PolicyText.row,
-                        )
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(text = f.name, maxLines = 1, overflow = TextOverflow.Ellipsis, color = AppColors.text.primary, style = PolicyText.row)
+                            // Shorts / Reels'ni Accessibility yopadi — faqat Qalqon rejimida
+                            Text(
+                                text = stringResource(Res.string.protection_shield_short),
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                color = AppColors.text.accentWarning,
+                                style = PolicyText.subtitle,
+                            )
+                        }
                         Spacer(modifier = Modifier.width(8.dp))
                         AppCheckbox(
                             checked = selectedFeatures.any { it.equals(f.key, ignoreCase = true) },

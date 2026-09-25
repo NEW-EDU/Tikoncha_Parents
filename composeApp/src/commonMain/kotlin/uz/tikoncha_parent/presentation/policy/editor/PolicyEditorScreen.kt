@@ -109,6 +109,7 @@ import uz.tikoncha_parent.domain.model.policy.PolicyAction
 import uz.tikoncha_parent.domain.model.policy.PolicyDraft
 import uz.tikoncha_parent.presentation.base.CustomButtonNew
 import uz.tikoncha_parent.presentation.base.CustomDialog
+import uz.tikoncha_parent.presentation.base.CustomLoadingButton
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.asText
@@ -154,6 +155,10 @@ import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
 import kotlin.time.Instant
+import uz.tikoncha_parent.domain.model.policy.PolicyTargets
+import uz.tikoncha_parent.presentation.policy.targets.TargetsViewer
+import tikoncha_parents.composeapp.generated.resources.preset_all_apps
+import tikoncha_parents.composeapp.generated.resources.targets_except_open
 
 /**
  * "O'zim sozlayman": jadval yaratish (`policyId == null`) va tahrirlash (Student bilan bir xil).
@@ -210,6 +215,11 @@ class PolicyEditorScreen(private val childId: String, private val policyId: Stri
                 allowLocked = state.paid == false,
                 onLockedClick = { event(PolicyEditorEvent.AllowLockedClicked) },
             )
+            return
+        }
+        val viewed = state.draft
+        if (state.viewTargets && viewed != null) {
+            TargetsViewer(draft = viewed, apps = state.allChildApps, onClose = { event(PolicyEditorEvent.TargetsViewClosed) })
             return
         }
         val location = state.location
@@ -301,17 +311,19 @@ fun PolicyEditorContent(state: PolicyEditorState, event: (PolicyEditorEvent) -> 
                 modifier = Modifier.alpha(if (!state.isDetail || state.isEnabled) 1f else 0.45f),
                 verticalArrangement = Arrangement.spacedBy(22.dp),
             ) {
-                TargetsBlock(draft = draft, editable = editable, event = event)
+                TargetsBlock(draft = draft, editable = editable, canView = state.canViewTargets, event = event)
                 WhenBlock(state = state, draft = draft, editable = editable, event = event)
             }
             Spacer(modifier = Modifier.height(8.dp))
         }
 
         if (editable) {
-            CustomButtonNew(
+            CustomLoadingButton(
                 text = stringResource(Res.string.saqlash),
                 modifier = Modifier.fillMaxWidth().padding(horizontal = ContainerPadding, vertical = 12.dp),
+                color = AppColors.button.primary,
                 enabled = state.canSave,
+                loading = state.saving,
                 onClick = { event(PolicyEditorEvent.SaveClicked) },
             )
         }
@@ -350,10 +362,11 @@ private fun HeaderGroup(state: PolicyEditorState, event: (PolicyEditorEvent) -> 
 
 /** "Nimalar yopiladi": nishon xulosasi yoki "Tanlanmagan". */
 @Composable
-private fun TargetsBlock(draft: PolicyDraft, editable: Boolean, event: (PolicyEditorEvent) -> Unit) {
+private fun TargetsBlock(draft: PolicyDraft, editable: Boolean, canView: Boolean, event: (PolicyEditorEvent) -> Unit) {
     val t = draft.targets
+    val allApps = t.isAllApps
     val counts = listOfNotNull(
-        (t.packages.size + t.features.size).takeIf { it > 0 }?.let { stringResource(Res.string.policy_n_apps, it) },
+        (t.packages.count { it != PolicyTargets.ALL_APPS } + t.features.size).takeIf { it > 0 }?.let { stringResource(Res.string.policy_n_apps, it) },
         t.categories.size.takeIf { it > 0 }?.let { stringResource(Res.string.policy_n_categories, it) },
         t.sites.size.takeIf { it > 0 }?.let { stringResource(Res.string.policy_n_sites, it) },
     ).map { it.replace(' ', ' ') }
@@ -364,18 +377,25 @@ private fun TargetsBlock(draft: PolicyDraft, editable: Boolean, event: (PolicyEd
         SettingGroup {
             SettingRow(
                 title = when {
+                    allApps -> stringResource(Res.string.preset_all_apps)
                     !selected -> stringResource(Res.string.editor_not_selected)
                     allowList -> stringResource(Res.string.targets_only_selected_open)
                     else -> stringResource(Res.string.targets_selected_closed)
                 },
                 subtitle = when {
+                    allApps -> stringResource(Res.string.targets_except_open).takeIf { t.excludePackages.isNotEmpty() }
                     !selected -> null
                     allowList -> counts.joinToString(" · ") + " · " + stringResource(Res.string.targets_only_selected_open_sub)
                     else -> counts.joinToString(" · ")
                 },
-                leading = { PolicyIcon(icon = Res.drawable.apps_icon, tone = if (selected) IconTone.SOLID else IconTone.GRAY, size = 44.dp) },
-                onClick = if (editable) ({ event(PolicyEditorEvent.TargetsClicked) }) else null,
-                trailing = if (editable) ({ Chevron() }) else null,
+                leading = { PolicyIcon(icon = Res.drawable.apps_icon, tone = if (selected || allApps) IconTone.SOLID else IconTone.GRAY, size = 44.dp) },
+                // Tahrirda — muharrir; farzand / ikkinchi ota-ona jadvalida — nimalar yopilishini ko'rish
+                onClick = when {
+                    editable -> ({ event(PolicyEditorEvent.TargetsClicked) })
+                    canView && (selected || allApps) -> ({ event(PolicyEditorEvent.TargetsViewClicked) })
+                    else -> null
+                },
+                trailing = if (editable || (canView && (selected || allApps))) ({ Chevron() }) else null,
             )
         }
     }
@@ -428,12 +448,21 @@ private fun ConditionRow(kind: ConditionKind, draft: PolicyDraft, editable: Bool
         title = kind.title(),
         subtitle = subtitle,
         leading = { ConditionIcon(kind = kind, tone = IconTone.SOLID) },
-        onClick = if (editable) ({ event(PolicyEditorEvent.ConditionClicked(kind)) }) else null,
-        trailing = if (!editable) null else ({
-            IconButton(onClick = { event(PolicyEditorEvent.ConditionRemoved(kind)) }, modifier = Modifier.size(32.dp)) {
-                Icon(imageVector = Icons.Default.Close, contentDescription = null, modifier = Modifier.size(18.dp), tint = AppColors.icon.secondary)
-            }
-        }),
+        // Farzand / ikkinchi ota-ona / maktab jadvalida hudud xaritada ko'riladi (faqat ko'rish)
+        onClick = when {
+            editable -> ({ event(PolicyEditorEvent.ConditionClicked(kind)) })
+            kind == ConditionKind.LOCATION -> ({ event(PolicyEditorEvent.LocationViewClicked) })
+            else -> null
+        },
+        trailing = when {
+            editable -> ({
+                IconButton(onClick = { event(PolicyEditorEvent.ConditionRemoved(kind)) }, modifier = Modifier.size(32.dp)) {
+                    Icon(imageVector = Icons.Default.Close, contentDescription = null, modifier = Modifier.size(18.dp), tint = AppColors.icon.secondary)
+                }
+            })
+            kind == ConditionKind.LOCATION -> ({ Chevron() })
+            else -> null
+        },
     )
 }
 

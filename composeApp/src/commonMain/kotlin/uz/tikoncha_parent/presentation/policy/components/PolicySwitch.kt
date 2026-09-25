@@ -10,6 +10,7 @@ import androidx.compose.ui.unit.dp
 import uz.tikoncha_parent.presentation.base.CustomSwitch
 import uz.tikoncha_parent.presentation.base.haptics.rememberToggleHaptic
 import uz.tikoncha_parent.ui.theme.AppColors
+import androidx.compose.ui.graphics.Color
 
 /**
  * Jadval ekranlaridagi switch: yoqilganda thumb ichida ✓, so'rov ketayotganda o'rnida
@@ -37,6 +38,11 @@ fun PolicySwitch(
                 enabled = enabled,
                 width = 48.dp,
                 showCheckIcon = true,
+                // Student bilan bir xil: track fonga yaqin (field.page), ramkasiz
+                trackOnColor = AppColors.field.page,
+                trackOffColor = AppColors.field.page,
+                trackBorderOnColor = Color.Transparent,
+                trackBorderOffColor = Color.Transparent,
             )
         }
     }

@@ -1014,4 +1014,12 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="location_child_here">Farzandim joylashuvi</string>
     <string name="protection_section">Nimalar himoya qilinadi</string>
     <string name="protection_footer">Ro‘yxatni Tikoncha yangilab turadi.</string>
+    <string name="location_show_area">Hududni ko‘rsatish</string>
+    <string name="info_sites_shield">Saytlar farzandingiz telefonida faqat Qalqon rejimi yoqilganda yopiladi.</string>
+    <string name="protection_shield_note">Kontent himoya farzandingiz telefonida faqat Qalqon rejimi yoqilganda ishlaydi.</string>
+    <string name="protection_shield_short">Faqat Qalqon rejimida ishlaydi</string>
+    <string name="info_features_shield">YouTube Shorts va Instagram Reels farzandingiz telefonida faqat Qalqon rejimi yoqilganda yopiladi.</string>
+    <string name="protection_by_child">Farzandingiz o‘zida yoqqan — uni faqat farzandingiz o‘chira oladi</string>
+    <string name="protection_by_coparent">Ikkinchi ota-ona yoqqan — uni faqat o‘zi o‘chira oladi</string>
+    <string name="protection_by_both">Farzandingiz va ikkinchi ota-ona yoqqan — ularnikini faqat o‘zlari o‘chira oladi</string>
 </resources>

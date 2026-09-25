@@ -30,6 +30,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import uz.tikoncha_parent.ui.theme.AppColors
+import uz.tikoncha_parent.presentation.base.haptics.rememberAppHaptics
 
 /**
  * Izoh qutisi (Student `PolicyInfoBox`): tanlangan shart va nishonlardan keyin "endi nima
@@ -44,6 +45,7 @@ fun PolicyInfoBox(
 ) {
     if (lines.isEmpty() && title == null) return
     var expanded by rememberSaveable { mutableStateOf(false) }
+    val haptics = rememberAppHaptics()
     var headOverflows by remember { mutableStateOf(false) }
 
     val head = title ?: lines.first()
@@ -56,7 +58,13 @@ fun PolicyInfoBox(
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(AppColors.bg.primary.copy(alpha = 0.12f))
-            .then(if (expandable) Modifier.clickable(role = Role.Button) { expanded = !expanded } else Modifier)
+            // Ripple yo'q: blok ochilayotganda u eski o'lchamdan cho'zilib xunuk ko'rinardi — o'q va tik yetarli
+            .then(
+                if (expandable) Modifier.clickable(interactionSource = null, indication = null, role = Role.Button) {
+                    haptics.tick()
+                    expanded = !expanded
+                } else Modifier
+            )
             .animateContentSize()
             .padding(horizontal = 14.dp, vertical = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp),

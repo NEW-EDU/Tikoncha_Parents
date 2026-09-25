@@ -1009,4 +1009,12 @@
     <string name="location_child_here">Где мой ребёнок</string>
     <string name="protection_section">Что защищается</string>
     <string name="protection_footer">Список обновляет Tikoncha.</string>
+    <string name="location_show_area">Показать зону</string>
+    <string name="info_sites_shield">Сайты закрываются, только когда на телефоне ребёнка включён режим «Щит».</string>
+    <string name="protection_shield_note">Защита контента работает, только когда на телефоне ребёнка включён режим «Щит».</string>
+    <string name="protection_shield_short">Работает только в режиме «Щит»</string>
+    <string name="info_features_shield">YouTube Shorts и Instagram Reels закрываются, только когда на телефоне ребёнка включён режим «Щит».</string>
+    <string name="protection_by_child">Ребёнок включил у себя — отключить это может только он</string>
+    <string name="protection_by_coparent">Второй родитель включил — отключить это может только он</string>
+    <string name="protection_by_both">Включили ребёнок и второй родитель — отключить это могут только они сами</string>
 </resources>

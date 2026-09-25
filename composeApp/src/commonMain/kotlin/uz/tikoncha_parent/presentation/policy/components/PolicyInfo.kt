@@ -32,6 +32,8 @@ import uz.tikoncha_parent.domain.model.LimitWindow
 import uz.tikoncha_parent.presentation.policy.mapper.InfoWhat
 import uz.tikoncha_parent.presentation.policy.mapper.PolicyInfo
 import uz.tikoncha_parent.presentation.policy.mapper.TargetCounts
+import tikoncha_parents.composeapp.generated.resources.info_sites_shield
+import tikoncha_parents.composeapp.generated.resources.info_features_shield
 
 /** Jadval sozlamalaridan gaplar: asosiy gap · ochiq qoladiganlar · zarur ilovalar · o'chiq. */
 @Composable
@@ -55,6 +57,9 @@ fun PolicyInfo.sentences(): List<String> {
     }
     if (rule != null && allowList) out += limitSentence(selected = true)
     if (mentionProtected) out += stringResource(Res.string.info_protected)
+    // Saytlarni bola telefonidagi Accessibility xizmati yopadi — u faqat Qalqon rejimida ishlaydi
+    if (closed.sites > 0 || open.sites > 0) out += stringResource(Res.string.info_sites_shield)
+    if (features) out += stringResource(Res.string.info_features_shield)
     if (disabled) out += stringResource(Res.string.info_disabled)
     return out
 }

@@ -27,6 +27,8 @@ data class PolicyInfo(
     val limit: UsageLimit? = null,
     val mentionProtected: Boolean = false,
     val disabled: Boolean = false,
+    /** Shorts / Reels bor — ular faqat Qalqon rejimida yopiladi. */
+    val features: Boolean = false,
 )
 
 enum class InfoWhat { NOTHING, ALL_APPS, ALL_SITES, ALL_APPS_AND_SITES, SELECTED }
@@ -45,6 +47,7 @@ fun PolicyDraft.toInfo(enabled: Boolean? = null): PolicyInfo {
         location = conditions.location,
         limit = limits.usage,
         disabled = enabled == false,
+        features = t.features.isNotEmpty(),
     )
     return when (action) {
         PolicyAction.ALLOW -> {

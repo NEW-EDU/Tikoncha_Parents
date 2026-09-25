@@ -87,6 +87,8 @@ import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.NormalIconButtonSize
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
+import tikoncha_parents.composeapp.generated.resources.info_sites_shield
+import uz.tikoncha_parent.presentation.policy.components.PolicyInfoBox
 
 /**
  * Nishon tanlash muharriri — tayyor jadval / o'zim sozlayman ichida to'liq ekran (Student bilan bir xil).
@@ -465,6 +467,13 @@ private fun LazyListScope.categoriesTab(
 private fun LazyListScope.sitesTab(state: TargetsEditorState, sites: List<String>, event: (TargetsEditorEvent) -> Unit) {
     val query = state.query.trim()
     val visible = if (query.isBlank()) sites else sites.filter { it.contains(query, ignoreCase = true) }
+    // Saytlarni bola telefonida faqat Qalqon rejimi yopadi
+    item(key = "site_shield") {
+        PolicyInfoBox(
+            lines = listOf(stringResource(Res.string.info_sites_shield)),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+        )
+    }
     item(key = "site_add") {
         PickerAddRow(
             text = stringResource(Res.string.targets_add_site),

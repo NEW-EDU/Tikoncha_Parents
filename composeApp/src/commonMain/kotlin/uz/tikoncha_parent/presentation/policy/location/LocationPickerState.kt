@@ -29,6 +29,8 @@ data class LocationPickerState(
     /** Kamera shu nuqtaga ko'chadi; har ko'chishda [focusTick] oshadi. */
     val focus: LatLng? = null,
     val focusTick: Int = 0,
+    /** Farzand / ikkinchi ota-ona / maktab jadvalining hududi — faqat ko'rish: doira joyida turadi. */
+    val readOnly: Boolean = false,
 ) {
     val canSave: Boolean get() = center != null
 
@@ -72,9 +74,22 @@ sealed interface LocationPickerEvent {
     /** "Farzandim joylashuvi" — markaz bolaning oxirgi joyiga. */
     data object ChildFocused : LocationPickerEvent
     data class ReverseChanged(val reverse: Boolean) : LocationPickerEvent
+    /** "Hududni ko'rsatish" — kamera hudud markaziga. */
+    data object AreaFocused : LocationPickerEvent
 }
 
-fun LocationPickerState.reduce(e: LocationPickerEvent): LocationPickerState = when (e) {
+fun LocationPickerState.reduce(e: LocationPickerEvent): LocationPickerState = when {
+    readOnly -> when (e) {
+        // Faqat ko'rish: xaritani surish hududni ko'chirmaydi, faqat kamera ko'chadi
+        is LocationPickerEvent.UserLocated -> copy(userLocation = e.position, focus = e.position, focusTick = focusTick + 1)
+        LocationPickerEvent.ChildFocused -> child?.let { copy(focus = it.position, focusTick = focusTick + 1) } ?: this
+        LocationPickerEvent.AreaFocused -> center?.let { copy(focus = it, focusTick = focusTick + 1) } ?: this
+        else -> this
+    }
+    else -> reduceEditable(e)
+}
+
+private fun LocationPickerState.reduceEditable(e: LocationPickerEvent): LocationPickerState = when (e) {
     is LocationPickerEvent.CameraIdle -> copy(center = e.target)
     is LocationPickerEvent.RadiusChanged -> copy(
         radiusMeters = (e.meters / LocationPickerState.RADIUS_STEP * LocationPickerState.RADIUS_STEP)
@@ -83,4 +98,5 @@ fun LocationPickerState.reduce(e: LocationPickerEvent): LocationPickerState = wh
     is LocationPickerEvent.UserLocated -> copy(userLocation = e.position, center = e.position, focus = e.position, focusTick = focusTick + 1)
     LocationPickerEvent.ChildFocused -> child?.let { copy(center = it.position, focus = it.position, focusTick = focusTick + 1) } ?: this
     is LocationPickerEvent.ReverseChanged -> copy(reverse = e.reverse)
+    LocationPickerEvent.AreaFocused -> center?.let { copy(focus = it, focusTick = focusTick + 1) } ?: this
 }
