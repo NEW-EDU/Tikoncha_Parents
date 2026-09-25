@@ -1002,4 +1002,59 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="preset_all_apps">Barcha ilovalar</string>
     <string name="policy_paywall_protection">Kontent himoya Tikoncha Plus bilan ishlaydi.</string>
     <string name="policy_paywall_count">Bepul tarifda jadvallar soni cheklangan. Ko‘proq jadval uchun Tikoncha Plus kerak.</string>
+
+    <!-- Jadval izohi ("nima bo‘ladi") -->
+    <string name="info_nothing">Hali hech narsa tanlanmagan — bu jadval hech narsani yopmaydi.</string>
+    <string name="info_always">Doim</string>
+    <string name="info_sentence">%1$s %2$s.</string>
+    <string name="info_when_time">%1$s %2$s dan %3$s gacha</string>
+    <string name="info_when_time_outside">%1$s %2$s – %3$s oralig‘idan tashqarida</string>
+    <string name="info_where_inside">farzandingiz belgilangan hudud ichida bo‘lsa,</string>
+    <string name="info_where_outside">farzandingiz belgilangan hududdan tashqarida bo‘lsa,</string>
+    <string name="info_what_all_apps">barcha ilovalar yopiladi</string>
+    <string name="info_what_all_apps_plus_sites">barcha ilovalar va tanlangan saytlar yopiladi (%1$s)</string>
+    <string name="info_what_all_sites">barcha saytlar yopiladi</string>
+    <string name="info_what_all_apps_sites">barcha ilova va saytlar yopiladi</string>
+    <string name="info_what_selected">tanlanganlar yopiladi (%1$s)</string>
+    <string name="info_stays_open">Ochiq qoladi: %1$s.</string>
+    <string name="info_not_counted">Limitga hisoblanmaydi: %1$s.</string>
+    <string name="info_limit_daily">%1$s: %2$s jami %3$s ishlatish mumkin. Vaqt tugagach, ertaga qadar yopiladi.</string>
+    <string name="info_limit_hourly">%1$s: %2$s har soatda jami %3$s ishlatish mumkin. Vaqt tugagach, soat oxirigacha yopiladi.</string>
+    <string name="info_limit_all">barcha ilovalarni</string>
+    <string name="info_limit_selected">tanlanganlarni</string>
+    <string name="info_limit_gate">Limit faqat shu paytda ishlaydi: %1$s.</string>
+    <string name="info_protected">Qo‘ng‘iroq va SMS kabi zarur ilovalar hech qachon yopilmaydi.</string>
+    <string name="info_disabled">Hozir o‘chiq — yoqsangiz, shunday ishlaydi.</string>
+
+    <!-- Tayyor jadval ekrani -->
+    <string name="preset_enabled">Yoqilgan</string>
+    <string name="preset_when">Qachon</string>
+    <string name="preset_starts">Boshlanadi</string>
+    <string name="preset_ends">Tugaydi</string>
+    <string name="preset_limit">Limit</string>
+    <string name="preset_counted">Hisoblanadi</string>
+    <string name="preset_what_closed">Nimalar yopiladi</string>
+    <string name="preset_only_selected">Faqat tanlanganlar</string>
+    <string name="preset_stays_open">Ochiq qoladi</string>
+    <string name="preset_not_counted">Hisoblanmaydi</string>
+    <string name="preset_add_app">Ilova qo‘shish</string>
+    <string name="preset_optional">ixtiyoriy</string>
+    <string name="preset_school_area">Faqat maktab hududida</string>
+    <string name="preset_radius">%1$d m radius</string>
+    <string name="preset_per_day_label">Kuniga</string>
+    <string name="preset_per_hour_label">Har soatda</string>
+    <string name="preset_this_hour">Shu soatda</string>
+    <string name="preset_of">%1$s dan</string>
+    <string name="preset_used_up">tugadi</string>
+    <string name="preset_paused_until">To‘xtatilgan · %1$s da qaytadi</string>
+    <string name="preset_resume">Davom ettirish</string>
+    <string name="preset_reset">Boshlang‘ich holatga qaytarish</string>
+    <string name="preset_done">Tayyor</string>
+    <string name="preset_minutes_n">%1$d daqiqa</string>
+    <string name="preset_hours_n">%1$d soat</string>
+    <string name="preset_pause_action">To‘xtatish</string>
+    <string name="preset_not_found">Topilmadi</string>
+    <string name="preset_add">Qo‘shish</string>
+    <string name="preset_add_n">Qo‘shish · %1$d</string>
+    <string name="boshqa">Boshqa</string>
 </resources>

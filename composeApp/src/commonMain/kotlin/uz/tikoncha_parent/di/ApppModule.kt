@@ -90,6 +90,7 @@ import uz.tikoncha_parent.domain.use_case.policy.AddQuickBlockAppsUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetBlockableChildAppsUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePresetUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ToggleContentProtectionUseCase
+import uz.tikoncha_parent.domain.use_case.policy.SavePolicyDraftUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ToggleProtectionPackUseCase
 import uz.tikoncha_parent.domain.use_case.policy.UpdatePolicyUseCase
@@ -237,6 +238,7 @@ val sharedModule = module {
     single { GetBlockableChildAppsUseCase(get()) }
     single { TogglePresetUseCase(get()) }
     single { ToggleContentProtectionUseCase(get()) }
+    single { SavePolicyDraftUseCase(get(), get()) }
     // Himoya paketlari
     single { GetProtectionPackStatusesUseCase(get(), get()) }
     single { ToggleProtectionPackUseCase(get()) }
@@ -298,6 +300,16 @@ val sharedModule = module {
         )
     }
     factory { ProtectionPacksViewModel(get(), get(), get()) }
+    factory {
+        uz.tikoncha_parent.presentation.policy.preset.PresetPolicyViewModel(
+            observePolicies = get(),
+            getApps = get(),
+            getUsageHistory = get(),
+            saveDraft = get(),
+            togglePolicy = get(),
+            pausePolicy = get(),
+        )
+    }
     factory {
         uz.tikoncha_parent.presentation.policy.list.PolicyListViewModel(
             childRepository = get(),

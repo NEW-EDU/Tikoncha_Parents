@@ -997,4 +997,59 @@
     <string name="preset_all_apps">Все приложения</string>
     <string name="policy_paywall_protection">Защита контента работает с Tikoncha Plus.</string>
     <string name="policy_paywall_count">На бесплатном тарифе число расписаний ограничено. Для большего нужен Tikoncha Plus.</string>
+
+    <!-- Jadval izohi ("nima bo‘ladi") -->
+    <string name="info_nothing">Ничего не выбрано — это расписание ничего не закрывает.</string>
+    <string name="info_always">Всегда</string>
+    <string name="info_sentence">%1$s %2$s.</string>
+    <string name="info_when_time">%1$s с %2$s до %3$s</string>
+    <string name="info_when_time_outside">%1$s вне промежутка %2$s – %3$s</string>
+    <string name="info_where_inside">если ребёнок в выбранной зоне,</string>
+    <string name="info_where_outside">если ребёнок вне выбранной зоны,</string>
+    <string name="info_what_all_apps">все приложения будут закрыты</string>
+    <string name="info_what_all_apps_plus_sites">все приложения и выбранные сайты будут закрыты (%1$s)</string>
+    <string name="info_what_all_sites">все сайты будут закрыты</string>
+    <string name="info_what_all_apps_sites">все приложения и сайты будут закрыты</string>
+    <string name="info_what_selected">выбранное будет закрыто (%1$s)</string>
+    <string name="info_stays_open">Остаются открытыми (%1$s).</string>
+    <string name="info_not_counted">Не учитываются в лимите (%1$s).</string>
+    <string name="info_limit_daily">%1$s: %2$s можно использовать всего %3$s. Когда время закончится, они закроются до завтра.</string>
+    <string name="info_limit_hourly">%1$s: %2$s можно использовать %3$s в час. Когда время закончится, они закроются до конца часа.</string>
+    <string name="info_limit_all">все приложения</string>
+    <string name="info_limit_selected">выбранное</string>
+    <string name="info_limit_gate">Лимит действует только: %1$s.</string>
+    <string name="info_protected">Звонки, SMS и другие важные приложения никогда не закрываются.</string>
+    <string name="info_disabled">Сейчас выключено — после включения будет работать так.</string>
+
+    <!-- Tayyor jadval ekrani -->
+    <string name="preset_enabled">Включено</string>
+    <string name="preset_when">Когда</string>
+    <string name="preset_starts">Начало</string>
+    <string name="preset_ends">Конец</string>
+    <string name="preset_limit">Лимит</string>
+    <string name="preset_counted">Что учитывается</string>
+    <string name="preset_what_closed">Что закрывается</string>
+    <string name="preset_only_selected">Только выбранные</string>
+    <string name="preset_stays_open">Остаётся открытым</string>
+    <string name="preset_not_counted">Не учитывается</string>
+    <string name="preset_add_app">Добавить приложение</string>
+    <string name="preset_optional">необязательно</string>
+    <string name="preset_school_area">Только в районе школы</string>
+    <string name="preset_radius">радиус %1$d м</string>
+    <string name="preset_per_day_label">В день</string>
+    <string name="preset_per_hour_label">Каждый час</string>
+    <string name="preset_this_hour">В этом часу</string>
+    <string name="preset_of">из %1$s</string>
+    <string name="preset_used_up">исчерпано</string>
+    <string name="preset_paused_until">Приостановлено · вернётся в %1$s</string>
+    <string name="preset_resume">Продолжить</string>
+    <string name="preset_reset">Сбросить к исходному</string>
+    <string name="preset_done">Готово</string>
+    <string name="preset_minutes_n">%1$d мин</string>
+    <string name="preset_hours_n">%1$d ч</string>
+    <string name="preset_pause_action">Приостановить</string>
+    <string name="preset_not_found">Не найдено</string>
+    <string name="preset_add">Добавить</string>
+    <string name="preset_add_n">Добавить · %1$d</string>
+    <string name="boshqa">Другое</string>
 </resources>

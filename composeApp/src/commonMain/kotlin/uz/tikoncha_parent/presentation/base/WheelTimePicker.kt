@@ -30,6 +30,8 @@ package uz.tikoncha_parent.presentation.base
  *   debugImplementation(compose.uiTooling)
  */
 
+import uz.tikoncha_parent.presentation.base.haptics.rememberAppHaptics
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.snapping.rememberSnapFlingBehavior
 import androidx.compose.foundation.layout.Arrangement
@@ -460,7 +462,12 @@ private fun WheelNumberPicker(
         }
     }
 
+    // Markazdan har bir element o'tganda yengil tik — iOS picker kabi (birinchi joylashuvda jim)
+    val haptics = rememberAppHaptics()
+    var tickedIndex by remember { mutableIntStateOf(-1) }
     LaunchedEffect(selectedRealIndex) {
+        if (tickedIndex != -1 && tickedIndex != selectedRealIndex) haptics.wheelTick()
+        tickedIndex = selectedRealIndex
         onSelectedIndexChange(selectedRealIndex)
     }
 

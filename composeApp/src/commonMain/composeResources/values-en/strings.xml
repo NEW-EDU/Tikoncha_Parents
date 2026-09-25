@@ -992,4 +992,59 @@ This information is used only for these features and is not shared with third pa
     <string name="preset_all_apps">All apps</string>
     <string name="policy_paywall_protection">Content protection works with Tikoncha Plus.</string>
     <string name="policy_paywall_count">The free plan limits the number of schedules. Tikoncha Plus gives you more.</string>
+
+    <!-- Jadval izohi ("nima bo‘ladi") -->
+    <string name="info_nothing">Nothing is selected yet — this schedule blocks nothing.</string>
+    <string name="info_always">At all times</string>
+    <string name="info_sentence">%1$s, %2$s.</string>
+    <string name="info_when_time">%1$s from %2$s to %3$s</string>
+    <string name="info_when_time_outside">%1$s outside %2$s – %3$s</string>
+    <string name="info_where_inside">while your child is inside the area</string>
+    <string name="info_where_outside">while your child is outside the area</string>
+    <string name="info_what_all_apps">all apps are blocked</string>
+    <string name="info_what_all_apps_plus_sites">all apps and the selected sites are blocked (%1$s)</string>
+    <string name="info_what_all_sites">all sites are blocked</string>
+    <string name="info_what_all_apps_sites">all apps and sites are blocked</string>
+    <string name="info_what_selected">the selected items are blocked (%1$s)</string>
+    <string name="info_stays_open">Stay open: %1$s.</string>
+    <string name="info_not_counted">Not counted toward the limit: %1$s.</string>
+    <string name="info_limit_daily">%1$s: %2$s can be used for %3$s in total. Once time is up, they stay blocked until tomorrow.</string>
+    <string name="info_limit_hourly">%1$s: %2$s can be used for %3$s per hour. Once time is up, they stay blocked until the next hour.</string>
+    <string name="info_limit_all">all apps</string>
+    <string name="info_limit_selected">the selected items</string>
+    <string name="info_limit_gate">The limit applies only: %1$s.</string>
+    <string name="info_protected">Calls, SMS and other essential apps are never blocked.</string>
+    <string name="info_disabled">It is off now — turn it on to apply this.</string>
+
+    <!-- Tayyor jadval ekrani -->
+    <string name="preset_enabled">Enabled</string>
+    <string name="preset_when">When</string>
+    <string name="preset_starts">Starts</string>
+    <string name="preset_ends">Ends</string>
+    <string name="preset_limit">Limit</string>
+    <string name="preset_counted">What counts</string>
+    <string name="preset_what_closed">What gets blocked</string>
+    <string name="preset_only_selected">Selected only</string>
+    <string name="preset_stays_open">Stays open</string>
+    <string name="preset_not_counted">Not counted</string>
+    <string name="preset_add_app">Add app</string>
+    <string name="preset_optional">optional</string>
+    <string name="preset_school_area">Only within school area</string>
+    <string name="preset_radius">%1$d m radius</string>
+    <string name="preset_per_day_label">Per day</string>
+    <string name="preset_per_hour_label">Every hour</string>
+    <string name="preset_this_hour">This hour</string>
+    <string name="preset_of">of %1$s</string>
+    <string name="preset_used_up">used up</string>
+    <string name="preset_paused_until">Paused · resumes at %1$s</string>
+    <string name="preset_resume">Resume</string>
+    <string name="preset_reset">Reset to defaults</string>
+    <string name="preset_done">Done</string>
+    <string name="preset_minutes_n">%1$d min</string>
+    <string name="preset_hours_n">%1$d h</string>
+    <string name="preset_pause_action">Pause</string>
+    <string name="preset_not_found">Nothing found</string>
+    <string name="preset_add">Add</string>
+    <string name="preset_add_n">Add · %1$d</string>
+    <string name="boshqa">Other</string>
 </resources>
