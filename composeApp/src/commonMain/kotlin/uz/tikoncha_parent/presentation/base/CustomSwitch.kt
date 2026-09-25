@@ -1,5 +1,10 @@
 package uz.tikoncha_parent.presentation.base
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.Icon
+import androidx.compose.ui.draw.alpha
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.Spring
@@ -52,6 +57,10 @@ fun CustomSwitch(
 
     thumbOnColor: Color = AppColors.icon.accentPrimary,
     thumbOffColor: Color = AppColors.icon.secondary,
+
+    /** Yoqilganda thumb ichida ✓ (jadval ekranlari — Student bilan bir xil). */
+    showCheckIcon: Boolean = false,
+    checkIconColor: Color = AppColors.icon.tertiary,
 ) {
     val trackShape = RoundedCornerShape(percent = 50)
     val thumbSize = height - padding * 2
@@ -112,8 +121,21 @@ fun CustomSwitch(
                 .offset { IntOffset(animatedOffset.roundToPx(), 0) }
                 .size(thumbSize)
                 .clip(CircleShape)
-                .background(thumbColor)
-        )
+                .background(thumbColor),
+            contentAlignment = Alignment.Center,
+        ) {
+            if (showCheckIcon) {
+                val iconAlpha by animateFloatAsState(targetValue = if (checked) 1f else 0f, label = "checkIcon")
+                Icon(
+                    imageVector = Icons.Default.Check,
+                    contentDescription = null,
+                    tint = checkIconColor,
+                    modifier = Modifier
+                        .size(thumbSize * 0.7f)
+                        .alpha(iconAlpha),
+                )
+            }
+        }
     }
 }
 

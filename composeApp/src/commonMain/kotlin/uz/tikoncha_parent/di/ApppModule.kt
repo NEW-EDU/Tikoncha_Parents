@@ -88,6 +88,8 @@ import uz.tikoncha_parent.domain.use_case.policy.ChildPaidStatusUseCase
 import uz.tikoncha_parent.domain.use_case.policy.UpdateOwnQuickBlockUseCase
 import uz.tikoncha_parent.domain.use_case.policy.AddQuickBlockAppsUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetBlockableChildAppsUseCase
+import uz.tikoncha_parent.domain.use_case.policy.TogglePresetUseCase
+import uz.tikoncha_parent.domain.use_case.policy.ToggleContentProtectionUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ToggleProtectionPackUseCase
 import uz.tikoncha_parent.domain.use_case.policy.UpdatePolicyUseCase
@@ -233,6 +235,8 @@ val sharedModule = module {
     single { UpdateOwnQuickBlockUseCase(get()) }
     single { AddQuickBlockAppsUseCase(get()) }
     single { GetBlockableChildAppsUseCase(get()) }
+    single { TogglePresetUseCase(get()) }
+    single { ToggleContentProtectionUseCase(get()) }
     // Himoya paketlari
     single { GetProtectionPackStatusesUseCase(get(), get()) }
     single { ToggleProtectionPackUseCase(get()) }
