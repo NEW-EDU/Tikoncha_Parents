@@ -53,6 +53,20 @@ fun durationStringShort(hm: HourMinute): String {
     }.joinToString("  ")
 }
 
+/**
+ * Soat ham, daqiqa ham bo'lsa qisqa: "1 s 24 d".
+ * Bittasi bo'lsa to'liq: "45 daqiqa", "2 soat".
+ */
+@Composable
+fun durationStringCompact(hm: HourMinute): String {
+    if (hm.hour > 0 && hm.minute > 0) {
+        val hour = stringResource(Res.string.s)
+        val min = stringResource(Res.string.d)
+        return "${hm.hour} $hour  ${hm.minute} $min"
+    }
+    return durationString(hm)
+}
+
 @Composable
 fun pageTitleString(title: PageTitle): String = when (title) {
     is PageTitle.Day -> {

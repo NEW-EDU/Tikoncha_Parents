@@ -866,6 +866,7 @@ This information is used only for these features and is not shared with third pa
     </plurals>
     <plurals name="sayt_soni">
         <item quantity="one">%1$d site</item>
+
         <item quantity="other">%1$d sites</item>
     </plurals>
     <string name="ozgarishlar_tarixi">Change history</string>
@@ -889,4 +890,17 @@ This information is used only for these features and is not shared with third pa
     <string name="muddat_uch_soat">Ends in 3 hours</string>
     <string name="muddat_bugun_oxiri">Ends at the end of today</string>
     <string name="muddat_dushanba">Ends when Monday begins</string>
+    <string name="ertalabdan">Morning</string>
+    <string name="tushlikdan">Afternoon</string>
+    <string name="suhbat_bildirishnomalari_ochirildi">Notifications for this chat are off</string>
+    <string name="suhbat_bildirishnomalari_yoqildi">Notifications for this chat are on</string>
+    <plurals name="ta_yangi_sorov_kutilmoqda">
+        <item quantity="one">%1$d new request pending</item>
+        <item quantity="other">%1$d new requests pending</item>
+    </plurals>
+    <plurals name="ta_ruxsat_ochirilgan">
+        <item quantity="one">%1$d permission disabled</item>
+        <item quantity="other">%1$d permissions disabled</item>
+    </plurals>
+    <string name="hammasi_joyida">All good</string>
 </resources>

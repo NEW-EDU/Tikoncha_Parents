@@ -2,6 +2,7 @@ package uz.tikoncha_parent.presentation.new_home
 
 import uz.tikoncha_parent.domain.model.HourMinute
 import uz.tikoncha_parent.domain.model.UserInfo
+import uz.tikoncha_parent.domain.model.app_usage.TopApp
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 
 data class HomeState(
@@ -19,7 +20,9 @@ data class HomeState(
 
     /* ----- HomeScreen card uchun bugungi usage ----- */
     val todayUsage: HourMinute = HourMinute(0, 0),
-
+    val topApps: List<TopApp> = emptyList(),
+    val topAppsFromRecentDays: Boolean = false,
     val protectionPendingRequestCount: Int = 0,
     val protectionPermissionOffCount: Int = 0,
+    val protectionLoaded: Boolean = false,
 )

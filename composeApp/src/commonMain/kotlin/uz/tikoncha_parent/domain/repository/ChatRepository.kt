@@ -19,6 +19,10 @@ interface ChatRepository {
     suspend fun chatUnreadCount(): Outcome<Int>
     suspend fun deleteMessage(messageId: String): Outcome<Unit>
 
+    /** Shu suhbat uchun push-bildirishnoma yoqilganmi (false — ovozsiz). */
+    suspend fun chatNotification(chatId: String): Outcome<Boolean>
+    suspend fun setChatNotification(chatId: String, enabled: Boolean): Outcome<Boolean>
+
     // ---- WS boshqaruv ----
     fun connect()
     fun disconnect()

@@ -68,6 +68,7 @@ class TaskListViewModel(
             }
 
             TaskListEvent.LoadAllChildrenActiveTasks -> {
+                syncChildren()
                 loadAllChildrenActiveTasks()
             }
 

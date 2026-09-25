@@ -31,5 +31,6 @@ sealed class ChatRoomEvent {
     data object CancelReply : ChatRoomEvent()
     data object CancelDelete : ChatRoomEvent()
     data object ConfirmDelete : ChatRoomEvent()
-
+    data object ToggleNotification : ChatRoomEvent()
+    data object NotificationNoticeShown : ChatRoomEvent()
 }

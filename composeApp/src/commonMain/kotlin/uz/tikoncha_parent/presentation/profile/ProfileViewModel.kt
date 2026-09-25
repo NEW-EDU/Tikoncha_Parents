@@ -168,7 +168,8 @@ class ProfileViewModel(
 
                 is Outcome.Success -> {
                     val update = _state.value.children.filterNot { it.userId == child?.userId }
-                    AppSettings.children = update
+
+                    AppSettings.syncSelectedChildWith(update)
 
                     _state.update {
                         it.copy(
@@ -300,7 +301,7 @@ class ProfileViewModel(
             when (val res = childRepository.children()) {
                 is Outcome.Failure -> Unit
                 is Outcome.Success -> {
-                    AppSettings.children = res.data
+                    AppSettings.syncSelectedChildWith(res.data)
                     _state.update { it.copy(children = AppSettings.children) }
                 }
             }

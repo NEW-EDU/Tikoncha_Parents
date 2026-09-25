@@ -263,8 +263,8 @@
     <string name="chegaralash_ishlatish_marta">Ограничить запуск выбранного приложения определённое количество раз в день или в час</string>
     <string name="chegaralash_kun_soat_va_daqiqa">Ограничить использование в определённые часы дня или на определённое количество минут в час</string>
     <string name="cheklovlar">Ограничения</string>
-    <string name="d">д</string>
-    <string name="s">с</string>
+    <string name="d">мин</string>
+    <string name="s">ч</string>
     <string name="daqiqa">минута</string>
     <string name="diqqat">Внимание!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Теперь у вас есть эта подписка</string>
@@ -891,4 +891,21 @@
     <string name="muddat_uch_soat">Закончится через 3 часа</string>
     <string name="muddat_bugun_oxiri">Закончится в конце дня</string>
     <string name="muddat_dushanba">Закончится с началом понедельника</string>
+    <string name="ertalabdan">Утром</string>
+    <string name="tushlikdan">После обеда</string>
+    <string name="suhbat_bildirishnomalari_ochirildi">Уведомления для этого чата отключены</string>
+    <string name="suhbat_bildirishnomalari_yoqildi">Уведомления для этого чата включены</string>
+    <plurals name="ta_yangi_sorov_kutilmoqda">
+        <item quantity="one">Ожидается %1$d новый запрос</item>
+        <item quantity="few">Ожидаются %1$d новых запроса</item>
+        <item quantity="many">Ожидается %1$d новых запросов</item>
+        <item quantity="other">Ожидается %1$d новых запроса</item>
+    </plurals>
+    <plurals name="ta_ruxsat_ochirilgan">
+        <item quantity="one">%1$d разрешение отключено</item>
+        <item quantity="few">%1$d разрешения отключены</item>
+        <item quantity="many">%1$d разрешений отключено</item>
+        <item quantity="other">%1$d разрешения отключено</item>
+    </plurals>
+    <string name="hammasi_joyida">Всё в порядке</string>
 </resources>

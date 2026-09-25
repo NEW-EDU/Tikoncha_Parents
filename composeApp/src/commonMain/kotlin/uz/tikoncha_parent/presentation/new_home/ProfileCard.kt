@@ -20,15 +20,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.max
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import qrgenerator.qrkitpainter.text
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.arrow_right
 import tikoncha_parents.composeapp.generated.resources.arrow_right_rounded
-import tikoncha_parents.composeapp.generated.resources.plus_symbol
 import tikoncha_parents.composeapp.generated.resources.profil
 import tikoncha_parents.composeapp.generated.resources.profile_hedgehog_img
 import uz.tikoncha_parent.presentation.base.singleClick
@@ -50,7 +46,7 @@ fun ProfileCard(
             .singleClick{
                 onClick()
             }
-            .padding(horizontal = 8.dp, vertical = 4.dp),
+            .padding(start = 4.dp, top = 4.dp, end = 8.dp, bottom = 4.dp),
         verticalAlignment = Alignment.CenterVertically
 
     ){

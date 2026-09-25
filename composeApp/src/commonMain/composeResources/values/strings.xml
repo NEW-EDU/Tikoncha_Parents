@@ -176,7 +176,7 @@
     <string name="server_connection_error">Server bilan bog‘lanishda xatolik!</string>
     <string name="faol">Faol</string>
     <string name="faol_emas">Faol emas</string>
-    <string name="ohirgi_faollik">Ohirgi faollik:</string>
+    <string name="ohirgi_faollik">Oxirgi faollik:</string>
     <string name="qabul_qildim">Qabul qildim</string>
     <string name="azolar">A’zolar</string>
     <string name="azo">A’zo</string>
@@ -605,7 +605,7 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="video_qollanma">Video qo'llanma</string>
     <string name="video_qollanma_error_message">Afsuski video qo'llanma topilmadi, iltimos keyinroq harakat qilib ko'ring</string>
     <string name="farzandingiz_ismi">Farzadingiz ismi</string>
-    <string name="farzand_uchun_obuna">Farzad uchun obuna</string>
+    <string name="farzand_uchun_obuna">Farzand uchun obuna</string>
     <string name="farzand_uchun_obuna_message">Farzandingiz hali ro‘yxatdan o‘tmagan. Obunani faollashtirish uchun uning telefon raqamini kiriting — biz farzandingiz uchun hisob yaratamiz va obunani ulab qo‘yamiz. Farzandingiz Tikoncha ilovasidan ro‘yxatdan o‘tgach, obuna avtomatik tarzda faollashadi.</string>
     <string name="tolovlar_tarixi">To'lovlar tarixi</string>
     <!-- ===== Payment History Screen ===== -->
@@ -900,4 +900,17 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="muddat_uch_soat">3 soatdan keyin tugaydi</string>
     <string name="muddat_bugun_oxiri">Bugun kun oxirida tugaydi</string>
     <string name="muddat_dushanba">Dushanba boshlanganda tugaydi</string>
+    <string name="ertalabdan">Ertalabdan</string>
+    <string name="tushlikdan">Tushlikdan</string>
+    <string name="suhbat_bildirishnomalari_ochirildi">Bu suhbat uchun bildirishnomalar o‘chirildi</string>
+    <string name="suhbat_bildirishnomalari_yoqildi">Bu suhbat uchun bildirishnomalar yoqildi</string>
+    <plurals name="ta_yangi_sorov_kutilmoqda">
+        <item quantity="one">%1$d ta yangi so‘rov kutilmoqda</item>
+        <item quantity="other">%1$d ta yangi so‘rov kutilmoqda</item>
+    </plurals>
+    <plurals name="ta_ruxsat_ochirilgan">
+        <item quantity="one">%1$d ta ruxsat o‘chirilgan</item>
+        <item quantity="other">%1$d ta ruxsat o‘chirilgan</item>
+    </plurals>
+    <string name="hammasi_joyida">Hammasi joyida</string>
 </resources>

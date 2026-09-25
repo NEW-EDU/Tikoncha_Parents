@@ -22,6 +22,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.NotificationsOff
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -38,7 +41,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -53,13 +55,15 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.compose.currentStateAsState
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import coil3.compose.AsyncImage
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -68,6 +72,7 @@ import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.arrow_left
 import tikoncha_parents.composeapp.generated.resources.azolar
 import tikoncha_parents.composeapp.generated.resources.bekor_qilish
+import tikoncha_parents.composeapp.generated.resources.bildirishnomalar
 import tikoncha_parents.composeapp.generated.resources.chat_icon
 import tikoncha_parents.composeapp.generated.resources.close
 import tikoncha_parents.composeapp.generated.resources.faol
@@ -85,6 +90,11 @@ import uz.tikoncha_parent.domain.model.ChatMessageItem
 import uz.tikoncha_parent.presentation.base.CustomBottomDialog
 import uz.tikoncha_parent.presentation.base.CustomText
 import uz.tikoncha_parent.presentation.base.ErrorRetryState
+import uz.tikoncha_parent.presentation.base.LocalToastHost
+import uz.tikoncha_parent.presentation.base.ToastData
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import uz.tikoncha_parent.presentation.base.ToastType
+import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.chat.ChatTextField
 import uz.tikoncha_parent.presentation.chat.ChatUtil
 import uz.tikoncha_parent.presentation.chat.ChatUtil.asText
@@ -112,7 +122,6 @@ import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.extendedColor
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
-
 
 class ChatRoomScreen(
     private val chatId: String,
@@ -142,10 +151,27 @@ class ChatRoomScreen(
             onDispose { event(ChatRoomEvent.Close("ChatRoomScreen")) }
         }
 
-        ChatRoomScreenUi(
-            state = state,
-            event = event
-        )
+        ToastProvider {
+            val toast = LocalToastHost.current
+            val noticeText = state.notificationNotice?.let { stringResource(it) }
+            val errorText = state.notificationError?.asText()
+
+            // Bildirishnoma yoqildi/o'chirildi yoki xato — qisqa xabar
+            LaunchedEffect(noticeText, errorText) {
+                val data = when {
+                    errorText != null -> ToastData(type = ToastType.Error, title = errorText)
+                    noticeText != null -> ToastData(type = ToastType.Success, title = noticeText)
+                    else -> return@LaunchedEffect
+                }
+                toast.show(toast = data, durationMs = 2000)
+                event(ChatRoomEvent.NotificationNoticeShown)
+            }
+
+            ChatRoomScreenUi(
+                state = state,
+                event = event
+            )
+        }
     }
 
 }
@@ -229,12 +255,13 @@ fun ChatRoomScreenUi(
         }
     )
 
-    LaunchedEffect(listState) {
-        snapshotFlow { isAtBottom }
-            .distinctUntilChanged()
-            .collect { atBottom ->
-                if (atBottom) event(ChatRoomEvent.OnReachedBottom)
-            }
+    // Pastda turganda yangi xabar kelsa isAtBottom o'zgarmaydi — shuning uchun oxirgi xabar id'si ham kalit.
+    // Ilova fonda bo'lsa xabar ko'rilmagan, "o'qildi" yuborilmaydi; qaytganda yuboriladi.
+    val lastMessageId = state.lastMessage?.id
+    val lifecycleState by LocalLifecycleOwner.current.lifecycle.currentStateAsState()
+    val isResumed = lifecycleState.isAtLeast(Lifecycle.State.RESUMED)
+    LaunchedEffect(isAtBottom, lastMessageId, isResumed) {
+        if (isAtBottom && isResumed) event(ChatRoomEvent.OnReachedBottom)
     }
 
     val systemBars = rememberScreenSystemBars(
@@ -315,7 +342,7 @@ fun ChatRoomScreenUi(
 
                 Column(
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .weight(1f)
                         .clickable(
                             indication = null,
                             interactionSource = null,
@@ -376,6 +403,29 @@ fun ChatRoomScreenUi(
                         style = AppTypography.bodyMdMedium,
                         color = headerTextColor,
                     )
+                }
+
+                // Shaxsiy suhbatni ovozsiz qilish (holat serverdan kelgandagina ko'rinadi)
+                val notificationEnabled = state.notificationEnabled
+                if (notificationEnabled != null) {
+                    IconButton(
+                        modifier = Modifier.size(NormalIconButtonSize),
+                        enabled = !state.isNotificationUpdating,
+                        onClick = { event(ChatRoomEvent.ToggleNotification) },
+                        colors = IconButtonDefaults.iconButtonColors(
+                            containerColor = Color.Transparent,
+                            contentColor = AppColors.icon.primary,
+                        ),
+                    ) {
+                        Icon(
+                            imageVector = if (notificationEnabled) Icons.Outlined.Notifications
+                            else Icons.Outlined.NotificationsOff,
+                            contentDescription = stringResource(Res.string.bildirishnomalar),
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(NormalIconButtonPadding)
+                        )
+                    }
                 }
             }
         }

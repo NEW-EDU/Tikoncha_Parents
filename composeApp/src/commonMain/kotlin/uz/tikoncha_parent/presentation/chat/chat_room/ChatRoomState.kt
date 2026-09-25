@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.chat.chat_room
 
+import org.jetbrains.compose.resources.StringResource
 import uz.tikoncha_parent.domain.model.ChatMessageItem
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.presentation.chat.model.ChatDateLabel
@@ -40,5 +41,11 @@ data class ChatRoomState(
     val isConnected: Boolean = false,
 
     // ✅ har update -> bottom scroll
-    val scrollToBottomTick: Long = 0L
+    val scrollToBottomTick: Long = 0L,
+
+    // Shaxsiy suhbat bildirishnomasi: null — hali yuklanmagan yoki bu turdagi suhbatda yo'q
+    val notificationEnabled: Boolean? = null,
+    val isNotificationUpdating: Boolean = false,
+    val notificationNotice: StringResource? = null,
+    val notificationError: Outcome.Failure? = null,
 )

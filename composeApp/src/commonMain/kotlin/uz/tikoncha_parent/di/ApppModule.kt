@@ -118,6 +118,7 @@ import uz.tikoncha_parent.presentation.profile.ProfileViewModel
 import uz.tikoncha_parent.presentation.profile.child_user_edit.ChildInfoEditViewModel
 import uz.tikoncha_parent.presentation.profile.coin_purchase.CoinPurchaseViewModel
 import uz.tikoncha_parent.presentation.profile.coins.CoinsViewModel
+import uz.tikoncha_parent.presentation.profile.logout.LogoutViewModel
 import uz.tikoncha_parent.presentation.profile.payment_history.PaymentHistoryScreenModel
 import uz.tikoncha_parent.presentation.profile.subscription.payment.PaymentViewModel
 import uz.tikoncha_parent.presentation.profile.subscription.subscription_info.SubscriptionViewModel
@@ -233,11 +234,13 @@ val sharedModule = module {
     factory { OtpViewmodel(get(), get()) }
     factory { RegisterViewmodel(get(), get()) }
     factory { ProfileViewModel(get(), get(), get(), get()) }
+    factory { LogoutViewModel(get()) }
     factory { AddChildViewModel(get()) }
     factory { ChildConfirmViewModel() }
     factory { TaskListViewModel(get(), get(), get()) }
     factory { CreateTaskViewModel(get(), get(), get()) }
     factory { CompletedTaskViewModel(get()) }
+    factory { ChatViewModel(get(), get()) }
     factory {
         StatisticViewModel(
             get(),
@@ -262,7 +265,6 @@ val sharedModule = module {
             get()
         )
     }
-    factory { ChatViewModel(get(), get()) }
     factory {
         ChatRoomViewModel(
             get(),
