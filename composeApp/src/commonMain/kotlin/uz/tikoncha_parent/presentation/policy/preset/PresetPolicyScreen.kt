@@ -106,7 +106,10 @@ import uz.tikoncha_parent.presentation.policy.components.durationText
 import uz.tikoncha_parent.presentation.policy.components.sentences
 import uz.tikoncha_parent.presentation.policy.components.title
 import uz.tikoncha_parent.presentation.policy.mapper.toInfo
+import uz.tikoncha_parent.presentation.policy.location.LocationPicker
 import uz.tikoncha_parent.presentation.policy.model.PresetKind
+import uz.tikoncha_parent.presentation.policy.targets.TargetsEditor
+import uz.tikoncha_parent.presentation.policy.targets.TargetsFlavor
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
@@ -139,8 +142,32 @@ class PresetPolicyScreen(private val childId: String, private val kind: PresetKi
                 }
             }
         }
-        BackHandler(true) { navigator.pop() }
 
+        val targets = state.targets
+        if (targets != null) {
+            TargetsEditor(
+                state = targets,
+                apps = state.childApps,
+                flavor = TargetsFlavor.Preset(kind),
+                event = { viewModel.onEvent(PresetPolicyEvent.Targets(it)) },
+                onDone = { viewModel.onEvent(PresetPolicyEvent.TargetsDone) },
+                onClose = { viewModel.onEvent(PresetPolicyEvent.TargetsClosed) },
+                appUsage = state.appUsage,
+            )
+            return
+        }
+        val location = state.location
+        if (location != null) {
+            LocationPicker(
+                state = location,
+                title = stringResource(Res.string.preset_school_area),
+                event = { viewModel.onEvent(PresetPolicyEvent.Location(it)) },
+                onDone = { viewModel.onEvent(PresetPolicyEvent.LocationDone) },
+                onClose = { viewModel.onEvent(PresetPolicyEvent.LocationClosed) },
+            )
+            return
+        }
+        BackHandler(true) { navigator.pop() }
         PresetPolicyUi(state = state, event = viewModel::onEvent, onBack = { navigator.pop() })
     }
 }
@@ -150,8 +177,6 @@ fun PresetPolicyUi(
     state: PresetPolicyState,
     event: (PresetPolicyEvent) -> Unit,
     onBack: () -> Unit,
-    onOpenTargets: () -> Unit = {},
-    onOpenLocation: () -> Unit = {},
 ) {
     val systemBars = rememberScreenSystemBars(statusBarColor = AppColors.bg.page, navigationBarColor = AppColors.bg.page)
     val draft = state.draft
@@ -188,19 +213,19 @@ fun PresetPolicyUi(
                 when (state.kind) {
                     PresetKind.SLEEP -> {
                         WhenBlock(draft = draft, event = event, showDays = false)
-                        TargetsBlock(state = state, draft = draft, onClick = onOpenTargets)
-                        ExceptionsBlock(state = state, event = event, title = stringResource(Res.string.preset_stays_open))
+                        TargetsBlock(state = state, draft = draft, onClick = { event(PresetPolicyEvent.TargetsClicked) })
+                        if (draft.targets.hasExclusionScope) ExceptionsBlock(state = state, event = event, title = stringResource(Res.string.preset_stays_open))
                     }
                     PresetKind.LIMIT -> {
                         LimitBlock(state = state, draft = draft, event = event)
-                        TargetsBlock(state = state, draft = draft, onClick = onOpenTargets)
-                        ExceptionsBlock(state = state, event = event, title = stringResource(Res.string.preset_not_counted))
+                        TargetsBlock(state = state, draft = draft, onClick = { event(PresetPolicyEvent.TargetsClicked) })
+                        if (draft.targets.hasExclusionScope) ExceptionsBlock(state = state, event = event, title = stringResource(Res.string.preset_not_counted))
                     }
                     PresetKind.SCHOOL -> {
                         WhenBlock(draft = draft, event = event, showDays = true)
-                        TargetsBlock(state = state, draft = draft, onClick = onOpenTargets)
-                        ExceptionsBlock(state = state, event = event, title = stringResource(Res.string.preset_stays_open))
-                        LocationBlock(draft = draft, event = event, onOpen = onOpenLocation)
+                        TargetsBlock(state = state, draft = draft, onClick = { event(PresetPolicyEvent.TargetsClicked) })
+                        if (draft.targets.hasExclusionScope) ExceptionsBlock(state = state, event = event, title = stringResource(Res.string.preset_stays_open))
+                        LocationBlock(draft = draft, event = event)
                     }
                 }
             }
@@ -386,7 +411,7 @@ private fun ExceptionsBlock(state: PresetPolicyState, event: (PresetPolicyEvent)
 
 /** Dars vaqti: "Faqat maktab hududida" — switch yoqilsa yoki qator bosilsa xarita ochiladi. */
 @Composable
-private fun LocationBlock(draft: PolicyDraft, event: (PresetPolicyEvent) -> Unit, onOpen: () -> Unit) {
+private fun LocationBlock(draft: PolicyDraft, event: (PresetPolicyEvent) -> Unit) {
     val rule = draft.conditions.location
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         SectionLabel(stringResource(Res.string.policy_location), hint = stringResource(Res.string.preset_optional))
@@ -394,9 +419,9 @@ private fun LocationBlock(draft: PolicyDraft, event: (PresetPolicyEvent) -> Unit
             SettingRow(
                 title = stringResource(Res.string.preset_school_area),
                 subtitle = rule?.radiusMeters?.let { stringResource(Res.string.preset_radius, it) },
-                onClick = if (rule != null) onOpen else null,
+                onClick = if (rule != null) ({ event(PresetPolicyEvent.LocationClicked) }) else null,
                 trailing = {
-                    PolicySwitch(checked = rule != null, onCheckedChange = { on -> if (on) onOpen() else event(PresetPolicyEvent.LocationApplied(null)) })
+                    PolicySwitch(checked = rule != null, onCheckedChange = { event(PresetPolicyEvent.LocationToggled(it)) })
                 },
             )
         }

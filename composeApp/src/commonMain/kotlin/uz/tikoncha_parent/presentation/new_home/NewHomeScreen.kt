@@ -82,7 +82,7 @@ import uz.tikoncha_parent.presentation.in_app_update.InAppUpdateDialog
 import uz.tikoncha_parent.presentation.in_app_update.UpdateEvent
 import uz.tikoncha_parent.presentation.in_app_update.UpdateUiState
 import uz.tikoncha_parent.presentation.in_app_update.UpdateViewModel
-import uz.tikoncha_parent.presentation.policy.policy_list.PolicyListScreen
+import uz.tikoncha_parent.presentation.policy.list.PolicyListScreen
 import uz.tikoncha_parent.presentation.profile.ProfileScreen
 import uz.tikoncha_parent.presentation.protection.ProtectionScreen
 import uz.tikoncha_parent.presentation.statistic.StatisticScreen

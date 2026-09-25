@@ -67,7 +67,9 @@ import uz.tikoncha_parent.presentation.policy.components.SectionTitle
 import uz.tikoncha_parent.presentation.policy.components.SegmentedTabs
 import uz.tikoncha_parent.presentation.policy.components.lines
 import uz.tikoncha_parent.presentation.policy.components.title
+import uz.tikoncha_parent.presentation.policy.editor.PolicyEditorScreen
 import uz.tikoncha_parent.presentation.policy.model.PayWallReason
+import uz.tikoncha_parent.presentation.policy.preset.PresetPolicyScreen
 import uz.tikoncha_parent.presentation.policy.model.PolicyCardUi
 import uz.tikoncha_parent.presentation.policy.model.PolicyTab
 import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksScreen
@@ -100,8 +102,9 @@ class PolicyListScreen : Screen {
                 when (e) {
                     is PolicyListEffect.OpenQuickBlock -> navigator.push(QuickBlockScreen(e.childId))
                     is PolicyListEffect.OpenProtection -> navigator.push(ProtectionPacksScreen())
-                    // Tayyor jadval va o'zim yaratgan jadval ekranlari keyingi qadamlarda ulanadi
-                    is PolicyListEffect.OpenPreset, is PolicyListEffect.OpenPolicy, is PolicyListEffect.OpenCreate -> Unit
+                    is PolicyListEffect.OpenPreset -> navigator.push(PresetPolicyScreen(e.childId, e.kind))
+                    is PolicyListEffect.OpenPolicy -> navigator.push(PolicyEditorScreen(e.childId, e.policyId))
+                    is PolicyListEffect.OpenCreate -> navigator.push(PolicyEditorScreen(e.childId, null))
                 }
             }
         }

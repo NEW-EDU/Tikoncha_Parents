@@ -34,7 +34,7 @@ import uz.tikoncha_parent.presentation.base.ChildAppIcon
 import uz.tikoncha_parent.presentation.base.CustomButtonNew
 import uz.tikoncha_parent.presentation.base.SearchField
 import uz.tikoncha_parent.presentation.base.haptics.rememberAppHaptics
-import uz.tikoncha_parent.presentation.policy.app_site_selection.AppCheckbox
+import uz.tikoncha_parent.presentation.policy.targets.AppCheckbox
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
 

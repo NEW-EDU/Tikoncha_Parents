@@ -79,4 +79,8 @@ object PolicyText {
 
     /** Matn kiritish maydoni va qidiruv. */
     val input: TextStyle @Composable get() = AppTypography.titleMdRegular
+
+    /** Dialog sarlavhasi / matni. */
+    val dialogTitle: TextStyle @Composable get() = AppTypography.titleLgSemiBold
+    val dialogText: TextStyle @Composable get() = AppTypography.emphasizedMdRegular
 }

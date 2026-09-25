@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.policy.app_site_selection
 
+import uz.tikoncha_parent.presentation.policy.targets.CategoryLocalizer
+
 import uz.tikoncha_parent.domain.model.apps.InstalledApp
 
 data class AppSelectionUi(

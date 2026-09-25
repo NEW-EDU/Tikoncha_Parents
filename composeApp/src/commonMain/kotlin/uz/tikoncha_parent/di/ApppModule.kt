@@ -239,6 +239,7 @@ val sharedModule = module {
     single { TogglePresetUseCase(get()) }
     single { ToggleContentProtectionUseCase(get()) }
     single { SavePolicyDraftUseCase(get(), get()) }
+    single { uz.tikoncha_parent.domain.use_case.policy.GetChildLocationUseCase(get()) }
     // Himoya paketlari
     single { GetProtectionPackStatusesUseCase(get(), get()) }
     single { ToggleProtectionPackUseCase(get()) }
@@ -301,6 +302,19 @@ val sharedModule = module {
     }
     factory { ProtectionPacksViewModel(get(), get(), get()) }
     factory {
+        uz.tikoncha_parent.presentation.policy.editor.PolicyEditorViewModel(
+            observePolicies = get(),
+            getApps = get(),
+            getUsageHistory = get(),
+            saveDraft = get(),
+            deletePolicy = get(),
+            togglePolicy = get(),
+            pausePolicy = get(),
+            getChildLocation = get(),
+            paidStatus = get(),
+        )
+    }
+    factory {
         uz.tikoncha_parent.presentation.policy.preset.PresetPolicyViewModel(
             observePolicies = get(),
             getApps = get(),
@@ -308,6 +322,7 @@ val sharedModule = module {
             saveDraft = get(),
             togglePolicy = get(),
             pausePolicy = get(),
+            getChildLocation = get(),
         )
     }
     factory {

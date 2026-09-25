@@ -21,6 +21,9 @@ data class PolicyTargets(
     /** `packages = ["*"]` — barcha ilovalar (Uyqu vaqti, Dars vaqti). */
     val isAllApps: Boolean get() = ALL_APPS in packages
 
+    /** `excludePackages` ma'noli: `"*"` yoki kategoriya bor (server faqat shularga istisno qo'llaydi). */
+    val hasExclusionScope: Boolean get() = isAllApps || categories.isNotEmpty()
+
     companion object {
         const val ALL_APPS = "*"
     }

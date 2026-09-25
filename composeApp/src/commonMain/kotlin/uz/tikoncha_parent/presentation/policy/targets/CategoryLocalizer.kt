@@ -1,4 +1,4 @@
-package uz.tikoncha_parent.presentation.policy.app_site_selection
+package uz.tikoncha_parent.presentation.policy.targets
 
 import uz.tikoncha_parent.domain.model.apps.AppCategory
 import uz.tikoncha_parent.presentation.domain.model.LanguageType

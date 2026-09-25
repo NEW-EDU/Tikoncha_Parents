@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.policy.app_site_selection
 
+import uz.tikoncha_parent.presentation.policy.targets.CategoryLocalizer
+
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Dispatchers

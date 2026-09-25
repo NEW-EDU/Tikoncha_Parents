@@ -6,7 +6,12 @@ import uz.tikoncha_parent.domain.model.app_usage.UsageHistory
 import uz.tikoncha_parent.domain.model.apps.InstalledApp
 import uz.tikoncha_parent.domain.model.policy.PolicyDraft
 import uz.tikoncha_parent.domain.model.policy.PolicyTargets
+import uz.tikoncha_parent.presentation.policy.location.ChildPin
+import uz.tikoncha_parent.presentation.policy.location.LocationPickerEvent
+import uz.tikoncha_parent.presentation.policy.location.LocationPickerState
 import uz.tikoncha_parent.presentation.policy.model.PresetKind
+import uz.tikoncha_parent.presentation.policy.targets.TargetsEditorEvent
+import uz.tikoncha_parent.presentation.policy.targets.TargetsEditorState
 import kotlinx.datetime.LocalDate
 import kotlin.time.Instant
 
@@ -34,6 +39,13 @@ data class PresetPolicyState(
     /** Vaqt limiti: joriy oynada sarflangan daqiqa (server statistikasidan); null — noma'lum. */
     val usedMinutes: Int? = null,
     val sheet: PresetSheet? = null,
+    /** Ochiq nishon muharriri / xarita — ekran ustida to'liq sahifa. */
+    val targets: TargetsEditorState? = null,
+    val location: LocationPickerState? = null,
+    /** Oxirgi 7 kun: paket → daqiqa (nishon tanlashda tartib uchun). */
+    val appUsage: Map<String, Long> = emptyMap(),
+    /** Bolaning oxirgi joylashuvi — xarita shu yerdan boshlanadi. */
+    val child: ChildPin? = null,
     val saving: Boolean = false,
     /** Pauza so'rovi ketmoqda. */
     val busy: Boolean = false,
@@ -82,9 +94,18 @@ sealed interface PresetPolicyEvent {
     data class ExceptionsAdded(val packages: List<String>) : PresetPolicyEvent
     data class ExceptionRemoved(val packageName: String) : PresetPolicyEvent
 
-    /** Nishonlar (muharrir) va maktab hududi (xarita) — tanlov qoralamaga yoziladi. */
-    data class TargetsApplied(val targets: PolicyTargets) : PresetPolicyEvent
-    data class LocationApplied(val rule: uz.tikoncha_parent.domain.model.LocationRule?) : PresetPolicyEvent
+    // ── Nishonlar muharriri ──
+    data object TargetsClicked : PresetPolicyEvent
+    data class Targets(val e: TargetsEditorEvent) : PresetPolicyEvent
+    data object TargetsDone : PresetPolicyEvent
+    data object TargetsClosed : PresetPolicyEvent
+
+    // ── Maktab hududi ──
+    data class LocationToggled(val enabled: Boolean) : PresetPolicyEvent
+    data object LocationClicked : PresetPolicyEvent
+    data class Location(val e: LocationPickerEvent) : PresetPolicyEvent
+    data object LocationDone : PresetPolicyEvent
+    data object LocationClosed : PresetPolicyEvent
 
     data object ResetClicked : PresetPolicyEvent
     data object SheetDismissed : PresetPolicyEvent

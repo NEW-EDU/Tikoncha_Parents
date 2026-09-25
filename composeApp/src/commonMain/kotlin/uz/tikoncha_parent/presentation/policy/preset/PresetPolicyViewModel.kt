@@ -10,7 +10,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.domain.model.LimitWindow
@@ -23,12 +25,21 @@ import uz.tikoncha_parent.domain.model.policy.UsageLimit
 import uz.tikoncha_parent.domain.policy.PresetDefaults
 import uz.tikoncha_parent.domain.use_case.app_usage.GetUsageHistoryUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetBlockableChildAppsUseCase
+import uz.tikoncha_parent.domain.use_case.policy.GetChildLocationUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ObservePoliciesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.PausePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.SavePolicyDraftUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.toDraft
+import uz.tikoncha_parent.presentation.policy.location.LocationPickerState
+import uz.tikoncha_parent.presentation.policy.location.reduce as reduceLocation
+import uz.tikoncha_parent.presentation.policy.location.toPin
 import uz.tikoncha_parent.presentation.policy.model.PresetKind
+import uz.tikoncha_parent.presentation.policy.targets.TargetsFlavor
+import uz.tikoncha_parent.presentation.policy.targets.appCategory
+import uz.tikoncha_parent.presentation.policy.targets.applyTo
+import uz.tikoncha_parent.presentation.policy.targets.reduce
+import uz.tikoncha_parent.presentation.policy.targets.targetsEditorFrom
 import kotlin.time.Clock
 import kotlin.time.Duration.Companion.minutes
 
@@ -45,6 +56,7 @@ class PresetPolicyViewModel(
     private val saveDraft: SavePolicyDraftUseCase,
     private val togglePolicy: TogglePolicyUseCase,
     private val pausePolicy: PausePolicyUseCase,
+    private val getChildLocation: GetChildLocationUseCase,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(PresetPolicyState())
@@ -83,8 +95,26 @@ class PresetPolicyViewModel(
             is PresetPolicyEvent.ExceptionsAdded -> closeSheet { editExceptions { it + e.packages } }
             is PresetPolicyEvent.ExceptionRemoved -> editExceptions { it - e.packageName }
 
-            is PresetPolicyEvent.TargetsApplied -> edit { it.copy(targets = e.targets) }
-            is PresetPolicyEvent.LocationApplied -> edit { it.copy(conditions = it.conditions.copy(location = e.rule)) }
+            PresetPolicyEvent.TargetsClicked -> _state.update { s ->
+                s.draft?.let { s.copy(targets = targetsEditorFrom(it, TargetsFlavor.Preset(s.kind))) } ?: s
+            }
+            is PresetPolicyEvent.Targets -> _state.update { s -> s.targets?.let { s.copy(targets = it.reduce(e.e)) } ?: s }
+            PresetPolicyEvent.TargetsDone -> _state.update { s ->
+                val editor = s.targets ?: return@update s
+                val draft = s.draft ?: return@update s
+                s.copy(draft = editor.applyTo(draft, TargetsFlavor.Preset(s.kind)), targets = null)
+            }
+            PresetPolicyEvent.TargetsClosed -> _state.update { it.copy(targets = null) }
+
+            is PresetPolicyEvent.LocationToggled ->
+                if (e.enabled) openLocation() else edit { it.copy(conditions = it.conditions.copy(location = null)) }
+            PresetPolicyEvent.LocationClicked -> openLocation()
+            is PresetPolicyEvent.Location -> _state.update { s -> s.location?.let { s.copy(location = it.reduceLocation(e.e)) } ?: s }
+            PresetPolicyEvent.LocationDone -> _state.update { s ->
+                val rule = s.location?.toRule() ?: return@update s.copy(location = null)
+                s.copy(location = null, draft = s.draft?.let { it.copy(conditions = it.conditions.copy(location = rule)) })
+            }
+            PresetPolicyEvent.LocationClosed -> _state.update { it.copy(location = null) }
 
             PresetPolicyEvent.ResetClicked -> reset()
             PresetPolicyEvent.SheetDismissed -> _state.update { it.copy(sheet = null) }
@@ -121,6 +151,17 @@ class PresetPolicyViewModel(
             }
         }
         screenModelScope.launch {
+            val pin = getChildLocation(childId)?.toPin()
+            _state.update { s -> s.copy(child = pin, location = s.location?.let { it.copy(child = pin) }) }
+        }
+        screenModelScope.launch {
+            val local = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
+            val history = getUsageHistory(childId, local, days = USAGE_DAYS).getOrNull() ?: return@launch
+            val usage = history.appTotals(local.minus(USAGE_DAYS - 1, DateTimeUnit.DAY), local)
+                .associate { it.packageName to it.millis / 60_000L }
+            _state.update { it.copy(appUsage = usage) }
+        }
+        screenModelScope.launch {
             getApps(childId).getOrNull()?.let { apps ->
                 _state.update { it.copy(childApps = apps) }
                 refreshUsage()          // kategoriyalar endi ma'lum
@@ -137,7 +178,7 @@ class PresetPolicyViewModel(
         screenModelScope.launch {
             val local = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
             val history = getUsageHistory(s.childId, local.date, days = 1).getOrNull() ?: return@launch
-            val categoryOf = _state.value.childApps.associate { it.packageName to it.category }
+            val categoryOf = _state.value.childApps.associate { it.packageName to it.appCategory.id }
             val used = history.usedMinutes(draft.targets, categoryOf, local.date, local.hour, hourly)
             _state.update { it.copy(usedMinutes = used) }
         }
@@ -244,6 +285,10 @@ class PresetPolicyViewModel(
         _state.update { it.copy(draft = fresh) }
     }
 
+    private fun openLocation() = _state.update { s ->
+        s.copy(location = LocationPickerState.from(s.draft?.conditions?.location, s.child))
+    }
+
     private fun openSheet(sheet: PresetSheet) = _state.update { it.copy(sheet = sheet) }
 
     private inline fun closeSheet(block: () -> Unit) {
@@ -269,5 +314,8 @@ class PresetPolicyViewModel(
         }
     }
 
-    private companion object { const val PENDING_TIMEOUT_MS = 3_000L }
+    private companion object {
+        const val PENDING_TIMEOUT_MS = 3_000L
+        const val USAGE_DAYS = 7
+    }
 }
