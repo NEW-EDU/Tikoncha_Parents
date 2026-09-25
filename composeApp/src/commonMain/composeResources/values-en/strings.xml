@@ -137,7 +137,6 @@
     <string name="pro">PRO</string>
     <string name="ta">items</string>
     <string name="kamera">Camera</string>
-    <string name="joylashuv">Location</string>
     <string name="monitoring">Monitoring</string>
     <string name="admin_ilova">Admin App</string>
     <string name="ishlash_vaqti">Working time</string>
@@ -190,21 +189,12 @@
     <string name="veb_sayt">Website</string>
     <string name="boshlanishi">Start</string>
     <string name="tugashi">End</string>
-    <string name="du">Mo</string>
-    <string name="se">Tu</string>
-    <string name="ch">We</string>
-    <string name="pa">Th</string>
-    <string name="ju">Fr</string>
-    <string name="sh">Sa</string>
-    <string name="ya">Su</string>
     <string name="faol_vaqtlar">Active times</string>
     <string name="vaqt">Time</string>
     <string name="vaqtlar">Times</string>
     <string name="faol_vaqt">Active time</string>
     <string name="faol_vaqt_yaratish">Create active time</string>
     <string name="kunlar">Days</string>
-    <string name="har_kuni">Every day</string>
-    <string name="kun_davomida">During the day</string>
     <string name="oraliq_qoshish">Add interval</string>
     <string name="bloklash_shartlari">Blocking conditions</string>
     <string name="qachon_va_qayerda">Choose when and where not to be disturbed</string>
@@ -213,9 +203,7 @@
     <string name="ishga_tushirishlar_soni">Number of launches</string>
     <string name="wi_fi_tarmoqlarni_tanlang">Select Wi-Fi networks</string>
     <string name="ulandi">Connected</string>
-    <string name="qora_ro_yxat">Blacklist</string>
     <string name="shartlar">Conditions</string>
-    <string name="bloklamoqchi_bo_lgan_ilova_yoki_saytlarni_tanlang">Select the apps or sites you want to block</string>
     <string name="budilnik">Alarm clock</string>
     <string name="har_kuni_bloklashni_rejalashtiring">Schedule daily blocking by time, location and other parameters</string>
     <string name="tangachalaringiz">Your coins</string>
@@ -224,12 +212,9 @@
     <string name="shartlar_kiritish">Enter conditions</string>
     <string name="soatlik">Hourly</string>
     <string name="tashqarida">Outside</string>
-    <string name="ta_jadval">schedules</string>
-    <string name="jadval_muvaffaqiyatli_yaratildi">Schedule created successfully!</string>
     <string name="barcha_farzandlar">All children</string>
     <string name="diqqat" >Attention!</string>
     <string name="siz_tanlagan_vaqt_oraligida">The Usage Limit will not work during the time interval you selected! That is, the time schedule has higher priority.</string>
-    <string name="limit_tugadi" >Limit reached!</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d apps are not installed on your device</string>
     <string name="cheklovlar">Restrictions</string>
     <string name="ta_ilovaga">to %1$d apps</string>
@@ -237,9 +222,6 @@
     <string name="ustuvorligi">Priority</string>
     <string name="jadval_nomini_kiriting">Enter schedule name</string>
     <string name="misol_o_quv_markaz">example: Training center</string>
-    <string name="jadval_muvaffaqiyatli_tahrirlandi">Schedule edited successfully!</string>
-    <string name="jadval_muvaffaqiyatli_o_chirildi">Schedule deleted successfully!</string>
-    <string name="siz_rostdan_ham_ushbu_jadvalni_o_chirmoqchimisiz">Do you really want to delete this schedule?</string>
     <string name="ochirish">Delete</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Do you agree to exit without saving the schedule?</string>
     <string name="roziman">I agree</string>
@@ -304,8 +286,6 @@
 </string>
     <string name="sizda_vaqt_oraligi_qoshish">Your limit for adding time intervals has been reached. Purchase the PLUS subscription to create more time intervals.</string>
     <string name="sizda_foydalanish_chegarasini_qoshish">Your limit for adding usage limits has been reached. Purchase the PLUS subscription to create more usage limits.</string>
-    <string name="belgilangan_hududdan_tashqarida">Outside the designated area</string>
-    <string name="belgilangan_hudud_ichida">Inside the designated area</string>
     <string name="chegaralash_ishlatish_marta">Limit the specified app to a certain number of uses per day or hour</string>
     <string name="bloklash_wifi_tarmogida">Block when connected to a specific Wi-Fi network</string>
     <string name="bloklash_hudud_boyicha">Block within a specific designated area</string>
@@ -375,17 +355,11 @@ This information is used only for these features and is not shared with third pa
     <string name="versiya">Version</string>
     <string name="jadval_yaratish">Create schedule</string>
     <string name="sizning_cheklovlaringiz">Your restrictions</string>
-    <string name="kunlik_bloklashlarni_rejalashtiring">Schedule daily blocking by time, location and other parameters.</string>
 
     <string name="avtomatik_bloklash_vaqti">Automatic blocking at selected days and hours</string>
     <string name="foydalanish_vaqtini_cheklash">Limit daily or hourly usage time</string>
     <string name="hududga_kirilganda_bloklash">Block apps when entering a specific area</string>
     <string name="hamroh_tasdiqlash_kodi_kiritish">Enter the verification code sent to your partner's phone and link the account.</string>
-    <string name="bloklash_rejimi_tanlang">Select blocking mode</string>
-    <string name="ilovalarni_belgilash">Specify which apps will work or be blocked</string>
-    <string name="tanlangan_ilovalar_bloklanadi">Selected apps will be blocked, the rest will remain open.</string>
-    <string name="tanlangan_ilovalar_ochiq">Selected apps will remain open, the rest will be blocked.</string>
-    <string name="oq_royhat">Whitelist</string>
     <string name="soniya">seconds</string>
     <string name="sayt_manzilini_kiriting">Enter site address</string>
     <string name="ilova_qidirish">Search apps</string>
@@ -393,29 +367,15 @@ This information is used only for these features and is not shared with third pa
     <string name="diqqatni_yoqotmasdan_organing">Learn without losing focus</string>
     <string name="rejalashtiring_va_kuzating">Plan and track execution</string>
     <string name="kategoriyalar">Categories</string>
-    <string name="jadval_o_chirilsinmi">Delete schedule?</string>
-    <string name="chiqmoqchimisiz">Do you want to exit?</string>
-    <string name="kiritilgan_ma_lumotlar_saqlanmaydi">The entered data will not be saved.</string>
     <string name="qolish">Stay</string>
     <string name="noto_g_ri_url_format">Invalid URL format</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">This site is already in the list</string>
     <string name="to_liq_nazoratni_yoqing">Enable full control</string>
     <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Manage apps, time and usage through Tikoncha. With Plus, work without restrictions and enable maximum protection via Shield mode.</string>
     <string name="plus_imkoniyatlarini_ochish">Unlock Plus features</string>
-    <string name="sayt_limiti_plus_tavsif">You have reached the limit of %1$d websites. With the Plus subscription, select more websites and enjoy additional features.</string>
-    <string name="kategoriya_bo_yicha_jadval_yaratish_uchun_plus_obunasini_faollashtiring">Activate the PLUS subscription to create schedules by category</string>
-    <string name="jadval_limit_tugadi_plus">Your limit for creating additional schedules has been reached. Purchase the PLUS subscription to create more schedules.</string>
-    <string name="jadval_qoshish">Add schedule</string>
     <string name="jadval_nomi">Schedule name</string>
-    <string name="bloklash_rejimi">Blocking mode</string>
     <string name="saytlar">Sites</string>
-    <string name="ilova_limiti_plus_tavsif">You have reached the limit of %1$d apps. With the Plus subscription, select more apps and enjoy additional features.</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Specify when and under what conditions apps and websites are restricted</string>
-    <string name="sizda_faol_vaqt_yoq">You have no active time</string>
-    <string name="faol_vaqtni_qoshing">Add active time</string>
-    <string name="faqat_shu_vaqtda_ishlasin">Should work only at this time</string>
-    <string name="cheklov_vaqti">Restriction time</string>
-    <string name="vaqt_qoshish">Add time</string>
 
 
     <string name="biz_haqimizda">About us</string>
@@ -452,18 +412,11 @@ This information is used only for these features and is not shared with third pa
     <string name="yangilanish_mavjud">Update available</string>
     <string name="app_update_desc">Tikoncha has become even more stable and convenient. Update the app to use the latest features.</string>
     <string name="yangilash">Update</string>
-    <string name="limit_qoshish">Add limit</string>
-    <string name="foydalanish_limiti">Usage limit</string>
     <string name="sahifaga_otish">Go to page</string>
     <string name="farzand_ulan_di">Your child has been successfully connected, you can freely monitor their digital life</string>
     <string name="confirm_code_instruction">Your child needs to enter this code in the "Add parent" section of the "Tikoncha" app.</string>
 
-    <string name="kerakli_hafta_kunlarini_tanlang">Please select the desired weekdays!</string>
-    <string name="kerakli_vaqt_oralig_ini_tanlang">Please select the desired time interval!</string>
-    <string name="kamida_1_ta_shart_kiriting">Enter at least 1 condition</string>
-    <string name="kamida_1_ta_ilova_kategoriya_yoki_sayt_tanlang">Select at least 1 app, category or site</string>
     <string name="plus_obnuna_kerak">PLUS subscription required</string>
-    <string name="oq_royxat_uchun_kerakli_ilovalar_va_saytlarni_tanlang">Select the required apps and sites for the whitelist</string>
     <string name="toliq_nazorat_statistika">Full control and statistics</string>
     <string name="farzand_ilova_kuzatish">Track which apps your child uses and how much during the day.</string>
     <string name="uchtagacha_jadval">Up to 3 schedules</string>
@@ -508,9 +461,6 @@ This information is used only for these features and is not shared with third pa
     </string>
     <string name="biz_bilan_aloqa">Contact us</string>
 
-    <string name="tanlangan_kun_va_soatlarda_avtomatik_bloklash">Automatic blocking at selected days and hours</string>
-    <string name="kunlik_yoki_soatlik_foydalanish_vaqtini_cheklash">Limit daily or hourly usage time</string>
-    <string name="malum_hududga_kirilganda_ilovalarni_bloklash">Block apps when entering a specific area</string>
     <string name="uyqu_vaqti_rejasi">Sleep time plan</string>
     <string name="farzandingiz_kun_davomida_telefondan_qancha">Set how much time your child can use the phone during the day.</string>
     <string name="ilova_taymeri">App timers</string>
@@ -558,13 +508,10 @@ This information is used only for these features and is not shared with third pa
     <string name="tracking_checking_settings">Checking child settings...</string>
     <string name="tracking_watch_video">Watch video</string>
     <string name="radius">Radius</string>
-    <string name="teskari_radius">Inverse radius</string>
     <string name="farzandim">My child</string>
     <string name="ozim">Myself</string>
     <string name="faol_vazifa_yo_q">No active tasks</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">No tasks for your child</string>
-    <string name="limit_yoq">You have no limit</string>
-    <string name="web_ilova_limit">Set daily or hourly limits on websites and apps.</string>
 
     <string name="about_intro">Tikoncha is a modern technology platform aimed at creating a safe digital environment for children and teenagers.</string>
     <string name="about_body">In cooperation with parents, schools and the community, we help children use smartphones and the internet in a moderate, conscious and useful way. With Tikoncha, your child's digital activity is under control, while trust and respect are preserved.</string>
@@ -594,12 +541,9 @@ This information is used only for these features and is not shared with third pa
     <string name="qanday_faollashtiriladi">How is it activated?</string>
     <string name="xaritadan_ochish">Open on map</string>
     <string name="ulashish">Share</string>
-    <string name="vebsaytlar">Websites</string>
 
     <string name="tikoncha_title_top">What is</string>
     <string name="tikoncha_title_bottom">Tikoncha?</string>
-    <string name="block_child_title_line1">How do I</string>
-    <string name="block_child_title_line2">block my child?</string>
     <string name="connect_child_line1">How does</string>
     <string name="connect_child_line2">a child connect?</string>
     <string name="video_qollanma">Video guide</string>
@@ -790,8 +734,6 @@ This information is used only for these features and is not shared with third pa
     <string name="perm_device_admin">Device administrator</string>
 
     <string name="bu_ilova_kategoriya_orqali_tanlangan">This app was selected through a category.</string>
-    <string name="sayt_yoki_kalit_soz_kiriting">Enter a website or keyword</string>
-    <string name="sayt_yoki_kalit_soz_label">site.com or keyword</string>
     <string name="kirish_bekor_qilindi">Sign in canceled</string>
     <string name="telegram_orqali_kirish">Sign in with Telegram</string>
     <string name="yoki">or</string>
@@ -804,7 +746,6 @@ This information is used only for these features and is not shared with third pa
     <string name="farzand_qalqon_ochirish_sorovi">Your child is requesting permission to disable Shield for "%1$s"</string>
     <string name="javob_uchun">Time remaining to respond: %1$s</string>
     <string name="rad_etildi">Rejected</string>
-    <string name="muddati_tugagan">Expired</string>
 
     <string name="oxirgi_sinxron">Last sync</string>
     <string name="kod">Code</string>
@@ -845,15 +786,9 @@ This information is used only for these features and is not shared with third pa
         <item quantity="other">%1$d hours</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">Paused — until %1$s</string>
-    <string name="maktab_umumiy">School / General</string>
     <string name="umumiy">General</string>
     <string name="boshqa_ota_ona">Other parent</string>
     <string name="vaqtincha_toxtatish">Pause</string>
-    <string name="bir_soatga">For 1 hour</string>
-    <string name="uch_soatga">For 3 hours</string>
-    <string name="ertagacha">Until tomorrow</string>
-    <string name="dushanbagacha">Until Monday</string>
-    <string name="davom_ettirish">Resume</string>
     <string name="himoya_paketlari">Protection packs</string>
     <string name="boshqa_ota_ona_yoqqan">Enabled by another parent</string>
     <string name="farzand_ozi_yoqqan">Enabled by your child</string>
@@ -877,15 +812,6 @@ This information is used only for these features and is not shared with third pa
     <string name="tarix_bosh">No changes yet</string>
     <string name="tarix_resumed">Resumed</string>
     <string name="muddat">Duration</string>
-    <string name="muddatsiz">No end date</string>
-    <string name="muddat_tavsif">The schedule stops automatically when the time is up</string>
-    <string name="faqat_jadval_egasi_ozgartira_oladi">Only the parent who created it can change this schedule</string>
-    <string name="hech_narsa_ozgarmadi">Nothing changed</string>
-    <string name="muddat_bir_soat">Ends in 1 hour</string>
-    <string name="muddat_ikki_soat">Ends in 2 hours</string>
-    <string name="muddat_uch_soat">Ends in 3 hours</string>
-    <string name="muddat_bugun_oxiri">Ends at the end of today</string>
-    <string name="muddat_dushanba">Ends when Monday begins</string>
     <string name="ertalabdan">Morning</string>
     <string name="tushlikdan">Afternoon</string>
     <string name="suhbat_bildirishnomalari_ochirildi">Notifications for this chat are off</string>
@@ -931,8 +857,6 @@ This information is used only for these features and is not shared with third pa
     <string name="quick_blocked_apps">Blocked apps</string>
     <string name="quick_no_apps">No apps selected</string>
     <string name="quick_add_app">Add app</string>
-    <string name="quick_add_count">Add (%1$d)</string>
-    <string name="quick_apps_empty">The list of apps on the child’s phone hasn’t arrived yet.</string>
     <string name="quick_info_always">Apps on this list are always blocked, whatever the time or place.</string>
     <string name="quick_info_off">It is off now — turn it on to block these apps.</string>
     <string name="quick_info_paused">Paused until %1$s — nothing is blocked until then.</string>
@@ -941,11 +865,6 @@ This information is used only for these features and is not shared with third pa
     <string name="quick_child_blocks">Blocked by the child</string>
     <string name="quick_coparent_blocks">Blocked by the other parent</string>
     <string name="quick_others_note">Only their owner can change these lists. Add the app to your own list if needed.</string>
-    <string name="quick_card_count">%1$d apps</string>
-    <string name="quick_card_on">on</string>
-    <string name="quick_card_off">off</string>
-    <string name="quick_card_paused">paused</string>
-    <string name="quick_card_others">Child: %1$d · Other parent: %2$d</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Bedtime</string>

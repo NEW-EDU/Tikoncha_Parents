@@ -52,7 +52,7 @@ import tikoncha_parents.composeapp.generated.resources.unlocked
 import uz.tikoncha_parent.common.DateTimeUtil
 import uz.tikoncha_parent.domain.model.policy.PolicyEventType
 import uz.tikoncha_parent.presentation.base.simpleShadow
-import uz.tikoncha_parent.presentation.policy.common.toHhMm
+import uz.tikoncha_parent.presentation.policy.components.asClock
 import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.theme.AppColors
@@ -66,12 +66,12 @@ fun PolicyHistoryItem(
     val lang = remember { LanguagePrefs.loadOrDefault() }
 
     // Sana kun sarlavhasida — kartada faqat vaqt.
-    val timeText = item.createdAt.time.toHhMm()
+    val timeText = item.createdAt.time.hhMm()
 
     // Pauza yozilgan kunning o'zida tugasa — faqat soat, aks holda sana bilan.
     val pausedText = item.pausedUntil?.let {
-        if (it.date == item.createdAt.date) it.time.toHhMm()
-        else DateTimeUtil.formatDayMonthLocal(it.date, lang) + ", " + it.time.toHhMm()
+        if (it.date == item.createdAt.date) it.time.hhMm()
+        else DateTimeUtil.formatDayMonthLocal(it.date, lang) + ", " + it.time.hhMm()
     }
 
     // Stringlar shartsiz olinadi, keyin tanlanadi.
@@ -186,3 +186,6 @@ private fun PolicyEventType.iconRes(): DrawableResource = when (this) {
     PolicyEventType.QUICK_BLOCK_REMOVE -> Res.drawable.unlocked
     PolicyEventType.UNKNOWN -> Res.drawable.circle_clock
 }
+
+/** "HH:mm". */
+private fun kotlinx.datetime.LocalTime.hhMm(): String = (hour * 60 + minute).asClock()

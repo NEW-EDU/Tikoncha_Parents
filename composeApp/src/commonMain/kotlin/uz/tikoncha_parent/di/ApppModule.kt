@@ -77,7 +77,6 @@ import uz.tikoncha_parent.domain.use_case.policy.DeletePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetPolicyEventsUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetProtectionPackStatusesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ObservePoliciesUseCase
-import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlocksUseCase
 import uz.tikoncha_parent.domain.use_case.policy.PausePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RefreshPoliciesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RefreshQuickBlocksUseCase
@@ -112,14 +111,8 @@ import uz.tikoncha_parent.presentation.new_home.HomeViewModel
 import uz.tikoncha_parent.presentation.notification.NotificationViewModel
 import uz.tikoncha_parent.presentation.otp.OtpViewmodel
 import uz.tikoncha_parent.presentation.player.PlayerScreenModel
-import uz.tikoncha_parent.presentation.policy.app_site_selection.AppWebViewModel
 import uz.tikoncha_parent.presentation.policy.history.PolicyHistoryViewModel
-import uz.tikoncha_parent.presentation.policy.limit_rule.setup.LimitRuleSetupViewModel
-import uz.tikoncha_parent.presentation.policy.policy_list.PolicyViewModel
-import uz.tikoncha_parent.presentation.policy.policy_setup.PolicySetupViewModel
 import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksViewModel
-import uz.tikoncha_parent.presentation.policy.shared.PolicySharedModel
-import uz.tikoncha_parent.presentation.policy.time_rule.setup.TimeRuleSetupViewModel
 import uz.tikoncha_parent.presentation.profile.ProfileViewModel
 import uz.tikoncha_parent.presentation.profile.child_user_edit.ChildInfoEditViewModel
 import uz.tikoncha_parent.presentation.profile.coin_purchase.CoinPurchaseViewModel
@@ -226,7 +219,6 @@ val sharedModule = module {
     single { PausePolicyUseCase(get()) }
     single { GetPolicyEventsUseCase(get()) }
     // Tezkor blok
-    single { ObserveQuickBlocksUseCase(get()) }
     single { RefreshQuickBlocksUseCase(get()) }
     single { AddQuickBlockUseCase(get()) }
     single { RemoveQuickBlockUseCase(get()) }
@@ -288,18 +280,6 @@ val sharedModule = module {
             get(),
         )
     }
-    factory {
-        PolicyViewModel(
-            observePolicies = get(),
-            refreshPolicies = get(),
-            togglePolicy = get(),
-            pausePolicy = get(),
-            permissionStatusRepository = get(),
-            childRepository = get(),
-            observeQuickBlocks = get(),
-            refreshQuickBlocks = get(),
-        )
-    }
     factory { ProtectionPacksViewModel(get(), get(), get()) }
     factory {
         uz.tikoncha_parent.presentation.policy.editor.PolicyEditorViewModel(
@@ -353,11 +333,6 @@ val sharedModule = module {
     }
     factory { PolicyHistoryViewModel(get(), get()) }
     factory { NotificationViewModel(get()) }
-    factory { TimeRuleSetupViewModel() }
-    factory { LimitRuleSetupViewModel() }
-    factory { PolicySetupViewModel(get(), get(), get()) }
-    single { PolicySharedModel() }
-    factory { AppWebViewModel(get()) }
     factory { PaymentViewModel(get(), get(), get()) }
     factory { SubscriptionPaymentViewModel(get()) }
     factory { CoinsViewModel(get(), get(), get()) }

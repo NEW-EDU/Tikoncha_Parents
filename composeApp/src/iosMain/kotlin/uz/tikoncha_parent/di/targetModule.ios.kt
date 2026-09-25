@@ -13,7 +13,6 @@ import uz.tikoncha_parent.domain.service.PaymentService
 import uz.tikoncha_parent.platform.AppIconLoader
 import uz.tikoncha_parent.platform.IosAppIconLoader
 import uz.tikoncha_parent.platform.IosInAppUpdateDataSource
-import uz.tikoncha_parent.presentation.policy.location_rule.LocationRuleScreenModel
 import uz.tikoncha_parent.presentation.tracking.TrackingScreenModel
 
 actual val targetModule = module {
@@ -40,7 +39,6 @@ actual val targetModule = module {
         )
     }
 
-    factory { LocationRuleScreenModel(get(), get()) }
 
     single { PlayerEngine() }
 }

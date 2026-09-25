@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.datetime.TimeZone
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
@@ -22,6 +21,7 @@ import uz.tikoncha_parent.domain.use_case.policy.RefreshQuickBlocksUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RemoveQuickBlockUseCase
 import uz.tikoncha_parent.domain.use_case.policy.UpdateOwnQuickBlockUseCase
 import kotlin.time.Clock
+import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Instant
 
 /**
@@ -62,7 +62,7 @@ class QuickBlockViewModel(
             QuickBlockEvent.PauseClicked -> _state.update { it.copy(showPauseSheet = true) }
             QuickBlockEvent.PauseDismissed -> _state.update { it.copy(showPauseSheet = false) }
             is QuickBlockEvent.PauseSelected ->
-                pause(event.option.until(Clock.System.now(), TimeZone.currentSystemDefault()))
+                pause(Clock.System.now() + event.minutes.minutes)
             QuickBlockEvent.ResumeClicked -> pause(until = null)
 
             QuickBlockEvent.AddClicked -> _state.update {

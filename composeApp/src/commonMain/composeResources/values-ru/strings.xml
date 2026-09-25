@@ -136,7 +136,6 @@
     <string name="pro">ПРО</string>
     <string name="ta">шт.</string>
     <string name="kamera">Камера</string>
-    <string name="joylashuv">Местоположение</string>
     <string name="monitoring">Мониторинг</string>
     <string name="admin_ilova">Админ Приложение</string>
     <string name="ishlash_vaqti">Время работы</string>
@@ -178,9 +177,7 @@
     <string name="ish_vaqti_dam_olish_kuni">рабочее время, выходные</string>
     <string name="wi_fi_tarmoqlarni_tanlang">Выберите сети Wi-Fi</string>
     <string name="ulandi">Подключен</string>
-    <string name="qora_ro_yxat">Черный список</string>
     <string name="shartlar">Условия</string>
-    <string name="bloklamoqchi_bo_lgan_ilova_yoki_saytlarni_tanlang">Выберите приложения или сайты, которые вы хотите заблокировать.</string>
     <string name="budilnik">Будни</string>
     <string name="har_kuni_bloklashni_rejalashtiring">Планируйте ежедневыне блакировки по времени, месту и другим параметрам</string>
     <string name="tangachalaringiz">Ваши монеты</string>
@@ -246,20 +243,11 @@
     <string name="azo">Участник</string>
     <string name="azolar">Участники</string>
     <string name="barcha_farzandlar">Все дети</string>
-    <string name="belgilangan_hudud_ichida">Внутри заданной зоны</string>
-    <string name="belgilangan_hududdan_tashqarida">Вне заданной зоны</string>
     <string name="bloklash_hafta_kunlari_soatlari">Блокировка в заданные часы по дням недели</string>
     <string name="bloklash_hudud_boyicha">Блокировка внутри заданной зоны</string>
     <string name="bloklash_wifi_tarmogida">Блокировать при подключении к заданной сети Wi-Fi</string>
     <string name="bugun">Сегодня</string>
     <string name="kecha">Вчера</string>
-    <string name="ch">Ср</string>
-    <string name="du">Пн</string>
-    <string name="ju">Пт</string>
-    <string name="pa">Чт</string>
-    <string name="se">Вт</string>
-    <string name="sh">Сб</string>
-    <string name="ya">Вс</string>
     <string name="chegaralash_ishlatish_marta">Ограничить запуск выбранного приложения определённое количество раз в день или в час</string>
     <string name="chegaralash_kun_soat_va_daqiqa">Ограничить использование в определённые часы дня или на определённое количество минут в час</string>
     <string name="cheklovlar">Ограничения</string>
@@ -277,17 +265,11 @@
     <string name="farzandingizni_tanlang">Выберите ребёнка</string>
     <string name="ha">Да</string>
     <string name="yoq">Нет</string>
-    <string name="har_kuni">Каждый день</string>
-    <string name="kun_davomida">В течение дня</string>
     <string name="kunlar">Дни</string>
     <string name="vaqtlar">Время</string>
     <string name="ishga_tushirishlar_soni">Количество запусков</string>
-    <string name="jadval_muvaffaqiyatli_o_chirildi">Расписание успешно удалено!</string>
-    <string name="jadval_muvaffaqiyatli_tahrirlandi">Расписание успешно отредактировано!</string>
-    <string name="jadval_muvaffaqiyatli_yaratildi">Расписание успешно создано!</string>
     <string name="jadval_nomini_kiriting">Введите название расписания</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Выйти без сохранения расписания?</string>
-    <string name="limit_tugadi">Лимит закончился!</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Пользуйтесь особыми возможностями и приоритетной поддержкой!</string>
     <string name="misol_o_quv_markaz">пример: Учебный центр</string>
     <string name="obuna_bolish">Оформить подписку</string>
@@ -303,7 +285,6 @@
     <string name="ruxsat_berish">Разрешить</string>
     <string name="server_connection_error">Ошибка соединения с сервером!</string>
     <string name="siz">Вы</string>
-    <string name="siz_rostdan_ham_ushbu_jadvalni_o_chirmoqchimisiz">Вы действительно хотите удалить это расписание?</string>
     <string name="siz_tanlagan_vaqt_oraligida">В выбранном вами временном интервале лимит использования не работает! Приоритет у расписания времени.</string>
     <string name="sizda_foydalanish_chegarasini_qoshish">У вас закончился лимит на добавление ограничений использования. Чтобы создать больше ограничений, оформите подписку PLUS.</string>
     <string name="sizda_vaqt_oraligi_qoshish">У вас закончился лимит на добавление временных интервалов. Чтобы создать больше интервалов, оформите подписку PLUS.</string>
@@ -311,7 +292,6 @@
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d приложений не установлено на вашем устройстве</string>
     <string name="ta_ilovaga">%1$d приложениям</string>
     <string name="ta_vebsaytga">%1$d веб-сайтам</string>
-    <string name="ta_jadval">%1$d расписаний</string>
     <string name="tabriklaymiz">ПОЗДРАВЛЯЕМ!</string>
     <string name="tasdiqlandi">Подтверждено</string>
     <string name="tashqarida">Снаружи</string>
@@ -406,16 +386,10 @@
     <string name="haqiqatan_ham_bu_xabarni_o_chirmoqchimisiz">Вы действительно хотите удалить это сообщение?</string>
     <string name="jadval_yaratish">Создать расписание</string>
     <string name="sizning_cheklovlaringiz">Ваши ограничения</string>
-    <string name="kunlik_bloklashlarni_rejalashtiring">Планируйте ежедневные блокировки по времени, месту и другим параметрам.</string>
     <string name="avtomatik_bloklash_vaqti">Автоматическая блокировка в выбранные дни и часы</string>
     <string name="foydalanish_vaqtini_cheklash">Ограничение времени использования по дням или часам</string>
     <string name="hududga_kirilganda_bloklash">Блокировать приложения при входе в определённую зону</string>
     <string name="hamroh_tasdiqlash_kodi_kiritish">Введите код подтверждения, отправленный на телефон вашего родителя, и свяжите аккаунт.</string>
-    <string name="bloklash_rejimi_tanlang">Выберите режим блокировки</string>
-    <string name="ilovalarni_belgilash">Выберите, какие приложения будут работать или блокироваться</string>
-    <string name="tanlangan_ilovalar_bloklanadi">Выбранные приложения будут заблокированы, остальные останутся доступными.</string>
-    <string name="tanlangan_ilovalar_ochiq">Выбранные приложения останутся доступными, остальные будут заблокированы.</string>
-    <string name="oq_royhat">Белый список</string>
     <string name="soniya">секунда</string>
     <string name="sayt_manzilini_kiriting">Введите адрес сайта</string>
     <string name="ilova_qidirish">Поиск приложения</string>
@@ -423,29 +397,15 @@
     <string name="diqqatni_yoqotmasdan_organing">Учитесь, не теряя концентрацию</string>
     <string name="rejalashtiring_va_kuzating">Планируйте и отслеживайте выполнение</string>
     <string name="kategoriyalar">Категории</string>
-    <string name="jadval_o_chirilsinmi">Удалить расписание?</string>
-    <string name="chiqmoqchimisiz">Вы хотите выйти?</string>
-    <string name="kiritilgan_ma_lumotlar_saqlanmaydi">Введённые данные не будут сохранены.</string>
     <string name="qolish">Остаться</string>
     <string name="noto_g_ri_url_format">Неверный формат URL</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Этот сайт уже в списке</string>
     <string name="to_liq_nazoratni_yoqing">Включите полный контроль</string>
     <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Управляйте приложениями, временем и использованием через Tikoncha. С Plus используйте без ограничений и включите максимальную защиту с режимом щита.</string>
     <string name="plus_imkoniyatlarini_ochish">Открыть возможности Plus</string>
-    <string name="sayt_limiti_plus_tavsif">Вы достигли лимита в %1$d вебсайтов. С подпиской Plus выберите больше сайтов и получите дополнительные возможности.</string>
-    <string name="kategoriya_bo_yicha_jadval_yaratish_uchun_plus_obunasini_faollashtiring">Активируйте подписку PLUS, чтобы создать расписание по категориям</string>
-    <string name="jadval_limit_tugadi_plus">У вас закончился лимит на создание расписаний. Чтобы создать новое расписание, оформите подписку PLUS.</string>
-    <string name="jadval_qoshish">Добавить расписание</string>
     <string name="jadval_nomi">Название расписания</string>
-    <string name="bloklash_rejimi">Режим блокировки</string>
     <string name="saytlar">Сайты</string>
-    <string name="ilova_limiti_plus_tavsif">Вы достигли лимита в %1$d приложений. С подпиской Plus выберите больше приложений и получите дополнительные возможности.</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Укажите, когда и при каких условиях ограничивать приложения и вебсайты</string>
-    <string name="sizda_faol_vaqt_yoq">У вас нет активного времени</string>
-    <string name="faol_vaqtni_qoshing">Добавьте активное время</string>
-    <string name="faqat_shu_vaqtda_ishlasin">Работает только в это время</string>
-    <string name="cheklov_vaqti">Время ограничения</string>
-    <string name="vaqt_qoshish">Добавить время</string>
     <string name="biz_haqimizda">О нас</string>
     <string name="tanga_s">%1$s монет</string>
     <string name="farzand_ulan_di">Ваш ребёнок успешно подключён, теперь вы можете спокойно контролировать его цифровую жизнь</string>
@@ -520,18 +480,8 @@
     <string name="tracking_checking_settings">Проверка настроек ребёнка...</string>
     <string name="tracking_watch_video">Смотреть видео</string>
 
-    <string name="limit_qoshish">Добавить лимит</string>
-    <string name="foydalanish_limiti">Лимит использования</string>
     <string name="sahifaga_otish">Перейти на страницу</string>
-    <string name="kerakli_hafta_kunlarini_tanlang">Выберите необходимые дни недели!</string>
-    <string name="kerakli_vaqt_oralig_ini_tanlang">Выберите необходимый временной интервал!</string>
-    <string name="kamida_1_ta_shart_kiriting">Введите как минимум одно условие</string>
-    <string name="kamida_1_ta_ilova_kategoriya_yoki_sayt_tanlang">Выберите как минимум одно приложение, категорию или сайт</string>
     <string name="plus_obnuna_kerak">Требуется подписка PLUS</string>
-    <string name="oq_royxat_uchun_kerakli_ilovalar_va_saytlarni_tanlang">Выберите необходимые приложения и сайты для белого списка</string>
-    <string name="tanlangan_kun_va_soatlarda_avtomatik_bloklash">Автоматическая блокировка в выбранные дни и часы</string>
-    <string name="kunlik_yoki_soatlik_foydalanish_vaqtini_cheklash">Ограничение времени использования по дням или часам</string>
-    <string name="malum_hududga_kirilganda_ilovalarni_bloklash">Блокировать приложения при входе в определённую зону</string>
     <string name="uyqu_vaqti_rejasi">Режим сна</string>
     <string name="farzandingiz_kun_davomida_telefondan_qancha">Укажите, сколько времени ваш ребёнок может пользоваться телефоном в течение дня.</string>
     <string name="ilova_taymeri">Таймеры приложений</string>
@@ -551,8 +501,6 @@
     <string name="tracking_retry">Повторить попытку</string>
     <string name="farzandim">Мой ребёнок</string>
     <string name="ozim">Я сам</string>
-    <string name="limit_yoq">У вас нет лимита</string>
-    <string name="web_ilova_limit">Установка дневных или почасовых лимитов для сайтов и приложений.</string>
     <string name="about_intro">Tikoncha — это современная технологическая платформа, направленная на создание безопасной цифровой среды для детей и подростков.</string>
     <string name="about_body">Мы сотрудничаем с родителями, школами и обществом, помогая детям использовать смартфоны и интернет осознанно, умеренно и с пользой. С Tikoncha цифровая активность вашего ребёнка находится под контролем, при этом сохраняются доверие и уважение.</string>
     <string name="about_features_title">С помощью нашего приложения:</string>
@@ -580,7 +528,6 @@
     <string name="vazifa_ochirish_tasdiq">Вы действительно хотите удалить эту задачу?</string>
 
     <string name="radius">Радиус</string>
-    <string name="teskari_radius">Обратный радиус</string>
     <string name="faol_vazifa_yo_q">Нет активных задач</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">У вашего ребёнка нет задач</string>
     <string name="qanday_faollashtiriladi">Как активировать?</string>
@@ -588,12 +535,9 @@
     <string name="ulashish">Поделиться</string>
     <string name="tikoncha_title_top">Что такое</string>
     <string name="tikoncha_title_bottom">Tikoncha?</string>
-    <string name="block_child_title_line1">Как мне</string>
-    <string name="block_child_title_line2">заблокировать ребёнка?</string>
     <string name="connect_child_line1">Ребёнок</string>
     <string name="connect_child_line2">как подключается?</string>
 
-    <string name="vebsaytlar">Вебсайты</string>
     <string name="video_qollanma">Видеоинструкция</string>
     <string name="video_qollanma_error_message">К сожалению, видеоинструкция не найдена, пожалуйста попробуйте позже</string>
     <string name="farzandingiz_ismi">Имя вашего ребёнка</string>
@@ -772,8 +716,6 @@
 
     <string name="bu_ilova_kategoriya_orqali_tanlangan">Это приложение выбрано через категорию.</string>
 
-    <string name="sayt_yoki_kalit_soz_kiriting">Введите сайт или ключевое слово</string>
-    <string name="sayt_yoki_kalit_soz_label">site.ru или ключевое слово</string>
 
     <string name="kirish_bekor_qilindi">Вход отменён</string>
 
@@ -798,7 +740,6 @@
 
     <string name="rad_etildi">Отклонено</string>
 
-    <string name="muddati_tugagan">Срок истёк</string>
 
     <string name="oxirgi_sinxron">Последняя синхронизация</string>
     <string name="kod">Код</string>
@@ -843,15 +784,9 @@
         <item quantity="other">%1$d часа</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">Приостановлено — до %1$s</string>
-    <string name="maktab_umumiy">Школа / Общие</string>
     <string name="umumiy">Общие</string>
     <string name="boshqa_ota_ona">Другой родитель</string>
     <string name="vaqtincha_toxtatish">Приостановить</string>
-    <string name="bir_soatga">На 1 час</string>
-    <string name="uch_soatga">На 3 часа</string>
-    <string name="ertagacha">До завтра</string>
-    <string name="dushanbagacha">До понедельника</string>
-    <string name="davom_ettirish">Возобновить</string>
     <string name="himoya_paketlari">Пакеты защиты</string>
     <string name="boshqa_ota_ona_yoqqan">Включил другой родитель</string>
     <string name="farzand_ozi_yoqqan">Включил сам ребёнок</string>
@@ -878,15 +813,6 @@
     <string name="tarix_bosh">Изменений пока нет</string>
     <string name="tarix_resumed">Возобновлено</string>
     <string name="muddat">Срок действия</string>
-    <string name="muddatsiz">Бессрочно</string>
-    <string name="muddat_tavsif">Когда срок истечёт, расписание перестанет действовать</string>
-    <string name="faqat_jadval_egasi_ozgartira_oladi">Изменить расписание может только создавший его родитель</string>
-    <string name="hech_narsa_ozgarmadi">Ничего не изменилось</string>
-    <string name="muddat_bir_soat">Закончится через 1 час</string>
-    <string name="muddat_ikki_soat">Закончится через 2 часа</string>
-    <string name="muddat_uch_soat">Закончится через 3 часа</string>
-    <string name="muddat_bugun_oxiri">Закончится в конце дня</string>
-    <string name="muddat_dushanba">Закончится с началом понедельника</string>
     <string name="ertalabdan">Утром</string>
     <string name="tushlikdan">После обеда</string>
     <string name="suhbat_bildirishnomalari_ochirildi">Уведомления для этого чата отключены</string>
@@ -936,8 +862,6 @@
     <string name="quick_blocked_apps">Блокируемые приложения</string>
     <string name="quick_no_apps">Приложения не выбраны</string>
     <string name="quick_add_app">Добавить приложение</string>
-    <string name="quick_add_count">Добавить (%1$d)</string>
-    <string name="quick_apps_empty">Список приложений с телефона ребёнка ещё не получен.</string>
     <string name="quick_info_always">Приложения из списка закрыты всегда — независимо от времени и места.</string>
     <string name="quick_info_off">Сейчас выключено — после включения эти приложения будут закрыты.</string>
     <string name="quick_info_paused">Приостановлено до %1$s — до этого времени ничего не закрывается.</string>
@@ -946,11 +870,6 @@
     <string name="quick_child_blocks">Закрыл сам ребёнок</string>
     <string name="quick_coparent_blocks">Закрыл другой родитель</string>
     <string name="quick_others_note">Эти списки может менять только их владелец. При необходимости добавьте приложение в свой список.</string>
-    <string name="quick_card_count">Приложений: %1$d</string>
-    <string name="quick_card_on">включено</string>
-    <string name="quick_card_off">выключено</string>
-    <string name="quick_card_paused">на паузе</string>
-    <string name="quick_card_others">Ребёнок: %1$d · Другой родитель: %2$d</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Время сна</string>

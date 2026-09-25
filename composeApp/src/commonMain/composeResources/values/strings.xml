@@ -137,7 +137,6 @@
     <string name="pro">PRO</string>
     <string name="ta">ta</string>
     <string name="kamera">Kamera</string>
-    <string name="joylashuv">Joylashuv</string>
     <string name="monitoring">Monitoring</string>
     <string name="admin_ilova">Admin Ilova</string>
     <string name="ishlash_vaqti">Ishlash vaqti</string>
@@ -190,21 +189,12 @@
     <string name="veb_sayt">Veb-sayt</string>
     <string name="boshlanishi">Boshlanishi</string>
     <string name="tugashi">Tugashi</string>
-    <string name="du">Du</string>
-    <string name="se">Se</string>
-    <string name="ch">Ch</string>
-    <string name="pa">Pa</string>
-    <string name="ju">Ju</string>
-    <string name="sh">Sh</string>
-    <string name="ya">Ya</string>
     <string name="faol_vaqtlar">Faol vaqtlar</string>
     <string name="vaqt">Vaqt</string>
     <string name="vaqtlar">Vaqtlar</string>
     <string name="faol_vaqt">Faol vaqt</string>
     <string name="faol_vaqt_yaratish">Faol vaqt yaratish</string>
     <string name="kunlar">Kunlar</string>
-    <string name="har_kuni">Har kuni</string>
-    <string name="kun_davomida">Kun davomida</string>
     <string name="oraliq_qoshish">Oraliq qo‘shish</string>
     <string name="bloklash_shartlari">Bloklash shartlari</string>
     <string name="qachon_va_qayerda">Qachon va qayerda bezovta qilinmaslikni tanlang</string>
@@ -213,9 +203,7 @@
     <string name="ishga_tushirishlar_soni">Ishga tushirishlar soni</string>
     <string name="wi_fi_tarmoqlarni_tanlang">Wi-Fi tarmoqlarni tanlang</string>
     <string name="ulandi">Ulandi</string>
-    <string name="qora_ro_yxat">Qora ro‘yxat</string>
     <string name="shartlar">Shartlar</string>
-    <string name="bloklamoqchi_bo_lgan_ilova_yoki_saytlarni_tanlang">Bloklamoqchi bo‘lgan ilova yoki saytlarni tanlang</string>
     <string name="budilnik">Budilnik</string>
     <string name="har_kuni_bloklashni_rejalashtiring">Har kuni bloklashni rejalashtiring vaqt, joy va boshqa parametrlar bo‘yicha</string>
     <string name="tangachalaringiz">Tangachalaringiz</string>
@@ -224,12 +212,9 @@
     <string name="shartlar_kiritish">Shartlar kiritish</string>
     <string name="soatlik">Soatlik</string>
     <string name="tashqarida">Tashqarida</string>
-    <string name="ta_jadval">ta jadval</string>
-    <string name="jadval_muvaffaqiyatli_yaratildi">Jadval muvaffaqiyatli yaratildi!</string>
     <string name="barcha_farzandlar">Barcha farzandlar</string>
     <string name="diqqat" >Diqqat!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Siz tanlagan Vaqt oralig‘ida Ishlatish Limiti ish bermaydi! Ya’ni vaqt jadvalining ustuvorligi yuqori.</string>
-    <string name="limit_tugadi" >Limit tugadi!</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d ta ilova sizda o‘rnatilmagan</string>
     <string name="cheklovlar">Cheklovlar</string>
     <string name="ta_ilovaga">%1$d ta ilovaga</string>
@@ -237,9 +222,6 @@
     <string name="ustuvorligi">Ustuvorligi</string>
     <string name="jadval_nomini_kiriting">Jadval nomini kiriting</string>
     <string name="misol_o_quv_markaz">misol: O‘quv markaz</string>
-    <string name="jadval_muvaffaqiyatli_tahrirlandi">Jadval muvaffaqiyatli tahrirlandi!</string>
-    <string name="jadval_muvaffaqiyatli_o_chirildi">Jadval muvaffaqiyatli o‘chirildi!</string>
-    <string name="siz_rostdan_ham_ushbu_jadvalni_o_chirmoqchimisiz">Siz rostdan ham ushbu jadvalni o‘chirmoqchimisiz?</string>
     <string name="ochirish">O‘chirish</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Jadvalni saqlamasdan chiqishga rozimisiz?</string>
     <string name="roziman">roziman</string>
@@ -304,8 +286,6 @@
 </string>
     <string name="sizda_vaqt_oraligi_qoshish">Sizda vaqt oralig'ini qo'shish uchun limit tugadi. Ko'proq vaqt oralig'larni yaratish uchun PLUS obunani sotib oling.</string>
     <string name="sizda_foydalanish_chegarasini_qoshish">Sizda foydalanish chegarasini qo'shish uchun limit tugadi. Ko'proq foydalanish chegaralarini yaratish uchun PLUS obunani sotib oling.</string>
-    <string name="belgilangan_hududdan_tashqarida">Belgilangan hududdan tashqarida</string>
-    <string name="belgilangan_hudud_ichida">Belgilangan hudud ichida</string>
     <string name="chegaralash_ishlatish_marta">Belgilangan ilovani kuniga yoki soatiga ma’lum marta ishlashiga chegaralash</string>
     <string name="bloklash_wifi_tarmogida">Belgilangan Wi-Fi tarmog‘iga ulanganda bloklash</string>
     <string name="bloklash_hudud_boyicha">Belgilangan ma’lum hudud ichida bloklash</string>
@@ -375,17 +355,11 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="versiya">Versiya</string>
     <string name="jadval_yaratish">Jadval yaratish</string>
     <string name="sizning_cheklovlaringiz">Sizning cheklovlaringiz</string>
-    <string name="kunlik_bloklashlarni_rejalashtiring">Vaqt, joy va boshqa parametrlar bo‘yicha kunlik bloklashlarni rejalashtiring.</string>
 
     <string name="avtomatik_bloklash_vaqti">Tanlangan kun va soatlarda avtomatik bloklash</string>
     <string name="foydalanish_vaqtini_cheklash">Kunlik yoki soatlik foydalanish vaqtini cheklash</string>
     <string name="hududga_kirilganda_bloklash">Ma’lum hududga kirilganda ilovalarni bloklash</string>
     <string name="hamroh_tasdiqlash_kodi_kiritish">Hamrohingiz telefoniga kelgan tasdiqlash kodini kiriting va hisobni bog‘lang.</string>
-    <string name="bloklash_rejimi_tanlang">Bloklash rejimini tanlang</string>
-    <string name="ilovalarni_belgilash">Qaysi ilovalar ishlashi yoki bloklanishini belgilang</string>
-    <string name="tanlangan_ilovalar_bloklanadi">Tanlangan ilovalar bloklanadi, qolganlari ochiq qoladi.</string>
-    <string name="tanlangan_ilovalar_ochiq">Tanlangan ilovalar ochiq qoladi, qolganlari bloklanadi.</string>
-    <string name="oq_royhat">Oq ro‘yhat</string>
     <string name="soniya">soniya</string>
     <string name="sayt_manzilini_kiriting">Sayt manzilini kiriting</string>
     <string name="ilova_qidirish">Ilova qidirish</string>
@@ -393,29 +367,15 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="diqqatni_yoqotmasdan_organing">Diqqatni yo‘qotmasdan o‘rganing</string>
     <string name="rejalashtiring_va_kuzating">Rejalashtiring va bajarishni kuzating</string>
     <string name="kategoriyalar">Kategoriyalar</string>
-    <string name="jadval_o_chirilsinmi">Jadval o‘chirilsinmi?</string>
-    <string name="chiqmoqchimisiz">Chiqmoqchimisiz?</string>
-    <string name="kiritilgan_ma_lumotlar_saqlanmaydi">Kiritilgan ma’lumotlar saqlanmaydi.</string>
     <string name="qolish">Qolish</string>
     <string name="noto_g_ri_url_format">Noto‘g\'ri URL format</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Bu sayt allaqachon ro‘yxatda</string>
     <string name="to_liq_nazoratni_yoqing">To‘liq nazoratni yoqing</string>
     <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Tikoncha orqali ilovalar, vaqt va foydalanishni boshqaring. Plus bilan cheklovlarsiz ishlang va Qalqon rejimi orqali maksimal himoyani yoqing.</string>
     <string name="plus_imkoniyatlarini_ochish">Plus imkoniyatlarini ochish</string>
-    <string name="sayt_limiti_plus_tavsif">Siz %1$d ta vebsayt limitiga yetdingiz. Plus obuna bilan ko‘proq vebsaytlarni tanlab, qo‘shimcha imkoniyatlardan foydalaning.</string>
-    <string name="kategoriya_bo_yicha_jadval_yaratish_uchun_plus_obunasini_faollashtiring">Kategoriya bo‘yicha jadval yaratish uchun PLUS obunasini faollashtiring</string>
-    <string name="jadval_limit_tugadi_plus">Sizda yana boshqa jadval yaratish uchun limitingiz tugadi. Yana yangi jadval yaratish uchun PLUS obunasini sotib oling.</string>
-    <string name="jadval_qoshish">Jadval qo‘shish</string>
     <string name="jadval_nomi">Jadval nomi</string>
-    <string name="bloklash_rejimi">Bloklash rejimi</string>
     <string name="saytlar">Saytlar</string>
-    <string name="ilova_limiti_plus_tavsif">Siz %1$d ta ilova limitiga yetdingiz. Plus obuna bilan ko‘proq ilovalarni tanlab, qo‘shimcha imkoniyatlardan foydalaning.</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Qachon va qanday holatlarda ilovalar va vebsaytlarni cheklashni belgilang</string>
-    <string name="sizda_faol_vaqt_yoq">Sizda faol vaqt yo‘q</string>
-    <string name="faol_vaqtni_qoshing">Faol vaqtni qo‘shing</string>
-    <string name="faqat_shu_vaqtda_ishlasin">Faqat shu vaqtda ishlasin</string>
-    <string name="cheklov_vaqti">Cheklov vaqti</string>
-    <string name="vaqt_qoshish">Vaqt qo‘shish</string>
 
 
     <string name="biz_haqimizda">Biz haqimizda</string>
@@ -452,18 +412,11 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="yangilanish_mavjud">Yangilanish mavjud</string>
     <string name="app_update_desc">Tikoncha yanada barqaror va qulay bo‘ldi. Eng so‘nggi imkoniyatlardan foydalanish uchun ilovani yangilang.</string>
     <string name="yangilash">Yangilash</string>
-    <string name="limit_qoshish">Limit qo‘shish</string>
-    <string name="foydalanish_limiti">Foydalanish limiti</string>
     <string name="sahifaga_otish">Sahifaga o‘tish</string>
     <string name="farzand_ulan_di">Farzandingiz muvaffaqiyatli ulandi, bemalol raqamli hayotini nazorat qilishingiz mumkin bo‘ladi</string>
     <string name="confirm_code_instruction">Ushbu kodni farzandingiz "Tikoncha" ilovasida "Ota-ona qo‘shish" bo‘limiga kiritishi kerak.</string>
 
-    <string name="kerakli_hafta_kunlarini_tanlang">Kerakli hafta kunlarini tanlang!</string>
-    <string name="kerakli_vaqt_oralig_ini_tanlang">Kerakli vaqt oralig'ini tanlang!</string>
-    <string name="kamida_1_ta_shart_kiriting">Kamida 1 ta shart kiriting</string>
-    <string name="kamida_1_ta_ilova_kategoriya_yoki_sayt_tanlang">Kamida 1 ta ilova, kategoriya yoki sayt tanlang</string>
     <string name="plus_obnuna_kerak">PLUS obuna kerak</string>
-    <string name="oq_royxat_uchun_kerakli_ilovalar_va_saytlarni_tanlang">Oq ro‘yxat uchun kerakli ilovalar va saytlarni tanlang</string>
     <string name="toliq_nazorat_statistika">To‘liq nazorat va statistika</string>
     <string name="farzand_ilova_kuzatish">Farzandingiz kun davomida qaysi ilovalardan qancha foydalanganini kuzating.</string>
     <string name="uchtagacha_jadval">3 tagacha jadval yaratish</string>
@@ -508,9 +461,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     </string>
     <string name="biz_bilan_aloqa">Biz bilan aloqa</string>
 
-    <string name="tanlangan_kun_va_soatlarda_avtomatik_bloklash">Tanlangan kun va soatlarda avtomatik bloklash</string>
-    <string name="kunlik_yoki_soatlik_foydalanish_vaqtini_cheklash">Kunlik yoki soatlik foydalanish vaqtini cheklash</string>
-    <string name="malum_hududga_kirilganda_ilovalarni_bloklash">Ma’lum hududga kirilganda ilovalarni bloklash</string>
     <string name="uyqu_vaqti_rejasi">Uyqu vaqti rejasi</string>
     <string name="farzandingiz_kun_davomida_telefondan_qancha">Farzandingiz kun davomida telefondan qancha vaqt foydalanishini belgilang.</string>
     <string name="ilova_taymeri">Ilova taymerlari</string>
@@ -558,13 +508,10 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="tracking_checking_settings">Farzand sozlamalari tekshirilmoqda...</string>
     <string name="tracking_watch_video">Video ko'rish</string>
     <string name="radius">Radius</string>
-    <string name="teskari_radius">Teskari radius</string>
     <string name="farzandim">Farzandim</string>
     <string name="ozim">O‘zim</string>
     <string name="faol_vazifa_yo_q">Faol vazifa yo'q</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Farzandiningiz uchun vazifa yo'q</string>
-    <string name="limit_yoq">Sizda limit yo‘q</string>
-    <string name="web_ilova_limit">Websayt va ilovalarga kunlik yoki soatlik limit qo‘yish.</string>
 
     <string name="about_intro">Tikoncha — bolalar va o'smirlar uchun xavfsiz raqamli muhit yaratishga qaratilgan zamonaviy texnologik platforma.</string>
     <string name="about_body">Biz ota-onalar, maktablar va jamiyat bilan hamkorlikda bolalarning smartfon va internetdan me'yorida, ongli va foydali foydalanishiga yordam beramiz. Tikoncha orqali farzandingizning raqamli faoliyati nazorat ostida bo'ladi, lekin ishonch va hurmat saqlanib qoladi.</string>
@@ -594,12 +541,9 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="qanday_faollashtiriladi">Qanday faollashtiriladi?</string>
     <string name="xaritadan_ochish">Xaritadan ochish</string>
     <string name="ulashish">Ulashish</string>
-    <string name="vebsaytlar">Vebsaytlar</string>
 
     <string name="tikoncha_title_top">Tikoncha</string>
     <string name="tikoncha_title_bottom">nima?</string>
-    <string name="block_child_title_line1">Farzandimni</string>
-    <string name="block_child_title_line2">qanday bloklayman?</string>
     <string name="connect_child_line1">Farzand</string>
     <string name="connect_child_line2">qanday ulanadi?</string>
     <string name="video_qollanma">Video qo'llanma</string>
@@ -684,8 +628,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="maxfiylik_siyosati">Maxfiylik siyosati</string>
     <string name="foydalanish_shartlari">Foydalanish shartlari</string>
     <string name="bu_ilova_kategoriya_orqali_tanlangan">Bu ilova kategoriya orqali tanlangan.</string>
-    <string name="sayt_yoki_kalit_soz_kiriting">Sayt yoki kalit so'z kiriting</string>
-    <string name="sayt_yoki_kalit_soz_label">sayt.uz yoki kalit so'z</string>
     <string name="kirish_bekor_qilindi">Kirish bekor qilindi</string>
 
     <string name="telegram_orqali_kirish">Telegram orqali kirish</string>
@@ -815,7 +757,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="farzand_qalqon_ochirish_sorovi">Farzandingiz "%1$s" Qalqonni o‘chirish uchun sizdan ruxsat so‘ramoqda</string>
     <string name="javob_uchun">Javob uchun: %1$s</string>
     <string name="rad_etildi">Rad etildi</string>
-    <string name="muddati_tugagan">Muddati tugagan</string>
 
     <string name="oxirgi_sinxron">Oxirgi sinxron</string>
     <string name="kod">Kod</string>
@@ -856,15 +797,9 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
         <item quantity="other">%1$d soat</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">To‘xtatilgan — %1$s gacha</string>
-    <string name="maktab_umumiy">Maktab / Umumiy</string>
     <string name="umumiy">Umumiy</string>
     <string name="boshqa_ota_ona">Boshqa ota-ona</string>
     <string name="vaqtincha_toxtatish">Vaqtincha to‘xtatish</string>
-    <string name="bir_soatga">1 soatga</string>
-    <string name="uch_soatga">3 soatga</string>
-    <string name="ertagacha">Ertagacha</string>
-    <string name="dushanbagacha">Dushanbagacha</string>
-    <string name="davom_ettirish">Davom ettirish</string>
     <string name="himoya_paketlari">Himoya paketlari</string>
     <string name="boshqa_ota_ona_yoqqan">Boshqa ota-ona yoqqan</string>
     <string name="farzand_ozi_yoqqan">Farzandingiz o‘zi yoqqan</string>
@@ -887,15 +822,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="tarix_bosh">Hozircha o‘zgarishlar yo‘q</string>
     <string name="tarix_resumed">Davom ettirildi</string>
     <string name="muddat">Muddat</string>
-    <string name="muddatsiz">Muddatsiz</string>
-    <string name="muddat_tavsif">Belgilangan vaqt tugagach jadval o‘zi to‘xtaydi</string>
-    <string name="faqat_jadval_egasi_ozgartira_oladi">Bu jadvalni faqat uni yaratgan ota-ona o‘zgartira oladi</string>
-    <string name="hech_narsa_ozgarmadi">Hech narsa o‘zgarmadi</string>
-    <string name="muddat_bir_soat">1 soatdan keyin tugaydi</string>
-    <string name="muddat_ikki_soat">2 soatdan keyin tugaydi</string>
-    <string name="muddat_uch_soat">3 soatdan keyin tugaydi</string>
-    <string name="muddat_bugun_oxiri">Bugun kun oxirida tugaydi</string>
-    <string name="muddat_dushanba">Dushanba boshlanganda tugaydi</string>
     <string name="ertalabdan">Ertalabdan</string>
     <string name="tushlikdan">Tushlikdan</string>
     <string name="suhbat_bildirishnomalari_ochirildi">Bu suhbat uchun bildirishnomalar o‘chirildi</string>
@@ -941,8 +867,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="quick_blocked_apps">Yopiladigan ilovalar</string>
     <string name="quick_no_apps">Ilova tanlanmagan</string>
     <string name="quick_add_app">Ilova qo‘shish</string>
-    <string name="quick_add_count">Qo‘shish (%1$d)</string>
-    <string name="quick_apps_empty">Farzand telefonidagi ilovalar ro‘yxati hali kelmagan.</string>
     <string name="quick_info_always">Ro‘yxatdagi ilovalar doim yopiq turadi — vaqt va joydan qat’i nazar.</string>
     <string name="quick_info_off">Hozir o‘chiq — yoqsangiz, shu ilovalar yopiladi.</string>
     <string name="quick_info_paused">%1$s gacha to‘xtatilgan — shu vaqtgacha hech narsa yopilmaydi.</string>
@@ -951,11 +875,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="quick_child_blocks">Farzand o‘zi yopgan</string>
     <string name="quick_coparent_blocks">Boshqa ota-ona yopgan</string>
     <string name="quick_others_note">Bu ro‘yxatlarni faqat ularning egasi o‘zgartira oladi. Kerak bo‘lsa, ilovani o‘z ro‘yxatingizga qo‘shing.</string>
-    <string name="quick_card_count">%1$d ta ilova</string>
-    <string name="quick_card_on">yoqilgan</string>
-    <string name="quick_card_off">o‘chiq</string>
-    <string name="quick_card_paused">to‘xtatilgan</string>
-    <string name="quick_card_others">Farzand: %1$d · Boshqa ota-ona: %2$d</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Uyqu vaqti</string>

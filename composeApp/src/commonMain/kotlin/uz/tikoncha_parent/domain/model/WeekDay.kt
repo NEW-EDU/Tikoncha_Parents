@@ -1,17 +1,7 @@
 package uz.tikoncha_parent.domain.model
 
-import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.lifecycle.JavaSerializable
 import kotlinx.serialization.Serializable
-import org.jetbrains.compose.resources.stringResource
-import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.ch
-import tikoncha_parents.composeapp.generated.resources.du
-import tikoncha_parents.composeapp.generated.resources.ju
-import tikoncha_parents.composeapp.generated.resources.pa
-import tikoncha_parents.composeapp.generated.resources.se
-import tikoncha_parents.composeapp.generated.resources.sh
-import tikoncha_parents.composeapp.generated.resources.ya
 
 @Serializable
 enum class WeekDay(val num: Int): JavaSerializable {
@@ -20,18 +10,5 @@ enum class WeekDay(val num: Int): JavaSerializable {
     companion object {
         fun fromNum(n: Int): WeekDay = entries.first { it.num == n }
         val ordered: List<WeekDay> = listOf(MON, TUE, WED, THU, FRI, SAT, SUN)
-    }
-}
-
-@Composable
-fun WeekDay.weekdayLabel(): String {
-    return when(this) {
-        WeekDay.MON -> stringResource(Res.string.du)
-        WeekDay.TUE -> stringResource(Res.string.se)
-        WeekDay.WED -> stringResource(Res.string.ch)
-        WeekDay.THU -> stringResource(Res.string.pa)
-        WeekDay.FRI -> stringResource(Res.string.ju)
-        WeekDay.SAT -> stringResource(Res.string.sh)
-        WeekDay.SUN -> stringResource(Res.string.ya)
     }
 }

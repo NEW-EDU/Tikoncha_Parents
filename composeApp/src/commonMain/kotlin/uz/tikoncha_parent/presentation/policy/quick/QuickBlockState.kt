@@ -4,7 +4,6 @@ import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.apps.InstalledApp
 import uz.tikoncha_parent.domain.model.policy.QuickBlockEntry
 import uz.tikoncha_parent.domain.model.policy.QuickBlockSnapshot
-import uz.tikoncha_parent.presentation.policy.policy_list.PauseOption
 import kotlin.time.Clock
 import kotlin.time.Instant
 
@@ -58,7 +57,8 @@ sealed interface QuickBlockEvent {
     data object Resumed : QuickBlockEvent
     data class EnabledToggled(val enabled: Boolean) : QuickBlockEvent
     data object PauseClicked : QuickBlockEvent
-    data class PauseSelected(val option: PauseOption) : QuickBlockEvent
+    /** Necha daqiqaga to'xtatish (15 / 30 / 60 / 180). */
+    data class PauseSelected(val minutes: Int) : QuickBlockEvent
     data object ResumeClicked : QuickBlockEvent
     data object PauseDismissed : QuickBlockEvent
     data object AddClicked : QuickBlockEvent

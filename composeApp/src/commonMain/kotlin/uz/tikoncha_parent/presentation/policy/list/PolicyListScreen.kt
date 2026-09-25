@@ -78,6 +78,13 @@ import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.ui.Alignment
+import tikoncha_parents.composeapp.generated.resources.circle_clock
+import uz.tikoncha_parent.presentation.policy.history.PolicyHistoryScreen
 
 /**
  * Jadvallar — Student ilovasidagi ro'yxat bilan bir xil: hisob, izoh qutisi, yopishqoq
@@ -139,16 +146,29 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
             showBackButton = true,
             onBackClick = { navigator?.pop() },
             trailingIcon = {
-                ChildSelectionButton(
-                    modifier = Modifier.widthIn(120.dp, 160.dp),
-                    text = state.selectedChild?.name ?: "",
-                    imageUrl = state.selectedChild?.avatarUrl ?: "",
-                    label = stringResource(Res.string.farzandingizni_tanlang),
-                    userInfo = state.selectedChild,
-                    onClick = {
-                        if (state.children.isEmpty()) navigator?.push(AddChildScreen()) else showChildSheet = true
-                    },
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    // Jadvallar tarixi (kim qachon nimani o'zgartirdi) — eski ro'yxatdagidek sarlavhada
+                    if (state.selectedChild != null) {
+                        IconButton(onClick = { navigator?.push(PolicyHistoryScreen()) }) {
+                            Icon(
+                                painter = painterResource(Res.drawable.circle_clock),
+                                contentDescription = null,
+                                tint = AppColors.icon.primary,
+                                modifier = Modifier.size(22.dp),
+                            )
+                        }
+                    }
+                    ChildSelectionButton(
+                        modifier = Modifier.widthIn(120.dp, 160.dp),
+                        text = state.selectedChild?.name ?: "",
+                        imageUrl = state.selectedChild?.avatarUrl ?: "",
+                        label = stringResource(Res.string.farzandingizni_tanlang),
+                        userInfo = state.selectedChild,
+                        onClick = {
+                            if (state.children.isEmpty()) navigator?.push(AddChildScreen()) else showChildSheet = true
+                        },
+                    )
+                }
             },
         )
 
