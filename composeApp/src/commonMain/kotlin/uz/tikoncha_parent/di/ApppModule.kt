@@ -112,7 +112,6 @@ import uz.tikoncha_parent.presentation.notification.NotificationViewModel
 import uz.tikoncha_parent.presentation.otp.OtpViewmodel
 import uz.tikoncha_parent.presentation.player.PlayerScreenModel
 import uz.tikoncha_parent.presentation.policy.history.PolicyHistoryViewModel
-import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksViewModel
 import uz.tikoncha_parent.presentation.profile.ProfileViewModel
 import uz.tikoncha_parent.presentation.profile.child_user_edit.ChildInfoEditViewModel
 import uz.tikoncha_parent.presentation.profile.coin_purchase.CoinPurchaseViewModel
@@ -280,7 +279,7 @@ val sharedModule = module {
             get(),
         )
     }
-    factory { ProtectionPacksViewModel(get(), get(), get()) }
+    factory { uz.tikoncha_parent.presentation.policy.protection.ContentProtectionViewModel(get(), get(), get(), get()) }
     factory {
         uz.tikoncha_parent.presentation.policy.editor.PolicyEditorViewModel(
             observePolicies = get(),

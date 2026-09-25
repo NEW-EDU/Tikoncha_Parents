@@ -242,7 +242,6 @@
     <string name="imkoniyatlar">Features</string>
     <string name="obuna_faollashtirilgan">Subscription activated</string>
     <string name="obunaga_sovga_sifatida">As a subscription gift</string>
-    <string name="premium">Premium</string>
     <string name="sovga_qilish">Give as gift</string>
     <string name="dostlarni_taklif_qilish">Invite friends</string>
     <string name="faol_vazifalar">Active tasks</string>
@@ -789,9 +788,6 @@ This information is used only for these features and is not shared with third pa
     <string name="umumiy">General</string>
     <string name="boshqa_ota_ona">Other parent</string>
     <string name="vaqtincha_toxtatish">Pause</string>
-    <string name="himoya_paketlari">Protection packs</string>
-    <string name="boshqa_ota_ona_yoqqan">Enabled by another parent</string>
-    <string name="farzand_ozi_yoqqan">Enabled by your child</string>
     <plurals name="ilova_soni">
         <item quantity="one">%1$d app</item>
         <item quantity="other">%1$d apps</item>
@@ -1006,4 +1002,6 @@ This information is used only for these features and is not shared with third pa
     <string name="editor_delete_message">“%1$s” will be deleted.</string>
     <string name="editor_paywall_allow">“Only selected stay open” mode is available with Plus.</string>
     <string name="location_child_here">My child’s location</string>
+    <string name="protection_section">What is protected</string>
+    <string name="protection_footer">Tikoncha keeps the list up to date.</string>
 </resources>

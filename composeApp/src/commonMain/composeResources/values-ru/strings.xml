@@ -200,7 +200,6 @@
     <string name="imkoniyatlar">Возможности</string>
     <string name="obuna_faollashtirilgan">Подписка активирована</string>
     <string name="obunaga_sovga_sifatida">В подарок к подписке</string>
-    <string name="premium">Премиум</string>
     <string name="sovga_qilish">Подарить</string>
     <string name="dostlarni_taklif_qilish">Пригласить друзей</string>
     <string name="faol_vazifalar">Активные задания</string>
@@ -787,9 +786,6 @@
     <string name="umumiy">Общие</string>
     <string name="boshqa_ota_ona">Другой родитель</string>
     <string name="vaqtincha_toxtatish">Приостановить</string>
-    <string name="himoya_paketlari">Пакеты защиты</string>
-    <string name="boshqa_ota_ona_yoqqan">Включил другой родитель</string>
-    <string name="farzand_ozi_yoqqan">Включил сам ребёнок</string>
     <plurals name="ilova_soni">
         <item quantity="one">%1$d приложение</item>
         <item quantity="few">%1$d приложения</item>
@@ -1011,4 +1007,6 @@
     <string name="editor_delete_message">«%1$s» будет удалено.</string>
     <string name="editor_paywall_allow">Режим «Открыты только выбранные» доступен в подписке Plus.</string>
     <string name="location_child_here">Где мой ребёнок</string>
+    <string name="protection_section">Что защищается</string>
+    <string name="protection_footer">Список обновляет Tikoncha.</string>
 </resources>

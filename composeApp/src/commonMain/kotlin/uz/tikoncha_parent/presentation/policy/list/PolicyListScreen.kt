@@ -72,7 +72,7 @@ import uz.tikoncha_parent.presentation.policy.model.PayWallReason
 import uz.tikoncha_parent.presentation.policy.preset.PresetPolicyScreen
 import uz.tikoncha_parent.presentation.policy.model.PolicyCardUi
 import uz.tikoncha_parent.presentation.policy.model.PolicyTab
-import uz.tikoncha_parent.presentation.policy.protection_packs.ProtectionPacksScreen
+import uz.tikoncha_parent.presentation.policy.protection.ContentProtectionScreen
 import uz.tikoncha_parent.presentation.policy.quick.QuickBlockScreen
 import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
 import uz.tikoncha_parent.ui.ContainerPadding
@@ -108,7 +108,7 @@ class PolicyListScreen : Screen {
             viewModel.effect.collect { e ->
                 when (e) {
                     is PolicyListEffect.OpenQuickBlock -> navigator.push(QuickBlockScreen(e.childId))
-                    is PolicyListEffect.OpenProtection -> navigator.push(ProtectionPacksScreen())
+                    is PolicyListEffect.OpenProtection -> navigator.push(ContentProtectionScreen(e.childId))
                     is PolicyListEffect.OpenPreset -> navigator.push(PresetPolicyScreen(e.childId, e.kind))
                     is PolicyListEffect.OpenPolicy -> navigator.push(PolicyEditorScreen(e.childId, e.policyId))
                     is PolicyListEffect.OpenCreate -> navigator.push(PolicyEditorScreen(e.childId, null))

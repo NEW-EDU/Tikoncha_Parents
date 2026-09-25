@@ -242,7 +242,6 @@
     <string name="imkoniyatlar">Imkoniyatlar</string>
     <string name="obuna_faollashtirilgan">Obuna faollashtirilgan</string>
     <string name="obunaga_sovga_sifatida">Obunaga sovg‘a sifatida</string>
-    <string name="premium">Premium</string>
     <string name="sovga_qilish">Sovg‘a qilish</string>
     <string name="dostlarni_taklif_qilish">Do‘stlarni taklif qilish</string>
     <string name="faol_vazifalar">Faol vazifalar</string>
@@ -800,9 +799,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="umumiy">Umumiy</string>
     <string name="boshqa_ota_ona">Boshqa ota-ona</string>
     <string name="vaqtincha_toxtatish">Vaqtincha to‘xtatish</string>
-    <string name="himoya_paketlari">Himoya paketlari</string>
-    <string name="boshqa_ota_ona_yoqqan">Boshqa ota-ona yoqqan</string>
-    <string name="farzand_ozi_yoqqan">Farzandingiz o‘zi yoqqan</string>
     <plurals name="ilova_soni">
         <item quantity="one">%1$d ta ilova</item>
         <item quantity="other">%1$d ta ilova</item>
@@ -1016,4 +1012,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="editor_delete_message">“%1$s” o‘chiriladi.</string>
     <string name="editor_paywall_allow">“Faqat tanlanganlar ochiq” rejimi Plus obunada ishlaydi.</string>
     <string name="location_child_here">Farzandim joylashuvi</string>
+    <string name="protection_section">Nimalar himoya qilinadi</string>
+    <string name="protection_footer">Ro‘yxatni Tikoncha yangilab turadi.</string>
 </resources>
