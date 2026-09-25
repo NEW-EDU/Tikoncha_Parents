@@ -21,6 +21,9 @@
 
         suspend fun syncSubscriptionLimits(): Outcome<List<SubscriptionLimit>>
 
+        /** Oxirgi [syncSubscriptionLimits] natijasi; bola hali yo'q bo'lsa `null`. */
+        fun cachedSubscriptionLimit(childId: String): SubscriptionLimit?
+
         suspend fun subscriptionPlans(): Outcome<List<SubscriptionPlansData>>
 
         suspend fun paymentStatus(merchantTransId: String): Outcome<PaymentStatus>

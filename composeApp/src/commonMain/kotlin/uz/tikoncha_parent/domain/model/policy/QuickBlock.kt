@@ -12,7 +12,9 @@ data class QuickBlockTarget(val type: TargetType, val key: String) {
 }
 
 enum class QuickBlockResult {
-    ADDED, EXISTS, REMOVED, ABSENT;
+    ADDED, EXISTS, REMOVED, ABSENT,
+    /** O'chiq blok qayta yoqildi (ilova allaqachon ro'yxatda edi) — serverdan kelmaydi. */
+    ENABLED;
 
     companion object {
         fun from(raw: String?): QuickBlockResult =

@@ -34,6 +34,9 @@ class PaymentRepositoryImpl(
         else Outcome.Failure(ApiErrorMapper.fromCode(r.code), r.error)
     }
 
+    override fun cachedSubscriptionLimit(childId: String): SubscriptionLimit? =
+        AppSettings.subscriptionLimitList.firstOrNull { it.childId == childId }
+
     override suspend fun syncSubscriptionLimits(): Outcome<List<SubscriptionLimit>> =
         apiCall(TAG) {
             val r = api.subscriptionLimits()

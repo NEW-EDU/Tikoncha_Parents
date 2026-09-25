@@ -11,4 +11,7 @@ interface QuickBlockRepository {
     suspend fun refresh(childId: String): Outcome<List<QuickBlockEntry>>
     suspend fun add(childId: String, target: QuickBlockTarget): Outcome<QuickBlockResult>
     suspend fun remove(childId: String, target: QuickBlockTarget): Outcome<QuickBlockResult>
+
+    /** Mening tezkor blokimni yoqish/o'chirish — ro'yxat saqlanadi. */
+    suspend fun setEnabled(childId: String, policyId: String, enabled: Boolean): Outcome<QuickBlockEntry>
 }

@@ -61,6 +61,7 @@ import uz.tikoncha_parent.domain.repository.policy.PolicyRepository
 import uz.tikoncha_parent.domain.repository.policy.ProtectionPackRepository
 import uz.tikoncha_parent.domain.repository.policy.QuickBlockRepository
 import uz.tikoncha_parent.domain.use_case.app_usage.TodayUsageUseCase
+import uz.tikoncha_parent.domain.use_case.app_usage.GetUsageHistoryUseCase
 import uz.tikoncha_parent.domain.use_case.chat.GetChatMessagesFromServerUseCase
 import uz.tikoncha_parent.domain.use_case.chat.ObserveChatStatusUseCase
 import uz.tikoncha_parent.domain.use_case.chat.SendMessageApiUseCase
@@ -82,6 +83,9 @@ import uz.tikoncha_parent.domain.use_case.policy.PausePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RefreshPoliciesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RefreshQuickBlocksUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RemoveQuickBlockUseCase
+import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlockSnapshotUseCase
+import uz.tikoncha_parent.domain.use_case.policy.ToggleQuickBlockUseCase
+import uz.tikoncha_parent.domain.use_case.policy.ChildPaidStatusUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ToggleProtectionPackUseCase
 import uz.tikoncha_parent.domain.use_case.policy.UpdatePolicyUseCase
@@ -205,6 +209,7 @@ val sharedModule = module {
     single { DeleteTodoUseCase(get()) }
     single { CompleteTodoUseCase(get()) }
     single { TodayUsageUseCase(get()) }
+    single { GetUsageHistoryUseCase(get()) }
     // Jadvallar
     single { ObservePoliciesUseCase(get()) }
     single { RefreshPoliciesUseCase(get(), get()) }
@@ -220,6 +225,9 @@ val sharedModule = module {
     single { RefreshQuickBlocksUseCase(get()) }
     single { AddQuickBlockUseCase(get()) }
     single { RemoveQuickBlockUseCase(get()) }
+    single { ObserveQuickBlockSnapshotUseCase(get()) }
+    single { ToggleQuickBlockUseCase(get()) }
+    single { ChildPaidStatusUseCase(get()) }
     // Himoya paketlari
     single { GetProtectionPackStatusesUseCase(get(), get()) }
     single { ToggleProtectionPackUseCase(get()) }

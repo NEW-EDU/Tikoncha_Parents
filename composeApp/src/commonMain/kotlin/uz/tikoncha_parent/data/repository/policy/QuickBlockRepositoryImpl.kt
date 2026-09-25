@@ -9,6 +9,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import uz.tikoncha_parent.data.mapper.policy.toDomain
 import uz.tikoncha_parent.data.mapper.policy.toDto
+import uz.tikoncha_parent.data.mapper.policy.toJsonObject
 import uz.tikoncha_parent.data.mapper.policy.toQuickBlockEntry
 import uz.tikoncha_parent.data.remote.app_error.PolicyCall
 import uz.tikoncha_parent.data.remote.app_error.PolicyErrorMapper
@@ -18,6 +19,7 @@ import uz.tikoncha_parent.data.remote.policy.PolicyApiService
 import uz.tikoncha_parent.data.repository.apiCall
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
+import uz.tikoncha_parent.domain.model.policy.PolicyPatch
 import uz.tikoncha_parent.domain.model.policy.QuickBlockEntry
 import uz.tikoncha_parent.domain.model.policy.QuickBlockResult
 import uz.tikoncha_parent.domain.model.policy.QuickBlockTarget
@@ -70,6 +72,24 @@ class QuickBlockRepositoryImpl(
                 // Mening tezkor blokim hali yaratilmagan — olib tashlanadigan narsa yo'q.
                 if (!r.success && r.code == 404) Outcome.Success(QuickBlockResult.ABSENT)
                 else apply(childId, PolicyCall.QUICK_BLOCK_REMOVE, r)
+            }
+        }
+
+    override suspend fun setEnabled(childId: String, policyId: String, enabled: Boolean): Outcome<QuickBlockEntry> =
+        lock.withLock {
+            apiCall(TAG) {
+                val r = api.patch(policyId, PolicyPatch.toggle(enabled).toJsonObject())
+                val dto = r.data
+                when {
+                    r.success && dto != null -> {
+                        val entry = dto.toDomain().toQuickBlockEntry()
+                        upsert(childId, entry)
+                        Outcome.Success(entry)
+                    }
+
+                    r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
+                    else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.PATCH, r.code), r.error)
+                }
             }
         }
 

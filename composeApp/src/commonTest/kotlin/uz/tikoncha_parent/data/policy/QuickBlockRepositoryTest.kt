@@ -84,6 +84,20 @@ class QuickBlockRepositoryTest {
         assertEquals(1, maxInFlight)
     }
 
+    /** O'chiq blokni yoqish: PATCH javobidagi jadval keshdagi yozuvni almashtiradi. */
+    @Test
+    fun setEnabledAppliesPatchResponse() = runTest {
+        val repo = repo { req ->
+            if (req.method == HttpMethod.Get) ok(Wire.QUICK_BLOCK_LIST) else ok(Wire.QUICK_BLOCK_POLICY)
+        }
+        repo.refresh(Wire.CHILD_ID)
+        val res = repo.setEnabled(Wire.CHILD_ID, "44444444-4444-4444-4444-444444444444", enabled = true)
+
+        assertTrue((res as Outcome.Success).data.isActive)
+        assertEquals(listOf(true, true), repo.observeQuickBlocks(Wire.CHILD_ID).first().map { it.isActive })
+        assertEquals(listOf(HttpMethod.Get, HttpMethod.Patch), requests)
+    }
+
     @Test
     fun removeWithoutOwnBlockIsAbsent() = runTest {
         val repo = repo {
