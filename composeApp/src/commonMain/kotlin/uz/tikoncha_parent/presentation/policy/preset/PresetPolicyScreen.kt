@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cafe.adriel.voyager.core.annotation.InternalVoyagerApi
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.core.screen.ScreenKey
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.internal.BackHandler
@@ -122,6 +123,8 @@ import kotlin.time.Instant
  */
 @OptIn(InternalVoyagerApi::class)
 class PresetPolicyScreen(private val childId: String, private val kind: PresetKind) : Screen {
+
+    override val key: ScreenKey = "preset_policy:$childId:${kind.name}"
 
     @Composable
     override fun Content() {
