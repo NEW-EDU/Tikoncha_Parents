@@ -228,7 +228,7 @@ fun TargetsEditorState.applyTo(draft: PolicyDraft, flavor: TargetsFlavor): Polic
 // ═══════════════════════════════════════════
 
 /** Server inglizcha nom yuboradi ("Art & Design", "Action") — enum kodiga. */
-val InstalledApp.appCategory: AppCategory get() = AppCategory.from(category?.let(CategoryLocalizer::toCode))
+val InstalledApp.appCategory: AppCategory get() = AppCategory.from(categoryId ?: category?.let(CategoryLocalizer::toCode))
 
 data class AppGroup(val category: AppCategory, val apps: List<InstalledApp>)
 

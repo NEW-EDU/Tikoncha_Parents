@@ -39,7 +39,6 @@ import tikoncha_parents.composeapp.generated.resources.targets_only_selected_ope
 import tikoncha_parents.composeapp.generated.resources.targets_only_selected_open_sub
 import tikoncha_parents.composeapp.generated.resources.targets_selected_closed
 import tikoncha_parents.composeapp.generated.resources.targets_selected_closed_sub
-import uz.tikoncha_parent.domain.model.apps.AppCategory
 import uz.tikoncha_parent.domain.model.apps.InstalledApp
 import uz.tikoncha_parent.domain.model.policy.PolicyAction
 import uz.tikoncha_parent.domain.model.policy.PolicyDraft
@@ -130,7 +129,7 @@ fun TargetsViewer(draft: PolicyDraft, apps: List<InstalledApp>, onClose: () -> U
             if (t.categories.isNotEmpty()) {
                 ViewerSection(title = stringResource(Res.string.kategoriyalar), count = t.categories.size) {
                     t.categories.forEachIndexed { i, id ->
-                        val localized = CategoryLocalizer.localize(AppCategory.from(id), lang)
+                        val localized = CategoryLocalizer.localizeCode(id, lang)
                         SettingRow(title = localized.name, leading = { EmojiTile(localized.emoji) })
                         if (i < t.categories.lastIndex) GroupDivider()
                     }

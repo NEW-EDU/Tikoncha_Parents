@@ -7,4 +7,6 @@ data class InstalledApp(
     val category: String?,
     val iconUrl: String?,
     val order: Int,
+    /** Google Play ID (`GET /installed-apps` `category_id`); [category] — Play nomi. */
+    val categoryId: String? = null,
 )

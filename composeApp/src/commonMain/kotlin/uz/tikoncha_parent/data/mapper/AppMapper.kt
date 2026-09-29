@@ -9,4 +9,5 @@ fun AppDto.toDomain(): InstalledApp = InstalledApp(
     category = category?.takeIf { it.isNotBlank() },
     iconUrl = icon,
     order = order,
+    categoryId = category_id?.takeIf { it.isNotBlank() },
 )

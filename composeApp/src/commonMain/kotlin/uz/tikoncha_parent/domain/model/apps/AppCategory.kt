@@ -37,12 +37,11 @@ enum class AppCategory(val id: String) {
     OTHER("OTHER");
 
     companion object {
-        /** Server dan kelgan string → enum. GAME_* → GAMES, noma'lum → OTHER */
+        /** Play ID / Play nomi / eski server kodi → enum. GAME_* → GAMES, noma'lum → OTHER */
         fun from(value: String?): AppCategory {
-            if (value == null) return OTHER
-            val upper = value.uppercase()
-            if (upper.startsWith("GAME_")) return GAMES
-            return entries.find { it.id == upper } ?: OTHER
+            val id = CategoryCodes.playId(value) ?: return OTHER
+            if (CategoryCodes.isGame(id)) return GAMES
+            return entries.find { it.id == id } ?: OTHER
         }
     }
 }

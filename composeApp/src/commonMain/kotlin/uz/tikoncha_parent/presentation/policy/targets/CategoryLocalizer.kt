@@ -1,6 +1,7 @@
 package uz.tikoncha_parent.presentation.policy.targets
 
 import uz.tikoncha_parent.domain.model.apps.AppCategory
+import uz.tikoncha_parent.domain.model.apps.CategoryCodes
 import uz.tikoncha_parent.presentation.domain.model.LanguageType
 
 
@@ -20,62 +21,18 @@ object CategoryLocalizer {
         return LocalizedCategory(name, emoji)
     }
 
-    fun toCode(englishName: String): String {
-        return englishToCode[englishName.trim()] ?: englishName.uppercase().replace(" ", "_")
-    }
+    /** Google Play nomi ("Casino") → Play ID ("GAME_CASINO") — jadval [CategoryCodes] da. */
+    fun toCode(englishName: String): String = CategoryCodes.playId(englishName) ?: englishName
 
-    private val englishToCode = mapOf(
-        // Apps
-        "Art & Design" to "ART_AND_DESIGN",
-        "Auto & Vehicles" to "AUTO_AND_VEHICLES",
-        "Beauty" to "BEAUTY",
-        "Books & Reference" to "BOOKS_AND_REFERENCE",
-        "Business" to "BUSINESS",
-        "Comics" to "COMICS",
-        "Communication" to "COMMUNICATION",
-        "Dating" to "DATING",
-        "Education" to "EDUCATION",
-        "Entertainment" to "ENTERTAINMENT",
-        "Events" to "EVENTS",
-        "Finance" to "FINANCE",
-        "Food & Drink" to "FOOD_AND_DRINK",
-        "Health & Fitness" to "HEALTH_AND_FITNESS",
-        "House & Home" to "HOUSE_AND_HOME",
-        "Libraries & Demo" to "LIBRARIES_AND_DEMO",
-        "Lifestyle" to "LIFESTYLE",
-        "Maps & Navigation" to "MAPS_AND_NAVIGATION",
-        "Medical" to "MEDICAL",
-        "Music & Audio" to "MUSIC_AND_AUDIO",
-        "News & Magazines" to "NEWS_AND_MAGAZINES",
-        "Parenting" to "PARENTING",
-        "Personalization" to "PERSONALIZATION",
-        "Photography" to "PHOTOGRAPHY",
-        "Productivity" to "PRODUCTIVITY",
-        "Shopping" to "SHOPPING",
-        "Social" to "SOCIAL",
-        "Sports" to "SPORTS",
-        "Tools" to "TOOLS",
-        "Travel & Local" to "TRAVEL_AND_LOCAL",
-        "Video Players & Editors" to "VIDEO_PLAYERS",
-        "Weather" to "WEATHER",
-        // Games
-        "Action" to "GAMES",
-        "Adventure" to "GAMES",
-        "Arcade" to "GAMES",
-        "Board" to "GAMES",
-        "Card" to "GAMES",
-        "Casino" to "GAMES",
-        "Casual" to "GAMES",
-        "Educational" to "GAMES",
-        "Music" to "GAMES",
-        "Puzzle" to "GAMES",
-        "Racing" to "GAMES",
-        "Role Playing" to "GAMES",
-        "Simulation" to "GAMES",
-        "Strategy" to "GAMES",
-        "Trivia" to "GAMES",
-        "Word" to "GAMES",
-    )
+    /** Jadvaldagi kategoriya kodi uchun nom (eski server kodlari ham): GAME_CASINO — "Qimor". */
+    fun localizeCode(code: String, language: LanguageType): LocalizedCategory {
+        val id = CategoryCodes.normalize(code)
+        if (id == CategoryCodes.GAME_CASINO) {
+            val name = if (language == LanguageType.RU) "Азартные игры" else "Qimor"
+            return LocalizedCategory(name, "🎰")
+        }
+        return localize(AppCategory.from(id), language)
+    }
 
     private val uzNames = mapOf(
         AppCategory.ART_AND_DESIGN to "San'at va dizayn",
