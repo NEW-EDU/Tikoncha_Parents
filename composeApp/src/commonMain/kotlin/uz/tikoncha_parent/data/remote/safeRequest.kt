@@ -4,7 +4,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.forms.submitFormWithBinaryData
-import io.ktor.client.request.parameter
+import io.ktor.client.request.setBody
 import io.ktor.client.request.post
 import io.ktor.client.request.request
 import io.ktor.client.request.url
@@ -18,6 +18,7 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.io.IOException
 import uz.tikoncha_parent.data.local.AppSettings
+import uz.tikoncha_parent.data.remote.model.RefreshTokenRequest
 import uz.tikoncha_parent.data.remote.model.RefreshTokenResponse
 import kotlin.coroutines.cancellation.CancellationException
 
@@ -123,7 +124,8 @@ suspend fun refreshAccessToken(client: HttpClient): RefreshResult {
 
         try {
             val body = client.post("auth/refresh") {
-                parameter("refresh_token", AppSettings.refreshToken)
+                contentType(ContentType.Application.Json)
+                setBody(RefreshTokenRequest(AppSettings.refreshToken))
             }.body<RefreshTokenResponse>()
 
             val newToken = body.data?.access_token

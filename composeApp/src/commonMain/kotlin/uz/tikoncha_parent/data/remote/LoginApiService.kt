@@ -4,8 +4,11 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.request.setBody
+import io.ktor.http.contentType
+import io.ktor.http.ContentType
 import io.ktor.http.HttpMethod
 import uz.tikoncha_parent.data.local.AppSettings
+import uz.tikoncha_parent.data.remote.model.RefreshTokenRequest
 import uz.tikoncha_parent.data.remote.model.RefreshTokenResponse
 import uz.tikoncha_parent.data.remote.model.RegisterUserRequest
 import uz.tikoncha_parent.data.remote.model.RegisterUserResponse
@@ -75,7 +78,8 @@ class LoginApiService(private val client: HttpClient) {
             method = HttpMethod.Post,
             url = "auth/refresh",
             block = {
-                parameter("refresh_token", AppSettings.refreshToken)
+                contentType(ContentType.Application.Json)
+                setBody(RefreshTokenRequest(AppSettings.refreshToken))
             }
         )
 
