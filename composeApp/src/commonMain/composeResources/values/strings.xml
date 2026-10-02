@@ -898,7 +898,7 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="list_info_also">Yana ishlayapti: %1$s.</string>
     <string name="list_info_many">Bir vaqtda bir nechta jadval ishlasa, ilovani ulardan birortasi yopsa — u yopiladi.</string>
     <string name="list_info_child_scope">Farzandning o‘z jadvallari sizning qaroringizni o‘zgartira olmaydi — siz yopgan ilova yopiqligicha qoladi.</string>
-    <string name="list_info_school_scope">Maktab jadvallari birinchi tekshiriladi: ular ilova haqida qaror qilsa, sizning jadvalingiz uni o‘zgartira olmaydi.</string>
+    <string name="list_info_school_scope">Maktab jadvali ilovani yopsa yoki aniq ruxsat bersa, sizning jadvalingiz buni o‘zgartira olmaydi. Qolgan hollarda qattiqroq jadval ishlaydi.</string>
     <string name="list_info_quick">Tezkor blok yoqiq — undagi ilovalar vaqt va joydan qat’i nazar doim yopiq.</string>
     <string name="list_info_paused">To‘xtatilgan jadvallar: %1$d — belgilangan vaqtgacha ishlamaydi.</string>
     <string name="list_info_how">Jadval o‘z vaqti va joyi kelganda o‘zi ishga tushadi.</string>
@@ -984,7 +984,7 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="targets_selected_closed">Tanlanganlar yopiladi</string>
     <string name="targets_selected_closed_sub">Qolgani ochiq</string>
     <string name="targets_only_selected_open">Faqat tanlanganlar ochiq</string>
-    <string name="targets_only_selected_open_sub">Qolgan hamma ilova yopiladi</string>
+    <string name="targets_only_selected_open_sub">Qolgan ilovalar yopiladi</string>
     <string name="targets_covered_by_category">Kategoriya orqali tanlangan</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Sayt manzili yoki kalit so‘z noto‘g‘ri. Masalan: youtube.com yoki kino</string>
@@ -1002,7 +1002,7 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="editor_closed_in_time">Yopiq bo‘ladi</string>
     <string name="editor_closed_in_time_sub">Boshqa vaqtda ochiq</string>
     <string name="editor_open_in_time">Faqat shu vaqtda ochiq</string>
-    <string name="editor_open_in_time_sub">Boshqa vaqtda yopiq</string>
+    <string name="editor_open_in_time_sub">Tanlangan kunlarda boshqa vaqtda yopiq</string>
     <string name="editor_closed">yopiq</string>
     <string name="editor_open">ochiq</string>
     <string name="editor_inside">Hudud ichida</string>
@@ -1022,4 +1022,18 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="protection_by_child">Farzandingiz o‘zida yoqqan — uni faqat farzandingiz o‘chira oladi</string>
     <string name="protection_by_coparent">Ikkinchi ota-ona yoqqan — uni faqat o‘zi o‘chira oladi</string>
     <string name="protection_by_both">Farzandingiz va ikkinchi ota-ona yoqqan — ularnikini faqat o‘zlari o‘chira oladi</string>
+    <string name="protection_policies_label">Jadvallar</string>
+    <string name="protection_policies_delivered">Telefonga yetib bordi</string>
+    <string name="protection_policies_pending">Hali yetib bormadi</string>
+    <string name="protection_gujanak_limits_note">Gujanak rejimida ilovalar bloklanadi. Saytlar va Shorts/Reels faqat Qalqon rejimida bloklanadi.</string>
+    <string name="editor_limit_days_follow_time">Vaqt bilan bir xil — kunlar vaqt sahifasida tanlanadi</string>
+    <string name="editor_limit_in_window">limit shu vaqtda</string>
+    <string name="editor_limit_outside_window">limit shu vaqtdan tashqarida</string>
+    <string name="editor_limit_in_time">Limit shu vaqtda ishlaydi</string>
+    <string name="editor_limit_in_time_sub">Boshqa vaqtda cheklov yo‘q</string>
+    <string name="editor_limit_out_time">Limit shu vaqtdan tashqarida ishlaydi</string>
+    <string name="editor_limit_out_time_sub">Shu vaqtda cheklov yo‘q</string>
+    <string name="info_limit_daily_window">%1$s: %2$s jami %3$s ishlatish mumkin. Vaqt tugagach, shu vaqt oralig‘i tugaguncha yopiladi.</string>
+    <string name="targets_only_selected_open_sites_sub">Qolgan saytlar yopiladi</string>
+    <string name="targets_only_selected_open_both_sub">Qolgan ilova va saytlar yopiladi</string>
 </resources>

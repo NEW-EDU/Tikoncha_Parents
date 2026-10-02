@@ -27,6 +27,8 @@ data class ProtectionStatus(
     val enabledKeys: List<String>,
     val disabledKeys: List<String>,
     val lastSyncAt: String?,
+    val policiesSyncedAt: String? = null,
+    val policiesUpToDate: Boolean? = null,
     val strictDisableRequest: ChildRequest?,
     val logoutRequest: AccountRequest?,
     val deleteRequest: AccountRequest?,

@@ -106,7 +106,7 @@ fun TargetsViewer(draft: PolicyDraft, apps: List<InstalledApp>, onClose: () -> U
                     subtitle = when {
                         allApps && t.excludePackages.isNotEmpty() -> stringResource(Res.string.targets_except_open)
                         allApps -> null
-                        allowList -> stringResource(Res.string.targets_only_selected_open_sub)
+                        allowList -> stringResource(uz.tikoncha_parent.presentation.policy.editor.allowListRest(t))
                         else -> stringResource(Res.string.targets_selected_closed_sub)
                     },
                 )

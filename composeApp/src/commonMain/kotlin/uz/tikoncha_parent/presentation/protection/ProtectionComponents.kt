@@ -49,6 +49,10 @@ import tikoncha_parents.composeapp.generated.resources.kod
 import tikoncha_parents.composeapp.generated.resources.n_ta_zarur_ruxsat_ochiq
 import tikoncha_parents.composeapp.generated.resources.ochirish_usuli
 import tikoncha_parents.composeapp.generated.resources.oxirgi_sinxron
+import tikoncha_parents.composeapp.generated.resources.protection_gujanak_limits_note
+import tikoncha_parents.composeapp.generated.resources.protection_policies_delivered
+import tikoncha_parents.composeapp.generated.resources.protection_policies_label
+import tikoncha_parents.composeapp.generated.resources.protection_policies_pending
 import tikoncha_parents.composeapp.generated.resources.qalqon_ochirish_rad_etildi_desc
 import tikoncha_parents.composeapp.generated.resources.qalqon_ochirish_tasdiqlandi_desc
 import tikoncha_parents.composeapp.generated.resources.qalqon_uchun
@@ -192,6 +196,32 @@ fun ProtectionHeroCard(
                 text = relativeTimeText(state.lastSyncAt),
                 style = AppTypography.emphasizedSmSemiBold,
                 color = AppColors.text.primary,
+            )
+        }
+
+        // Jadvallar telefonga yetib bordimi (farzand ilovasining oxirgi hisoboti bo'yicha)
+        val upToDate = state.policiesUpToDate
+        if (upToDate != null) {
+            Space(10.dp)
+            KeyValueRow(label = stringResource(Res.string.protection_policies_label)) {
+                Text(
+                    text = stringResource(
+                        if (upToDate) Res.string.protection_policies_delivered
+                        else Res.string.protection_policies_pending
+                    ),
+                    style = AppTypography.emphasizedSmSemiBold,
+                    color = if (upToDate) AppColors.text.accentSuccess else AppColors.text.accentWarning,
+                )
+            }
+        }
+
+        // G'ujanak saytlar va Shorts/Reels'ni ko'rmaydi — ota-ona buni bilishi kerak
+        if (state.mode == ChildMode.GUJANAK) {
+            Space(10.dp)
+            Text(
+                text = stringResource(Res.string.protection_gujanak_limits_note),
+                style = AppTypography.bodyMdRegular,
+                color = AppColors.text.accentWarning,
             )
         }
 

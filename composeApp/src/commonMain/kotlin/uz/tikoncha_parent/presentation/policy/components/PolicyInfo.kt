@@ -7,6 +7,7 @@ import tikoncha_parents.composeapp.generated.resources.info_always
 import tikoncha_parents.composeapp.generated.resources.info_disabled
 import tikoncha_parents.composeapp.generated.resources.info_limit_all
 import tikoncha_parents.composeapp.generated.resources.info_limit_daily
+import tikoncha_parents.composeapp.generated.resources.info_limit_daily_window
 import tikoncha_parents.composeapp.generated.resources.info_limit_gate
 import tikoncha_parents.composeapp.generated.resources.info_limit_hourly
 import tikoncha_parents.composeapp.generated.resources.info_limit_selected
@@ -69,7 +70,12 @@ private fun PolicyInfo.limitSentence(selected: Boolean): String {
     val rule = limit ?: return ""
     val days = daysText(rule.days.map { it.num }.toSet()) ?: stringResource(Res.string.policy_every_day)
     val target = stringResource(if (selected) Res.string.info_limit_selected else Res.string.info_limit_all)
-    val res = if (rule.window == LimitWindow.HOUR) Res.string.info_limit_hourly else Res.string.info_limit_daily
+    val res = when {
+        rule.window == LimitWindow.HOUR -> Res.string.info_limit_hourly
+        // Vaqt oynasi bor — limit tugagach oyna oxirigacha yopiq, "ertaga qadar" emas
+        time != null -> Res.string.info_limit_daily_window
+        else -> Res.string.info_limit_daily
+    }
     return stringResource(res, days, target, durationText(rule.minutes))
 }
 

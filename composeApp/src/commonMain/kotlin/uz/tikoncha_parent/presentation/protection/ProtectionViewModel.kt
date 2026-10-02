@@ -148,6 +148,8 @@ class ProtectionViewModel(
                 isCodeVisible = false,
                 lastSyncAt = lastSync,
                 isOnline = isOnline(lastSync),
+                policiesUpToDate = data.policiesUpToDate,
+                policiesSyncedAt = parseInstant(data.policiesSyncedAt),
                 enabledPermissions = data.enabledKeys.mapNotNull { map -> ChildPermission.from(map) }.toSet(),
                 disabledPermissions = data.disabledKeys.mapNotNull { map -> ChildPermission.from(map) }.toSet(),
                 strictDisableRequest = data.strictDisableRequest,

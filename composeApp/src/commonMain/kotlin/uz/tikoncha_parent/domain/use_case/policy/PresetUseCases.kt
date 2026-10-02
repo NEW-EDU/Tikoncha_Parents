@@ -85,10 +85,12 @@ class SavePolicyDraftUseCase(
     private val create: CreatePolicyUseCase,
     private val update: UpdatePolicyUseCase,
 ) {
-    suspend operator fun invoke(childId: String, policyId: String?, draft: PolicyDraft, saved: PolicyDraft?): Outcome<Policy> {
+    suspend operator fun invoke(childId: String, policyId: String?, input: PolicyDraft, saved: PolicyDraft?): Outcome<Policy> {
+        val draft = input.withSharedDays()
         if (policyId == null) return create(childId, draft)
         if (draft.name.isBlank()) return Outcome.Failure(ErrorCause.EmptyTitle)
         if (draft.targets.isEmpty) return Outcome.Failure(ErrorCause.Validation)
+        if (!draft.conditions.isValid() || !draft.limits.isValid()) return Outcome.Failure(ErrorCause.Validation)
         val patch = PolicyPatch(
             name = if (saved?.name != draft.name) Patch.Value(draft.name.trim()) else Patch.Unset,
             action = if (saved?.action != draft.action) Patch.Value(draft.action) else Patch.Unset,

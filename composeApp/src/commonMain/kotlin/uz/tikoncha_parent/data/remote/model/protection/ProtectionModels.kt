@@ -15,6 +15,10 @@ data class ProtectionStatusResponse(
 data class ProtectionStatusData(
     @SerialName("mode_status") val modeStatus: ModeStatusDto? = null,
     @SerialName("last_sync_at") val lastSyncAt: String? = null,
+    /** Telefon jadvallar ro'yxatini oxirgi marta qo'llagan vaqt; null — eski ilova */
+    @SerialName("policies_synced_at") val policiesSyncedAt: String? = null,
+    /** true — oxirgi o'zgarishlar telefonda; false — hali yetib bormagan; null — noma'lum */
+    @SerialName("policies_up_to_date") val policiesUpToDate: Boolean? = null,
     @SerialName("strict_disable_request") val strictDisableRequest: ChildRequestDto? = null,
     @SerialName("logout_request") val logoutRequest: AccountRequestDto? = null,
     @SerialName("delete_request") val deleteRequest: AccountRequestDto? = null,

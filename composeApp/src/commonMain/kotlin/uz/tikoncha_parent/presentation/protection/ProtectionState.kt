@@ -20,6 +20,9 @@ data class ProtectionState(
     val isCodeVisible: Boolean = false,
     val lastSyncAt: Instant? = null,
     val isOnline: Boolean = false,
+    /** null — farzand ilovasi bu ma'lumotni yubormaydi (eski versiya) */
+    val policiesUpToDate: Boolean? = null,
+    val policiesSyncedAt: Instant? = null,
 
     // ruxsatlar
     val enabledPermissions: Set<ChildPermission> = emptySet(),

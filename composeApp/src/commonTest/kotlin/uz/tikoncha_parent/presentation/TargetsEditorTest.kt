@@ -75,6 +75,10 @@ class TargetsEditorTest {
     @Test
     fun sitesAreNormalizedAndValidated() {
         assertEquals("youtube.com", normalizeSite(" https://www.YouTube.com/ "))
+        assertEquals("1xbet.com", normalizeSite("http://1xbet.com:8080/?ref=a#top"))
+        // Yo'l saqlanadi va rad etiladi — qurilma faqat hostni solishtiradi
+        assertEquals("youtube.com/shorts", normalizeSite("youtube.com/shorts/"))
+        assertTrue(!isValidSite(normalizeSite("https://youtube.com/shorts")))
         assertTrue(isValidSite("kino"))
         assertTrue(!isValidSite("ab"))
         val s = targetsEditorFrom(sleep, TargetsFlavor.Custom)

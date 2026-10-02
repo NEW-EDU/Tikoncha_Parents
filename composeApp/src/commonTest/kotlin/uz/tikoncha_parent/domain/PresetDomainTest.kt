@@ -26,7 +26,14 @@ import uz.tikoncha_parent.domain.policy.TimeRuleMatcher
 import uz.tikoncha_parent.domain.policy.contains
 import uz.tikoncha_parent.domain.policy.isActiveNow
 import uz.tikoncha_parent.domain.repository.policy.PolicyRepository
+import uz.tikoncha_parent.domain.use_case.policy.CreatePolicyUseCase
+import uz.tikoncha_parent.domain.use_case.policy.SavePolicyDraftUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePresetUseCase
+import uz.tikoncha_parent.domain.use_case.policy.UpdatePolicyUseCase
+import uz.tikoncha_parent.domain.use_case.policy.toDraft
+import uz.tikoncha_parent.domain.use_case.policy.withSharedDays
+import uz.tikoncha_parent.domain.model.LimitWindow
+import uz.tikoncha_parent.domain.model.policy.UsageLimit
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -121,7 +128,7 @@ class PresetDomainTest {
             calls += "create:${draft.preset}"; return Outcome.Success(policy())
         }
         override suspend fun patchPolicy(policyId: String, patch: PolicyPatch): Outcome<Policy> {
-            calls += "patch:$policyId:${(patch.isActive as Patch.Value).value}"; return Outcome.Success(policy())
+            calls += "patch:$policyId:${(patch.isActive as? Patch.Value)?.value}"; return Outcome.Success(policy())
         }
         override suspend fun deletePolicy(policyId: String): Outcome<Unit> = error("unused")
     }
@@ -135,5 +142,63 @@ class PresetDomainTest {
         val noop = toggle("child", PolicyPreset.SCHOOL, existing = null, enabled = false, title = "Dars vaqti")
         assertIs<Outcome.Success<Unit>>(noop)
         assertEquals(listOf("create:SLEEP", "patch:s1:false"), repo.calls)
+    }
+
+    /**
+     * Tahrirda boshlanish = tugash tanlansa, mapper vaqt shartini tashlab yuborardi va
+     * PATCH jadvalni 24/7 blokka aylantirardi. Endi saqlash rad etiladi, serverga hech narsa ketmaydi.
+     */
+    @Test
+    fun editWithZeroLengthWindowIsRejectedNotTurnedIntoAlwaysOn() = runTest {
+        val repo = Repo()
+        val save = SavePolicyDraftUseCase(CreatePolicyUseCase(repo), UpdatePolicyUseCase(repo))
+        val saved = policy(conditions = PolicyConditions(time = sleep), id = "s1").toDraft()
+        val broken = saved.copy(conditions = PolicyConditions(time = sleep.copy(endMin = sleep.startMin)))
+
+        assertIs<Outcome.Failure>(save("child", "s1", broken, saved))
+        assertIs<Outcome.Failure>(UpdatePolicyUseCase(repo)("s1", PolicyPatch(conditions = Patch.Value(broken.conditions))))
+        assertEquals(emptyList(), repo.calls)
+
+        val fine = saved.copy(conditions = PolicyConditions(time = sleep.copy(endMin = 7 * 60)))
+        assertIs<Outcome.Success<Policy>>(save("child", "s1", fine, saved))
+        assertEquals(listOf("patch:s1:null"), repo.calls)
+    }
+
+    /** "Du 22–06 dan tashqari" seshanba kunduzi amal qilmaydi — seshanba ro'yxatda yo'q (qurilma va server bilan bir xil). */
+    @Test
+    fun outsideOvernightWindowDoesNotSpillIntoNextDay() {
+        val outside = TimeCondition(days = setOf(WeekDay.MON), startMin = 22 * 60, endMin = 6 * 60, include = false)
+        assertTrue(TimeRuleMatcher.matches(1, 12 * 60, outside))                     // Du 12:00
+        assertFalse(TimeRuleMatcher.matches(1, 23 * 60, outside))                    // Du 23:00 — oyna ichida
+        assertFalse(TimeRuleMatcher.matches(2, 3 * 60, outside))                     // Se 03:00 — oyna davomi
+        assertFalse(TimeRuleMatcher.matches(2, 10 * 60, outside))                    // Se 10:00 — ro'yxatda yo'q kun
+    }
+
+    /** Tungi oyna limiti oyna boshlangan kunga tegishli: "Juma 22–06, juma limiti" shanba 01:00 da ham faol. */
+    @Test
+    fun overnightLimitBelongsToStartDay() {
+        assertEquals(1, TimeRuleMatcher.occurrenceDayOffset(6, 60, sleep))
+        assertEquals(0, TimeRuleMatcher.occurrenceDayOffset(5, 23 * 60, sleep))
+        val p = policy(
+            conditions = PolicyConditions(time = sleep),
+            limits = PolicyLimits(usage = UsageLimit(days = setOf(WeekDay.FRI), window = LimitWindow.DAY, minutes = 60)),
+        )
+        assertTrue(p.isActiveNow(6, 60, NOW))                                        // Shanba 01:00 — juma kechasi
+        assertFalse(p.isActiveNow(6, 23 * 60, NOW))                                  // Shanba 23:00 — shanba ro'yxatda yo'q
+    }
+
+    /** Limit kunlari — jadval kunlari: vaqt kunida, lekin limitsiz kunda jadval faol emas (qurilma ham qo'llamaydi). */
+    @Test
+    fun limitDaysAreThePolicysDays() {
+        val school = TimeCondition(days = setOf(WeekDay.MON, WeekDay.THU), startMin = 8 * 60, endMin = 14 * 60)
+        val p = policy(
+            conditions = PolicyConditions(time = school),
+            limits = PolicyLimits(usage = UsageLimit(days = setOf(WeekDay.MON), window = LimitWindow.DAY, minutes = 30)),
+        )
+        assertTrue(p.isActiveNow(1, 10 * 60, NOW))
+        assertFalse(p.isActiveNow(4, 10 * 60, NOW))
+        // Saqlashda kunlar bittaga keltiriladi — limit kunlari vaqtnikiga teng
+        val shared = p.toDraft().withSharedDays()
+        assertEquals(school.days, shared.limits.usage!!.days)
     }
 }

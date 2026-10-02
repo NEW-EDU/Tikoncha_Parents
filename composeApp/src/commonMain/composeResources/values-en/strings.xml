@@ -888,7 +888,7 @@ This information is used only for these features and is not shared with third pa
     <string name="list_info_also">Also active: %1$s.</string>
     <string name="list_info_many">When several schedules run at once, an app is blocked if any of them blocks it.</string>
     <string name="list_info_child_scope">The child’s own schedules cannot override yours — an app you block stays blocked.</string>
-    <string name="list_info_school_scope">School schedules are checked first: if they decide about an app, your schedule cannot change that.</string>
+    <string name="list_info_school_scope">If a school schedule closes an app or explicitly allows it, your schedule can’t change that. Otherwise the stricter schedule applies.</string>
     <string name="list_info_quick">Quick block is on — its apps are always blocked, whatever the time or place.</string>
     <string name="list_info_paused">Paused schedules: %1$d — they do nothing until the set time.</string>
     <string name="list_info_how">A schedule starts by itself when its time and place come.</string>
@@ -974,7 +974,7 @@ This information is used only for these features and is not shared with third pa
     <string name="targets_selected_closed">Selected are blocked</string>
     <string name="targets_selected_closed_sub">Everything else stays open</string>
     <string name="targets_only_selected_open">Only selected stay open</string>
-    <string name="targets_only_selected_open_sub">All other apps are blocked</string>
+    <string name="targets_only_selected_open_sub">Other apps are closed</string>
     <string name="targets_covered_by_category">Selected via category</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Invalid site address or keyword. Example: youtube.com or kino</string>
@@ -992,7 +992,7 @@ This information is used only for these features and is not shared with third pa
     <string name="editor_closed_in_time">Blocked</string>
     <string name="editor_closed_in_time_sub">Open at other times</string>
     <string name="editor_open_in_time">Open only during this time</string>
-    <string name="editor_open_in_time_sub">Blocked at other times</string>
+    <string name="editor_open_in_time_sub">On the selected days, closed at other times</string>
     <string name="editor_closed">blocked</string>
     <string name="editor_open">open</string>
     <string name="editor_inside">Inside the area</string>
@@ -1012,4 +1012,18 @@ This information is used only for these features and is not shared with third pa
     <string name="protection_by_child">Your child turned it on — only your child can turn theirs off</string>
     <string name="protection_by_coparent">The other parent turned it on — only they can turn theirs off</string>
     <string name="protection_by_both">Your child and the other parent turned it on — only they can turn theirs off</string>
+    <string name="protection_policies_label">Schedules</string>
+    <string name="protection_policies_delivered">Delivered to the phone</string>
+    <string name="protection_policies_pending">Not delivered yet</string>
+    <string name="protection_gujanak_limits_note">Hedgehog mode blocks apps. Sites and Shorts/Reels are blocked only in Shield mode.</string>
+    <string name="editor_limit_days_follow_time">Same as the time — days are chosen on the time page</string>
+    <string name="editor_limit_in_window">limit during this time</string>
+    <string name="editor_limit_outside_window">limit outside this time</string>
+    <string name="editor_limit_in_time">Limit applies during this time</string>
+    <string name="editor_limit_in_time_sub">No restriction at other times</string>
+    <string name="editor_limit_out_time">Limit applies outside this time</string>
+    <string name="editor_limit_out_time_sub">No restriction during this time</string>
+    <string name="info_limit_daily_window">%1$s: %2$s can be used for %3$s in total. When the time runs out, closed until this time window ends.</string>
+    <string name="targets_only_selected_open_sites_sub">Other sites are closed</string>
+    <string name="targets_only_selected_open_both_sub">Other apps and sites are closed</string>
 </resources>

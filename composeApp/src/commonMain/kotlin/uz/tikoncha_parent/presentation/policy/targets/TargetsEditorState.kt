@@ -140,13 +140,21 @@ private fun TargetsEditorState.submitSite(raw: String): TargetsEditorState {
     }
 }
 
+/**
+ * Server bilan bir xil (`schemas.normalize_site`): sxema, port, `www.`, oxirgi
+ * `/`, so'rov va `#` olib tashlanadi. Yo'l QOLADI — va [isValidSite] uni rad
+ * etadi: qurilma faqat hostni solishtiradi, "youtube.com/shorts" hech qachon
+ * mos kelmasdi (Shorts'ni yopish uchun — funksiyalar ro'yxati).
+ */
 fun normalizeSite(raw: String): String {
-    var d = raw.trim().lowercase().removePrefix("https://").removePrefix("http://").removeSuffix("/")
-    if (d.endsWith(".")) d = d.dropLast(1)
-    return d.removePrefix("www.")
+    var d = raw.trim().lowercase().removePrefix("https://").removePrefix("http://")
+    d = d.substringBefore('?').substringBefore('#').trimEnd('/')
+    val host = d.substringBefore('/').substringAfterLast('@').substringBefore(':').trimEnd('.')
+    val path = d.substringAfter('/', "")
+    return host.removePrefix("www.") + if (path.isNotEmpty()) "/$path" else ""
 }
 
-private val DOMAIN_REGEX = Regex("^([\\w-]+\\.)+[\\w-]{2,}(/.*)?$")
+private val DOMAIN_REGEX = Regex("^([\\w-]+\\.)+[\\w-]{2,}$")
 private const val MIN_KEYWORD_LENGTH = 3
 
 fun isValidSite(site: String): Boolean {

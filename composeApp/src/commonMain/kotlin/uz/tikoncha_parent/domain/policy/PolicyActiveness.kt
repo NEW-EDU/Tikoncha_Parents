@@ -13,7 +13,7 @@ import kotlin.time.Instant
 /**
  * Jadval HOZIR kuchdami (ro'yxatdagi "Hozir amalda" uchun) — server evaluator tartibida:
  *   1. TIRIKMI  — yoqilgan, pauzada emas, muddati o'tmagan, pullik gate
- *   2. SHARTLAR — vaqt VA joy VA limit kuni
+ *   2. SHARTLAR — vaqt VA joy VA limit kuni (limit kunlari = jadval kunlari)
  *
  * Vaqt — bolaning mahalliy vaqti (ota-ona bilan bir mintaqada deb olinadi).
  * Joy — bolaning oxirgi ma'lum joyi; noma'lum bo'lsa joyli jadval "faol" deyilmaydi.
@@ -35,7 +35,13 @@ fun Policy.isActiveNow(
         if (lastLat == null || lastLng == null) return false
         if (rule.contains(lastLat, lastLng) == rule.reverse) return false
     }
-    limits.usage?.let { rule -> if (rule.days.none { it.num == weekDay }) return false }
+    // Limit kunlari — jadvalning kunlari (qurilma bilan bir xil): limiti yo'q kunda jadval
+    // amal qilmaydi. Tungi oynada kun — oyna boshlangan kun.
+    limits.usage?.let { rule ->
+        val offset = conditions.time?.let { TimeRuleMatcher.occurrenceDayOffset(weekDay, minuteOfDay, it) } ?: 0
+        val day = if (offset == 1) TimeRuleMatcher.previousDay(weekDay) else weekDay
+        if (rule.days.none { it.num == day }) return false
+    }
     return true
 }
 

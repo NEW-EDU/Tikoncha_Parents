@@ -26,6 +26,7 @@ import uz.tikoncha_parent.domain.model.policy.PolicyTargets
 import uz.tikoncha_parent.domain.model.policy.TimeCondition
 import uz.tikoncha_parent.domain.model.policy.UsageLimit
 import uz.tikoncha_parent.domain.use_case.app_usage.GetUsageHistoryUseCase
+import uz.tikoncha_parent.domain.use_case.policy.withSharedDays
 import uz.tikoncha_parent.domain.use_case.policy.ChildPaidStatusUseCase
 import uz.tikoncha_parent.domain.use_case.policy.DeletePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetBlockableChildAppsUseCase
@@ -152,12 +153,12 @@ class PolicyEditorViewModel(
                 val draft = s.draft ?: return@update s
                 when (s.page) {
                     EditorPage.TIME -> s.copy(
-                        draft = draft.copy(conditions = draft.conditions.copy(time = s.timeEdit ?: draft.conditions.time)),
+                        draft = draft.copy(conditions = draft.conditions.copy(time = s.timeEdit ?: draft.conditions.time)).withSharedDays(),
                         page = EditorPage.MAIN,
                         timeEdit = null,
                     )
                     EditorPage.LIMIT -> s.copy(
-                        draft = draft.copy(limits = draft.limits.copy(usage = s.limitEdit ?: draft.limits.usage)),
+                        draft = draft.copy(limits = draft.limits.copy(usage = s.limitEdit ?: draft.limits.usage)).withSharedDays(),
                         page = EditorPage.MAIN,
                         limitEdit = null,
                     )
@@ -283,7 +284,12 @@ class PolicyEditorViewModel(
         val draft = s.draft ?: return@update s
         when (kind) {
             ConditionKind.TIME -> s.copy(page = EditorPage.TIME, timeEdit = draft.conditions.time ?: PolicyEditorState.DEFAULT_TIME, sheet = null)
-            ConditionKind.LIMIT -> s.copy(page = EditorPage.LIMIT, limitEdit = draft.limits.usage ?: PolicyEditorState.DEFAULT_LIMIT, sheet = null)
+            ConditionKind.LIMIT -> {
+                // Vaqt bo'lsa limit kunlari o'shaniki (bitta kun tanlagich)
+                val base = draft.limits.usage ?: PolicyEditorState.DEFAULT_LIMIT
+                val limit = draft.conditions.time?.let { base.copy(days = it.days) } ?: base
+                s.copy(page = EditorPage.LIMIT, limitEdit = limit, sheet = null)
+            }
             ConditionKind.LOCATION -> s.copy(location = LocationPickerState.from(draft.conditions.location, s.child), sheet = null)
         }
     }

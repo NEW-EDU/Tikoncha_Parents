@@ -100,6 +100,15 @@ import tikoncha_parents.composeapp.generated.resources.soatlik
 import tikoncha_parents.composeapp.generated.resources.stat_quick_paywall_title
 import tikoncha_parents.composeapp.generated.resources.targets_only_selected_open
 import tikoncha_parents.composeapp.generated.resources.targets_only_selected_open_sub
+import tikoncha_parents.composeapp.generated.resources.editor_limit_days_follow_time
+import tikoncha_parents.composeapp.generated.resources.editor_limit_in_time
+import tikoncha_parents.composeapp.generated.resources.editor_limit_in_time_sub
+import tikoncha_parents.composeapp.generated.resources.editor_limit_in_window
+import tikoncha_parents.composeapp.generated.resources.editor_limit_out_time
+import tikoncha_parents.composeapp.generated.resources.editor_limit_out_time_sub
+import tikoncha_parents.composeapp.generated.resources.editor_limit_outside_window
+import tikoncha_parents.composeapp.generated.resources.targets_only_selected_open_both_sub
+import tikoncha_parents.composeapp.generated.resources.targets_only_selected_open_sites_sub
 import tikoncha_parents.composeapp.generated.resources.targets_selected_closed
 import tikoncha_parents.composeapp.generated.resources.timer
 import tikoncha_parents.composeapp.generated.resources.vaqtincha_toxtatish
@@ -385,7 +394,7 @@ private fun TargetsBlock(draft: PolicyDraft, editable: Boolean, canView: Boolean
                 subtitle = when {
                     allApps -> stringResource(Res.string.targets_except_open).takeIf { t.excludePackages.isNotEmpty() }
                     !selected -> null
-                    allowList -> counts.joinToString(" · ") + " · " + stringResource(Res.string.targets_only_selected_open_sub)
+                    allowList -> counts.joinToString(" · ") + " · " + stringResource(allowListRest(t))
                     else -> counts.joinToString(" · ")
                 },
                 leading = { PolicyIcon(icon = Res.drawable.apps_icon, tone = if (selected || allApps) IconTone.SOLID else IconTone.GRAY, size = 44.dp) },
@@ -428,7 +437,15 @@ private fun ConditionRow(kind: ConditionKind, draft: PolicyDraft, editable: Bool
             listOfNotNull(
                 daysText(r.days.map { it.num }.toSet()),
                 "${r.startMin.asClock()} – ${r.endMin.asClock()}",
-                stringResource(if (r.include) Res.string.editor_closed else Res.string.editor_open),
+                // Limit bo'lsa vaqt — limit QACHON ishlashi, blok emas
+                stringResource(
+                    when {
+                        draft.limits.usage != null && r.include -> Res.string.editor_limit_in_window
+                        draft.limits.usage != null -> Res.string.editor_limit_outside_window
+                        r.include -> Res.string.editor_closed
+                        else -> Res.string.editor_open
+                    }
+                ),
             ).joinToString(" · ")
         }
         ConditionKind.LIMIT -> draft.limits.usage?.let { r ->
@@ -536,16 +553,18 @@ private fun TimePage(state: PolicyEditorState, event: (PolicyEditorEvent) -> Uni
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 SectionLabel(stringResource(Res.string.editor_in_this_time))
                 SettingGroup {
+                    // Limit bor — vaqt oynasi limit QACHON ishlashini belgilaydi, o'zi yopmaydi
+                    val withLimit = state.draft?.limits?.usage != null
                     RadioRow(
-                        title = stringResource(Res.string.editor_closed_in_time),
-                        subtitle = stringResource(Res.string.editor_closed_in_time_sub),
+                        title = stringResource(if (withLimit) Res.string.editor_limit_in_time else Res.string.editor_closed_in_time),
+                        subtitle = stringResource(if (withLimit) Res.string.editor_limit_in_time_sub else Res.string.editor_closed_in_time_sub),
                         selected = rule.include,
                         onClick = { event(PolicyEditorEvent.TimeIncludeChanged(true)) },
                     )
                     GroupDivider()
                     RadioRow(
-                        title = stringResource(Res.string.editor_open_in_time),
-                        subtitle = stringResource(Res.string.editor_open_in_time_sub),
+                        title = stringResource(if (withLimit) Res.string.editor_limit_out_time else Res.string.editor_open_in_time),
+                        subtitle = stringResource(if (withLimit) Res.string.editor_limit_out_time_sub else Res.string.editor_open_in_time_sub),
                         selected = !rule.include,
                         onClick = { event(PolicyEditorEvent.TimeIncludeChanged(false)) },
                     )
@@ -599,12 +618,22 @@ private fun LimitPage(state: PolicyEditorState, event: (PolicyEditorEvent) -> Un
                     onSelect = { i -> event(PolicyEditorEvent.QuickLimitSelected(quick[i])) },
                 )
                 GroupDivider()
-                SettingRow(
-                    title = stringResource(Res.string.kunlar),
-                    value = daysText(rule.days.map { it.num }.toSet()),
-                    onClick = { event(PolicyEditorEvent.DaysClicked) },
-                    trailing = { Chevron() },
-                )
+                if (state.draft?.conditions?.time != null) {
+                    // Vaqt bor — kunlar o'shaniki, alohida tanlanmaydi
+                    SettingRow(
+                        title = stringResource(Res.string.kunlar),
+                        value = daysText(rule.days.map { it.num }.toSet()),
+                        subtitle = stringResource(Res.string.editor_limit_days_follow_time),
+                        onClick = null,
+                    )
+                } else {
+                    SettingRow(
+                        title = stringResource(Res.string.kunlar),
+                        value = daysText(rule.days.map { it.num }.toSet()),
+                        onClick = { event(PolicyEditorEvent.DaysClicked) },
+                        trailing = { Chevron() },
+                    )
+                }
             }
         }
         CustomButtonNew(
@@ -725,4 +754,15 @@ private fun EditorDialogs(state: PolicyEditorState, event: (PolicyEditorEvent) -
 private fun Instant.asLocalClock(): String {
     val t = toLocalDateTime(TimeZone.currentSystemDefault())
     return (t.hour * 60 + t.minute).asClock()
+}
+
+/**
+ * Oq ro'yxat nimani yopadi: ilovalar ro'yxati — boshqa ilovalarni, saytlar
+ * ro'yxati — boshqa saytlarni (Shorts/Reels hech qachon). Ilgari saytlar
+ * ro'yxatida ham "qolgan hamma ilova yopiladi" deyilardi.
+ */
+internal fun allowListRest(t: uz.tikoncha_parent.domain.model.policy.PolicyTargets) = when {
+    (t.packages.isNotEmpty() || t.categories.isNotEmpty()) && t.sites.isNotEmpty() -> Res.string.targets_only_selected_open_both_sub
+    t.sites.isNotEmpty() && t.packages.isEmpty() && t.categories.isEmpty() -> Res.string.targets_only_selected_open_sites_sub
+    else -> Res.string.targets_only_selected_open_sub
 }
