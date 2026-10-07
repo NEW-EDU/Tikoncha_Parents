@@ -73,6 +73,18 @@ class PolicyEditorViewModel(
     private var pendingJob: Job? = null
     private var boundOnce = false
 
+    /**
+     * Ekran BIR marta yopiladi. O'chirilganda ikki signal keladi: server javobi va lokal
+     * ro'yxatdan jadval yo'qolishi — ikkalasi ham yopsa, ro'yxat ekrani ham yopilib ketardi.
+     */
+    private var closing = false
+
+    private fun close(effect: PolicyEditorEffect) {
+        if (closing) return
+        closing = true
+        _effect.trySend(effect)
+    }
+
     fun onEvent(e: PolicyEditorEvent) {
         if (_state.value.readOnly && e.isEdit()) return
         when (e) {
@@ -224,7 +236,7 @@ class PolicyEditorViewModel(
                     val policy = list.firstOrNull { it.id == policyId }
                     if (policy == null) {
                         // Serverdan o'chirilgan — bog'langan bo'lsak yopamiz
-                        if (boundOnce) _effect.trySend(PolicyEditorEffect.Deleted)
+                        if (boundOnce) close(PolicyEditorEffect.Deleted)
                         return@collect
                     }
                     boundOnce = true
@@ -335,7 +347,7 @@ class PolicyEditorViewModel(
             when (val r = saveDraft(s.childId, s.policyId, draft, s.saved)) {
                 is Outcome.Success -> {
                     _state.update { it.copy(saving = false, saved = draft) }
-                    _effect.trySend(PolicyEditorEffect.Saved)
+                    close(PolicyEditorEffect.Saved)
                 }
                 is Outcome.Failure -> _state.update { it.withFailure(r).copy(saving = false) }
             }
@@ -348,7 +360,7 @@ class PolicyEditorViewModel(
         screenModelScope.launch {
             _state.update { it.copy(deleting = true, dialog = null) }
             when (val r = deletePolicy(id)) {
-                is Outcome.Success -> _effect.trySend(PolicyEditorEffect.Deleted)
+                is Outcome.Success -> close(PolicyEditorEffect.Deleted)
                 is Outcome.Failure -> _state.update { it.withFailure(r).copy(deleting = false) }
             }
         }

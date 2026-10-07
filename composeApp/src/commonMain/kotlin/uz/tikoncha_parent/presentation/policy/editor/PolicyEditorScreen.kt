@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.policy.editor
 
+import uz.tikoncha_parent.presentation.policy.components.text
+import uz.tikoncha_parent.domain.model.policy.PolicyName
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -269,7 +271,8 @@ fun PolicyEditorContent(state: PolicyEditorState, event: (PolicyEditorEvent) -> 
 
     Column(modifier = Modifier.fillMaxSize().background(AppColors.bg.page).then(systemBars.modifier)) {
         CustomHeader(
-            title = draft?.name.orEmpty(),
+            // Server nomi yaratuvchining tilida — standart nomlar ilova tilida chiqadi
+            title = draft?.let { PolicyName.of(it.name, preset = it.preset).text() }.orEmpty(),
             showBackButton = true,
             onBackClick = onBack,
             trailingIcon = if (!editable) null else ({
@@ -708,7 +711,7 @@ private fun EditorDialogs(state: PolicyEditorState, event: (PolicyEditorEvent) -
             title = stringResource(Res.string.jadval_nomi),
             confirmText = stringResource(Res.string.saqlash),
             placeholder = stringResource(Res.string.jadval_nomini_kiriting),
-            initial = state.draft?.name.orEmpty(),
+            initial = state.draft?.let { PolicyName.of(it.name, preset = it.preset).text() }.orEmpty(),
             onDismiss = { event(PolicyEditorEvent.DialogDismissed) },
             onConfirm = { event(PolicyEditorEvent.NameConfirmed(it)) },
         )

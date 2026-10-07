@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.list
 
+import uz.tikoncha_parent.domain.model.policy.PolicyName
 import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.policy.Policy
 import uz.tikoncha_parent.domain.model.policy.PolicyTargets
@@ -68,7 +69,7 @@ fun PolicyListInput.reduce(previous: PolicyListState): PolicyListState {
     fun Policy.active() = isActiveNow(weekDay, minuteOfDay, now, paid, lastLat, lastLng)
     fun Policy.card() = PolicyCardUi(
         policyId = id,
-        title = name,
+        title = PolicyName.of(name, kind, preset),
         ownership = ownership(myUserId),
         isEnabled = isActive,
         isActive = active(),
@@ -78,7 +79,7 @@ fun PolicyListInput.reduce(previous: PolicyListState): PolicyListState {
     )
     fun QuickBlockEntry.card(owner: Ownership) = PolicyCardUi(
         policyId = policyId,
-        title = "",                       // UI "Tezkor blok" deb yozadi
+        title = PolicyName("", PolicyName.Kind.QUICK_BLOCK),
         ownership = owner,
         isEnabled = isActive,
         isActive = isEnforced(now) && paid != false,
@@ -91,10 +92,17 @@ fun PolicyListInput.reduce(previous: PolicyListState): PolicyListState {
     val standard = policies.filter { it.isStandard && it.deletedAt == null }
     val mineAll = standard.filter { it.ownership(myUserId) == Ownership.MINE }
 
-    // ── Tayyor jadvallar: faqat o'zimning preset'li jadvalimga bog'lanadi ──
+    // ── Tayyor jadvallar — umumiy (2026-10-07): switch o'zimniki; farzand yoki ikkinchi ota-ona
+    //    yoqqan bo'lsa karta shuni aytadi. Ularning shablonlari o'z tablarida takrorlanmaydi.
+    val othersPresets = standard.filter {
+        it.ownership(myUserId).let { o -> o == Ownership.CHILD || o == Ownership.COPARENT } &&
+            PresetKind.entries.any { k -> k.preset == it.preset }
+    }
     val presets = PresetKind.entries.map { kind ->
         val p = mineAll.firstOrNull { it.preset == kind.preset }
-        if (p == null) PresetPolicyUi(kind = kind, summary = kind.defaultSummary())
+        val other = othersPresets.firstOrNull { it.preset == kind.preset && it.isActive }
+            ?.takeIf { p?.isActive != true }
+        val base = if (p == null) PresetPolicyUi(kind = kind, summary = kind.defaultSummary())
         else PresetPolicyUi(
             kind = kind,
             policyId = p.id,
@@ -103,6 +111,7 @@ fun PolicyListInput.reduce(previous: PolicyListState): PolicyListState {
             isPaused = p.pausedUntil?.let { it > now } == true,
             summary = p.toSummary(),
         )
+        base.copy(activeBy = other?.ownership(myUserId), otherSummary = other?.toSummary())
     }
     val presetIds = presets.mapNotNull { it.policyId }.toSet()
     val mine = mineAll.filter { it.id !in presetIds }.map { it.card() }
@@ -122,9 +131,9 @@ fun PolicyListInput.reduce(previous: PolicyListState): PolicyListState {
     // Har egada tezkor blok doim bor (server oldindan yaratadi: o'chiq, bo'sh) — bo'shi ham ko'rinadi
     val otherQuick = quick.entries.filter { !it.isMine(myUserId) }
 
-    val child = standard.filter { it.ownership(myUserId) == Ownership.CHILD }.map { it.card() }
+    val child = standard.filter { it.ownership(myUserId) == Ownership.CHILD && it !in othersPresets }.map { it.card() }
     val childQuick = otherQuick.filter { it.isChildOwner }.map { it.card(Ownership.CHILD) }
-    val coParent = standard.filter { it.ownership(myUserId) == Ownership.COPARENT }.map { it.card() }
+    val coParent = standard.filter { it.ownership(myUserId) == Ownership.COPARENT && it !in othersPresets }.map { it.card() }
     val coParentQuick = otherQuick.filter { !it.isChildOwner }.map { it.card(Ownership.COPARENT) }
     val school = standard.filter { it.ownership(myUserId) == Ownership.SCHOOL }.map { it.card() }
 
@@ -147,7 +156,9 @@ fun PolicyListInput.reduce(previous: PolicyListState): PolicyListState {
     val activeAll = standard.filter { it.active() }
         .sortedWith(compareByDescending<Policy> { it.scope.rank }.thenByDescending { it.priority })
     val info = PolicyListInfo(
-        activeTitles = activeAll.map { it.name }.distinct(),
+        // "Bedtime" va "Uyqu vaqti" — bitta tayyor jadval, bir marta
+        activeTitles = activeAll.map { PolicyName.of(it.name, it.kind, it.preset) }
+            .distinctBy { if (it.kind == PolicyName.Kind.CUSTOM) it.raw else it.kind.name },
         activeUntilMin = activeAll.firstOrNull()?.conditions?.time
             ?.takeIf { TimeRuleMatcher.matches(weekDay, minuteOfDay, it) }?.endMin,
         quickActive = paid != false && quick.entries.any { it.targets.packages.isNotEmpty() && it.isEnforced(now) },

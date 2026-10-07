@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.model
 
+import uz.tikoncha_parent.domain.model.policy.PolicyName
 import uz.tikoncha_parent.domain.model.LimitWindow
 import uz.tikoncha_parent.domain.model.policy.PolicyPreset
 import kotlin.time.Instant
@@ -46,11 +47,24 @@ data class PresetPolicyUi(
     val isActive: Boolean = false,
     val isPaused: Boolean = false,
     val summary: PolicySummary = PolicySummary(),
+    /** Umumiy shablon: men yoqmaganman, lekin farzand (CHILD) yoki ikkinchi ota-ona (COPARENT) yoqqan. */
+    val activeBy: Ownership? = null,
+    /** O'sha yoqqan jadvalning sozlamasi — tasdiq oynasida ("Kuniga 2 soat"). */
+    val otherSummary: PolicySummary? = null,
+)
+
+/** Farzand / ikkinchi ota-ona yoqqan shablonni yoqishdan oldingi tasdiq. */
+data class TakeOverUi(
+    val kind: PresetKind,
+    val by: Ownership,
+    val otherSummary: PolicySummary,
+    val title: String,
 )
 
 data class PolicyCardUi(
     val policyId: String,
-    val title: String,
+    /** Ilova tilida chiqadi — `PolicyName.text()`. */
+    val title: PolicyName,
     val ownership: Ownership,
     val isEnabled: Boolean,
     val isActive: Boolean,
@@ -86,7 +100,7 @@ data class QuickBlockUi(
 /** Ro'yxat tepasidagi izoh: hozir nima ishlayapti va jadvallar bir-biriga qanday ta'sir qiladi. */
 data class PolicyListInfo(
     /** Hozir faol jadvallar nomi — kuchlisi birinchi (tezkor blok va himoyasiz). */
-    val activeTitles: List<String> = emptyList(),
+    val activeTitles: List<PolicyName> = emptyList(),
     val activeUntilMin: Int? = null,
     val quickActive: Boolean = false,
     val hasChildPolicies: Boolean = false,

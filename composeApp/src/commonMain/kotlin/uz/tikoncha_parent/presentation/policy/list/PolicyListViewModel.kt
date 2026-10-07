@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.list
 
+import uz.tikoncha_parent.presentation.policy.model.TakeOverUi
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Job
@@ -106,6 +107,11 @@ class PolicyListViewModel(
 
             PolicyListEvent.CreateClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenCreate(it)) }
             PolicyListEvent.PayWallDismissed -> _state.update { it.copy(payWall = null) }
+            PolicyListEvent.TakeOverConfirmed -> _state.value.takeOver?.let { t ->
+                _state.update { it.copy(takeOver = null) }
+                togglePresetFor(t.kind, enabled = true, title = t.title, confirmed = true)
+            }
+            PolicyListEvent.TakeOverDismissed -> _state.update { it.copy(takeOver = null) }
             PolicyListEvent.ErrorDismissed -> _state.update { it.copy(error = null) }
         }
     }
@@ -185,8 +191,14 @@ class PolicyListViewModel(
 
     // ═══ Yozuvlar ═══════════════════════════════════════════════
 
-    private fun togglePresetFor(kind: PresetKind, enabled: Boolean, title: String) {
+    private fun togglePresetFor(kind: PresetKind, enabled: Boolean, title: String, confirmed: Boolean = false) {
         val child = childId ?: return
+        // Farzand yoki ikkinchi ota-ona yoqqan — yoqsam uniki o'chadi (server), avval so'raymiz
+        val ui = _state.value.presets.firstOrNull { it.kind == kind }
+        if (enabled && !confirmed && ui?.activeBy != null && ui.otherSummary != null) {
+            _state.update { it.copy(takeOver = TakeOverUi(kind, ui.activeBy, ui.otherSummary, title)) }
+            return
+        }
         val existing = policies.firstOrNull {
             it.isStandard && it.preset == kind.preset && it.isMine(myUserId)
         }

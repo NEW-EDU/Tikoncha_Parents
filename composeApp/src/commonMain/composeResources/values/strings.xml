@@ -909,10 +909,8 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="policy_tab_school">Maktab</string>
     <string name="policy_enabled_count">%1$d ta yoqiq</string>
     <string name="policy_content_protection">Kontent himoya</string>
-    <string name="policy_content_protection_sub">Behayo saytlar, qimor saytlari va ilovalari</string>
     <string name="policy_content_protection_others">Farzand yoki ikkinchi ota-ona yoqqan</string>
     <string name="policy_paused">Vaqtincha to‘xtatilgan</string>
-    <string name="policy_empty_mine">Hali jadval yo‘q. Shablonlardan yoqing yoki o‘zingiz yarating.</string>
     <string name="policy_quick_blocks">Tezkor bloklar</string>
     <string name="preset_all_apps">Barcha ilovalar</string>
     <string name="policy_paywall_protection">Kontent himoya Tikoncha Plus bilan ishlaydi.</string>
@@ -968,7 +966,6 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="preset_minutes_n">%1$d daqiqa</string>
     <string name="preset_hours_n">%1$d soat</string>
     <string name="preset_pause_action">To‘xtatish</string>
-    <string name="preset_not_found">Topilmadi</string>
     <string name="preset_add">Qo‘shish</string>
     <string name="preset_add_n">Qo‘shish · %1$d</string>
     <string name="boshqa">Boshqa</string>
@@ -1036,4 +1033,22 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="info_limit_daily_window">%1$s: %2$s jami %3$s ishlatish mumkin. Vaqt tugagach, shu vaqt oralig‘i tugaguncha yopiladi.</string>
     <string name="targets_only_selected_open_sites_sub">Qolgan saytlar yopiladi</string>
     <string name="targets_only_selected_open_both_sub">Qolgan ilova va saytlar yopiladi</string>
+    <!-- Bo'sh holat (EmptyState) -->
+    <string name="policy_empty_mine_title">Hali jadval yo‘q</string>
+    <string name="policy_empty_mine_sub">Shablonlardan birini yoqing yoki o‘zingiz yarating</string>
+    <string name="empty_search_title">Hech narsa topilmadi</string>
+    <string name="empty_search_sub">Boshqa so‘z bilan qidirib ko‘ring</string>
+    <!-- Jadval kartalari: qisqa qatorlar -->
+    <string name="policy_content_protection_short">Behayo va qimor saytlari</string>
+    <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
+    <string name="policy_name_schedule">Jadval</string>
+    <string name="policy_name_category_block">Toifalar bo‘yicha bloklash</string>
+    <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
+    <string name="preset_by_child">Farzandingiz yoqqan</string>
+    <string name="preset_by_coparent">Ikkinchi ota-ona yoqqan</string>
+    <string name="takeover_title">%1$s yoqilsinmi?</string>
+    <string name="takeover_body_child">Farzandingiz o‘zi yoqqan: %1$s. Siz yoqsangiz, uniki o‘chadi va sizning sozlamangiz amal qiladi. Keyin o‘chirsangiz, farzandingizniki o‘chiq qoladi — u xohlasa o‘zi qayta yoqadi.</string>
+    <string name="takeover_body_coparent">Ikkinchi ota-ona yoqqan: %1$s. Siz yoqsangiz, uniki o‘chadi va sizning sozlamangiz amal qiladi.</string>
+    <string name="preset_info_child">Farzandingiz o‘zi yoqqan: %1$s. Siz yoqsangiz, uniki o‘chadi.</string>
+    <string name="preset_info_coparent">Ikkinchi ota-ona yoqqan: %1$s. Siz yoqsangiz, uniki o‘chadi.</string>
 </resources>

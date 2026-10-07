@@ -658,10 +658,3 @@ private fun SheetAction(isDelete: Boolean, text: String, onClick: () -> Unit) {
     }
 }
 
-/** Bo'sh holat / "Topilmadi". */
-@Composable
-fun PickerEmpty(text: String, modifier: Modifier = Modifier) {
-    Box(modifier = modifier.fillMaxSize().padding(32.dp), contentAlignment = Alignment.TopCenter) {
-        Text(text = text, style = PolicyText.empty, color = AppColors.text.tertiary, textAlign = TextAlign.Center)
-    }
-}

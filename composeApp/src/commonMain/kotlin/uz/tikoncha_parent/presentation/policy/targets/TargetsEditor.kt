@@ -1,5 +1,11 @@
 package uz.tikoncha_parent.presentation.policy.targets
 
+import tikoncha_parents.composeapp.generated.resources.empty_search_sub
+import tikoncha_parents.composeapp.generated.resources.empty_search_title
+import uz.tikoncha_parent.presentation.base.EmptyState
+import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -49,7 +55,6 @@ import tikoncha_parents.composeapp.generated.resources.kategoriyalar
 import tikoncha_parents.composeapp.generated.resources.preset_all_apps
 import tikoncha_parents.composeapp.generated.resources.preset_counted
 import tikoncha_parents.composeapp.generated.resources.preset_done
-import tikoncha_parents.composeapp.generated.resources.preset_not_found
 import tikoncha_parents.composeapp.generated.resources.preset_only_selected
 import tikoncha_parents.composeapp.generated.resources.preset_what_closed
 import tikoncha_parents.composeapp.generated.resources.sayt_qidirish
@@ -398,7 +403,7 @@ private fun LazyListScope.appsTab(
     val query = state.query
     val visible = if (query.isBlank()) sortedApps else sortedApps.filter { PolicyAppFeatures.matchesSearch(it, query) }
     if (visible.isEmpty()) {
-        item { PickerEmpty(text = stringResource(Res.string.preset_not_found)) }
+        item(key = "empty") { SearchEmpty() }
         return
     }
     items(items = visible, key = { it.packageName }) { app ->
@@ -446,7 +451,7 @@ private fun LazyListScope.categoriesTab(
         }
     }
     if (visible.isEmpty()) {
-        item { PickerEmpty(text = stringResource(Res.string.preset_not_found)) }
+        item(key = "empty") { SearchEmpty() }
         return
     }
     items(items = visible, key = { "cat_" + it.id }) { c ->
@@ -482,7 +487,7 @@ private fun LazyListScope.sitesTab(state: TargetsEditorState, sites: List<String
         )
     }
     if (visible.isEmpty()) {
-        item { PickerEmpty(text = stringResource(Res.string.preset_not_found)) }
+        item(key = "empty") { SearchEmpty() }
         return
     }
     items(items = visible, key = { it }) { domain ->
@@ -495,3 +500,13 @@ private fun LazyListScope.sitesTab(state: TargetsEditorState, sites: List<String
         )
     }
 }
+
+/** Qidiruvda hech narsa topilmadi — bo'sh joyning o'rtasida. */
+@Composable
+private fun LazyItemScope.SearchEmpty() = EmptyState(
+    icon = Icons.Rounded.Search,
+    title = stringResource(Res.string.empty_search_title),
+    subtitle = stringResource(Res.string.empty_search_sub),
+    modifier = Modifier.fillParentMaxHeight(0.6f),
+)
+

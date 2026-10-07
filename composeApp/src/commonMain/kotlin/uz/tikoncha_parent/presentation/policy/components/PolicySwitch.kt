@@ -13,8 +13,10 @@ import uz.tikoncha_parent.ui.theme.AppColors
 import androidx.compose.ui.graphics.Color
 
 /**
- * Jadval ekranlaridagi switch: yoqilganda thumb ichida ✓, so'rov ketayotganda o'rnida
- * aylanuvchi. [checked] — server tasdiqlagan holat; tebranish holat haqiqatan o'zgarganda.
+ * Jadval ekranlaridagi switch — Samsung One UI uslubi (Student bilan bir xil, brend rangida):
+ * yoqiq — iz `action.primary`, oq thumb, ichida ✓; o'chiq — kulrang iz (`field.switchTrack`),
+ * oq thumb. So'rov ketayotganda o'rnida aylanuvchi. [checked] — server tasdiqlagan holat;
+ * tebranish holat haqiqatan o'zgarganda.
  */
 @Composable
 fun PolicySwitch(
@@ -37,12 +39,15 @@ fun PolicySwitch(
                 },
                 enabled = enabled,
                 width = 48.dp,
+                padding = 3.dp,
                 showCheckIcon = true,
-                // Student bilan bir xil: track fonga yaqin (field.page), ramkasiz
-                trackOnColor = AppColors.field.page,
-                trackOffColor = AppColors.field.page,
+                trackOnColor = AppColors.action.primary,
+                trackOffColor = AppColors.field.switchTrack,
                 trackBorderOnColor = Color.Transparent,
                 trackBorderOffColor = Color.Transparent,
+                thumbOnColor = AppColors.icon.inverse,
+                thumbOffColor = AppColors.icon.inverse,
+                checkIconColor = AppColors.action.primary,
             )
         }
     }

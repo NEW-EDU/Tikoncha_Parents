@@ -116,8 +116,11 @@ class PolicyListReducerTest {
     @Test
     fun childPresetIsNotMyTemplate() {
         val s = input(listOf(p("childSleep", scope = PolicyType.STUDENT, actor = null, preset = PolicyPreset.SLEEP))).reduce(PolicyListState())
-        assertNull(s.presets.first { it.kind == PresetKind.SLEEP }.policyId)
-        assertEquals(listOf("childSleep"), s.child.map { it.policyId })
+        val sleep = s.presets.first { it.kind == PresetKind.SLEEP }
+        assertNull(sleep.policyId)
+        // Umumiy shablon (2026-10-07): farzandniki "Farzand" tabida emas — Shablonlar kartasida
+        assertEquals(Ownership.CHILD, sleep.activeBy)
+        assertTrue(s.child.isEmpty())
     }
 
     @Test
@@ -125,7 +128,7 @@ class PolicyListReducerTest {
         val s = input(
             listOf(p("Mine", time = morning, name = "O‘yinlar"), p("School", scope = PolicyType.SCHOOL, actor = null, time = morning, name = "Dars")),
         ).reduce(PolicyListState())
-        assertEquals(listOf("Dars", "O‘yinlar"), s.info.activeTitles)
+        assertEquals(listOf("Dars", "O‘yinlar"), s.info.activeTitles.map { it.raw })
         assertEquals(14 * 60, s.info.activeUntilMin)
         assertTrue(s.info.hasSchoolPolicies)
     }
@@ -156,5 +159,27 @@ class PolicyListReducerTest {
     fun selectedTabFallsBackWhenItDisappears() {
         val s = input(listOf(p("mine"))).reduce(PolicyListState(tab = PolicyTab.SCHOOL))
         assertEquals(PolicyTab.TEMPLATES, s.tab)
+    }
+
+    @Test
+    fun sharedTemplateEnabledByChildShowsOnTheTemplateCardNotInChildTab() {
+        val childSleep = p("cs", scope = PolicyType.STUDENT, actor = null, preset = PolicyPreset.SLEEP)
+        val childOwn = p("c1", scope = PolicyType.STUDENT, actor = null)
+        val s = input(listOf(childSleep, childOwn)).reduce(PolicyListState())
+        val sleep = s.presets.first { it.kind == PresetKind.SLEEP }
+        assertEquals(Ownership.CHILD, sleep.activeBy)
+        assertFalse(sleep.isEnabled)                         // switch — meniki, o'chiq
+        assertEquals(listOf("c1"), s.child.map { it.policyId })   // farzand tabida takrorlanmaydi
+    }
+
+    @Test
+    fun sharedTemplateMineOnHidesOthers() {
+        val mine = p("ms", preset = PolicyPreset.SLEEP)
+        val coParent = p("os", actor = OTHER, preset = PolicyPreset.SLEEP)
+        val s = input(listOf(mine, coParent)).reduce(PolicyListState())
+        val sleep = s.presets.first { it.kind == PresetKind.SLEEP }
+        assertNull(sleep.activeBy)
+        assertTrue(sleep.isEnabled)
+        assertTrue(s.coParent.isEmpty())
     }
 }

@@ -904,10 +904,8 @@
     <string name="policy_tab_school">Школа</string>
     <string name="policy_enabled_count">Включено: %1$d</string>
     <string name="policy_content_protection">Защита контента</string>
-    <string name="policy_content_protection_sub">Непристойные сайты, сайты и приложения азартных игр</string>
     <string name="policy_content_protection_others">Включено ребёнком или другим родителем</string>
     <string name="policy_paused">Временно приостановлено</string>
-    <string name="policy_empty_mine">Расписаний пока нет. Включите шаблон или создайте своё.</string>
     <string name="policy_quick_blocks">Быстрые блокировки</string>
     <string name="preset_all_apps">Все приложения</string>
     <string name="policy_paywall_protection">Защита контента работает с Tikoncha Plus.</string>
@@ -963,7 +961,6 @@
     <string name="preset_minutes_n">%1$d мин</string>
     <string name="preset_hours_n">%1$d ч</string>
     <string name="preset_pause_action">Приостановить</string>
-    <string name="preset_not_found">Не найдено</string>
     <string name="preset_add">Добавить</string>
     <string name="preset_add_n">Добавить · %1$d</string>
     <string name="boshqa">Другое</string>
@@ -1031,4 +1028,22 @@
     <string name="info_limit_daily_window">%1$s: %2$s всего можно использовать %3$s. Когда время закончится, закрыто до конца этого промежутка.</string>
     <string name="targets_only_selected_open_sites_sub">Остальные сайты закрываются</string>
     <string name="targets_only_selected_open_both_sub">Остальные приложения и сайты закрываются</string>
+    <!-- Bo'sh holat (EmptyState) -->
+    <string name="policy_empty_mine_title">Расписаний пока нет</string>
+    <string name="policy_empty_mine_sub">Включите один из шаблонов или создайте своё</string>
+    <string name="empty_search_title">Ничего не найдено</string>
+    <string name="empty_search_sub">Попробуйте другой запрос</string>
+    <!-- Jadval kartalari: qisqa qatorlar -->
+    <string name="policy_content_protection_short">Непристойные и азартные сайты</string>
+    <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
+    <string name="policy_name_schedule">Расписание</string>
+    <string name="policy_name_category_block">Блокировка по категориям</string>
+    <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
+    <string name="preset_by_child">Включил ребёнок</string>
+    <string name="preset_by_coparent">Включил другой родитель</string>
+    <string name="takeover_title">Включить «%1$s»?</string>
+    <string name="takeover_body_child">Ребёнок включил сам: %1$s. Если включите вы, его расписание выключится и будут действовать ваши настройки. Если потом выключите, его расписание останется выключенным — ребёнок может включить его сам.</string>
+    <string name="takeover_body_coparent">Другой родитель включил: %1$s. Если включите вы, его расписание выключится и будут действовать ваши настройки.</string>
+    <string name="preset_info_child">Ребёнок включил сам: %1$s. Если включите вы, его расписание выключится.</string>
+    <string name="preset_info_coparent">Другой родитель включил: %1$s. Если включите вы, его расписание выключится.</string>
 </resources>

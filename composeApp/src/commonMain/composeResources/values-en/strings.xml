@@ -899,10 +899,8 @@ This information is used only for these features and is not shared with third pa
     <string name="policy_tab_school">School</string>
     <string name="policy_enabled_count">%1$d enabled</string>
     <string name="policy_content_protection">Content protection</string>
-    <string name="policy_content_protection_sub">Indecent sites, gambling sites and apps</string>
     <string name="policy_content_protection_others">Turned on by the child or the other parent</string>
     <string name="policy_paused">Paused</string>
-    <string name="policy_empty_mine">No schedules yet. Turn on a template or create your own.</string>
     <string name="policy_quick_blocks">Quick blocks</string>
     <string name="preset_all_apps">All apps</string>
     <string name="policy_paywall_protection">Content protection works with Tikoncha Plus.</string>
@@ -958,7 +956,6 @@ This information is used only for these features and is not shared with third pa
     <string name="preset_minutes_n">%1$d min</string>
     <string name="preset_hours_n">%1$d h</string>
     <string name="preset_pause_action">Pause</string>
-    <string name="preset_not_found">Nothing found</string>
     <string name="preset_add">Add</string>
     <string name="preset_add_n">Add · %1$d</string>
     <string name="boshqa">Other</string>
@@ -1026,4 +1023,22 @@ This information is used only for these features and is not shared with third pa
     <string name="info_limit_daily_window">%1$s: %2$s can be used for %3$s in total. When the time runs out, closed until this time window ends.</string>
     <string name="targets_only_selected_open_sites_sub">Other sites are closed</string>
     <string name="targets_only_selected_open_both_sub">Other apps and sites are closed</string>
+    <!-- Bo'sh holat (EmptyState) -->
+    <string name="policy_empty_mine_title">No schedules yet</string>
+    <string name="policy_empty_mine_sub">Turn on a template or create your own</string>
+    <string name="empty_search_title">Nothing found</string>
+    <string name="empty_search_sub">Try a different search</string>
+    <!-- Jadval kartalari: qisqa qatorlar -->
+    <string name="policy_content_protection_short">Adult and gambling sites</string>
+    <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
+    <string name="policy_name_schedule">Schedule</string>
+    <string name="policy_name_category_block">Block by categories</string>
+    <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
+    <string name="preset_by_child">Turned on by your child</string>
+    <string name="preset_by_coparent">Turned on by the other parent</string>
+    <string name="takeover_title">Turn on %1$s?</string>
+    <string name="takeover_body_child">Your child turned this on: %1$s. If you turn it on, theirs is switched off and your settings apply. If you turn yours off later, theirs stays off — your child can turn it back on.</string>
+    <string name="takeover_body_coparent">The other parent turned this on: %1$s. If you turn it on, theirs is switched off and your settings apply.</string>
+    <string name="preset_info_child">Your child turned this on: %1$s. If you turn it on, theirs is switched off.</string>
+    <string name="preset_info_coparent">The other parent turned this on: %1$s. If you turn it on, theirs is switched off.</string>
 </resources>

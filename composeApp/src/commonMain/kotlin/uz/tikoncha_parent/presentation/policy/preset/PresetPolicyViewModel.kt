@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.policy.preset
 
+import uz.tikoncha_parent.presentation.policy.list.toSummary
+import uz.tikoncha_parent.presentation.policy.model.Ownership
+import uz.tikoncha_parent.domain.model.PolicyType
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Job
@@ -120,6 +123,11 @@ class PresetPolicyViewModel(
             PresetPolicyEvent.SheetDismissed -> _state.update { it.copy(sheet = null) }
             PresetPolicyEvent.SaveClicked -> save()
             PresetPolicyEvent.ErrorDismissed -> _state.update { it.copy(error = null) }
+            PresetPolicyEvent.TakeOverConfirmed -> {
+                _state.update { it.copy(askTakeOver = false) }
+                toggleEnabled(true, confirmed = true)
+            }
+            PresetPolicyEvent.TakeOverDismissed -> _state.update { it.copy(askTakeOver = false) }
         }
     }
 
@@ -133,7 +141,13 @@ class PresetPolicyViewModel(
 
         screenModelScope.launch {
             observePolicies(childId).collect { list ->
-                val policy = list.firstOrNull { it.isStandard && it.preset == kind.preset && it.isMine(AppSettings.userId) }
+                val me = AppSettings.userId
+                val policy = list.firstOrNull { it.isStandard && it.preset == kind.preset && it.isMine(me) }
+                // Umumiy shablon: men yoqmagan bo'lsam — farzand yoki ikkinchi ota-ona yoqqanmi
+                val other = list.firstOrNull {
+                    it.isStandard && it.preset == kind.preset && it.isActive && !it.isMine(me) &&
+                        (it.scope == PolicyType.STUDENT || it.scope == PolicyType.PARENT_CHILD)
+                }?.takeIf { policy?.isActive != true }
                 val serverDraft = policy?.toDraft() ?: PresetDefaults.of(kind.preset, title)!!
                 _state.update { s ->
                     s.copy(
@@ -141,6 +155,8 @@ class PresetPolicyViewModel(
                         isEnabled = policy?.isActive ?: false,
                         pendingEnabled = s.pendingEnabled?.takeIf { it != (policy?.isActive ?: false) },
                         pausedUntil = policy?.pausedUntil,
+                        otherBy = other?.let { o -> if (o.scope == PolicyType.STUDENT) Ownership.CHILD else Ownership.COPARENT },
+                        otherSummary = other?.toSummary(),
                         now = Clock.System.now(),
                         saved = serverDraft,
                         // lokal tahrir bo'lsa uni yo'qotmaymiz; jadval endi yaratilgan bo'lsa server nusxasi
@@ -187,10 +203,15 @@ class PresetPolicyViewModel(
     // ═══ Darhol serverga ketadiganlar ══════════════════════════
 
     /** Bazada yo'q jadval yoqilsa — joriy `draft` bilan yaratiladi (tahrirlar yo'qolmaydi). */
-    private fun toggleEnabled(enabled: Boolean) {
+    private fun toggleEnabled(enabled: Boolean, confirmed: Boolean = false) {
         val s = _state.value
         val draft = s.draft ?: return
         if (s.pendingEnabled != null) return
+        // Farzand yoki ikkinchi ota-ona yoqqan — yoqsam uniki o'chadi, avval so'raymiz
+        if (enabled && !confirmed && s.otherBy != null) {
+            _state.update { it.copy(askTakeOver = true) }
+            return
+        }
         _state.update { it.copy(pendingEnabled = enabled) }
         pendingJob?.cancel()
         pendingJob = screenModelScope.launch {
@@ -304,7 +325,8 @@ class PresetPolicyViewModel(
         if (s.saving || !s.hasChanges) return
         screenModelScope.launch {
             _state.update { it.copy(saving = true) }
-            when (val r = saveDraft(s.childId, s.policyId, draft, s.saved)) {
+            val toSave = if (s.policyId == null) draft.copy(isActive = s.isEnabled) else draft
+            when (val r = saveDraft(s.childId, s.policyId, toSave, s.saved)) {
                 is Outcome.Success -> {
                     _state.update { it.copy(saving = false, saved = draft) }
                     _effect.trySend(PresetPolicyEffect.Saved)

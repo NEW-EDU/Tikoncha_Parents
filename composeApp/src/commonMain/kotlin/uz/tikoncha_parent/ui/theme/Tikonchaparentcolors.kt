@@ -136,6 +136,8 @@ data class FieldColors(
     val sectionEmphasis2: Color,
     val sectionEmphasisTertiary: Color,
     val accentEmphasisSecondary: Color,
+    /** O'chiq switch izi (yoqig'i — `action.primary`): `bg.page` ham, `bg.section` (karta) ham ustida ko'rinadi. */
+    val switchTrack: Color,
 )
 
 @Immutable
@@ -273,6 +275,7 @@ val TikonchaParentLightExtendedColors = TikonchaExtendedColors(
         sectionEmphasis2 = Color(0xFFF9FAFA),                   // gray.50
         sectionEmphasisTertiary = Color(0xFFF9FAFA),            // gray.50
         accentEmphasisSecondary = Color(0xFFF3EADE),            // orange.100
+        switchTrack = Color(0xFFCECFD2),                        // gray.300
     ),
     modal = ModalColors(
         primary = Color(0xFFFFFFFF),                            // base.white
@@ -407,6 +410,7 @@ val TikonchaParentDarkExtendedColors = TikonchaExtendedColors(
         sectionEmphasis2 = Color(0xFF2F3137),                   // neutral.700
         sectionEmphasisTertiary = Color(0xFF2F3137),            // neutral.700
         accentEmphasisSecondary = Color(0xFFF3EADE),            // orange.100
+        switchTrack = Color(0xFF61656C),                        // neutral.600
     ),
     modal = ModalColors(
         primary = Color(0xFF2B2B31),                            // gray.600

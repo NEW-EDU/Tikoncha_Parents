@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.policy.history
 
+import uz.tikoncha_parent.presentation.policy.components.text
+import uz.tikoncha_parent.domain.model.policy.PolicyName
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -94,9 +96,10 @@ fun PolicyHistoryItem(
 
     // Nom o'zgargan bo'lsa "eski → yangi", tezkor blokda ilova, aks holda jadval nomi.
     val secondLine = when {
-        item.renamedFrom != null && item.renamedTo != null -> "${item.renamedFrom} → ${item.renamedTo}"
+        item.renamedFrom != null && item.renamedTo != null ->
+            "${PolicyName.of(item.renamedFrom).text()} → ${PolicyName.of(item.renamedTo).text()}"
         item.quickBlockTarget != null -> item.quickBlockTarget
-        else -> item.policyName?.takeIf { it.isNotBlank() }
+        else -> item.policyName?.takeIf { it.isNotBlank() }?.let { PolicyName.of(it).text() }
     }
 
     val tint = when (item.event) {

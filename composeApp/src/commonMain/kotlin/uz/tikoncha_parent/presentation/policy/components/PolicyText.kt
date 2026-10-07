@@ -65,8 +65,6 @@ object PolicyText {
     /** "3 ta yoqiq" — ro'yxat tepasidagi hisob. */
     val count: TextStyle @Composable get() = AppTypography.emphasizedMdRegular
 
-    /** Bo'sh holat matni. */
-    val empty: TextStyle @Composable get() = AppTypography.titleMdMedium
 
     /** Pastdan chiquvchi varaq sarlavhasi. */
     val sheetTitle: TextStyle @Composable get() = AppTypography.headlineSmSemiBold

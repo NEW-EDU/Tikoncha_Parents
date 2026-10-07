@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.list
 
+import uz.tikoncha_parent.presentation.policy.model.TakeOverUi
 import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.presentation.policy.model.ContentProtectionUi
@@ -43,6 +44,8 @@ data class PolicyListState(
     /** So'rovi qaytmagan nishonlar: policyId, "preset:SLEEP", "protection", "quick". */
     val busy: Set<String> = emptySet(),
     val payWall: PayWallReason? = null,
+    /** Farzand / ikkinchi ota-ona yoqqan shablonni yoqish — tasdiq kutilmoqda. */
+    val takeOver: TakeOverUi? = null,
     val error: Outcome.Failure? = null,
 ) {
     fun isBusy(key: String): Boolean = key in busy
@@ -71,6 +74,8 @@ sealed interface PolicyListEvent {
 
     data object CreateClicked : PolicyListEvent
     data object PayWallDismissed : PolicyListEvent
+    data object TakeOverConfirmed : PolicyListEvent
+    data object TakeOverDismissed : PolicyListEvent
     data object ErrorDismissed : PolicyListEvent
 }
 

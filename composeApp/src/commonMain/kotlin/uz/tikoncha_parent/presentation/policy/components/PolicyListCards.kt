@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.policy.components
 
+import tikoncha_parents.composeapp.generated.resources.preset_by_coparent
+import tikoncha_parents.composeapp.generated.resources.preset_by_child
+import tikoncha_parents.composeapp.generated.resources.policy_content_protection_short
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.DrawableResource
@@ -10,7 +13,6 @@ import tikoncha_parents.composeapp.generated.resources.bed_sleeping
 import tikoncha_parents.composeapp.generated.resources.blocklist
 import tikoncha_parents.composeapp.generated.resources.policy_content_protection
 import tikoncha_parents.composeapp.generated.resources.policy_content_protection_others
-import tikoncha_parents.composeapp.generated.resources.policy_content_protection_sub
 import tikoncha_parents.composeapp.generated.resources.policy_paused
 import tikoncha_parents.composeapp.generated.resources.quick_no_apps
 import tikoncha_parents.composeapp.generated.resources.quick_title
@@ -34,20 +36,23 @@ fun PresetKind.iconRes(): DrawableResource = when (this) {
     PresetKind.SCHOOL -> Res.drawable.shift_clock
 }
 
-fun Ownership.tone(enabled: Boolean): IconTone = when {
-    !enabled -> IconTone.GRAY
-    this == Ownership.MINE -> IconTone.SOLID
-    this == Ownership.SCHOOL -> IconTone.SCHOOL
-    else -> IconTone.WARN
-}
+/** Egasidan qat'i nazar: yoqiq — brend rangi, o'chiq — kulrang. */
+@Suppress("UnusedReceiverParameter")
+fun Ownership.tone(enabled: Boolean): IconTone = if (enabled) IconTone.SOLID else IconTone.GRAY
 
 @Composable
 fun PresetPolicyCard(ui: PresetPolicyUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier) {
     PolicyCardBody(
         icon = ui.kind.iconRes(),
-        tone = if (ui.isEnabled) IconTone.SOLID else IconTone.GRAY,
+        // Ikonka — farzand uchun amaldagi holat (kimdir yoqqan), switch — o'zimniki
+        tone = if (ui.isEnabled || ui.activeBy != null) IconTone.SOLID else IconTone.GRAY,
         title = ui.kind.title(),
-        subtitle = if (ui.isPaused) stringResource(Res.string.policy_paused) else ui.kind.summaryText(ui.summary),
+        subtitle = when {
+            ui.activeBy == Ownership.CHILD -> stringResource(Res.string.preset_by_child)
+            ui.activeBy != null -> stringResource(Res.string.preset_by_coparent)
+            ui.isPaused -> stringResource(Res.string.policy_paused)
+            else -> ui.kind.summaryText(ui.summary)
+        },
         onClick = onClick,
         modifier = modifier,
     ) {
@@ -62,7 +67,8 @@ fun ContentProtectionCard(ui: ContentProtectionUi, busy: Boolean, onToggle: (Boo
         icon = Res.drawable.shield,
         tone = if (ui.isEnabled || ui.byOthers) IconTone.SOLID else IconTone.GRAY,
         title = stringResource(Res.string.policy_content_protection),
-        subtitle = stringResource(if (!ui.isEnabled && ui.byOthers) Res.string.policy_content_protection_others else Res.string.policy_content_protection_sub),
+        // Shablonda bitta qisqa qator; farzand yoki ikkinchi ota-ona yoqqan bo'lsa — shuni aytamiz
+        subtitle = stringResource(if (!ui.isEnabled && ui.byOthers) Res.string.policy_content_protection_others else Res.string.policy_content_protection_short),
         onClick = onClick,
         modifier = modifier,
         note = stringResource(Res.string.protection_shield_short),
@@ -96,12 +102,12 @@ fun PolicyCard(ui: PolicyCardUi, busy: Boolean, onToggle: (Boolean) -> Unit, onC
     PolicyCardBody(
         icon = if (ui.isQuickBlock) Res.drawable.blocklist else Res.drawable.ic_policy,
         tone = ui.ownership.tone(ui.isEnabled),
-        title = if (ui.isQuickBlock) stringResource(Res.string.quick_title) else ui.title,
+        title = ui.title.text(),
         subtitle = when {
             ui.isPaused -> stringResource(Res.string.policy_paused)
             // har egada tezkor blok doim bor (o'chiq, bo'sh) — bo'sh bo'lsa shuni aytamiz
-            ui.isQuickBlock -> ui.summary.text().ifBlank { stringResource(Res.string.quick_no_apps) }
-            else -> ui.summary.text().ifBlank { null }
+            ui.isQuickBlock -> targetsText(ui.summary) ?: stringResource(Res.string.quick_no_apps)
+            else -> ui.summary.cardText().ifBlank { null }
         },
         onClick = onClick,
         modifier = modifier,

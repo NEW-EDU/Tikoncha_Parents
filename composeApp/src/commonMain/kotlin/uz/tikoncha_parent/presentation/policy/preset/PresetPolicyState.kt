@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.policy.preset
 
+import uz.tikoncha_parent.presentation.policy.model.PolicySummary
+import uz.tikoncha_parent.presentation.policy.model.Ownership
 import uz.tikoncha_parent.domain.model.LimitWindow
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.app_usage.UsageHistory
@@ -51,6 +53,11 @@ data class PresetPolicyState(
     val busy: Boolean = false,
     /** Switch so'rovi ketmoqda: yuborilgan qiymat. Kesh yangi holatni olib kelguncha spinner turadi. */
     val pendingEnabled: Boolean? = null,
+    /** Umumiy shablon: men yoqmaganman, farzand (CHILD) yoki ikkinchi ota-ona (COPARENT) yoqqan. */
+    val otherBy: Ownership? = null,
+    val otherSummary: PolicySummary? = null,
+    /** "Yoqilgan" bosildi — yoqsam uniki o'chadi, tasdiq kutilmoqda. */
+    val askTakeOver: Boolean = false,
     val error: Outcome.Failure? = null,
 ) {
     val isLoaded: Boolean get() = draft != null
@@ -110,6 +117,8 @@ sealed interface PresetPolicyEvent {
     data object ResetClicked : PresetPolicyEvent
     data object SheetDismissed : PresetPolicyEvent
     data object SaveClicked : PresetPolicyEvent
+    data object TakeOverConfirmed : PresetPolicyEvent
+    data object TakeOverDismissed : PresetPolicyEvent
     data object ErrorDismissed : PresetPolicyEvent
 }
 

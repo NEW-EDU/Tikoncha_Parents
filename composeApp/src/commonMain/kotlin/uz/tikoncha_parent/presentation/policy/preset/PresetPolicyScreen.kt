@@ -1,5 +1,10 @@
 package uz.tikoncha_parent.presentation.policy.preset
 
+import tikoncha_parents.composeapp.generated.resources.preset_info_coparent
+import tikoncha_parents.composeapp.generated.resources.preset_info_child
+import uz.tikoncha_parent.presentation.policy.components.summaryText
+import uz.tikoncha_parent.presentation.policy.components.TakeOverDialog
+import uz.tikoncha_parent.presentation.policy.model.Ownership
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -208,6 +213,19 @@ fun PresetPolicyUi(
             verticalArrangement = Arrangement.spacedBy(22.dp),
         ) {
             Spacer(modifier = Modifier.height(2.dp))
+            // Umumiy shablon: farzand yoki ikkinchi ota-ona yoqqan — yoqsam uniki o'chadi
+            val otherBy = state.otherBy
+            val otherSummary = state.otherSummary
+            if (otherBy != null && otherSummary != null) {
+                PolicyInfoBox(
+                    lines = listOf(
+                        stringResource(
+                            if (otherBy == Ownership.CHILD) Res.string.preset_info_child else Res.string.preset_info_coparent,
+                            state.kind.summaryText(otherSummary),
+                        ),
+                    ),
+                )
+            }
             HeaderGroup(state = state, event = event)
             PolicyInfoBox(lines = draft.toInfo(enabled = state.isEnabled).sentences())
 
@@ -248,6 +266,16 @@ fun PresetPolicyUi(
     PresetSheets(state = state, event = event)
 
     val error = state.error
+    if (state.askTakeOver && state.otherBy != null && state.otherSummary != null) {
+        TakeOverDialog(
+            kind = state.kind,
+            by = state.otherBy!!,
+            otherSummary = state.otherSummary!!,
+            onConfirm = { event(PresetPolicyEvent.TakeOverConfirmed) },
+            onDismiss = { event(PresetPolicyEvent.TakeOverDismissed) },
+        )
+    }
+
     ErrorHaptic(error)
     CustomDialog(
         painter = painterResource(Res.drawable.dialog_failed),

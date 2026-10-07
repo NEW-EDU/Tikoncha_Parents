@@ -1,5 +1,9 @@
 package uz.tikoncha_parent.presentation.policy.components
 
+import tikoncha_parents.composeapp.generated.resources.empty_search_sub
+import tikoncha_parents.composeapp.generated.resources.empty_search_title
+import uz.tikoncha_parent.presentation.base.EmptyState
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -63,7 +67,6 @@ import tikoncha_parents.composeapp.generated.resources.preset_add_n
 import tikoncha_parents.composeapp.generated.resources.preset_done
 import tikoncha_parents.composeapp.generated.resources.preset_hours_n
 import tikoncha_parents.composeapp.generated.resources.preset_minutes_n
-import tikoncha_parents.composeapp.generated.resources.preset_not_found
 import tikoncha_parents.composeapp.generated.resources.preset_pause_action
 import tikoncha_parents.composeapp.generated.resources.preset_per_day_label
 import tikoncha_parents.composeapp.generated.resources.preset_per_hour_label
@@ -260,12 +263,11 @@ fun AppsSheetContent(installedApps: List<InstalledApp>, excluded: Set<String>, o
         ),
     )
     if (apps.isEmpty()) {
-        Text(
-            text = stringResource(Res.string.preset_not_found),
-            style = PolicyText.empty,
-            color = AppColors.text.tertiary,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp),
+        EmptyState(
+            icon = Icons.Rounded.Search,
+            title = stringResource(Res.string.empty_search_title),
+            subtitle = stringResource(Res.string.empty_search_sub),
+            modifier = Modifier.padding(vertical = 32.dp),
         )
     } else {
         LazyColumn(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.6f).clip(RoundedCornerShape(24.dp)).background(AppColors.bg.section)) {

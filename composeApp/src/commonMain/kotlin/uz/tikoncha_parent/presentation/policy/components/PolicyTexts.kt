@@ -1,5 +1,11 @@
 package uz.tikoncha_parent.presentation.policy.components
 
+import tikoncha_parents.composeapp.generated.resources.policy_name_category_block
+import tikoncha_parents.composeapp.generated.resources.policy_name_schedule
+import tikoncha_parents.composeapp.generated.resources.quick_title
+import tikoncha_parents.composeapp.generated.resources.policy_content_protection
+import tikoncha_parents.composeapp.generated.resources.editor_new_policy
+import uz.tikoncha_parent.domain.model.policy.PolicyName
 import androidx.compose.runtime.Composable
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
@@ -74,13 +80,19 @@ private val ALL_DAYS = (1..7).toSet()
 private val WORK_DAYS = (1..5).toSet()
 private val WEEKEND = setOf(6, 7)
 
+private val DAY_SHORT = listOf(
+    Res.string.policy_day_mon, Res.string.policy_day_tue, Res.string.policy_day_wed, Res.string.policy_day_thu,
+    Res.string.policy_day_fri, Res.string.policy_day_sat, Res.string.policy_day_sun,
+)
+
+/** "Du" … "Ya" (ISO 1..7). */
+@Composable
+private fun shortDay(day: Int): String = stringResource(DAY_SHORT[day - 1])
+
 @Composable
 fun daysText(days: Set<Int>): String? {
     if (days.isEmpty()) return null
-    val short = listOf(
-        Res.string.policy_day_mon, Res.string.policy_day_tue, Res.string.policy_day_wed, Res.string.policy_day_thu,
-        Res.string.policy_day_fri, Res.string.policy_day_sat, Res.string.policy_day_sun,
-    ).map { stringResource(it) }
+    val short = DAY_SHORT.map { stringResource(it) }
     return when (days) {
         ALL_DAYS -> stringResource(Res.string.policy_every_day)
         WORK_DAYS -> stringResource(Res.string.policy_workdays)
@@ -110,15 +122,22 @@ fun targetsText(s: PolicySummary): String? = listOfNotNull(
     s.siteCount.takeIf { it > 0 }?.let { stringResource(Res.string.policy_n_sites, it) },
 ).takeIf { it.isNotEmpty() }?.joinToString(", ")
 
-/** Oddiy jadval kartasining ikkinchi qatori: "Ish kunlari · 08:00 – 14:00 · 2 ta ilova". */
+/**
+ * Jadval kartasidagi BITTA qisqa qator (Student bilan bir xil): kunlar · vaqt; vaqt yo'q
+ * bo'lsa kunlar · limit; ikkalasi ham yo'q bo'lsa nishon ("5 ta ilova"). Ilovalar soni,
+ * joylashuv — jadval ichida. Dam olish kunlari kartada "Sh, Ya".
+ */
 @Composable
-fun PolicySummary.text(): String = listOfNotNull(
-    daysText(days),
-    timeText(this),
-    limitText(this),
-    targetsText(this),
-    if (hasLocation) stringResource(Res.string.policy_location) else null,
-).joinToString(" · ")
+fun PolicySummary.cardText(): String {
+    val days = if (days == WEEKEND) WEEKEND.sorted().map { shortDay(it) }.joinToString(", ") else daysText(days)
+    val time = timeText(this)
+    val limit = limitText(this)
+    return when {
+        time != null -> listOfNotNull(days, time).joinToString(" · ")
+        limit != null -> listOfNotNull(days, limit).joinToString(" · ")
+        else -> targetsText(this).orEmpty()
+    }
+}
 
 /** Tayyor jadval — qisqa: Uyqu "22:00 – 07:00", Limit "Kuniga 1 soat", Dars "Ish kunlari · 08:00 – 14:00". */
 @Composable
@@ -126,6 +145,23 @@ fun PresetKind.summaryText(s: PolicySummary): String = when (this) {
     PresetKind.SLEEP -> timeText(s).orEmpty()
     PresetKind.LIMIT -> limitText(s).orEmpty()
     PresetKind.SCHOOL -> listOfNotNull(daysText(s.days), timeText(s)).joinToString(" · ")
+}
+
+/**
+ * Jadval nomi ilova tilida: tayyor jadval, tezkor blok va standart nomlar tarjima
+ * qilinadi, odam yozgan nom o'zgarmaydi (`PolicyName`, Student bilan bir xil).
+ */
+@Composable
+fun PolicyName.text(): String = when (kind) {
+    PolicyName.Kind.CUSTOM -> raw.ifBlank { stringResource(Res.string.editor_new_policy) }
+    PolicyName.Kind.SLEEP -> stringResource(Res.string.policy_preset_sleep)
+    PolicyName.Kind.APP_LIMIT -> stringResource(Res.string.policy_preset_limit)
+    PolicyName.Kind.SCHOOL -> stringResource(Res.string.policy_preset_school)
+    PolicyName.Kind.CONTENT_PROTECTION -> stringResource(Res.string.policy_content_protection)
+    PolicyName.Kind.QUICK_BLOCK -> stringResource(Res.string.quick_title)
+    PolicyName.Kind.NEW_SCHEDULE -> stringResource(Res.string.editor_new_policy)
+    PolicyName.Kind.SCHEDULE -> stringResource(Res.string.policy_name_schedule)
+    PolicyName.Kind.CATEGORY_BLOCK -> stringResource(Res.string.policy_name_category_block)
 }
 
 @Composable
@@ -142,7 +178,7 @@ fun PolicyTab.title(): String = stringResource(
 /** "Hozir amalda: Uyqu vaqti · 07:00 gacha" yoki "Hozir hech qaysi jadval ishlamayapti". */
 @Composable
 fun PolicyListInfo.title(): String {
-    val main = activeTitles.firstOrNull() ?: return stringResource(Res.string.list_info_none)
+    val main = activeTitles.firstOrNull()?.text() ?: return stringResource(Res.string.list_info_none)
     val until = activeUntilMin?.let { " · " + stringResource(Res.string.policy_active_until, it.asClock()) }.orEmpty()
     return stringResource(Res.string.policy_active_now, main) + until
 }
@@ -151,7 +187,7 @@ fun PolicyListInfo.title(): String {
 @Composable
 fun PolicyListInfo.lines(): List<String> = buildList {
     val others = activeTitles.drop(1)
-    if (others.isNotEmpty()) add(stringResource(Res.string.list_info_also, others.joinToString(", ")))
+    if (others.isNotEmpty()) add(stringResource(Res.string.list_info_also, others.map { it.text() }.joinToString(", ")))
     val activeCount = activeTitles.size + if (quickActive) 1 else 0
     if (activeCount >= 2) add(stringResource(Res.string.list_info_many))
     if (hasChildPolicies) add(stringResource(Res.string.list_info_child_scope))

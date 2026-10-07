@@ -64,7 +64,7 @@ fun PolicyCardBody(
                     text = subtitle,
                     style = PolicyText.subtitle,
                     color = AppColors.text.tertiary,
-                    maxLines = 2,
+                    maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
             }
@@ -97,12 +97,3 @@ fun SectionTitle(text: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Composable
-fun EmptyHint(text: String, modifier: Modifier = Modifier) {
-    Text(
-        text = text,
-        style = PolicyText.empty,
-        color = AppColors.text.tertiary,
-        modifier = modifier.fillMaxWidth().padding(vertical = 40.dp),
-    )
-}

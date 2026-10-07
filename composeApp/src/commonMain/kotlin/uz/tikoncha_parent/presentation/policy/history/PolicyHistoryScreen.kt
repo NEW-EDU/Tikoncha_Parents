@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.policy.history
 
+import uz.tikoncha_parent.presentation.base.EmptyState
+import androidx.compose.material.icons.rounded.History
+import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -297,35 +300,7 @@ private fun HistoryError(
 
 @Composable
 private fun HistoryEmpty() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 32.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Box(
-            modifier = Modifier
-                .size(72.dp)
-                .clip(CircleShape)
-                .background(AppColors.bg.primaryContainer),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                painter = painterResource(Res.drawable.circle_clock),
-                contentDescription = null,
-                tint = AppColors.icon.accentPrimary,
-                modifier = Modifier.size(36.dp),
-            )
-        }
-
-        Spacer(Modifier.height(16.dp))
-
-        Text(
-            text = stringResource(Res.string.tarix_bosh),
-            style = AppTypography.titleMdSemiBold,
-            color = AppColors.text.primary,
-            textAlign = TextAlign.Center,
-        )
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        EmptyState(icon = Icons.Rounded.History, title = stringResource(Res.string.tarix_bosh))
     }
 }

@@ -1,5 +1,11 @@
 package uz.tikoncha_parent.presentation.policy.list
 
+import uz.tikoncha_parent.presentation.policy.components.TakeOverDialog
+import tikoncha_parents.composeapp.generated.resources.policy_empty_mine_sub
+import tikoncha_parents.composeapp.generated.resources.policy_empty_mine_title
+import uz.tikoncha_parent.presentation.base.EmptyState
+import androidx.compose.material.icons.rounded.EditCalendar
+import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -38,7 +44,6 @@ import tikoncha_parents.composeapp.generated.resources.farzandingizni_tanlang
 import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.jadval_yaratish
 import tikoncha_parents.composeapp.generated.resources.jadvallar
-import tikoncha_parents.composeapp.generated.resources.policy_empty_mine
 import tikoncha_parents.composeapp.generated.resources.policy_enabled_count
 import tikoncha_parents.composeapp.generated.resources.policy_paywall_count
 import tikoncha_parents.composeapp.generated.resources.policy_paywall_protection
@@ -57,7 +62,6 @@ import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.haptics.ErrorHaptic
 import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
 import uz.tikoncha_parent.presentation.policy.components.ContentProtectionCard
-import uz.tikoncha_parent.presentation.policy.components.EmptyHint
 import uz.tikoncha_parent.presentation.policy.components.PolicyCard
 import uz.tikoncha_parent.presentation.policy.components.PolicyInfoBox
 import uz.tikoncha_parent.presentation.policy.components.PolicyText
@@ -203,7 +207,15 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
                 when (state.tab) {
                     PolicyTab.TEMPLATES -> templates(state, event)
                     PolicyTab.MINE -> {
-                        if (state.mine.isEmpty()) item(key = "empty") { EmptyHint(stringResource(Res.string.policy_empty_mine)) }
+                        if (state.mine.isEmpty()) item(key = "empty") {
+                            // Tablar ostidagi bo'sh joyning o'rtasida
+                            EmptyState(
+                                icon = Icons.Rounded.EditCalendar,
+                                title = stringResource(Res.string.policy_empty_mine_title),
+                                subtitle = stringResource(Res.string.policy_empty_mine_sub),
+                                modifier = Modifier.fillParentMaxHeight(0.7f),
+                            )
+                        }
                         cards(state.mine, state, event)
                     }
                     PolicyTab.CHILD -> othersTab(state.child, state.childQuick, state, event)
@@ -238,6 +250,16 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
         },
         onDismiss = { event(PolicyListEvent.PayWallDismissed) },
     )
+
+    state.takeOver?.let { t ->
+        TakeOverDialog(
+            kind = t.kind,
+            by = t.by,
+            otherSummary = t.otherSummary,
+            onConfirm = { event(PolicyListEvent.TakeOverConfirmed) },
+            onDismiss = { event(PolicyListEvent.TakeOverDismissed) },
+        )
+    }
 
     val error = state.error
     ErrorHaptic(error)
