@@ -6,5 +6,7 @@ import kotlinx.serialization.Serializable
 data class PromoCodeValidationRequest(
     val code: String,
     val amount: Int,
-    val plan_duration: String?
+    val plan_duration: String?,
+    /** Tarifga bog'langan promokodlar uchun (avto-to'lov tasdiqlash ekrani yuboradi). */
+    val plan_id: String? = null,
 )

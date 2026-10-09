@@ -1,0 +1,86 @@
+--------- beginning of main
+08-20 18:43:10.986   554   554 I KeyButtonView: Back button event: ACTION_DOWN
+08-20 18:43:10.987   371   498 V InputDispatcher: Asynchronous input event injection succeeded.
+08-20 18:43:11.006   181  3605 W audio_hw_generic: Not supplying enough data to HAL, expected position 68153743 , only wrote 68153727
+08-20 18:43:11.072   554   554 I KeyButtonView: Back button event: ACTION_UP
+08-20 18:43:11.073   371   498 V InputDispatcher: Asynchronous input event injection succeeded.
+--------- beginning of system
+08-20 18:43:11.074   371   391 D AutofillManagerService: onBackKeyPressed()
+08-20 18:43:11.077   175   175 I netd    : firewallSetUidRule(2, 10134, 2) <0.03ms>
+08-20 18:43:11.079   853   853 I PhenotypeExpConfig: refreshConfiguration() : Force = false : UpdateAvailable = false : Age = 69 minutes : MaxAge = 720 minutes
+08-20 18:43:11.079   853   853 I AndroidIME: DummyIme.onDeactivate()
+08-20 18:43:11.097   853  6137 D EGL_emulation: eglMakeCurrent: 0x7b7c269aa0: ver 3 0 (tinfo 0x7b7c3864a0)
+08-20 18:43:14.154   181   181 W audio_hw_generic: Not supplying enough data to HAL, expected position 68430180 , only wrote 68292537
+08-20 18:43:16.189   190   252 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 4747264
+08-20 18:43:16.191   190   252 I chatty  : uid=1000(system) HwBinder:190_1 identical 1 line
+08-20 18:43:16.191   190   252 D gralloc_ranchu: gralloc_alloc: Creating ashmem region of size 4747264
+08-20 18:43:16.194 10867 10913 D EGL_emulation: eglMakeCurrent: 0x7b7c29c6a0: ver 3 0 (tinfo 0x7b7c37f520)
+08-20 18:43:16.202 10867 10913 I chatty  : uid=10149(org.example.project) RenderThread identical 1 line
+08-20 18:43:16.218 10867 10913 D EGL_emulation: eglMakeCurrent: 0x7b7c29c6a0: ver 3 0 (tinfo 0x7b7c37f520)
+08-20 18:43:16.229   554   871 D EGL_emulation: eglMakeCurrent: 0x7b7c282720: ver 3 0 (tinfo 0x7b7c305540)
+08-20 18:43:16.233   554   871 D EGL_emulation: eglMakeCurrent: 0x7b7c282720: ver 3 0 (tinfo 0x7b7c305540)
+08-20 18:43:16.234 10867 10913 D EGL_emulation: eglMakeCurrent: 0x7b7c29c6a0: ver 3 0 (tinfo 0x7b7c37f520)
+08-20 18:43:16.246   554   871 D EGL_emulation: eglMakeCurrent: 0x7b7c282720: ver 3 0 (tinfo 0x7b7c305540)
+08-20 18:43:16.362   554   871 I chatty  : uid=10110(com.android.systemui) RenderThread identical 14 lines
+08-20 18:43:16.365   554   871 D EGL_emulation: eglMakeCurrent: 0x7b7c282720: ver 3 0 (tinfo 0x7b7c305540)
+08-20 18:43:17.047   371   404 E memtrack: Couldn't load memtrack module
+08-20 18:43:17.047   371   404 W android.os.Debug: failed to get memory consumption info: -1
+08-20 18:43:18.548   343   343 E wifi_forwarder: RemoteConnection failed to initialize: RemoteConnection failed to open pipe
+08-20 18:43:20.758   371   643 E memtrack: Couldn't load memtrack module
+08-20 18:43:20.758   371   643 W android.os.Debug: failed to get memory consumption info: -1
+08-20 18:43:28.779   341   341 E netmgr  : Failed to open QEMU pipe 'qemud:network': Invalid argument
+08-20 18:43:49.435 10867 10913 D EGL_emulation: eglMakeCurrent: 0x7b7c29c6a0: ver 3 0 (tinfo 0x7b7c37f520)
+08-20 18:43:49.575 10867 10913 D EGL_emulation: eglMakeCurrent: 0x7b7c29c6a0: ver 3 0 (tinfo 0x7b7c37f520)
+08-20 18:43:49.575 10867 10913 D OpenGLRenderer: endAllActiveAnimators on 0x7b208a7700 (UnprojectedRipple) with handle 0x7b778a62e0
+08-20 18:43:49.594   371  6231 E InputDispatcher: Window handle Window{c3df3c3 u0 org.example.project/org.example.project.MainActivity} has no registered input channel
+08-20 18:43:49.597   554   871 D EGL_emulation: eglMakeCurrent: 0x7b7c282720: ver 3 0 (tinfo 0x7b7c305540)
+08-20 18:43:49.600 10867 10913 D EGL_emulation: eglMakeCurrent: 0x7b7c29c6a0: ver 3 0 (tinfo 0x7b7c37f520)
+08-20 18:43:49.600   554   871 D EGL_emulation: eglMakeCurrent: 0x7b7c282720: ver 3 0 (tinfo 0x7b7c305540)
+08-20 18:43:49.731   554   871 I chatty  : uid=10110(com.android.systemui) RenderThread identical 15 lines
+08-20 18:43:49.746   554   871 D EGL_emulation: eglMakeCurrent: 0x7b7c282720: ver 3 0 (tinfo 0x7b7c305540)
+08-20 18:44:00.006   554   554 D KeyguardClockSwitch: Updating clock: 644
+08-20 18:44:00.015   554   871 D EGL_emulation: eglMakeCurrent: 0x7b7c282720: ver 3 0 (tinfo 0x7b7c305540)
+08-20 18:44:18.565   343   343 E wifi_forwarder: RemoteConnection failed to initialize: RemoteConnection failed to open pipe
+08-20 18:44:22.265   371   404 E memtrack: Couldn't load memtrack module
+08-20 18:44:22.265   371   404 W android.os.Debug: failed to get memory consumption info: -1
+08-20 18:44:28.810   341   341 E netmgr  : Failed to open QEMU pipe 'qemud:network': Invalid argument
+08-20 18:44:46.738   982  9625 E GmsTaskScheduler: sendWakeUpEvent called on SchedulerClientBroadcastStrategy
+08-20 18:44:46.740   982  9637 E GmsTaskScheduler: sendWakeUpEvent called on SchedulerClientBroadcastStrategy
+08-20 18:45:00.004   554   554 D KeyguardClockSwitch: Updating clock: 645
+08-20 18:45:16.671  2548  2565 W gle.android.im: Reducing the number of considered missed Gc histogram windows from 214 to 100
+08-20 18:45:18.578   343   343 E wifi_forwarder: RemoteConnection failed to initialize: RemoteConnection failed to open pipe
+08-20 18:45:28.812   341   341 E netmgr  : Failed to open QEMU pipe 'qemud:network': Invalid argument
+08-20 18:45:30.834   371   410 E BluetoothAdapter: Bluetooth binder is null
+08-20 18:45:30.839   371   410 E KernelCpuSpeedReader: Failed to read cpu-freq: /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state: open failed: ENOENT (No such file or directory)
+08-20 18:45:30.857   175   175 I netd    : trafficSwapActiveStatsMap() <14.92ms>
+08-20 18:45:30.860   175   175 I netd    : tetherGetStats() <1.78ms>
+08-20 18:45:36.165   371   392 I EntropyMixer: Added HW RNG output to entropy pool
+08-20 18:45:36.165   371   392 I EntropyMixer: Writing entropy...
+08-20 18:45:36.871   175   175 I netd    : firewallSetUidRule(2, 10126, 2) <0.11ms>
+08-20 18:45:36.873   175   175 I netd    : firewallSetUidRule(2, 10135, 2) <0.05ms>
+08-20 18:45:51.891   982  3739 W ProcessReaper: Memory state is: 125
+08-20 18:45:52.581   371   404 E memtrack: Couldn't load memtrack module
+08-20 18:45:52.582   371   404 W android.os.Debug: failed to get memory consumption info: -1
+08-20 18:46:00.010   554   554 D KeyguardClockSwitch: Updating clock: 646
+08-20 18:46:00.954  1310  1310 I BgTaskExecutorImpl: Starting PERIODIC background task MDH_FORCED_SYNC.
+08-20 18:46:00.962  1310  1310 I BgTaskExecutorImpl: Starting PERIODIC background task REFRESH_SEARCH_HISTORY.
+08-20 18:46:00.991  1310 10700 V MDH     : Opening MDH wipeout table.
+08-20 18:46:00.995  1310 10697 W CDHeaderDataHandler: Invalid integer value "" in experiments IDs.
+08-20 18:46:00.996  1310 10700 I MdhYoutubeWorker: Reading YouTube deletion data
+08-20 18:46:00.996  1310 10700 I MdhYoutubeWorker: There is no logged in account in AGSA.
+08-20 18:46:00.998  1310  1807 W SearchServiceCore: Abort, client detached.
+08-20 18:46:01.013   175   175 I netd    : trafficSwapActiveStatsMap() <18.51ms>
+08-20 18:46:01.014   175   175 I netd    : tetherGetStats() <0.63ms>
+08-20 18:46:01.017   175   175 I netd    : bandwidthSetGlobalAlert(2097152) <0.12ms>
+08-20 18:46:04.705   371  1382 D WificondControl: Scan result ready event
+08-20 18:46:07.607   982 10963 E memtrack: Couldn't load memtrack module
+08-20 18:46:07.607   982 10963 W android.os.Debug: failed to get memory consumption info: -1
+08-20 18:46:11.118  1211 10964 E memtrack: Couldn't load memtrack module
+08-20 18:46:11.118  1211 10964 W android.os.Debug: failed to get memory consumption info: -1
+08-20 18:46:11.476  1310  1807 I WorkerManager: dispose()
+08-20 18:46:18.597   343   343 E wifi_forwarder: RemoteConnection failed to initialize: RemoteConnection failed to open pipe
+08-20 18:46:28.827   341   341 E netmgr  : Failed to open QEMU pipe 'qemud:network': Invalid argument
+08-20 18:46:37.313   982  9625 E GmsTaskScheduler: sendWakeUpEvent called on SchedulerClientBroadcastStrategy
+08-20 18:46:37.318   982  9637 E GmsTaskScheduler: sendWakeUpEvent called on SchedulerClientBroadcastStrategy
+08-20 18:47:00.008   554   554 D KeyguardClockSwitch: Updating clock: 647
+08-20 18:47:18.613   343   343 E wifi_forwarder: RemoteConnection failed to initialize: RemoteConnection failed to open pipe

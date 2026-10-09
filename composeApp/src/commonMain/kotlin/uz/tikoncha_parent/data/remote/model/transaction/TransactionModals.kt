@@ -42,4 +42,8 @@ data class TransactionDto(
     @SerialName("plan_duration") val planDuration: String? = null,
     @SerialName("expired_at") val expiredAt: String? = null,
     @SerialName("created_at") val createdAt: String? = null,
+    /** CLICK (bir martalik) yoki PAYLOV (karta orqali avto-to'lov). */
+    val provider: String = "CLICK",
+    /** Avto-to'lov kartasi: "HUMO •• 4821". */
+    @SerialName("card_mask") val cardMask: String? = null,
 )

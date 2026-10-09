@@ -1,5 +1,12 @@
 package uz.tikoncha_parent.di
 
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.cards.MyCardsViewModel
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.confirm.AutopayConfirmViewModel
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.card.AddCardViewModel
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.method.PaymentMethodViewModel
+import uz.tikoncha_parent.domain.repository.AutopayRepository
+import uz.tikoncha_parent.data.repository.autopay.AutopayRepositoryImpl
+import uz.tikoncha_parent.data.remote.AutopayApiService
 import PermissionStatusRepositoryImpl
 import org.koin.dsl.module
 import uz.tikoncha_parent.core.HttpClientEngineFactory
@@ -157,6 +164,7 @@ val sharedModule = module {
     single { MyCoinsApiService(get()) }
     single { PolicyApiService(get()) }
     single { PaymentApiService(get()) }
+    single { AutopayApiService(get()) }
     single { PermissionStatusApiService(get()) }
     single { TutorialApiService(get()) }
 
@@ -176,6 +184,7 @@ val sharedModule = module {
     single<ProtectionPackRepository> { ProtectionPackRepositoryImpl(get()) }
     single<PolicyAuditRepository> { PolicyAuditRepositoryImpl(get()) }
     single<PaymentRepository> { PaymentRepositoryImpl(get()) }
+    single<AutopayRepository> { AutopayRepositoryImpl(get()) }
     single<UpdateRepository> { UpdateRepositoryImpl(get()) }
     single<PermissionStatusRepository> { PermissionStatusRepositoryImpl(get()) }
 
@@ -352,7 +361,12 @@ val sharedModule = module {
     factory { PlayerScreenModel(get(), get()) }
     factory { VideoTutorialScreenModel(get()) }
     factory { PaymentHistoryScreenModel(get()) }
-    factory { SubscriptionViewModel(get()) }
+    factory { SubscriptionViewModel(get(), get(), get()) }
+    // Karta orqali avto-to'lov (Paylov)
+    factory { PaymentMethodViewModel(get()) }
+    factory { AddCardViewModel(get()) }
+    factory { AutopayConfirmViewModel(get(), get()) }
+    factory { MyCardsViewModel(get()) }
     factory { ProtectionViewModel(get(), get()) }
     factory { ChatDetailsViewModel(get()) }
 }

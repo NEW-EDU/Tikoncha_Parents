@@ -57,10 +57,7 @@ import tikoncha_parents.composeapp.generated.resources.editor_closed
 import tikoncha_parents.composeapp.generated.resources.editor_closed_in_time
 import tikoncha_parents.composeapp.generated.resources.editor_closed_in_time_sub
 import tikoncha_parents.composeapp.generated.resources.editor_condition_limit
-import tikoncha_parents.composeapp.generated.resources.editor_condition_limit_sub
-import tikoncha_parents.composeapp.generated.resources.editor_condition_location_sub
 import tikoncha_parents.composeapp.generated.resources.editor_condition_time
-import tikoncha_parents.composeapp.generated.resources.editor_condition_time_sub
 import tikoncha_parents.composeapp.generated.resources.editor_delete_message
 import tikoncha_parents.composeapp.generated.resources.editor_delete_title
 import tikoncha_parents.composeapp.generated.resources.editor_in_this_time
@@ -133,7 +130,6 @@ import uz.tikoncha_parent.presentation.policy.components.GroupDivider
 import uz.tikoncha_parent.presentation.policy.components.IconTone
 import uz.tikoncha_parent.presentation.policy.components.LimitTile
 import uz.tikoncha_parent.presentation.policy.components.LimitWheelSheetContent
-import uz.tikoncha_parent.presentation.policy.components.OptionRow
 import uz.tikoncha_parent.presentation.policy.components.PausedBanner
 import uz.tikoncha_parent.presentation.policy.components.PauseSheetContent
 import uz.tikoncha_parent.presentation.policy.components.PolicyIcon
@@ -661,19 +657,18 @@ private fun EditorSheets(state: PolicyEditorState, event: (PolicyEditorEvent) ->
                 SheetTitle(stringResource(Res.string.editor_add_condition))
                 SettingGroup {
                     val rows = listOf(
-                        Triple(ConditionKind.TIME, Res.string.editor_condition_time, Res.string.editor_condition_time_sub),
-                        Triple(ConditionKind.LIMIT, Res.string.editor_condition_limit, Res.string.editor_condition_limit_sub),
-                        Triple(ConditionKind.LOCATION, Res.string.policy_location, Res.string.editor_condition_location_sub),
+                        ConditionKind.TIME to Res.string.editor_condition_time,
+                        ConditionKind.LIMIT to Res.string.editor_condition_limit,
+                        ConditionKind.LOCATION to Res.string.policy_location,
                     )
-                    rows.forEachIndexed { i, (kind, titleRes, subRes) ->
+                    rows.forEachIndexed { i, (kind, titleRes) ->
                         val isAdded = kind in added
-                        OptionRow(
-                            text = stringResource(titleRes),
-                            subtitle = stringResource(subRes),
+                        SettingRow(
+                            title = stringResource(titleRes),
+                            modifier = Modifier.alpha(if (isAdded) 0.6f else 1f),
                             value = if (isAdded) stringResource(Res.string.editor_added) else null,
-                            selected = false,
-                            enabled = !isAdded,
-                            onClick = { event(PolicyEditorEvent.ConditionPicked(kind)) },
+                            leading = { ConditionIcon(kind, if (isAdded) IconTone.GRAY else IconTone.SOLID) },
+                            onClick = if (isAdded) null else ({ event(PolicyEditorEvent.ConditionPicked(kind)) }),
                         )
                         if (i < rows.lastIndex) GroupDivider()
                     }

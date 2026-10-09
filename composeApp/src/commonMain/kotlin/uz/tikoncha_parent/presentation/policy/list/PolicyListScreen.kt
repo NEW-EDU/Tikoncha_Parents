@@ -43,6 +43,7 @@ import tikoncha_parents.composeapp.generated.resources.dialog_failed
 import tikoncha_parents.composeapp.generated.resources.farzandingizni_tanlang
 import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.jadval_yaratish
+import tikoncha_parents.composeapp.generated.resources.add
 import tikoncha_parents.composeapp.generated.resources.jadvallar
 import tikoncha_parents.composeapp.generated.resources.policy_enabled_count
 import tikoncha_parents.composeapp.generated.resources.policy_paywall_count
@@ -225,11 +226,19 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
             }
         }
 
-        if (state.tab == PolicyTab.MINE) {
+        if (state.tab == PolicyTab.MINE || state.tab == PolicyTab.TEMPLATES) {
             CustomButtonNew(
                 text = stringResource(Res.string.jadval_yaratish),
                 modifier = Modifier.fillMaxWidth().padding(horizontal = ContainerPadding, vertical = 12.dp),
                 onClick = { event(PolicyListEvent.CreateClicked) },
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(Res.drawable.add),
+                        contentDescription = null,
+                        tint = AppColors.text.inverse,
+                        modifier = Modifier.size(16.dp),
+                    )
+                },
             )
         }
     }

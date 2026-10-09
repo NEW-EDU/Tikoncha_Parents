@@ -27,6 +27,8 @@ internal fun TransactionDto.toDomain(): Transaction = Transaction(
     planDuration = planDuration?.let(PlanDuration::from),
     expiredAt = expiredAt?.let(::parseDateTimeOrNull),
     createdAt = createdAt?.let(::parseDateTimeOrNull),
+    isAutopay = provider.equals("PAYLOV", ignoreCase = true),
+    cardMask = cardMask
 )
 
 internal fun TransactionHistoryData.toDomain(): TransactionPage = TransactionPage(

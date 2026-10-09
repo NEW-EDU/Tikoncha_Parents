@@ -196,8 +196,12 @@ android {
         applicationId = "uz.tikoncha.parent"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 25
-        versionName = "2.0.0"
+        versionCode = 26
+        versionName = "2.1.0"
+        // Lokal backend bilan sinash (Paylov sandbox Mac'da):
+        //   ./gradlew :composeApp:installRelease -Ptikoncha.api=http://127.0.0.1:8000  +  adb reverse tcp:8000 tcp:8000
+        // Parametrsiz — odatdagidek api.tikoncha.uz
+        buildConfigField("String", "API_OVERRIDE", "\"${project.findProperty("tikoncha.api") ?: ""}\"")
     }
     setProperty("archivesBaseName", "Tikoncha_Parent_v${defaultConfig.versionName}")
 

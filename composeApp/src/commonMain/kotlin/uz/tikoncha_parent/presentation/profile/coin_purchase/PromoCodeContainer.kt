@@ -66,7 +66,7 @@ fun PromoCodeContainer(
             CustomTextField(
                 value = promoCode,
                 onValueChange = {
-                    promoCode = it
+                    promoCode = it.filterNot { c -> c.isWhitespace() }.uppercase()
                 },
                 modifier = Modifier
                     .height(48.dp)

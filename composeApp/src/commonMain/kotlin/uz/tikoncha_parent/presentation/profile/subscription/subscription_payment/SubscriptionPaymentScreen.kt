@@ -1,5 +1,34 @@
 package uz.tikoncha_parent.presentation.profile.subscription.subscription_payment
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import tikoncha_parents.composeapp.generated.resources.ap_child_no_plus
+import tikoncha_parents.composeapp.generated.resources.ap_child_plus_until
+import tikoncha_parents.composeapp.generated.resources.ap_pick_child_title
+import tikoncha_parents.composeapp.generated.resources.price_uzs_per_month
+import tikoncha_parents.composeapp.generated.resources.ap_per_month
+import tikoncha_parents.composeapp.generated.resources.ap_per_year
+import tikoncha_parents.composeapp.generated.resources.ap_paywall_note
+import tikoncha_parents.composeapp.generated.resources.ap_paywall_month_sub
+import tikoncha_parents.composeapp.generated.resources.ap_paywall_year_sub
+import tikoncha_parents.composeapp.generated.resources.ap_change
+import tikoncha_parents.composeapp.generated.resources.ap_for_child
+import kotlin.math.roundToInt
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.ExperimentalMaterial3Api
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.formatSum
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.Tag
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.RadioMark
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.ChildAvatar
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.method.ChildArgs
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.method.PaymentMethodScreen
+import uz.tikoncha_parent.data.local.AppSettings
+import uz.tikoncha_parent.platform.isIos
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -118,17 +147,17 @@ fun SubscriptionPaymentUi(
         }
     )
 
-    CustomListDialog(
-        title = stringResource(Res.string.farzandingiz),
-        items = state.children,
-        show = showDialog,
-        onItemSelected = { child ->
-            event(SubscriptionPaymentEvent.SetSelectedChild(child))
-        },
-        onDismiss = {
-            showDialog = false
-        }
-    )
+    if (showDialog) {
+        ChildPickerSheet(
+            children = state.children,
+            selectedId = state.selectedChild?.userId,
+            onPick = { child ->
+                showDialog = false
+                event(SubscriptionPaymentEvent.SetSelectedChild(child))
+            },
+            onDismiss = { showDialog = false },
+        )
+    }
 
     var selectedPlan by rememberSaveable { mutableIntStateOf(0) } // 0 = Yillik, 1 = Oylik
 
@@ -225,17 +254,50 @@ fun SubscriptionPaymentUi(
             }
             Space(27.dp)
 
+            // ── Kim uchun (2+ farzand bo'lsa almashtiriladi) ──
+            val child = state.selectedChild
+            if (!isInfoMode && child != null) {
+                Row(
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(Color.White.copy(alpha = 0.14f))
+                        .then(if (state.children.size > 1) Modifier.singleClick { showDialog = true } else Modifier)
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    ChildAvatar(child.avatarUrl, 30.dp)
+                    Spacer(Modifier.width(10.dp))
+                    Text(
+                        text = stringResource(Res.string.ap_for_child, childDisplayName(child)),
+                        style = AppTypography.titleSmSemiBold, color = AppColors.text.inverse,
+                        maxLines = 1, modifier = Modifier.weight(1f),
+                    )
+                    if (state.children.size > 1) {
+                        Text(stringResource(Res.string.ap_change), style = AppTypography.bodyMdSemiBold, color = Color(0xFFFFE7BF))
+                    }
+                }
+                Space(20.dp)
+            }
+
             // ── Pricing cards ──────────────────────────────
             if (!isInfoMode) {
                 if (subscription != null) {
+                    // Narx — karta orqali avto-to'lov (arzonroq); server bermasa Click narxi
+                    val cardPrices = subscription.cardAnnual != null && subscription.cardMonthly != null
+                    val annualPrice = subscription.cardAnnual ?: subscription.annual.price
+                    val monthlyPrice = subscription.cardMonthly ?: subscription.monthly.price
                     Column(
                         modifier = Modifier.padding(horizontal = 20.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         SubscriptionPlanCard(
                             title = stringResource(Res.string.yillik),
-                            pricePerMonth = subscription.annual.price / 12,
-                            totalPrice = subscription.annual.price,
+                            subtitle = if (cardPrices) stringResource(Res.string.ap_paywall_year_sub, formatSum(roundTo100(annualPrice / 12f)))
+                            else stringResource(Res.string.price_uzs_per_month, formatSum(roundTo100(annualPrice / 12f))),
+                            price = annualPrice,
+                            per = stringResource(Res.string.ap_per_year),
                             badgeText = stringResource(Res.string.eng_foydali_tanlov),
                             isSelected = selectedPlan == 0,
                             onClick = { selectedPlan = 0 }
@@ -243,12 +305,27 @@ fun SubscriptionPaymentUi(
 
                         SubscriptionPlanCard(
                             title = stringResource(Res.string.oylik),
-                            pricePerMonth = subscription.monthly.price,
-                            totalPrice = null,
+                            subtitle = if (cardPrices) stringResource(Res.string.ap_paywall_month_sub) else null,
+                            price = monthlyPrice,
+                            per = stringResource(Res.string.ap_per_month),
                             badgeText = null,
                             isSelected = selectedPlan == 1,
                             onClick = { selectedPlan = 1 }
                         )
+
+                        if (cardPrices) {
+                            Text(
+                                text = stringResource(
+                                    Res.string.ap_paywall_note,
+                                    formatSum(subscription.monthly.price),
+                                    formatSum(subscription.annual.price),
+                                ),
+                                style = AppTypography.bodyMdMedium,
+                                color = AppColors.text.inverse.copy(alpha = 0.72f),
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp)
+                            )
+                        }
                     }
                 }
                 Space(16.dp)
@@ -331,19 +408,26 @@ fun SubscriptionPaymentUi(
                     else stringResource(Res.string.obuna_bolish),
                     onClick = {
                         subscription?.let { sub ->
-                            val plan = if (selectedPlan == 0) sub.annual else sub.monthly
-                            val duration = if (selectedPlan == 0)
-                                SubscriptionDuration.ANNUAL
-                            else
-                                SubscriptionDuration.MONTHLY
+                            val annual = selectedPlan == 0
+                            val clickPrice = if (annual) sub.annual.price else sub.monthly.price
+                            val cardPrice = (if (annual) sub.cardAnnual else sub.cardMonthly) ?: clickPrice
+                            val duration = if (annual) SubscriptionDuration.ANNUAL else SubscriptionDuration.MONTHLY
 
-                            navigator?.push(
-                                PaymentTypeScreen(
-                                    amount = plan.price,
-                                    subDuration = duration,
-                                    planId = sub.planId
+                            if (isIos() && AppSettings.isTestAccount) {
+                                // Apple ko'rigi uchun raqam: iPhone'da faqat App Store (egasining qarori)
+                                navigator?.push(PaymentTypeScreen(amount = clickPrice, subDuration = duration, planId = sub.planId))
+                            } else {
+                                // Avval to'lov usuli: karta (avto) yoki Click (bir martalik)
+                                navigator?.push(
+                                    PaymentMethodScreen(
+                                        child = state.selectedChild.toChildArgs(),
+                                        planId = sub.planId,
+                                        period = if (annual) "ANNUAL" else "MONTHLY",
+                                        cardAmount = cardPrice,
+                                        clickAmount = clickPrice,
+                                    )
                                 )
-                            )
+                            }
                         }
                     },
                     modifier = Modifier.fillMaxWidth(),
@@ -374,5 +458,64 @@ fun PreviewSubscriptionScreen() {
             event = {},
             isInfoMode = true
         )
+    }
+}
+
+/** 16 583 → 16 600: "oyiga ~" qatori uchun. */
+private fun roundTo100(value: Float): Int = (value / 100f).roundToInt() * 100
+
+private fun childDisplayName(c: UserInfo): String =
+    listOf(c.name, c.lastName).filter { it.isNotBlank() }.joinToString(" ").ifBlank { c.fullName }
+
+/** Avto-to'lov ekranlari uchun; farzand tanlanmagan bo'lsa — id yo'q (faqat Click, telefon raqami yo'li). */
+private fun UserInfo?.toChildArgs(): ChildArgs = ChildArgs(
+    id = this?.userId,
+    name = this?.let { childDisplayName(it) }.orEmpty(),
+    avatarUrl = this?.avatarUrl,
+    plusUntil = this?.subscription_end_date?.takeIf { subscription != null && subscription != "FREE" },
+)
+
+/** Farzand tanlash (maket P10): har birida PLUS holati. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ChildPickerSheet(
+    children: List<UserInfo>,
+    selectedId: String?,
+    onPick: (UserInfo) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        containerColor = AppColors.bg.elevated,
+    ) {
+        Column(Modifier.padding(start = 20.dp, end = 20.dp, bottom = 28.dp)) {
+            Text(stringResource(Res.string.ap_pick_child_title), style = AppTypography.titleLgSemiBold, color = AppColors.text.primary)
+            Spacer(Modifier.height(8.dp))
+            children.forEachIndexed { i, c ->
+                if (i > 0) HorizontalDivider(thickness = 1.dp, color = AppColors.border.divider)
+                val plus = c.subscription != null && c.subscription != "FREE"
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(12.dp))
+                        .singleClick { onPick(c) }
+                        .padding(vertical = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    ChildAvatar(c.avatarUrl, 40.dp)
+                    Spacer(Modifier.width(12.dp))
+                    Column(Modifier.weight(1f)) {
+                        Text(childDisplayName(c), style = AppTypography.titleSmSemiBold, color = AppColors.text.primary, maxLines = 1)
+                        Spacer(Modifier.height(3.dp))
+                        Tag(
+                            if (plus) stringResource(Res.string.ap_child_plus_until, c.subscription_end_date.orEmpty())
+                            else stringResource(Res.string.ap_child_no_plus)
+                        )
+                    }
+                    RadioMark(c.userId == selectedId)
+                }
+            }
+        }
     }
 }

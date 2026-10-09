@@ -6,5 +6,6 @@ import kotlin.experimental.ExperimentalNativeApi
 actual object BuildConfig {
     actual val isDebug: Boolean = Platform.isDebugBinary
     actual val deviceType: String = "IOS"
+    actual val apiOverride: String = ""
 
 }

@@ -87,6 +87,7 @@ data class BorderColors(
     val tertiarySubtle: Color,
     val secondarySubtle: Color,
     val accentSuccess: Color,
+    val divider: Color,                                         // guruh ichidagi qatorlar orasidagi chiziq
 )
 
 @Immutable
@@ -234,6 +235,7 @@ val TikonchaParentLightExtendedColors = TikonchaExtendedColors(
         tertiarySubtle = Color(0xFFFFFFFF),                     // base.white
         secondarySubtle = Color(0xFFE5E5E6),                    // gray.200
         accentSuccess = Color(0xFF4BB462),                      // green.500
+        divider = Color(0xFFE0E1E3),                            // bg.section (#EFEFF0) ustida xira kulrang
     ),
     button = ButtonColors(
         primary = Color(0xFFC3955B),                            // orange.500
@@ -369,6 +371,7 @@ val TikonchaParentDarkExtendedColors = TikonchaExtendedColors(
         tertiarySubtle = Color(0xFF2F3137),                     // neutral.700
         secondarySubtle = Color(0xFF2F3137),                    // neutral.700
         accentSuccess = Color(0xFF4BB462),                      // green.500
+        divider = Color(0x1A61656C),                            // neutral.600, 10%
     ),
     button = ButtonColors(
         primary = Color(0xFFC3955B),                            // orange.500

@@ -20,6 +20,10 @@ data class Transaction(
     val planDuration: PlanDuration?,
     val expiredAt: LocalDateTime?,
     val createdAt: LocalDateTime?,
+    /** Karta orqali avto-to'lov (Paylov); aks holda Click. */
+    val isAutopay: Boolean = false,
+    /** Avto-to'lov kartasi: "HUMO •• 4821". */
+    val cardMask: String? = null,
 ) {
     /** Birlashtirilgan ism. Agar ikkalasi ham bo'sh bo'lsa — null. */
     val userFullName: String?

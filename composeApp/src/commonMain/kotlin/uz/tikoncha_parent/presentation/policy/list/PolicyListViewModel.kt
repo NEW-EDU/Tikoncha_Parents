@@ -37,6 +37,7 @@ import uz.tikoncha_parent.domain.use_case.policy.TogglePresetUseCase
 import uz.tikoncha_parent.domain.use_case.policy.UpdateOwnQuickBlockUseCase
 import uz.tikoncha_parent.presentation.policy.model.PayWallReason
 import uz.tikoncha_parent.presentation.policy.model.PresetKind
+import uz.tikoncha_parent.presentation.policy.model.PolicyTab
 import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 import kotlin.time.Clock
 
@@ -74,6 +75,9 @@ class PolicyListViewModel(
     private var quick: QuickBlockSnapshot = QuickBlockSnapshot()
     private var packs: List<ProtectionPackStatus> = emptyList()
 
+    /** "Shablonlar" tabidan yaratish boshlanganda "Meniki"dagi jadvallar — yangisi paydo bo'lsa "Meniki" tabiga o'tiladi. */
+    private var mineBeforeCreate: Set<String>? = null
+
     private val myUserId: String get() = AppSettings.userId
     private val childId: String? get() = _state.value.selectedChild?.userId
 
@@ -91,7 +95,10 @@ class PolicyListViewModel(
             PolicyListEvent.Refresh -> childId?.let { refresh(it, pull = true) }
             PolicyListEvent.Resumed -> childId?.let { refreshPaid(it) }
             is PolicyListEvent.ChildSelected -> select(e.child)
-            is PolicyListEvent.TabSelected -> _state.update { it.copy(tab = e.tab) }
+            is PolicyListEvent.TabSelected -> {
+                mineBeforeCreate = null
+                _state.update { it.copy(tab = e.tab) }
+            }
 
             is PolicyListEvent.PresetToggled -> togglePresetFor(e.kind, e.enabled, e.title)
             is PolicyListEvent.PresetClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenPreset(it, e.kind)) }
@@ -105,7 +112,11 @@ class PolicyListViewModel(
             is PolicyListEvent.PolicyToggled -> control(e.policyId, PayWallReason.POLICY_COUNT) { togglePolicy(e.policyId, e.enabled) }
             is PolicyListEvent.PolicyClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenPolicy(it, e.policyId)) }
 
-            PolicyListEvent.CreateClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenCreate(it)) }
+            PolicyListEvent.CreateClicked -> childId?.let { id ->
+                val s = _state.value
+                mineBeforeCreate = if (s.tab == PolicyTab.TEMPLATES) s.mine.map { it.policyId }.toSet() else null
+                _effect.trySend(PolicyListEffect.OpenCreate(id))
+            }
             PolicyListEvent.PayWallDismissed -> _state.update { it.copy(payWall = null) }
             PolicyListEvent.TakeOverConfirmed -> _state.value.takeOver?.let { t ->
                 _state.update { it.copy(takeOver = null) }
@@ -131,6 +142,7 @@ class PolicyListViewModel(
 
     private fun select(child: UserInfo) {
         if (child.userId == childId && dataJob?.isActive == true) return
+        mineBeforeCreate = null
         AppSettings.selectedChildId = child.userId
         AppSettings.selectedChild = child
         _state.update { PolicyListState(children = it.children, selectedChild = child, tab = it.tab) }
@@ -161,9 +173,19 @@ class PolicyListViewModel(
                     lastLat = loc?.first,
                     lastLng = loc?.second,
                 )
-            }.collect { input -> _state.update { input.reduce(it) } }
+            }.collect { input ->
+                _state.update { input.reduce(it) }
+                showNewMine()
+            }
         }
         refresh(childId, pull = false)
+    }
+
+    private fun showNewMine() {
+        val before = mineBeforeCreate ?: return
+        if (_state.value.mine.none { it.policyId !in before }) return
+        mineBeforeCreate = null
+        _state.update { it.copy(tab = PolicyTab.MINE) }
     }
 
     /** Ekran ochilganda jim; pastga tortilganda xato ko'rsatiladi. */

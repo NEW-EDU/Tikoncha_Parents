@@ -66,7 +66,7 @@ fun SettingGroup(modifier: Modifier = Modifier, content: @Composable () -> Unit)
 /** Sahifa foni rangida — guruhlangan ro'yxatlardagidek yumshoq. */
 @Composable
 fun GroupDivider() {
-    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), thickness = 1.dp, color = AppColors.bg.page)
+    HorizontalDivider(modifier = Modifier.padding(horizontal = 16.dp), thickness = 1.dp, color = AppColors.border.divider)
 }
 
 /** Standart qator: sarlavha · qiymat/izoh · o'ngda switch, chevron yoki boshqa. `onClick == null` — bosilmaydi. */

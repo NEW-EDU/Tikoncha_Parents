@@ -1,5 +1,12 @@
 package uz.tikoncha_parent.presentation.profile.payment_history.components
 
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
+import tikoncha_parents.composeapp.generated.resources.ap_history_click
+import tikoncha_parents.composeapp.generated.resources.ap_autopay
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.BrandMark
+import uz.tikoncha_parent.domain.model.autopay.CardVendor
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -103,8 +110,32 @@ fun TransactionItem(
             )
         }
 
+        if (transaction.purchaseType == PurchaseType.SUBSCRIPTION) {
+            Spacer(Modifier.height(10.dp))
+            PaymentSource(transaction)
+        }
+
         Spacer(Modifier.height(12.dp))
         TransactionBottomRow(transaction)
+    }
+}
+
+/** "Avto-to'lov · [HUMO] •• 4821" yoki "Click · bir martalik". */
+@Composable
+private fun PaymentSource(transaction: Transaction) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        if (transaction.isAutopay) {
+            Text(text = stringResource(Res.string.ap_autopay) + " · ", style = AppTypography.bodyMdMedium, color = AppColors.text.secondary)
+            val mask = transaction.cardMask.orEmpty()
+            val vendor = CardVendor.of(mask.substringBefore(" "))
+            if (vendor != CardVendor.OTHER) {
+                BrandMark(vendor, 14.dp)
+                Spacer(Modifier.width(5.dp))
+            }
+            Text(text = "•• " + mask.takeLast(4), style = AppTypography.bodyMdMedium, color = AppColors.text.secondary)
+        } else {
+            Text(text = stringResource(Res.string.ap_history_click), style = AppTypography.bodyMdMedium, color = AppColors.text.secondary)
+        }
     }
 }
 

@@ -1,5 +1,10 @@
 package uz.tikoncha_parent.presentation.profile
 
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.cards.AutopayCardsScreen
+import tikoncha_parents.composeapp.generated.resources.ap_my_cards
+import androidx.compose.material.icons.rounded.CreditCard
+import androidx.compose.material.icons.Icons
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -375,6 +380,15 @@ fun ProfileUi(
                         icon = painterResource(Res.drawable.star_vector),
                         onItemClick = {
                             navigator?.push(SubscriptionScreen())
+                        }
+                    )
+
+                    // Obunasiz ham: saqlangan kartani ko'rish, asosiy qilish, o'chirish
+                    ProfileSectionItem(
+                        title = stringResource(Res.string.ap_my_cards),
+                        icon = rememberVectorPainter(Icons.Rounded.CreditCard),
+                        onItemClick = {
+                            navigator?.push(AutopayCardsScreen())
                         }
                     )
 

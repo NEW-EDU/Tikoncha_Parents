@@ -1,0 +1,1593 @@
+Initialized native services in: /Users/user/.gradle/native
+Initialized jansi services in: /Users/user/.gradle/native
+The client will now receive all logging from the daemon (pid: 9094). The daemon log file: /Users/user/.gradle/daemon/8.13/daemon-9094.out.log
+Starting 2nd build in daemon [uptime: 1 mins 17.843 secs, performance: 99%, GC rate: 0.00/s, heap usage: 0% of 4 GiB]
+Using 10 worker leases.
+Now considering [/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/settings.gradle.kts'.
+Using local directory build cache for the root build (location = /Users/user/.gradle/caches/build-cache-1, remove unused entries = after 7 days).
+Type-safe project accessors is an incubating feature.
+Projects loaded. Root project using build file '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/build.gradle.kts'.
+Included projects: [root project 'Tikoncha_Parents', project ':composeApp']
+
+> Configure project :
+Evaluating root project 'Tikoncha_Parents' using build file '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/build.gradle.kts'.
+Resolved plugin [id: 'com.android.application', version: '8.11.0', apply: false]
+Resolved plugin [id: 'com.android.library', version: '8.11.0', apply: false]
+Resolved plugin [id: 'org.jetbrains.compose', version: '1.9.1', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.compose', version: '2.2.20', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.2.20', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.native.cocoapods', version: '2.2.20', apply: false]
+Resolved plugin [id: 'com.google.gms.google-services', version: '4.4.3', apply: false]
+
+> Configure project :composeApp
+Evaluating project ':composeApp' using build file '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.2.20']
+Resolved plugin [id: 'com.android.application', version: '8.11.0']
+Resolved plugin [id: 'org.jetbrains.compose', version: '1.9.1']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.compose', version: '2.2.20']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.2.20']
+Resolved plugin [id: 'com.google.devtools.ksp', version: '2.2.20-2.0.4']
+Resolved plugin [id: 'org.jetbrains.kotlin.native.cocoapods', version: '2.2.20']
+Resolved plugin [id: 'com.google.gms.google-services', version: '4.4.3']
+Build 0df0d0ac-778f-4deb-bd0a-92e861b15e3e is started
+Using Kotlin Gradle Plugin gradle813 variant
+Using default execution profile
+Configure multi-module compose resources
+Configure compose resources generation
+Configure 'map(provider(?))' class generation for commonMain
+Configure resource accessors generation for commonMain
+Configure resource accessors generation for commonTest
+Configure expect resource collectors generation for commonMain
+Configure compose resources with AndroidComponentsExtension
+Configure resource accessors generation for androidInstrumentedTest
+Configure resource accessors generation for androidMain
+Configure resource accessors generation for androidUnitTest
+Configure actual resource collectors generation for androidMain
+Configure resource accessors generation for iosX64Main
+Configure resource accessors generation for iosX64Test
+Configure actual resource collectors generation for iosX64Main
+Configure main resources for 'iosX64' target
+Configure KMP component publication for 'iosX64'
+Collect resolved main resources for 'iosX64'
+Configure test resources for 'iosX64' target
+Configure resource accessors generation for iosArm64Main
+Configure resource accessors generation for iosArm64Test
+Configure actual resource collectors generation for iosArm64Main
+Configure main resources for 'iosArm64' target
+Configure KMP component publication for 'iosArm64'
+Collect resolved main resources for 'iosArm64'
+Configure test resources for 'iosArm64' target
+Configure resource accessors generation for iosSimulatorArm64Main
+Configure resource accessors generation for iosSimulatorArm64Test
+Configure actual resource collectors generation for iosSimulatorArm64Main
+Configure main resources for 'iosSimulatorArm64' target
+Configure KMP component publication for 'iosSimulatorArm64'
+Collect resolved main resources for 'iosSimulatorArm64'
+Configure test resources for 'iosSimulatorArm64' target
+Configure resource accessors generation for nativeMain
+Configure resource accessors generation for appleMain
+Configure resource accessors generation for iosMain
+Configure resource accessors generation for nativeTest
+Configure resource accessors generation for appleTest
+Configure resource accessors generation for iosTest
+Configure debug resources for 'android' target
+Configure debugAndroidTest resources for 'android' target
+Configure release resources for 'android' target
+Configure resource accessors generation for androidInstrumentedTestDebug
+Configure resource accessors generation for androidUnitTestDebug
+Configure resource accessors generation for androidDebug
+Configure resource accessors generation for androidUnitTestRelease
+Configure resource accessors generation for androidRelease
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Check that new 'org.jetbrains.kotlin.plugin.compose' was applied
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+w: [33m[1m⚠️ CInterop Commonization Disabled[0m[0m
+The project is using Kotlin Multiplatform with hierarchical structure and disabled 'cinterop commonization'
+
+'cinterop commonization' can be enabled in your 'gradle.properties'
+kotlin.mpp.enableCInteropCommonization=true
+
+To hide this message, add to your 'gradle.properties'
+kotlin.mpp.enableCInteropCommonization.nowarn=true 
+
+The following source sets are affected: 
+[appleMain, iosMain, nativeMain]
+
+The following cinterops are affected: 
+[cinterop:compilation/compileKotlinIosArm64/YandexMapsMobile, cinterop:compilation/compileKotlinIosSimulatorArm64/YandexMapsMobile, cinterop:compilation/compileKotlinIosX64/YandexMapsMobile]
+[32m[1mSolution:[0m[0m
+[32m[3mPlease enable 'cinterop commonization' in your 'gradle.properties'[0m[0m
+[36mSee: [0m[34mhttps://kotlinlang.org/docs/mpp-share-on-platforms.html#use-native-libraries-in-the-hierarchical-structure[0m[36m[0m
+
+All projects evaluated.
+Task path ':composeApp:compileKotlinIosArm64' matched project ':composeApp'
+Task name matched 'compileKotlinIosArm64'
+Selected primary task 'compileKotlinIosArm64' from project :composeApp
+Tasks to be executed: [task ':composeApp:kmpPartiallyResolvedDependenciesChecker', task ':composeApp:checkKotlinGradlePluginConfigurationErrors', task ':composeApp:generateDefYandexMapsMobile', task ':composeApp:xcodeVersion', task ':composeApp:podGenIos', task ':composeApp:podInstallSyntheticIos', task ':composeApp:podSetupBuildYandexMapsMobileIos', task ':composeApp:podBuildYandexMapsMobileIos', task ':composeApp:cinteropYandexMapsMobileIosArm64', task ':composeApp:convertXmlValueResourcesForAppleMain', task ':composeApp:copyNonXmlValueResourcesForAppleMain', task ':composeApp:prepareComposeResourcesTaskForAppleMain', task ':composeApp:generateResourceAccessorsForAppleMain', task ':composeApp:convertXmlValueResourcesForCommonMain', task ':composeApp:copyNonXmlValueResourcesForCommonMain', task ':composeApp:prepareComposeResourcesTaskForCommonMain', task ':composeApp:generateResourceAccessorsForCommonMain', task ':composeApp:convertXmlValueResourcesForIosArm64Main', task ':composeApp:copyNonXmlValueResourcesForIosArm64Main', task ':composeApp:prepareComposeResourcesTaskForIosArm64Main', task ':composeApp:generateResourceAccessorsForIosArm64Main', task ':composeApp:convertXmlValueResourcesForIosMain', task ':composeApp:copyNonXmlValueResourcesForIosMain', task ':composeApp:prepareComposeResourcesTaskForIosMain', task ':composeApp:generateResourceAccessorsForIosMain', task ':composeApp:convertXmlValueResourcesForNativeMain', task ':composeApp:copyNonXmlValueResourcesForNativeMain', task ':composeApp:prepareComposeResourcesTaskForNativeMain', task ':composeApp:generateResourceAccessorsForNativeMain', task ':composeApp:generateActualResourceCollectorsForIosArm64Main', task ':composeApp:generateComposeResClass', task ':composeApp:generateExpectResourceCollectorsForCommonMain', task ':composeApp:transformCommonMainDependenciesMetadata', task ':composeApp:kspCommonMainKotlinMetadata', task ':composeApp:kspKotlinIosArm64', task ':composeApp:compileKotlinIosArm64']
+Tasks that were excluded: []
+Resolve mutations for :composeApp:kmpPartiallyResolvedDependenciesChecker (Thread[Execution worker,5,main]) started.
+:composeApp:kmpPartiallyResolvedDependenciesChecker (Thread[Execution worker,5,main]) started.
+
+> Task :composeApp:kmpPartiallyResolvedDependenciesChecker
+Custom actions are attached to task ':composeApp:kmpPartiallyResolvedDependenciesChecker'.
+Caching disabled for task ':composeApp:kmpPartiallyResolvedDependenciesChecker' because:
+  This task is not intended for execution
+Task ':composeApp:kmpPartiallyResolvedDependenciesChecker' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Registered task dependencies: composeApp:iosArm64CompileKlibraries
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Starting dependency analysis
+Registered task dependencies: composeApp:iosSimulatorArm64CompileKlibraries
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Starting dependency analysis
+Registered task dependencies: composeApp:iosX64CompileKlibraries
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Starting dependency analysis
+Registered task dependencies: composeApp:androidDebugCompileClasspath
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: com.google.firebase:firebase-messaging-ktx
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Starting dependency analysis
+Registered task dependencies: composeApp:androidReleaseCompileClasspath
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: com.google.firebase:firebase-messaging-ktx
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Starting dependency analysis
+Execution stopped by some action with message: null
+Resolve mutations for :composeApp:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+:composeApp:checkKotlinGradlePluginConfigurationErrors (Thread[Execution worker,5,main]) started.
+
+> Task :composeApp:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':composeApp:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :composeApp:generateDefYandexMapsMobile (Thread[Execution worker,5,main]) started.
+:composeApp:generateDefYandexMapsMobile (Thread[Execution worker,5,main]) started.
+
+> Task :composeApp:generateDefYandexMapsMobile
+Caching disabled for task ':composeApp:generateDefYandexMapsMobile' because:
+  Caching has been disabled for the task
+Task ':composeApp:generateDefYandexMapsMobile' is not up-to-date because:
+  Output property 'defFile' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/defs/YandexMapsMobile.def has been removed.
+Resolve mutations for :composeApp:xcodeVersion (Thread[Execution worker,5,main]) started.
+:composeApp:xcodeVersion (Thread[Execution worker,5,main]) started.
+Not watching anything anymore
+
+> Task :composeApp:xcodeVersion
+Caching disabled for task ':composeApp:xcodeVersion' because:
+  Caching has been disabled for the task
+Task ':composeApp:xcodeVersion' is not up-to-date because:
+  Output property 'outputFile' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/xcode-version.txt has been removed.
+w: [33m[1m⚠️ Xcode Version Too High for Kotlin Gradle Plugin[0m[0m
+Kotlin <-> Xcode compatibility issue:
+The selected Xcode version (26.4) is higher than the maximum known to the Kotlin Gradle Plugin.
+Stability in such configuration hasn't been tested, please report encountered issues to https://kotl.in/issue
+
+Maximum tested Xcode version: 16.0
+[32m[1mSolution:[0m[0m
+[32m[3mTo suppress this message add 'kotlin.apple.xcodeCompatibility.nowarn=true' to your gradle.properties[0m[0m
+
+Resolve mutations for :composeApp:podGenIos (Thread[Execution worker,5,main]) started.
+:composeApp:podGenIos (Thread[Execution worker,5,main]) started.
+
+> Task :composeApp:podGenIos
+Caching disabled for task ':composeApp:podGenIos' because:
+  Caching has been disabled for the task
+Task ':composeApp:podGenIos' is not up-to-date because:
+  Output property 'podfile' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Podfile has been removed.
+Resolve mutations for :composeApp:podInstallSyntheticIos (Thread[Execution worker,5,main]) started.
+:composeApp:podInstallSyntheticIos (Thread[Execution worker,5,main]) started.
+
+> Task :composeApp:podInstallSyntheticIos
+Caching disabled for task ':composeApp:podInstallSyntheticIos' because:
+  Caching has been disabled for the task
+Task ':composeApp:podInstallSyntheticIos' is not up-to-date because:
+  Output property 'podsDir$kotlin_gradle_plugin_common' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods has been removed.
+  Output property 'podsDir$kotlin_gradle_plugin_common' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/Headers has been removed.
+  Output property 'podsDir$kotlin_gradle_plugin_common' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/Local Podspecs has been removed.
+  and more...
+Information about "/opt/homebrew/bin/pod install" call:
+
+Analyzing dependencies
+Downloading dependencies
+Installing YandexMapsMobile (4.24.0-lite)
+Generating Pods project
+Integrating client project
+
+[!] Please close any current Xcode sessions and use `synthetic.xcworkspace` for this project from now on.
+Pod installation complete! There is 1 dependency from the Podfile and 1 total pod installed.
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+
+Resolve mutations for :composeApp:podSetupBuildYandexMapsMobileIos (Thread[included builds,5,main]) started.
+:composeApp:podSetupBuildYandexMapsMobileIos (Thread[included builds,5,main]) started.
+
+> Task :composeApp:podSetupBuildYandexMapsMobileIos
+Caching disabled for task ':composeApp:podSetupBuildYandexMapsMobileIos' because:
+  Caching has been disabled for the task
+Task ':composeApp:podSetupBuildYandexMapsMobileIos' is not up-to-date because:
+  Output property 'buildSettingsFile' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/buildSettings/build-settings-ios-YandexMapsMobile.properties has been removed.
+Information about "xcodebuild -showBuildSettings -project Pods.xcodeproj -scheme YandexMapsMobile -sdk iphoneos" call:
+
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -showBuildSettings -project Pods.xcodeproj -scheme YandexMapsMobile -sdk iphoneos
+
+Build settings from command line:
+    SDKROOT = iphoneos26.4
+
+Build settings for action build and target YandexMapsMobile:
+    ACTION = build
+    AD_HOC_CODE_SIGNING_ALLOWED = NO
+    ALLOW_BUILD_REQUEST_OVERRIDES = NO
+    ALLOW_TARGET_PLATFORM_SPECIALIZATION = NO
+    ALTERNATE_GROUP = staff
+    ALTERNATE_MODE = u+w,go-w,a+rX
+    ALTERNATE_OWNER = user
+    ALTERNATIVE_DISTRIBUTION_WEB = NO
+    ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO
+    ALWAYS_SEARCH_USER_PATHS = NO
+    ALWAYS_USE_SEPARATE_HEADERMAPS = NO
+    ANDROID_DEPLOYMENT_TARGET = 19.0
+    APPLICATION_EXTENSION_API_ONLY = NO
+    APPLY_RULES_IN_COPY_FILES = NO
+    APPLY_RULES_IN_COPY_HEADERS = NO
+    APP_SHORTCUTS_ENABLE_FLEXIBLE_MATCHING = YES
+    ARCHS = arm64
+    ARCHS_BASE = arm64
+    ARCHS_STANDARD = arm64
+    ARCHS_STANDARD_32_64_BIT = armv7 arm64
+    ARCHS_STANDARD_32_BIT = armv7
+    ARCHS_STANDARD_64_BIT = arm64
+    ARCHS_STANDARD_INCLUDING_64_BIT = arm64
+    ARCHS_UNIVERSAL_IPHONE_OS = armv7 arm64
+    ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon
+    ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor
+    AUTOMATICALLY_MERGE_DEPENDENCIES = NO
+    AUTOMATION_APPLE_EVENTS = NO
+    AVAILABLE_PLATFORMS = android appletvos appletvsimulator driverkit freebsd iphoneos iphonesimulator linux macosx none openbsd qnx watchos watchsimulator webassembly xros xrsimulator
+    BUILD_ACTIVE_RESOURCES_ONLY = NO
+    BUILD_COMPONENTS = headers build
+    BUILD_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build
+    BUILD_LIBRARY_FOR_DISTRIBUTION = NO
+    BUILD_ONLY_KNOWN_LOCALIZATIONS = NO
+    BUILD_ROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build
+    BUILD_STYLE = 
+    BUILD_VARIANTS = normal
+    BUILT_PRODUCTS_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile
+    BUNDLE_CONTENTS_FOLDER_PATH_deep = Contents/
+    BUNDLE_EXECUTABLE_FOLDER_NAME_deep = MacOS
+    BUNDLE_EXTENSIONS_FOLDER_PATH = Extensions
+    BUNDLE_FORMAT = shallow
+    BUNDLE_FRAMEWORKS_FOLDER_PATH = Frameworks
+    BUNDLE_PLUGINS_FOLDER_PATH = PlugIns
+    BUNDLE_PRIVATE_HEADERS_FOLDER_PATH = PrivateHeaders
+    BUNDLE_PUBLIC_HEADERS_FOLDER_PATH = Headers
+    CACHE_ROOT = /var/folders/y9/fzwq_c4x0bv9s5hrv02d_krr0000gn/C/com.apple.DeveloperTools/26.4.1-17E202/Xcode
+    CCHROOT = /var/folders/y9/fzwq_c4x0bv9s5hrv02d_krr0000gn/C/com.apple.DeveloperTools/26.4.1-17E202/Xcode
+    CHMOD = /bin/chmod
+    CHOWN = chown
+    CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES
+    CLANG_ANALYZER_NONNULL = YES
+    CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE
+    CLANG_CACHE_FINE_GRAINED_OUTPUTS = YES
+    CLANG_CXX_LANGUAGE_STANDARD = gnu++14
+    CLANG_CXX_LIBRARY = libc++
+    CLANG_ENABLE_EXPLICIT_MODULES = YES
+    CLANG_ENABLE_MODULES = YES
+    CLANG_ENABLE_OBJC_ARC = YES
+    CLANG_ENABLE_OBJC_WEAK = NO
+    CLANG_MODULES_BUILD_SESSION_FILE = /Users/user/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation
+    CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES
+    CLANG_WARN_BOOL_CONVERSION = YES
+    CLANG_WARN_COMMA = YES
+    CLANG_WARN_CONSTANT_CONVERSION = YES
+    CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES
+    CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR
+    CLANG_WARN_DOCUMENTATION_COMMENTS = YES
+    CLANG_WARN_EMPTY_BODY = YES
+    CLANG_WARN_ENUM_CONVERSION = YES
+    CLANG_WARN_INFINITE_RECURSION = YES
+    CLANG_WARN_INT_CONVERSION = YES
+    CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES
+    CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES
+    CLANG_WARN_OBJC_LITERAL_CONVERSION = YES
+    CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR
+    CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
+    CLANG_WARN_RANGE_LOOP_ANALYSIS = YES
+    CLANG_WARN_STRICT_PROTOTYPES = YES
+    CLANG_WARN_SUSPICIOUS_MOVE = YES
+    CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE
+    CLANG_WARN_UNREACHABLE_CODE = YES
+    CLANG_WARN__DUPLICATE_METHOD_MATCH = YES
+    CLASS_FILE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/JavaClasses
+    CLEAN_PRECOMPS = YES
+    CLONE_HEADERS = NO
+    CODESIGNING_FOLDER_PATH = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile/
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+    CODE_SIGN_CONTEXT_CLASS = XCiPhoneOSCodeSignContext
+    CODE_SIGN_IDENTITY = Apple Development
+    CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES
+    COLOR_DIAGNOSTICS = NO
+    COMBINE_HIDPI_IMAGES = NO
+    COMPILATION_CACHE_CAS_PATH = /Users/user/Library/Developer/Xcode/DerivedData/CompilationCache.noindex
+    COMPILATION_CACHE_KEEP_CAS_DIRECTORY = YES
+    COMPILER_INDEX_STORE_ENABLE = Default
+    COMPOSITE_SDK_DIRS = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/CompositeSDKs
+    COMPRESS_PNG_FILES = YES
+    CONFIGURATION = Debug
+    CONFIGURATION_BUILD_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile
+    CONFIGURATION_TEMP_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos
+    COPYING_PRESERVES_HFS_DATA = NO
+    COPY_HEADERS_RUN_UNIFDEF = NO
+    COPY_PHASE_STRIP = NO
+    CORRESPONDING_SIMULATOR_PLATFORM_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform
+    CORRESPONDING_SIMULATOR_PLATFORM_NAME = iphonesimulator
+    CORRESPONDING_SIMULATOR_SDK_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.4.sdk
+    CORRESPONDING_SIMULATOR_SDK_NAME = iphonesimulator26.4
+    CP = /bin/cp
+    CREATE_INFOPLIST_SECTION_IN_BINARY = NO
+    CURRENT_ARCH = undefined_arch
+    CURRENT_VARIANT = normal
+    DEAD_CODE_STRIPPING = YES
+    DEBUGGING_SYMBOLS = YES
+    DEBUG_INFORMATION_FORMAT = dwarf
+    DEBUG_INFORMATION_VERSION = compiler-default
+    DEFAULT_COMPILER = com.apple.compilers.llvm.clang.1_0
+    DEFAULT_DEXT_INSTALL_PATH = /System/Library/DriverExtensions
+    DEFAULT_KEXT_INSTALL_PATH = /System/Library/Extensions
+    DEFINES_MODULE = NO
+    DEPLOYMENT_LOCATION = NO
+    DEPLOYMENT_POSTPROCESSING = NO
+    DEPLOYMENT_TARGET_SETTING_NAME = IPHONEOS_DEPLOYMENT_TARGET
+    DEPLOYMENT_TARGET_SUGGESTED_VALUES = 12.0 12.1 12.2 12.3 12.4 13.0 13.1 13.2 13.3 13.4 13.5 13.6 14.0 14.1 14.2 14.3 14.4 14.5 14.6 14.7 15.0 15.1 15.2 15.3 15.4 15.5 15.6 16.0 16.1 16.2 16.3 16.4 16.5 16.6 17.0 17.1 17.2 17.3 17.4 17.5 17.6 18.0 18.1 18.2 18.3 18.4 18.5 18.6 26.0 26.2 26.3 26.4
+    DERIVED_FILES_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/DerivedSources
+    DERIVED_FILE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/DerivedSources
+    DERIVED_SOURCES_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/DerivedSources
+    DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO
+    DEVELOPER_APPLICATIONS_DIR = /Applications/Xcode.app/Contents/Developer/Applications
+    DEVELOPER_BIN_DIR = /Applications/Xcode.app/Contents/Developer/usr/bin
+    DEVELOPER_DIR = /Applications/Xcode.app/Contents/Developer
+    DEVELOPER_FRAMEWORKS_DIR = /Applications/Xcode.app/Contents/Developer/Library/Frameworks
+    DEVELOPER_FRAMEWORKS_DIR_QUOTED = /Applications/Xcode.app/Contents/Developer/Library/Frameworks
+    DEVELOPER_LIBRARY_DIR = /Applications/Xcode.app/Contents/Developer/Library
+    DEVELOPER_SDK_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+    DEVELOPER_TOOLS_DIR = /Applications/Xcode.app/Contents/Developer/Tools
+    DEVELOPER_USR_DIR = /Applications/Xcode.app/Contents/Developer/usr
+    DEVELOPMENT_LANGUAGE = en
+    DIAGNOSE_MISSING_TARGET_DEPENDENCIES = YES
+    DIFF = /usr/bin/diff
+    DONT_GENERATE_INFOPLIST_FILE = NO
+    DRIVERKIT_DEPLOYMENT_TARGET = 25.4
+    DSTROOT = /tmp/Pods.dst
+    DT_TOOLCHAIN_DIR = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain
+    DUMP_DEPENDENCIES = NO
+    DUMP_DEPENDENCIES_OUTPUT_PATH = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/YandexMapsMobile-BuildDependencyInfo.json
+    DWARF_DSYM_FILE_NAME = .dSYM
+    DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT = NO
+    DWARF_DSYM_FOLDER_PATH = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile
+    DYNAMIC_LIBRARY_EXTENSION = dylib
+    EAGER_COMPILATION_ALLOW_SCRIPTS = NO
+    EAGER_LINKING = NO
+    EFFECTIVE_PLATFORM_NAME = -iphoneos
+    EFFECTIVE_SWIFT_VERSION = 5
+    EMBEDDED_CONTENT_CONTAINS_SWIFT = NO
+    EMBEDDED_PROFILE_NAME = embedded.mobileprovision
+    EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO
+    ENABLE_APP_SANDBOX = NO
+    ENABLE_CODE_COVERAGE = YES
+    ENABLE_COHORT_ARCHS = NO
+    ENABLE_CPLUSPLUS_BOUNDS_SAFE_BUFFERS = NO
+    ENABLE_C_BOUNDS_SAFETY = NO
+    ENABLE_DEFAULT_HEADER_SEARCH_PATHS = YES
+    ENABLE_DEFAULT_SEARCH_PATHS = YES
+    ENABLE_ENHANCED_SECURITY = NO
+    ENABLE_HARDENED_RUNTIME = NO
+    ENABLE_HEADER_DEPENDENCIES = YES
+    ENABLE_INCOMING_NETWORK_CONNECTIONS = NO
+    ENABLE_ON_DEMAND_RESOURCES = NO
+    ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO
+    ENABLE_POINTER_AUTHENTICATION = NO
+    ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO
+    ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO
+    ENABLE_RESOURCE_ACCESS_CALENDARS = NO
+    ENABLE_RESOURCE_ACCESS_CAMERA = NO
+    ENABLE_RESOURCE_ACCESS_CONTACTS = NO
+    ENABLE_RESOURCE_ACCESS_LOCATION = NO
+    ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO
+    ENABLE_RESOURCE_ACCESS_PRINTING = NO
+    ENABLE_RESOURCE_ACCESS_USB = NO
+    ENABLE_SDK_IMPORTS = NO
+    ENABLE_SECURITY_COMPILER_WARNINGS = NO
+    ENABLE_STRICT_OBJC_MSGSEND = YES
+    ENABLE_TESTABILITY = YES
+    ENABLE_TESTING_SEARCH_PATHS = NO
+    ENABLE_USER_SCRIPT_SANDBOXING = NO
+    ENFORCE_VALID_ARCHS = YES
+    ENTITLEMENTS_DESTINATION = Signature
+    ENTITLEMENTS_REQUIRED = YES
+    EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS = .DS_Store .svn .git .hg CVS
+    EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = *.nib *.lproj *.framework *.gch *.xcode* *.xcassets *.icon (*) .DS_Store CVS .svn .git .hg *.pbproj *.pbxproj
+    FILE_LIST = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects/LinkFileList
+    FIXED_FILES_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/FixedFiles
+    FRAMEWORK_SEARCH_PATHS =  "/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/YandexMapsMobile" "/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/XCFrameworkIntermediates/YandexMapsMobile"
+    FRAMEWORK_VERSION = A
+    FUSE_BUILD_PHASES = YES
+    FUSE_BUILD_SCRIPT_PHASES = NO
+    GCC3_VERSION = 3.3
+    GCC_C_LANGUAGE_STANDARD = gnu11
+    GCC_DYNAMIC_NO_PIC = NO
+    GCC_NO_COMMON_BLOCKS = YES
+    GCC_OPTIMIZATION_LEVEL = 0
+    GCC_PFE_FILE_C_DIALECTS = c objective-c c++ objective-c++
+    GCC_PREPROCESSOR_DEFINITIONS = POD_CONFIGURATION_DEBUG=1 DEBUG=1  COCOAPODS=1
+    GCC_THUMB_SUPPORT = YES
+    GCC_TREAT_WARNINGS_AS_ERRORS = NO
+    GCC_VERSION = com.apple.compilers.llvm.clang.1_0
+    GCC_VERSION_IDENTIFIER = com_apple_compilers_llvm_clang_1_0
+    GCC_WARN_64_TO_32_BIT_CONVERSION = YES
+    GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR
+    GCC_WARN_UNDECLARED_SELECTOR = YES
+    GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE
+    GCC_WARN_UNUSED_FUNCTION = YES
+    GCC_WARN_UNUSED_VARIABLE = YES
+    GENERATED_MODULEMAP_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/GeneratedModuleMaps-iphoneos
+    GENERATE_INFOPLIST_FILE = NO
+    GENERATE_INTERMEDIATE_TEXT_BASED_STUBS = YES
+    GENERATE_PKGINFO_FILE = NO
+    GENERATE_PRELINK_OBJECT_FILE = NO
+    GENERATE_PROFILING_CODE = NO
+    GENERATE_TEXT_BASED_STUBS = NO
+    GID = 20
+    GROUP = staff
+    HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT = YES
+    HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES = YES
+    HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_TARGETS_NOT_BEING_BUILT = YES
+    HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS = YES
+    HEADERMAP_INCLUDES_PROJECT_HEADERS = YES
+    HEADERMAP_USES_FRAMEWORK_PREFIX_ENTRIES = YES
+    HEADERMAP_USES_VFS = NO
+    HOME = /Users/user
+    HOST_ARCH = arm64
+    HOST_PLATFORM = macosx
+    ICONV = /usr/bin/iconv
+    IMPLICIT_DEPENDENCY_DOMAIN = default
+    INDEX_STORE_COMPRESS = NO
+    INDEX_STORE_ONLY_PROJECT_FILES = NO
+    INFOPLIST_ENABLE_CFBUNDLEICONS_MERGE = YES
+    INFOPLIST_EXPAND_BUILD_SETTINGS = YES
+    INFOPLIST_OUTPUT_FORMAT = binary
+    INFOPLIST_PREPROCESS = NO
+    INLINE_PRIVATE_FRAMEWORKS = NO
+    INSTALLAPI_IGNORE_SKIP_INSTALL = YES
+    INSTALLHDRS_COPY_PHASE = NO
+    INSTALLHDRS_SCRIPT_PHASE = NO
+    INSTALL_DIR = /tmp/Pods.dst
+    INSTALL_GROUP = staff
+    INSTALL_MODE_FLAG = u+w,go-w,a+rX
+    INSTALL_OWNER = user
+    INSTALL_ROOT = /tmp/Pods.dst
+    IPHONEOS_DEPLOYMENT_TARGET = 12.0
+    IS_UNOPTIMIZED_BUILD = YES
+    JAVAC_DEFAULT_FLAGS = -J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8
+    JAVA_APP_STUB = /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub
+    JAVA_ARCHIVE_CLASSES = YES
+    JAVA_ARCHIVE_TYPE = JAR
+    JAVA_COMPILER = /usr/bin/javac
+    JAVA_FRAMEWORK_RESOURCES_DIRS = Resources
+    JAVA_JAR_FLAGS = cv
+    JAVA_SOURCE_SUBDIR = .
+    JAVA_USE_DEPENDENCIES = YES
+    JAVA_ZIP_FLAGS = -urg
+    JIKES_DEFAULT_FLAGS = +E +OLDCSO
+    KASAN_CFLAGS_CLASSIC = -DKASAN=1 -DKASAN_CLASSIC=1 -fsanitize=address -mllvm -asan-globals-live-support -mllvm -asan-force-dynamic-shadow
+    KASAN_CFLAGS_TBI = -DKASAN=1 -DKASAN_TBI=1 -fsanitize=kernel-hwaddress -mllvm -hwasan-recover=0 -mllvm -hwasan-instrument-atomics=0 -mllvm -hwasan-instrument-stack=1 -mllvm -hwasan-generate-tags-with-calls=1 -mllvm -hwasan-instrument-with-calls=1 -mllvm -hwasan-use-short-granules=0 -mllvm -hwasan-memory-access-callback-prefix=__asan_
+    KASAN_DEFAULT_CFLAGS = -DKASAN=1 -DKASAN_CLASSIC=1 -fsanitize=address -mllvm -asan-globals-live-support -mllvm -asan-force-dynamic-shadow
+    KEEP_PRIVATE_EXTERNS = NO
+    LD_DEPENDENCY_INFO_FILE = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal/undefined_arch/YandexMapsMobile_dependency_info.dat
+    LD_EXPORT_SYMBOLS = YES
+    LD_GENERATE_MAP_FILE = NO
+    LD_MAP_FILE_PATH = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/YandexMapsMobile-LinkMap-normal-undefined_arch.txt
+    LD_NO_PIE = NO
+    LD_QUOTE_LINKER_ARGUMENTS_FOR_COMPILER_DRIVER = YES
+    LD_RUNPATH_SEARCH_PATHS =  @executable_path/Frameworks
+    LD_SHARED_CACHE_ELIGIBLE = Automatic
+    LD_WARN_DUPLICATE_LIBRARIES = NO
+    LD_WARN_UNUSED_DYLIBS = NO
+    LEGACY_DEVELOPER_DIR = /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer
+    LEX = lex
+    LIBRARY_DEXT_INSTALL_PATH = /Library/DriverExtensions
+    LIBRARY_FLAG_NOSPACE = YES
+    LIBRARY_KEXT_INSTALL_PATH = /Library/Extensions
+    LINKER_DISPLAYS_MANGLED_NAMES = NO
+    LINK_FILE_LIST_normal_arm64 = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal/arm64/YandexMapsMobile.LinkFileList
+    LINK_OBJC_RUNTIME = YES
+    LINK_WITH_STANDARD_LIBRARIES = YES
+    LLVM_TARGET_TRIPLE_OS_VERSION = ios12.0
+    LLVM_TARGET_TRIPLE_VENDOR = apple
+    LM_AUX_CONST_METADATA_LIST_PATH_normal_arm64 = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal/arm64/YandexMapsMobile.SwiftConstValuesFileList
+    LOCALIZATION_EXPORT_SUPPORTED = YES
+    LOCALIZATION_PREFERS_STRING_CATALOGS = NO
+    LOCALIZED_STRING_CODE_COMMENTS = NO
+    LOCALIZED_STRING_MACRO_NAMES = NSLocalizedString CFCopyLocalizedString
+    LOCALIZED_STRING_SWIFTUI_SUPPORT = YES
+    LOCAL_ADMIN_APPS_DIR = /Applications/Utilities
+    LOCAL_APPS_DIR = /Applications
+    LOCAL_DEVELOPER_DIR = /Library/Developer
+    LOCAL_LIBRARY_DIR = /Library
+    LOCROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    LOCSYMROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    MACOSX_DEPLOYMENT_TARGET = 26.4
+    MAC_OS_X_PRODUCT_BUILD_VERSION = 25D2128
+    MAC_OS_X_VERSION_ACTUAL = 260301
+    MAC_OS_X_VERSION_MAJOR = 260000
+    MAC_OS_X_VERSION_MINOR = 260300
+    MAKE_MERGEABLE = NO
+    MERGEABLE_LIBRARY = NO
+    MERGED_BINARY_TYPE = none
+    MERGE_LINKED_LIBRARIES = NO
+    METAL_LIBRARY_FILE_BASE = default
+    METAL_LIBRARY_OUTPUT_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile/
+    MODULE_CACHE_DIR = /Users/user/Library/Developer/Xcode/DerivedData/ModuleCache.noindex
+    MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE
+    MTL_FAST_MATH = YES
+    NATIVE_ARCH = arm64
+    NATIVE_ARCH_32_BIT = arm
+    NATIVE_ARCH_64_BIT = arm64
+    NATIVE_ARCH_ACTUAL = arm64
+    NO_COMMON = YES
+    OBJECT_FILE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects
+    OBJECT_FILE_DIR_normal = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal
+    OBJROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build
+    ONLY_ACTIVE_ARCH = NO
+    OS = MACOS
+    OSAC = /usr/bin/osacompile
+    OTHER_LDFLAGS =  -l"c++" -l"resolv" -framework "CoreFoundation" -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreMotion" -framework "CoreTelephony" -framework "DeviceCheck" -framework "Foundation" -framework "NetworkExtension" -framework "OpenGLES" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
+    PASCAL_STRINGS = YES
+    PATH = /Applications/Xcode.app/Contents/SharedFrameworks/SwiftBuild.framework/Versions/A/PlugIns/SWBBuildService.bundle/Contents/PlugIns/SWBUniversalPlatformPlugin.bundle/Contents/Frameworks/SWBUniversalPlatform.framework/Resources:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/opt/homebrew/opt/postgresql@15/bin:/Users/user/.local/bin:/opt/homebrew/opt/ruby/bin:/usr/local/opt/libxml2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin
+    PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES = /usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms
+    PER_ARCH_MODULE_FILE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal/undefined_arch
+    PER_ARCH_OBJECT_FILE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal/undefined_arch
+    PER_VARIANT_OBJECT_FILE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal
+    PKGINFO_FILE_PATH = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/PkgInfo
+    PLATFORM_DEVELOPER_APPLICATIONS_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Applications
+    PLATFORM_DEVELOPER_BIN_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin
+    PLATFORM_DEVELOPER_LIBRARY_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library
+    PLATFORM_DEVELOPER_SDK_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs
+    PLATFORM_DEVELOPER_TOOLS_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Tools
+    PLATFORM_DEVELOPER_USR_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr
+    PLATFORM_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform
+    PLATFORM_DISPLAY_NAME = iOS
+    PLATFORM_FAMILY_NAME = iOS
+    PLATFORM_NAME = iphoneos
+    PLATFORM_PREFERRED_ARCH = arm64
+    PLATFORM_PRODUCT_BUILD_VERSION = 23E252
+    PLATFORM_REQUIRES_SWIFT_AUTOLINK_EXTRACT = NO
+    PLATFORM_REQUIRES_SWIFT_MODULEWRAP = NO
+    PLATFORM_USES_DSYMS = YES
+    PLIST_FILE_OUTPUT_FORMAT = binary
+    PODS_BUILD_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build
+    PODS_CONFIGURATION_BUILD_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos
+    PODS_DEVELOPMENT_LANGUAGE = en
+    PODS_ROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    PODS_TARGET_SRCROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/YandexMapsMobile
+    PODS_XCFRAMEWORKS_BUILD_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/XCFrameworkIntermediates
+    PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES
+    PRECOMP_DESTINATION_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/PrefixHeaders
+    PROCESSED_INFOPLIST_PATH = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal/undefined_arch/Processed-Info.plist
+    PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.YandexMapsMobile
+    PRODUCT_MODULE_NAME = YandexMapsMobile
+    PRODUCT_NAME = YandexMapsMobile
+    PRODUCT_SETTINGS_PATH = 
+    PROFILING_CODE = NO
+    PROJECT = Pods
+    PROJECT_DERIVED_FILE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/DerivedSources
+    PROJECT_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    PROJECT_FILE_PATH = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/Pods.xcodeproj
+    PROJECT_GUID = bfdfe7dc352907fc980b868725387e98
+    PROJECT_NAME = Pods
+    PROJECT_TEMP_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build
+    PROJECT_TEMP_ROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build
+    RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET = 15.0
+    RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS = YES
+    REMOVE_CVS_FROM_RESOURCES = YES
+    REMOVE_GIT_FROM_RESOURCES = YES
+    REMOVE_HEADERS_FROM_EMBEDDED_BUNDLES = YES
+    REMOVE_HG_FROM_RESOURCES = YES
+    REMOVE_STATIC_EXECUTABLES_FROM_EMBEDDED_BUNDLES = YES
+    REMOVE_SVN_FROM_RESOURCES = YES
+    RESCHEDULE_INDEPENDENT_HEADERS_PHASES = YES
+    REZ_COLLECTOR_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/ResourceManagerResources
+    REZ_OBJECTS_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/ResourceManagerResources/Objects
+    RPATH_ORIGIN = @loader_path
+    RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO
+    RUNTIME_EXCEPTION_ALLOW_JIT = NO
+    RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO
+    RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO
+    RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO
+    RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO
+    SCANNING_PCM_KEEP_CACHE_DIRECTORY = YES
+    SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO
+    SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.4.sdk
+    SDK_DIR = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.4.sdk
+    SDK_DIR_iphoneos = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.4.sdk
+    SDK_DIR_iphoneos26_4 = /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.4.sdk
+    SDK_NAME = iphoneos26.4
+    SDK_NAMES = iphoneos26.4
+    SDK_PRODUCT_BUILD_VERSION = 23E252
+    SDK_STAT_CACHE_DIR = /Users/user/Library/Developer/Xcode/DerivedData
+    SDK_STAT_CACHE_ENABLE = YES
+    SDK_STAT_CACHE_PATH = /Users/user/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphoneos26.4-23E252-68a138bb55de9ba35ce6c8c40d12849e.sdkstatcache
+    SDK_VERSION = 26.4
+    SDK_VERSION_ACTUAL = 260400
+    SDK_VERSION_MAJOR = 260000
+    SDK_VERSION_MINOR = 260400
+    SED = /usr/bin/sed
+    SEPARATE_STRIP = NO
+    SEPARATE_SYMBOL_EDIT = NO
+    SET_DIR_MODE_OWNER_GROUP = YES
+    SET_FILE_MODE_OWNER_GROUP = NO
+    SHALLOW_BUNDLE = NO
+    SHARED_DERIVED_FILE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile/DerivedSources
+    SHARED_PRECOMPS_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/SharedPrecompiledHeaders
+    SKIP_INSTALL = YES
+    SKIP_MERGEABLE_LIBRARY_BUNDLE_HOOK = NO
+    SOURCE_ROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    SRCROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    STRINGSDATA_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal/undefined_arch
+    STRINGSDATA_ROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build
+    STRINGS_FILE_INFOPLIST_RENAME = YES
+    STRINGS_FILE_OUTPUT_ENCODING = binary
+    STRING_CATALOG_GENERATE_SYMBOLS = NO
+    STRIP_BITCODE_FROM_COPIED_FILES = YES
+    STRIP_INSTALLED_PRODUCT = NO
+    STRIP_STYLE = all
+    STRIP_SWIFT_SYMBOLS = YES
+    SUPPORTED_DEVICE_FAMILIES = 1,2
+    SUPPORTED_PLATFORMS = iphoneos iphonesimulator
+    SUPPORTS_MACCATALYST = YES
+    SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES
+    SUPPORTS_TEXT_BASED_API = NO
+    SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES
+    SUPPRESS_WARNINGS = NO
+    SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
+    SWIFT_EMIT_CONST_VALUE_PROTOCOLS = AnyResolverProviding AppEntity AppEnum AppExtension AppIntent AppIntentsPackage AppShortcutProviding AppShortcutsProvider AppUnionValue AppUnionValueCasesProviding DynamicOptionsProvider EntityQuery ExtensionPointDefining IntentValueQuery Resolver TransientEntity _AssistantIntentsProvider _GenerativeFunctionExtractable _IntentValueRepresentable
+    SWIFT_EMIT_LOC_STRINGS = NO
+    SWIFT_ENABLE_EXPLICIT_MODULES = YES
+    SWIFT_OPTIMIZATION_LEVEL = -Onone
+    SWIFT_PLATFORM_TARGET_PREFIX = ios
+    SWIFT_RESPONSE_FILE_PATH_normal_arm64 = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Objects-normal/arm64/YandexMapsMobile.SwiftFileList
+    SWIFT_VERSION = 5.0
+    SYMROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build
+    SYSTEM_ADMIN_APPS_DIR = /Applications/Utilities
+    SYSTEM_APPS_DIR = /Applications
+    SYSTEM_CORE_SERVICES_DIR = /System/Library/CoreServices
+    SYSTEM_DEMOS_DIR = /Applications/Extras
+    SYSTEM_DEVELOPER_APPS_DIR = /Applications/Xcode.app/Contents/Developer/Applications
+    SYSTEM_DEVELOPER_BIN_DIR = /Applications/Xcode.app/Contents/Developer/usr/bin
+    SYSTEM_DEVELOPER_DEMOS_DIR = /Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples
+    SYSTEM_DEVELOPER_DIR = /Applications/Xcode.app/Contents/Developer
+    SYSTEM_DEVELOPER_DOC_DIR = /Applications/Xcode.app/Contents/Developer/ADC Reference Library
+    SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR = /Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools
+    SYSTEM_DEVELOPER_JAVA_TOOLS_DIR = /Applications/Xcode.app/Contents/Developer/Applications/Java Tools
+    SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR = /Applications/Xcode.app/Contents/Developer/Applications/Performance Tools
+    SYSTEM_DEVELOPER_RELEASENOTES_DIR = /Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes
+    SYSTEM_DEVELOPER_TOOLS = /Applications/Xcode.app/Contents/Developer/Tools
+    SYSTEM_DEVELOPER_TOOLS_DOC_DIR = /Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools
+    SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR = /Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools
+    SYSTEM_DEVELOPER_USR_DIR = /Applications/Xcode.app/Contents/Developer/usr
+    SYSTEM_DEVELOPER_UTILITIES_DIR = /Applications/Xcode.app/Contents/Developer/Applications/Utilities
+    SYSTEM_DEXT_INSTALL_PATH = /System/Library/DriverExtensions
+    SYSTEM_DOCUMENTATION_DIR = /Library/Documentation
+    SYSTEM_KEXT_INSTALL_PATH = /System/Library/Extensions
+    SYSTEM_LIBRARY_DIR = /System/Library
+    TAPI_DEMANGLE = YES
+    TAPI_ENABLE_PROJECT_HEADERS = NO
+    TAPI_LANGUAGE = objective-c
+    TAPI_LANGUAGE_STANDARD = compiler-default
+    TAPI_USE_SRCROOT = YES
+    TAPI_VERIFY_MODE = Pedantic
+    TARGETED_DEVICE_FAMILY = 1,2
+    TARGETNAME = YandexMapsMobile
+    TARGET_BUILD_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile
+    TARGET_NAME = YandexMapsMobile
+    TARGET_TEMP_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build
+    TEMP_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build
+    TEMP_FILES_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build
+    TEMP_FILE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build
+    TEMP_ROOT = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build
+    TEMP_SANDBOX_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/TemporaryTaskSandboxes
+    TEST_FRAMEWORK_SEARCH_PATHS =  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.4.sdk/Developer/Library/Frameworks
+    TEST_LIBRARY_SEARCH_PATHS =  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib
+    TOOLCHAINS = com.apple.dt.toolchain.XcodeDefault
+    TOOLCHAIN_DIR = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain
+    TREAT_MISSING_BASELINES_AS_TEST_FAILURES = NO
+    TREAT_MISSING_SCRIPT_PHASE_OUTPUTS_AS_ERRORS = NO
+    TVOS_DEPLOYMENT_TARGET = 26.4
+    UID = 501
+    UNINSTALLED_PRODUCTS_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/UninstalledProducts
+    UNSTRIPPED_PRODUCT = NO
+    USER = user
+    USER_APPS_DIR = /Users/user/Applications
+    USER_LIBRARY_DIR = /Users/user/Library
+    USE_DYNAMIC_NO_PIC = YES
+    USE_HEADERMAP = YES
+    USE_HEADER_SYMLINKS = NO
+    USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES
+    VALIDATE_DEVELOPMENT_ASSET_PATHS = YES_ERROR
+    VALIDATE_PRODUCT = NO
+    VALID_ARCHS = arm64 arm64e armv7 armv7s
+    VERBOSE_PBXCP = NO
+    VERSION_INFO_BUILDER = user
+    VERSION_INFO_FILE = YandexMapsMobile_vers.c
+    VERSION_INFO_STRING = "@(#)PROGRAM:YandexMapsMobile  PROJECT:Pods-"
+    WATCHOS_DEPLOYMENT_TARGET = 26.4
+    WORKSPACE_DIR = /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/Pods.xcodeproj
+    WRAP_ASSET_PACKS_IN_SEPARATE_DIRECTORIES = NO
+    XCODE_APP_SUPPORT_DIR = /Applications/Xcode.app/Contents/Developer/Library/Xcode
+    XCODE_PRODUCT_BUILD_VERSION = 17E202
+    XCODE_VERSION_ACTUAL = 2641
+    XCODE_VERSION_MAJOR = 2600
+    XCODE_VERSION_MINOR = 2640
+    XPCSERVICES_FOLDER_PATH = /XPCServices
+    XROS_DEPLOYMENT_TARGET = 26.4
+    YACC = yacc
+    _DISCOVER_COMMAND_LINE_LINKER_INPUTS = YES
+    _DISCOVER_COMMAND_LINE_LINKER_INPUTS_INCLUDE_WL = YES
+    _LD_MULTIARCH = YES
+    __DIAGNOSE_DEPRECATED_ARCHS = YES
+    __ORIGINAL_SDK_DEFINED_LLVM_TARGET_TRIPLE_SYS = ios
+    arch = undefined_arch
+    variant = normal
+
+
+Resolve mutations for :composeApp:podBuildYandexMapsMobileIos (Thread[included builds,5,main]) started.
+:composeApp:podBuildYandexMapsMobileIos (Thread[included builds,5,main]) started.
+
+> Task :composeApp:podBuildYandexMapsMobileIos
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build', not found
+Caching disabled for task ':composeApp:podBuildYandexMapsMobileIos' because:
+  Caching has been disabled for the task
+Task ':composeApp:podBuildYandexMapsMobileIos' is not up-to-date because:
+  Output property 'buildResult$kotlin_gradle_plugin_common$1' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build has been removed.
+  Output property 'buildResult$kotlin_gradle_plugin_common$1' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos has been removed.
+  Output property 'buildResult$kotlin_gradle_plugin_common$1' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/XCFrameworkIntermediates has been removed.
+  and more...
+Running xcodebuild command: xcodebuild -project Pods.xcodeproj -scheme YandexMapsMobile -destination generic/platform=iOS -configuration Debug
+Information about "xcodebuild -project Pods.xcodeproj -scheme YandexMapsMobile -destination generic/platform=iOS -configuration Debug" call:
+
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project Pods.xcodeproj -scheme YandexMapsMobile -destination generic/platform=iOS -configuration Debug
+
+ComputePackagePrebuildTargetDependencyGraph
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'YandexMapsMobile' in project 'Pods' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.4.sdk -x c -c /dev/null
+
+Build description signature: cb1499e3e9cb8d7ece8657ece5e36f02
+Build description path: /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/XCBuildData/cb1499e3e9cb8d7ece8657ece5e36f02.xcbuilddata
+CreateBuildDirectory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build
+    cd /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/Pods.xcodeproj
+    builtin-create-build-directory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build
+
+WriteAuxiliaryFile /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Script-62CD05080A03C1F06C41631869ACA250.sh (in target 'YandexMapsMobile' from project 'Pods')
+    cd /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    write-file /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Script-62CD05080A03C1F06C41631869ACA250.sh
+
+WriteAuxiliaryFile /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/InputFileList-62CD05080A03C1F06C41631869ACA250-YandexMapsMobile-xcframeworks-input-files-2945bda774f5add274340ab93d7c5f7f-resolved.xcfilelist (in target 'YandexMapsMobile' from project 'Pods')
+    cd /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    write-file /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/InputFileList-62CD05080A03C1F06C41631869ACA250-YandexMapsMobile-xcframeworks-input-files-2945bda774f5add274340ab93d7c5f7f-resolved.xcfilelist
+
+WriteAuxiliaryFile /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/OutputFileList-62CD05080A03C1F06C41631869ACA250-YandexMapsMobile-xcframeworks-output-files-97cd145e715b771ac349f8eae228058e-resolved.xcfilelist (in target 'YandexMapsMobile' from project 'Pods')
+    cd /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    write-file /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/OutputFileList-62CD05080A03C1F06C41631869ACA250-YandexMapsMobile-xcframeworks-output-files-97cd145e715b771ac349f8eae228058e-resolved.xcfilelist
+
+CreateBuildDirectory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/SwiftExplicitPrecompiledModules
+    cd /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/Pods.xcodeproj
+    builtin-create-build-directory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/SwiftExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/ExplicitPrecompiledModules
+    cd /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/Pods.xcodeproj
+    builtin-create-build-directory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/ExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/EagerLinkingTBDs/Debug-iphoneos
+    cd /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/Pods.xcodeproj
+    builtin-create-build-directory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/EagerLinkingTBDs/Debug-iphoneos
+
+CreateBuildDirectory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile
+    cd /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/Pods.xcodeproj
+    builtin-create-build-directory /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile
+
+PhaseScriptExecution [CP]\ Copy\ XCFrameworks /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Script-62CD05080A03C1F06C41631869ACA250.sh (in target 'YandexMapsMobile' from project 'Pods')
+    cd /Volumes/My\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods
+    /bin/sh -c /Volumes/My\\\ Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Pods.build/Debug-iphoneos/YandexMapsMobile.build/Script-62CD05080A03C1F06C41631869ACA250.sh
+Selected xcframework slice ios-arm64
+rsync --delete -av --filter P .*.?????? --links --filter "- CVS/" --filter "- .svn/" --filter "- .git/" --filter "- .hg/" "/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/YandexMapsMobile/YandexMapsMobile.xcframework/ios-arm64/*" "/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/XCFrameworkIntermediates/YandexMapsMobile"
+Transfer starting: 189 files
+YandexMapsMobile.framework/
+YandexMapsMobile.framework/Info.plist
+YandexMapsMobile.framework/YandexMapsMobile
+YandexMapsMobile.framework/Headers/
+YandexMapsMobile.framework/Headers/YMKAnimation.h
+YandexMapsMobile.framework/Headers/YMKArrow.h
+YandexMapsMobile.framework/Headers/YMKAttribution.h
+YandexMapsMobile.framework/Headers/YMKBaseDataSourceBuilder.h
+YandexMapsMobile.framework/Headers/YMKBaseMapObjectCollection.h
+YandexMapsMobile.framework/Headers/YMKBaseMetadata.h
+YandexMapsMobile.framework/Headers/YMKBoundingBoxHelper.h
+YandexMapsMobile.framework/Headers/YMKCallback.h
+YandexMapsMobile.framework/Headers/YMKCameraBounds.h
+YandexMapsMobile.framework/Headers/YMKCameraPosition.h
+YandexMapsMobile.framework/Headers/YMKCameraUpdateReason.h
+YandexMapsMobile.framework/Headers/YMKCircle.h
+YandexMapsMobile.framework/Headers/YMKCluster.h
+YandexMapsMobile.framework/Headers/YMKClusterListener.h
+YandexMapsMobile.framework/Headers/YMKClusterTapListener.h
+YandexMapsMobile.framework/Headers/YMKClusterizedPlacemarkCollection.h
+YandexMapsMobile.framework/Headers/YMKCompositeIcon.h
+YandexMapsMobile.framework/Headers/YMKConflictResolutionMode.h
+YandexMapsMobile.framework/Headers/YMKDataSource.h
+YandexMapsMobile.framework/Headers/YMKDataSourceLayer.h
+YandexMapsMobile.framework/Headers/YMKDirection.h
+YandexMapsMobile.framework/Headers/YMKDummyLocationManager.h
+YandexMapsMobile.framework/Headers/YMKErrors.h
+YandexMapsMobile.framework/Headers/YMKGeo.h
+YandexMapsMobile.framework/Headers/YMKGeoObject.h
+YandexMapsMobile.framework/Headers/YMKGeoObjectCollection.h
+YandexMapsMobile.framework/Headers/YMKGeoObjectInspectionMetadata.h
+YandexMapsMobile.framework/Headers/YMKGeoObjectSelectionMetadata.h
+YandexMapsMobile.framework/Headers/YMKGeoObjectSession.h
+YandexMapsMobile.framework/Headers/YMKGeoObjectTags.h
+YandexMapsMobile.framework/Headers/YMKGeoObjectTapEvent.h
+YandexMapsMobile.framework/Headers/YMKGeometry.h
+YandexMapsMobile.framework/Headers/YMKGestureFocusPointMode.h
+YandexMapsMobile.framework/Headers/YMKIcon.h
+YandexMapsMobile.framework/Headers/YMKIconStyle.h
+YandexMapsMobile.framework/Headers/YMKImage.h
+YandexMapsMobile.framework/Headers/YMKImagesDefaultUrlProvider.h
+YandexMapsMobile.framework/Headers/YMKImagesImageDataDescriptor.h
+YandexMapsMobile.framework/Headers/YMKImagesImageUrlProvider.h
+YandexMapsMobile.framework/Headers/YMKIndoorPlan.h
+YandexMapsMobile.framework/Headers/YMKIndoorStateListener.h
+YandexMapsMobile.framework/Headers/YMKJamSegment.h
+YandexMapsMobile.framework/Headers/YMKJamStyle.h
+YandexMapsMobile.framework/Headers/YMKLayer.h
+YandexMapsMobile.framework/Headers/YMKLayerIds.h
+YandexMapsMobile.framework/Headers/YMKLayerLoadedListener.h
+YandexMapsMobile.framework/Headers/YMKLayerOptions.h
+YandexMapsMobile.framework/Headers/YMKLayersGeoObjectTapListener.h
+YandexMapsMobile.framework/Headers/YMKLineStyle.h
+YandexMapsMobile.framework/Headers/YMKLocalizedValue.h
+YandexMapsMobile.framework/Headers/YMKLocation.h
+YandexMapsMobile.framework/Headers/YMKLocationError.h
+YandexMapsMobile.framework/Headers/YMKLocationListener.h
+YandexMapsMobile.framework/Headers/YMKLocationManager.h
+YandexMapsMobile.framework/Headers/YMKLocationSimulator.h
+YandexMapsMobile.framework/Headers/YMKLocationStatus.h
+YandexMapsMobile.framework/Headers/YMKLocationViewFactory.h
+YandexMapsMobile.framework/Headers/YMKLocationViewSource.h
+YandexMapsMobile.framework/Headers/YMKLogo.h
+YandexMapsMobile.framework/Headers/YMKLogoAlignment.h
+YandexMapsMobile.framework/Headers/YMKLogoPadding.h
+YandexMapsMobile.framework/Headers/YMKMap.h
+YandexMapsMobile.framework/Headers/YMKMapCameraListener.h
+YandexMapsMobile.framework/Headers/YMKMapInputListener.h
+YandexMapsMobile.framework/Headers/YMKMapKitFactory.h
+YandexMapsMobile.framework/Headers/YMKMapLoadStatistics.h
+YandexMapsMobile.framework/Headers/YMKMapLoadedListener.h
+YandexMapsMobile.framework/Headers/YMKMapMode.h
+YandexMapsMobile.framework/Headers/YMKMapObject.h
+YandexMapsMobile.framework/Headers/YMKMapObjectCollection.h
+YandexMapsMobile.framework/Headers/YMKMapObjectCollectionListener.h
+YandexMapsMobile.framework/Headers/YMKMapObjectDragListener.h
+YandexMapsMobile.framework/Headers/YMKMapObjectTapListener.h
+YandexMapsMobile.framework/Headers/YMKMapObjectVisitor.h
+YandexMapsMobile.framework/Headers/YMKMapSizeChangedListener.h
+YandexMapsMobile.framework/Headers/YMKMapType.h
+YandexMapsMobile.framework/Headers/YMKMapView.h
+YandexMapsMobile.framework/Headers/YMKMapWindow.h
+YandexMapsMobile.framework/Headers/YMKMapkit.h
+YandexMapsMobile.framework/Headers/YMKModel.h
+YandexMapsMobile.framework/Headers/YMKModelStyle.h
+YandexMapsMobile.framework/Headers/YMKObjectEvent.h
+YandexMapsMobile.framework/Headers/YMKOfflineCacheDataMoveListener.h
+YandexMapsMobile.framework/Headers/YMKOfflineCacheManager.h
+YandexMapsMobile.framework/Headers/YMKOfflineCacheRegion.h
+YandexMapsMobile.framework/Headers/YMKOfflineCacheRegionListener.h
+YandexMapsMobile.framework/Headers/YMKOfflineCacheRegionState.h
+YandexMapsMobile.framework/Headers/YMKOfflineMapRegionListUpdatesListener.h
+YandexMapsMobile.framework/Headers/YMKOverlay.h
+YandexMapsMobile.framework/Headers/YMKOverzoomMode.h
+YandexMapsMobile.framework/Headers/YMKPersonalizedPoiMetadata.h
+YandexMapsMobile.framework/Headers/YMKPlacemark.h
+YandexMapsMobile.framework/Headers/YMKPlacemarkAnimation.h
+YandexMapsMobile.framework/Headers/YMKPlacemarkPresentation.h
+YandexMapsMobile.framework/Headers/YMKPlacemarkText.h
+YandexMapsMobile.framework/Headers/YMKPlacemarksStyler.h
+YandexMapsMobile.framework/Headers/YMKPoint.h
+YandexMapsMobile.framework/Headers/YMKPointOfView.h
+YandexMapsMobile.framework/Headers/YMKPolygon.h
+YandexMapsMobile.framework/Headers/YMKPolyline.h
+YandexMapsMobile.framework/Headers/YMKPolylineBuilder.h
+YandexMapsMobile.framework/Headers/YMKPolylineIndex.h
+YandexMapsMobile.framework/Headers/YMKPolylineUtils.h
+YandexMapsMobile.framework/Headers/YMKProjection.h
+YandexMapsMobile.framework/Headers/YMKProjections.h
+YandexMapsMobile.framework/Headers/YMKPurpose.h
+YandexMapsMobile.framework/Headers/YMKRawTile.h
+YandexMapsMobile.framework/Headers/YMKRect.h
+YandexMapsMobile.framework/Headers/YMKRegionsAtPointListener.h
+YandexMapsMobile.framework/Headers/YMKRequestPoint.h
+YandexMapsMobile.framework/Headers/YMKRoadEventsEventTag.h
+YandexMapsMobile.framework/Headers/YMKRoadEventsManager.h
+YandexMapsMobile.framework/Headers/YMKRotationType.h
+YandexMapsMobile.framework/Headers/YMKRoutePosition.h
+YandexMapsMobile.framework/Headers/YMKScreenTypes.h
+YandexMapsMobile.framework/Headers/YMKSpan.h
+YandexMapsMobile.framework/Headers/YMKSpannableString.h
+YandexMapsMobile.framework/Headers/YMKStorageErrorListener.h
+YandexMapsMobile.framework/Headers/YMKStorageManager.h
+YandexMapsMobile.framework/Headers/YMKSubpolylineHelper.h
+YandexMapsMobile.framework/Headers/YMKTaxiMoney.h
+YandexMapsMobile.framework/Headers/YMKTextStyle.h
+YandexMapsMobile.framework/Headers/YMKTileDataSourceBuilder.h
+YandexMapsMobile.framework/Headers/YMKTileFormat.h
+YandexMapsMobile.framework/Headers/YMKTileId.h
+YandexMapsMobile.framework/Headers/YMKTileProvider.h
+YandexMapsMobile.framework/Headers/YMKTilesDefaultUrlProvider.h
+YandexMapsMobile.framework/Headers/YMKTilesUrlProvider.h
+YandexMapsMobile.framework/Headers/YMKTime.h
+YandexMapsMobile.framework/Headers/YMKTrafficLayer.h
+YandexMapsMobile.framework/Headers/YMKTrafficListener.h
+YandexMapsMobile.framework/Headers/YMKUriObjectMetadata.h
+YandexMapsMobile.framework/Headers/YMKUserData.h
+YandexMapsMobile.framework/Headers/YMKUserLocation.h
+YandexMapsMobile.framework/Headers/YMKVersion.h
+YandexMapsMobile.framework/Headers/YMKViewArea.h
+YandexMapsMobile.framework/Headers/YMKVisibleRegion.h
+YandexMapsMobile.framework/Headers/YMKXyPoint.h
+YandexMapsMobile.framework/Headers/YMKZoomRange.h
+YandexMapsMobile.framework/Headers/YRTAnimatedImage.h
+YandexMapsMobile.framework/Headers/YRTAnimatedImageProvider.h
+YandexMapsMobile.framework/Headers/YRTAnimatedImageProviderFactory.h
+YandexMapsMobile.framework/Headers/YRTAnimatedModel.h
+YandexMapsMobile.framework/Headers/YRTAnimatedModelProvider.h
+YandexMapsMobile.framework/Headers/YRTAnimatedModelProviderFactory.h
+YandexMapsMobile.framework/Headers/YRTAttestationListener.h
+YandexMapsMobile.framework/Headers/YRTConnectivityStatus.h
+YandexMapsMobile.framework/Headers/YRTDataProviderWithId.h
+YandexMapsMobile.framework/Headers/YRTEcPublicKey.h
+YandexMapsMobile.framework/Headers/YRTError.h
+YandexMapsMobile.framework/Headers/YRTErrors.h
+YandexMapsMobile.framework/Headers/YRTExtern.h
+YandexMapsMobile.framework/Headers/YRTFlutterLifecycleProvider.h
+YandexMapsMobile.framework/Headers/YRTFlutterViewFactory.h
+YandexMapsMobile.framework/Headers/YRTFrame.h
+YandexMapsMobile.framework/Headers/YRTGnssMeasurements.h
+YandexMapsMobile.framework/Headers/YRTGpuInfo.h
+YandexMapsMobile.framework/Headers/YRTGraphicsApiType.h
+YandexMapsMobile.framework/Headers/YRTGraphicsViewState.h
+YandexMapsMobile.framework/Headers/YRTI18nManager.h
+YandexMapsMobile.framework/Headers/YRTImage.h
+YandexMapsMobile.framework/Headers/YRTKeyValuePair.h
+YandexMapsMobile.framework/Headers/YRTLifecycleListener.h
+YandexMapsMobile.framework/Headers/YRTLifecycleProvider.h
+YandexMapsMobile.framework/Headers/YRTLocalError.h
+YandexMapsMobile.framework/Headers/YRTLogger.h
+YandexMapsMobile.framework/Headers/YRTModelAnimationFrame.h
+YandexMapsMobile.framework/Headers/YRTModelProvider.h
+YandexMapsMobile.framework/Headers/YRTModelProviderFactory.h
+YandexMapsMobile.framework/Headers/YRTNativeObject.h
+YandexMapsMobile.framework/Headers/YRTPlatformKeystore.h
+YandexMapsMobile.framework/Headers/YRTPlatformView_Fwd.h
+YandexMapsMobile.framework/Headers/YRTPrefs.h
+YandexMapsMobile.framework/Headers/YRTResourcesHelper.h
+YandexMapsMobile.framework/Headers/YRTRuntime.h
+YandexMapsMobile.framework/Headers/YRTSubscription.h
+YandexMapsMobile.framework/Headers/YRTSurface.h
+YandexMapsMobile.framework/Headers/YRTTouchEvent.h
+YandexMapsMobile.framework/Headers/YRTTypeDictionary.h
+YandexMapsMobile.framework/Headers/YRTUiExperiment.h
+YandexMapsMobile.framework/Headers/YRTUnderlyingErrorKey.h
+YandexMapsMobile.framework/Headers/YRTViewProvider.h
+YandexMapsMobile.framework/Headers/YRTVulkanLauncher.h
+YandexMapsMobile.framework/Modules/
+YandexMapsMobile.framework/Modules/module.modulemap
+
+sent 246507469 bytes  received 4130 bytes  251773668 bytes/sec
+total size is 246453943  speedup is 1.00
+Copied /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/YandexMapsMobile/YandexMapsMobile.xcframework/ios-arm64 to /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/XCFrameworkIntermediates/YandexMapsMobile
+
+** BUILD SUCCEEDED **
+
+
+Resolve mutations for :composeApp:cinteropYandexMapsMobileIosArm64 (Thread[included builds,5,main]) started.
+:composeApp:cinteropYandexMapsMobileIosArm64 (Thread[included builds,5,main]) started.
+
+> Task :composeApp:cinteropYandexMapsMobileIosArm64
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Custom actions are attached to task ':composeApp:cinteropYandexMapsMobileIosArm64'.
+Caching disabled for task ':composeApp:cinteropYandexMapsMobileIosArm64' because:
+  CInterop task uses custom Up-To-Date check for content of headers instead of Gradle mechanisms.
+Task ':composeApp:cinteropYandexMapsMobileIosArm64' is not up-to-date because:
+  Task.upToDateWhen is false.
+Starting process 'command '/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/bin/java''. Working directory: /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp Command: /Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/bin/java -Dfile.separator=/ -Dftp.nonProxyHosts=local|*.local|169.254/16|*.169.254/16 -Dhttp.nonProxyHosts=local|*.local|169.254/16|*.169.254/16 -Djava.awt.headless=true -Djava.class.path=/Users/user/.gradle/wrapper/dists/gradle-8.13-bin/5xuhj0ry160q40clulazy9h7d/gradle-8.13/lib/gradle-daemon-main-8.13.jar -Djava.class.version=61.0 -Djava.home=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home -Djava.library.path=/Users/user/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:. -Djava.runtime.name=Java(TM) SE Runtime Environment -Djava.runtime.version=17.0.7+8-LTS-224 -Djava.specification.name=Java Platform API Specification -Djava.specification.vendor=Oracle Corporation -Djava.specification.version=17 -Djava.vendor=Oracle Corporation -Djava.vendor.url=https://java.oracle.com/ -Djava.vendor.url.bug=https://bugreport.java.com/bugreport/ -Djava.version=17.0.7 -Djava.version.date=2023-04-18 -Djava.vm.compressedOopsMode=Zero based -Djava.vm.info=mixed mode, sharing -Djava.vm.name=Java HotSpot(TM) 64-Bit Server VM -Djava.vm.specification.name=Java Virtual Machine Specification -Djava.vm.specification.vendor=Oracle Corporation -Djava.vm.specification.version=17 -Djava.vm.vendor=Oracle Corporation -Djava.vm.version=17.0.7+8-LTS-224 -Djdk.debug=release -Dkotlin.native.dependencies.lock=lock -Dlibrary.jansi.path=/Users/user/.gradle/native/jansi/1.18/osx -Dline.separator=
+ -Dnative.encoding=UTF-8 -Dorg.gradle.appname=gradlew -Dorg.jetbrains.kotlin.cliMessageRenderer=GradleStyle -Dos.arch=aarch64 -Dos.name=Mac OS X -Dos.version=26.3.1 -Dpath.separator=: -DsocksNonProxyHosts=local|*.local|169.254/16|*.169.254/16 -Dsun.arch.data.model=64 -Dsun.boot.library.path=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/lib -Dsun.cpu.endian=little -Dsun.io.unicode.encoding=UnicodeBig -Dsun.java.command=org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.13 -Dsun.java.launcher=SUN_STANDARD -Dsun.jnu.encoding=UTF-8 -Dsun.management.compiler=HotSpot 64-Bit Tiered Compilers -Duser.home=/Users/user -Duser.name=user -Duser.timezone=Asia/Tashkent -Xmx3g -Dfile.encoding=UTF-8 -Djava.io.tmpdir=/var/folders/y9/fzwq_c4x0bv9s5hrv02d_krr0000gn/T/ -Duser.country=UZ -Duser.language=en -Duser.variant -ea -cp /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/konan/lib/kotlin-native-compiler-embeddable.jar:/Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/konan/lib/trove4j.jar org.jetbrains.kotlin.cli.utilities.MainKt cinterop -o /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/classes/kotlin/iosArm64/main/cinterop/composeApp-cinterop-YandexMapsMobile -target ios_arm64 -def /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/defs/YandexMapsMobile.def -pkg cocoapods.YandexMapsMobile -compiler-option -F/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/YandexMapsMobile -compiler-option -F/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/Pods/YandexMapsMobile -compiler-option -F/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/cocoapods/synthetic/ios/build/Debug-iphoneos/XCFrameworkIntermediates/YandexMapsMobile -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/permissions-compose-iosarm64/0.20.1/73d32618c083042782b570c93507936d118cdc16/permissions-compose.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/geo-compose-iosarm64/0.8.0/4f39bfe9b15e4c299480bd19d1d68c8925226ba0/geo-compose.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/geo-iosarm64/0.8.0/1720231da4766206ef22f6a200e54dad03b12e06/geo.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/permissions-location-iosarm64/0.20.1/8c28c07729a2f62e2b08488a5413b6a8fca2f36a/permissions-location.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/resources-compose-iosarm64/0.25.0/15935e3948c4a5e42508204fa3cbbdaa5b7c1610/resources-compose.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-annotations-iosarm64/2.3.1/319f3c287d02f1eda66fafb232d5af4a692aed80/koin-annotations-iosArm64Main-2.3.1.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/permissions-iosarm64/0.20.1/960a7175cae80c8451bc476360ea21299cf6bc52/permissions.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/resources-iosarm64/0.25.0/c7212a36965252a9f4cc5e0154fc70d66be2ccac/resources.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/resources-iosarm64/0.25.0/63f201fe2a4753abcedbbbd452775e24da268081/resources-cinterop-bundleSearcher.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/network.chaintech/qr-kit-iosarm64/3.1.2/8b8f9a018ce04208db1ed207117f0ff0222e1a20/qrcodeScanner-iosArm64Main.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/network.chaintech/cmp-image-pick-n-crop-iosarm64/1.0.9/30b1b75d2491403c095514849c516144304f84e3/cmpimagepickncrop-iosArm64Main.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.material3/material3-uikitarm64/1.9.0/81fd85520a640e8d8af5653895d4198b8ef7ac1e/material3-uikitArm64Main-1.9.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.components/components-resources-iosArm64/1.9.1/5468248484d71e10526593352435494e03012309/library-iosArm64Main-1.9.1.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.components/components-ui-tooling-preview-iosArm64/1.9.1/28b6b4d00163a821ee46dcd2cfea71989f6eda7/library-iosArm64Main-1.9.1.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/cafe.adriel.voyager/voyager-tab-navigator-iosarm64/1.1.0-beta03/2a13d6c61834cc5b0c452529150cba64ef62ea76/voyager-tab-navigator.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/cafe.adriel.voyager/voyager-transitions-iosarm64/1.1.0-beta03/7553d808c1401fb91f657bc32770326486cbe00a/voyager-transitions.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/cafe.adriel.voyager/voyager-koin-iosarm64/1.1.0-beta03/c0275f7af2d329b0b2429b7271fa979206e87e5f/voyager-koin.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/cafe.adriel.voyager/voyager-screenmodel-iosarm64/1.1.0-beta03/1061f5c550c867842292a8b2dbbf0b16e8049d09/voyager-screenmodel.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/cafe.adriel.voyager/voyager-navigator-iosarm64/1.1.0-beta03/f9508ec015e12483404b9b6aae62a97bcb3e4a57/voyager-navigator.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-compose-viewmodel-navigation-iosarm64/4.2.0-beta2/ae68de9f489c44a8db0450efa5300c8dc32acd4a/koin-compose-viewmodel-navigation-iosArm64Main-4.2.0-beta2.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-compose-viewmodel-iosarm64/4.2.0-beta2/36cab848fe4f4b75791fd85e5c1d8a91e5302667/koin-compose-viewmodel-iosArm64Main-4.2.0-beta2.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-compose-iosarm64/4.2.0-beta2/574439b8b8ac98aea5107e815b2317fb20c62cd9/koin-compose-iosArm64Main-4.2.0-beta2.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-core-viewmodel-iosarm64/4.2.0-beta2/71ec6b9bdc89ca3c5ad271704b57bad132b76fd/koin-core-viewmodel-iosArm64Main-4.2.0-beta2.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-core-iosarm64/4.2.0-beta2/c989360f10c3c92e7e55510a9ae1ddaa768b227/koin-core-iosArm64Main-4.2.0-beta2.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-content-negotiation-iosarm64/3.3.3/aa308219c3add83c2ace478390b604b8b45dcb8/ktor-client-content-negotiation-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-logging-iosarm64/3.3.3/7d3fc3a2a6328f4407cbd8ca4af56e9c62a11769/ktor-client-logging-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-websockets-iosarm64/3.3.3/2cab5637084b24ae0944ee1f13ca8dfb1edc0b77/ktor-client-websockets-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-network-ktor3-iosarm64/3.3.0/7a83d2daa3f379d1936482be6047129b796543df/coil-network-ktor3-iosArm64Main-3.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.github.qdsfdhvh/image-loader-iosarm64/1.9.0/2570ed766af34fc0d0886aa44b1a5946e7316401/image-loader-singleton.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.github.qdsfdhvh/image-loader-extension-ktor-network-iosarm64/1.9.0/348f5e2a00775bf3ee165541f16252a3adb09bd0/ktor-network.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-darwin-iosarm64/3.3.3/40f6e702319827f6ad85f5a77102314869ee8165/ktor-client-darwin-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-client-core-iosarm64/3.3.3/e64c0e59eb2394b095ea24733fdf37cebc8ecf74/ktor-client-core-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-serialization-kotlinx-json-iosarm64/3.3.3/87ac81daaf7aebcf9d012be239fc101baaaf8038/ktor-serialization-kotlinx-json-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-io-iosarm64/1.9.0/b26b20eaea5c724689cee312c5c2fe1c5a01dafd/kotlinx-serialization-json-io-iosArm64Main-1.9.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-iosarm64/1.9.0/b5e9292fe7e8a097274ffb51f41461033ede9da0/kotlinx-serialization-json-iosArm64Main-1.9.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.burnoo/compose-remember-setting-iosarm64/1.0.3/2d986d36d81d0b00b880c05966575e46c1b8c311/compose-remember-setting-iosArm64Main-1.0.3-SNAPSHOT.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-datetime-iosarm64/0.7.1/6c1e55b2edf4233ae1ddd3d53bcae0a5bd2e8902/kotlinx-datetime-iosArm64Main-0.7.1.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-no-arg-iosarm64/1.3.0/e78c2805363739bf93977d653608470971cb22cc/multiplatform-settings-no-arg-iosArm64Main-1.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-coroutines-iosarm64/1.3.0/e2d22a7d260e110f59b9a0bb9d5d32b0598d1842/multiplatform-settings-coroutines-iosArm64Main-1.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-make-observable-iosarm64/1.3.0/e3be64ec50d23dc2dfff9b049b7e7f5588edb35e/multiplatform-settings-make-observable-iosArm64Main-1.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-test-iosarm64/1.3.0/f487194e8e00ca101247d44180e3f342f71d3482/multiplatform-settings-test-iosArm64Main-1.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/com.russhwolf/multiplatform-settings-iosarm64/1.3.0/f8b3b2d5f6f86b91ee87f3d548ed47220cf7355/multiplatform-settings-iosArm64Main-1.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-compose-iosarm64/3.3.0/e299a794d21f332d153b1d410cb8c43af89147ba/coil-compose-iosArm64Main-3.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.github.aditya-gupta99/inAppPurchase-kmp-iosarm64/1.0.12/8f663afc231224fc29210804611e2cf99b4e3a69/in-app-purchase-iosArm64Main-1.0.12.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.github.aditya-gupta99/inAppPurchase-kmp-iosarm64/1.0.12/2009554570c32251ef77b3ece780537de67dad7e/in-app-purchase-iosArm64Cinterop-StoreKitManagerMain-1.0.12.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.insert-koin/koin-core-annotations-iosarm64/4.1.0/9d507e119167ba7d3321a6a5a56499837e84c74c/koin-core-annotations-iosArm64Main-4.1.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/graphics-iosarm64/0.10.0/6fc68aa4c0a9128406b1cbf3a90c055432d36c26/graphics.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-ripple-uikitarm64/1.9.1/186ff8c9a0d81d7226c0b478641711df2e6175ce/material-ripple-uikitArm64Main-1.9.1.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/cafe.adriel.voyager/voyager-core-iosarm64/1.1.0-beta03/742e6c0e833bd02d9bb2bb8552a8ad9734e9fc72/voyager-core.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/co.touchlab/stately-concurrent-collections-iosarm64/2.1.0/8e34595ed66ecb61368f8d0d8bf38ced03b7870f/stately-concurrent-collections.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/co.touchlab/stately-concurrency-iosarm64/2.1.0/9150418e4329bfb2fe60cdb6852949b6e67611e5/stately-concurrency.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-compose-core-iosarm64/3.3.0/e5b727fe5c108e30bda83f67643a1e8a70f71e49/coil-compose-core-iosArm64Main-3.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.github.qdsfdhvh/image-loader-extension-svg-iosarm64/1.9.0/20fc828e124472ef13982e4df8f05ecf0474df38/svg.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.github.qdsfdhvh/image-loader-core-iosarm64/1.9.0/95c9c46a4b94ecc1080a94f83cfe66c38db650fb/image-loader.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.foundation/foundation-uikitarm64/1.10.0-rc01/f4b38adae86012a3a2d74efd4ac9a1d52cf6a228/foundation-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.androidx.navigation/navigation-compose-uikitarm64/2.9.1/cc6b77bd82c2d6af213bdbe59b9db09e4841f554/navigation-compose-uikitArm64Main-2.9.1.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel-compose-uikitarm64/2.9.6/52efecc0003edacccd5ee6d0c279f261ca727818/lifecycle-viewmodel-compose-uikitArm64Main-2.9.6.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-http-cio-iosarm64/3.3.3/1838b178acda90acd5823ce662bfebbee8ba9d10/ktor-http-cio-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-network-tls-iosarm64/3.3.3/4eec76bca968934e79001c2fc9dfe7cd75a074cb/ktor-network-tls-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-websocket-serialization-iosarm64/3.3.3/63b262090dcf8f59528d906eed91c91f0675ffe3/ktor-websocket-serialization-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-serialization-kotlinx-iosarm64/3.3.3/c6131c946246de5a1b059cfb75d5612bd4978406/ktor-serialization-kotlinx-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-serialization-iosarm64/3.3.3/5315287cf404f72b21d689f5779b86caf3d3a878/ktor-serialization-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-websockets-iosarm64/3.3.3/5c0b919ed441460e6fde80152354cc4c8464c8b4/ktor-websockets-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-http-iosarm64/3.3.3/90f1c2035617cddba3bf0308037b3594714d1418/ktor-http-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-events-iosarm64/3.3.3/2569caec4fecb16b6feb393a4ded69ef7f0dccbd/ktor-events-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-sse-iosarm64/3.3.3/1abb76112dace7ac9c81c30a97d132b51704f02c/ktor-sse-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-iosarm64/3.3.0/9a1629a2105c43822cdfd49a2149921ef3c02f4c/coil-iosArm64Main-3.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-network-core-iosarm64/3.3.0/b2389cd1693e9c7ca5fc7b2a49f46ba604339a06/coil-network-core-iosArm64Main-3.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.coil-kt.coil3/coil-core-iosarm64/3.3.0/cbeb4c31c3d0f5c24ccb568d0e4ec64f8fcac395/coil-core-iosArm64Main-3.3.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.animation/animation-uikitarm64/1.10.0-rc01/1611f06523a7105b91b7ee2d94598bec76414c2e/animation-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.foundation/foundation-layout-uikitarm64/1.10.0-rc01/f35daeee58b872d83da85250b9dd197baa218845/foundation-layout-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-icons-extended-uikitarm64/1.7.3/fcc2c14bbba857d6fc96a7c46ced0018abeb66e7/material-icons-extended.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-icons-core-uikitarm64/1.7.3/1724a07bc8043038a152890fc00d3d0824859aba/material-icons-core.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.animation/animation-core-uikitarm64/1.10.0-rc01/b456a25e4ef3b80761f63d0498fe914eebb2c363/animation-core-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-uikitarm64/1.10.0-rc01/4caeb902795beb0858a8fae9a1d4d4af8d3249b6/ui-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-text-uikitarm64/1.10.0-rc01/7ff5bef13dfb439f2ccf25f70ffe067306b305b6/ui-text-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-graphics-uikitarm64/1.10.0-rc01/49d1a385e8a3e75a1d2272f339a453ff0addb4d/ui-graphics-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-unit-uikitarm64/1.10.0-rc01/95f6fe966f8d11e7e000c6180c7807e663b52d69/ui-unit-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-geometry-uikitarm64/1.10.0-rc01/553b67d31e2dd6d09026922d18b1bd8fd39e5ce2/ui-geometry-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-backhandler-uikitarm64/1.10.0-rc01/d87ee64d20d5d3deee270e29f90a032547a395b9/ui-backhandler-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.navigationevent/navigationevent-iosarm64/1.0.0/c70e7118bc09ec9289f9879982722d9633ff88f7/navigationevent-iosArm64Main-1.0.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-retain-iosarm64/1.10.0-rc01/906da6e891fbb0cb1776f6804c4a62e1d422b06d/runtime-retain-iosArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-annotation-iosarm64/1.10.0-rc01/f6fe7dccab8743c17b9323701473f022c55abd02/runtime-annotation-iosArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-saveable-iosarm64/1.10.0-rc01/b248ef12ba3afcc1c9578f9825933b50d162f6ae/runtime-saveable-iosArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.runtime/runtime-saveable-uikitarm64/1.10.0-rc01/3b90d2daa4414805e269009039fbcc43fd0a9ec3/runtime-saveable-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.androidx.lifecycle/lifecycle-runtime-compose-uikitarm64/2.9.6/15be75aa04940603a41994fa412ca71ec5ae1ed5/lifecycle-runtime-compose-uikitArm64Main-2.9.6.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.androidx.savedstate/savedstate-compose-uikitarm64/1.3.6/7e8618a8090394808201a526b2df1e91a78c608d/savedstate-compose-uikitArm64Main-1.3.6.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.runtime/runtime-uikitarm64/1.10.0-rc01/4eb6afe7ca0641c4aad9abad89160053d84ac9/runtime-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.androidx.navigation/navigation-runtime-iosarm64/2.9.1/bd3b5bbaf6a98ec474374abd607b50aafbf1e985/navigation-runtime-iosArm64Main-2.9.1.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.androidx.navigation/navigation-common-iosarm64/2.9.1/734e47a2668255f70f73b6858ccdaf7f2780cb94/navigation-common-iosArm64Main-2.9.1.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-viewmodel-iosarm64/2.9.4/68ee01ad24cda97e391a9577706e8736f2db058f/lifecycle-viewmodel-iosArm64Main-2.9.4.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.savedstate/savedstate-compose-iosarm64/1.3.3/d5991db6a94b20ad3c1e7ec57573e6519efe7607/savedstate-compose-iosArm64Main-1.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.savedstate/savedstate-iosarm64/1.3.3/401e6f919662c8e12eff38a6c08a237016cc0d49/savedstate-iosArm64Main-1.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common-iosarm64/2.9.4/cd54408ff2da22c3f9df0cc4120f4fc02a2869f0/lifecycle-common-iosArm64Main-2.9.4.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-runtime-iosarm64/2.9.4/3b5aed208e0152ea6c4738af36b95abe10dcde6a/lifecycle-runtime-iosArm64Main-2.9.4.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-viewmodel-savedstate-iosarm64/2.9.4/b369d67fa15dceb5cd8a4e5b51998e3014c66ee5/lifecycle-viewmodel-savedstate-iosArm64Main-2.9.4.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-runtime-compose-iosarm64/2.9.4/bf35a213adcdca47215e95bb478ce5335eb7f156/lifecycle-runtime-compose-iosArm64Main-2.9.4.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-iosarm64/1.10.0-rc01/7e1b94ae64ee0d66650391d751362feabf3f0583/runtime-iosArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-iosarm64/0.9.37.3/40af8963775049f34529c608fde01fea8fc52f0b/skiko.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-iosarm64/0.9.37.3/6804586f2f941780267c8d23297655c225796782/skiko-cinterop-uikit.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-network-iosarm64/3.3.3/7c3d097b9002f27efb8947c503168aa939ff31e7/ktor-network-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-network-iosarm64/3.3.3/370494b64577e95b39a9bb9c47205166f61996e3/ktor-network-iosArm64Cinterop-networkMain-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-network-iosarm64/3.3.3/1b153722d6c8d883ae8e3ed48b243ba463b08b6f/ktor-network-iosArm64Cinterop-unMain-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-utils-iosarm64/3.3.3/b41435f839f7a45fb03314d59b65df1138e9c069/ktor-utils-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-utils-iosarm64/3.3.3/b72231e36b04cedd6fb0e9a274bd1231217e2c38/ktor-utils-iosArm64Cinterop-threadUtilsMain-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-io-iosarm64/3.3.3/f6a7cc52a97038fcf0f30b78184f5ea4bd3eaae0/ktor-io-iosArm64Main-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/io.ktor/ktor-io-iosarm64/3.3.3/6c0dc31fe0096be5cbf9582b93738c0c5c0f8327/ktor-io-iosArm64Cinterop-mutexMain-3.3.3.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-iosarm64/1.10.2/8f8bbca09d281dd854e45cfc81e773bc8a1fb6e7/kotlinx-coroutines-core-iosArm64Main-1.10.2.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-iosarm64/0.29.0/d79ac241b9d9645c65c920124d6c774a5f18b5bd/atomicfu-iosArm64Main-0.29.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-iosarm64/0.29.0/caabec1f45d9eae3ce871d270fb3646ba2667b9d/atomicfu-iosArm64Cinterop-interopMain-0.29.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-core-iosarm64/1.9.0/2a77c4bb00894e1892fc18d39d42e0d37b54408d/kotlinx-serialization-core-iosArm64Main-1.9.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-io-okio-iosarm64/0.8.0/43a905f29577b9b82bd5b30ce8d24f89e2029ae8/kotlinx-io-okio-iosArm64Main-0.8.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.icerock.moko/parcelize-iosarm64/0.9.0/98c519b4a87b7372867ff059933e107ecde03a79/parcelize.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/co.touchlab/stately-strict-iosarm64/2.1.0/b3f3c97905d38d67cf959562ca62dae9ee9d0608/stately-strict.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-util-uikitarm64/1.10.0-rc01/323b04f5e1f0622dac848aac665a5cf209a878c3/ui-util-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.collection/collection-iosarm64/1.5.0/ecf9c12d08274f4ad2a6def2bfe99b1162fe875b/collection-iosArm64Main-1.5.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation-iosarm64/1.9.1/4e721c0824b13bf8de6c38724ebbf1cdd3599786/annotation.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio-iosarm64/3.15.0/3400a5f2ce5166abd7230fb9129f353f7e921993/okio-iosArm64Main-3.15.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-io-core-iosarm64/0.8.0/8e629b08223da863ac2a8abcd57de62f45a7644a/kotlinx-io-core-iosArm64Main-0.8.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-io-bytestring-iosarm64/0.8.0/89af46349667b693f8decf0bd90ecef60b3bf4e/kotlinx-io-bytestring-iosArm64Main-0.8.0.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/com.eygraber/uri-kmp-iosarm64/0.0.18/9e910c4a40e4dc08fa909398c3968166eab85058/uri.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/dev.drewhamilton.poko/poko-annotations-iosarm64/0.16.0/9d1a5bb974d414c2d93b3a7766cea026caa53090/poko-annotations.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-uikit-uikitarm64/1.10.0-rc01/b4b99c7984b32ab1d98c2df19b9f182eebdfa78a/ui-uikit-uikitArm64Main-1.10.0-rc01.klib -library /Users/user/.gradle/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-uikit-uikitarm64/1.10.0-rc01/3304ddd29084e3afefaa699bb1619bdea257db98/ui-uikit-uikitArm64Cinterop-utilsMain-1.10.0-rc01.klib -Xmodule-name Tikoncha_Parents:composeApp-cinterop-YandexMapsMobile -nopack -compiler-option -fmodules
+Successfully started process 'command '/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/bin/java''
+Resolve mutations for :composeApp:convertXmlValueResourcesForAppleMain (Thread[included builds,5,main]) started.
+:composeApp:convertXmlValueResourcesForAppleMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:convertXmlValueResourcesForAppleMain NO-SOURCE
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/appleMain/composeResources', not found
+Skipping task ':composeApp:convertXmlValueResourcesForAppleMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:copyNonXmlValueResourcesForAppleMain (Thread[included builds,5,main]) started.
+:composeApp:copyNonXmlValueResourcesForAppleMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:copyNonXmlValueResourcesForAppleMain NO-SOURCE
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/appleMain/composeResources', not found
+Skipping task ':composeApp:copyNonXmlValueResourcesForAppleMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:prepareComposeResourcesTaskForAppleMain (Thread[included builds,5,main]) started.
+:composeApp:prepareComposeResourcesTaskForAppleMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:prepareComposeResourcesTaskForAppleMain NO-SOURCE
+Skipping task ':composeApp:prepareComposeResourcesTaskForAppleMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:generateResourceAccessorsForAppleMain (Thread[included builds,5,main]) started.
+:composeApp:generateResourceAccessorsForAppleMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:generateResourceAccessorsForAppleMain NO-SOURCE
+Skipping task ':composeApp:generateResourceAccessorsForAppleMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:convertXmlValueResourcesForCommonMain (Thread[included builds,5,main]) started.
+:composeApp:convertXmlValueResourcesForCommonMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:convertXmlValueResourcesForCommonMain
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources', not found
+Caching disabled for task ':composeApp:convertXmlValueResourcesForCommonMain' because:
+  Caching has not been enabled for the task
+Task ':composeApp:convertXmlValueResourcesForCommonMain' is not up-to-date because:
+  Output property 'realOutputFiles$1' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources has been removed.
+  Output property 'realOutputFiles$1' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/values has been removed.
+  Output property 'realOutputFiles$1' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/values/strings.commonMain.cvr has been removed.
+  and more...
+Resolve mutations for :composeApp:copyNonXmlValueResourcesForCommonMain (Thread[included builds,5,main]) started.
+:composeApp:copyNonXmlValueResourcesForCommonMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:copyNonXmlValueResourcesForCommonMain
+Caching disabled for task ':composeApp:copyNonXmlValueResourcesForCommonMain' because:
+  Caching has not been enabled for the task
+Task ':composeApp:copyNonXmlValueResourcesForCommonMain' is not up-to-date because:
+  Output property 'realOutputFiles$1' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable has been removed.
+  Output property 'realOutputFiles$1' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable/UZ.png has been removed.
+  Output property 'realOutputFiles$1' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources/drawable/add.xml has been removed.
+  and more...
+Resolve mutations for :composeApp:prepareComposeResourcesTaskForCommonMain (Thread[included builds,5,main]) started.
+:composeApp:prepareComposeResourcesTaskForCommonMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:prepareComposeResourcesTaskForCommonMain UP-TO-DATE
+Caching disabled for task ':composeApp:prepareComposeResourcesTaskForCommonMain' because:
+  Caching has not been enabled for the task
+Skipping task ':composeApp:prepareComposeResourcesTaskForCommonMain' as it is up-to-date.
+Resolve mutations for :composeApp:generateResourceAccessorsForCommonMain (Thread[included builds,5,main]) started.
+:composeApp:generateResourceAccessorsForCommonMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:generateResourceAccessorsForCommonMain
+Caching disabled for task ':composeApp:generateResourceAccessorsForCommonMain' because:
+  Caching has not been enabled for the task
+Task ':composeApp:generateResourceAccessorsForCommonMain' is not up-to-date because:
+  Output property 'codeDir' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceAccessors has been removed.
+  Output property 'codeDir' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceAccessors/tikoncha_parents has been removed.
+  Output property 'codeDir' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceAccessors/tikoncha_parents/composeapp has been removed.
+  and more...
+Clean directory /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceAccessors
+Generate accessors for /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/commonMain/composeResources
+Resolve mutations for :composeApp:convertXmlValueResourcesForIosArm64Main (Thread[included builds,5,main]) started.
+:composeApp:convertXmlValueResourcesForIosArm64Main (Thread[included builds,5,main]) started.
+
+> Task :composeApp:convertXmlValueResourcesForIosArm64Main NO-SOURCE
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/iosArm64Main/composeResources', not found
+Skipping task ':composeApp:convertXmlValueResourcesForIosArm64Main' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:copyNonXmlValueResourcesForIosArm64Main (Thread[included builds,5,main]) started.
+:composeApp:copyNonXmlValueResourcesForIosArm64Main (Thread[included builds,5,main]) started.
+
+> Task :composeApp:copyNonXmlValueResourcesForIosArm64Main NO-SOURCE
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/iosArm64Main/composeResources', not found
+Skipping task ':composeApp:copyNonXmlValueResourcesForIosArm64Main' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:prepareComposeResourcesTaskForIosArm64Main (Thread[included builds,5,main]) started.
+:composeApp:prepareComposeResourcesTaskForIosArm64Main (Thread[included builds,5,main]) started.
+
+> Task :composeApp:prepareComposeResourcesTaskForIosArm64Main NO-SOURCE
+Skipping task ':composeApp:prepareComposeResourcesTaskForIosArm64Main' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:generateResourceAccessorsForIosArm64Main (Thread[included builds,5,main]) started.
+:composeApp:generateResourceAccessorsForIosArm64Main (Thread[included builds,5,main]) started.
+
+> Task :composeApp:generateResourceAccessorsForIosArm64Main NO-SOURCE
+Skipping task ':composeApp:generateResourceAccessorsForIosArm64Main' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:convertXmlValueResourcesForIosMain (Thread[included builds,5,main]) started.
+:composeApp:convertXmlValueResourcesForIosMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:convertXmlValueResourcesForIosMain NO-SOURCE
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/iosMain/composeResources', not found
+Skipping task ':composeApp:convertXmlValueResourcesForIosMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:copyNonXmlValueResourcesForIosMain (Thread[included builds,5,main]) started.
+:composeApp:copyNonXmlValueResourcesForIosMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:copyNonXmlValueResourcesForIosMain NO-SOURCE
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/iosMain/composeResources', not found
+Skipping task ':composeApp:copyNonXmlValueResourcesForIosMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:prepareComposeResourcesTaskForIosMain (Thread[included builds,5,main]) started.
+:composeApp:prepareComposeResourcesTaskForIosMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:prepareComposeResourcesTaskForIosMain NO-SOURCE
+Skipping task ':composeApp:prepareComposeResourcesTaskForIosMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:generateResourceAccessorsForIosMain (Thread[included builds,5,main]) started.
+:composeApp:generateResourceAccessorsForIosMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:generateResourceAccessorsForIosMain NO-SOURCE
+Skipping task ':composeApp:generateResourceAccessorsForIosMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:convertXmlValueResourcesForNativeMain (Thread[included builds,5,main]) started.
+:composeApp:convertXmlValueResourcesForNativeMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:convertXmlValueResourcesForNativeMain NO-SOURCE
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/nativeMain/composeResources', not found
+Skipping task ':composeApp:convertXmlValueResourcesForNativeMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:copyNonXmlValueResourcesForNativeMain (Thread[included builds,5,main]) started.
+:composeApp:copyNonXmlValueResourcesForNativeMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:copyNonXmlValueResourcesForNativeMain NO-SOURCE
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/preparedResources/nativeMain/composeResources', not found
+Skipping task ':composeApp:copyNonXmlValueResourcesForNativeMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:prepareComposeResourcesTaskForNativeMain (Thread[included builds,5,main]) started.
+:composeApp:prepareComposeResourcesTaskForNativeMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:prepareComposeResourcesTaskForNativeMain NO-SOURCE
+Skipping task ':composeApp:prepareComposeResourcesTaskForNativeMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:generateResourceAccessorsForNativeMain (Thread[included builds,5,main]) started.
+:composeApp:generateResourceAccessorsForNativeMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:generateResourceAccessorsForNativeMain NO-SOURCE
+Skipping task ':composeApp:generateResourceAccessorsForNativeMain' as it has no source files and no previous output files.
+Resolve mutations for :composeApp:generateActualResourceCollectorsForIosArm64Main (Thread[included builds,5,main]) started.
+:composeApp:generateActualResourceCollectorsForIosArm64Main (Thread[included builds,5,main]) started.
+
+> Task :composeApp:generateActualResourceCollectorsForIosArm64Main
+Caching disabled for task ':composeApp:generateActualResourceCollectorsForIosArm64Main' because:
+  Caching has not been enabled for the task
+Task ':composeApp:generateActualResourceCollectorsForIosArm64Main' is not up-to-date because:
+  Value of input property 'ideaIsInSync' has changed for task ':composeApp:generateActualResourceCollectorsForIosArm64Main'
+Clean directory /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/iosArm64MainResourceCollectors
+Generate actual ResourceCollectors for /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/iosArm64MainResourceCollectors
+Found collector function: `_collectCommonMainString2Resources`
+Found collector function: `_collectCommonMainDrawable0Resources`
+Found collector function: `_collectCommonMainString1Resources`
+Found collector function: `_collectCommonMainArray0Resources`
+Found collector function: `_collectCommonMainFont0Resources`
+Found collector function: `_collectCommonMainDrawable1Resources`
+Found collector function: `_collectCommonMainString4Resources`
+Found collector function: `_collectCommonMainString0Resources`
+Found collector function: `_collectCommonMainString3Resources`
+Resolve mutations for :composeApp:generateComposeResClass (Thread[included builds,5,main]) started.
+:composeApp:generateComposeResClass (Thread[included builds,5,main]) started.
+
+> Task :composeApp:generateComposeResClass
+Caching disabled for task ':composeApp:generateComposeResClass' because:
+  Caching has not been enabled for the task
+Task ':composeApp:generateComposeResClass' is not up-to-date because:
+  Output property 'codeDir' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonResClass has been removed.
+  Output property 'codeDir' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonResClass/tikoncha_parents has been removed.
+  Output property 'codeDir' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonResClass/tikoncha_parents/composeapp has been removed.
+  and more...
+Generate Res.kt
+Resolve mutations for :composeApp:generateExpectResourceCollectorsForCommonMain (Thread[included builds,5,main]) started.
+:composeApp:generateExpectResourceCollectorsForCommonMain (Thread[included builds,5,main]) started.
+
+> Task :composeApp:generateExpectResourceCollectorsForCommonMain
+Caching disabled for task ':composeApp:generateExpectResourceCollectorsForCommonMain' because:
+  Caching has not been enabled for the task
+Task ':composeApp:generateExpectResourceCollectorsForCommonMain' is not up-to-date because:
+  Output property 'codeDir' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceCollectors has been removed.
+  Output property 'codeDir' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceCollectors/tikoncha_parents has been removed.
+  Output property 'codeDir' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceCollectors/tikoncha_parents/composeapp has been removed.
+  and more...
+Clean directory /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceCollectors
+Generate expect ResourceCollectors for /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/commonMainResourceCollectors
+Resolve mutations for :composeApp:transformCommonMainDependenciesMetadata (Thread[included builds,5,main]) started.
+:composeApp:transformCommonMainDependenciesMetadata (Thread[included builds,5,main]) started.
+
+> Task :composeApp:transformCommonMainDependenciesMetadata
+Registered task dependencies: composeApp:allSourceSetsCompileDependenciesMetadata
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: com.google.firebase:firebase-messaging-ktx
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Skipping misunderstood TO dep string: org.jetbrains.kotlin:kotlin-stdlib
+Starting dependency analysis
+Caching disabled for task ':composeApp:transformCommonMainDependenciesMetadata' because:
+  Metadata Dependency Transformation Task doesn't benefit from caching as it doesn't have heavy load
+Task ':composeApp:transformCommonMainDependenciesMetadata' is not up-to-date because:
+  Output property 'outputsDir$kotlin_gradle_plugin_common' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/kotlinTransformedMetadataLibraries/commonMain has been removed.
+  Output property 'outputsDir$kotlin_gradle_plugin_common' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/androidx.annotation-annotation-1.9.1-commonMain-WmoUwA.klib has been removed.
+  Output property 'outputsDir$kotlin_gradle_plugin_common' file /Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/kotlinTransformedMetadataLibraries/commonMain/androidx.collection-collection-1.5.0-commonMain-j7f1lg.klib has been removed.
+  and more...
+Resolve mutations for :composeApp:kspCommonMainKotlinMetadata (Thread[included builds,5,main]) started.
+:composeApp:kspCommonMainKotlinMetadata (Thread[included builds,5,main]) started.
+Resolve mutations for :composeApp:kspKotlinIosArm64 (Thread[Execution worker Thread 2,5,main]) started.
+:composeApp:kspKotlinIosArm64 (Thread[Execution worker Thread 2,5,main]) started.
+
+> Task :composeApp:kspKotlinIosArm64 SKIPPED
+Skipping task ':composeApp:kspKotlinIosArm64' as task onlyIf 'Task satisfies onlyIf spec' is false.
+
+> Task :composeApp:kspCommonMainKotlinMetadata
+Build cache key for task ':composeApp:kspCommonMainKotlinMetadata' is 8e100f660bfa884ea0601b213c18d7a6
+Task ':composeApp:kspCommonMainKotlinMetadata' is not up-to-date because:
+  Value of input property 'kspConfig.logLevel' has changed for task ':composeApp:kspCommonMainKotlinMetadata'
+The input changes require a full rebuild for incremental task ':composeApp:kspCommonMainKotlinMetadata'.
+i: [ksp] loaded provider(s): [org.koin.compiler.BuilderProcessorProvider]
+i: [ksp] generate 0 modules ...
+w: [ksp] Koin Configuration Check ...
+w: [ksp] no module found
+Stored cache entry for task ':composeApp:kspCommonMainKotlinMetadata' with cache key 8e100f660bfa884ea0601b213c18d7a6
+Resolve mutations for :composeApp:compileKotlinIosArm64 (Thread[included builds,5,main]) started.
+:composeApp:compileKotlinIosArm64 (Thread[included builds,5,main]) started.
+
+> Task :composeApp:compileKotlinIosArm64
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Registered task dependencies: composeApp:kotlinCompilerPluginClasspathIosArm64Main
+Starting dependency analysis
+Registered task dependencies: composeApp:kotlinCompilerClasspath
+Starting dependency analysis
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Build cache key for task ':composeApp:compileKotlinIosArm64' is e7834cda2f48406b8309026f9072484f
+Task ':composeApp:compileKotlinIosArm64' is not up-to-date because:
+  Task has failed previously.
+Kotlin Native Bundle: Acquire lock: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock ...
+Kotlin Native Bundle: Lock acquired: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+Kotlin Native Bundle: Lock released: /Users/user/.konan/kotlin-native-prebuilt-macos-aarch64-2.2.20/.lock
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosArm64Main/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/iosArm64MainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/ksp/iosArm64/iosArm64Main/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/ksp/iosArm64/iosArm64Main/java', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/iosMainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/appleMain/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/appleMainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/nativeMainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/ksp/metadata/commonMain/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosArm64Main/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/iosArm64MainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/ksp/iosArm64/iosArm64Main/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/ksp/iosArm64/iosArm64Main/java', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/iosMainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/appleMain/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/appleMainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/nativeMainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/ksp/metadata/commonMain/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosArm64Main/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/iosArm64MainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/ksp/iosArm64/iosArm64Main/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/ksp/iosArm64/iosArm64Main/java', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/iosMainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/appleMain/kotlin', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/appleMainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/compose/resourceGenerator/kotlin/nativeMainResourceAccessors', not found
+file or directory '/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/build/generated/ksp/metadata/commonMain/kotlin', not found
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:28:9 Unresolved reference 'YMKMapKit'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:29:9 Unresolved reference 'YMKMapKit'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:37:27 Unresolved reference 'YMKMapView'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:40:28 Unresolved reference 'mapWindow'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:41:22 Unresolved reference 'YMKCameraPosition'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:42:22 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:48:17 Unresolved reference 'moveWithCameraPosition'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:50:33 Unresolved reference 'YMKAnimation'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:50:53 Unresolved reference 'YMKAnimationTypeSmooth'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:54:17 Unresolved reference 'moveWithCameraPosition'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:60:28 Unresolved reference 'mapWindow'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:61:29 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:61:35 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:62:37 Unresolved reference 'it'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:63:37 Unresolved reference 'it'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:64:37 Unresolved reference 'it'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:65:37 Unresolved reference 'it'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:66:20 Unresolved reference 'YMKBoundingBox'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:67:25 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:68:25 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:70:23 Unresolved reference 'cameraPositionWithBoundingBox'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:71:22 Unresolved reference 'YMKCameraPosition'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:73:17 Unresolved reference 'moveWithCameraPosition'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:75:33 Unresolved reference 'YMKAnimation'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:75:53 Unresolved reference 'YMKAnimationTypeSmooth'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:79:17 Unresolved reference 'moveWithCameraPosition'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:92:17 Unresolved reference 'YMKMapObjectTapListenerProtocol'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:93:5 'onMapObjectTapWithMapObject' overrides nothing.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:94:20 Unresolved reference 'YMKMapObject'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:95:16 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:105:17 Unresolved reference 'YMKMapInputListenerProtocol'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:106:5 'onMapTapWithMap' overrides nothing.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:106:39 Unresolved reference 'YMKMap'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:106:54 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:107:28 Unresolved reference 'latitude'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:107:44 Unresolved reference 'longitude'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:109:5 'onMapLongTapWithMap' overrides nothing.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:109:43 Unresolved reference 'YMKMap'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:109:58 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:127:22 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:127:54 Unresolved reference 'YMKPlacemarkMapObject'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:130:25 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:130:57 Unresolved reference 'YMKCircleMapObject'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:132:30 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:132:56 Unresolved reference 'YMKUserLocationLayer'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:132:79 Null cannot be a value of a non-null type 'uninferred T (of fun <T> mutableStateOf)'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:137:24 Unresolved reference 'YMKMapView'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:139:32 Unresolved reference 'moveWithCameraPosition'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:140:17 Unresolved reference 'YMKCameraPosition'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:141:30 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:147:32 Unresolved reference 'addInputListenerWithInputListener'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:151:34 Unresolved reference 'YMKMapView'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:152:28 Unresolved reference 'mapWindow'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:156:25 Unresolved reference 'keys'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:156:66 Cannot infer type for value parameter 'id'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:157:28 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:157:28 'fun <T> MutableList<T>.remove(index: Int): T' is deprecated. Use removeAt(index) instead.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:157:40 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:157:40 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:157:46 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:158:43 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:158:52 Unresolved reference 'removeTapListenerWithTapListener'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:159:25 Unresolved reference 'mapObjects'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:163:26 Inapplicable candidate(s): fun <K> ELVIS_CALL(x: K?, y: K): K
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:163:48 Unresolved reference 'mapObjects'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:164:21 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:165:19 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:165:24 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:165:26 Cannot infer type for type parameter 'V'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:167:20 Unresolved reference 'setGeometryWithGeometry'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:168:21 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:170:20 Unresolved reference 'setZIndex'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:171:20 Unresolved reference 'setIconWithImage'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:175:24 Unresolved reference 'addTapListenerWithTapListener'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:182:28 Unresolved reference 'keys'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:182:70 Cannot infer type for value parameter 'id'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:183:31 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:183:31 'fun <T> MutableList<T>.remove(index: Int): T' is deprecated. Use removeAt(index) instead.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:183:43 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:183:43 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:183:47 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:183:53 Unresolved reference 'mapObjects'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:186:28 Unresolved reference 'YMKCircle'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:187:30 Unresolved reference 'YMKPoint'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:190:27 Inapplicable candidate(s): fun <K> ELVIS_CALL(x: K?, y: K): K
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:190:52 Unresolved reference 'mapObjects'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:195:19 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:195:24 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:195:26 Cannot infer type for type parameter 'V'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:196:21 Unresolved reference 'setGeometryWithGeometry'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:197:21 Unresolved reference 'setFillColorWithFillColor'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:198:21 Unresolved reference 'setStrokeColorWithStrokeColor'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:199:21 Unresolved reference 'setStrokeWidthWithStrokeWidth'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:204:37 Unresolved reference 'YMKMapKit'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:205:64 Unresolved reference 'mapWindow'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:205:75 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:205:81 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:206:25 Unresolved reference 'setVisibleWithOn'.
+e: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/composeApp/src/iosMain/kotlin/uz/tikoncha_parent/presentation/map2/Map.ios.kt:207:25 Unresolved reference 'setHeadingEnabledWithEnabled'.
+
+> Task :composeApp:compileKotlinIosArm64 FAILED
+Build 0df0d0ac-778f-4deb-bd0a-92e861b15e3e is closed
+
+[Incubating] Problems report is available at: file:///Volumes/My%20Files/Projects/Multiplatform/Tikoncha_Parents/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':composeApp:compileKotlinIosArm64'.
+> Compilation finished with errors
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 56s
+18 actionable tasks: 17 executed, 1 up-to-date
+Watched directory hierarchies: [/Volumes/My Files/Projects/Multiplatform/Tikoncha_Parents]

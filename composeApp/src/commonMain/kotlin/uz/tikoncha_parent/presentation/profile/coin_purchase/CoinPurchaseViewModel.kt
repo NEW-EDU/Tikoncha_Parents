@@ -32,7 +32,7 @@ class CoinPurchaseViewModel (
             is CoinPurchaseEvent.ApplyPromoCode -> {
                 _state.update {
                     it.copy(
-                        promoCode = event.promoCode
+                        promoCode = event.promoCode.filterNot { c -> c.isWhitespace() }.uppercase()
                     )
                 }
                 validatePromoCode()

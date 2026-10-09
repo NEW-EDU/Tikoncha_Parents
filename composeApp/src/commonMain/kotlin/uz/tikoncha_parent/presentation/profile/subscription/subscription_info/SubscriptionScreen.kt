@@ -1,5 +1,33 @@
 package uz.tikoncha_parent.presentation.profile.subscription.info
 
+import tikoncha_parents.composeapp.generated.resources.toliq_nazorat_statistika
+import tikoncha_parents.composeapp.generated.resources.uchtagacha_jadval
+import tikoncha_parents.composeapp.generated.resources.qattiq_bloklash_qalqon
+import tikoncha_parents.composeapp.generated.resources.ap_from_per_month_card
+import tikoncha_parents.composeapp.generated.resources.ap_subscribe_for_child
+import tikoncha_parents.composeapp.generated.resources.ap_plus_unlocks
+import tikoncha_parents.composeapp.generated.resources.ap_child_no_plus_title
+import tikoncha_parents.composeapp.generated.resources.ap_for_child
+import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
+import tikoncha_parents.composeapp.generated.resources.farzandingizni_tanlang
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.material.icons.rounded.BarChart
+import androidx.compose.material.icons.rounded.CalendarMonth
+import androidx.compose.material.icons.rounded.Shield
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.layout.widthIn
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.sumText
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.ChildAvatar
+import uz.tikoncha_parent.presentation.base.CustomButton
+import uz.tikoncha_parent.presentation.add_child.AddChildScreen
+import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
+import uz.tikoncha_parent.presentation.base.ChildSelectionButton
+import uz.tikoncha_parent.presentation.profile.payment_history.PaymentHistoryScreen
+import uz.tikoncha_parent.presentation.profile.subscription.subscription_info.AutopaySection
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.card.AutopayAddCardScreen
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.cards.AutopayCardsScreen
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.confirm.AutopayConfirmScreen
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.method.ChildArgs
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -95,6 +123,9 @@ class SubscriptionScreen : Screen {
         val state by viewModel.state.collectAsStateWithLifecycle()
         val event = viewModel::onEvent
 
+        // Boshqa ekrandan qaytganda (to'lov, karta) — jim yangilanadi; birinchi ochilishda VM o'zi yuklaydi
+        LaunchedEffect(Unit) { event(SubscriptionEvent.Resumed) }
+
         // ⬇️ Yagona joy navigatsiyani boshqaradi
         LaunchedEffect(Unit) {
             viewModel.effect.collect { effect ->
@@ -119,6 +150,15 @@ class SubscriptionScreen : Screen {
                         navigator?.pop()
                         Logger.d("SubscriptionScreen", "PopBack")
                     }
+
+                    SubscriptionEffect.OpenPaywall -> navigator?.push(SubscriptionPaymentScreen(AppSettings.selectedChild))
+
+                    is SubscriptionEffect.OpenAutopayConfirm -> navigator?.push(
+                        AutopayConfirmScreen(selectedChildArgs(), effect.planId, effect.period.wire, effect.amount)
+                    )
+                    SubscriptionEffect.OpenCards -> navigator?.push(AutopayCardsScreen())
+                    SubscriptionEffect.OpenAddCard -> navigator?.push(AutopayAddCardScreen(selectedChildArgs()))
+                    SubscriptionEffect.OpenHistory -> navigator?.push(PaymentHistoryScreen())
                 }
             }
         }
@@ -141,7 +181,9 @@ fun SubscriptionUI(
     val errorText = state.subscriptionStatusState.errorText()
     var showErrorDialog by remember { mutableStateOf(false) }
 
-    LoadingDialog(loading)
+    // O'chirish / qayta urinish / karta almashtirish ham serverga boradi — kutish ko'rinsin
+    LoadingDialog(loading || state.autopayBusy)
+    var showChildSheet by remember { mutableStateOf(false) }
 
     LaunchedEffect(errorText) {
         if (errorText.isNotEmpty()) showErrorDialog = true
@@ -182,11 +224,38 @@ fun SubscriptionUI(
         CustomHeader(
             showBackButton = true,
             title = stringResource(Res.string.obuna),
-            onBackClick = { event(SubscriptionEvent.OnBackClick) }
+            onBackClick = { event(SubscriptionEvent.OnBackClick) },
+            // Statistika'dagi tanlagichning o'zi — obuna qaysi farzandniki ekani doim ko'rinib tursin
+            trailingIcon = {
+                ChildSelectionButton(
+                    modifier = Modifier.widthIn(120.dp, 160.dp),
+                    text = state.selectedChild?.name ?: "",
+                    imageUrl = state.selectedChild?.avatarUrl ?: "",
+                    label = stringResource(Res.string.farzandingizni_tanlang),
+                    userInfo = state.selectedChild,
+                    onClick = {
+                        if (state.children.isEmpty()) navigator?.push(AddChildScreen())
+                        else showChildSheet = true
+                    }
+                )
+            }
         )
 
-        // Faqat PLUS va expired bo'lmagan holatda kontent ko'rsatamiz.
-        // FREE/expired holatlar yuqoridagi LaunchedEffect orqali replace bo'ladi.
+        if (showChildSheet) {
+            SelectionChildBottomSheet(
+                navigator = navigator,
+                items = state.children,
+                selectedItem = state.selectedChild,
+                onDismiss = { showChildSheet = false },
+                title = stringResource(Res.string.farzandlaringiz),
+                onItemSelected = {
+                    event(SubscriptionEvent.SelectChild(it))
+                    showChildSheet = false
+                }
+            )
+        }
+
+        // PLUS bor — karta va tafsilotlar; PLUS yo'q (yoki tugagan) — pastdagi "… uchun obuna bo'lish".
         if (subscription != null && subscription.planType == PlanType.PLUS) {
             Column(
                 modifier = Modifier
@@ -218,7 +287,9 @@ fun SubscriptionUI(
                                 modifier = Modifier.width(54.dp).height(28.dp)
                             )
                         }
-                        Spacer(Modifier.height(40.dp))
+                        Spacer(Modifier.height(14.dp))
+                        state.selectedChild?.let { child -> ForChildChip(child.name, child.avatarUrl) }
+                        Spacer(Modifier.height(14.dp))
 
                         Text(
                             text = stringResource(Res.string.keyingi_tolov),
@@ -294,7 +365,7 @@ fun SubscriptionUI(
                     ) {
                         Text(
                             text = stringResource(Res.string.obuna_turi),
-                            style = AppTypography.titleSmMedium,
+                            style = AppTypography.bodyMdMedium,
                             color = AppColors.text.secondary,
                             modifier = Modifier.weight(1f)
                         )
@@ -327,7 +398,7 @@ fun SubscriptionUI(
                         }
                         Text(
                             text = "${ stringResource(Res.string.narx) }:",
-                            style = AppTypography.titleSmMedium,
+                            style = AppTypography.bodyMdMedium,
                             color = AppColors.text.secondary,
                             modifier = Modifier.weight(1f)
                         )
@@ -346,14 +417,14 @@ fun SubscriptionUI(
                     ) {
                         Text(
                             text = stringResource(Res.string.obuna_boshlangan_sana),
-                            style = AppTypography.titleSmMedium,
-                            color = AppColors.text.primary,
+                            style = AppTypography.bodyMdMedium,
+                            color = AppColors.text.secondary,
                             modifier = Modifier.weight(1f)
                         )
                         Text(
                             text = subscription.createdAt.orEmpty(),
-                            style = AppTypography.titleLgSemiBold,
-                            color = AppColors.text.accentEmphasis
+                            style = AppTypography.titleSmMedium,
+                            color = AppColors.text.primary
                         )
                     }
                     Spacer(Modifier.height(12.dp))
@@ -365,14 +436,14 @@ fun SubscriptionUI(
                     ) {
                         Text(
                             text = stringResource(Res.string.tugash_sanasi),
-                            style = AppTypography.titleSmMedium,
-                            color = AppColors.text.primary,
+                            style = AppTypography.bodyMdMedium,
+                            color = AppColors.text.secondary,
                             modifier = Modifier.weight(1f)
                         )
                         Text(
                             text = subscription.expiresAt.orEmpty(),
-                            style = AppTypography.titleLgSemiBold,
-                            color = AppColors.text.accentEmphasis
+                            style = AppTypography.titleSmMedium,
+                            color = AppColors.text.primary
                         )
                     }
                     Spacer(Modifier.height(12.dp))
@@ -384,7 +455,7 @@ fun SubscriptionUI(
                     ) {
                         Text(
                             text = stringResource(Res.string.qolgan_kunlar),
-                            style = AppTypography.titleSmMedium,
+                            style = AppTypography.bodyMdMedium,
                             color = AppColors.text.secondary,
                             modifier = Modifier.weight(1f)
                         )
@@ -396,7 +467,73 @@ fun SubscriptionUI(
                     }
                 }
                 Spacer(Modifier.height(12.dp))
+                AutopaySection(state = state, event = event)
+                Spacer(Modifier.height(24.dp))
             }
+        } else if (subscription != null) {
+            FreeChildBlock(
+                name = state.selectedChild?.name.orEmpty(),
+                fromPrice = state.freeFromPrice,
+                onSubscribe = { event(SubscriptionEvent.OpenPaywall) },
+            )
+        }
+    }
+}
+
+/** Oltin kartadagi "Ali uchun" — qaysi farzandning obunasi ekani. */
+@Composable
+private fun ForChildChip(name: String, avatarUrl: String?) {
+    Row(
+        modifier = Modifier
+            .background(Color.Black.copy(alpha = 0.18f), RoundedCornerShape(14.dp))
+            .padding(start = 4.dp, end = 10.dp, top = 4.dp, bottom = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        ChildAvatar(avatarUrl, 20.dp)
+        Spacer(Modifier.width(6.dp))
+        Text(stringResource(Res.string.ap_for_child, name), style = AppTypography.bodySmSemiBold, color = AppColors.text.inverse, maxLines = 1)
+    }
+}
+
+/** PLUS yo'q farzand (maket 2c): tarif ekraniga o'zi o'tib ketmaydi — tanlagich joyida qoladi. */
+@Composable
+private fun FreeChildBlock(name: String, fromPrice: Int?, onSubscribe: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .padding(horizontal = ContainerPadding)
+            .padding(top = 4.dp)
+            .fillMaxWidth()
+            .background(AppColors.bg.surface, RoundedCornerShape(24.dp))
+            .padding(horizontal = 16.dp, vertical = 18.dp),
+    ) {
+        Text(stringResource(Res.string.ap_child_no_plus_title, name), style = AppTypography.titleLgSemiBold, color = AppColors.text.primary)
+        Spacer(Modifier.height(4.dp))
+        Text(stringResource(Res.string.ap_plus_unlocks), style = AppTypography.bodyMdMedium, color = AppColors.text.tertiary)
+        Spacer(Modifier.height(14.dp))
+        listOf(
+            Icons.Rounded.Shield to Res.string.qattiq_bloklash_qalqon,
+            Icons.Rounded.CalendarMonth to Res.string.uchtagacha_jadval,
+            Icons.Rounded.BarChart to Res.string.toliq_nazorat_statistika,
+        ).forEach { (icon, text) ->
+            Row(Modifier.padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(icon, null, tint = AppColors.action.primary, modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(10.dp))
+                Text(stringResource(text), style = AppTypography.titleSmMedium, color = AppColors.text.secondary)
+            }
+        }
+        Spacer(Modifier.height(16.dp))
+        CustomButton(
+            text = stringResource(Res.string.ap_subscribe_for_child, name),
+            onClick = onSubscribe,
+            modifier = Modifier.fillMaxWidth().height(48.dp),
+        )
+        fromPrice?.let {
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = stringResource(Res.string.ap_from_per_month_card, sumText(it)),
+                style = AppTypography.bodySmMedium, color = AppColors.text.tertiary,
+                textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }
@@ -407,4 +544,15 @@ fun PreviewPaymentInfoScreen() {
     TikonchaParentTheme(ThemeMode.LIGHT) {
         SubscriptionUI()
     }
+}
+
+/** Tanlangan farzand — avto-to'lov ekranlari uchun. */
+internal fun selectedChildArgs(): ChildArgs {
+    val c = AppSettings.selectedChild
+    return ChildArgs(
+        id = c?.userId,
+        name = c?.let { listOf(it.name, it.lastName).filter { p -> p.isNotBlank() }.joinToString(" ").ifBlank { it.fullName } }.orEmpty(),
+        avatarUrl = c?.avatarUrl,
+        plusUntil = c?.subscription_end_date?.takeIf { c.subscription != null && c.subscription != "FREE" },
+    )
 }

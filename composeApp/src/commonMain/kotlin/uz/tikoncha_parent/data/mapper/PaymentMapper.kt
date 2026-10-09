@@ -22,7 +22,9 @@ fun SubscriptionPlansData.toSubscriptionPlanUi(): SubscriptionUi {
             coin = annual.coin,
             feature = annual.feature,
             bonus = annual.bonus
-        )
+        ),
+        cardMonthly = prices.firstOrNull { it.method == "CARD" && it.duration == "MONTHLY" }?.price,
+        cardAnnual = prices.firstOrNull { it.method == "CARD" && it.duration == "ANNUAL" }?.price,
     )
 }
 

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.subscription.payment
 
+import uz.tikoncha_parent.platform.isIos
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Job
@@ -32,9 +33,12 @@ class PaymentViewModel(
     val state = _state.asStateFlow()
 
     init {
+        // Apple ko'rigi uchun raqam (+99811…): iPhone'da faqat App Store — u oldindan tanlanadi
+        val appStoreOnly = isIos() && AppSettings.isTestAccount
         _state.update {
             it.copy(
-                isTestAccount = AppSettings.isTestAccount
+                isTestAccount = AppSettings.isTestAccount,
+                selectedPaymentType = if (appStoreOnly) PaymentType.AppStore else it.selectedPaymentType,
             )
         }
     }
@@ -111,7 +115,7 @@ class PaymentViewModel(
             is PaymentEvent.OnPromoCode -> {
                 _state.update {
                     it.copy(
-                        promoCode = event.promoCode
+                        promoCode = event.promoCode.filterNot { c -> c.isWhitespace() }.uppercase()
                     )
                 }
             }

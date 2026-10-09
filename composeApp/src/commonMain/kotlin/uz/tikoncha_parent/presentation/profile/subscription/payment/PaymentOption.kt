@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.profile.subscription.payment
 
+import uz.tikoncha_parent.ui.theme.AppTypography
+import androidx.compose.material3.Text
 import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -34,6 +36,8 @@ import uz.tikoncha_parent.ui.theme.extendedColor
 fun PaymentOption(
     modifier: Modifier = Modifier,
     painter: Painter = painterResource(Res.drawable.click_pay),
+    /** Rasm o'rniga yozuv (masalan "App Store" — logosi yo'q). */
+    label: String? = null,
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
@@ -57,14 +61,23 @@ fun PaymentOption(
                 modifier = Modifier
                     .background(Color.White, RoundedCornerShape(8.dp))
             ){
-                Image(
-                    painter = painter,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(horizontal = 12.dp, vertical = 8.dp)
-                        .width(63.dp)
-                        .height(16.dp),
-                )
+                if (label != null) {
+                    Text(
+                        text = label,
+                        style = AppTypography.titleSmSemiBold,
+                        color = Color(0xFF111111),
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                    )
+                } else {
+                    Image(
+                        painter = painter,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(horizontal = 12.dp, vertical = 8.dp)
+                            .width(63.dp)
+                            .height(16.dp),
+                    )
+                }
             }
 
             CustomRadio(

@@ -262,22 +262,26 @@ fun PaymentTypeScreenUi(
             ) {
                 if (isIos() && state.isTestAccount) {
                     PaymentOption(
+                        label = PaymentType.AppStore.title,
                         isSelected = state.selectedPaymentType == PaymentType.AppStore,
                         onClick = {
                             event(PaymentEvent.SetPaymentType(PaymentType.AppStore))
                         }
                     )
                 }
-                PaymentOption(
-                    isSelected = state.selectedPaymentType == PaymentType.Click,
-                    onClick = {
-                        event(
-                            PaymentEvent.SetPaymentType(
-                                PaymentType.Click
+                // Apple ko'rigi uchun raqam iPhone'da Click'ni ko'rmaydi — faqat App Store (egasining qarori)
+                if (!(isIos() && state.isTestAccount)) {
+                    PaymentOption(
+                        isSelected = state.selectedPaymentType == PaymentType.Click,
+                        onClick = {
+                            event(
+                                PaymentEvent.SetPaymentType(
+                                    PaymentType.Click
+                                )
                             )
-                        )
-                    }
-                )
+                        }
+                    )
+                }
 
                 if (!isIos()) {
                     Box(

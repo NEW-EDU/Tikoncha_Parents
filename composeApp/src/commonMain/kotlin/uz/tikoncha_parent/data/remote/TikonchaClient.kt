@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.data.remote
 
+import io.ktor.http.Url
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.plugins.HttpRedirect
@@ -79,8 +80,16 @@ class TikonchaClient(private val engine: HttpClientEngine) {
 
         defaultRequest {
             url {
-                protocol = URLProtocol.HTTPS
-                host = BASE_URL
+                // Sinov build'ida lokal backend (BuildConfig.apiOverride); aks holda prod
+                val override = BuildConfig.apiOverride.takeIf { it.isNotBlank() }?.let { Url(it) }
+                if (override != null) {
+                    protocol = override.protocol
+                    host = override.host
+                    port = override.port
+                } else {
+                    protocol = URLProtocol.HTTPS
+                    host = BASE_URL
+                }
             }
             header("Accept", "application/json")
             header("Content-Type", "application/json")

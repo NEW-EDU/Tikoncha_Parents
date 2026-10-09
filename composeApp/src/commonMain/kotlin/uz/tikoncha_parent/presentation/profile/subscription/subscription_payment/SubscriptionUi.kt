@@ -5,8 +5,12 @@ import uz.tikoncha_parent.domain.model.SubscriptionType
 data class SubscriptionUi(
     val planId: String,
     val type: SubscriptionType,
+    /** `price` — Click (bir martalik) narxi. */
     val monthly: PlanUi,
-    val annual: PlanUi
+    val annual: PlanUi,
+    /** Karta orqali avto-to'lov narxi; server bermasa null (karta yo'li yopiq yoki eski server). */
+    val cardMonthly: Int? = null,
+    val cardAnnual: Int? = null,
 )
 
 data class PlanUi(
