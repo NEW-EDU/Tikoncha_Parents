@@ -82,6 +82,7 @@ import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.OnScreenActive
 import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.asText
+import uz.tikoncha_parent.presentation.live.ParentLiveScreen
 import uz.tikoncha_parent.presentation.map.CameraPosition
 import uz.tikoncha_parent.presentation.map.LatLng
 import uz.tikoncha_parent.presentation.map.MapCircle
@@ -263,7 +264,8 @@ class TrackingScreen : Screen {
             issues = state.sheetIssues,
             isCheckingStatus = state.isCheckingPermissionStatus,
             onWatchVideo = {
-                event(TrackingEvent.OpenYoutubeUrl(it))
+                // Jonli ko'rish — bolaga "chaqiruv" yuboradi; bola rozi bo'lgach jonli A/V + GPS.
+                state.sheetPerson?.let { p -> navigator?.push(ParentLiveScreen(p.id)) }
             },
             onOpenInMaps = { person ->
                 Logger.d("TrackingScreen", "person = $person")

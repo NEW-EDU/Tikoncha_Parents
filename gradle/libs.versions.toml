@@ -24,6 +24,8 @@ kotlinSerialization = "1.11.0"
 settings = "1.0.3"
 
 telegramLoginAndroid = "1.0.0"
+webrtcKmp = "0.125.11"
+bouncycastle = "1.78.1"
 
 
 [libraries]
@@ -71,6 +73,8 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 remember-settings = { module = "dev.burnoo:compose-remember-setting", version.ref = "settings" }
 
 telegram-login-android = { module = "org.telegram:login-sdk", version.ref = "telegramLoginAndroid" }
+webrtc-kmp = { module = "com.shepeliev:webrtc-kmp", version.ref = "webrtcKmp" }
+bouncycastle = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bouncycastle" }
 
 
 [plugins]

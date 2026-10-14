@@ -83,6 +83,9 @@ kotlin {
 
             //telegram login
             implementation(libs.telegram.login.android)
+
+            //bouncycastle (live module — Ed25519 identity signatures)
+            implementation(libs.bouncycastle)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -117,6 +120,9 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
 
             implementation(libs.remember.settings)
+
+            //webrtc-kmp (live module — consensual A/V + GPS, parent viewer)
+            implementation(libs.webrtc.kmp)
 
 
 
@@ -213,22 +219,29 @@ android {
 
 
 
-    signingConfigs {
-        create("release") {
-            storeFile = rootProject.file(props.getProperty("RELEASE_STORE_FILE"))
-            storePassword = props.getProperty("RELEASE_STORE_PASSWORD")
-            keyAlias = props.getProperty("RELEASE_KEY_ALIAS")
-            keyPassword = props.getProperty("RELEASE_KEY_PASSWORD")
+    // Release keystore faqat local.properties to'ldirilgan bo'lsa (CI / toza klonda yo'q —
+    // debug default kalit bilan quriladi, aks holda konfiguratsiya "null -> File" bilan yiqilardi).
+    val releaseStorePath = props.getProperty("RELEASE_STORE_FILE")
+    val hasReleaseKeystore = releaseStorePath != null && rootProject.file(releaseStorePath).exists()
+
+    if (hasReleaseKeystore) {
+        signingConfigs {
+            create("release") {
+                storeFile = rootProject.file(releaseStorePath)
+                storePassword = props.getProperty("RELEASE_STORE_PASSWORD")
+                keyAlias = props.getProperty("RELEASE_KEY_ALIAS")
+                keyPassword = props.getProperty("RELEASE_KEY_PASSWORD")
+            }
         }
     }
 
     buildTypes {
         getByName("debug") {
-            signingConfig = signingConfigs.getByName("release")   // debug ham release kalit bilan
+            if (hasReleaseKeystore) signingConfig = signingConfigs.getByName("release")
         }
         getByName("release") {
             isMinifyEnabled = false
-            signingConfig = signingConfigs.getByName("release")
+            if (hasReleaseKeystore) signingConfig = signingConfigs.getByName("release")
         }
     }
 
@@ -236,6 +249,8 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            // BouncyCastle (bcprov-jdk18on) duplicate multi-release OSGI manifest.
+            excludes += "/META-INF/versions/9/OSGI-INF/MANIFEST.MF"
         }
     }
     buildTypes {

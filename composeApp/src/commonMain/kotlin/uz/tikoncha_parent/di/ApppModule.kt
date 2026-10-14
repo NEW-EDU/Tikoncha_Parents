@@ -14,6 +14,9 @@ import uz.tikoncha_parent.data.remote.AvatarApiService
 import uz.tikoncha_parent.data.remote.ChatApiService
 import uz.tikoncha_parent.data.remote.ChatSocketService
 import uz.tikoncha_parent.data.remote.ChildApiService
+import uz.tikoncha_parent.data.remote.LiveApiService
+import uz.tikoncha_parent.data.remote.LiveSignalingService
+import uz.tikoncha_parent.presentation.live.ParentLiveScreenModel
 import uz.tikoncha_parent.data.remote.DeviceApiService
 import uz.tikoncha_parent.data.remote.LoginApiService
 import uz.tikoncha_parent.data.remote.MyCoinsApiService
@@ -159,6 +162,11 @@ val sharedModule = module {
     single { AvatarApiService(get()) }
     single { ChatApiService(get()) }
     single { ChatSocketService(get()) }
+
+    // Live modul (jonli A/V + GPS, ota-ona viewer)
+    single { LiveApiService(get()) }
+    single { LiveSignalingService(get()) }
+    factory { ParentLiveScreenModel(get(), get()) }
     single { DeviceApiService(get()) }
     single { NewApiService(get()) }
     single { MyCoinsApiService(get()) }
