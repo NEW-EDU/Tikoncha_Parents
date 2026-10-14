@@ -1,18 +1,26 @@
+@file:OptIn(ExperimentalForeignApi::class)
+
 package uz.tikoncha_parent.presentation.live
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.Box
+import WebRTC.RTCMTLVideoView
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.interop.UIKitView
 import com.shepeliev.webrtckmp.VideoTrack
+import kotlinx.cinterop.ExperimentalForeignApi
+import platform.UIKit.UIViewContentMode
 
-/**
- * iOS renderer — STUB (follow-up). Real impl: RTCMTLVideoView via UIKitView once the
- * WebRTC cocoapods pod is wired. The Android parent viewer is functional now.
- */
+/** iOS renderer — Metal `RTCMTLVideoView` (WebRTC pod) hosted in Compose via UIKitView. */
 @Composable
 actual fun LiveVideo(videoTrack: VideoTrack, modifier: Modifier) {
-    Box(modifier.fillMaxSize().background(Color.Black))
+    UIKitView(
+        factory = {
+            RTCMTLVideoView().apply {
+                videoContentMode = UIViewContentMode.UIViewContentModeScaleAspectFit
+                videoTrack.addRenderer(this)
+            }
+        },
+        modifier = modifier,
+        onRelease = { videoTrack.removeRenderer(it) },
+    )
 }

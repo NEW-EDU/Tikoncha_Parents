@@ -26,6 +26,9 @@ struct iOSApp: App {
             scopes: ["openid", "profile", "phone", "telegram:bot_access"]
         )
         TelegramAuthBridgeProvider.shared.bridge = TelegramAuthBridgeImpl()
+
+        // --- Live (jonli A/V) Ed25519 — CryptoKit bridge ---
+        LiveEd25519BridgeProvider.shared.bridge = LiveEd25519BridgeImpl()
     }
 
     var body: some Scene {

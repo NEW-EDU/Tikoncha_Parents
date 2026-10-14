@@ -63,10 +63,13 @@ class ParentLiveScreenModel(
         if (childId.isBlank() || sessionId != null) return
         mutableState.update { it.copy(phase = LivePhase.Ringing, childUserId = childId, error = null) }
         screenModelScope.launch {
-            // Identlik: o'z kalitimizni ro'yxatdan o'tkazamiz + bola'ning kalitlarini olamiz
-            LiveSigner.ensure()
-            runCatching {
-                api.registerIdentityKey(IdentityKeyRequest(device_uid = LiveSigner.deviceUid, public_key = LiveSigner.publicKeyB64()))
+            // Identlik: faqat imzolay oladigan platformada o'z kalitimizni ro'yxatdan
+            // o'tkazamiz (aks holda bola bizdan haqiqiy imzo kutib, ulanish uzilardi).
+            if (LiveSigner.isSupported) {
+                LiveSigner.ensure()
+                runCatching {
+                    api.registerIdentityKey(IdentityKeyRequest(device_uid = LiveSigner.deviceUid, public_key = LiveSigner.publicKeyB64()))
+                }
             }
             peerKeys = runCatching { api.peerKeys(childId).data?.keys?.map { it.public_key } }.getOrNull() ?: emptyList()
 

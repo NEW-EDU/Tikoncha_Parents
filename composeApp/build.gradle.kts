@@ -51,6 +51,12 @@ kotlin {
         pod("YandexMapsMobile") {
             version = "4.24.0-lite"
         }
+        // WebRTC (jonli A/V viewer) — webrtc-kmp 0.125.x shu pod'ni talab qiladi.
+        pod("WebRTC-SDK") {
+            version = "125.6422.07"
+            moduleName = "WebRTC"
+            packageName = "WebRTC"
+        }
     }
     
     sourceSets {
@@ -271,3 +277,22 @@ dependencies {
     debugImplementation(compose.uiTooling)
 }
 
+
+// ──────────────────────────────────────────────────────────────────────────────
+// WebRTC-SDK (M125) pod'i IPHONEOS_DEPLOYMENT_TARGET=13.0 e'lon qiladi; Xcode 26+
+// minimumi 15.0. Kotlin cocoapods plugin'ining sintetik post_install'i faqat <12 ni
+// ko'taradi. Shuning uchun podBuild xcodebuild'dan OLDIN sintetik Pods loyihasining
+// deployment target'ini 15.0 ga ko'taramiz (har toza qurilishda ishlaydi).
+tasks.matching { it.name.startsWith("podBuild") }.configureEach {
+    doFirst {
+        val pbxproj = layout.buildDirectory
+            .file("cocoapods/synthetic/ios/Pods/Pods.xcodeproj/project.pbxproj").get().asFile
+        if (pbxproj.exists()) {
+            val patched = pbxproj.readText().replace(
+                Regex("IPHONEOS_DEPLOYMENT_TARGET = (9|10|11|12|13|14)(\\.[0-9]+)?;"),
+                "IPHONEOS_DEPLOYMENT_TARGET = 15.0;",
+            )
+            pbxproj.writeText(patched)
+        }
+    }
+}
