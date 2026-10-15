@@ -5,6 +5,9 @@ import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.presentation.base.multi_phone_input.Country
 import uz.tikoncha_parent.presentation.base.multi_phone_input.DefaultCountry
 
+/** Bog'lash usuli: telefon raqami orqali (eski) yoki telefonsiz ulanish kodi orqali (SIWA uchun ham). */
+enum class LinkMode { PHONE, CODE }
+
 data class AddChildState(
     val phoneNumber: String = "",            // raw digits, max 9
     val selectedCountry: Country = DefaultCountry,
@@ -16,7 +19,9 @@ data class AddChildState(
     val showBindChildTutorial: Boolean = false,  // tutorial card -> header icon
     val error: Outcome.Failure? = null,    // error from Resource.Error
     val showCopiedSnackbar: Boolean = false,  // "Kod nusxalandi" toast
-    val linkedChild: UserInfo? = null        // farzand kodni tasdiqladi -> muvaffaqiyat oynasi
+    val linkedChild: UserInfo? = null,       // farzand kodni tasdiqladi -> muvaffaqiyat oynasi
+    val mode: LinkMode = LinkMode.PHONE,     // tanlangan bog'lash usuli
+    val linkCode: String = "",               // farzand bergan 8 xonali ulanish kodi
 ) {
 
     val fullPhoneNumber : String get() =
@@ -37,4 +42,8 @@ data class AddChildState(
 
     val canRequestCode: Boolean
         get() = isPhoneValid && !isLoading && !showCodeCard
+
+    /** Ulanish kodi 8 xonali bo'lsa va yuklanmayotgan bo'lsa — ulashga tayyor. */
+    val canRedeem: Boolean
+        get() = linkCode.length == 8 && !isLoading
 }

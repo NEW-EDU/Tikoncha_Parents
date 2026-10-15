@@ -7,6 +7,8 @@ import io.ktor.http.HttpMethod
 import uz.tikoncha_parent.data.remote.model.AddChildRequest
 import uz.tikoncha_parent.data.remote.model.AddChildResponse
 import uz.tikoncha_parent.data.remote.model.ApiEnvelope
+import uz.tikoncha_parent.data.remote.model.RedeemLinkCodeRequest
+import uz.tikoncha_parent.data.remote.model.RedeemLinkCodeResponse
 import uz.tikoncha_parent.data.remote.model.AppUsageDataDto
 import uz.tikoncha_parent.data.remote.model.ChildrenLocationResponse
 import uz.tikoncha_parent.data.remote.model.ChildrenResponse
@@ -19,6 +21,16 @@ class ChildApiService(private val client: HttpClient) {
         client.safeRequest(
             method = HttpMethod.Post,
             url = "users/add-child",
+            block = {
+                setBody(request)
+            }
+        )
+
+    /** Farzand yaratgan 8 xonali telefonsiz ulanish kodini kiritib bog'lanish. */
+    suspend fun redeemLinkCode(request: RedeemLinkCodeRequest): RedeemLinkCodeResponse =
+        client.safeRequest(
+            method = HttpMethod.Post,
+            url = "users/link-code/redeem",
             block = {
                 setBody(request)
             }
