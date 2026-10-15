@@ -18,5 +18,6 @@ data class ParentLiveState(
 sealed interface ParentLiveEvent {
     data class SetChildId(val id: String) : ParentLiveEvent
     data class RingChild(val childUserId: String) : ParentLiveEvent
+    data class JoinSession(val sessionId: String, val childUserId: String) : ParentLiveEvent
     data object End : ParentLiveEvent
 }

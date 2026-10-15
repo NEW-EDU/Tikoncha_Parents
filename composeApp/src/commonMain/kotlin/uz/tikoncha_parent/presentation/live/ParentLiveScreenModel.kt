@@ -57,7 +57,36 @@ class ParentLiveScreenModel(
         when (event) {
             is ParentLiveEvent.SetChildId -> mutableState.update { it.copy(childUserId = event.id) }
             is ParentLiveEvent.RingChild -> ringChild(event.childUserId)
+            is ParentLiveEvent.JoinSession -> joinSession(event.sessionId, event.childUserId)
             ParentLiveEvent.End -> end()
+        }
+    }
+
+    /**
+     * Join an EXISTING session created by the child (incoming SOS, or a parent request
+     * opened from a push). No session is created here — we just register our key, fetch
+     * the child's keys + TURN, connect the socket and set up the peer. The child is
+     * already capturing and re-offers every few seconds, so its offer reaches us and
+     * [onOffer] answers it.
+     */
+    private fun joinSession(sid: String, childId: String) {
+        if (childId.isBlank() || sessionId != null) return
+        mutableState.update { it.copy(phase = LivePhase.Connecting, childUserId = childId, error = null) }
+        screenModelScope.launch {
+            if (LiveSigner.isSupported) {
+                LiveSigner.ensure()
+                runCatching {
+                    api.registerIdentityKey(IdentityKeyRequest(device_uid = LiveSigner.deviceUid, public_key = LiveSigner.publicKeyB64()))
+                }
+            }
+            peerKeys = runCatching { api.peerKeys(childId).data?.keys?.map { it.public_key } }.getOrNull() ?: emptyList()
+
+            val turn = runCatching { api.turnCredentials() }.getOrNull()?.takeIf { it.success }?.data
+                ?: return@launch fail("turn_failed")
+
+            sessionId = sid
+            signaling.connect()
+            setupPeer(turn)
         }
     }
 

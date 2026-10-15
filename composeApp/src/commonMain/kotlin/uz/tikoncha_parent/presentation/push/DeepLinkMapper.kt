@@ -11,6 +11,13 @@ fun FcmPayload.toDeepLink(): DeepLink? = when (type) {
     }
     PayloadType.PARENTAL_REQUEST -> DeepLink.ParentalRequest
     PayloadType.STRICT_DISABLE -> DeepLink.StrictDisable
+    PayloadType.LIVE_RING -> body?.live?.let { l ->
+        val sid = l.sessionId
+        val child = l.childUserId ?: l.from
+        if (!sid.isNullOrBlank() && !child.isNullOrBlank()) {
+            DeepLink.Live(sessionId = sid, childId = child, kind = l.kind)
+        } else null
+    }
     PayloadType.NEWS -> DeepLink.General(title, message)   // hozircha general
     PayloadType.GENERAL -> DeepLink.General(title, message)
 }

@@ -33,7 +33,10 @@ import cafe.adriel.voyager.navigator.LocalNavigator
  * Ota-ona jonli ko'rish ekrani — bolani chaqiradi (parent request) va bola rozi bo'lgach
  * jonli video + ovoz + GPS'ni oladi (P2P WebRTC). Veb-viewer o'rniga native variant.
  */
-class ParentLiveScreen(private val childUserId: String? = null) : Screen {
+class ParentLiveScreen(
+    private val childUserId: String? = null,
+    private val joinSessionId: String? = null,
+) : Screen {
 
     @Composable
     override fun Content() {
@@ -41,12 +44,18 @@ class ParentLiveScreen(private val childUserId: String? = null) : Screen {
         val state by screenModel.state.collectAsState()
         val navigator = LocalNavigator.current
 
-        // Entered from the map with a child already chosen → ring immediately,
-        // no second "Bolani chaqirish" tap. (ringChild self-guards against re-ring.)
-        LaunchedEffect(childUserId) {
-            if (!childUserId.isNullOrBlank()) {
-                screenModel.onEvent(ParentLiveEvent.SetChildId(childUserId))
-                screenModel.onEvent(ParentLiveEvent.RingChild(childUserId))
+        LaunchedEffect(childUserId, joinSessionId) {
+            when {
+                // Opened from an incoming SOS/ring push → join the existing session
+                // (the child is already capturing and re-offering).
+                !joinSessionId.isNullOrBlank() && !childUserId.isNullOrBlank() ->
+                    screenModel.onEvent(ParentLiveEvent.JoinSession(joinSessionId, childUserId))
+                // Entered from the map with a child already chosen → ring immediately,
+                // no second "Bolani chaqirish" tap. (ringChild self-guards against re-ring.)
+                !childUserId.isNullOrBlank() -> {
+                    screenModel.onEvent(ParentLiveEvent.SetChildId(childUserId))
+                    screenModel.onEvent(ParentLiveEvent.RingChild(childUserId))
+                }
             }
         }
 

@@ -16,6 +16,13 @@ object AndroidDeepLinkParser {
 
             DeepLinks.Host.PARENTAL_REQUEST -> DeepLink.ParentalRequest
             DeepLinks.Host.STRICT_DISABLE -> DeepLink.StrictDisable
+            DeepLinks.Host.LIVE -> {
+                val sid = uri.getQueryParameter(DeepLinks.Param.SESSION_ID)
+                val child = uri.getQueryParameter(DeepLinks.Param.CHILD_ID)
+                if (!sid.isNullOrBlank() && !child.isNullOrBlank()) {
+                    DeepLink.Live(sessionId = sid, childId = child, kind = uri.getQueryParameter(DeepLinks.Param.KIND))
+                } else null
+            }
             DeepLinks.Host.HOME -> DeepLink.General()
             else -> null
         }

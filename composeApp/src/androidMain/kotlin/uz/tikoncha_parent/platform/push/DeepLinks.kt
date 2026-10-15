@@ -11,12 +11,16 @@ object DeepLinks {
         const val CHAT = "chat"
         const val PARENTAL_REQUEST = "parental_request"
         const val STRICT_DISABLE = "strict_disable"
+        const val LIVE = "live"
         const val HOME = "home"
     }
 
     object Param {
         const val CHAT_ID = "chatId"
         const val CHAT_TITLE = "chatTitle"
+        const val SESSION_ID = "sessionId"
+        const val CHILD_ID = "childId"
+        const val KIND = "kind"
     }
 
     fun uri(link: DeepLink): Uri = when (link) {
@@ -26,6 +30,11 @@ object DeepLinks {
         }
         DeepLink.ParentalRequest -> build(Host.PARENTAL_REQUEST)
         DeepLink.StrictDisable -> build(Host.STRICT_DISABLE)
+        is DeepLink.Live -> build(Host.LIVE) {
+            appendQueryParameter(Param.SESSION_ID, link.sessionId)
+            appendQueryParameter(Param.CHILD_ID, link.childId)
+            link.kind?.let { appendQueryParameter(Param.KIND, it) }
+        }
         is DeepLink.General -> build(Host.HOME)
     }
 

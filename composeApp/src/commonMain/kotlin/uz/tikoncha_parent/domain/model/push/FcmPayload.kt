@@ -14,6 +14,15 @@ data class FcmPayload(
 @Serializable
 data class FcmPayloadBody(
     val message: MessageBlock? = null,
+    val live: LiveBlock? = null,
+)
+
+@Serializable
+data class LiveBlock(
+    @SerialName("session_id") val sessionId: String? = null,
+    val kind: String? = null,                               // "SOS" | "PARENT_REQUEST"
+    val from: String? = null,                               // initiator user id
+    @SerialName("child_user_id") val childUserId: String? = null,
 )
 
 @Serializable

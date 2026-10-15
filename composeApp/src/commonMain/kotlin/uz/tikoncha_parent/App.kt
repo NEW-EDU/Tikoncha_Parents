@@ -24,6 +24,7 @@ import uz.tikoncha_parent.platform.Logger
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.chat.chat_list.ChatScreen
 import uz.tikoncha_parent.presentation.chat.chat_room.ChatRoomScreen
+import uz.tikoncha_parent.presentation.live.ParentLiveScreen
 import uz.tikoncha_parent.presentation.login.LoginScreen
 import uz.tikoncha_parent.presentation.map.MapKitInitializer
 import uz.tikoncha_parent.presentation.model.ChatType
@@ -123,6 +124,10 @@ private fun initialStackFor(link: DeepLink?): List<Screen>? = when (link) {
     DeepLink.ParentalRequest -> listOf(NewHomeScreen(), ProtectionScreen())
     // ⬇️ StrictDisable ekraniga moslang (hozircha ProtectionScreen)
     DeepLink.StrictDisable -> listOf(NewHomeScreen(), ProtectionScreen())
+    is DeepLink.Live -> listOf(
+        NewHomeScreen(),
+        ParentLiveScreen(joinSessionId = link.sessionId, childUserId = link.childId),
+    )
     is DeepLink.General, null -> null
 }
 
