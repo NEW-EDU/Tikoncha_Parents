@@ -2,6 +2,7 @@ package uz.tikoncha_parent.presentation.live
 
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import com.shepeliev.webrtckmp.AudioStreamTrack
 import com.shepeliev.webrtckmp.IceCandidate
 import com.shepeliev.webrtckmp.IceConnectionState
 import com.shepeliev.webrtckmp.IceServer
@@ -48,6 +49,7 @@ class ParentLiveScreenModel(
     private var pc: PeerConnection? = null
     private var sessionId: String? = null
     private var peerKeys: List<String> = emptyList()
+    private var remoteAudio: AudioStreamTrack? = null
 
     init { listenSignaling() }
 
@@ -94,11 +96,20 @@ class ParentLiveScreenModel(
         val conn = PeerConnection(RtcConfiguration(iceServers = iceServers))
         pc = conn
 
+        // Qabul qilinayotgan ovozni karnayga yo'naltiramiz (iOS'da aks holda earpiece'da ketadi).
+        runCatching { LiveAudio.startPlayback() }
+
         screenModelScope.launch { conn.onIceCandidate.collect { sendIce(it) } }
         screenModelScope.launch {
             conn.onTrack.collect { ev ->
-                (ev.track as? VideoStreamTrack)?.let { track ->
-                    mutableState.update { it.copy(videoTrack = track) }
+                when (val t = ev.track) {
+                    is VideoStreamTrack -> mutableState.update { it.copy(videoTrack = t) }
+                    is AudioStreamTrack -> {
+                        // Remote ovoz track'i: faol holatda ushlab turamiz (GC va disable'dan saqlab).
+                        t.enabled = true
+                        remoteAudio = t
+                    }
+                    else -> {}
                 }
             }
         }
@@ -175,6 +186,8 @@ class ParentLiveScreenModel(
     private fun end() {
         val sid = sessionId
         sessionId = null
+        remoteAudio = null
+        runCatching { LiveAudio.stop() }
         runCatching { pc?.close() }
         pc = null
         screenModelScope.launch {
@@ -197,6 +210,8 @@ class ParentLiveScreenModel(
 
     override fun onDispose() {
         super.onDispose()
+        remoteAudio = null
+        runCatching { LiveAudio.stop() }
         runCatching { pc?.close() }
         signaling.disconnect()
     }

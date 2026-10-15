@@ -4,9 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -78,10 +82,12 @@ class ParentLiveScreen(private val childUserId: String? = null) : Screen {
                 }
             }
 
-            // GPS overlay
+            // GPS overlay — status bar / Dynamic Island'dan pastda
             state.geo?.let { g ->
                 Box(
-                    modifier = Modifier.align(Alignment.TopCenter).padding(16.dp)
+                    modifier = Modifier.align(Alignment.TopCenter)
+                        .windowInsetsPadding(WindowInsets.statusBars)
+                        .padding(16.dp)
                         .background(Color(0xCC000000), RoundedCornerShape(10.dp)).padding(horizontal = 12.dp, vertical = 8.dp)
                 ) {
                     Text("📍 ${fmt(g.lat)}, ${fmt(g.lng)}", color = Color.White)
@@ -92,7 +98,9 @@ class ParentLiveScreen(private val childUserId: String? = null) : Screen {
             if (state.phase == LivePhase.Connecting || state.phase == LivePhase.Active || track != null) {
                 Button(
                     onClick = { screenModel.onEvent(ParentLiveEvent.End) },
-                    modifier = Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(16.dp),
+                    modifier = Modifier.align(Alignment.BottomCenter).fillMaxWidth()
+                        .windowInsetsPadding(WindowInsets.navigationBars)
+                        .padding(16.dp),
                 ) { Text("To'xtatish") }
             }
         }
