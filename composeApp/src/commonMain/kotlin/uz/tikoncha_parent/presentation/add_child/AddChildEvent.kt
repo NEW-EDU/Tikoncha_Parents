@@ -7,6 +7,9 @@ sealed interface AddChildEvent {
     data class OnCountryChange(val country: Country) : AddChildEvent
     data object RequestCode : AddChildEvent
     data object RefreshCode : AddChildEvent
+    data class ModeChanged(val mode: LinkMode) : AddChildEvent
+    data class LinkCodeChanged(val value: String) : AddChildEvent
+    data object RedeemCode : AddChildEvent
     data object CodeCopied : AddChildEvent
     data object OpenAppLink : AddChildEvent
     data object ShareLink : AddChildEvent

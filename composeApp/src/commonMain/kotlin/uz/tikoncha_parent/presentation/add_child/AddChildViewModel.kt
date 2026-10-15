@@ -14,6 +14,8 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import uz.tikoncha_parent.data.local.AppSettings
+import uz.tikoncha_parent.domain.model.GenderType
+import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.repository.ChildRepository
 import uz.tikoncha_parent.presentation.add_child.AddChildEffect.OpenUrl
@@ -49,6 +51,11 @@ class AddChildViewModel(
             is AddChildEvent.PhoneChanged -> onPhoneChanged(event.value)
             AddChildEvent.RequestCode -> requestCode()
             AddChildEvent.RefreshCode -> requestCode()
+            is AddChildEvent.ModeChanged -> _state.update { it.copy(mode = event.mode, error = null) }
+            is AddChildEvent.LinkCodeChanged -> _state.update {
+                it.copy(linkCode = event.value.filter(Char::isDigit).take(8), error = null)
+            }
+            AddChildEvent.RedeemCode -> redeemCode()
             AddChildEvent.CodeCopied -> _state.update { it.copy(showCopiedSnackbar = true) }
             AddChildEvent.DismissSnackbar -> _state.update { it.copy(showCopiedSnackbar = false) }
             AddChildEvent.DismissError -> _state.update { it.copy(error = null) }
@@ -112,6 +119,40 @@ class AddChildViewModel(
                         )
                     }
                 }
+            }
+        }
+    }
+
+    /**
+     * Telefonsiz ulanish: farzand o'z ilovasida yaratgan 8 xonali kodni kiritib bog'lanadi.
+     * Muvaffaqiyatda farzandlar ro'yxatidan bog'langan bolani topib, muvaffaqiyat oynasini ochamiz.
+     */
+    private fun redeemCode() {
+        val code = _state.value.linkCode
+        if (code.length != 8 || _state.value.isLoading) return
+
+        screenModelScope.launch {
+            _state.update { it.copy(isLoading = true, error = null, linkedChild = null) }
+
+            when (val res = childRepository.redeemLinkCode(code)) {
+                is Outcome.Success -> {
+                    val childId = res.data
+                    val linked = (childRepository.children() as? Outcome.Success)?.data
+                        ?.also { AppSettings.syncSelectedChildWith(it) }
+                        ?.firstOrNull { it.userId == childId }
+                        ?: UserInfo(
+                            userId = childId,
+                            phoneNumber = "",
+                            fullName = "",
+                            name = "",
+                            lastName = "",
+                            patronymic = "",
+                            genderType = GenderType.MALE,
+                        )
+                    _state.update { it.copy(isLoading = false, linkedChild = linked) }
+                }
+
+                is Outcome.Failure -> _state.update { it.copy(error = res, isLoading = false) }
             }
         }
     }

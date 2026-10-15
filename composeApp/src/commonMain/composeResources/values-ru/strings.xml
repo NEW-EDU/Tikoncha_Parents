@@ -1174,4 +1174,9 @@
     <string name="ap_card_remove_in_use_body">С карты %1$s списывается автоплатёж. После удаления автоплатёж остановится, а данные карты будут полностью удалены с сервера. PLUS действует до конца оплаченного срока.</string>
     <string name="apple_orqali_kirish">Войти через Apple</string>
     <string name="google_orqali_kirish">Войти через Google</string>
+    <string name="ulash_usuli_telefon">Номер телефона</string>
+    <string name="ulash_usuli_kod">Код привязки</string>
+    <string name="ulanish_kodini_kiriting">Введите код привязки</string>
+    <string name="ulanish_kodi_tavsif">Ребёнок создаёт 8-значный код в своём приложении через «Показать мой код». Введите этот код.</string>
+    <string name="ulash_tugma">Привязать</string>
 </resources>
