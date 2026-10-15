@@ -3,6 +3,8 @@ package uz.tikoncha_parent.platform.push
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.PowerManager
+import android.provider.Settings
 import uz.tikoncha_parent.IncomingSosActivity
 import uz.tikoncha_parent.MainActivity
 import uz.tikoncha_parent.data.service.AndroidNotificationHelper
@@ -41,6 +43,9 @@ class AndroidPushNotifier(private val context: Context): PushNotifier{
         }
         val flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         val fsPi = PendingIntent.getActivity(context, notifId, intent, flags)
+
+        // Always post the full-screen-intent notification — it takes over the screen
+        // when the device is LOCKED, and is the heads-up fallback otherwise.
         AndroidNotificationHelper.showIncomingSos(
             ctx = context,
             title = notification.title,
@@ -48,7 +53,18 @@ class AndroidPushNotifier(private val context: Context): PushNotifier{
             fullScreenPi = fsPi,
             notificationId = notifId,
         )
+
+        // When the screen is ON, an FSI is shown only as a heads-up. To ring full-screen
+        // then (unlocked / app backgrounded) we must start the activity directly, which
+        // a background app may do only with "appear on top" (SYSTEM_ALERT_WINDOW).
+        if (isScreenInteractive() && Settings.canDrawOverlays(context)) {
+            runCatching { context.startActivity(intent) }
+        }
     }
+
+    private fun isScreenInteractive(): Boolean = runCatching {
+        (context.getSystemService(Context.POWER_SERVICE) as PowerManager).isInteractive
+    }.getOrDefault(true)
 
 
     private fun pendingIntentFor(link: DeepLink): PendingIntent{

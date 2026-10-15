@@ -9,8 +9,9 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- Full-screen incoming SOS "ring" over the lock screen -->
+    <!-- Full-screen incoming SOS "ring" over the lock screen + when unlocked/backgrounded -->
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <!-- Tebranish: tizim "Teginish tebranishi" o'chiq bo'lsa AppHaptics o'z vibratoridan foydalanadi -->
     <uses-permission android:name="android.permission.VIBRATE"/>
 
