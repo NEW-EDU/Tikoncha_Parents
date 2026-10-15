@@ -39,8 +39,13 @@ class ParentLiveScreen(private val childUserId: String? = null) : Screen {
         val screenModel = koinScreenModel<ParentLiveScreenModel>()
         val state by screenModel.state.collectAsState()
 
+        // Entered from the map with a child already chosen → ring immediately,
+        // no second "Bolani chaqirish" tap. (ringChild self-guards against re-ring.)
         LaunchedEffect(childUserId) {
-            if (!childUserId.isNullOrBlank()) screenModel.onEvent(ParentLiveEvent.SetChildId(childUserId))
+            if (!childUserId.isNullOrBlank()) {
+                screenModel.onEvent(ParentLiveEvent.SetChildId(childUserId))
+                screenModel.onEvent(ParentLiveEvent.RingChild(childUserId))
+            }
         }
 
         Box(Modifier.fillMaxSize().background(Color.Black)) {
