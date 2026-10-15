@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
 
 /**
  * Ota-ona jonli ko'rish ekrani — bolani chaqiradi (parent request) va bola rozi bo'lgach
@@ -38,6 +39,7 @@ class ParentLiveScreen(private val childUserId: String? = null) : Screen {
     override fun Content() {
         val screenModel = koinScreenModel<ParentLiveScreenModel>()
         val state by screenModel.state.collectAsState()
+        val navigator = LocalNavigator.current
 
         // Entered from the map with a child already chosen → ring immediately,
         // no second "Bolani chaqirish" tap. (ringChild self-guards against re-ring.)
@@ -46,6 +48,12 @@ class ParentLiveScreen(private val childUserId: String? = null) : Screen {
                 screenModel.onEvent(ParentLiveEvent.SetChildId(childUserId))
                 screenModel.onEvent(ParentLiveEvent.RingChild(childUserId))
             }
+        }
+
+        // Session finished (ended / declined / timed out) → leave the screen instead
+        // of dropping back to the manual "Bolani chaqirish" form.
+        LaunchedEffect(state.phase) {
+            if (state.phase == LivePhase.Ended) navigator?.let { if (it.canPop) it.pop() }
         }
 
         Box(Modifier.fillMaxSize().background(Color.Black)) {
