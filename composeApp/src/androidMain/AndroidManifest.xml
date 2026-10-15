@@ -9,6 +9,8 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Full-screen incoming SOS "ring" over the lock screen -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT"/>
     <!-- Tebranish: tizim "Teginish tebranishi" o'chiq bo'lsa AppHaptics o'z vibratoridan foydalanadi -->
     <uses-permission android:name="android.permission.VIBRATE"/>
 
@@ -83,11 +85,22 @@
 
         </activity>
 
+        <activity
+            android:name=".IncomingSosActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:excludeFromRecents="true"
+            android:screenOrientation="portrait"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            tools:ignore="LockedOrientationActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <property
             android:name="android.app.isMonitoringTool"
             android:value="parental_control" />
-        
-        
+
+
         <service android:name=".data.service.AppFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
