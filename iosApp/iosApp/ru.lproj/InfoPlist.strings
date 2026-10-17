@@ -1,0 +1,3 @@
+"CFBundleDisplayName" = "Tikoncha Parent";
+"NSLocationWhenInUseUsageDescription" = "Доступ к геолокации нужен, чтобы видеть на карте местоположение ребёнка и ваше.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Доступ к геолокации нужен, чтобы видеть на карте местоположение ребёнка и ваше.";

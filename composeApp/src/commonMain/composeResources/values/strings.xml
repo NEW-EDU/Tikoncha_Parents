@@ -791,6 +791,11 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
         <item quantity="other">%1$d daqiqa</item>
     </plurals>
 
+    <plurals name="apps_restricted">
+        <item quantity="one">%1$d ta ilova cheklangan</item>
+        <item quantity="other">%1$d ta ilova cheklangan</item>
+    </plurals>
+
     <plurals name="hours">
         <item quantity="one">%1$d soat</item>
         <item quantity="other">%1$d soat</item>

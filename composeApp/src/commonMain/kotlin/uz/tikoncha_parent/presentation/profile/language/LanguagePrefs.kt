@@ -1,6 +1,8 @@
 package uz.tikoncha_parent.presentation.profile.language
 
 import com.russhwolf.settings.Settings
+import uz.tikoncha_parent.data.local.AppSettings
+import uz.tikoncha_parent.platform.deviceLanguageCode
 import com.russhwolf.settings.set
 import uz.tikoncha_parent.presentation.domain.model.LanguageType
 
@@ -17,7 +19,17 @@ object LanguagePrefs {
     // Qulaylik uchun LanguageType bilan ishlaydigan helperlar:
     fun save(type: LanguageType) = saveCode(type.languageCode)
     fun loadOrDefault(default: LanguageType = LanguageType.UZ): LanguageType {
-        return LanguageType.getLangType(loadCodeOrNull())
+        loadCodeOrNull()?.let { return LanguageType.getLangType(it) }
+        // Til hali tanlanmagan. Avval kirgan foydalanuvchida avvalgidek o'zbek. Yangi o'rnatishda — telefon tili:
+        // o'zbek yoki rus, boshqa tillarda ingliz (global brend Hoglt). Bir marta saqlanadi.
+        if (AppSettings.hasUserLogin) return default
+        val device = when (deviceLanguageCode()) {
+            "uz" -> LanguageType.UZ
+            "ru" -> LanguageType.RU
+            else -> LanguageType.EN
+        }
+        save(device)
+        return device
     }
 
 

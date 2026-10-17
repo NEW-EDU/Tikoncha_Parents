@@ -1,0 +1,4 @@
+/* Global brand: outside Uzbek and Russian the parent app is called Hoglt Parent. */
+"CFBundleDisplayName" = "Hoglt Parent";
+"NSLocationWhenInUseUsageDescription" = "Location access lets you see your child's location and your own on the map.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Location access lets you see your child's location and your own on the map.";

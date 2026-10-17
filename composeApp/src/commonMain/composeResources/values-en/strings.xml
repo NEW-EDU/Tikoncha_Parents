@@ -42,7 +42,7 @@
     <string name="yangi_vazifa_qo_shish">Add new task</string>
     <string name="vazifa_nomi">Task name</string>
     <string name="vazifa_malumotlari">Task details</string>
-    <string name="app_namee">Tikoncha Parents</string>
+    <string name="app_namee">Hoglt Parent</string>
     <string name="vazifa_haqida_qisqacha_ma_lumot">Brief information about the task</string>
     <string name="tugatish_sanasi">End date</string>
     <string name="muhim">Important</string>
@@ -236,7 +236,7 @@
     <string name="tanga">%1$d Coins</string>
     <string name="xozr_sizning_obunangiz">Your current subscription</string>
     <string name="ilovaning_barcha_funksiyalaridan_foydalanish_uchun_pro_versiyasini_sotib_oling">We recommend purchasing the Pro or Plus version to access all app features</string>
-    <string name="baxtli_foydalanuvchimisiz">Join our happy users and use Tikoncha to its full potential with all its features.</string>
+    <string name="baxtli_foydalanuvchimisiz">Join our happy users and use Hoglt to its full potential with all its features.</string>
     <string name="som">soums</string>
     <string name="foyda">Benefit</string>
     <string name="imkoniyatlar">Features</string>
@@ -270,11 +270,11 @@
     <string name="jarayonda">In progress</string>
     <string name="tasdiqlandi">Approved</string>
     <string name="hisobdan_chiqishni_tasdiqlaysizmi">Confirm logout?</string>
-    <string name="farzand_chiqish_ruxsat">Your child wants to log out of the Tikoncha account. Do you confirm the permission?</string>
+    <string name="farzand_chiqish_ruxsat">Your child wants to log out of the Hoglt account. Do you confirm the permission?</string>
     <string name="hisobdan_chiqishni_bekor_qilasizmi">Cancel logout?</string>
     <string name="hisobdan_chiqishni_bekor_qilish">Cancel logout</string>
     <string name="ilovani_ochirishni_tasdiqlaysizmi">Confirm deleting the app?</string>
-    <string name="farzand_ilovani_ochirmoqchi">Your child wants to delete the Tikoncha app. If you allow it, restrictions and protection in the app will be temporarily disabled and it will become possible to uninstall the app. Do you confirm the permission?</string>
+    <string name="farzand_ilovani_ochirmoqchi">Your child wants to delete the Hoglt app. If you allow it, restrictions and protection in the app will be temporarily disabled and it will become possible to uninstall the app. Do you confirm the permission?</string>
     <string name="ha">Yes</string>
     <string name="yoq">No</string>
     <string name="ilovani_ochirish_uchun_sorov_kerak">You need to send a request to delete the app</string>
@@ -370,7 +370,7 @@ This information is used only for these features and is not shared with third pa
     <string name="noto_g_ri_url_format">Invalid URL format</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">This site is already in the list</string>
     <string name="to_liq_nazoratni_yoqing">Enable full control</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Manage apps, time and usage through Tikoncha. With Plus, work without restrictions and enable maximum protection via Shield mode.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Manage apps, time and usage through Hoglt. With Plus, work without restrictions and enable maximum protection via Shield mode.</string>
     <string name="plus_imkoniyatlarini_ochish">Unlock Plus features</string>
     <string name="jadval_nomi">Schedule name</string>
     <string name="saytlar">Sites</string>
@@ -383,7 +383,7 @@ This information is used only for these features and is not shared with third pa
     <string name="tanga_s">%1$s coins</string>
     <string name="coins_help_use_title">Bilimdon AI coins</string>
     <string name="coins_help_earn_title">How to earn coins?</string>
-    <string name="coins_help_use_intro">Bilimdon AI coins are digital units used to interact with Bilimdon AI inside Tikoncha.</string>
+    <string name="coins_help_use_intro">Bilimdon AI coins are digital units used to interact with Bilimdon AI inside Hoglt.</string>
     <string name="coins_help_earn_intro">You can earn Bilimdon AI coins in several ways:</string>
     <string-array name="coins_help_use_bullets">
         <item>Asking Bilimdon AI questions</item>
@@ -409,11 +409,11 @@ This information is used only for these features and is not shared with third pa
     <string name="qanday_qilib_ishlatish">How to use</string>
     <string name="qanday_qilib_ishlab_topish">How to earn</string>
     <string name="yangilanish_mavjud">Update available</string>
-    <string name="app_update_desc">Tikoncha has become even more stable and convenient. Update the app to use the latest features.</string>
+    <string name="app_update_desc">Hoglt has become even more stable and convenient. Update the app to use the latest features.</string>
     <string name="yangilash">Update</string>
     <string name="sahifaga_otish">Go to page</string>
     <string name="farzand_ulan_di">Your child has been successfully connected, you can freely monitor their digital life</string>
-    <string name="confirm_code_instruction">Your child needs to enter this code in the "Add parent" section of the "Tikoncha" app.</string>
+    <string name="confirm_code_instruction">Your child needs to enter this code in the "Add parent" section of the "Hoglt" app.</string>
 
     <string name="plus_obnuna_kerak">PLUS subscription required</string>
     <string name="toliq_nazorat_statistika">Full control and statistics</string>
@@ -441,17 +441,17 @@ This information is used only for these features and is not shared with third pa
     <string name="uzs">UZS</string>
     <string name="about_text_html">
         <![CDATA[
-        <strong>Tikoncha</strong> is a modern technology platform aimed at creating a safe digital environment for children and teenagers.<br/><br/>
+        <strong>Hoglt</strong> is a modern technology platform aimed at creating a safe digital environment for children and teenagers.<br/><br/>
 
         In cooperation with parents, schools and the community, we help children use smartphones and the internet in a <b>moderate</b>, <b>conscious</b> and <b>useful</b> way.<br/>
-        With Tikoncha, your child's digital activity is under control, while <b>trust</b> and <b>respect</b> are preserved.<br/><br/>
+        With Hoglt, your child's digital activity is under control, while <b>trust</b> and <b>respect</b> are preserved.<br/><br/>
 
         <b>With our app:</b><br/>
         • distracting apps and content are restricted,<br/>
         • opportunities that serve education and development are supported,<br/>
         • the child's safety and daily balance are ensured.<br/><br/>
 
-        <b>Tikoncha</b> is not just a control tool.<br/>
+        <b>Hoglt</b> is not just a control tool.<br/>
         It is a step toward shaping digital culture in child-rearing, responsible technology and a healthy future.<br/><br/>
 
         <i>We believe:</i><br/>
@@ -475,7 +475,7 @@ This information is used only for these features and is not shared with third pa
     <string name="tracking_permission_grant">Grant permission</string>
 
     <string name="tracking_permission_settings_title">Grant permission from Settings</string>
-    <string name="tracking_permission_settings_message">You can enable Location permission from Settings. Device Settings → Tikoncha → Location → Allow</string>
+    <string name="tracking_permission_settings_message">You can enable Location permission from Settings. Device Settings → Hoglt Parent → Location → Allow</string>
     <string name="tracking_permission_settings_open">Open Settings</string>
 
     <string name="tracking_gps_off_title">GPS is off</string>
@@ -512,13 +512,13 @@ This information is used only for these features and is not shared with third pa
     <string name="faol_vazifa_yo_q">No active tasks</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">No tasks for your child</string>
 
-    <string name="about_intro">Tikoncha is a modern technology platform aimed at creating a safe digital environment for children and teenagers.</string>
-    <string name="about_body">In cooperation with parents, schools and the community, we help children use smartphones and the internet in a moderate, conscious and useful way. With Tikoncha, your child's digital activity is under control, while trust and respect are preserved.</string>
+    <string name="about_intro">Hoglt is a modern technology platform aimed at creating a safe digital environment for children and teenagers.</string>
+    <string name="about_body">In cooperation with parents, schools and the community, we help children use smartphones and the internet in a moderate, conscious and useful way. With Hoglt, your child's digital activity is under control, while trust and respect are preserved.</string>
     <string name="about_features_title">With our app:</string>
     <string name="about_feature_1">distracting apps and content are restricted</string>
     <string name="about_feature_2">opportunities that serve education and development are supported</string>
     <string name="about_feature_3">the child's safety and daily balance are ensured</string>
-    <string name="about_mission">Tikoncha is not just a control tool. It is a step toward shaping digital culture in child-rearing, responsible technology and a healthy future.</string>
+    <string name="about_mission">Hoglt is not just a control tool. It is a step toward shaping digital culture in child-rearing, responsible technology and a healthy future.</string>
     <string name="about_belief">Technology should serve not to restrict children, but to guide them in the right direction.</string>
     <string name="hali_vazifa_yoq">You haven't given any tasks yet</string>
     <string name="ota_ona_vazifalari_desc">The tasks you have given to your child will appear here</string>
@@ -542,14 +542,14 @@ This information is used only for these features and is not shared with third pa
     <string name="ulashish">Share</string>
 
     <string name="tikoncha_title_top">What is</string>
-    <string name="tikoncha_title_bottom">Tikoncha?</string>
+    <string name="tikoncha_title_bottom">Hoglt?</string>
     <string name="connect_child_line1">How does</string>
     <string name="connect_child_line2">a child connect?</string>
     <string name="video_qollanma">Video guide</string>
     <string name="video_qollanma_error_message">Unfortunately, no video guide was found. Please try again later</string>
     <string name="farzandingiz_ismi">Your child's name</string>
     <string name="farzand_uchun_obuna">Subscription for child</string>
-    <string name="farzand_uchun_obuna_message">Your child is not registered yet. To activate the subscription, enter their phone number — we will create an account for your child and link the subscription. Once your child registers in the Tikoncha app, the subscription will be activated automatically.</string>
+    <string name="farzand_uchun_obuna_message">Your child is not registered yet. To activate the subscription, enter their phone number — we will create an account for your child and link the subscription. Once your child registers in the Hoglt app, the subscription will be activated automatically.</string>
     <string name="tolovlar_tarixi">Payment history</string>
     <!-- ===== Payment History Screen ===== -->
     <string name="tolovlar_tarixi_bos">Payment history is empty</string>
@@ -558,7 +558,7 @@ This information is used only for these features and is not shared with third pa
     <string name="xatolik_yuz_berdi">An error occurred</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
-    <string name="tikoncha_plan_format">Tikoncha %1$s</string>
+    <string name="tikoncha_plan_format">Hoglt %1$s</string>
     <string name="tanga_format">%1$s coins</string>
     <string name="tanga_toplami">Coin pack</string>
     <string name="nomalum_tolov">Unknown payment</string>
@@ -601,9 +601,9 @@ This information is used only for these features and is not shared with third pa
     <string name="tasdiqlash_kodi">Verification code</string>
     <string name="ochish">Open</string>
     <string name="farzand_ilovasi">Child app</string>
-    <string name="farzand_ilovasi_info">Install this Tikoncha app on your child's phone.</string>
+    <string name="farzand_ilovasi_info">Install this Hoglt app on your child's phone.</string>
     <string name="kod_nusxalandi">Code copied</string>
-    <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Your child needs to open the Tikoncha app and enter the verification code.</string>
+    <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Your child needs to open the Hoglt app and enter the verification code.</string>
     <string name="bola_hali_bajardim_bosmagan">The child has not yet pressed the "Done" button</string>
     <string name="foydalanilmagan">Unused</string>
     <string name="token_eskirgan">Token expired</string>
@@ -780,6 +780,11 @@ This information is used only for these features and is not shared with third pa
         <item quantity="other">%1$d minutes</item>
     </plurals>
 
+    <plurals name="apps_restricted">
+        <item quantity="one">%1$d app restricted</item>
+        <item quantity="other">%1$d apps restricted</item>
+    </plurals>
+
     <plurals name="hours">
         <item quantity="one">%1$d hour</item>
         <item quantity="other">%1$d hours</item>
@@ -844,7 +849,7 @@ This information is used only for these features and is not shared with third pa
     <string name="stat_reenable_message">Quick block is off. Blocking this app turns it back on, and the other apps on its list will be blocked too: %1$d.</string>
     <string name="stat_reenable_confirm">Block</string>
     <string name="stat_quick_paywall_title">Subscription required</string>
-    <string name="stat_quick_paywall_message">Blocking an app with one tap requires a Tikoncha Plus subscription.</string>
+    <string name="stat_quick_paywall_message">Blocking an app with one tap requires a Hoglt Plus subscription.</string>
 
     <!-- Tezkor blok ekrani -->
     <string name="quick_title">Quick block</string>
@@ -903,8 +908,8 @@ This information is used only for these features and is not shared with third pa
     <string name="policy_paused">Paused</string>
     <string name="policy_quick_blocks">Quick blocks</string>
     <string name="preset_all_apps">All apps</string>
-    <string name="policy_paywall_protection">Content protection works with Tikoncha Plus.</string>
-    <string name="policy_paywall_count">The free plan limits the number of schedules. Tikoncha Plus gives you more.</string>
+    <string name="policy_paywall_protection">Content protection works with Hoglt Plus.</string>
+    <string name="policy_paywall_count">The free plan limits the number of schedules. Hoglt Plus gives you more.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
     <string name="info_nothing">Nothing is selected yet — this schedule blocks nothing.</string>
@@ -997,7 +1002,7 @@ This information is used only for these features and is not shared with third pa
     <string name="editor_paywall_allow">“Only selected stay open” mode is available with Plus.</string>
     <string name="location_child_here">My child’s location</string>
     <string name="protection_section">What is protected</string>
-    <string name="protection_footer">Tikoncha keeps the list up to date.</string>
+    <string name="protection_footer">Hoglt keeps the list up to date.</string>
     <string name="location_show_area">Show area</string>
     <string name="info_sites_shield">Sites are blocked only while Shield mode is on on your child’s phone.</string>
     <string name="protection_shield_note">Content protection works only while Shield mode is on on your child’s phone.</string>
@@ -1041,7 +1046,7 @@ This information is used only for these features and is not shared with third pa
 
     <!-- Karta orqali avto-to‘lov (Paylov) — Student’dan, 2026-10-08 -->
     <string name="ap_method_title">Payment method</string>
-    <string name="ap_plan_line">Tikoncha Plus · %1$s</string>
+    <string name="ap_plan_line">Hoglt Plus · %1$s</string>
     <string name="ap_sum">%1$s UZS</string>
     <string name="ap_card_title">Bank card</string>
     <string name="ap_click_sub">One-time payment</string>
@@ -1067,7 +1072,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ap_expire_caps">VALID THRU</string>
     <string name="ap_expire_invalid">The date is wrong or has passed.</string>
     <string name="ap_only_local_cards">Only UZCARD and HUMO cards are supported for now.</string>
-    <string name="ap_card_security_note">Tikoncha never stores the card number — it is protected by the Paylov payment system. UZCARD and HUMO for now.</string>
+    <string name="ap_card_security_note">Hoglt never stores the card number — it is protected by the Paylov payment system. UZCARD and HUMO for now.</string>
     <string name="ap_get_sms">Get SMS code</string>
     <string name="ap_otp_title">Enter the SMS code</string>
     <string name="ap_otp_sent_to">The code was sent to %1$s</string>
@@ -1106,7 +1111,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ap_checking_sub">Please wait. Don\'t pay again.</string>
     <string name="ap_checking_long">No result yet. You\'ll see the status in “Subscription” — don\'t pay again.</string>
     <string name="ap_result_paid_title">Subscription activated</string>
-    <string name="ap_result_until">Tikoncha Plus is active until %1$s</string>
+    <string name="ap_result_until">Hoglt Plus is active until %1$s</string>
     <string name="ap_result_scheduled_title">Auto-pay is on</string>
     <string name="ap_result_scheduled_sub">Nothing was charged now. First payment: %1$s</string>
     <string name="ap_result_paid">Paid</string>
@@ -1143,7 +1148,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ap_child_plus_until">PLUS · until %1$s</string>
     <string name="ap_consent_year_child">I agree to be charged automatically every year for %1$s.</string>
     <string name="ap_consent_month_child">I agree to be charged automatically every month for %1$s.</string>
-    <string name="ap_result_until_child">Tikoncha Plus for %1$s is active until %2$s</string>
+    <string name="ap_result_until_child">Hoglt Plus for %1$s is active until %2$s</string>
     <string name="ap_primary_note_parent">The primary card pays auto-pay for all your children and is preselected for new payments.</string>
     <string name="ap_other_payer">The other parent pays</string>
     <string name="ap_other_payer_note">Only one parent can run auto-pay for a child. You can’t see their card or amount.</string>

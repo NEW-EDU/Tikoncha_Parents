@@ -151,6 +151,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				uz,
 			);
 			mainGroup = B9DA97A82DC1472C00A4DA20;
 			minimizedProjectReferenceProxies = 1;
@@ -431,7 +433,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Tikoncha Parent";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hoglt Parent";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Bolaning va o'z joylashuvingizni xaritada ko'rish uchun joylashuvga ruxsat kerak";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Bolaning va o'z joylashuvingizni xaritada ko'rish uchun joylashuvga ruxsat kerak";
@@ -475,7 +477,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Tikoncha Parent";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hoglt Parent";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Bolaning va o'z joylashuvingizni xaritada ko'rish uchun joylashuvga ruxsat kerak";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Bolaning va o'z joylashuvingizni xaritada ko'rish uchun joylashuvga ruxsat kerak";
