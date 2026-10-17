@@ -256,3 +256,16 @@ dependencies {
     debugImplementation(compose.uiTooling)
 }
 
+
+// Xcode 27 rejects pod targets below iOS 15, but the Kotlin plugin only raises the synthetic
+// pods to 12.0 (KT-57741) — lift them to 15.0 right after the synthetic project is generated.
+val syntheticPodsDir = layout.buildDirectory.dir("cocoapods/synthetic")
+tasks.matching { it.name.startsWith("podInstallSynthetic") }.configureEach {
+    doLast {
+        syntheticPodsDir.get().asFile.walkTopDown()
+            .filter { it.name == "project.pbxproj" && it.parentFile.name == "Pods.xcodeproj" }
+            .forEach { f ->
+                f.writeText(f.readText().replace(Regex("IPHONEOS_DEPLOYMENT_TARGET = (\\d|1[0-4])\\.\\d+;"), "IPHONEOS_DEPLOYMENT_TARGET = 15.0;"))
+            }
+    }
+}
