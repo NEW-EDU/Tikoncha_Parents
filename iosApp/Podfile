@@ -10,3 +10,15 @@ target 'iosApp' do
 
 
 end
+# Yangi Xcode (min 15.0) eski pod'larning IPHONEOS_DEPLOYMENT_TARGET'ini rad etadi.
+# Barcha pod'larni 15.0 ga ko'taramiz (feat/parent-live'dagi bilan bir xil).
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      current = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
+      if current.nil? || current.split('.').first.to_i < 15
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+      end
+    end
+  end
+end
