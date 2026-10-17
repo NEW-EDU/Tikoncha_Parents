@@ -7,7 +7,10 @@ import tikoncha_parents.composeapp.generated.resources.policy_content_protection
 import tikoncha_parents.composeapp.generated.resources.editor_new_policy
 import uz.tikoncha_parent.domain.model.policy.PolicyName
 import androidx.compose.runtime.Composable
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
+import tikoncha_parents.composeapp.generated.resources.hours
+import tikoncha_parents.composeapp.generated.resources.minutes
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.daqiqa
 import tikoncha_parents.composeapp.generated.resources.list_info_also
@@ -67,12 +70,12 @@ fun PresetKind.title(): String = stringResource(
 fun durationText(minutes: Int): String {
     val h = minutes / 60
     val m = minutes % 60
-    val hour = stringResource(Res.string.soat)
-    val min = stringResource(Res.string.daqiqa)
+    val hours = pluralStringResource(Res.plurals.hours, h, h)
+    val mins = pluralStringResource(Res.plurals.minutes, m, m)
     return when {
-        h > 0 && m > 0 -> "$h $hour $m $min"
-        h > 0 -> "$h $hour"
-        else -> "$m $min"
+        h > 0 && m > 0 -> "$hours $mins"
+        h > 0 -> hours
+        else -> mins
     }
 }
 

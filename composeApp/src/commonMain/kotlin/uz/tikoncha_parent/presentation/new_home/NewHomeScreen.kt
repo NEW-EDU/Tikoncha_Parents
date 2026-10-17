@@ -47,6 +47,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import tikoncha_parents.composeapp.generated.resources.Res
@@ -60,7 +61,7 @@ import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
 import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.home_table
 import tikoncha_parents.composeapp.generated.resources.home_task
-import tikoncha_parents.composeapp.generated.resources.ilova_cheklangan
+import tikoncha_parents.composeapp.generated.resources.apps_restricted
 import tikoncha_parents.composeapp.generated.resources.media_play
 import tikoncha_parents.composeapp.generated.resources.support_icon
 import tikoncha_parents.composeapp.generated.resources.topshiriqlar
@@ -433,7 +434,7 @@ fun NewHomeUi(
                                 style = AppTypography.displaySmRegular
                             )
                             Text(
-                                text = stringResource(Res.string.ilova_cheklangan, tableCount),
+                                text = pluralStringResource(Res.plurals.apps_restricted, tableCount, tableCount),
                                 color = AppColors.text.secondary,
                                 style = AppTypography.titleSmMedium,
                             )

@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Tikoncha Parents</string>
+    <!-- Global brand: Hoglt Parent everywhere except Uzbek (values-uz) and Russian (values-ru). -->
+    <string name="app_name">Hoglt Parent</string>
 </resources>

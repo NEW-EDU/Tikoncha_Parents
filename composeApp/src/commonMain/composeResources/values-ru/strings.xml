@@ -776,6 +776,13 @@
         <item quantity="other">%1$d минуты</item>
     </plurals>
 
+    <plurals name="apps_restricted">
+        <item quantity="one">%1$d приложение ограничено</item>
+        <item quantity="few">%1$d приложения ограничено</item>
+        <item quantity="many">%1$d приложений ограничено</item>
+        <item quantity="other">%1$d приложения ограничено</item>
+    </plurals>
+
     <plurals name="hours">
         <item quantity="one">%1$d час</item>
         <item quantity="few">%1$d часа</item>
