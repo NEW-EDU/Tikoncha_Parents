@@ -1166,7 +1166,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ap_card_remove_stops_autopay">Auto-pay will stop</string>
     <string name="ap_card_remove_in_use_body">Auto-pay charges card %1$s. If you remove it, auto-pay stops and the card data is deleted from our server completely. PLUS stays active until the paid period ends.</string>
     <!-- Tikonchagram qoidalari -->
-    <string name="tg_rules_title">Hoglt Chat</string>
+    <string name="tg_rules_title">Hoglagram</string>
     <string name="tg_rules_card_sub">Telegram: chat and content rules</string>
     <string name="tg_rules_enabled_sub">When off, the Telegram tab in your child's app is closed</string>
     <string name="tg_rules_info_privacy">Messages never go through our servers — these rules are applied on your child's phone.</string>
