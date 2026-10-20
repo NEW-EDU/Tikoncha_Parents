@@ -1,31 +1,25 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package uz.tikoncha_parent.presentation.otp
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Stable
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,37 +29,27 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.input.key.Key
-import androidx.compose.ui.input.key.KeyEventType
-import androidx.compose.ui.input.key.key
-import androidx.compose.ui.input.key.onPreviewKeyEvent
-import androidx.compose.ui.input.key.type
 import androidx.compose.ui.text.TextRange
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import org.jetbrains.compose.ui.tooling.preview.Preview
-import uz.tikoncha_parent.presentation.base.singleClick
-import uz.tikoncha_parent.ui.BorderColor
-import uz.tikoncha_parent.ui.NormalTextSize
 import uz.tikoncha_parent.ui.TextFieldCornerRadius
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
-import uz.tikoncha_parent.ui.theme.extendedColor
-
-// Zero-width space — har bir katakda "placeholder" sifatida turadi
-// iOS da bo'sh katakda backspace ni aniqlash uchun kerak
 
 @Stable
 private fun String.onlyDigits(max: Int): String = filter(Char::isDigit).take(max)
 
+/**
+ * Kod kiritish: BITTA matn maydoni, katakchalar faqat chizilgan. Shuning uchun yozish, o'chirish (backspace
+ * ketma-ket hamma raqamni o'chiradi) va joylash (paste) oddiy maydondagidek ishlaydi — har katakni alohida
+ * bosish shart emas. Bosilgan joydan qat'i nazar kursor oxirida turadi.
+ */
 @Composable
 fun OtpInput(
     otpLength: Int = 6,
@@ -75,168 +59,73 @@ fun OtpInput(
     onOtpUpdate: (String) -> Unit,
 ) {
     val onOtpUpdateLatest by rememberUpdatedState(onOtpUpdate)
+    val focusRequester = remember { FocusRequester() }
+    var value by remember { mutableStateOf(TextFieldValue(otpText?.onlyDigits(otpLength).orEmpty())) }
+    var focused by remember { mutableStateOf(false) }
 
-    val focusRequesters = remember(otpLength) { List(otpLength) { FocusRequester() } }
-    val values = remember(otpLength) {
-        mutableStateListOf(*Array(otpLength) { TextFieldValue("", TextRange(0)) })
-    }
-
-    var activeIndex by remember { mutableIntStateOf(0) }
-
-    fun currentOtp(): String = values.joinToString("") { it.text }
-
-    fun setCell(index: Int, text: String) {
-        val t = text.onlyDigits(1)
-        values[index] = TextFieldValue(t, TextRange(t.length)) // ✅ cursor always end
-    }
-
-    fun clearCell(index: Int) {
-        values[index] = TextFieldValue("", TextRange(0))
-    }
-
-    fun requestFocus(index: Int) {
-        val idx = index.coerceIn(0, otpLength - 1)
-        activeIndex = idx
-        focusRequesters[idx].requestFocus()
-    }
-
-    fun publish() {
-        onOtpUpdateLatest(currentOtp())
-    }
-
-    // Autofocus
     LaunchedEffect(otpLength, autoFocus) {
-        if (autoFocus) requestFocus(0)
+        if (autoFocus) focusRequester.requestFocus()
     }
 
-    // External sync
+    // Tashqaridan kelgan qiymat (masalan, SMS'dan avtomatik to'ldirish yoki tozalash)
     LaunchedEffect(otpText, otpLength) {
         val incoming = otpText?.onlyDigits(otpLength).orEmpty()
-        if (incoming == currentOtp()) return@LaunchedEffect
-
-        for (i in 0 until otpLength) {
-            val ch = incoming.getOrNull(i)?.toString().orEmpty()
-            values[i] = TextFieldValue(ch, TextRange(ch.length))
-        }
-        publish()
-
-        if (incoming.length < otpLength) requestFocus(incoming.length)
-        else requestFocus(otpLength - 1)
+        if (incoming != value.text) value = TextFieldValue(incoming, TextRange(incoming.length))
     }
 
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        repeat(otpLength) { index ->
-            val value = values[index]
-
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .aspectRatio(1f)
-                    .sizeIn(minWidth = 53.dp, minHeight = 56.dp)
-                    .clip(RoundedCornerShape(TextFieldCornerRadius))
-                    .background(AppColors.field.secondary)
-                    .singleClick { requestFocus(index) },
-                contentAlignment = Alignment.Center
+    BasicTextField(
+        value = value,
+        onValueChange = { newValue ->
+            val digits = newValue.text.onlyDigits(otpLength)
+            val changed = digits != value.text
+            value = TextFieldValue(digits, TextRange(digits.length))
+            if (changed) onOtpUpdateLatest(digits)
+        },
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword, imeAction = ImeAction.Done),
+        cursorBrush = SolidColor(Color.Transparent),
+        textStyle = AppTypography.headlineMdMedium.merge(color = Color.Transparent),
+        modifier = Modifier
+            .fillMaxWidth()
+            .focusRequester(focusRequester)
+            .onFocusChanged { focused = it.isFocused },
+        decorationBox = { _ ->
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+                modifier = Modifier.fillMaxWidth(),
             ) {
-                BasicTextField(
-                    value = value,
-                    onValueChange = { newValue ->
-                        val digits = newValue.text.onlyDigits(otpLength)
-
-                        // ✅ Paste (bir nechta raqam)
-                        if (digits.length > 1) {
-                            var write = index
-                            for (ch in digits) {
-                                if (write >= otpLength) break
-                                setCell(write, ch.toString())
-                                write++
-                            }
-                            publish()
-
-                            // first empty else last
-                            val nextEmpty = (0 until otpLength).firstOrNull { values[it].text.isEmpty() }
-                            requestFocus(nextEmpty ?: (otpLength - 1))
-                            return@BasicTextField
-                        }
-
-                        // ✅ One digit typed => ALWAYS overwrite current cell
-                        if (digits.length == 1) {
-                            setCell(index, digits)
-                            publish()
-
-                            // move next (except last)
-                            if (index < otpLength - 1) requestFocus(index + 1)
-                            else requestFocus(index)
-                            return@BasicTextField
-                        }
-
-                        // digits empty: IME delete case (some keyboards)
-                        // bu yerda fokusni sakratmaymiz: faqat katakni tozalaymiz
-                        if (values[index].text.isNotEmpty()) {
-                            clearCell(index)
-                            publish()
-                            requestFocus(index)
-                        }
-                    },
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.NumberPassword,
-                        imeAction = if (index == otpLength - 1) ImeAction.Done else ImeAction.Next
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .focusRequester(focusRequesters[index])
-                        .onFocusChanged { state ->
-                            if (state.isFocused) {
-                                activeIndex = index
-                                // ✅ focus olganda cursor/selectionni doim oxiriga qo'yamiz
-                                val t = values[index].text
-                                if (values[index].selection != TextRange(t.length)) {
-                                    values[index] = TextFieldValue(t, TextRange(t.length))
-                                }
-                            }
-                        }
-                        .onPreviewKeyEvent { event ->
-                            if (event.type == KeyEventType.KeyDown && event.key == Key.Backspace) {
-                                // ✅ Full bo‘lsa ham: delete + cursor movement barqaror
-                                if (values[index].text.isNotEmpty()) {
-                                    // shu katakni o‘chir, fokus shu yerda qolsin
-                                    clearCell(index)
-                                    publish()
-                                    requestFocus(index)
-                                } else {
-                                    // bo‘sh bo‘lsa oldingiga borib o‘chir
-                                    if (index > 0) {
-                                        requestFocus(index - 1)
-                                        if (values[index - 1].text.isNotEmpty()) {
-                                            clearCell(index - 1)
-                                            publish()
-                                        }
-                                    }
-                                }
-                                true
-                            } else false
-                        }
-                        .background(Color.Transparent),
-                    singleLine = true,
-                    textStyle = AppTypography.headlineMdMedium.merge(
-                        textAlign = TextAlign.Center,
-                        color = textColor,
-                    ),
-                    cursorBrush = SolidColor(AppColors.text.primary)
-                )
+                val text = value.text
+                val active = text.length.coerceAtMost(otpLength - 1)
+                repeat(otpLength) { index ->
+                    val isActive = focused && index == active
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .aspectRatio(1f)
+                            .sizeIn(minWidth = 34.dp, minHeight = 44.dp)
+                            .clip(RoundedCornerShape(TextFieldCornerRadius))
+                            .background(AppColors.field.secondary)
+                            .then(
+                                if (isActive) Modifier.border(1.5.dp, AppColors.action.primary, RoundedCornerShape(TextFieldCornerRadius))
+                                else Modifier
+                            ),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = text.getOrNull(index)?.toString().orEmpty(),
+                            style = AppTypography.headlineMdMedium.merge(textAlign = TextAlign.Center, color = textColor),
+                        )
+                    }
+                }
             }
-        }
-    }
+        },
+    )
 }
-
 
 @Composable
 @Preview
 private fun Preview() {
     TikonchaParentTheme(ThemeMode.DARK) {
-        OtpInput(onOtpUpdate = {})
+        OtpInput(otpText = "1234", onOtpUpdate = {})
     }
 }

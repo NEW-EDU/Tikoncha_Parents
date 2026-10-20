@@ -78,6 +78,11 @@ import tikoncha_parents.composeapp.generated.resources.ok
 import tikoncha_parents.composeapp.generated.resources.operator_kodi_topilmadi
 import tikoncha_parents.composeapp.generated.resources.sorov_yuborish
 import tikoncha_parents.composeapp.generated.resources.tasdiqlash_kodi
+import tikoncha_parents.composeapp.generated.resources.ulanish_kodi_tavsif
+import tikoncha_parents.composeapp.generated.resources.ulanish_kodini_kiriting
+import tikoncha_parents.composeapp.generated.resources.ulash_tugma
+import tikoncha_parents.composeapp.generated.resources.ulash_usuli_kod
+import tikoncha_parents.composeapp.generated.resources.ulash_usuli_telefon
 import tikoncha_parents.composeapp.generated.resources.ulashish
 import tikoncha_parents.composeapp.generated.resources.xatolik
 import tikoncha_parents.composeapp.generated.resources.yuborilmoqda
@@ -94,6 +99,8 @@ import uz.tikoncha_parent.presentation.base.ToastType
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.multi_phone_input.Country
 import uz.tikoncha_parent.presentation.base.multi_phone_input.CountryPhoneInputField
+import uz.tikoncha_parent.presentation.otp.OtpInput
+import uz.tikoncha_parent.presentation.task.TaskSegmentedToggle
 import uz.tikoncha_parent.presentation.video_tutorial.TutorialType
 import uz.tikoncha_parent.presentation.video_tutorial.VideoTutorialYoutubeScreen
 import uz.tikoncha_parent.ui.NormalIconSize
@@ -281,62 +288,90 @@ private fun AddChildContent(
 
             Space(12.dp)
 
-            // 2) Telefon raqami
-            PhoneInputCard(
-                phone = state.phoneNumber,
-                onPhoneChange = { event(AddChildEvent.PhoneChanged(it)) },
-                onCountryChange = {
-                    event(AddChildEvent.OnCountryChange(it))
+            // 1) Bog'lash usuli: telefonsiz ulanish kodi (standart, SIWA uchun ham) yoki telefon raqami
+            TaskSegmentedToggle(
+                options = listOf(
+                    stringResource(Res.string.ulash_usuli_kod) to null,
+                    stringResource(Res.string.ulash_usuli_telefon) to null,
+                ),
+                selectedIndex = if (state.mode == LinkMode.CODE) 0 else 1,
+                onOptionSelected = { idx ->
+                    focusManager.clearFocus()
+                    event(AddChildEvent.ModeChanged(if (idx == 0) LinkMode.CODE else LinkMode.PHONE))
                 },
-                enabled = !state.isLoading
+                modifier = Modifier.fillMaxWidth()
             )
 
-            if (state.showPrefixHint) {
-                Text(
-                    text = stringResource(Res.string.operator_kodi_topilmadi),
-                    style = AppTypography.emphasizedSm,
-                    color = AppColors.text.accentWarning,
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.End
+            if (state.mode == LinkMode.PHONE) {
+                // 2) Telefon raqami
+                PhoneInputCard(
+                    phone = state.phoneNumber,
+                    onPhoneChange = { event(AddChildEvent.PhoneChanged(it)) },
+                    onCountryChange = {
+                        event(AddChildEvent.OnCountryChange(it))
+                    },
+                    enabled = !state.isLoading
                 )
-            }
 
-            // 3) Tugma <-> Kod card (telefon raqam ostida)
-            AnimatedContent(
-                targetState = state.showCodeCard,
-                label = "request_or_code"
-            ) { showCode ->
-                if (showCode && state.code != null) {
-                    CodeCard(
-                        code = state.code,
-                        isRefreshing = state.isLoading,
-                        isExpired = state.isCodeExpired,
-                        remainingText = state.remainingText,
-                        onRefresh = { event(AddChildEvent.RefreshCode) },
-                        onCopy = { event(AddChildEvent.CodeCopied) }
-                    )
-                } else {
-                    CustomButtonNew(
-                        text = if (state.isLoading) stringResource(Res.string.yuborilmoqda) else stringResource(
-                            Res.string.sorov_yuborish
-                        ),
-                        enabled = state.canRequestCode,
-                        onClick = {
-                            focusManager.clearFocus()
-                            event(AddChildEvent.RequestCode)
-                        },
+                if (state.showPrefixHint) {
+                    Text(
+                        text = stringResource(Res.string.operator_kodi_topilmadi),
+                        style = AppTypography.emphasizedSm,
+                        color = AppColors.text.accentWarning,
                         modifier = Modifier.fillMaxWidth(),
-                        leadingIcon = if (state.isLoading) {
-                            {
-                                CircularProgressIndicator(
-                                    modifier = Modifier.size(16.dp),
-                                    color = AppColors.text.inverse,
-                                    strokeWidth = 2.dp
-                                )
-                            }
-                        } else null
+                        textAlign = TextAlign.End
                     )
                 }
+
+                // 3) Tugma <-> Kod card (telefon raqam ostida)
+                AnimatedContent(
+                    targetState = state.showCodeCard,
+                    label = "request_or_code"
+                ) { showCode ->
+                    if (showCode && state.code != null) {
+                        CodeCard(
+                            code = state.code,
+                            isRefreshing = state.isLoading,
+                            isExpired = state.isCodeExpired,
+                            remainingText = state.remainingText,
+                            onRefresh = { event(AddChildEvent.RefreshCode) },
+                            onCopy = { event(AddChildEvent.CodeCopied) }
+                        )
+                    } else {
+                        CustomButtonNew(
+                            text = if (state.isLoading) stringResource(Res.string.yuborilmoqda) else stringResource(
+                                Res.string.sorov_yuborish
+                            ),
+                            enabled = state.canRequestCode,
+                            onClick = {
+                                focusManager.clearFocus()
+                                event(AddChildEvent.RequestCode)
+                            },
+                            modifier = Modifier.fillMaxWidth(),
+                            leadingIcon = if (state.isLoading) {
+                                {
+                                    CircularProgressIndicator(
+                                        modifier = Modifier.size(16.dp),
+                                        color = AppColors.text.inverse,
+                                        strokeWidth = 2.dp
+                                    )
+                                }
+                            } else null
+                        )
+                    }
+                }
+            } else {
+                // 2') Telefonsiz ulanish kodi — farzand ko'rsatgan 8 xonali kodni kiritish
+                LinkCodeCard(
+                    code = state.linkCode,
+                    isLoading = state.isLoading,
+                    canRedeem = state.canRedeem,
+                    onCodeChange = { event(AddChildEvent.LinkCodeChanged(it)) },
+                    onRedeem = {
+                        focusManager.clearFocus()
+                        event(AddChildEvent.RedeemCode)
+                    }
+                )
             }
 
             Spacer(Modifier.weight(1f))
@@ -502,6 +537,58 @@ private fun CodeCard(
             text = stringResource(Res.string.farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash),
             style = AppTypography.bodyLgRegular,
             color = AppColors.text.secondary
+        )
+    }
+}
+
+@Composable
+private fun LinkCodeCard(
+    code: String,
+    isLoading: Boolean,
+    canRedeem: Boolean,
+    onCodeChange: (String) -> Unit,
+    onRedeem: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .background(AppColors.bg.surface)
+            .padding(16.dp)
+    ) {
+        Text(
+            text = stringResource(Res.string.ulanish_kodini_kiriting),
+            style = AppTypography.titleSmSemiBold,
+            color = AppColors.text.primary
+        )
+        Space(4.dp)
+        Text(
+            text = stringResource(Res.string.ulanish_kodi_tavsif),
+            style = AppTypography.bodyMdRegular,
+            color = AppColors.text.tertiary
+        )
+        Spacer(Modifier.height(14.dp))
+        OtpInput(
+            otpLength = 8,
+            otpText = code,
+            autoFocus = true,
+            onOtpUpdate = onCodeChange
+        )
+        Spacer(Modifier.height(14.dp))
+        CustomButtonNew(
+            text = if (isLoading) stringResource(Res.string.yuborilmoqda) else stringResource(Res.string.ulash_tugma),
+            enabled = canRedeem,
+            onClick = onRedeem,
+            modifier = Modifier.fillMaxWidth(),
+            leadingIcon = if (isLoading) {
+                {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(16.dp),
+                        color = AppColors.text.inverse,
+                        strokeWidth = 2.dp
+                    )
+                }
+            } else null
         )
     }
 }

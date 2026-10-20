@@ -245,7 +245,8 @@ val sharedModule = module {
     single { ToggleProtectionPackUseCase(get()) }
 
     // ViewModel
-    factory { LoginViewModel(get(), get(), get()) }
+    factory { LoginViewModel(get(), get(), get(), get()) }
+    single<uz.tikoncha_parent.domain.repository.SocialAuthRepository> { uz.tikoncha_parent.data.repository.SocialAuthRepositoryImpl() }
     factory { OtpViewmodel(get(), get()) }
     factory { RegisterViewmodel(get(), get()) }
     factory { ProfileViewModel(get(), get(), get(), get()) }
@@ -341,8 +342,9 @@ val sharedModule = module {
     }
     factory { PolicyHistoryViewModel(get(), get()) }
     factory { NotificationViewModel(get()) }
-    factory { PaymentViewModel(get(), get(), get()) }
-    factory { SubscriptionPaymentViewModel(get()) }
+    factory { PaymentViewModel(get(), get(), get(), get()) }
+    factory { SubscriptionPaymentViewModel(get(), get()) }
+    single<uz.tikoncha_parent.domain.repository.PaymentRegionRepository> { uz.tikoncha_parent.data.repository.PaymentRegionRepositoryImpl(get()) }
     factory { CoinsViewModel(get(), get(), get()) }
     factory { (child: UserInfo) ->
         ChildInfoEditViewModel(

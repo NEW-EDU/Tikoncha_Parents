@@ -15,7 +15,8 @@ data class PaymentState(
     val subscriptionDuration: SubscriptionDuration = SubscriptionDuration.MONTHLY,
     val paymentStatus: PaymentStatus = PaymentStatus.START,
     val paymentStatusError: Outcome.Failure? = null,
-    val isTestAccount: Boolean = false,
+    /** iPhone va O'zbekistondan tashqarida: faqat App Store (mahalliy to'lovlar ko'rsatilmaydi). */
+    val appStoreOnly: Boolean = false,
     val planId: String = "",
 
     val promoCodeResponseState: ResponseState<Nothing> = ResponseState.Idle,

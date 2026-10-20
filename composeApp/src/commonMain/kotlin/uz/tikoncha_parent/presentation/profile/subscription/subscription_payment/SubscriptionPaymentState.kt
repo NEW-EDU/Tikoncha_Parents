@@ -10,4 +10,6 @@ data class SubscriptionPaymentState(
     val subscriptionPlanState: ResponseState<Nothing> = ResponseState.Idle,
     val selectedChild: UserInfo? = null,
     val children: List<UserInfo> = emptyList(),
+    /** Server IP bo'yicha: O'zbekiston → mahalliy to'lovlar; null — hali noma'lum. */
+    val localPayments: Boolean? = null,
 )

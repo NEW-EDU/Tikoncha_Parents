@@ -1175,4 +1175,11 @@ Bu ma’lumot faqat ushbu funksiyalar uchun qo‘llaniladi va uchinchi shaxslarg
     <string name="ap_promo_checking">Tekshirilmoqda</string>
     <string name="ap_card_remove_stops_autopay">O‘chirilsa avto-to‘lov to‘xtaydi</string>
     <string name="ap_card_remove_in_use_body">%1$s kartasidan avto-to‘lov yechiladi. O‘chirsangiz, avto-to‘lov to‘xtaydi va karta ma’lumotlari serverdan butunlay o‘chiriladi. PLUS to‘langan muddat tugaguncha ishlaydi.</string>
+    <string name="apple_orqali_kirish">Apple orqali kirish</string>
+    <string name="google_orqali_kirish">Google orqali kirish</string>
+    <string name="ulash_usuli_telefon">Telefon raqami</string>
+    <string name="ulash_usuli_kod">Ulanish kodi</string>
+    <string name="ulanish_kodini_kiriting">Ulanish kodini kiriting</string>
+    <string name="ulanish_kodi_tavsif">Farzandingiz o'z ilovasida «Kodimni ko'rsatish» orqali 8 xonali kod yaratadi. Shu kodni kiriting.</string>
+    <string name="ulash_tugma">Ulash</string>
 </resources>

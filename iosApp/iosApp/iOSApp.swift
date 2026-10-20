@@ -26,6 +26,8 @@ struct iOSApp: App {
             scopes: ["openid", "profile", "phone", "telegram:bot_access"]
         )
         TelegramAuthBridgeProvider.shared.bridge = TelegramAuthBridgeImpl()
+        // --- Apple / Google ---
+        SocialAuthBridgeProvider.shared.bridge = SocialAuthBridgeImpl()
     }
 
     var body: some Scene {

@@ -11,6 +11,7 @@ import uz.tikoncha_parent.data.mapper.toUserInfo
 import uz.tikoncha_parent.data.remote.ChildApiService
 import uz.tikoncha_parent.data.remote.app_error.ApiErrorMapper
 import uz.tikoncha_parent.data.remote.model.AddChildRequest
+import uz.tikoncha_parent.data.remote.model.RedeemLinkCodeRequest
 import uz.tikoncha_parent.data.remote.model.UnlinkChildRequest
 import uz.tikoncha_parent.domain.model.ChildLinkCode
 import uz.tikoncha_parent.domain.model.ChildLocation
@@ -32,6 +33,13 @@ class ChildRepositoryImpl(
                 r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
                 else -> Outcome.Failure(ApiErrorMapper.fromCode(r.code), r.error)
             }
+        }
+
+    override suspend fun redeemLinkCode(code: String): Outcome<String> =
+        apiCall(TAG) {
+            val r = api.redeemLinkCode(RedeemLinkCodeRequest(code = code))
+            if (r.success) Outcome.Success(r.data?.child_user_id ?: "")
+            else Outcome.Failure(ApiErrorMapper.fromCode(r.code), r.error)
         }
 
     override suspend fun children(): Outcome<List<UserInfo>> =

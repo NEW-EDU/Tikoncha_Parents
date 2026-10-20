@@ -413,8 +413,8 @@ fun SubscriptionPaymentUi(
                             val cardPrice = (if (annual) sub.cardAnnual else sub.cardMonthly) ?: clickPrice
                             val duration = if (annual) SubscriptionDuration.ANNUAL else SubscriptionDuration.MONTHLY
 
-                            if (isIos() && AppSettings.isTestAccount) {
-                                // Apple ko'rigi uchun raqam: iPhone'da faqat App Store (egasining qarori)
+                            if (isIos() && state.localPayments != true) {
+                                // iPhone, O'zbekistondan tashqarida (server IP bo'yicha): faqat App Store
                                 navigator?.push(PaymentTypeScreen(amount = clickPrice, subDuration = duration, planId = sub.planId))
                             } else {
                                 // Avval to'lov usuli: karta (avto) yoki Click (bir martalik)
@@ -509,7 +509,7 @@ private fun ChildPickerSheet(
                         Text(childDisplayName(c), style = AppTypography.titleSmSemiBold, color = AppColors.text.primary, maxLines = 1)
                         Spacer(Modifier.height(3.dp))
                         Tag(
-                            if (plus) stringResource(Res.string.ap_child_plus_until, c.subscription_end_date.orEmpty())
+                            if (plus) stringResource(Res.string.ap_child_plus_until, uz.tikoncha_parent.common.DateTimeUtil.formatLongDate(c.subscription_end_date))
                             else stringResource(Res.string.ap_child_no_plus)
                         )
                     }

@@ -19,6 +19,14 @@ import uz.tikoncha_parent.domain.model.subscription.PurchaseCoinResponse
 
 class PaymentApiService(private val client: HttpClient) {
 
+    /** O'zbekiston IP → mahalliy to'lovlar (Paylov avto-to'lov, Click); aks holda iPhone'da App Store. */
+    suspend fun paymentRegion(): uz.tikoncha_parent.data.remote.model.payment.PaymentRegionResponse =
+        client.safeRequest(
+            method = HttpMethod.Get,
+            url = "payments/region",
+            block = {}
+        )
+
     suspend fun subscriptionLimits(): SubscriptionLimitResponse =
         client.safeRequest(
             method = HttpMethod.Get,

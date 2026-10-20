@@ -17,6 +17,7 @@ import uz.tikoncha_parent.presentation.ui_state.ResponseState
 
 class SubscriptionPaymentViewModel(
     private val paymentRepository: PaymentRepository,
+    private val region: uz.tikoncha_parent.domain.repository.PaymentRegionRepository,
 ) : ScreenModel {
 
     companion object {
@@ -37,6 +38,8 @@ class SubscriptionPaymentViewModel(
             )
         }
         getCurrentLimit()
+        _state.update { it.copy(localPayments = region.localPayments.value) }
+        screenModelScope.launch { _state.update { it.copy(localPayments = region.refresh()) } }
     }
 
 

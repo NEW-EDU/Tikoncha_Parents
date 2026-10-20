@@ -19,6 +19,8 @@ import uz.tikoncha_parent.data.remote.model.VerifyOtpRequest
 import uz.tikoncha_parent.data.remote.model.VerifyOtpResponse
 import uz.tikoncha_parent.common.AppCode
 import uz.tikoncha_parent.data.remote.model.UserInfoDto
+import uz.tikoncha_parent.data.remote.model.auth.AppleLoginRequest
+import uz.tikoncha_parent.data.remote.model.auth.GoogleLoginRequest
 import uz.tikoncha_parent.data.remote.model.auth.TelegramLoginRequest
 import uz.tikoncha_parent.data.remote.model.auth.TelegramLoginResponse
 
@@ -34,6 +36,21 @@ class LoginApiService(private val client: HttpClient) {
             }
         )
 
+
+    /** Javob shakli telegram-login bilan bir xil (sessiya konverti). */
+    suspend fun appleLogin(request: AppleLoginRequest): TelegramLoginResponse =
+        client.safeRequest(
+            method = HttpMethod.Post,
+            url = "auth/apple-login",
+            block = { setBody(request) }
+        )
+
+    suspend fun googleLogin(request: GoogleLoginRequest): TelegramLoginResponse =
+        client.safeRequest(
+            method = HttpMethod.Post,
+            url = "auth/google-login",
+            block = { setBody(request) }
+        )
 
     suspend fun sendOtp(request: SendOtpRequest): SendOtpResponse =
         client.safeRequest(
