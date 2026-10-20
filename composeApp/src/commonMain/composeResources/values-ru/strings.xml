@@ -1172,4 +1172,6 @@
     <string name="ap_promo_checking">Проверяем</string>
     <string name="ap_card_remove_stops_autopay">Автоплатёж остановится</string>
     <string name="ap_card_remove_in_use_body">С карты %1$s списывается автоплатёж. После удаления автоплатёж остановится, а данные карты будут полностью удалены с сервера. PLUS действует до конца оплаченного срока.</string>
+    <string name="apple_orqali_kirish">Войти через Apple</string>
+    <string name="google_orqali_kirish">Войти через Google</string>
 </resources>

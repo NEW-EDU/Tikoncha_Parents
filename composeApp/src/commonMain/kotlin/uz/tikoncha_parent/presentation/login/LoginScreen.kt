@@ -1,5 +1,11 @@
 package uz.tikoncha_parent.presentation.login
 
+import androidx.compose.foundation.BorderStroke
+import uz.tikoncha_parent.domain.model.auth.SocialProvider
+import tikoncha_parents.composeapp.generated.resources.apple_orqali_kirish
+import tikoncha_parents.composeapp.generated.resources.google_orqali_kirish
+import tikoncha_parents.composeapp.generated.resources.ic_apple_logo
+import tikoncha_parents.composeapp.generated.resources.ic_google_g
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -179,10 +185,19 @@ fun LoginUi(
                 contentAlignment = Alignment.Center,
             ) {
                 Column(modifier = Modifier.fillMaxWidth()) {
+                    // Global (uz/ru bo'lmagan) foydalanuvchiga Apple/Google birinchi
+                    if (state.socialFirst) {
+                        SocialButtons(state, event)
+                        Space(12.dp)
+                    }
                     TelegramLoginButton(
                         isLoading = state.isTelegramLoading,
                         onClick = { event(LoginEvent.OnTelegramClicked) },
                     )
+                    if (!state.socialFirst) {
+                        Space(12.dp)
+                        SocialButtons(state, event)
+                    }
                     if (errorText != null) {
                         Space(4.dp)
                         Text(
@@ -344,6 +359,69 @@ private fun TelegramLoginButton(
                         color = AppColors.text.onPrimary,
                     )
                 }
+            }
+        }
+    }
+}
+
+/** Apple (faqat iOS) va Google. Apple tugmasi Telegram'niki bilan bir xil o'lchamda (Apple HIG). */
+@Composable
+private fun SocialButtons(state: LoginState, event: (LoginEvent) -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        if (state.appleAvailable) {
+            ProviderButton(
+                text = stringResource(Res.string.apple_orqali_kirish),
+                loading = state.loadingProvider == SocialProvider.APPLE,
+                // Yorug' mavzuda qora, qorong'ida oq — Apple uslubi
+                container = AppColors.text.primary,
+                content = AppColors.bg.page,
+                border = null,
+                onClick = { event(LoginEvent.OnSocialClicked(SocialProvider.APPLE)) },
+            ) { tint ->
+                Icon(painterResource(Res.drawable.ic_apple_logo), contentDescription = null, tint = tint, modifier = Modifier.size(20.dp))
+            }
+        }
+        ProviderButton(
+            text = stringResource(Res.string.google_orqali_kirish),
+            loading = state.loadingProvider == SocialProvider.GOOGLE,
+            container = AppColors.bg.elevated,
+            content = AppColors.text.primary,
+            border = AppColors.border.secondary,
+            onClick = { event(LoginEvent.OnSocialClicked(SocialProvider.GOOGLE)) },
+        ) {
+            // Google "G" — rangli, bo'yalmaydi
+            Image(painterResource(Res.drawable.ic_google_g), contentDescription = null, modifier = Modifier.size(20.dp))
+        }
+    }
+}
+
+@Composable
+private fun ProviderButton(
+    text: String,
+    loading: Boolean,
+    container: Color,
+    content: Color,
+    border: Color?,
+    onClick: () -> Unit,
+    icon: @Composable (Color) -> Unit,
+) {
+    Surface(
+        onClick = onClick,
+        enabled = !loading,
+        shape = RoundedCornerShape(16.dp),
+        color = container,
+        border = border?.let { BorderStroke(1.dp, it) },
+        modifier = Modifier.fillMaxWidth().heightIn(min = ButtonHeight),
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            if (loading) {
+                CircularProgressIndicator(modifier = Modifier.size(22.dp), color = content, strokeWidth = 2.5.dp)
+            } else {
+                icon(content)
+                Text(text = text, style = AppTypography.titleMdSemiBold, color = content)
             }
         }
     }

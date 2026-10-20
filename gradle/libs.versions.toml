@@ -1,4 +1,6 @@
 [versions]
+credentials = "1.5.0"
+googleid = "1.1.1"
 agp = "8.13.0"
 android-compileSdk = "36"
 android-minSdk = "28"
@@ -27,6 +29,9 @@ telegramLoginAndroid = "1.0.0"
 
 
 [libraries]
+androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }
+androidx-credentials-play-services = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentials" }
+googleid = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "googleid" }
 material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-testJunit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }

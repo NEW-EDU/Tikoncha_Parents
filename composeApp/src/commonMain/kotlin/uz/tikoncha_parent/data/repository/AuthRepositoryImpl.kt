@@ -7,7 +7,11 @@ import uz.tikoncha_parent.data.remote.LoginApiService
 import uz.tikoncha_parent.data.remote.app_error.ApiErrorMapper
 import uz.tikoncha_parent.data.remote.model.SendOtpRequest
 import uz.tikoncha_parent.data.remote.model.VerifyOtpRequest
+import uz.tikoncha_parent.common.AppCode
+import uz.tikoncha_parent.data.remote.model.auth.AppleLoginRequest
+import uz.tikoncha_parent.data.remote.model.auth.GoogleLoginRequest
 import uz.tikoncha_parent.data.remote.model.auth.TelegramLoginRequest
+import uz.tikoncha_parent.data.remote.model.auth.TelegramLoginResponse
 import uz.tikoncha_parent.domain.model.RegistrationData
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
@@ -28,6 +32,25 @@ class AuthRepositoryImpl(
                 else -> Outcome.Failure(ApiErrorMapper.fromCode(r.code), r.error)
             }
         }
+
+    override suspend fun appleLogin(identityToken: String, fullName: String?): Outcome<Session> =
+        apiCall(TAG) {
+            api.appleLogin(AppleLoginRequest(identityToken, AppCode.currentAppCode, fullName)).toSessionOutcome()
+        }
+
+    override suspend fun googleLogin(idToken: String): Outcome<Session> =
+        apiCall(TAG) {
+            api.googleLogin(GoogleLoginRequest(idToken, AppCode.currentAppCode)).toSessionOutcome()
+        }
+
+    private fun TelegramLoginResponse.toSessionOutcome(): Outcome<Session> {
+        val d = data
+        return when {
+            success && d != null -> Outcome.Success(d.toSession())
+            success -> Outcome.Failure(ErrorCause.InvalidResponse)
+            else -> Outcome.Failure(ApiErrorMapper.fromCode(code), error)
+        }
+    }
 
     override suspend fun sendOtp(phone: String): Outcome<Unit> =
         apiCall(TAG) {

@@ -62,6 +62,11 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
             implementation("com.google.android.gms:play-services-location:21.2.0")
 
+            // Sign in with Google (Credential Manager)
+            implementation(libs.androidx.credentials)
+            implementation(libs.androidx.credentials.play.services)
+            implementation(libs.googleid)
+
             //firebase
             implementation(project.dependencies.platform("com.google.firebase:firebase-bom:33.5.1"))
             implementation("com.google.firebase:firebase-messaging-ktx")

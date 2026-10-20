@@ -13,6 +13,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import org.koin.android.ext.android.inject
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.data.remote.telegram.TelegramConfig
+import uz.tikoncha_parent.data.remote.social.GoogleSignInCoordinator
 import uz.tikoncha_parent.data.remote.telegram.TelegramLoginCoordinator
 import uz.tikoncha_parent.platform.push.AndroidDeepLinkParser
 import uz.tikoncha_parent.presentation.push.FcmTokenRegister
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         TelegramLoginCoordinator.bindActivity(this)
+        GoogleSignInCoordinator.bindActivity(this)
         handleTelegramIntent(intent)
 
         PushPlatform.bind(this)
@@ -63,6 +65,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         TelegramLoginCoordinator.unbindActivity(this)
+        GoogleSignInCoordinator.unbindActivity(this)
         super.onDestroy()
     }
 

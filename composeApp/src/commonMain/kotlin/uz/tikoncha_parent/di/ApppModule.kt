@@ -245,7 +245,8 @@ val sharedModule = module {
     single { ToggleProtectionPackUseCase(get()) }
 
     // ViewModel
-    factory { LoginViewModel(get(), get(), get()) }
+    factory { LoginViewModel(get(), get(), get(), get()) }
+    single<uz.tikoncha_parent.domain.repository.SocialAuthRepository> { uz.tikoncha_parent.data.repository.SocialAuthRepositoryImpl() }
     factory { OtpViewmodel(get(), get()) }
     factory { RegisterViewmodel(get(), get()) }
     factory { ProfileViewModel(get(), get(), get(), get()) }

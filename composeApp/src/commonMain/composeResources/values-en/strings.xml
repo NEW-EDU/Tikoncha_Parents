@@ -1165,4 +1165,6 @@ This information is used only for these features and is not shared with third pa
     <string name="ap_promo_checking">Checking</string>
     <string name="ap_card_remove_stops_autopay">Auto-pay will stop</string>
     <string name="ap_card_remove_in_use_body">Auto-pay charges card %1$s. If you remove it, auto-pay stops and the card data is deleted from our server completely. PLUS stays active until the paid period ends.</string>
+    <string name="apple_orqali_kirish">Sign in with Apple</string>
+    <string name="google_orqali_kirish">Sign in with Google</string>
 </resources>

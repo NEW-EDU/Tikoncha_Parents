@@ -11,16 +11,21 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
+import uz.tikoncha_parent.domain.model.auth.SocialAuthResult
+import uz.tikoncha_parent.domain.model.auth.SocialProvider
 import uz.tikoncha_parent.domain.model.auth.TelegramAuthResult
 import uz.tikoncha_parent.domain.repository.AuthRepository
 import uz.tikoncha_parent.domain.repository.SessionRepository
+import uz.tikoncha_parent.domain.repository.SocialAuthRepository
 import uz.tikoncha_parent.domain.repository.TelegramAuthRepository
 import uz.tikoncha_parent.platform.BuildConfig
+import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 
 class LoginViewModel(
     private val telegramAuth: TelegramAuthRepository,
     private val session: SessionRepository,
-    private val auth: AuthRepository
+    private val auth: AuthRepository,
+    private val socialAuth: SocialAuthRepository,
 ) : ScreenModel {
 
     private val _state = MutableStateFlow(LoginState())
@@ -34,8 +39,64 @@ class LoginViewModel(
 
     init {
         val telegramInstalled = telegramAuth.isTelegramInstalled()
-        _state.update { it.copy(showPhone = !telegramInstalled || BuildConfig.isDebug) }
+        val lang = LanguagePrefs.loadOrDefault().languageCode
+        _state.update {
+            it.copy(
+                showPhone = !telegramInstalled || BuildConfig.isDebug,
+                appleAvailable = socialAuth.isAppleAvailable(),
+                socialFirst = lang != "uz" && lang != "ru",
+            )
+        }
         observeTelegramResult()
+        observeSocialResult()
+    }
+
+    // ---------- Apple / Google ----------
+    private fun observeSocialResult() {
+        screenModelScope.launch {
+            socialAuth.pendingResult.collect { result ->
+                if (result == null) return@collect
+                socialAuth.consumePending()
+                when (result) {
+                    is SocialAuthResult.Cancelled -> _state.update { it.copy(loadingProvider = null) }
+                    is SocialAuthResult.Error -> _state.update {
+                        it.copy(loadingProvider = null, error = Outcome.Failure(ErrorCause.Unknown, result.message))
+                    }
+                    is SocialAuthResult.Success -> exchangeSocial(result)
+                }
+            }
+        }
+    }
+
+    private fun handleSocialClick(provider: SocialProvider) {
+        val s = _state.value
+        if (s.loadingProvider != null || s.isTelegramLoading) return
+        if (socialAuth.start(provider)) {
+            _state.update { it.copy(loadingProvider = provider, error = null) }
+        } else {
+            _state.update { it.copy(loadingProvider = null, error = Outcome.Failure(ErrorCause.Unknown)) }
+        }
+    }
+
+    private fun exchangeSocial(result: SocialAuthResult.Success) {
+        exchangeJob?.cancel()
+        exchangeJob = screenModelScope.launch {
+            _state.update { it.copy(loadingProvider = result.provider, error = null) }
+            val res = when (result.provider) {
+                SocialProvider.APPLE -> auth.appleLogin(result.token, result.fullName)
+                SocialProvider.GOOGLE -> auth.googleLogin(result.token)
+            }
+            when (res) {
+                is Outcome.Failure -> _state.update { it.copy(loadingProvider = null, error = res) }
+                is Outcome.Success -> {
+                    session.save(res.data)
+                    _state.update { it.copy(loadingProvider = null) }
+                    _sideEffects.send(
+                        if (res.data.needsRegistration) LoginSideEffect.NavigateToRegister else LoginSideEffect.NavigateToHome
+                    )
+                }
+            }
+        }
     }
 
     private fun observeTelegramResult() {
@@ -56,6 +117,7 @@ class LoginViewModel(
             }
 
             LoginEvent.OnTelegramClicked -> handleTelegramClick()
+            is LoginEvent.OnSocialClicked -> handleSocialClick(event.provider)
             LoginEvent.OnPhoneContinue -> handlePhoneContinue()
             LoginEvent.OnErrorDismissed ->
                 _state.update { it.copy(error = null) }
