@@ -413,8 +413,8 @@ fun SubscriptionPaymentUi(
                             val cardPrice = (if (annual) sub.cardAnnual else sub.cardMonthly) ?: clickPrice
                             val duration = if (annual) SubscriptionDuration.ANNUAL else SubscriptionDuration.MONTHLY
 
-                            if (isIos() && AppSettings.isTestAccount) {
-                                // Apple ko'rigi uchun raqam: iPhone'da faqat App Store (egasining qarori)
+                            if (isIos() && state.localPayments != true) {
+                                // iPhone, O'zbekistondan tashqarida (server IP bo'yicha): faqat App Store
                                 navigator?.push(PaymentTypeScreen(amount = clickPrice, subDuration = duration, planId = sub.planId))
                             } else {
                                 // Avval to'lov usuli: karta (avto) yoki Click (bir martalik)

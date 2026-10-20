@@ -145,7 +145,7 @@ fun PaymentTypeScreenUi(
     }
 
     LaunchedEffect(applePaymentSuccess) {
-        if (applePaymentSuccess && AppSettings.isTestAccount) {
+        if (applePaymentSuccess && state.appStoreOnly) {
             navigator?.pop()
         }
     }
@@ -260,7 +260,7 @@ fun PaymentTypeScreenUi(
                     .height(58.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                if (isIos() && state.isTestAccount) {
+                if (state.appStoreOnly) {
                     PaymentOption(
                         label = PaymentType.AppStore.title,
                         isSelected = state.selectedPaymentType == PaymentType.AppStore,
@@ -269,8 +269,8 @@ fun PaymentTypeScreenUi(
                         }
                     )
                 }
-                // Apple ko'rigi uchun raqam iPhone'da Click'ni ko'rmaydi — faqat App Store (egasining qarori)
-                if (!(isIos() && state.isTestAccount)) {
+                // O'zbekistondan tashqarida iPhone'da Click yo'q — faqat App Store (server IP bo'yicha)
+                if (!state.appStoreOnly) {
                     PaymentOption(
                         isSelected = state.selectedPaymentType == PaymentType.Click,
                         onClick = {
@@ -632,7 +632,7 @@ private fun Preview() {
             state = PaymentState(
                 originalAmount = 199000,
                 subscriptionDuration = SubscriptionDuration.ANNUAL,
-                isTestAccount = true,
+                appStoreOnly = true,
                 selectedPaymentType = PaymentType.AppStore
             ),
             event = {}

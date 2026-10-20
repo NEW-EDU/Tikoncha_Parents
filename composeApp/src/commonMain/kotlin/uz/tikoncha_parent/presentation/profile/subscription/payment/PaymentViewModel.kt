@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import uz.tikoncha_parent.domain.repository.PaymentRegionRepository
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.tolov_amalga_oshmadi
 import uz.tikoncha_parent.data.local.AppSettings
@@ -26,19 +27,29 @@ import uz.tikoncha_parent.presentation.ui_state.ResponseState
 class PaymentViewModel(
     private val paymentRepository: PaymentRepository,
     private val purchaseIApPremiumUseCase: PurchaseIApPremiumUseCase,
-    private val paymentService: PaymentService
+    private val paymentService: PaymentService,
+    private val region: PaymentRegionRepository,
 ): ScreenModel {
 
     private val _state = MutableStateFlow(PaymentState())
     val state = _state.asStateFlow()
 
     init {
-        // Apple ko'rigi uchun raqam (+99811…): iPhone'da faqat App Store — u oldindan tanlanadi
-        val appStoreOnly = isIos() && AppSettings.isTestAccount
+        // iPhone'da O'zbekistondan tashqarida (server IP bo'yicha): faqat App Store — u oldindan tanlanadi
+        applyRegion(region.localPayments.value)
+        screenModelScope.launch { applyRegion(region.refresh()) }
+    }
+
+    private fun applyRegion(localPayments: Boolean?) {
+        val appStoreOnly = isIos() && localPayments != true
         _state.update {
             it.copy(
-                isTestAccount = AppSettings.isTestAccount,
-                selectedPaymentType = if (appStoreOnly) PaymentType.AppStore else it.selectedPaymentType,
+                appStoreOnly = appStoreOnly,
+                selectedPaymentType = when {
+                    appStoreOnly -> PaymentType.AppStore
+                    it.selectedPaymentType == PaymentType.AppStore -> null
+                    else -> it.selectedPaymentType
+                },
             )
         }
     }

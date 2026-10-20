@@ -342,8 +342,9 @@ val sharedModule = module {
     }
     factory { PolicyHistoryViewModel(get(), get()) }
     factory { NotificationViewModel(get()) }
-    factory { PaymentViewModel(get(), get(), get()) }
-    factory { SubscriptionPaymentViewModel(get()) }
+    factory { PaymentViewModel(get(), get(), get(), get()) }
+    factory { SubscriptionPaymentViewModel(get(), get()) }
+    single<uz.tikoncha_parent.domain.repository.PaymentRegionRepository> { uz.tikoncha_parent.data.repository.PaymentRegionRepositoryImpl(get()) }
     factory { CoinsViewModel(get(), get(), get()) }
     factory { (child: UserInfo) ->
         ChildInfoEditViewModel(
