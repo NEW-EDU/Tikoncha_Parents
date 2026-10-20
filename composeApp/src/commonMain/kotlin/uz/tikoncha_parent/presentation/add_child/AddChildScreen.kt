@@ -288,16 +288,16 @@ private fun AddChildContent(
 
             Space(12.dp)
 
-            // 1) Bog'lash usuli: telefon raqami yoki telefonsiz ulanish kodi (SIWA uchun ham)
+            // 1) Bog'lash usuli: telefonsiz ulanish kodi (standart, SIWA uchun ham) yoki telefon raqami
             TaskSegmentedToggle(
                 options = listOf(
-                    stringResource(Res.string.ulash_usuli_telefon) to null,
                     stringResource(Res.string.ulash_usuli_kod) to null,
+                    stringResource(Res.string.ulash_usuli_telefon) to null,
                 ),
-                selectedIndex = if (state.mode == LinkMode.PHONE) 0 else 1,
+                selectedIndex = if (state.mode == LinkMode.CODE) 0 else 1,
                 onOptionSelected = { idx ->
                     focusManager.clearFocus()
-                    event(AddChildEvent.ModeChanged(if (idx == 0) LinkMode.PHONE else LinkMode.CODE))
+                    event(AddChildEvent.ModeChanged(if (idx == 0) LinkMode.CODE else LinkMode.PHONE))
                 },
                 modifier = Modifier.fillMaxWidth()
             )

@@ -38,6 +38,7 @@ import tikoncha_parents.composeapp.generated.resources.weekday_thursday
 import tikoncha_parents.composeapp.generated.resources.weekday_tuesday
 import tikoncha_parents.composeapp.generated.resources.weekday_wednesday
 import uz.tikoncha_parent.presentation.domain.model.LanguageType
+import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
@@ -702,4 +703,33 @@ object DateTimeUtil {
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     )
+
+    // ------------ Odamga qulay sana: "14-oktyabr 2027" / "14 октября 2027" / "14 October 2027" ------------
+
+    /** Kun, oy nomi va yil — vaqtsiz. Til ilova tilidan. */
+    fun formatLongDate(date: LocalDate, lang: LanguageType = LanguagePrefs.loadOrDefault()): String = when (lang) {
+        LanguageType.UZ -> "${date.day}-${uzMonths[date.month.ordinal].lowercase()} ${date.year}"
+        LanguageType.RU -> "${date.day} ${ruMonths[date.month.ordinal].lowercase()} ${date.year}"
+        LanguageType.EN -> "${date.day} ${enMonths[date.month.ordinal]} ${date.year}"
+    }
+
+    /**
+     * Serverdan kelgan sana satri ("14.10.2027 20:37:54", "2027-10-14", "2027-10-14T20:37:54…") → [formatLongDate].
+     * Tanilmasa — satrning o'zi.
+     */
+    fun formatLongDate(raw: String?, lang: LanguageType = LanguagePrefs.loadOrDefault()): String {
+        val s = raw?.trim().orEmpty()
+        if (s.isEmpty()) return ""
+        val dotted = Regex("""^(\d{1,2})\.(\d{1,2})\.(\d{4})""").find(s)
+        val iso = Regex("""^(\d{4})-(\d{1,2})-(\d{1,2})""").find(s)
+        val date = runCatching {
+            when {
+                dotted != null -> dotted.destructured.let { (d, m, y) -> LocalDate(y.toInt(), m.toInt(), d.toInt()) }
+                iso != null -> iso.destructured.let { (y, m, d) -> LocalDate(y.toInt(), m.toInt(), d.toInt()) }
+                else -> null
+            }
+        }.getOrNull() ?: return s
+        return formatLongDate(date, lang)
+    }
+
 }

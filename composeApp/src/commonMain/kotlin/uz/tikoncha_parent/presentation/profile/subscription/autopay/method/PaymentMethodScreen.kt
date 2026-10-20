@@ -149,7 +149,7 @@ fun PaymentMethodUi(
             ForWhomRow(
                 name = child.name,
                 avatarUrl = child.avatarUrl,
-                subtitle = child.plusUntil?.let { stringResource(Res.string.ap_child_plus_until, it) } ?: stringResource(Res.string.ap_child_no_plus),
+                subtitle = child.plusUntil?.let { stringResource(Res.string.ap_child_plus_until, uz.tikoncha_parent.common.DateTimeUtil.formatLongDate(it)) } ?: stringResource(Res.string.ap_child_no_plus),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp),
             )
 

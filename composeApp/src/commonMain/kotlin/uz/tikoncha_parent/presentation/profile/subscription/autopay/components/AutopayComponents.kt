@@ -281,8 +281,6 @@ fun formatSum(amount: Int): String =
 
 private val TASHKENT = TimeZone.of("Asia/Tashkent")
 
-/** Sana Toshkent vaqtida: "08.10.2027". */
-fun formatDate(instant: Instant): String {
-    val d = instant.toLocalDateTime(TASHKENT).date
-    return "${d.day.toString().padStart(2, '0')}.${d.month.number.toString().padStart(2, '0')}.${d.year}"
-}
+/** Sana Toshkent vaqtida, oy nomi bilan: "8-oktyabr 2027" / "8 October 2027". */
+fun formatDate(instant: Instant): String =
+    uz.tikoncha_parent.common.DateTimeUtil.formatLongDate(instant.toLocalDateTime(TASHKENT).date)

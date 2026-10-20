@@ -509,7 +509,7 @@ private fun ChildPickerSheet(
                         Text(childDisplayName(c), style = AppTypography.titleSmSemiBold, color = AppColors.text.primary, maxLines = 1)
                         Spacer(Modifier.height(3.dp))
                         Tag(
-                            if (plus) stringResource(Res.string.ap_child_plus_until, c.subscription_end_date.orEmpty())
+                            if (plus) stringResource(Res.string.ap_child_plus_until, uz.tikoncha_parent.common.DateTimeUtil.formatLongDate(c.subscription_end_date))
                             else stringResource(Res.string.ap_child_no_plus)
                         )
                     }

@@ -20,7 +20,7 @@ data class AddChildState(
     val error: Outcome.Failure? = null,    // error from Resource.Error
     val showCopiedSnackbar: Boolean = false,  // "Kod nusxalandi" toast
     val linkedChild: UserInfo? = null,       // farzand kodni tasdiqladi -> muvaffaqiyat oynasi
-    val mode: LinkMode = LinkMode.PHONE,     // tanlangan bog'lash usuli
+    val mode: LinkMode = LinkMode.CODE,      // tanlangan bog'lash usuli — kod birinchi (telefonsiz, global)
     val linkCode: String = "",               // farzand bergan 8 xonali ulanish kodi
 ) {
 
