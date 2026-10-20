@@ -27,7 +27,7 @@ import uz.tikoncha_parent.presentation.policy.model.PresetKind
 import uz.tikoncha_parent.presentation.policy.model.PresetPolicyUi
 import uz.tikoncha_parent.presentation.policy.model.QuickBlockUi
 import tikoncha_parents.composeapp.generated.resources.protection_shield_short
-import tikoncha_parents.composeapp.generated.resources.chat_send
+import tikoncha_parents.composeapp.generated.resources.tg_rules_chat
 import tikoncha_parents.composeapp.generated.resources.tg_rules_card_sub
 import tikoncha_parents.composeapp.generated.resources.tg_rules_title
 
@@ -103,8 +103,9 @@ fun QuickBlockCard(ui: QuickBlockUi, busy: Boolean, onToggle: (Boolean) -> Unit,
 @Composable
 fun TikonchagramCard(onClick: () -> Unit, modifier: Modifier = Modifier) {
     PolicyCardBody(
-        icon = Res.drawable.chat_send,
-        tone = IconTone.SOLID,
+        icon = Res.drawable.tg_rules_chat,
+        // Sozlamalar kirishi (yoqib-o'chiriladigan shablon emas) — qo'shnilari bilan bir xil sokin
+        tone = IconTone.GRAY,
         title = stringResource(Res.string.tg_rules_title),
         subtitle = stringResource(Res.string.tg_rules_card_sub),
         onClick = onClick,
