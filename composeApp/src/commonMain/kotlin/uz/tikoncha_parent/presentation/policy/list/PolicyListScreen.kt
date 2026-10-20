@@ -78,6 +78,8 @@ import uz.tikoncha_parent.presentation.policy.preset.PresetPolicyScreen
 import uz.tikoncha_parent.presentation.policy.model.PolicyCardUi
 import uz.tikoncha_parent.presentation.policy.model.PolicyTab
 import uz.tikoncha_parent.presentation.policy.protection.ContentProtectionScreen
+import uz.tikoncha_parent.presentation.policy.tikonchagram.TikonchagramRulesScreen
+import uz.tikoncha_parent.presentation.policy.components.TikonchagramCard
 import uz.tikoncha_parent.presentation.policy.quick.QuickBlockScreen
 import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
 import uz.tikoncha_parent.ui.ContainerPadding
@@ -114,6 +116,7 @@ class PolicyListScreen : Screen {
                 when (e) {
                     is PolicyListEffect.OpenQuickBlock -> navigator.push(QuickBlockScreen(e.childId))
                     is PolicyListEffect.OpenProtection -> navigator.push(ContentProtectionScreen(e.childId))
+                    is PolicyListEffect.OpenTikonchagram -> navigator.push(TikonchagramRulesScreen(e.childId))
                     is PolicyListEffect.OpenPreset -> navigator.push(PresetPolicyScreen(e.childId, e.kind))
                     is PolicyListEffect.OpenPolicy -> navigator.push(PolicyEditorScreen(e.childId, e.policyId))
                     is PolicyListEffect.OpenCreate -> navigator.push(PolicyEditorScreen(e.childId, null))
@@ -307,6 +310,9 @@ private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEv
             onToggle = { event(PolicyListEvent.QuickBlockToggled(it)) },
             onClick = { event(PolicyListEvent.QuickBlockClicked) },
         )
+    }
+    if (state.selectedChild != null) item(key = "tikonchagram") {
+        TikonchagramCard(onClick = { event(PolicyListEvent.TikonchagramClicked) })
     }
 }
 
