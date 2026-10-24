@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.common
 
+import uz.tikoncha_parent.platform.platformMonthNames
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import kotlinx.datetime.DatePeriod
@@ -228,11 +229,7 @@ object DateTimeUtil {
     fun formatDayMonthLocal(date: LocalDate, lang: LanguageType): String {
 
 
-        val months = when (lang) {
-            LanguageType.RU -> ruMonths
-            LanguageType.UZ -> uzMonths
-            LanguageType.EN -> enMonths
-        }
+        val months = monthsFor(lang)
 
         val day = date.day
         val monthName = months[date.month.ordinal]
@@ -276,19 +273,7 @@ object DateTimeUtil {
         val today = Clock.System.now().toLocalDateTime(zone).date
         val time = formatTime(millis = longDate)
 
-        val todayString = when (lang) {
-            LanguageType.UZ -> {
-                "Bugun"
-            }
-
-            LanguageType.RU -> {
-                "Сегодня"
-            }
-
-            LanguageType.EN -> {
-                "Today"
-            }
-        }
+        val todayString = lang.todayWord
 
 
 
@@ -350,7 +335,7 @@ object DateTimeUtil {
                 Month.DECEMBER -> "Декабря"
             }
 
-            else -> this.name.lowercase().replaceFirstChar { it.uppercase() }
+            else -> monthsFor(lang)[this.ordinal]
         }
     }
 
@@ -367,11 +352,7 @@ object DateTimeUtil {
         val date = Instant.fromEpochMilliseconds(millis)
             .toLocalDateTime(zone).date
 
-        val months = when (lang) {
-            LanguageType.RU -> ruMonths
-            LanguageType.UZ -> uzMonths
-            LanguageType.EN -> enMonths
-        }
+        val months = monthsFor(lang)
 
         val day = date.day
         val monthName = months[date.month.ordinal]
@@ -711,6 +692,23 @@ object DateTimeUtil {
         LanguageType.UZ -> "${date.day}-${uzMonths[date.month.ordinal].lowercase()} ${date.year}"
         LanguageType.RU -> "${date.day} ${ruMonths[date.month.ordinal].lowercase()} ${date.year}"
         LanguageType.EN -> "${date.day} ${enMonths[date.month.ordinal]} ${date.year}"
+        else -> "${date.day} ${monthsFor(lang)[date.month.ordinal]} ${date.year}"
+    }
+
+    private val kaaMonths = listOf(
+        "Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun", "Iyul", "Avgust", "Sentyabr", "Oktyabr", "Noyabr", "Dekabr"
+    )
+    private val monthCache = mutableMapOf<LanguageType, List<String>>()
+
+    /** Oy nomlari: özbek / rus / ingliz — qölda, qolgan tillar — tizimdan (bilmasa ingliz). */
+    fun monthsFor(lang: LanguageType): List<String> = when (lang) {
+        LanguageType.RU -> ruMonths
+        LanguageType.UZ -> uzMonths
+        LanguageType.EN -> enMonths
+        LanguageType.KAA -> kaaMonths
+        else -> monthCache.getOrPut(lang) {
+            platformMonthNames(lang.localeTag).takeIf { it.size == 12 } ?: enMonths
+        }
     }
 
     /**

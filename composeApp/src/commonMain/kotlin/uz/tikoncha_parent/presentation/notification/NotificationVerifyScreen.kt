@@ -65,7 +65,7 @@ fun NotificationVerifyUi(
 
 
     val language = remember {
-        if (LanguagePrefs.loadOrDefault() == LanguageType.UZ) "uz" else "ru"
+        if (LanguagePrefs.loadOrDefault().isUzbekFamily) "uz" else "ru"  // yangiliklar faqat uz/ru
     }
 
     val ui = remember(uiState.items, newsId, language) {

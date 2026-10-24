@@ -322,6 +322,7 @@ fun NewHomeUi(
                         state = latestState,
                         pickerOpen = pickerOpen,
                         onSupport = { showSupport = true },
+                        onAssistant = { navigator?.push(uz.tikoncha_parent.presentation.assistant.AssistantScreen()) },
                         onProfile = { navigator?.push(ProfileScreen()) },
                         onAddChild = { navigator?.push(AddChildScreen()) },
                         onChildSelected = { event(HomeEvent.OnChildSelected(it)) },

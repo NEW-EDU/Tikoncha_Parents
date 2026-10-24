@@ -85,6 +85,13 @@ class SplashScreen : Screen {
                         "childdetail" -> AppSettings.selectedChild?.let { uz.tikoncha_parent.presentation.profile.children.ChildDetailScreen(it) } ?: ChildrenSelectScreen()
                         "subscription" -> SubscriptionScreen()
                         "coins" -> CoinsScreen()
+                        // -hoglt.screen assistant [-hoglt.ask "savol"] [-hoglt.period week]
+                        "assistant" -> uz.tikoncha_parent.presentation.assistant.AssistantScreen(
+                            initialQuestion = debugArgs.getOrNull(debugArgs.indexOf("-hoglt.ask") + 1)
+                                ?.takeIf { "-hoglt.ask" in debugArgs },
+                            initialPeriod = debugArgs.getOrNull(debugArgs.indexOf("-hoglt.period") + 1)
+                                ?.takeIf { "-hoglt.period" in debugArgs },
+                        )
                         "paywall" -> SubscriptionPaymentScreen()
                         "paymethod" -> PaymentMethodScreen(
                             child = ChildArgs(id = AppSettings.selectedChild?.userId, name = AppSettings.selectedChild?.name.orEmpty(), avatarUrl = null, plusUntil = null),

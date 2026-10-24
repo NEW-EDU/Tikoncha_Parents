@@ -8,7 +8,7 @@ import java.util.Locale
 import uz.tikoncha_parent.presentation.domain.model.LanguageType
 
 actual fun getWeekDays(language: LanguageType): List<String> {
-    val locale = Locale(language.languageCode)
+    val locale = Locale.forLanguageTag(language.localeTag)
 
     return DayOfWeek.entries.map { day ->
         day.getDisplayName(TextStyle.NARROW,locale)

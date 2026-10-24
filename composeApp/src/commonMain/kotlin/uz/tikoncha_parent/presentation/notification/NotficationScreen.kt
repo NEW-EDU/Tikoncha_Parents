@@ -79,7 +79,7 @@ fun NotificationUi(
     val navigator = rootNavigator ?: LocalNavigator.currentOrThrow
 
     val language = remember {
-        if (LanguagePrefs.loadOrDefault() == LanguageType.UZ) "uz" else "ru"
+        if (LanguagePrefs.loadOrDefault().isUzbekFamily) "uz" else "ru"  // yangiliklar faqat uz/ru
     }
 
     val uiItems = remember(items, language) {

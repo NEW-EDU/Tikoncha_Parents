@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.chat.chat_list
 
+import uz.tikoncha_parent.presentation.assistant.AssistantScreen
+
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -213,12 +215,8 @@ fun ChatUi(
                                 val onClick = remember(item.chatId) {
                                     {
                                         if (item.type == ChatType.BOT) {
-                                            navigator?.push(
-                                                ChatMessageAiScreen(
-                                                    chatId = item.chatId,
-                                                    chatTitle = item.title,
-                                                )
-                                            )
+                                            // Bilimdon AI → ota-ona yordamçisi (native; eski WebView o'rniga)
+                                            navigator?.push(AssistantScreen())
                                         } else {
                                             navigator?.push(
                                                 ChatRoomScreen(
