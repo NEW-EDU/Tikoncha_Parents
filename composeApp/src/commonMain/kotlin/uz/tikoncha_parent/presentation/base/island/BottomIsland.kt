@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base.island
 
+import androidx.compose.material3.LocalRippleConfiguration
 import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -278,28 +279,32 @@ private fun BoxScope.IslandOverlay(state: IslandState) {
  * Orqaga tugmasi + ekran nomi — bitta tonal pill: "‹  Statistika". Butun pill bosiladi (sarlavhaga bosish = orqaga),
  * shuning uchun nishon katta va orolning o'rtasigacha cho'ziladi.
  */
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@OptIn(ExperimentalMaterial3ExpressiveApi::class, androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
 fun IslandTitlePill(title: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    Button(
-        onClick = onClick,
-        interactionSource = rememberHapticSource(),
-        shapes = expressiveButtonShapes(),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = AppColors.action.primary.copy(alpha = 0.14f),
-            contentColor = AppColors.text.primary,
-        ),
-        contentPadding = PaddingValues(start = 14.dp, end = 18.dp),
-        modifier = modifier.height(48.dp),
-    ) {
-        Icon(painterResource(Res.drawable.arrow_back), contentDescription = null, modifier = Modifier.size(22.dp))
-        Spacer(Modifier.width(10.dp))
-        Text(
-            text = title,
-            style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.weight(1f),
-        )
+    // Ripple yo'q: bosilganda sahifa darhol ketadi — yorqin to'lqin yarmida uzilib "lip" etardi.
+    // Javob — taktil zarba va shakl morfi.
+    CompositionLocalProvider(LocalRippleConfiguration provides null) {
+        Button(
+            onClick = onClick,
+            interactionSource = rememberHapticSource(),
+            shapes = expressiveButtonShapes(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = AppColors.action.primary.copy(alpha = 0.14f),
+                contentColor = AppColors.text.primary,
+            ),
+            contentPadding = PaddingValues(start = 14.dp, end = 18.dp),
+            modifier = modifier.height(48.dp),
+        ) {
+            Icon(painterResource(Res.drawable.arrow_back), contentDescription = null, modifier = Modifier.size(22.dp))
+            Spacer(Modifier.width(10.dp))
+            Text(
+                text = title,
+                style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f),
+            )
+        }
     }
 }
