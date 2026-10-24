@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.homeTileColor
 import uz.tikoncha_parent.ui.tileBlob
 import uz.tikoncha_parent.ui.BlobPlace
 import uz.tikoncha_parent.ui.tileBlobColor
@@ -79,7 +80,7 @@ fun RowScope.HomeGridTile(
     subtitle: @Composable ColumnScope.() -> Unit = {},
     /** Rasm ostida sokin doira bo'lsinmi. */
     blobbed: Boolean = false,
-    blob: BlobPlace = BlobPlace.GridBottomEnd,
+    blob: BlobPlace = BlobPlace.GridTasks,
     art: @Composable BoxScope.() -> Unit,
 ) {
     val blobColor = if (blobbed) tileBlobColor() else null
@@ -87,7 +88,7 @@ fun RowScope.HomeGridTile(
         modifier = Modifier
             .weight(1f)
             .fillMaxHeight()
-            .expressiveGridSegment(cell.row, cell.col, cell.rows, cell.cols, color = AppColors.section.tertiary, onClick = onClick)
+            .expressiveGridSegment(cell.row, cell.col, cell.rows, cell.cols, color = homeTileColor(), onClick = onClick)
             .then(if (blobColor != null) Modifier.tileBlob(blobColor, blob) else Modifier),
     ) {
         art()

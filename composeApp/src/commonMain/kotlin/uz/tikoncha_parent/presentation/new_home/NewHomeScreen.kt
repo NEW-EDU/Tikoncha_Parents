@@ -2,6 +2,10 @@
 
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.homeBarColors
+import uz.tikoncha_parent.ui.homeChipColor
+import uz.tikoncha_parent.ui.homeNameAccent
+import uz.tikoncha_parent.ui.homeTileColor
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import uz.tikoncha_parent.ui.autumnBackground
@@ -264,6 +268,7 @@ fun NewHomeUi(
                 .autumnBackground()
                 .then(systemBars.modifier)
         ) {
+            val nameAccent = homeNameAccent()
             // Tepada — faqat salomlashuv (o'qish joyi). Boshqaruv (yordam, farzand, profil) — pastki orolda.
             Row(
                 modifier = Modifier
@@ -277,7 +282,7 @@ fun NewHomeUi(
                         val full = stringResource(Res.string.home_greeting, state.userName)
                         append(full)
                         val at = if (state.userName.isNotBlank()) full.lastIndexOf(state.userName) else -1
-                        if (at >= 0) addStyle(SpanStyle(color = AppColors.text.accentEmphasis), at, at + state.userName.length)
+                        if (at >= 0) addStyle(SpanStyle(color = nameAccent), at, at + state.userName.length)
                     },
                     style = AppTypography.headlineSmSemiBold.copy(fontWeight = FontWeight.ExtraBold),
                     color = AppColors.text.primary,
@@ -294,7 +299,7 @@ fun NewHomeUi(
                         modifier = Modifier.size(44.dp),
                         shapes = IconButtonDefaults.shapes(),
                         colors = IconButtonDefaults.filledTonalIconButtonColors(
-                            containerColor = AppColors.bg.surfaceTertiary,
+                            containerColor = homeChipColor(),
                             contentColor = AppColors.icon.accentPrimary
                         )
                     ) {
@@ -385,14 +390,14 @@ fun NewHomeUi(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(HomeItemHeight)
-                                .expressiveSegment(0, HomeBlockCount, color = AppColors.section.tertiary) {
+                                .expressiveSegment(0, HomeBlockCount, color = homeTileColor()) {
                                     if (state.childrenList.isEmpty()) {
                                         internetCheck.check { showChildDialog = true }
                                     } else {
                                         navigator?.push(TaskScreen())
                                     }
                                 }
-                                .tileBlob(tileBlobColor(), BlobPlace.RowEnd)
+                                .tileBlob(tileBlobColor(), BlobPlace.RowTasks)
                                 .padding(horizontal = CardCornerPadding, vertical = HomeItemVerticalPadding),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -473,14 +478,14 @@ fun NewHomeUi(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(HomeItemHeight)
-                                .expressiveSegment(4, HomeBlockCount, color = AppColors.section.tertiary) {
+                                .expressiveSegment(4, HomeBlockCount, color = homeTileColor()) {
                                     if (state.childrenList.isEmpty()) {
                                         internetCheck.check { showChildDialog = true }
                                     } else {
                                         navigator?.push(PolicyListScreen())
                                     }
                                 }
-                                .tileBlob(tileBlobColor(), BlobPlace.RowEnd)
+                                .tileBlob(tileBlobColor(), BlobPlace.RowRestrictions)
                                 .padding(horizontal = CardCornerPadding, vertical = HomeItemVerticalPadding),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -513,7 +518,7 @@ fun NewHomeUi(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(HomeItemHeight)
-                                .expressiveSegment(5, HomeBlockCount, color = AppColors.section.tertiary) {
+                                .expressiveSegment(5, HomeBlockCount, color = homeTileColor()) {
                                     if (state.childrenList.isEmpty()) {
                                         internetCheck.check { showChildDialog = true }
                                     } else {
@@ -545,6 +550,7 @@ fun NewHomeUi(
                                 modifier = Modifier.padding(end = 14.5.dp)
                             ) {
                                 val barHeights = listOf(0.5f, 0.65f, 0.8f)
+                                val barColors = homeBarColors()
                                 val iconAlpha =
                                     if (state.topAppsFromRecentDays) RecentTopAppAlpha else 1f
                                 barHeights.forEachIndexed { index, heightFraction ->
@@ -553,7 +559,7 @@ fun NewHomeUi(
                                         modifier = Modifier
                                             .fillMaxHeight(heightFraction)
                                             .background(
-                                                MaterialTheme.extendedColor.backgroundColor,
+                                                barColors[index],
                                                 RoundedCornerShape(TextFieldCornerRadius)
                                             )
                                             .padding(6.dp),
@@ -608,7 +614,7 @@ private fun HomeGridBlocks(
                 onClick = onChat,
                 subtitle = { HomeGridSubtitle(stringResource(HomeSelectionItem.SIHBAT.subtitle)) },
                 blobbed = true,
-                blob = BlobPlace.GridBottomStart,
+                blob = BlobPlace.GridChat,
                 art = { TileArt(painterResource(HomeSelectionItem.SIHBAT.iconId), rotation = 10f) },
             )
             HomeGridTile(
@@ -617,7 +623,7 @@ private fun HomeGridBlocks(
                 onClick = { guard(onTasks) },
                 subtitle = { HomeGridSubtitle(stringResource(Res.string.faol_vazifa, taskCount)) },
                 blobbed = true,
-                blob = BlobPlace.GridBottomEnd,
+                blob = BlobPlace.GridTasks,
                 art = { TileArt(painterResource(Res.drawable.home_task), rotation = -8f) },
             )
         }
@@ -628,7 +634,7 @@ private fun HomeGridBlocks(
                 onClick = onMap,
                 subtitle = { HomeGridSubtitle(stringResource(HomeSelectionItem.XARITA.subtitle)) },
                 blobbed = true,
-                blob = BlobPlace.GridBottomStart,
+                blob = BlobPlace.GridMap,
                 art = { TileArt(painterResource(HomeSelectionItem.XARITA.iconId), rotation = -6f) },
             )
             ChildProtectionGridTile(
@@ -654,7 +660,7 @@ private fun HomeGridBlocks(
                 onClick = { guard(onRestrictions) },
                 subtitle = { HomeGridSubtitle(pluralStringResource(Res.plurals.apps_restricted, tableCount, tableCount)) },
                 blobbed = true,
-                blob = BlobPlace.GridBottomStart,
+                blob = BlobPlace.GridRestrictions,
                 art = { TileArt(painterResource(Res.drawable.home_table), rotation = 8f) },
             )
         }
@@ -667,6 +673,7 @@ private fun HomeGridBlocks(
  */
 @Composable
 private fun BoxScope.UsageBarsArt(state: HomeState) {
+    val barColors = homeBarColors()
     val iconAlpha = if (state.topAppsFromRecentDays) RecentTopAppAlpha else 1f
     val heights = listOf(72.dp, 104.dp, 136.dp)
     Row(
@@ -685,7 +692,7 @@ private fun BoxScope.UsageBarsArt(state: HomeState) {
                     .width(46.dp)
                     .height(h)
                     .background(
-                        AppColors.action.primary.copy(alpha = 0.10f + index * 0.06f),
+                        barColors[index],
                         RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp),
                     )
                     .padding(top = 8.dp),

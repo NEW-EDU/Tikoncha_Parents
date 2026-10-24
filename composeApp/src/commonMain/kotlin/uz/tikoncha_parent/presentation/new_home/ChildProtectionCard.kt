@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.homeTileColor
 import uz.tikoncha_parent.ui.tileBlob
 import uz.tikoncha_parent.ui.BlobPlace
 import uz.tikoncha_parent.ui.tileBlobColor
@@ -80,8 +81,8 @@ fun ChildProtectionCard(
         modifier = modifier
             .fillMaxWidth()
             .height(HomeItemHeight)
-            .expressiveSegment(segmentIndex, segmentCount, color = AppColors.section.tertiary) { onClick() }
-            .tileBlob(tileBlobColor(), BlobPlace.RowEnd)
+            .expressiveSegment(segmentIndex, segmentCount, color = homeTileColor()) { onClick() }
+            .tileBlob(tileBlobColor(), BlobPlace.RowProtection)
             .padding(horizontal = CardCornerPadding, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -177,7 +178,7 @@ fun RowScope.ChildProtectionGridTile(
         onClick = onClick,
         subtitle = { ProtectionStatusLines(level, hasChild, permissionOffCount, pendingRequestCount) },
         blobbed = true,
-        blob = BlobPlace.GridEnd,
+        blob = BlobPlace.GridProtection,
         art = { TileArt(painterResource(level.shield), size = 136.dp, rotation = -8f) },
     )
 }

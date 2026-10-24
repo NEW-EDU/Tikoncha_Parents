@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.homeTileColor
 import uz.tikoncha_parent.ui.tileBlob
 import uz.tikoncha_parent.ui.BlobPlace
 import uz.tikoncha_parent.ui.tileBlobColor
@@ -52,11 +53,11 @@ fun NewHomeItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(HomeItemHeight)
-                    .expressiveSegment(firstIndex + i, total, color = AppColors.section.tertiary) { onSettingSelected(selection) }
+                    .expressiveSegment(firstIndex + i, total, color = homeTileColor()) { onSettingSelected(selection) }
                     // Rasm ostidagi pastel doira
                     .tileBlob(
                         tileBlobColor(),
-                        BlobPlace.RowEnd,
+                        if (selection == HomeSelectionItem.XARITA) BlobPlace.RowMap else BlobPlace.RowChat,
                     )
                     .padding(horizontal = 20.dp, vertical = 8.dp),
                 contentAlignment = Alignment.Center
