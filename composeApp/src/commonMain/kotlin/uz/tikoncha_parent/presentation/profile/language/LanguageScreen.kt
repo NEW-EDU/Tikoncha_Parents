@@ -340,6 +340,7 @@ private fun LanguageRow(
             val ui = LocalLanguageController.current.current.collectAsState().value
             val local = remember(language, ui) {
                 languageDisplayName(language.languageCode, ui.localeTag).replaceFirstChar { it.uppercase() }
+                    .let { if (ui == LanguageType.UZ) it.toUz2026() else it }
             }
             if (local.isNotBlank() && !local.equals(language.languageName, ignoreCase = true)) {
                 Text(
@@ -374,3 +375,8 @@ private fun PreviewLanguageScreen() {
         LanguageUi(navigator = null)
     }
 }
+
+/** Tizim özbekça nomlarni eski yozuvda beradi ("O‘zbek", "Inglizcha") — 2026 alifbosiga. */
+private fun String.toUz2026(): String = this
+    .replace(Regex("[OoGg][‘ʻ’'`]")) { m -> when (m.value[0]) { 'O' -> "Ö"; 'o' -> "ö"; 'G' -> "Ğ"; else -> "ğ" } }
+    .replace("Sh", "Ş").replace("sh", "ş").replace("Ch", "Ç").replace("ch", "ç")

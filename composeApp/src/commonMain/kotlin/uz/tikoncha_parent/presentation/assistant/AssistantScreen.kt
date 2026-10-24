@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.assistant
 
+import androidx.compose.ui.text.style.TextDirection
 import tikoncha_parents.composeapp.generated.resources.ai_done_saved
 import tikoncha_parents.composeapp.generated.resources.ai_done_deleted
 import tikoncha_parents.composeapp.generated.resources.ai_done_approved
@@ -850,7 +851,8 @@ private fun ChildChips(children: List<UserInfo>, selected: UserInfo?, onSelect: 
                 Spacer(Modifier.width(8.dp))
                 Text(
                     label(child),
-                    style = AppTypography.titleSmSemiBold,
+                    // Lotin ism arab interfeysida ham "Saidburxon S." bölib qolsin (".Saidburxon S" emas)
+                    style = AppTypography.titleSmSemiBold.copy(textDirection = TextDirection.Content),
                     color = AppColors.text.primary,
                     maxLines = 1,
                 )

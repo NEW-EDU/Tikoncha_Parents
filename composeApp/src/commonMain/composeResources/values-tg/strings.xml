@@ -761,30 +761,30 @@
     <string name="tahrirlangan">таҳриршуда</string>
     <string name="jadval_topilmadi">Ҷадвал ёфт нашуд.</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d дақиқа</item>
+        <item quantity="other">%1$d дақиқа</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d барнома маҳдуд шудааст</item>
+        <item quantity="other">%1$d барнома маҳдуд шудааст</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d соат</item>
+        <item quantity="other">%1$d соат</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">Таваққуф — то %1$s</string>
     <string name="umumiy">Умумӣ</string>
     <string name="boshqa_ota_ona">Волиди дигар</string>
     <string name="vaqtincha_toxtatish">Таваққуф</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d барнома</item>
+        <item quantity="other">%1$d барнома</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d сайт</item>
+        <item quantity="other">%1$d сайт</item>
     </plurals>
     <string name="ozgarishlar_tarixi">Таърихи тағйирот</string>
     <string name="tarix_created">Сохта шуд</string>
@@ -802,12 +802,12 @@
     <string name="suhbat_bildirishnomalari_ochirildi">Огоҳиномаҳо барои ин чат хомӯшанд</string>
     <string name="suhbat_bildirishnomalari_yoqildi">Огоҳиномаҳо барои ин чат фаъоланд</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d дархости нав дар интизор</item>
+        <item quantity="other">%1$d дархости нав дар интизор</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d иҷозат хомӯш аст</item>
+        <item quantity="other">%1$d иҷозат хомӯш аст</item>
     </plurals>
     <string name="hammasi_joyida">Ҳама хуб аст</string>
 

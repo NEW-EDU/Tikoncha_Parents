@@ -777,30 +777,30 @@
     <string name="tahrirlangan">խմբագրված</string>
     <string name="jadval_topilmadi">Ժամանակացույցը չի գտնվել։</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d րոպե</item>
+        <item quantity="other">%1$d րոպե</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d հավելված սահմանափակված է</item>
+        <item quantity="other">%1$d հավելված սահմանափակված է</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d ժամ</item>
+        <item quantity="other">%1$d ժամ</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">Դադարեցված է՝ մինչև %1$s</string>
     <string name="umumiy">Ընդհանուր</string>
     <string name="boshqa_ota_ona">Մյուս ծնողը</string>
     <string name="vaqtincha_toxtatish">Դադար</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d հավելված</item>
+        <item quantity="other">%1$d հավելված</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d կայք</item>
+        <item quantity="other">%1$d կայք</item>
     </plurals>
     <string name="ozgarishlar_tarixi">Փոփոխությունների պատմություն</string>
     <string name="tarix_created">Ստեղծված</string>
@@ -818,12 +818,12 @@
     <string name="suhbat_bildirishnomalari_ochirildi">Այս զրույցի ծանուցումներն անջատված են</string>
     <string name="suhbat_bildirishnomalari_yoqildi">Այս զրույցի ծանուցումները միացված են</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d նոր հարցում սպասում է</item>
+        <item quantity="other">%1$d նոր հարցում սպասում է</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d թույլտվություն անջատված է</item>
+        <item quantity="other">%1$d թույլտվություն անջատված է</item>
     </plurals>
     <string name="hammasi_joyida">Ամեն ինչ կարգին է</string>
 

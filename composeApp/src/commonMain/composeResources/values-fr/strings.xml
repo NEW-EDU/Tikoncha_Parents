@@ -771,30 +771,30 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="tahrirlangan">modifié</string>
     <string name="jadval_topilmadi">Planning introuvable.</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d appli restreinte</item>
+        <item quantity="other">%1$d applis restreintes</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d heure</item>
+        <item quantity="other">%1$d heures</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">En pause : jusqu’à %1$s</string>
     <string name="umumiy">Général</string>
     <string name="boshqa_ota_ona">Autre parent</string>
     <string name="vaqtincha_toxtatish">Pause</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d appli</item>
+        <item quantity="other">%1$d applis</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d site</item>
+        <item quantity="other">%1$d sites</item>
     </plurals>
     <string name="ozgarishlar_tarixi">Historique des modifications</string>
     <string name="tarix_created">Créé</string>
@@ -812,12 +812,12 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="suhbat_bildirishnomalari_ochirildi">Les notifications de ce chat sont désactivées</string>
     <string name="suhbat_bildirishnomalari_yoqildi">Les notifications de ce chat sont activées</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d nouvelle demande en attente</item>
+        <item quantity="other">%1$d nouvelles demandes en attente</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d autorisation désactivée</item>
+        <item quantity="other">%1$d autorisations désactivées</item>
     </plurals>
     <string name="hammasi_joyida">Tout va bien</string>
 

@@ -777,30 +777,30 @@
     <string name="tahrirlangan">معدّل</string>
     <string name="jadval_topilmadi">لم يتم العثور على الجدول.</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d دقيقة</item>
+        <item quantity="other">%1$d دقيقة</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d تطبيق مقيّد</item>
+        <item quantity="other">%1$d تطبيقات مقيّدة</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d ساعة</item>
+        <item quantity="other">%1$d ساعة</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">موقوف مؤقتًا حتى %1$s</string>
     <string name="umumiy">عام</string>
     <string name="boshqa_ota_ona">ولي أمر آخر</string>
     <string name="vaqtincha_toxtatish">إيقاف مؤقت</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d تطبيق</item>
+        <item quantity="other">%1$d تطبيقات</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d موقع</item>
+        <item quantity="other">%1$d مواقع</item>
     </plurals>
     <string name="ozgarishlar_tarixi">سجل التغييرات</string>
     <string name="tarix_created">تم الإنشاء</string>
@@ -818,12 +818,12 @@
     <string name="suhbat_bildirishnomalari_ochirildi">إشعارات هذه الدردشة متوقفة</string>
     <string name="suhbat_bildirishnomalari_yoqildi">إشعارات هذه الدردشة مفعّلة</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d طلب جديد قيد الانتظار</item>
+        <item quantity="other">%1$d طلبات جديدة قيد الانتظار</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d إذن معطّل</item>
+        <item quantity="other">%1$d أذونات معطّلة</item>
     </plurals>
     <string name="hammasi_joyida">كل شيء على ما يرام</string>
 

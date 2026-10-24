@@ -777,30 +777,30 @@
     <string name="tahrirlangan">ترمیم شدہ</string>
     <string name="jadval_topilmadi">شیڈول نہیں ملا۔</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d منٹ</item>
+        <item quantity="other">%1$d منٹ</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d ایپ محدود</item>
+        <item quantity="other">%1$d ایپس محدود</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d گھنٹہ</item>
+        <item quantity="other">%1$d گھنٹے</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">رکا ہوا — %1$s تک</string>
     <string name="umumiy">عمومی</string>
     <string name="boshqa_ota_ona">دوسرے والدین</string>
     <string name="vaqtincha_toxtatish">روکیں</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d ایپ</item>
+        <item quantity="other">%1$d ایپس</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d سائٹ</item>
+        <item quantity="other">%1$d سائٹس</item>
     </plurals>
     <string name="ozgarishlar_tarixi">تبدیلیوں کی تاریخ</string>
     <string name="tarix_created">بنایا گیا</string>
@@ -818,12 +818,12 @@
     <string name="suhbat_bildirishnomalari_ochirildi">اس چیٹ کی اطلاعات بند ہیں</string>
     <string name="suhbat_bildirishnomalari_yoqildi">اس چیٹ کی اطلاعات آن ہیں</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d نئی درخواست زیر التوا</item>
+        <item quantity="other">%1$d نئی درخواستیں زیر التوا</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d اجازت بند ہے</item>
+        <item quantity="other">%1$d اجازتیں بند ہیں</item>
     </plurals>
     <string name="hammasi_joyida">سب ٹھیک ہے</string>
 

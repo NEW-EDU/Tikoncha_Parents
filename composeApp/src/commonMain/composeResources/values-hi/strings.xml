@@ -760,30 +760,30 @@
     <string name="tahrirlangan">बदला गया</string>
     <string name="jadval_topilmadi">शेड्यूल नहीं मिला।</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d मिनट</item>
+        <item quantity="other">%1$d मिनट</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d ऐप पर पाबंदी</item>
+        <item quantity="other">%1$d ऐप्स पर पाबंदी</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d घंटा</item>
+        <item quantity="other">%1$d घंटे</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">रुका हुआ, %1$s तक</string>
     <string name="umumiy">सामान्य</string>
     <string name="boshqa_ota_ona">दूसरा पैरेंट</string>
     <string name="vaqtincha_toxtatish">रोकें</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d ऐप</item>
+        <item quantity="other">%1$d ऐप्स</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d साइट</item>
+        <item quantity="other">%1$d साइट्स</item>
     </plurals>
     <string name="ozgarishlar_tarixi">बदलावों का इतिहास</string>
     <string name="tarix_created">बनाया गया</string>
@@ -801,12 +801,12 @@
     <string name="suhbat_bildirishnomalari_ochirildi">इस चैट के नोटिफ़िकेशन बंद हैं</string>
     <string name="suhbat_bildirishnomalari_yoqildi">इस चैट के नोटिफ़िकेशन चालू हैं</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d नई रिक्वेस्ट इंतज़ार में</item>
+        <item quantity="other">%1$d नई रिक्वेस्ट इंतज़ार में</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d अनुमति बंद है</item>
+        <item quantity="other">%1$d अनुमतियाँ बंद हैं</item>
     </plurals>
     <string name="hammasi_joyida">सब ठीक है</string>
 

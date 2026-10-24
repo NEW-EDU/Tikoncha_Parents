@@ -761,30 +761,30 @@
     <string name="tahrirlangan">수정됨</string>
     <string name="jadval_topilmadi">일정을 찾을 수 없어요.</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d분</item>
+        <item quantity="other">%1$d분</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">앱 %1$d개 제한됨</item>
+        <item quantity="other">앱 %1$d개 제한됨</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d시간</item>
+        <item quantity="other">%1$d시간</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">일시중지 — %1$s까지</string>
     <string name="umumiy">일반</string>
     <string name="boshqa_ota_ona">다른 부모님</string>
     <string name="vaqtincha_toxtatish">일시정지</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">앱 %1$d개</item>
+        <item quantity="other">앱 %1$d개</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">사이트 %1$d개</item>
+        <item quantity="other">사이트 %1$d개</item>
     </plurals>
     <string name="ozgarishlar_tarixi">변경 기록</string>
     <string name="tarix_created">생성됨</string>
@@ -802,12 +802,12 @@
     <string name="suhbat_bildirishnomalari_ochirildi">이 채팅의 알림이 꺼져 있어요</string>
     <string name="suhbat_bildirishnomalari_yoqildi">이 채팅의 알림이 켜져 있어요</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">대기 중인 새 요청 %1$d개</item>
+        <item quantity="other">대기 중인 새 요청 %1$d개</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">권한 %1$d개 꺼짐</item>
+        <item quantity="other">권한 %1$d개 꺼짐</item>
     </plurals>
     <string name="hammasi_joyida">모두 정상이에요</string>
 

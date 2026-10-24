@@ -777,30 +777,30 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="tahrirlangan">üýtgedildi</string>
     <string name="jadval_topilmadi">Tertip tapylmady.</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d minut</item>
+        <item quantity="other">%1$d minut</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d programma çäklendirildi</item>
+        <item quantity="other">%1$d programma çäklendirildi</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d sagat</item>
+        <item quantity="other">%1$d sagat</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">Duruzyldy — %1$s çenli</string>
     <string name="umumiy">Umumy</string>
     <string name="boshqa_ota_ona">Beýleki ene-ata</string>
     <string name="vaqtincha_toxtatish">Arakesme</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d programma</item>
+        <item quantity="other">%1$d programma</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d web sahypa</item>
+        <item quantity="other">%1$d web sahypa</item>
     </plurals>
     <string name="ozgarishlar_tarixi">Üýtgeşmeleriň taryhy</string>
     <string name="tarix_created">Döredildi</string>
@@ -818,12 +818,12 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="suhbat_bildirishnomalari_ochirildi">Bu çat üçin bildirişler öçük</string>
     <string name="suhbat_bildirishnomalari_yoqildi">Bu çat üçin bildirişler açyk</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d täze haýyş garaşýar</item>
+        <item quantity="other">%1$d täze haýyş garaşýar</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d rugsat öçürildi</item>
+        <item quantity="other">%1$d rugsat öçürildi</item>
     </plurals>
     <string name="hammasi_joyida">Hemme zat ýerinde</string>
 

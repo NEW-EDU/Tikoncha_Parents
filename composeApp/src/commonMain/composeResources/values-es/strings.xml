@@ -777,30 +777,30 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="tahrirlangan">editada</string>
     <string name="jadval_topilmadi">No se encontró el horario.</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d minuto</item>
+        <item quantity="other">%1$d minutos</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d app restringida</item>
+        <item quantity="other">%1$d apps restringidas</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d hora</item>
+        <item quantity="other">%1$d horas</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">En pausa hasta las %1$s</string>
     <string name="umumiy">General</string>
     <string name="boshqa_ota_ona">Otro padre</string>
     <string name="vaqtincha_toxtatish">Pausa</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d app</item>
+        <item quantity="other">%1$d apps</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d sitio</item>
+        <item quantity="other">%1$d sitios</item>
     </plurals>
     <string name="ozgarishlar_tarixi">Historial de cambios</string>
     <string name="tarix_created">Creado</string>
@@ -818,12 +818,12 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="suhbat_bildirishnomalari_ochirildi">Las notificaciones de este chat están desactivadas</string>
     <string name="suhbat_bildirishnomalari_yoqildi">Las notificaciones de este chat están activadas</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d solicitud nueva pendiente</item>
+        <item quantity="other">%1$d solicitudes nuevas pendientes</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d permiso desactivado</item>
+        <item quantity="other">%1$d permisos desactivados</item>
     </plurals>
     <string name="hammasi_joyida">Todo en orden</string>
 

@@ -777,30 +777,30 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="tahrirlangan">diubah</string>
     <string name="jadval_topilmadi">Jadwal tidak ditemukan.</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d menit</item>
+        <item quantity="other">%1$d menit</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d aplikasi dibatasi</item>
+        <item quantity="other">%1$d aplikasi dibatasi</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d jam</item>
+        <item quantity="other">%1$d jam</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">Dijeda, sampai %1$s</string>
     <string name="umumiy">Umum</string>
     <string name="boshqa_ota_ona">Orang tua lain</string>
     <string name="vaqtincha_toxtatish">Jeda</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d aplikasi</item>
+        <item quantity="other">%1$d aplikasi</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d situs</item>
+        <item quantity="other">%1$d situs</item>
     </plurals>
     <string name="ozgarishlar_tarixi">Riwayat perubahan</string>
     <string name="tarix_created">Dibuat</string>
@@ -818,12 +818,12 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="suhbat_bildirishnomalari_ochirildi">Notifikasi untuk obrolan ini mati</string>
     <string name="suhbat_bildirishnomalari_yoqildi">Notifikasi untuk obrolan ini aktif</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d permintaan baru menunggu</item>
+        <item quantity="other">%1$d permintaan baru menunggu</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d izin dinonaktifkan</item>
+        <item quantity="other">%1$d izin dinonaktifkan</item>
     </plurals>
     <string name="hammasi_joyida">Semua baik</string>
 

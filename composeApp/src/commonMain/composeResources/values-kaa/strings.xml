@@ -760,30 +760,30 @@
     <string name="tahrirlangan">ózgertilgen</string>
     <string name="jadval_topilmadi">Keste tabılmadı.</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d minut</item>
+        <item quantity="other">%1$d minut</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d qosımsha sheklengen</item>
+        <item quantity="other">%1$d qosımsha sheklengen</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d saat</item>
+        <item quantity="other">%1$d saat</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">Toqtatılǵan — %1$s waqtına shekem</string>
     <string name="umumiy">Ulıwma</string>
     <string name="boshqa_ota_ona">Basqa ata-ana</string>
     <string name="vaqtincha_toxtatish">Pauza</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d qosımsha</item>
+        <item quantity="other">%1$d qosımsha</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d sayt</item>
+        <item quantity="other">%1$d sayt</item>
     </plurals>
     <string name="ozgarishlar_tarixi">Ózgerisler tariyxı</string>
     <string name="tarix_created">Jaratıldı</string>
@@ -801,12 +801,12 @@
     <string name="suhbat_bildirishnomalari_ochirildi">Bul chat ushın bildiriwler óshirilgen</string>
     <string name="suhbat_bildirishnomalari_yoqildi">Bul chat ushın bildiriwler qosılǵan</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d jańa soraw kútilmekte</item>
+        <item quantity="other">%1$d jańa soraw kútilmekte</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d ruqsat óshirilgen</item>
+        <item quantity="other">%1$d ruqsat óshirilgen</item>
     </plurals>
     <string name="hammasi_joyida">Hámmesi jaqsı</string>
 

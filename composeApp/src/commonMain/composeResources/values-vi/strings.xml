@@ -777,30 +777,30 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="tahrirlangan">đã sửa</string>
     <string name="jadval_topilmadi">Không tìm thấy lịch.</string>
     <plurals name="minutes">
-        <item quantity="one">%1$d daqiqa</item>
-        <item quantity="other">%1$d daqiqa</item>
+        <item quantity="one">%1$d phút</item>
+        <item quantity="other">%1$d phút</item>
     </plurals>
 
     <plurals name="apps_restricted">
-        <item quantity="one">%1$d ta ilova çeklangan</item>
-        <item quantity="other">%1$d ta ilova çeklangan</item>
+        <item quantity="one">%1$d ứng dụng bị hạn chế</item>
+        <item quantity="other">%1$d ứng dụng bị hạn chế</item>
     </plurals>
 
     <plurals name="hours">
-        <item quantity="one">%1$d soat</item>
-        <item quantity="other">%1$d soat</item>
+        <item quantity="one">%1$d giờ</item>
+        <item quantity="other">%1$d giờ</item>
     </plurals>
     <string name="jadval_toxtatilgan_gacha">Đã tạm dừng — đến %1$s</string>
     <string name="umumiy">Chung</string>
     <string name="boshqa_ota_ona">Phụ huynh còn lại</string>
     <string name="vaqtincha_toxtatish">Tạm dừng</string>
     <plurals name="ilova_soni">
-        <item quantity="one">%1$d ta ilova</item>
-        <item quantity="other">%1$d ta ilova</item>
+        <item quantity="one">%1$d ứng dụng</item>
+        <item quantity="other">%1$d ứng dụng</item>
     </plurals>
     <plurals name="sayt_soni">
-        <item quantity="one">%1$d ta sayt</item>
-        <item quantity="other">%1$d ta sayt</item>
+        <item quantity="one">%1$d trang web</item>
+        <item quantity="other">%1$d trang web</item>
     </plurals>
     <string name="ozgarishlar_tarixi">Lịch sử thay đổi</string>
     <string name="tarix_created">Đã tạo</string>
@@ -818,12 +818,12 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="suhbat_bildirishnomalari_ochirildi">Thông báo của cuộc trò chuyện này đã tắt</string>
     <string name="suhbat_bildirishnomalari_yoqildi">Thông báo của cuộc trò chuyện này đã bật</string>
     <plurals name="ta_yangi_sorov_kutilmoqda">
-        <item quantity="one">%1$d ta yangi sörov kutilmoqda</item>
-        <item quantity="other">%1$d ta yangi sörov kutilmoqda</item>
+        <item quantity="one">%1$d yêu cầu mới đang chờ</item>
+        <item quantity="other">%1$d yêu cầu mới đang chờ</item>
     </plurals>
     <plurals name="ta_ruxsat_ochirilgan">
-        <item quantity="one">%1$d ta ruxsat öçirilgan</item>
-        <item quantity="other">%1$d ta ruxsat öçirilgan</item>
+        <item quantity="one">%1$d quyền đã tắt</item>
+        <item quantity="other">%1$d quyền đã tắt</item>
     </plurals>
     <string name="hammasi_joyida">Mọi thứ đều ổn</string>
 
