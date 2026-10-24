@@ -9,4 +9,7 @@ class ObservePoliciesUseCase(
 ) {
     operator fun invoke(childId: String): Flow<List<Policy>> =
         repository.observePolicies(childId)
+
+    fun cached(childId: String): List<Policy> = repository.cachedPolicies(childId)
+    fun isCached(childId: String): Boolean = repository.isCached(childId)
 }

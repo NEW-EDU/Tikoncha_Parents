@@ -27,6 +27,9 @@ class ObserveQuickBlockSnapshotUseCase(
 ) {
     operator fun invoke(childId: String, myUserId: String): Flow<QuickBlockSnapshot> =
         repository.observeQuickBlocks(childId).map { QuickBlockSnapshot(entries = it, myUserId = myUserId) }
+
+    fun cached(childId: String, myUserId: String): QuickBlockSnapshot =
+        QuickBlockSnapshot(entries = repository.cachedQuickBlocks(childId), myUserId = myUserId)
 }
 
 /**

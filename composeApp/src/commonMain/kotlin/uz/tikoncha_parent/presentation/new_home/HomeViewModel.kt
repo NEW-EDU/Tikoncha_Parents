@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.domain.repository.policy.ProtectionPackRepository
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Job
@@ -44,6 +45,7 @@ class HomeViewModel(
     private val todayUsageUseCase: TodayUsageUseCase,
     private val protectionRepository: ProtectionRepository,
     private val observePoliciesUseCase: ObservePoliciesUseCase,
+    private val packRepository: ProtectionPackRepository,
 ) : ScreenModel {
 
     private val TAG = "HomeViewModel"
@@ -333,6 +335,8 @@ class HomeViewModel(
     private fun loadPolicies(childId: String): Job = screenModelScope.launch {
         if (policyRepository.refreshPolicies(childId) is Outcome.Success) {
             hasPolicyLoaded.value = childId
+            // Jadvallar ekrani birinchi ochilishdayoq to'liq bo'lsin — paketlar katalogi ham oldindan keshga
+            packRepository.catalog()
         }
     }
 

@@ -41,6 +41,8 @@ class PolicyRepositoryImpl(
     override fun cachedPolicies(childId: String): List<Policy> =
         snapshots.value[childId]?.items.orEmpty()
 
+    override fun isCached(childId: String): Boolean = snapshots.value.containsKey(childId)
+
     override suspend fun refreshPolicies(childId: String, force: Boolean): Outcome<PolicyListSnapshot> =
         apiCall(TAG) {
             val previous = if (force) null else snapshots.value[childId]

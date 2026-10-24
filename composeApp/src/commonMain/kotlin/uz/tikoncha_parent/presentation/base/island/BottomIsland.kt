@@ -112,6 +112,8 @@ class IslandSpec(
     val picker: (() -> ChildPickerSpec?)? = null,
     val actions: (@Composable RowScope.() -> Unit)? = null,
     val content: (@Composable RowScope.() -> Unit)? = null,
+    /** Kontent tepasi (status bar ostida) yumaloqlansinmi — ro'yxat [CustomHeader] dan keyin darhol boshlansa. */
+    val roundTop: Boolean = true,
 )
 
 @Stable
@@ -153,7 +155,7 @@ fun ProvideIsland(spec: IslandSpec?) {
  * Kontent pastidan orol uchun joy (orol ko'rinmasa — 0). `rememberScreenSystemBars` modifikatoriga qo'shilgan,
  * `navigationBarsPadding()` dan KEYIN keladi — shuning uchun [navBottom] ayiriladi.
  */
-fun Modifier.islandInset(state: IslandState?, reserved: Dp, navBottom: Dp): Modifier =
+fun Modifier.islandInset(state: IslandState?, reserved: Dp, navBottom: Dp, topEdge: Dp? = null): Modifier =
     if (state == null) this
     else this
         .layout { measurable, constraints ->
@@ -161,21 +163,37 @@ fun Modifier.islandInset(state: IslandState?, reserved: Dp, navBottom: Dp): Modi
             val placeable = measurable.measure(constraints.offset(vertical = -inset))
             layout(placeable.width, placeable.height + inset) { placeable.place(0, 0) }
         }
-        .clip(IslandEdgeShape(state))
+        .clip(IslandEdgeShape(state, topEdge))
 
 /*
- * Kontentning orol tomondagi qirrasi: aylantirilgan kartalar orol ostiga keskin to'g'ri chiziqda emas, kartalar
- * chizig'ida (yon tomondan [EdgeInset]) [EdgeRadius] bilan yumaloqlanib kiradi — Statistika'dagidek. Tepada
- * yumaloqlash yo'q (kichik sarlavhalarni kesardi). Orol ko'rinmasa — oddiy to'rtburchak.
+ * Kontent chekkalari: aylantirilgan kartalar orol ostiga (pastda) va status bar ostiga (tepada) keskin to'g'ri
+ * chiziqda emas, kartalar chizig'ida (yon tomondan [EdgeInset]) [EdgeRadius] bilan yumaloqlanib kiradi —
+ * Statistika'dagidek. Orol ko'rinmasa (klaviatura ochiq, orolsiz ekran) — oddiy to'rtburchak.
  */
 val EdgeInset = 16.dp
 val EdgeRadius = 28.dp
 
-private class IslandEdgeShape(private val state: IslandState) : Shape {
+/** Tepada: status bar + [CustomHeader] bo'shlig'i — ro'yxatlar shu yerdan boshlanadi. */
+val ContentTopGap = 8.dp
+
+private class IslandEdgeShape(private val state: IslandState, private val topEdge: Dp?) : Shape {
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
         if (!state.active) return Outline.Rectangle(size.toRect())
-        return Outline.Generic(edgePath(size, density, topY = null, roundBottom = true))
+        val top = if (state.spec?.roundTop == true) topEdge?.let { with(density) { it.toPx() } } else null
+        return Outline.Generic(edgePath(size, density, top, roundBottom = true))
     }
+}
+
+/**
+ * Ekran o'zi joylashtirgan ro'yxat uchun (tepasida qotirilgan sarlavha/tugmalar bo'lsa — Bosh sahifa, Vazifalar):
+ * ro'yxat chekkasini kartalar chizig'ida yumaloqlaydi.
+ */
+fun Modifier.roundedContentEdges(top: Boolean = true, bottom: Boolean = false): Modifier =
+    clip(ContentEdgeShape(top, bottom))
+
+private class ContentEdgeShape(private val top: Boolean, private val bottom: Boolean) : Shape {
+    override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline =
+        Outline.Generic(edgePath(size, density, if (top) 0f else null, roundBottom = bottom))
 }
 
 /**

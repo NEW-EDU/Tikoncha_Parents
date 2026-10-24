@@ -14,6 +14,7 @@ import uz.tikoncha_parent.ui.tileBlob
 import uz.tikoncha_parent.ui.BlobPlace
 import uz.tikoncha_parent.ui.tileBlobColor
 import uz.tikoncha_parent.ui.rememberHapticSource
+import uz.tikoncha_parent.presentation.base.island.roundedContentEdges
 import kotlinx.datetime.minus
 import kotlinx.datetime.todayIn
 import uz.tikoncha_parent.common.DateTimeUtil
@@ -325,7 +326,7 @@ fun NewHomeUi(
                         onAddChild = { navigator?.push(AddChildScreen()) },
                         onChildSelected = { event(HomeEvent.OnChildSelected(it)) },
                     )
-                })
+                }, roundTop = false)
             }
             ProvideIsland(islandSpec)
 
@@ -351,7 +352,7 @@ fun NewHomeUi(
 
             if (homeLayout == HomeLayout.GRID) {
                 // Panjara: ekranning qolgan balandligini to'liq egallaydi (bo'sh joy qolmaydi); kichik ekranda — scroll.
-                BoxWithConstraints(Modifier.fillMaxWidth().weight(1f)) {
+                BoxWithConstraints(Modifier.fillMaxWidth().weight(1f).roundedContentEdges()) {
                     val viewport = maxHeight
                     Column(
                         modifier = Modifier
@@ -380,7 +381,7 @@ fun NewHomeUi(
                 }
             } else {
                 LazyColumn(
-                    modifier = Modifier.fillMaxWidth().weight(1f),
+                    modifier = Modifier.fillMaxWidth().weight(1f).roundedContentEdges(),
                     contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(0.dp),
                 ) {

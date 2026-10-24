@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.ui.theme
 
+import uz.tikoncha_parent.presentation.base.island.ContentTopGap
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -30,6 +32,7 @@ fun rememberScreenSystemBars(
     val island = LocalIsland.current
     val islandReserved = islandReservedFromBottom()
     val navBottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+    val statusTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val modifier = when {
         hasStatusBarPadding && hasNavigationBarPadding ->
             Modifier
@@ -37,7 +40,7 @@ fun rememberScreenSystemBars(
                 // boshqa rang (eski pastki panel rangi) ko'rinmasin
                 .drawBehind { drawRect(if (island?.active == true) statusBarColor else navigationBarColor) }
                 .navigationBarsPadding()
-                .islandInset(island, islandReserved, navBottom)
+                .islandInset(island, islandReserved, navBottom, topEdge = statusTop + ContentTopGap)
                 .background(statusBarColor)
                 .statusBarsPadding()
 
