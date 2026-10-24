@@ -126,7 +126,7 @@
     <string name="pasport_id">Passport ID</string>
     <string name="reklama">Advertisement</string>
     <string name="yorug">Light</string>
-    <string name="theme_system">Theme System</string>
+    <string name="theme_system">System</string>
     <string name="xavfli_zona">Danger zone</string>
     <string name="akkauntni_o_chirish">Delete account</string>
     <string name="pochta_orqali">By email</string>
@@ -1051,7 +1051,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ap_card_title">Bank card</string>
     <string name="ap_click_sub">One-time payment</string>
     <string name="ap_card_sub">Automatic</string>
-    <string name="ap_save_percent">Save %1$d%%</string>
+    <string name="ap_save_percent">Save %1$d%</string>
     <string name="ap_continue_with">Continue · %1$s</string>
     <string name="ap_per_year">UZS / year</string>
     <string name="ap_per_month">UZS / month</string>
@@ -1172,4 +1172,100 @@ This information is used only for these features and is not shared with third pa
     <string name="ulanish_kodini_kiriting">Enter the link code</string>
     <string name="ulanish_kodi_tavsif">Your child creates an 8-digit code in their app via “Show my code”. Enter that code here.</string>
     <string name="ulash_tugma">Link</string>
+
+    <!-- Onboarding (parent) -->
+    <string name="ob_skip">Skip</string>
+    <string name="ob_start">Let’s start</string>
+    <string name="ob_got_it">Got it</string>
+    <string name="ob_hello_title">Hi, I’m Hoglt</string>
+    <string name="ob_hello_body">I help your child use their phone wisely — and keep you close to their day.</string>
+    <string name="ob_day_title">See their day</string>
+    <string name="ob_day_body">Screen time and the apps they use most — day by day.</string>
+    <string name="ob_day_today">Today</string>
+    <string name="ob_total_fmt">%1$dh %2$dm</string>
+    <string name="ob_day_video">Video</string>
+    <string name="ob_day_games">Games</string>
+    <string name="ob_day_study">Study</string>
+    <string name="ob_min_fmt">%1$d min</string>
+    <string name="ob_rules_title">Set the rules once</string>
+    <string name="ob_rules_body">Bedtime, school time and daily limits switch on by themselves.</string>
+    <string name="ob_rule_sleep">Bedtime</string>
+    <string name="ob_rule_school">School time</string>
+    <string name="ob_rule_limit">Daily limit</string>
+    <string name="ob_rule_limit_value">2 h</string>
+    <string name="ob_map_title">Know where they are</string>
+    <string name="ob_map_body">See your child on the map and set rules for places like school.</string>
+    <string name="ob_chat_title">Stay close</string>
+    <string name="ob_chat_body">Chat with your child and answer their requests in one tap.</string>
+    <string name="ob_chat_child_msg">I finished my homework!</string>
+    <string name="ob_tasks_title">Tasks that pay off</string>
+    <string name="ob_tasks_body">Give tasks — your child earns coins for finishing them.</string>
+    <string name="ob_task_sample">Read 20 pages</string>
+    <string name="ob_notif_title">Don’t miss a thing</string>
+    <string name="ob_notif_body">Your child’s requests, messages and alerts arrive as notifications.</string>
+    <string name="ob_notif_request">New request</string>
+    <string name="ob_notif_message">New message</string>
+    <string name="ob_notif_task">Task done</string>
+
+    <!-- Add child (redesign) -->
+    <string name="ac_hero_title">Link your child’s phone</string>
+    <string name="ac_hero_sub">It takes a minute — keep your child’s phone nearby.</string>
+    <string name="ac_step_install">Install Hoglt on your child’s phone</string>
+    <string name="ac_step_show_code">On their phone: Profile → Add a parent → Show my code</string>
+    <string name="ac_step_enter_code">Enter the 8-digit code you see</string>
+    <string name="ac_step_phone">Enter your child’s phone number</string>
+    <string name="ac_step_child_enters">Enter the code on your child’s phone</string>
+    <string name="country_fr">France</string>
+    <string name="country_it">Italy</string>
+    <string name="country_es">Spain</string>
+    <string name="country_nl">Netherlands</string>
+    <string name="country_pl">Poland</string>
+    <string name="country_ua">Ukraine</string>
+    <string name="country_az">Azerbaijan</string>
+    <string name="country_in">India</string>
+    <string name="country_cn">China</string>
+    <string name="country_jp">Japan</string>
+    <string name="country_ca">Canada</string>
+    <string name="country_au">Australia</string>
+
+    <!-- Support sheet -->
+    <string name="support_sub">Choose how you’d like to reach us.</string>
+    <string name="support_email">Email</string>
+
+    <!-- Profile sections (M3 Expressive grouped lists) -->
+    <string name="pr_section_account">Account</string>
+    <string name="pr_section_prefs">Appearance &amp; language</string>
+    <string name="pr_section_payments">Payments</string>
+    <string name="pr_section_help">Help</string>
+    <string name="ap_card_need_child">Auto-pay is tied to a child — add a child first</string>
+    <string name="lang_name_uz">Uzbek</string>
+    <string name="lang_name_ru">Russian</string>
+    <string name="lang_name_en">English</string>
+    <string name="lang_hint">The app switches to the language right away</string>
+    <string name="lang_section">App language</string>
+    <string name="theme_section_colors">Colour</string>
+    <string name="home_layout_title">Home layout</string>
+    <string name="home_layout_list">List</string>
+    <string name="home_layout_grid">Grid</string>
+    <string name="home_greeting">Hi, %1$s</string>
+    <string name="kecha_sarfladi">Spent yesterday</string>
+    <string name="sana_sarfladi">Spent on %1$s</string>
+    <string name="stat_no_usage_day">No phone use on this day yet</string>
+    <string name="kirish_usuli">Sign-in method</string>
+    <string name="google_hisobi">Google account</string>
+    <string name="apple_id">Apple ID</string>
+    <string name="email_label">Email</string>
+    <string name="email_yashirilgan_apple">Hidden by Apple</string>
+    <string name="apple_email_hidden_line">Apple ID · email hidden</string>
+    <string name="haptics_title">Haptics</string>
+    <string name="haptics_section">Vibration strength</string>
+    <string name="haptics_off">Off</string>
+    <string name="haptics_off_desc">No vibration on buttons</string>
+    <string name="haptics_light">Light</string>
+    <string name="haptics_light_desc">Subtle, barely there</string>
+    <string name="haptics_standard">Standard</string>
+    <string name="haptics_standard_desc">Balanced</string>
+    <string name="haptics_strong">Strong</string>
+    <string name="haptics_strong_desc">A crisp tap on every press</string>
+    <string name="haptics_footer">On button presses, selection changes and results. Pick one to feel it right away.</string>
 </resources>

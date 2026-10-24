@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.data.repository
 
+import uz.tikoncha_parent.data.local.AppSettings
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.format
@@ -47,7 +48,12 @@ class ChildRepositoryImpl(
             val r = api.children()
             val body = r.data
             when {
-                r.success && body != null -> Outcome.Success(body.children.map { it.toUserInfo() })
+                r.success && body != null -> {
+                    val list = body.children.map { it.toUserInfo() }
+                    // Har ekran (Jadvallar, Statistika…) birinchi kadrdanoq farzandlarni ko'rsin
+                    AppSettings.children = list
+                    Outcome.Success(list)
+                }
                 r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
                 else -> Outcome.Failure(ApiErrorMapper.fromCode(r.code), r.error)
             }

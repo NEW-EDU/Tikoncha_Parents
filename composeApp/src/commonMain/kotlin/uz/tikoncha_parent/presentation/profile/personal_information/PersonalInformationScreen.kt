@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.personal_information
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -156,8 +157,10 @@ fun PersonalInformationUi(
 
             LazyColumn(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                contentPadding = PaddingValues(ContainerPadding)
+                    .fillMaxWidth()
+                    .weight(1f),
+                contentPadding = PaddingValues(ContainerPadding),
+                verticalArrangement = Arrangement.Bottom,
             ) {
                 item {
                     ProfileHeader(

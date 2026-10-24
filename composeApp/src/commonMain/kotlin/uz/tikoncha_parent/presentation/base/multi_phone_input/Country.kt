@@ -16,6 +16,18 @@ import tikoncha_parents.composeapp.generated.resources.country_us
 import tikoncha_parents.composeapp.generated.resources.country_gb
 import tikoncha_parents.composeapp.generated.resources.country_de
 import tikoncha_parents.composeapp.generated.resources.country_kr
+import tikoncha_parents.composeapp.generated.resources.country_fr
+import tikoncha_parents.composeapp.generated.resources.country_it
+import tikoncha_parents.composeapp.generated.resources.country_es
+import tikoncha_parents.composeapp.generated.resources.country_nl
+import tikoncha_parents.composeapp.generated.resources.country_pl
+import tikoncha_parents.composeapp.generated.resources.country_ua
+import tikoncha_parents.composeapp.generated.resources.country_az
+import tikoncha_parents.composeapp.generated.resources.country_in
+import tikoncha_parents.composeapp.generated.resources.country_cn
+import tikoncha_parents.composeapp.generated.resources.country_jp
+import tikoncha_parents.composeapp.generated.resources.country_ca
+import tikoncha_parents.composeapp.generated.resources.country_au
 
 /**
  * Bitta davlat uchun ma'lumot.
@@ -68,6 +80,18 @@ val Countries: List<Country> = listOf(
     Country("GB", Res.string.country_gb, "+44",  "🇬🇧", "#### ######"),
     Country("DE", Res.string.country_de, "+49",  "🇩🇪", "### #######"),
     Country("KR", Res.string.country_kr, "+82",  "🇰🇷", "## #### ####"),
+    Country("AZ", Res.string.country_az, "+994", "🇦🇿", "## ### ## ##"),
+    Country("UA", Res.string.country_ua, "+380", "🇺🇦", "## ### ## ##"),
+    Country("FR", Res.string.country_fr, "+33",  "🇫🇷", "# ## ## ## ##"),
+    Country("IT", Res.string.country_it, "+39",  "🇮🇹", "### ### ####"),
+    Country("ES", Res.string.country_es, "+34",  "🇪🇸", "### ### ###"),
+    Country("NL", Res.string.country_nl, "+31",  "🇳🇱", "# ## ## ## ##"),
+    Country("PL", Res.string.country_pl, "+48",  "🇵🇱", "### ### ###"),
+    Country("IN", Res.string.country_in, "+91",  "🇮🇳", "##### #####"),
+    Country("CN", Res.string.country_cn, "+86",  "🇨🇳", "### #### ####"),
+    Country("JP", Res.string.country_jp, "+81",  "🇯🇵", "## #### ####"),
+    Country("CA", Res.string.country_ca, "+1",   "🇨🇦", "### ### ####"),
+    Country("AU", Res.string.country_au, "+61",  "🇦🇺", "### ### ###"),
 )
 
 /** Standart (boshlang'ich) davlat. */
@@ -76,3 +100,17 @@ val DefaultCountry: Country = Countries.first()
 /** Berilgan ISO kodi bo'yicha davlatni topadi, topilmasa default qaytaradi. */
 fun countryOf(iso: String): Country =
     Countries.firstOrNull { it.iso.equals(iso, ignoreCase = true) } ?: DefaultCountry
+
+/**
+ * Telefon raqami maydonining boshlang'ich davlati — telefon hududi bo'yicha (masalan, AQShdagi ota-onaga +1),
+ * ro'yxatda bo'lmasa ilova tili bo'yicha: rus → Rossiya, o'zbek → O'zbekiston, boshqa → AQSh.
+ */
+fun initialPhoneCountry(): Country {
+    val region = uz.tikoncha_parent.platform.deviceRegionCode()
+    Countries.firstOrNull { it.iso.equals(region, ignoreCase = true) }?.let { return it }
+    return when (uz.tikoncha_parent.presentation.profile.language.LanguagePrefs.loadOrDefault().languageCode) {
+        "uz" -> DefaultCountry
+        "ru" -> countryOf("RU")
+        else -> countryOf("US")
+    }
+}

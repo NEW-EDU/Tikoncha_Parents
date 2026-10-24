@@ -3,14 +3,14 @@ package uz.tikoncha_parent.presentation.add_child
 import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.presentation.base.multi_phone_input.Country
-import uz.tikoncha_parent.presentation.base.multi_phone_input.DefaultCountry
+import uz.tikoncha_parent.presentation.base.multi_phone_input.initialPhoneCountry
 
 /** Bog'lash usuli: telefon raqami orqali (eski) yoki telefonsiz ulanish kodi orqali (SIWA uchun ham). */
 enum class LinkMode { PHONE, CODE }
 
 data class AddChildState(
     val phoneNumber: String = "",            // raw digits, max 9
-    val selectedCountry: Country = DefaultCountry,
+    val selectedCountry: Country = initialPhoneCountry(),
     val requestedPhone: String = "",         // phone used in last successful request
     val code: String? = null,                // OTP code from server
     val codeExpiresAt: Long = 0L,

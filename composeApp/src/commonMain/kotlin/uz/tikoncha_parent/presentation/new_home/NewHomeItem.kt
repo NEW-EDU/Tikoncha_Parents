@@ -1,5 +1,14 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.homeSubtitleColor
+import uz.tikoncha_parent.ui.homeTileColor
+import uz.tikoncha_parent.ui.tileBlob
+import uz.tikoncha_parent.ui.BlobPlace
+import uz.tikoncha_parent.ui.tileBlobColor
+import uz.tikoncha_parent.ui.SegmentGap
+import uz.tikoncha_parent.ui.expressiveSegment
+import androidx.compose.ui.text.font.FontWeight
+import uz.tikoncha_parent.ui.expressiveCard
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -32,19 +41,24 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 
 @Composable
 fun NewHomeItem(
+    /** Guruhlangan blokdagi birinchi elementning o'rni va blokdagi jami elementlar soni. */
+    firstIndex: Int = 0,
+    total: Int = HomeSelectionItem.entries.size,
+    /** Qaysi bloklar (tartib bo'yicha) — Bosh sahifada ular alohida joylarda bo'lishi mumkin. */
+    items: List<HomeSelectionItem> = HomeSelectionItem.entries,
     onSettingSelected: (HomeSelectionItem) -> Unit
 ){
     Column {
-        HomeSelectionItem.entries.forEach { selection ->
+        items.forEachIndexed { i, selection ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(LargeCardCornerRadius))
-                    .clickable { onSettingSelected(selection) }
                     .height(HomeItemHeight)
-                    .background(
-                        color = AppColors.section.tertiary,
-                        shape = RoundedCornerShape(LargeCardCornerRadius)
+                    .expressiveSegment(firstIndex + i, total, color = homeTileColor()) { onSettingSelected(selection) }
+                    // Rasm ostidagi pastel doira
+                    .tileBlob(
+                        tileBlobColor(),
+                        if (selection == HomeSelectionItem.XARITA) BlobPlace.RowMap else BlobPlace.RowChat,
                     )
                     .padding(horizontal = 20.dp, vertical = 8.dp),
                 contentAlignment = Alignment.Center
@@ -59,11 +73,11 @@ fun NewHomeItem(
                         Text(
                             text = stringResource(selection.title),
                             color = AppColors.text.primary,
-                            style = AppTypography.displaySmRegular
+                            style = AppTypography.displaySmRegular.copy(fontWeight = FontWeight.Bold)
                         )
                         Text(
                             text = stringResource(selection.subtitle),
-                            color = AppColors.text.secondary,
+                            color = homeSubtitleColor(),
                             style = AppTypography.titleSmMedium,
                         )
                     }
@@ -77,7 +91,7 @@ fun NewHomeItem(
                     )
                 }
             }
-            Space(12.dp)
+            Space(SegmentGap)
         }
     }
 }

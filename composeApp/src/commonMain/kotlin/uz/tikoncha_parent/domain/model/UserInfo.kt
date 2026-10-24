@@ -23,6 +23,9 @@ data class UserInfo(
     val last_seen: String? = null,
     val subscription: String? = null,
     val subscription_end_date: String? = null,
+    val signInMethod: String? = null,
+    val email: String? = null,
+    val emailHidden: Boolean = false,
 ): JavaSerializable{
     override fun toString(): String {
         return name

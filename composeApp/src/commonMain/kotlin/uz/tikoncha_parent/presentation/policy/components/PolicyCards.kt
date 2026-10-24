@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.components
 
+import uz.tikoncha_parent.ui.expressiveSegment
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,14 +39,15 @@ fun PolicyCardBody(
     modifier: Modifier = Modifier,
     /** Qo'shimcha eslatma (masalan "Faqat Qalqon rejimida ishlaydi"). */
     note: String? = null,
+    /** M3 Expressive guruhlangan ro'yxatdagi o'rni (tashqi burchaklar katta, ichkilari kichik). */
+    segmentIndex: Int = 0,
+    segmentCount: Int = 1,
     trailing: @Composable () -> Unit,
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clip(CardShape)
-            .background(AppColors.bg.section)
-            .singleClick(onClick = onClick)
+            .expressiveSegment(segmentIndex, segmentCount, color = AppColors.bg.surface, onClick = onClick)
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(14.dp),

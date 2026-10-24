@@ -1,5 +1,11 @@
 package uz.tikoncha_parent.presentation.base
 
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,6 +40,7 @@ import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.extendedColor
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun CustomDialog(
     modifier: Modifier = Modifier,
@@ -46,6 +53,8 @@ fun CustomDialog(
     showCloseButton: Boolean = false,
     painter: Painter = painterResource(Res.drawable.dialog_info),
     buttonText2: String = stringResource(Res.string.bekor_qilish),
+    /** Asosiy tugma ikonasi (masalan, "Farzand qo'shish" uchun +). */
+    buttonIcon: Painter? = null,
 ) {
 
     val dialogIcon = if (message == stringResource(Res.string.iltimos_internetga_ulang)) {
@@ -76,7 +85,8 @@ fun CustomDialog(
                 colors = CardDefaults.cardColors(
                     containerColor = AppColors.bg.surface
                 ),
-                shape = RoundedCornerShape(CardCornerRadius)
+                // M3 Expressive: dialoglar — extra-large (28 dp) burchak
+                shape = MaterialTheme.shapes.extraLarge
             ) {
                 Column(
                     modifier = Modifier
@@ -85,18 +95,23 @@ fun CustomDialog(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     SpaceLarge()
+                    // Ikonka prujina bilan "otilib" chiqadi (MotionScheme.defaultSpatial)
+                    val pop = remember { Animatable(0.6f) }
+                    val spatial = MaterialTheme.motionScheme.defaultSpatialSpec<Float>()
+                    LaunchedEffect(Unit) { pop.animateTo(1f, spatial) }
                     Image(
                         painter = dialogIcon,
                         contentDescription = "",
                         modifier = Modifier
-                            .size(60.dp)
+                            .size(64.dp)
+                            .graphicsLayer { scaleX = pop.value; scaleY = pop.value }
                             .align(Alignment.CenterHorizontally)
                     )
                     Space(16.dp)
                     Text(
                         text = dialogTitle,
                         color = AppColors.text.primary,
-                        style = AppTypography.titleLgSemiBold,
+                        style = AppTypography.titleLgSemiBold.copy(fontWeight = FontWeight.ExtraBold),
                         modifier = Modifier
                             .fillMaxWidth(),
                         textAlign = TextAlign.Center
@@ -121,7 +136,10 @@ fun CustomDialog(
                         },
                         modifier = Modifier
                             .fillMaxWidth(),
-                        containerColor = AppColors.button.primary
+                        containerColor = AppColors.button.primary,
+                        leadingIcon = buttonIcon?.let { icon ->
+                            { Icon(icon, contentDescription = null, tint = AppColors.text.inverse, modifier = Modifier.size(18.dp)) }
+                        }
                     )
                     if (showCloseButton){
                         Space(8.dp)

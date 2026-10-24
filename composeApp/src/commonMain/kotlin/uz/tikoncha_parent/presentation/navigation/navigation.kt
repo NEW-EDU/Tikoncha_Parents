@@ -1,5 +1,9 @@
 package uz.tikoncha_parent.presentation.navigation
 
+import uz.tikoncha_parent.ui.Haptics
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.core.CubicBezierEasing
+import uz.tikoncha_parent.presentation.base.island.ScreenWithIsland
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -47,9 +51,14 @@ import kotlin.math.roundToInt
 
 expect val isSwipeBackEnabled: Boolean
 
-private const val PUSH_DURATION = 320
-private const val POP_DURATION = 280
-private const val REPLACE_DURATION = 220
+// M3 "emphasized" harakat: tez boshlanib, yumshoq to'xtaydi (sahifa "qo'yiladi", sakramaydi).
+private const val PUSH_DURATION = 450
+private const val POP_DURATION = 400
+private const val REPLACE_DURATION = 300
+private val EmphasizedDecelerate = CubicBezierEasing(0.05f, 0.7f, 0.1f, 1f)
+private val Emphasized = CubicBezierEasing(0.2f, 0f, 0f, 1f)
+/** Ostda qolgan sahifa butunlay o'chmaydi — biroz xiralashadi (bo'sh fon "lip" etmaydi). */
+private const val UNDER_ALPHA = 0.55f
 
 @Composable
 fun SwipeBackContent(navigator: Navigator) {
@@ -125,10 +134,10 @@ fun SwipeBackContent(navigator: Navigator) {
                         previousScreen.key !in animatedKeys
                 if (canRestore) {
                     stateHolder.SaveableStateProvider(previousScreen.key) {
-                        previousScreen.Content()
+                        ScreenWithIsland(previousScreen.key) { previousScreen.Content() }
                     }
                 } else {
-                    previousScreen.Content()
+                    ScreenWithIsland(previousScreen.key) { previousScreen.Content() }
                 }
             }
 
@@ -184,6 +193,7 @@ fun SwipeBackContent(navigator: Navigator) {
                                                     tween(200, easing = FastOutSlowInEasing)
                                                 )
                                                 skipNextAnim = true
+                                                Haptics.tick()
                                                 navigator.pop()
                                                 offsetX.snapTo(0f)
                                             } else {
@@ -264,21 +274,24 @@ private fun AnimatedScreenContent(
             } else {
                 when (navigator.lastEvent) {
                     StackEvent.Pop -> {
-                        // Pop: yangi (avvalgi) ekran chapdan 1/3 dan keladi, eski to'liq o'ngga
-                        slideInHorizontally(tween(POP_DURATION)) { -it / 3 } +
-                                fadeIn(tween(POP_DURATION)) togetherWith
-                                slideOutHorizontally(tween(POP_DURATION)) { it }
+                        // Pop: ketayotgan sahifa USTDA qolib o'ngga suriladi, ostidagi (avvalgi) sahifa chapdan 1/4
+                        // siljib, xiralikdan ochiladi. Avval qaytayotgan sahifa ustda chizilib, keskin almashardi.
+                        (slideInHorizontally(tween(POP_DURATION, easing = Emphasized)) { -it / 4 } +
+                                fadeIn(tween(POP_DURATION, easing = Emphasized), initialAlpha = UNDER_ALPHA) togetherWith
+                                slideOutHorizontally(tween(POP_DURATION, easing = Emphasized)) { it })
+                            .apply { targetContentZIndex = -1f }
                     }
                     StackEvent.Replace -> {
-                        // replaceAll (LoginScreen ga o'tish): fade
-                        fadeIn(tween(REPLACE_DURATION)) togetherWith
-                                fadeOut(tween(REPLACE_DURATION))
+                        // replaceAll (LoginScreen ga o'tish): yumshoq almashinuv + biroz kattalashish
+                        (fadeIn(tween(REPLACE_DURATION, delayMillis = 60, easing = EmphasizedDecelerate)) +
+                                scaleIn(tween(REPLACE_DURATION, delayMillis = 60, easing = EmphasizedDecelerate), initialScale = 0.96f)) togetherWith
+                                fadeOut(tween(REPLACE_DURATION / 2))
                     }
                     else -> {
-                        // Push: yangi ekran o'ngdan keladi, eski chapga 1/3 siljiydi
-                        slideInHorizontally(tween(PUSH_DURATION)) { it } togetherWith
-                                slideOutHorizontally(tween(PUSH_DURATION)) { -it / 3 } +
-                                fadeOut(tween(PUSH_DURATION))
+                        // Push: yangi sahifa o'ngdan keladi, eskisi chapga 1/4 siljib xiralashadi
+                        slideInHorizontally(tween(PUSH_DURATION, easing = EmphasizedDecelerate)) { it } togetherWith
+                                slideOutHorizontally(tween(PUSH_DURATION, easing = EmphasizedDecelerate)) { -it / 4 } +
+                                fadeOut(tween(PUSH_DURATION, easing = EmphasizedDecelerate), targetAlpha = UNDER_ALPHA)
                     }
                 }
             }
@@ -290,7 +303,7 @@ private fun AnimatedScreenContent(
             onDispose { animatedKeys -= screen.key }
         }
         stateHolder.SaveableStateProvider(screen.key) {
-            screen.Content()
+            ScreenWithIsland(screen.key) { screen.Content() }
         }
     }
 }

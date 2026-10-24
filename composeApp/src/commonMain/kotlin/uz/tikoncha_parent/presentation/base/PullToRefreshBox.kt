@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.Haptics
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults
 import androidx.compose.material3.pulltorefresh.PullToRefreshState
@@ -20,6 +22,7 @@ import androidx.compose.material3.pulltorefresh.PullToRefreshBox as Material3Pul
  *
  * Imzo Material3 dagi bilan bir xil, shuning uchun ekranlarda faqat import o'zgaradi.
  */
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun PullToRefreshBox(
     isRefreshing: Boolean,
@@ -31,12 +34,13 @@ fun PullToRefreshBox(
 ) {
     Material3PullToRefreshBox(
         isRefreshing = isRefreshing,
-        onRefresh = onRefresh,
+        onRefresh = { Haptics.tick(); onRefresh() },
         modifier = modifier,
         state = state,
         contentAlignment = contentAlignment,
         indicator = {
-            PullToRefreshDefaults.Indicator(
+            // Material 3 Expressive: tortilganda shakli o'zgaradigan yuklanish ko'rsatkichi
+            PullToRefreshDefaults.LoadingIndicator(
                 modifier = Modifier.align(Alignment.TopCenter),
                 state = state,
                 isRefreshing = isRefreshing,

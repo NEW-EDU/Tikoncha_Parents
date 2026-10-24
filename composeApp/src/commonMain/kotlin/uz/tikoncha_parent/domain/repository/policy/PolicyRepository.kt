@@ -18,6 +18,8 @@ interface PolicyRepository {
 
     /** Keshning hozirgi holati (sinxron o'qish kerak bo'lgan joylar uchun). */
     fun cachedPolicies(childId: String): List<Policy>
+    /** Bu farzand jadvallari serverdan kamida bir marta olinganmi (bo'sh ro'yxat ham "ma'lum"). */
+    fun isCached(childId: String): Boolean
 
     /** Serverdan yangilash. Kesh bo'lsa `since` bilan delta, [force] bo'lsa to'liq. */
     suspend fun refreshPolicies(childId: String, force: Boolean = false): Outcome<PolicyListSnapshot>

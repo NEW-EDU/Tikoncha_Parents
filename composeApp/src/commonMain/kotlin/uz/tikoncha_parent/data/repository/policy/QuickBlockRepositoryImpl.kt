@@ -39,6 +39,8 @@ class QuickBlockRepositoryImpl(
      */
     private val lock = Mutex()
 
+    override fun cachedQuickBlocks(childId: String): List<QuickBlockEntry> = entries.value[childId].orEmpty()
+
     override fun observeQuickBlocks(childId: String): Flow<List<QuickBlockEntry>> =
         entries.map { it[childId].orEmpty() }.distinctUntilChanged()
 

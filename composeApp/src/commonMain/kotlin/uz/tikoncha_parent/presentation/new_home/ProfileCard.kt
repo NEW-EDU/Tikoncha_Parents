@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import tikoncha_parents.composeapp.generated.resources.parent_avatar_default
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -60,10 +62,9 @@ fun ProfileCard(
             when {
                 imageUrl.isNotEmpty() -> {
                     AsyncImage(
-                        model = imageUrl,
+                        model = rememberCachedImage(imageUrl),
                         contentDescription = "",
-                        error = painterResource(Res.drawable.profile_hedgehog_img),
-                        placeholder = painterResource(Res.drawable.profile_hedgehog_img),
+                        error = painterResource(Res.drawable.parent_avatar_default),
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .fillMaxSize()
@@ -73,7 +74,7 @@ fun ProfileCard(
 
                 else -> {
                     Image(
-                        painter = painterResource(Res.drawable.profile_hedgehog_img),
+                        painter = painterResource(Res.drawable.parent_avatar_default),
                         contentDescription = "",
                         modifier = Modifier
                             .fillMaxSize()

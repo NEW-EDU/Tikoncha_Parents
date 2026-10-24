@@ -32,5 +32,8 @@ fun UserInfoDto.toUserInfo(): UserInfo{
         last_seen = last_seen,
         subscription = subscription,
         subscription_end_date = subscription_end_date,
+        signInMethod = sign_in_method,
+        email = email,
+        emailHidden = email_hidden == true,
     )
 }

@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.policy.list
 
+import kotlinx.coroutines.flow.merge
+import kotlinx.coroutines.flow.MutableSharedFlow
 import uz.tikoncha_parent.presentation.policy.model.TakeOverUi
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
@@ -61,8 +63,22 @@ class PolicyListViewModel(
     private val childPaidStatus: ChildPaidStatusUseCase,
 ) : ScreenModel {
 
-    private val _state = MutableStateFlow(PolicyListState())
+    // Birinchi kadrdanoq saqlangan farzandlar va oxirgi tablar bilan — "Farzand qo'shish" / 2 ta tab "lip" etmasin
+    private val _state = MutableStateFlow(
+        AppSettings.selectedChild.let { selected ->
+            PolicyListState(
+                children = AppSettings.children,
+                selectedChild = selected,
+                tabs = selected?.userId?.let(::rememberedTabs) ?: listOf(PolicyTab.TEMPLATES, PolicyTab.MINE),
+            )
+        }
+    )
     val state = _state.asStateFlow()
+
+    /** Server javobi kelguncha tablar qisqarmaydi (kesh bo'sh/eski bo'lishi mumkin); keyin — server bo'yicha. */
+    private var serverFresh = false
+    private var computedTabs: List<PolicyTab> = emptyList()
+    private var firstLoad = true
 
     private val _effect = Channel<PolicyListEffect>(Channel.BUFFERED)
     val effect = _effect.receiveAsFlow()
@@ -81,13 +97,20 @@ class PolicyListViewModel(
     private val myUserId: String get() = AppSettings.userId
     private val childId: String? get() = _state.value.selectedChild?.userId
 
+    /** Paketlar katalogi kelganda holat qayta hisoblanadi (katalog oqimni ushlab turmaydi). */
+    private val packsTick = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    private var catalogJob: Job? = null
+
     /** "Hozir amalda" har daqiqada qayta hisoblanadi. */
-    private val ticker = flow {
-        while (true) {
-            emit(Unit)
-            delay(TICK_MS)
-        }
-    }
+    private val ticker = merge(
+        flow {
+            while (true) {
+                emit(Unit)
+                delay(TICK_MS)
+            }
+        },
+        packsTick,
+    )
 
     fun onEvent(e: PolicyListEvent) {
         when (e) {
@@ -129,10 +152,20 @@ class PolicyListViewModel(
 
     // ═══ Farzand ═══════════════════════════════════════════════
 
+    init {
+        // Kesh darhol o'qiladi (LaunchedEffect'ni — birinchi kadrdan keyingi — kutmaydi)
+        _state.value.selectedChild?.let { observe(it.userId) }
+    }
+
     private fun load() {
         val selected = AppSettings.selectedChild
-        _state.update { it.copy(children = AppSettings.children, selectedChild = selected) }
-        if (selected != null && dataJob?.isActive != true) observe(selected.userId) else selected?.let { refresh(it.userId, pull = false) }
+        _state.update { it.copy(children = AppSettings.children.ifEmpty { it.children }, selectedChild = selected ?: it.selectedChild) }
+        when {
+            selected != null && dataJob?.isActive != true -> observe(selected.userId)
+            firstLoad -> Unit // init'dagi observe allaqachon yangilayapti
+            else -> selected?.let { refresh(it.userId, pull = false) }
+        }
+        firstLoad = false
         screenModelScope.launch {
             val list = childRepository.children().getOrNull() ?: return@launch
             _state.update { it.copy(children = list) }
@@ -145,40 +178,84 @@ class PolicyListViewModel(
         mineBeforeCreate = null
         AppSettings.selectedChildId = child.userId
         AppSettings.selectedChild = child
-        _state.update { PolicyListState(children = it.children, selectedChild = child, tab = it.tab) }
+        _state.update {
+            PolicyListState(
+                children = it.children,
+                selectedChild = child,
+                tab = it.tab,
+                tabs = rememberedTabs(child.userId) ?: listOf(PolicyTab.TEMPLATES, PolicyTab.MINE),
+            )
+        }
         observe(child.userId)
     }
 
     private fun observe(childId: String) {
         dataJob?.cancel()
+        serverFresh = false
         paid.value = childPaidStatus(childId)
         location.value = null
+        // Kesh ma'lum bo'lsa — to'liq holat SHU ZAHOTI (birinchi kadrdan): kartalar, tablar, holatlar
+        if (observePolicies.isCached(childId)) {
+            apply(childId, input(childId, observePolicies.cached(childId), observeQuickSnapshot.cached(childId, myUserId), paid.value, null))
+        }
         dataJob = screenModelScope.launch {
             combine(observePolicies(childId), observeQuickSnapshot(childId, myUserId), paid, location, ticker) { p, q, paidNow, loc, _ ->
-                policies = p
-                quick = q.copy(paid = paidNow)
-                // Katalog repozitoriyda keshlanadi, jadvallar ham kesh — arzon
-                packs = getPackStatuses(childId, myUserId).getOrNull() ?: packs
-                val now = Clock.System.now()
-                val local = now.toLocalDateTime(TimeZone.currentSystemDefault())
-                PolicyListInput(
-                    policies = p,
-                    quick = quick,
-                    packs = packs,
-                    myUserId = myUserId,
-                    paid = paidNow,
-                    weekDay = local.dayOfWeek.isoDayNumber,
-                    minuteOfDay = local.hour * 60 + local.minute,
-                    now = now,
-                    lastLat = loc?.first,
-                    lastLng = loc?.second,
-                )
+                input(childId, p, q, paidNow, loc)
             }.collect { input ->
-                _state.update { input.reduce(it) }
+                apply(childId, input)
                 showNewMine()
             }
         }
         refresh(childId, pull = false)
+    }
+
+    /** Barcha keshlardan kirish ma'lumoti — tarmoq kutilmaydi (katalog yo'q bo'lsa fonda olinadi). */
+    private fun input(
+        childId: String,
+        p: List<Policy>,
+        q: QuickBlockSnapshot,
+        paidNow: Boolean?,
+        loc: Pair<Double, Double>?,
+    ): PolicyListInput {
+        policies = p
+        quick = q.copy(paid = paidNow)
+        packs = getPackStatuses.cached(childId, myUserId) ?: packs.also { fetchCatalog(childId) }
+        val now = Clock.System.now()
+        val local = now.toLocalDateTime(TimeZone.currentSystemDefault())
+        return PolicyListInput(
+            policies = p,
+            quick = quick,
+            packs = packs,
+            myUserId = myUserId,
+            paid = paidNow,
+            weekDay = local.dayOfWeek.isoDayNumber,
+            minuteOfDay = local.hour * 60 + local.minute,
+            now = now,
+            lastLat = loc?.first,
+            lastLng = loc?.second,
+        )
+    }
+
+    /** Holatga qo'llash: tablar kesh bosqichida qisqarmaydi; "yuklandi" — faqat jadvallar haqiqatan ma'lum bo'lsa. */
+    private fun apply(childId: String, input: PolicyListInput) {
+        _state.update { prev ->
+            val next = input.reduce(prev)
+            computedTabs = next.tabs
+            val tabs = if (serverFresh) next.tabs else stableTabs(prev.tabs, next.tabs)
+            next.copy(
+                tabs = tabs,
+                tab = if (prev.tab in tabs) prev.tab else next.tab,
+                loaded = prev.loaded || (observePolicies.isCached(childId) && getPackStatuses.cached(childId, myUserId) != null),
+            )
+        }
+    }
+
+    private fun fetchCatalog(childId: String) {
+        if (catalogJob?.isActive == true) return
+        catalogJob = screenModelScope.launch {
+            if (getPackStatuses(childId, myUserId) is Outcome.Success) packsTick.tryEmit(Unit)
+            else _state.update { it.copy(loaded = it.loaded || observePolicies.isCached(childId)) }
+        }
     }
 
     private fun showNewMine() {
@@ -193,8 +270,14 @@ class PolicyListViewModel(
         if (pull) _state.update { it.copy(isRefreshing = true) }
         screenModelScope.launch {
             val res = refreshPolicies(childId, force = true)
+            if (res !is Outcome.Failure) settleTabs(childId)
             _state.update {
-                it.copy(isRefreshing = false, error = if (pull && res is Outcome.Failure) res else it.error)
+                it.copy(
+                    isRefreshing = false,
+                    error = if (pull && res is Outcome.Failure) res else it.error,
+                    // Tarmoq xato bo'lsa ham kontent yashirin qolib ketmasin
+                    loaded = it.loaded || res is Outcome.Failure,
+                )
             }
         }
         screenModelScope.launch { refreshQuickBlocks(childId) }
@@ -205,6 +288,15 @@ class PolicyListViewModel(
             if (lat != null && lng != null) location.value = lat to lng
         }
         refreshPaid(childId)
+    }
+
+    /** Server ma'lumoti keldi: tablar endi aniq — saqlanadi (keyingi ochilishda shu bilan boshlanadi). */
+    private fun settleTabs(childId: String) {
+        if (childId != this.childId) return
+        serverFresh = true
+        val tabs = computedTabs.ifEmpty { _state.value.tabs }
+        AppSettings.setPolicyTabs(childId, tabs.joinToString(",") { it.name })
+        _state.update { it.copy(tabs = tabs, tab = if (it.tab in tabs) it.tab else PolicyTab.TEMPLATES) }
     }
 
     private fun refreshPaid(childId: String) {
@@ -274,6 +366,14 @@ class PolicyListViewModel(
             }
         }
     }
+
+    private fun rememberedTabs(childId: String): List<PolicyTab>? =
+        AppSettings.policyTabs(childId)?.split(',')?.mapNotNull { n -> PolicyTab.entries.firstOrNull { it.name == n } }
+            ?.takeIf { it.isNotEmpty() }
+
+    /** Kesh bosqichida: ko'rsatilgan tablar yo'qolmaydi, yangilari qo'shiladi (tartib — enum bo'yicha). */
+    private fun stableTabs(shown: List<PolicyTab>, computed: List<PolicyTab>): List<PolicyTab> =
+        PolicyTab.entries.filter { it in shown || it in computed }
 
     companion object {
         const val KEY_PROTECTION = "protection"

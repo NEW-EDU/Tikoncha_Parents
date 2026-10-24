@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.profile.settings
 
+import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -56,10 +58,13 @@ fun SettingsUi(
             }
         )
 
+        // Ikki qator — pastda, bosh barmoq yonida
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = ContainerPadding)
+                .padding(bottom = 8.dp),
+            verticalArrangement = Arrangement.Bottom,
         ) {
 
             ProfileSettingsItem(
@@ -67,6 +72,9 @@ fun SettingsUi(
                     when(settings){
                         SettingType.THEME -> {
                             navigator?.push(ThemeScreen())
+                        }
+                        SettingType.HAPTICS -> {
+                            navigator?.push(uz.tikoncha_parent.presentation.profile.settings.haptics.HapticsScreen())
                         }
                         SettingType.LOGOUT -> {
                             navigator?.push(LogoutScreen())

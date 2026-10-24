@@ -1,5 +1,14 @@
 package uz.tikoncha_parent.presentation.policy.list
 
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.animateFloatAsState
+import uz.tikoncha_parent.presentation.base.island.IslandFabSpace
+import uz.tikoncha_parent.presentation.base.island.IslandFab
+import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.lazy.itemsIndexed
+import uz.tikoncha_parent.ui.SegmentGap
 import uz.tikoncha_parent.presentation.policy.components.TakeOverDialog
 import tikoncha_parents.composeapp.generated.resources.policy_empty_mine_sub
 import tikoncha_parents.composeapp.generated.resources.policy_empty_mine_title
@@ -45,7 +54,6 @@ import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.jadval_yaratish
 import tikoncha_parents.composeapp.generated.resources.add
 import tikoncha_parents.composeapp.generated.resources.jadvallar
-import tikoncha_parents.composeapp.generated.resources.policy_enabled_count
 import tikoncha_parents.composeapp.generated.resources.policy_paywall_count
 import tikoncha_parents.composeapp.generated.resources.policy_paywall_protection
 import tikoncha_parents.composeapp.generated.resources.policy_quick_blocks
@@ -163,39 +171,37 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
                             )
                         }
                     }
-                    ChildSelectionButton(
-                        modifier = Modifier.widthIn(120.dp, 160.dp),
-                        text = state.selectedChild?.name ?: "",
-                        imageUrl = state.selectedChild?.avatarUrl ?: "",
-                        label = stringResource(Res.string.farzandingizni_tanlang),
-                        userInfo = state.selectedChild,
-                        onClick = {
-                            if (state.children.isEmpty()) navigator?.push(AddChildScreen()) else showChildSheet = true
-                        },
-                    )
                 }
             },
+            childPicker = ChildPickerSpec(
+                children = state.children,
+                selected = state.selectedChild,
+                onSelect = { event(PolicyListEvent.ChildSelected(it)) },
+                onAddChild = { navigator?.push(AddChildScreen()) },
+            ),
         )
 
+        Box(Modifier.weight(1f)) {
         PullToRefreshBox(
             isRefreshing = state.isRefreshing,
             onRefresh = { event(PolicyListEvent.Refresh) },
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.fillMaxSize(),
         ) {
             // Hisob va izoh ro'yxat bilan birga yuqoriga ketadi; tablar sarlavha ostida yopishib qoladi
+            // Jadvallar hali noma'lum bo'lsa (ilova ochilgandan keyin birinchi marta) — standart qiymatlar
+            // ko'rsatilib, keyin almashib "lip" etmasin: ro'yxat haqiqiy ma'lumot kelganda bir marta paydo bo'ladi.
+            val listAlpha by animateFloatAsState(
+                targetValue = if (state.loaded) 1f else 0f,
+                animationSpec = tween(220),
+                label = "policyListIn",
+            )
             LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(start = ContainerPadding, end = ContainerPadding, bottom = 12.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.fillMaxSize().graphicsLayer { alpha = listAlpha },
+                contentPadding = PaddingValues(start = ContainerPadding, end = ContainerPadding, bottom = IslandFabSpace + 12.dp),
+                // M3 Expressive: kartalar bitta guruhlangan blok bo'lib turadi — oralig'i ingichka
+                verticalArrangement = Arrangement.spacedBy(SegmentGap),
             ) {
-                item(key = "count") {
-                    Text(
-                        text = stringResource(Res.string.policy_enabled_count, state.enabledCount),
-                        style = PolicyText.count,
-                        color = AppColors.text.tertiary,
-                    )
-                }
-                item(key = "info") { PolicyInfoBox(title = state.info.title(), lines = state.info.lines()) }
+                item(key = "info") { Box(Modifier.padding(bottom = 9.dp)) { PolicyInfoBox(title = state.info.title(), lines = state.info.lines()) } }
                 stickyHeader(key = "tabs") {
                     SegmentedTabs(
                         labels = state.tabs.map { it.title() },
@@ -226,20 +232,14 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
             }
         }
 
+        // "Jadval yaratish" — orol ustida, chap pastda alohida suzuvchi tugma
         if (state.tab == PolicyTab.MINE || state.tab == PolicyTab.TEMPLATES) {
-            CustomButtonNew(
+            IslandFab(
                 text = stringResource(Res.string.jadval_yaratish),
-                modifier = Modifier.fillMaxWidth().padding(horizontal = ContainerPadding, vertical = 12.dp),
                 onClick = { event(PolicyListEvent.CreateClicked) },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(Res.drawable.add),
-                        contentDescription = null,
-                        tint = AppColors.text.inverse,
-                        modifier = Modifier.size(16.dp),
-                    )
-                },
+                modifier = Modifier.align(Alignment.BottomStart),
             )
+        }
         }
     }
 
@@ -283,21 +283,27 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
 }
 
 private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEvent) -> Unit) {
+    // Himoya + shablonlar + tezkor blok — bitta guruhlangan blok
+    val total = state.presets.size + 2
     item(key = "protection") {
         ContentProtectionCard(
             ui = state.protection,
             busy = state.isBusy(PolicyListViewModel.KEY_PROTECTION),
             onToggle = { event(PolicyListEvent.ProtectionToggled(it)) },
             onClick = { event(PolicyListEvent.ProtectionClicked) },
+            segmentIndex = 0,
+            segmentCount = total,
         )
     }
-    items(state.presets, key = { it.kind.name }) { preset ->
+    itemsIndexed(state.presets, key = { _, it -> it.kind.name }) { i, preset ->
         val title = preset.kind.title()
         PresetPolicyCard(
             ui = preset,
             busy = state.isBusy(PolicyListViewModel.presetKey(preset.kind)),
             onToggle = { event(PolicyListEvent.PresetToggled(preset.kind, it, title)) },
             onClick = { event(PolicyListEvent.PresetClicked(preset.kind)) },
+            segmentIndex = i + 1,
+            segmentCount = total,
         )
     }
     item(key = "quick") {
@@ -306,6 +312,8 @@ private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEv
             busy = state.isBusy(PolicyListViewModel.KEY_QUICK),
             onToggle = { event(PolicyListEvent.QuickBlockToggled(it)) },
             onClick = { event(PolicyListEvent.QuickBlockClicked) },
+            segmentIndex = total - 1,
+            segmentCount = total,
         )
     }
 }
@@ -314,20 +322,22 @@ private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEv
 private fun LazyListScope.othersTab(policies: List<PolicyCardUi>, quick: List<PolicyCardUi>, state: PolicyListState, event: (PolicyListEvent) -> Unit) {
     cards(policies, state, event)
     if (quick.isNotEmpty()) {
-        item(key = "others-quick") { SectionTitle(stringResource(Res.string.policy_quick_blocks)) }
-        items(quick, key = { "q-" + it.policyId }) { card ->
-            PolicyCard(ui = card, busy = false, onToggle = {}, onClick = { event(PolicyListEvent.QuickBlockClicked) })
+        item(key = "others-quick") { Box(Modifier.padding(top = 12.dp, bottom = 6.dp)) { SectionTitle(stringResource(Res.string.policy_quick_blocks)) } }
+        itemsIndexed(quick, key = { _, it -> "q-" + it.policyId }) { i, card ->
+            PolicyCard(ui = card, busy = false, onToggle = {}, onClick = { event(PolicyListEvent.QuickBlockClicked) }, segmentIndex = i, segmentCount = quick.size)
         }
     }
 }
 
 private fun LazyListScope.cards(list: List<PolicyCardUi>, state: PolicyListState, event: (PolicyListEvent) -> Unit) {
-    items(list, key = { it.policyId }) { card ->
+    itemsIndexed(list, key = { _, it -> it.policyId }) { i, card ->
         PolicyCard(
             ui = card,
             busy = state.isBusy(card.policyId),
             onToggle = { event(PolicyListEvent.PolicyToggled(card.policyId, it)) },
             onClick = { event(PolicyListEvent.PolicyClicked(card.policyId)) },
+            segmentIndex = i,
+            segmentCount = list.size,
         )
     }
 }

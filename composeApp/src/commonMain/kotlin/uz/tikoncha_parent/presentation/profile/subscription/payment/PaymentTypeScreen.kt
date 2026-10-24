@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.subscription.payment
 
+import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -246,12 +247,11 @@ fun PaymentTypeScreenUi(
             }
         )
 
-        Column(
+        BottomAnchoredColumn(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
                 .padding(horizontal = ContainerPadding)
-                .verticalScroll(rememberScrollState())
         ) {
             Spacer(Modifier.height(16.dp))
             Row(

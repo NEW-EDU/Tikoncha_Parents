@@ -1,5 +1,16 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Spacer
+import uz.tikoncha_parent.presentation.base.island.ProvideIsland
+import uz.tikoncha_parent.presentation.base.island.IslandSpec
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,6 +38,7 @@ import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.extendedColor
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun CustomHeader(
     modifier: Modifier = Modifier,
@@ -35,57 +47,26 @@ fun CustomHeader(
     showBackButton: Boolean = false,
     onBackClick: () -> Unit = {},
     trailingIcon: (@Composable () -> Unit)? = null,
+    /** Farzand tanlagich — orolda, Bosh sahifadagi bilan bir xil (ro'yxat yuqoriga ochiladi). */
+    childPicker: ChildPickerSpec? = null,
 ) {
-
-
-
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(56.dp),
-        verticalAlignment = Alignment.CenterVertically
-    )
-    {
-
-        if (showBackButton) {
-            Space(4.dp)
-            IconButton(
-                modifier = Modifier
-                    .size(36.dp),
-                onClick = onBackClick,
-                colors = IconButtonDefaults.filledTonalIconButtonColors(
-                    containerColor = Color.Transparent,
-                    contentColor = AppColors.icon.primary
-                )
-            ) {
-                Icon(
-                    painter = painterResource(Res.drawable.arrow_back),
-                    contentDescription = "",
-                    tint = AppColors.icon.primary,
-                    modifier = Modifier
-                        .size(24.dp)
-                )
-            }
-        }
-        else{
-            Space(16.dp)
-        }
-
-        Text(
-            text = title,
-            style = AppTypography.headlineSmSemiBold,
-            color = AppColors.text.primary,
-            maxLines = 1,
-            modifier = Modifier
-                .weight(1f)
+    // Bir qo'l bilan ishlatish: sarlavha, orqaga, amallar va farzand tanlagich — hammasi pastki orolda (BottomIsland).
+    // Tepada faqat kichik bo'shliq qoladi — joy kontentga.
+    val currentBack by rememberUpdatedState(onBackClick)
+    val currentTrailing by rememberUpdatedState(trailingIcon)
+    val currentPicker by rememberUpdatedState(childPicker)
+    val hasTrailing = trailingIcon != null
+    val hasPicker = childPicker != null
+    val spec = remember(title, showBackButton, hasTrailing, hasPicker) {
+        IslandSpec(
+            title = title.takeIf { it.isNotBlank() },
+            onBack = if (showBackButton) ({ currentBack() }) else null,
+            picker = if (hasPicker) ({ currentPicker }) else null,
+            actions = if (hasTrailing) ({ currentTrailing?.invoke() }) else null,
         )
-        Space(16.dp)
-
-        if (trailingIcon != null) {
-            trailingIcon()
-            Space(12.dp)
-        }
     }
+    ProvideIsland(spec)
+    Spacer(modifier.height(8.dp))
 }
 
 @Preview

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.map
 
+import androidx.compose.ui.unit.Dp
 import android.graphics.PointF
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -141,7 +142,8 @@ actual fun YandexMap(
     onMapTap: (LatLng) -> Unit,
     onCameraIdle: (LatLng) -> Unit,
     isDark: Boolean,
-    modifier: Modifier
+    modifier: Modifier,
+    logoTopInset: Dp?,
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -202,6 +204,17 @@ actual fun YandexMap(
                         initialCamera.tilt
                     )
                 )
+                logoTopInset?.let { inset ->
+                    val px = (inset.value * ctx.resources.displayMetrics.density).toInt()
+                    val h = (12 * ctx.resources.displayMetrics.density).toInt()
+                    view.mapWindow.map.logo.setAlignment(
+                        com.yandex.mapkit.logo.Alignment(
+                            com.yandex.mapkit.logo.HorizontalAlignment.RIGHT,
+                            com.yandex.mapkit.logo.VerticalAlignment.TOP,
+                        )
+                    )
+                    view.mapWindow.map.logo.setPadding(com.yandex.mapkit.logo.Padding(h, px))
+                }
                 view.mapWindow.map.addInputListener(object : InputListener {
                     override fun onMapTap(map: YMap, point: Point) {
                         onMapTapState.value(LatLng(point.latitude, point.longitude))

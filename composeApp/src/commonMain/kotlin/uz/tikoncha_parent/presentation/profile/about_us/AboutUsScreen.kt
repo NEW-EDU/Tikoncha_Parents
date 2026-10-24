@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.about_us
 
+import uz.tikoncha_parent.ui.SegmentGap
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -68,8 +69,8 @@ fun AboutUsUi(navigator: Navigator?) {
                     is AboutBlock.Paragraph -> AboutParagraph(block.text)
                     is AboutBlock.Heading -> AboutHeading(block.text)
                     is AboutBlock.BulletList -> {
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            block.items.forEach { AboutBullet(it) }
+                        Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
+                            block.items.forEachIndexed { i, item -> AboutBullet(item, i, block.items.size) }
                         }
                     }
                     is AboutBlock.Quote -> AboutQuote(block.text)

@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.profile
 
+import tikoncha_parents.composeapp.generated.resources.parent_avatar_default
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -66,9 +68,8 @@ fun ProfileHeader(
                         .fillMaxSize()
                         .clip(RoundedCornerShape(50))
                         .background(AppColors.bg.tertiary),
-                    model = state.profileImageUrl,
-                    placeholder = painterResource(Res.drawable.profile_hedgehog_img),
-                    error = painterResource(Res.drawable.profile_hedgehog_img),
+                    model = rememberCachedImage(state.profileImageUrl),
+                    error = painterResource(Res.drawable.parent_avatar_default),
                     contentScale = ContentScale.Crop,
                     contentDescription = null
                 )
@@ -100,7 +101,7 @@ fun ProfileHeader(
             verticalArrangement = Arrangement.Center,
         ) {
             Text(
-                text = "$firstName  $lastName  $fathersName",
+                text = listOf(firstName, lastName, fathersName).filter { it.isNotBlank() }.joinToString(" "),
                 style = AppTypography.emphasizedXlSemiBold,
                 color = AppColors.text.primary,
             )

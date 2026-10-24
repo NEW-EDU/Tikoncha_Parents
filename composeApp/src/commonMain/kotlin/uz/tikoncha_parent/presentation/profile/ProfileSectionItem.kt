@@ -1,5 +1,12 @@
 package uz.tikoncha_parent.presentation.profile
 
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.material.icons.Icons
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.background
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.heightIn
+import uz.tikoncha_parent.ui.expressiveSegment
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -28,6 +35,11 @@ import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 
+/**
+ * Profil menyusi qatori — M3 Expressive guruhlangan ro'yxat elementi: guruhning tashqi burchaklari katta, ichkilari
+ * kichik, elementlar orasida ingichka bo'shliq; chapda tonal doiradagi ikonka, o'ngda strelka. [divider] eskirgan —
+ * guruh uslubida chiziq kerak emas (imzo mos kelishi uchun qoldirilgan).
+ */
 @Composable
 fun ProfileSectionItem(
     icon: Painter,
@@ -35,45 +47,57 @@ fun ProfileSectionItem(
     onItemClick: () -> Unit,
     divider: Boolean = true,
     textColor: Color = AppColors.text.primary,
-    iconColor: Color = AppColors.icon.accentPrimary
+    iconColor: Color = AppColors.icon.accentPrimary,
+    segmentIndex: Int = 0,
+    segmentCount: Int = 1,
 ) {
-    Box(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(52.dp)
-            .singleClick{ onItemClick() },
-        contentAlignment = Alignment.Center
+            .heightIn(min = 64.dp)
+            .expressiveSegment(segmentIndex, segmentCount, color = AppColors.bg.surface) { onItemClick() }
+            .padding(horizontal = 14.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(iconColor.copy(alpha = 0.14f)),
+            contentAlignment = Alignment.Center,
         ) {
             Icon(
                 painter = icon,
-                contentDescription = "",
+                contentDescription = null,
                 tint = iconColor,
-                modifier = Modifier
-                    .padding(start = 7.dp)
-                    .size(SmallIconSize)
-            )
-            Spacer(Modifier.width(19.dp))
-
-            Text(
-                text = title,
-                color = textColor,
-                style = AppTypography.titleSmMedium
+                modifier = Modifier.size(20.dp)
             )
         }
-
-        if (divider) {
-            HorizontalDivider(
-                color = AppColors.border.secondarySubtle,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.BottomCenter),
-            )
-        }
+        Spacer(Modifier.width(14.dp))
+        Text(
+            text = title,
+            color = textColor,
+            style = AppTypography.titleMdSemiBold,
+            modifier = Modifier.weight(1f),
+        )
+        Icon(
+            imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
+            contentDescription = null,
+            tint = AppColors.icon.secondary,
+            modifier = Modifier.size(22.dp),
+        )
     }
+}
+
+/** Profil menyusidagi guruh sarlavhasi (kichik, xira — e'tiborni elementlarga qoldiradi). */
+@Composable
+fun ProfileSectionLabel(text: String) {
+    Text(
+        text = text,
+        style = AppTypography.titleSmMedium,
+        color = AppColors.text.tertiary,
+        modifier = Modifier.padding(start = 16.dp, top = 20.dp, bottom = 8.dp),
+    )
 }
 
 @Preview

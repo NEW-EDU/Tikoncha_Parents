@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -113,10 +114,9 @@ fun ChildSelectionButton(
 
                         imageUrl.isNotEmpty() -> {
                             AsyncImage(
-                                model = imageUrl,
+                                model = rememberCachedImage(imageUrl),
                                 contentDescription = "",
                                 error = painterResource(Res.drawable.profile_hedgehog_img),
-                                placeholder = painterResource(Res.drawable.profile_hedgehog_img),
                                 modifier = Modifier
                                     .fillMaxSize()
                                     .clip(CircleShape)

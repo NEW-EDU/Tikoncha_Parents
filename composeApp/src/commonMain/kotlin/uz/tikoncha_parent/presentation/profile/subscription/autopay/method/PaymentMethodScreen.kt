@@ -1,5 +1,15 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package uz.tikoncha_parent.presentation.profile.subscription.autopay.method
 
+import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
+import tikoncha_parents.composeapp.generated.resources.ap_card_need_child
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.clickable
+import uz.tikoncha_parent.presentation.add_child.AddChildScreen
+import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -12,10 +22,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Autorenew
 import androidx.compose.material.icons.rounded.Lock
@@ -59,6 +67,7 @@ import uz.tikoncha_parent.domain.model.autopay.PlanPeriod
 import uz.tikoncha_parent.platform.isIos
 import uz.tikoncha_parent.presentation.base.CustomButton
 import uz.tikoncha_parent.presentation.base.CustomHeader
+import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.card.AutopayAddCardScreen
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.AcceptedCards
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.AccentIconTile
@@ -115,7 +124,7 @@ class PaymentMethodScreen(
                 }
             }
         }
-        PaymentMethodUi(state = state, child = child, event = vm::onEvent, onBack = { navigator?.pop() })
+        PaymentMethodUi(state = state, child = child, event = vm::onEvent, onBack = { navigator?.pop() }, onAddChild = { navigator?.push(AddChildScreen()) })
     }
 }
 
@@ -125,6 +134,7 @@ fun PaymentMethodUi(
     child: ChildArgs,
     event: (PaymentMethodEvent) -> Unit,
     onBack: () -> Unit,
+    onAddChild: () -> Unit = {},
 ) {
     val systemBars = rememberScreenSystemBars(statusBarColor = AppColors.bg.page, navigationBarColor = AppColors.bg.page)
     val periodName = stringResource(if (state.period == PlanPeriod.ANNUAL) Res.string.yillik else Res.string.oylik)
@@ -135,17 +145,15 @@ fun PaymentMethodUi(
             .then(systemBars.modifier)
             .background(AppColors.bg.page),
     ) {
-        CustomHeader(showBackButton = true, onBackClick = onBack)
-        Column(
-            Modifier
-                .weight(1f)
-                .verticalScroll(rememberScrollState()),
-        ) {
-            Column(Modifier.padding(horizontal = 20.dp)) {
-                Text(text = stringResource(Res.string.ap_method_title), style = AppTypography.headlineMdSemiBold, color = AppColors.text.primary)
-                Spacer(Modifier.height(6.dp))
-                Text(text = stringResource(Res.string.ap_plan_line, periodName), style = AppTypography.titleSmMedium, color = AppColors.text.tertiary)
-            }
+        // Sarlavha pastdagi orolda; kontent bo'sh joy bo'lsa pastga — bosh barmoqqa yaqin tushadi
+        CustomHeader(title = stringResource(Res.string.ap_method_title), showBackButton = true, onBackClick = onBack)
+        BottomAnchoredColumn(Modifier.weight(1f)) {
+            Text(
+                text = stringResource(Res.string.ap_plan_line, periodName),
+                style = AppTypography.titleSmMedium,
+                color = AppColors.text.tertiary,
+                modifier = Modifier.padding(horizontal = 20.dp),
+            )
             ForWhomRow(
                 name = child.name,
                 avatarUrl = child.avatarUrl,
@@ -155,7 +163,7 @@ fun PaymentMethodUi(
 
             if (state.loading) {
                 Column(Modifier.fillMaxWidth().padding(top = 48.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                    CircularProgressIndicator(color = AppColors.action.primary)
+                    DelayedLoadingIndicator(color = AppColors.action.primary)
                 }
             } else {
                 Column(
@@ -176,6 +184,10 @@ fun PaymentMethodUi(
                             AcceptedCards(modifier = Modifier.padding(end = 8.dp))
                             Text(text = stringResource(Res.string.ap_card_sub), style = AppTypography.bodyMdMedium, color = AppColors.text.tertiary, maxLines = 1)
                         }
+                    }
+                    if (!state.cardAvailable && state.cardNeedsChild) {
+                        // Paylov kartasi bor, lekin farzand ulanmagan — yashirmaymiz, nima qilish kerakligini aytamiz
+                        CardNeedsChildRow(onClick = onAddChild)
                     }
                     PayOptionRow(
                         selected = state.selected == PayMethod.CLICK,
@@ -213,6 +225,27 @@ fun PaymentMethodUi(
                 modifier = Modifier.fillMaxWidth().height(54.dp),
             )
         }
+    }
+}
+
+@Composable
+private fun CardNeedsChildRow(onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .background(AppColors.bg.surface)
+            .clickable(onClick = onClick)
+            .padding(horizontal = 16.dp, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        AccentIconTile()
+        Spacer(Modifier.width(12.dp))
+        Column(Modifier.weight(1f)) {
+            Text(text = stringResource(Res.string.ap_card_title), style = AppTypography.titleMdSemiBold, color = AppColors.text.secondary)
+            Text(text = stringResource(Res.string.ap_card_need_child), style = AppTypography.bodyMdMedium, color = AppColors.text.tertiary)
+        }
+        Icon(Icons.AutoMirrored.Rounded.KeyboardArrowRight, contentDescription = null, tint = AppColors.text.tertiary, modifier = Modifier.size(20.dp))
     }
 }
 

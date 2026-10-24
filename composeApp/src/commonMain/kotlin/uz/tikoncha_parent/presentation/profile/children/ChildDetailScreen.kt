@@ -1,5 +1,27 @@
 package uz.tikoncha_parent.presentation.profile.children
 
+import androidx.compose.foundation.layout.PaddingValues
+import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
+import uz.tikoncha_parent.ui.theme.AppTypography
+import uz.tikoncha_parent.ui.rememberCachedImage
+import tikoncha_parents.composeapp.generated.resources.ohirgi_faollik
+import tikoncha_parents.composeapp.generated.resources.profile_hedgehog_img
+import tikoncha_parents.composeapp.generated.resources.Res
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.resources.painterResource
+import coil3.compose.AsyncImage
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.Alignment
+import androidx.compose.material3.Text
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -74,12 +96,38 @@ fun ChildDetailUi(
             onBackClick = { navigator?.pop() }
         )
 
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(ContainerPadding),
-            verticalArrangement = Arrangement.spacedBy(20.dp)
+        BottomAnchoredColumn(
+            modifier = Modifier.fillMaxWidth().weight(1f),
+            contentPadding = PaddingValues(ContainerPadding),
+            spacing = 20.dp,
         ) {
+            // Bola "yuzi": avatar + ism — ma'lumotlar guruhidan oldin kimligi darhol ko'rinsin.
+            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                AsyncImage(
+                    model = rememberCachedImage(child.avatarUrl),
+                    contentDescription = null,
+                    error = painterResource(Res.drawable.profile_hedgehog_img),
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(96.dp)
+                        .clip(CircleShape)
+                        .background(AppColors.bg.primaryContainer, CircleShape),
+                )
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = listOf(child.name, child.lastName).filter { it.isNotBlank() }.joinToString(" "),
+                    style = AppTypography.headlineSmSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+                    color = AppColors.text.primary,
+                    textAlign = TextAlign.Center,
+                )
+                if (!child.last_seen.isNullOrBlank()) {
+                    Text(
+                        text = "${stringResource(Res.string.ohirgi_faollik)} ${child.last_seen}",
+                        style = AppTypography.emphasizedSmRegular,
+                        color = AppColors.text.tertiary,
+                    )
+                }
+            }
             PersonalInfoItem(
                 userInfo = child,
                 onEdit = onEdit

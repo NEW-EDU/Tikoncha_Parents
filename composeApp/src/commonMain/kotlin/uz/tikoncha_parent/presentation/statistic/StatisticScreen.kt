@@ -2,6 +2,10 @@
 
 package uz.tikoncha_parent.presentation.statistic
 
+import androidx.compose.ui.draw.clip
+import tikoncha_parents.composeapp.generated.resources.stat_no_usage_day
+import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
+import uz.tikoncha_parent.presentation.task.TaskSegmentedToggle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -233,25 +237,21 @@ fun StatisticUi(
                 title = stringResource(Res.string.statistika),
                 showBackButton = true,
                 onBackClick = { navigator?.pop() },
-                trailingIcon = {
-                    ChildSelectionButton(
-                        modifier = Modifier.widthIn(120.dp, 160.dp),
-                        text = state.selectedChild?.name ?: "",
-                        imageUrl = state.selectedChild?.avatarUrl ?: "",
-                        label = stringResource(Res.string.farzandingizni_tanlang),
-                        userInfo = state.selectedChild,
-                        onClick = {
-                            if (state.childrenList.isEmpty()) navigator?.push(AddChildScreen())
-                            else showChildSheet = true
-                        }
-                    )
-                }
+                childPicker = ChildPickerSpec(
+                    children = state.childrenList,
+                    selected = state.selectedChild,
+                    onSelect = { event(StatisticEvent.OnChildSelected(it)) },
+                    onAddChild = { navigator?.push(AddChildScreen()) },
+                ),
             )
 
+            // Aylantirilganda kontent tekis chiziqda emas, bloklar kabi yumaloq chegarada yo'qoladi
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 12.dp)
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(horizontal = ContainerPadding)
+                    .clip(RoundedCornerShape(28.dp))
                     .verticalScroll(rememberScrollState())
             ) {
                 // Permission warnings
@@ -270,39 +270,13 @@ fun StatisticUi(
                     Space(12.dp)
                 }
 
-                /* ============ Chart card ============ */
+                /* ============ Diagramma ============ */
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(AppColors.bg.surface, RoundedCornerShape(TextFieldCornerRadius))
+                        .background(AppColors.bg.surface, RoundedCornerShape(28.dp))
                         .padding(ContainerPadding)
                 ) {
-                    // Toggle DAILY / WEEKLY
-                    val selectedIdx = if (state.dateSelectionType == DateSelectionType.DAY) 0 else 1
-                    PillSegmentedButton(
-                        items = listOf(
-                            PillSegmentedItem(label = stringResource(Res.string.kunlik)),
-                            PillSegmentedItem(label = stringResource(Res.string.haftalik)),
-                        ),
-                        selectedIndex = selectedIdx,
-                        modifier = Modifier.fillMaxWidth(),
-                        onSelected = { idx ->
-                            if (idx != selectedIdx) haptics.tick()
-                            val mode = if (idx == 0) DateSelectionType.DAY else DateSelectionType.WEEK
-                            event(StatisticEvent.ChangeMode(mode))
-                        }
-                    )
-
-                    SpaceMedium()
-
-                    // Pager
-                    PagerBlock(
-                        state = state,
-                        onPageChange = { event(StatisticEvent.PageChanged(it)) }
-                    )
-
-                    SpaceLarge()
-
                     // Chart
                     UsageBarChart(
                         bars = state.bars,
@@ -314,6 +288,17 @@ fun StatisticUi(
                 }
 
                 SpaceMedium()
+
+                // Bu kunda foydalanish yo'q — tepa bo'sh qolmasin
+                if (state.apps.isEmpty() && state.appUsageResponseState !is ResponseState.Loading) {
+                    Text(
+                        text = stringResource(Res.string.stat_no_usage_day),
+                        style = AppTypography.titleSmMedium,
+                        color = AppColors.text.tertiary,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp),
+                    )
+                }
 
                 /* ============ Ilovalar ============ */
                 if (state.apps.isNotEmpty()) {
@@ -327,7 +312,7 @@ fun StatisticUi(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(AppColors.bg.surface, RoundedCornerShape(TextFieldCornerRadius))
+                            .background(AppColors.bg.surface, RoundedCornerShape(28.dp))
                             .padding(horizontal = ContainerPadding)
                     ) {
                         state.apps.forEachIndexed { i, app ->
@@ -349,6 +334,45 @@ fun StatisticUi(
 
                 SpaceLarge()
             }
+
+            /* ============ Kun tanlagich — PASTDA, bosh barmoqqa yaqin ============ */
+            Column(
+                modifier = Modifier
+                    .padding(horizontal = ContainerPadding)
+                    .padding(top = 8.dp, bottom = 4.dp)
+                    .fillMaxWidth()
+                    .background(AppColors.bg.surface, RoundedCornerShape(28.dp))
+                    .padding(horizontal = ContainerPadding, vertical = 12.dp)
+            ) {
+                // Pager
+                PagerBlock(
+                    state = state,
+                    onPageChange = { event(StatisticEvent.PageChanged(it)) }
+                )
+
+
+                SpaceSmall()
+
+                // Kunlik / Haftalik — kartaning eng pastida (bosh barmoqqa eng yaqin)
+                val selectedIdx = if (state.dateSelectionType == DateSelectionType.DAY) 0 else 1
+                // M3 Expressive: bog'langan tugmalar guruhi (tanlangani to'liq yumaloq, karamel)
+                TaskSegmentedToggle(
+                    options = listOf(
+                        stringResource(Res.string.kunlik) to null,
+                        stringResource(Res.string.haftalik) to null,
+                    ),
+                    selectedIndex = selectedIdx,
+                    modifier = Modifier.fillMaxWidth(),
+                    onOptionSelected = { idx ->
+                        if (idx != selectedIdx) haptics.tick()
+                        val mode = if (idx == 0) DateSelectionType.DAY else DateSelectionType.WEEK
+                        event(StatisticEvent.ChangeMode(mode))
+                    }
+                )
+
+            }
+
+
         }
     }
 }

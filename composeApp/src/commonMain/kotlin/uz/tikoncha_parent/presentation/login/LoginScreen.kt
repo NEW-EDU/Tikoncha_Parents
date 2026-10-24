@@ -1,5 +1,11 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package uz.tikoncha_parent.presentation.login
 
+import androidx.compose.ui.text.font.FontWeight
+import uz.tikoncha_parent.ui.expressivePress
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.BorderStroke
 import uz.tikoncha_parent.domain.model.auth.SocialProvider
 import tikoncha_parents.composeapp.generated.resources.apple_orqali_kirish
@@ -8,6 +14,8 @@ import tikoncha_parents.composeapp.generated.resources.ic_apple_logo
 import tikoncha_parents.composeapp.generated.resources.ic_google_g
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -174,7 +182,7 @@ fun LoginUi(
                     .heightIn(min = halfHeight),
                 contentAlignment = Alignment.Center,
             ) {
-                HeroSection(modifier = Modifier.fillMaxWidth())
+                HeroSection(modifier = Modifier.fillMaxWidth(), onMascotTap = { event(LoginEvent.OnMascotTapped) })
             }
 
             // PASTKI YARM — telegram + telefon/button markazda
@@ -281,7 +289,7 @@ private fun rememberIsKeyboardOpen(): Boolean {
     return isOpen
 }
 @Composable
-private fun HeroSection(modifier: Modifier = Modifier) {
+private fun HeroSection(modifier: Modifier = Modifier, onMascotTap: () -> Unit = {}) {
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -290,12 +298,18 @@ private fun HeroSection(modifier: Modifier = Modifier) {
         Image(
             painter = painterResource(Res.drawable.hedgehog_heart),
             contentDescription = null,
-            modifier = Modifier.size(100.dp),
+            modifier = Modifier
+                .size(100.dp)
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null,
+                    onClick = onMascotTap,
+                ),
         )
         Spacer(Modifier.height(20.dp))
         Text(
             text = stringResource(Res.string.xush_kelibsiz),
-            style = AppTypography.headlineMdSemiBold,
+            style = AppTypography.headlineMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
             color = AppColors.text.primary,
             textAlign = TextAlign.Center,
         )
@@ -316,14 +330,17 @@ private fun TelegramLoginButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val source = remember { MutableInteractionSource() }
     Surface(
         onClick = onClick,
         enabled = !isLoading,
-        shape = RoundedCornerShape(16.dp),
+        shape = CircleShape,
         color = TelegramBlue,
+        interactionSource = source,
         modifier = modifier
+            .expressivePress(source)
             .fillMaxWidth()
-            .heightIn(min = ButtonHeight),
+            .heightIn(min = ButtonDefaults.MediumContainerHeight),
     ) {
         Box(contentAlignment = Alignment.Center) {
             if (isLoading) {
@@ -405,13 +422,15 @@ private fun ProviderButton(
     onClick: () -> Unit,
     icon: @Composable (Color) -> Unit,
 ) {
+    val source = remember { MutableInteractionSource() }
     Surface(
         onClick = onClick,
         enabled = !loading,
-        shape = RoundedCornerShape(16.dp),
+        shape = CircleShape,
         color = container,
         border = border?.let { BorderStroke(1.dp, it) },
-        modifier = Modifier.fillMaxWidth().heightIn(min = ButtonHeight),
+        interactionSource = source,
+        modifier = Modifier.expressivePress(source).fillMaxWidth().heightIn(min = ButtonDefaults.MediumContainerHeight),
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),

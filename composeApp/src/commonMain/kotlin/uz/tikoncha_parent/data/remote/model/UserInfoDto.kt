@@ -22,4 +22,9 @@ data class UserInfoDto(
     val last_seen: String? = null,
     val subscription: String? = null,
     val subscription_end_date: String? = null,
+    /** "phone" | "google" | "apple" — telefon raqami yo'q farzandni tanish uchun. */
+    val sign_in_method: String? = null,
+    /** Google / Apple email; Apple "Hide My Email" bo'lsa null va email_hidden = true. */
+    val email: String? = null,
+    val email_hidden: Boolean? = null,
 )

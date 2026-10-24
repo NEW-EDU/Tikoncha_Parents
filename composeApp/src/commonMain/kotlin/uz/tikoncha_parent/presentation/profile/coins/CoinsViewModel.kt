@@ -21,7 +21,9 @@ class CoinsViewModel(
     private val childRepository: ChildRepository,
 ) : ScreenModel {
 
-    private val _state = MutableStateFlow(CoinsState())
+    private val _state = MutableStateFlow(
+        CoinsState(myCoins = AppSettings.lastCoins ?: 0, coinsKnown = AppSettings.lastCoins != null)
+    )
     val state = _state.asStateFlow()
 
     private var childrenJob: Job? = null
@@ -129,19 +131,21 @@ class CoinsViewModel(
         screenModelScope.launch {
             when (val res = myCoinsRepository.getMyCoins()) {
                 is Outcome.Success -> {
+                    AppSettings.lastCoins = res.data.coins
                     _state.update {
                         it.copy(
                             isLoading = false,
                             myCoins = res.data.coins,
+                            coinsKnown = true,
                             error = null
                         )
                     }
                 }
 
                 is Outcome.Failure -> {
+                    // Tarmoq xatosida oxirgi ma'lum sonni saqlaymiz — "0 ta" degan yolg'on chiqmaydi.
                     _state.update {
                         it.copy(
-                            myCoins = 0,
                             isLoading = false,
                             error = res
                         )

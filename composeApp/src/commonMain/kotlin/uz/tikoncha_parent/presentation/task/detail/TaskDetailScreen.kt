@@ -382,7 +382,6 @@ fun TaskDetailUI(
                     textColor = AppColors.text.primary,
                     modifier = Modifier.weight(1f),
                     text = stringResource(Res.string.tahrirlash),
-                    shape = RoundedCornerShape(16.dp),
                     onClick = onEditClick,
                     leadingIcon = {
                         Icon(
@@ -396,7 +395,6 @@ fun TaskDetailUI(
                     color = AppColors.text.accentDanger,
                     modifier = Modifier.weight(1f),
                     text = stringResource(Res.string.ochirish),
-                    shape = RoundedCornerShape(16.dp),
                     onClick = onDeleteClick,
                     leadingIcon = {
                         Icon(

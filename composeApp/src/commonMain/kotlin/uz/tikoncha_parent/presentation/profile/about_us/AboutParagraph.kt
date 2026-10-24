@@ -1,5 +1,9 @@
 package uz.tikoncha_parent.presentation.profile.about_us
 
+import uz.tikoncha_parent.ui.segmentShape
+import androidx.compose.material3.Icon
+import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -48,21 +52,37 @@ fun AboutHeading(text: org.jetbrains.compose.resources.StringResource) {
     )
 }
 
+/** Imkoniyatlar ro'yxati elementi — M3 Expressive guruhlangan ro'yxat segmenti (✓ belgili). */
 @Composable
-fun AboutBullet(text: org.jetbrains.compose.resources.StringResource) {
+fun AboutBullet(
+    text: org.jetbrains.compose.resources.StringResource,
+    segmentIndex: Int = 0,
+    segmentCount: Int = 1,
+) {
+    val shape = segmentShape(segmentIndex, segmentCount, outer = 24.dp)
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 4.dp),
+            .clip(shape)
+            .background(AppColors.bg.surface, shape)
+            .padding(horizontal = 14.dp, vertical = 14.dp),
         verticalAlignment = Alignment.Top
     ) {
         Box(
             modifier = Modifier
-                .padding(top = 8.dp, end = 12.dp)
-                .size(6.dp)
+                .padding(end = 12.dp)
+                .size(24.dp)
                 .clip(CircleShape)
-                .background(AppColors.action.primary)
-        )
+                .background(AppColors.action.primary.copy(alpha = 0.14f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Check,
+                contentDescription = null,
+                tint = AppColors.action.primary,
+                modifier = Modifier.size(16.dp),
+            )
+        }
         Text(
             text = stringResource(text),
             style = AppTypography.emphasizedMdRegular,
@@ -77,9 +97,9 @@ fun AboutQuote(text: org.jetbrains.compose.resources.StringResource) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(24.dp))
             .background(AppColors.bg.tertiary)
-            .padding(16.dp)
+            .padding(18.dp)
     ) {
         // IntrinsicSize.Min — qator balandligi matnga teng bo'ladi, chiziq butun matn bo'ylab cho'ziladi.
         // Busiz LazyColumn ichida fillMaxHeight() ishlamaydi va chiziq 24dp'da qoladi.

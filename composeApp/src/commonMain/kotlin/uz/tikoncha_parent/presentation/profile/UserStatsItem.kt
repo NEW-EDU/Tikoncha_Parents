@@ -1,5 +1,13 @@
 package uz.tikoncha_parent.presentation.profile
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.ui.text.font.FontWeight
+import uz.tikoncha_parent.ui.expressiveSegment
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -35,53 +43,56 @@ import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 
+/**
+ * Profil statistikasi plitkasi — M3 Expressive: yonma-yon ikkita plitka bitta guruh (tashqi burchaklar katta),
+ * yorliq kichik va xira, qiymat katta va qalin, 3D rasm burchakdan chiqib turadi.
+ */
 @Composable
 fun UserStatsItem(
     title: String,
     value: String,
     icon: Painter,
     modifier: Modifier = Modifier,
+    segmentIndex: Int = 0,
+    segmentCount: Int = 1,
     onClick: () -> Unit = {}
 ) {
     Box(
         modifier = modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .zIndex(1f)
-            .clip(RoundedCornerShape(SmallCardCornerRadius))
+            .expressiveSegment(segmentIndex, segmentCount, color = AppColors.bg.surface, horizontal = true, onClick = onClick)
+            .padding(start = 16.dp, top = 14.dp, end = 12.dp, bottom = 12.dp)
     ){
-        Column(
-            modifier = modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(SmallCardCornerRadius))
-                .singleClick(onClick = onClick)
-                .background(AppColors.bg.surface, RoundedCornerShape(SmallCardCornerRadius))
-                .padding(AppIconInnerPadding)
-        ) {
+        Column(modifier = Modifier.fillMaxHeight()) {
             Text(
                 text = title,
-                style = AppTypography.emphasizedSmSemiBold,
-                color = AppColors.text.primary,
-                maxLines = 2,
-                modifier = Modifier.fillMaxWidth().weight(1f)
+                style = AppTypography.emphasizedSmMedium,
+                color = AppColors.text.tertiary,
+                maxLines = 1,
             )
-
-            Text(
-                text = value,
-                style = AppTypography.emphasizedSmSemiBold,
-                color = AppColors.text.accentEmphasis,
-                modifier = Modifier.padding(start = 4.dp)
-            )
+            Spacer(Modifier.weight(1f))
+            // Son o'zgarsa — sakramaydi, silliq almashadi.
+            AnimatedContent(
+                targetState = value,
+                transitionSpec = { fadeIn(tween(220)) togetherWith fadeOut(tween(120)) },
+                label = "statValue",
+            ) { shown ->
+                Text(
+                    text = shown,
+                    style = AppTypography.headlineSmSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+                    color = AppColors.text.primary,
+                    maxLines = 1,
+                )
+            }
         }
-
         Image(
             painter = icon,
             contentDescription = "",
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.Fit,
             modifier = Modifier
-                .size(AppItemHeight)
+                .size(52.dp)
                 .align(Alignment.BottomEnd)
-                .offset(10.dp, 10.dp)
         )
     }
 }

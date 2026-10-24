@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.Haptics
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
@@ -45,6 +48,7 @@ import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.extendedColor
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun SegmentedToggle(
     options: List<Pair<String, Painter?>>,
@@ -53,7 +57,8 @@ fun SegmentedToggle(
     onOptionSelected: (Int) -> Unit,
     modifier: Modifier = Modifier,
     containerColor: Color = AppColors.bg.surface,
-    shape: Shape = RoundedCornerShape(TextFieldCornerRadius)
+    /** M3 Expressive: to'liq yumaloq konteyner va indikator. */
+    shape: Shape = CircleShape
 ) {
 
     val itemCount = options.size
@@ -75,8 +80,10 @@ fun SegmentedToggle(
             }
     ) {
         // Sliding background indicator
+        // M3 Expressive: indikator mavzudagi prujina bilan siljiydi (default spatial: 0.8 / 380 — yengil "sakrash")
         val indicatorOffset by animateDpAsState(
             targetValue = itemWidth.value * selectedIndex,
+            animationSpec = MaterialTheme.motionScheme.defaultSpatialSpec(),
             label = "IndicatorOffset"
         )
 
@@ -113,6 +120,7 @@ fun SegmentedToggle(
                             indication = null,
                             interactionSource = remember { MutableInteractionSource() }
                         ) {
+                            Haptics.tick()
                             onOptionSelected(index)
                         },
                     verticalAlignment = Alignment.CenterVertically,

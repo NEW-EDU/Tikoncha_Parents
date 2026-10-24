@@ -1,53 +1,56 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package uz.tikoncha_parent.presentation.tracking
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Map
-import androidx.compose.material.icons.filled.Share
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Map
+import androidx.compose.material.icons.rounded.PlayArrow
+import androidx.compose.material.icons.rounded.Share
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.profile_hedgehog_img
 import tikoncha_parents.composeapp.generated.resources.tracking_checking_settings
 import tikoncha_parents.composeapp.generated.resources.tracking_last_update
 import tikoncha_parents.composeapp.generated.resources.tracking_location_unavailable
@@ -55,338 +58,261 @@ import tikoncha_parents.composeapp.generated.resources.tracking_watch_video
 import tikoncha_parents.composeapp.generated.resources.ulashish
 import tikoncha_parents.composeapp.generated.resources.xaritadan_ochish
 import uz.tikoncha_parent.domain.model.permission_status.PermissionIssue
-import uz.tikoncha_parent.presentation.base.singleClick
-import uz.tikoncha_parent.presentation.map.LatLng
-import uz.tikoncha_parent.ui.ContainerPadding
-import uz.tikoncha_parent.ui.Space
+import uz.tikoncha_parent.presentation.base.island.ChildAvatar
+import uz.tikoncha_parent.ui.expressiveButtonShapes
+import uz.tikoncha_parent.ui.expressivePress
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
-import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 
-@Composable
-fun PersonInfoSheet(
-    show: Boolean,
-    person: Person?,
-    issues: List<PermissionIssue> = emptyList(),
-    isCheckingStatus: Boolean = false,
-    onDismiss: () -> Unit,
-    onWatchVideo: (String) -> Unit = {},
-    onOpenInMaps: (Person) -> Unit = {},
-    onShare: (Person) -> Unit = {},
-    modifier: Modifier = Modifier
-) {
-    if (!show) return
-
-    val hasLocation = person?.location != null
-    val hasIssues = issues.isNotEmpty()
-
-    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-    LaunchedEffect(show) {
-        if (show) sheetState.expand()
-    }
-
-    ModalBottomSheet(
-        sheetState = sheetState,
-        onDismissRequest = onDismiss,
-        containerColor = Color.Transparent,
-        dragHandle = {}
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .navigationBarsPadding()
-                .padding(horizontal = ContainerPadding)
-        ) {
-            Card(
-                shape = RoundedCornerShape(24.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = AppColors.bg.surface
-                ),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(ContainerPadding),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    // Drag handle
-                    Box(
-                        modifier = Modifier
-                            .padding(bottom = 20.dp)
-                            .background(color = Color(0xFF9A9A9A), shape = CircleShape)
-                            .height(3.dp)
-                            .width(36.dp)
-                    )
-
-
-
-                    // ⬇️ 2. PERSON INFO (avatar + ism + lastSeen)
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(16.dp)
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .size(52.dp)
-                                .clip(CircleShape)
-                                .background(AppColors.bg.primaryContainer)
-                        ) {
-                            AsyncImage(
-                                model = person?.avatarUrl,
-                                placeholder = painterResource(Res.drawable.profile_hedgehog_img),
-                                error = painterResource(Res.drawable.profile_hedgehog_img),
-                                fallback = painterResource(Res.drawable.profile_hedgehog_img),
-                                contentDescription = null,
-                                contentScale = ContentScale.Crop,
-                                modifier = Modifier.fillMaxSize()
-                            )
-                        }
-
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = person?.name ?: "",
-                                style = AppTypography.titleMdSemiBold,
-                                color = AppColors.text.primary
-                            )
-
-                            if (hasLocation) {
-                                Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Text(
-                                        text = stringResource(Res.string.tracking_last_update),
-                                        style = AppTypography.bodyMdMedium,
-                                        color = AppColors.text.tertiary
-                                    )
-                                    Spacer(Modifier.width(8.dp))
-                                    Text(
-                                        text = formatLastSeen(person?.lastSeenEpochMs),
-                                        style = AppTypography.bodyMdSemiBold,
-                                        color = AppColors.text.accentEmphasis
-                                    )
-                                }
-                            }
-                        }
-                    }
-
-                    // ⬇️ 3. Location yo'q VA issue ham yo'q VA loading ham yo'q
-                    if (!hasLocation && !hasIssues && !isCheckingStatus) {
-                        Space(12.dp)
-                        Text(
-                            text = stringResource(Res.string.tracking_location_unavailable),
-                            style = AppTypography.titleSmSemiBold,
-                            color = AppColors.text.primary
-                        )
-                    }
-
-                    // ⬇️ 4. LOADING — pastida kichik text + spinner
-                    if (isCheckingStatus) {
-                        Space(16.dp)
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            CircularProgressIndicator(
-                                modifier = Modifier.size(14.dp),
-                                strokeWidth = 2.dp,
-                                color = AppColors.text.tertiary
-                            )
-                            Text(
-                                // "Farzand sozlamalari tekshirilmoqda..."
-                                text = stringResource(Res.string.tracking_checking_settings),
-                                style = AppTypography.bodySmMedium,
-                                color = AppColors.text.tertiary
-                            )
-                        }
-                    }
-
-                    if (hasIssues) {
-                        Space(16.dp)
-                        issues.forEach { issue ->
-                            IssueWarningBlock(
-                                issue = issue,
-                                onWatchVideo = { onWatchVideo(issue.videoUrl?:"") }
-                            )
-                            Space(12.dp)
-                        }
-                    }
-
-                    if (hasLocation) {
-                        Space(16.dp)
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(IntrinsicSize.Max),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-
-                            ActionButton(
-                                text = stringResource(Res.string.xaritadan_ochish),
-                                icon = Icons.Default.Map,
-                                onClick = {onOpenInMaps(person)},
-                                modifier = Modifier
-                                    .weight(1f)
-                                    .fillMaxHeight()
-                            )
-                            ActionButton(
-                                text = stringResource(Res.string.ulashish),
-                                icon = Icons.Default.Share,
-                                onClick = {onShare(person)},
-                                modifier = Modifier
-                                    .weight(1f)
-                                    .fillMaxHeight()
-                            )
-                        }
-                    }
-
-
-
-                    Space(10.dp)
-                }
-            }
-        }
-    }
-
-}
-
-/**
- * Warning blok — title + body + youtube video tugma.
+/*
+ * Xarita ustidagi pastki qatlam (orol ustida, bosh barmoq yetadigan joyda):
+ *  • farzandlar qatori — har biri avatar + ism + oxirgi yangilanish; PLUS'siz farzandda qulf;
+ *  • farzand tanlansa — qator o'rniga o'sha farzand kartasi (oxirgi yangilanish, sozlama muammolari,
+ *    "Xaritadan ochish" / "Ulashish"). Modal oyna yo'q — xarita ko'rinib turadi, karta xaritaga bosilganda yopiladi.
+ * Soya yo'q — xaritadan ingichka chegara bilan ajraladi (orol bilan bir xil).
  */
+
+private val CardShape = RoundedCornerShape(28.dp)
+
+/** Farzandlar qatori (pastda, gorizontal). */
 @Composable
-private fun IssueWarningBlock(
-    issue: PermissionIssue,
-    onWatchVideo: () -> Unit,
-    modifier: Modifier = Modifier
+fun ChildrenRail(
+    people: List<Person>,
+    selectedId: String?,
+    isLocked: (Person) -> Boolean,
+    onClick: (String) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
-    Card(
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = AppColors.bg.accentWarningContainer  // sariq och fon
-        ),
-        modifier = modifier.fillMaxWidth()
+    LazyRow(
+        modifier = modifier.fillMaxWidth(),
+        contentPadding = PaddingValues(horizontal = 12.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            // Title
-            Text(
-                text = issue.title,
-                style = AppTypography.titleSmSemiBold,
-                color = AppColors.text.primary
+        items(people, key = { it.id }) { person ->
+            ChildPill(
+                person = person,
+                selected = person.id == selectedId,
+                locked = isLocked(person),
+                onClick = { onClick(person.id) },
             )
-
-            // Body
-            Text(
-                text = issue.body,
-                style = AppTypography.bodyMdMedium,
-                color = AppColors.text.secondary
-            )
-
-            // Video tugma (URL bo'lsa)
-            if (!issue.videoUrl.isNullOrBlank()) {
-                Space(4.dp)
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(AppColors.button.primary)
-                        .clickable { onWatchVideo() }
-                        .padding(horizontal = 16.dp, vertical = 10.dp)
-                ) {
-                    Text(
-                        // "Video ko'rish"
-                        text = stringResource(Res.string.tracking_watch_video),
-                        style = AppTypography.bodyMdSemiBold,
-                        color = Color.White
-                    )
-                }
-            }
-
         }
     }
 }
 
 @Composable
-private fun ActionButton(
-    text: String,
-    icon: ImageVector,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-){
+private fun ChildPill(person: Person, selected: Boolean, locked: Boolean, onClick: () -> Unit) {
+    val source = remember { MutableInteractionSource() }
+    Row(
+        modifier = Modifier
+            .heightIn(min = 60.dp)
+            .expressivePress(source, pressedScale = 0.96f)
+            .clip(CircleShape)
+            .background(AppColors.bg.surface)
+            .border(
+                width = if (selected) 2.dp else 1.dp,
+                color = if (selected) AppColors.action.primary else AppColors.border.secondarySubtle,
+                shape = CircleShape,
+            )
+            .clickable(interactionSource = source, indication = null, onClick = onClick)
+            .padding(start = 8.dp, end = 18.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        ChildAvatar(person.avatarUrl, Modifier.size(44.dp))
+        Spacer(Modifier.width(10.dp))
+        Column {
+            Text(
+                text = person.name,
+                style = AppTypography.titleMdSemiBold,
+                color = AppColors.text.primary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+            Text(
+                text = if (person.location != null) formatLastSeen(person.lastSeenEpochMs)
+                else stringResource(Res.string.tracking_location_unavailable),
+                style = AppTypography.bodySmMedium,
+                color = AppColors.text.tertiary,
+                maxLines = 1,
+            )
+        }
+        if (locked) {
+            Spacer(Modifier.width(10.dp))
+            Icon(Icons.Rounded.Lock, contentDescription = null, tint = AppColors.icon.tertiary, modifier = Modifier.size(16.dp))
+        }
+    }
+}
+
+/** Tanlangan farzand kartasi (avvalgi pastki oyna o'rnida). */
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+fun PersonLocationCard(
+    person: Person,
+    issues: List<PermissionIssue>,
+    isCheckingStatus: Boolean,
+    maxHeight: Dp,
+    onClose: () -> Unit,
+    onWatchVideo: (String) -> Unit,
+    onOpenInMaps: (Person) -> Unit,
+    onShare: (Person) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val hasLocation = person.location != null
     Column(
         modifier = modifier
-            .border(1.dp, AppColors.border.secondarySubtle, RoundedCornerShape(20.dp))
-            .singleClick{
-                onClick()
-            }
-            .padding(12.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
-        Icon(
-            imageVector = icon,
-            contentDescription = "",
-            modifier = Modifier
-                .size(32.dp),
-            tint = AppColors.icon.accentPrimary
-        )
-        Text(
-            text = text,
-            style = AppTypography.titleSmMedium,
-            color = AppColors.text.primary,
-            textAlign = TextAlign.Center
-        )
-    }
-}
-
-@Preview
-@Composable
-fun Pre_Loading() {
-    TikonchaParentTheme {
-        PersonInfoSheet(
-            person = Person(
-                id = "",
-                name = "Ibroxim",
-                location = LatLng(40.78, 72.34),
-                isSelf = false,
-                lastSeenEpochMs = 32323L,
-                lastSeen = "12,021",
-                avatarUrl = ""
-            ),
-            isCheckingStatus = true,
-            onDismiss = {},
-            show = true
-        )
-    }
-}
-
-@Preview
-@Composable
-fun Pre_WithIssue() {
-    TikonchaParentTheme {
-        PersonInfoSheet(
-            person = Person(
-                id = "",
-                name = "Ibroxim",
-                location = null,
-                isSelf = false,
-                lastSeenEpochMs = 32323L,
-                lastSeen = "12,021",
-                avatarUrl = ""
-            ),
-            issues = listOf(
-                PermissionIssue(
-                    state = "monitor",
-                    missingPermissions = listOf("location"),
-                    title = "Joylashuvni sozlash kerak",
-                    body = "Farzandingizning joylashuvini ko'rish uchun uning telefonidagi G'ujanak rejimini yoqish kerak.",
-                    videoUrl = "https://youtu.be/NI1e38qD-Sg"
+            .padding(horizontal = 12.dp)
+            .fillMaxWidth()
+            .heightIn(max = maxHeight)
+            .clip(CardShape)
+            .background(AppColors.bg.surface)
+            .border(1.dp, AppColors.border.secondarySubtle, CardShape)
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            ChildAvatar(person.avatarUrl, Modifier.size(52.dp))
+            Spacer(Modifier.width(14.dp))
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = person.name,
+                    style = AppTypography.titleLgSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+                    color = AppColors.text.primary,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
-            ),
-            onDismiss = {},
-            show = true
-        )
+                if (hasLocation) {
+                    val label = stringResource(Res.string.tracking_last_update)
+                    val value = formatLastSeen(person.lastSeenEpochMs)
+                    Text(
+                        text = buildAnnotatedString {
+                            append(label)
+                            append(" ")
+                            withStyle(SpanStyle(color = AppColors.text.accentEmphasis, fontWeight = FontWeight.SemiBold)) {
+                                append(value)
+                            }
+                        },
+                        style = AppTypography.bodyMdMedium,
+                        color = AppColors.text.tertiary,
+                    )
+                }
+            }
+            Spacer(Modifier.width(8.dp))
+            FilledTonalIconButton(
+                onClick = onClose,
+                interactionSource = rememberHapticSource(),
+                modifier = Modifier.size(40.dp),
+                shapes = IconButtonDefaults.shapes(),
+                colors = IconButtonDefaults.filledTonalIconButtonColors(
+                    containerColor = AppColors.text.primary.copy(alpha = 0.06f),
+                    contentColor = AppColors.icon.secondary,
+                ),
+            ) {
+                Icon(Icons.Rounded.Close, contentDescription = null, modifier = Modifier.size(20.dp))
+            }
+        }
+
+        // Joylashuv ham, muammo ham yo'q va tekshirilmayapti
+        if (!hasLocation && issues.isEmpty() && !isCheckingStatus) {
+            Spacer(Modifier.height(14.dp))
+            Text(
+                text = stringResource(Res.string.tracking_location_unavailable),
+                style = AppTypography.titleSmSemiBold,
+                color = AppColors.text.primary,
+            )
+        }
+
+        if (isCheckingStatus) {
+            Spacer(Modifier.height(14.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(14.dp),
+                    strokeWidth = 2.dp,
+                    color = AppColors.text.tertiary,
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = stringResource(Res.string.tracking_checking_settings),
+                    style = AppTypography.bodySmMedium,
+                    color = AppColors.text.tertiary,
+                )
+            }
+        }
+
+        issues.forEach { issue ->
+            Spacer(Modifier.height(12.dp))
+            IssueBlock(issue = issue, onWatchVideo = { onWatchVideo(issue.videoUrl.orEmpty()) })
+        }
+
+        if (hasLocation) {
+            Spacer(Modifier.height(16.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                CardAction(
+                    text = stringResource(Res.string.xaritadan_ochish),
+                    icon = Icons.Rounded.Map,
+                    onClick = { onOpenInMaps(person) },
+                    modifier = Modifier.weight(1f),
+                )
+                CardAction(
+                    text = stringResource(Res.string.ulashish),
+                    icon = Icons.Rounded.Share,
+                    onClick = { onShare(person) },
+                    modifier = Modifier.weight(1f),
+                )
+            }
+        }
+    }
+}
+
+/** Sozlama muammosi: sarlavha, izoh, (bo'lsa) video. */
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+private fun IssueBlock(issue: PermissionIssue, onWatchVideo: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .background(AppColors.bg.accentWarningContainer)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Text(text = issue.title, style = AppTypography.titleSmSemiBold, color = AppColors.text.primary)
+        Text(text = issue.body, style = AppTypography.bodyMdMedium, color = AppColors.text.secondary)
+        if (!issue.videoUrl.isNullOrBlank()) {
+            Spacer(Modifier.height(4.dp))
+            Button(
+                onClick = onWatchVideo,
+                interactionSource = rememberHapticSource(),
+                shapes = expressiveButtonShapes(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = AppColors.button.primary,
+                    contentColor = AppColors.text.inverse,
+                ),
+                contentPadding = PaddingValues(start = 12.dp, end = 16.dp),
+                modifier = Modifier.height(44.dp),
+            ) {
+                Icon(Icons.Rounded.PlayArrow, contentDescription = null, modifier = Modifier.size(20.dp))
+                Spacer(Modifier.width(6.dp))
+                Text(stringResource(Res.string.tracking_watch_video), style = AppTypography.bodyMdSemiBold)
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+private fun CardAction(text: String, icon: ImageVector, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    Button(
+        onClick = onClick,
+        interactionSource = rememberHapticSource(),
+        shapes = expressiveButtonShapes(),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = AppColors.action.primary.copy(alpha = 0.14f),
+            contentColor = AppColors.text.primary,
+        ),
+        contentPadding = PaddingValues(horizontal = 12.dp),
+        modifier = modifier.height(52.dp),
+    ) {
+        Icon(icon, contentDescription = null, tint = AppColors.icon.accentPrimary, modifier = Modifier.size(20.dp))
+        Spacer(Modifier.width(8.dp))
+        Text(text = text, style = AppTypography.titleSmSemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }

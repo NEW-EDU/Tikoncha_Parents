@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.Haptics
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
@@ -123,6 +126,7 @@ object PillSegmentedButtonDefaults {
  * Item label uzun bo'lsa (kichik ekran yoki til o'zgargan holatda)
  * avtomatik ravishda ellipsis (`…`) qo'yiladi.
  */
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun PillSegmentedButton(
     items: List<PillSegmentedItem>,
@@ -153,6 +157,8 @@ fun PillSegmentedButton(
     }
     val current = tabPositions[safeIndex]
 
+    // M3 Expressive: indikator mavzudagi prujina bilan siljiydi va kengligini o'zgartiradi (default spatial)
+    val spatialSpec = MaterialTheme.motionScheme.defaultSpatialSpec<Float>()
     val indicatorOffsetAnim = remember { Animatable(0f) }
     val indicatorWidthAnim = remember { Animatable(0f) }
 
@@ -166,13 +172,13 @@ fun PillSegmentedButton(
             launch {
                 indicatorOffsetAnim.animateTo(
                     current.offset.toFloat(),
-                    tween(animationDurationMs, easing = FastOutSlowInEasing),
+                    spatialSpec,
                 )
             }
             launch {
                 indicatorWidthAnim.animateTo(
                     current.width.toFloat(),
-                    tween(animationDurationMs, easing = FastOutSlowInEasing),
+                    spatialSpec,
                 )
             }
         }
@@ -229,7 +235,7 @@ fun PillSegmentedButton(
                     enabled = enabled,
                     textStyle = textStyle,
                     colors = colors,
-                    onClick = { onSelected(index) },
+                    onClick = { Haptics.tick(); onSelected(index) },
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxHeight()

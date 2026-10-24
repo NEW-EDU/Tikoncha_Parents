@@ -1,14 +1,12 @@
 package uz.tikoncha_parent.presentation.profile.settings
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.DrawableResource
@@ -16,79 +14,39 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.arrow_right
-import tikoncha_parents.composeapp.generated.resources.*
-import uz.tikoncha_parent.presentation.base.singleClick
-import uz.tikoncha_parent.ui.DividerHorizontal
-import uz.tikoncha_parent.ui.NormalIconButtonPadding
+import tikoncha_parents.composeapp.generated.resources.akkauntdan_chiqish
+import tikoncha_parents.composeapp.generated.resources.haptics_title
+import tikoncha_parents.composeapp.generated.resources.logout
+import tikoncha_parents.composeapp.generated.resources.star_setting
+import tikoncha_parents.composeapp.generated.resources.tema
+import tikoncha_parents.composeapp.generated.resources.vibration
+import uz.tikoncha_parent.presentation.profile.ProfileSectionItem
+import uz.tikoncha_parent.ui.SegmentGap
 import uz.tikoncha_parent.ui.theme.AppColors
-import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 
+/** Sozlamalar: M3E guruhlangan ro'yxat (Profil'dagidek) — ko'rinish guruhi va alohida "chiqish". */
 @Composable
 fun ProfileSettingsItem(
     onSettingSelected: (SettingType) -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .background(AppColors.bg.secondary)
-    ) {
-        SettingType.entries.forEachIndexed { index, setting ->
-            val isLast = index == SettingType.entries.lastIndex
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .singleClick { onSettingSelected(setting) }
-                    .padding(horizontal = 16.dp, vertical = 14.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(36.dp)
-                        .background(
-                            AppColors.bg.surfaceTertiary,
-                            shape = RoundedCornerShape(NormalIconButtonPadding)
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        painter = painterResource(setting.iconId),
-                        contentDescription = null,
-                        tint = if (setting.isDestructive)
-                            AppColors.icon.accentDanger
-                        else
-                            AppColors.icon.accentPrimary,
-                        modifier = Modifier.size(20.dp)
+    val groups = SettingType.entries.groupBy { it.isDestructive }
+    Column(Modifier.fillMaxWidth()) {
+        listOfNotNull(groups[false], groups[true]).forEachIndexed { g, group ->
+            if (g > 0) Spacer(Modifier.height(16.dp))
+            Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
+                group.forEachIndexed { i, setting ->
+                    ProfileSectionItem(
+                        icon = painterResource(setting.iconId),
+                        title = stringResource(setting.settingName),
+                        onItemClick = { onSettingSelected(setting) },
+                        textColor = if (setting.isDestructive) AppColors.text.accentDanger else AppColors.text.primary,
+                        iconColor = if (setting.isDestructive) AppColors.icon.accentDanger else AppColors.icon.accentPrimary,
+                        segmentIndex = i,
+                        segmentCount = group.size,
                     )
                 }
-                Spacer(Modifier.width(12.dp))
-
-                Text(
-                    text = stringResource(setting.settingName),
-                    style = AppTypography.titleSmMedium,
-                    color = if (setting.isDestructive)
-                        AppColors.text.accentDanger
-                    else
-                        AppColors.text.primary,
-                    modifier = Modifier.weight(1f)
-                )
-
-                Icon(
-                    painter = painterResource(Res.drawable.arrow_right),
-                    contentDescription = null,
-                    tint = AppColors.icon.tertiary,
-                    modifier = Modifier.size(16.dp)
-                )
-            }
-
-            if (!isLast) {
-                DividerHorizontal(
-                    modifier = Modifier.padding(start = 64.dp)
-                )
             }
         }
     }
@@ -102,6 +60,10 @@ enum class SettingType(
     THEME(
         iconId = Res.drawable.star_setting,
         settingName = Res.string.tema
+    ),
+    HAPTICS(
+        iconId = Res.drawable.vibration,
+        settingName = Res.string.haptics_title
     ),
     LOGOUT(
         iconId = Res.drawable.logout,

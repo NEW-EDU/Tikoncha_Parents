@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.base
 
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,12 +15,13 @@ import androidx.compose.ui.unit.dp
 import uz.tikoncha_parent.ui.theme.extendedColor
 
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun Loading(
     show: Boolean,
 ) {
-
-    if (!show){
+    // Tez javobda ko'rinmaydi (chaqnash yo'q) — qarang: rememberDelayedLoading.
+    if (!rememberDelayedLoading(show)){
         return
     }
 
@@ -31,7 +34,7 @@ fun Loading(
         contentAlignment = Alignment.Center,
 
         ){
-        CircularProgressIndicator(
+        LoadingIndicator(
             color = MaterialTheme.extendedColor.primaryColor,
             modifier = Modifier
                 .fillMaxSize()

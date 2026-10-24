@@ -1,5 +1,9 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.rememberHapticSource
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import uz.tikoncha_parent.ui.expressiveButtonShapes
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,18 +35,20 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.extendedColor
 import kotlin.time.TimeSource
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun CustomButtonNew(
     text: String,
     modifier: Modifier = Modifier,
-    style: TextStyle = AppTypography.titleSmMedium,
+    style: TextStyle = AppTypography.titleMdSemiBold,
     containerColor: Color = AppColors.button.primary,
     contentColor: Color = AppColors.text.inverse,
     enabled: Boolean = true,
     onClick: () -> Unit,
     leadingIcon: (@Composable () -> Unit)? = null,
     endingIcon: (@Composable () -> Unit)? = null,
-    shape: Shape = RoundedCornerShape(16.dp),
+    /** Dam olishdagi shakl; sukut — M3 Expressive bo'yicha to'liq yumaloq, bosilganda siqiladi. */
+    shape: Shape = CircleShape,
     disabledContainerColor: Color = AppColors.button.disabled,
     disabledContentColor: Color = AppColors.text.disabledTertiary
 ) {
@@ -59,17 +65,18 @@ fun CustomButtonNew(
 
     Button(
         onClick = debouncedClick,
+        interactionSource = rememberHapticSource(),
+        shapes = expressiveButtonShapes(shape),
         modifier = modifier
-            .height(48.dp),
+            .height(ButtonDefaults.MediumContainerHeight),
         colors = ButtonDefaults.buttonColors(
             containerColor = containerColor,
             contentColor = contentColor,
             disabledContainerColor = disabledContainerColor,
             disabledContentColor = disabledContentColor
         ),
-        shape = shape,
         enabled = enabled,
-        contentPadding = PaddingValues(horizontal = 5.dp)
+        contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         if (leadingIcon != null) {
             leadingIcon()

@@ -294,7 +294,7 @@
     <string name="tabriklaymiz">ПОЗДРАВЛЯЕМ!</string>
     <string name="tasdiqlandi">Подтверждено</string>
     <string name="tashqarida">Снаружи</string>
-    <string name="theme_system">Системная тема</string>
+    <string name="theme_system">Системная</string>
     <string name="ushbu_oraliqdan_tashqari">Вне этого интервала</string>
     <string name="ustuvorligi">Приоритет</string>
     <string name="wi_fi">Wi-Fi</string>
@@ -1058,7 +1058,7 @@
     <string name="ap_card_title">Банковская карта</string>
     <string name="ap_click_sub">Разовый платёж</string>
     <string name="ap_card_sub">Автоматически</string>
-    <string name="ap_save_percent">Экономия %1$d%%</string>
+    <string name="ap_save_percent">Экономия %1$d%</string>
     <string name="ap_continue_with">Продолжить · %1$s</string>
     <string name="ap_per_year">сум / год</string>
     <string name="ap_per_month">сум / мес</string>
@@ -1179,4 +1179,100 @@
     <string name="ulanish_kodini_kiriting">Введите код привязки</string>
     <string name="ulanish_kodi_tavsif">Ребёнок создаёт 8-значный код в своём приложении через «Показать мой код». Введите этот код.</string>
     <string name="ulash_tugma">Привязать</string>
+
+    <!-- Onboarding (parent) -->
+    <string name="ob_skip">Пропустить</string>
+    <string name="ob_start">Начнём</string>
+    <string name="ob_got_it">Понятно</string>
+    <string name="ob_hello_title">Привет, я Tikoncha</string>
+    <string name="ob_hello_body">Я помогаю ребёнку разумно пользоваться телефоном, а вам — быть в курсе его дня.</string>
+    <string name="ob_day_title">День ребёнка на ладони</string>
+    <string name="ob_day_body">Экранное время и самые используемые приложения — за каждый день.</string>
+    <string name="ob_day_today">Сегодня</string>
+    <string name="ob_total_fmt">%1$d ч %2$d мин</string>
+    <string name="ob_day_video">Видео</string>
+    <string name="ob_day_games">Игры</string>
+    <string name="ob_day_study">Учёба</string>
+    <string name="ob_min_fmt">%1$d мин</string>
+    <string name="ob_rules_title">Правила — один раз</string>
+    <string name="ob_rules_body">Сон, учёба и дневные лимиты включаются сами.</string>
+    <string name="ob_rule_sleep">Сон</string>
+    <string name="ob_rule_school">Учёба</string>
+    <string name="ob_rule_limit">Лимит в день</string>
+    <string name="ob_rule_limit_value">2 ч</string>
+    <string name="ob_map_title">Знайте, где ребёнок</string>
+    <string name="ob_map_body">Смотрите, где ребёнок, на карте и задавайте правила для мест вроде школы.</string>
+    <string name="ob_chat_title">Всегда рядом</string>
+    <string name="ob_chat_body">Переписывайтесь с ребёнком и отвечайте на его запросы в одно касание.</string>
+    <string name="ob_chat_child_msg">Я сделал домашку!</string>
+    <string name="ob_tasks_title">Задания с наградой</string>
+    <string name="ob_tasks_body">Давайте задания — ребёнок получает монеты за выполнение.</string>
+    <string name="ob_task_sample">Прочитать 20 страниц</string>
+    <string name="ob_notif_title">Ничего не пропустите</string>
+    <string name="ob_notif_body">Запросы, сообщения и оповещения о ребёнке приходят уведомлениями.</string>
+    <string name="ob_notif_request">Новый запрос</string>
+    <string name="ob_notif_message">Новое сообщение</string>
+    <string name="ob_notif_task">Задание выполнено</string>
+
+    <!-- Add child (redesign) -->
+    <string name="ac_hero_title">Подключите телефон ребёнка</string>
+    <string name="ac_hero_sub">Это займёт минуту — держите телефон ребёнка рядом.</string>
+    <string name="ac_step_install">Установите Tikoncha на телефон ребёнка</string>
+    <string name="ac_step_show_code">На его телефоне: Профиль → Добавить родителя → Показать мой код</string>
+    <string name="ac_step_enter_code">Введите показанный 8-значный код</string>
+    <string name="ac_step_phone">Введите номер телефона ребёнка</string>
+    <string name="ac_step_child_enters">Введите код на телефоне ребёнка</string>
+    <string name="country_fr">Франция</string>
+    <string name="country_it">Италия</string>
+    <string name="country_es">Испания</string>
+    <string name="country_nl">Нидерланды</string>
+    <string name="country_pl">Польша</string>
+    <string name="country_ua">Украина</string>
+    <string name="country_az">Азербайджан</string>
+    <string name="country_in">Индия</string>
+    <string name="country_cn">Китай</string>
+    <string name="country_jp">Япония</string>
+    <string name="country_ca">Канада</string>
+    <string name="country_au">Австралия</string>
+
+    <!-- Support sheet -->
+    <string name="support_sub">Выберите удобный способ связи.</string>
+    <string name="support_email">Эл. почта</string>
+
+    <!-- Profile sections (M3 Expressive grouped lists) -->
+    <string name="pr_section_account">Аккаунт</string>
+    <string name="pr_section_prefs">Оформление и язык</string>
+    <string name="pr_section_payments">Платежи</string>
+    <string name="pr_section_help">Помощь</string>
+    <string name="ap_card_need_child">Автоплатёж привязан к ребёнку — сначала добавьте ребёнка</string>
+    <string name="lang_name_uz">Узбекский</string>
+    <string name="lang_name_ru">Русский</string>
+    <string name="lang_name_en">Английский</string>
+    <string name="lang_hint">Приложение сразу переключится на выбранный язык</string>
+    <string name="lang_section">Язык приложения</string>
+    <string name="theme_section_colors">Цвет</string>
+    <string name="home_layout_title">Вид главного экрана</string>
+    <string name="home_layout_list">Список</string>
+    <string name="home_layout_grid">Сетка</string>
+    <string name="home_greeting">Привет, %1$s</string>
+    <string name="kecha_sarfladi">Вчера потратил(а)</string>
+    <string name="sana_sarfladi">%1$s потратил(а)</string>
+    <string name="stat_no_usage_day">В этот день телефоном ещё не пользовались</string>
+    <string name="kirish_usuli">Способ входа</string>
+    <string name="google_hisobi">Аккаунт Google</string>
+    <string name="apple_id">Apple ID</string>
+    <string name="email_label">Эл. почта</string>
+    <string name="email_yashirilgan_apple">Скрыта (Apple)</string>
+    <string name="apple_email_hidden_line">Apple ID · почта скрыта</string>
+    <string name="haptics_title">Вибрация</string>
+    <string name="haptics_section">Сила вибрации</string>
+    <string name="haptics_off">Выкл.</string>
+    <string name="haptics_off_desc">Кнопки без вибрации</string>
+    <string name="haptics_light">Лёгкая</string>
+    <string name="haptics_light_desc">Едва заметная</string>
+    <string name="haptics_standard">Стандартная</string>
+    <string name="haptics_standard_desc">Сбалансированная</string>
+    <string name="haptics_strong">Сильная</string>
+    <string name="haptics_strong_desc">Чёткий отклик на каждое нажатие</string>
+    <string name="haptics_footer">При нажатии кнопок, смене выбора и результатах. Выберите — и сразу почувствуете.</string>
 </resources>

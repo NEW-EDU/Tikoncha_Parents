@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.settings.notification
 
+import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -79,6 +80,11 @@ fun NotificationSettingsUi(
                 .fillMaxSize()
                 .padding(horizontal = ContainerPadding)
         ) {
+            // Bo'sh joy tepada — sozlamalar tugma bilan birga pastda
+            Spacer(
+                modifier = Modifier
+                    .weight(1f)
+            )
 
             ProfileNotificationItem(
                 notificationStates = notificationStates,
@@ -87,10 +93,7 @@ fun NotificationSettingsUi(
                 }
             )
 
-            Spacer(
-                modifier = Modifier
-                    .weight(1f)
-            )
+            Spacer(Modifier.height(16.dp))
 
             CustomButton(
                 modifier = Modifier

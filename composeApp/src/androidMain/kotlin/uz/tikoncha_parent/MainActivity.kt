@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         PushPlatform.bind(this)
         PushPlatform.initialize()
-        PushPlatform.requestNotificationPermissionIfNeeded()
+        // Bildirishnoma ruxsati bu yerda so'ralmaydi — tanishtiruvdagi alohida ekranda (NotificationPermissionScreen)
 
         FirebaseMessaging.getInstance().token.addOnSuccessListener { token ->
             Log.d(TAG, "token=$token")
@@ -61,6 +61,12 @@ class MainActivity : AppCompatActivity() {
         handleTelegramIntent(intent)
         // Warm start: UI tayyor -> darhol ochish
         AndroidDeepLinkParser.parse(intent)?.let { coordinator.onTapped(it, uiReady = true) }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        PushPlatform.onPermissionResult(requestCode, grantResults)
     }
 
     override fun onDestroy() {

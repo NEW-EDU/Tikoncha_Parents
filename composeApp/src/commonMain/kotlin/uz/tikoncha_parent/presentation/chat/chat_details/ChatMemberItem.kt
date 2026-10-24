@@ -1,5 +1,6 @@
 package uz.saidburxon.newedu.presentation.feature.chat.chat_details
 
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -41,9 +42,8 @@ fun ChatMemberItem(chatMemberUi: ChatMemberUi) {
     )
     {
         AsyncImage(
-            model = chatMemberUi.avatar,
+            model = rememberCachedImage(chatMemberUi.avatar),
             error = painterResource(Res.drawable.chat_icon),
-            placeholder = painterResource(Res.drawable.chat_icon),
             contentDescription = null,
             modifier = Modifier
                 .size(LargeIconButtonSize)

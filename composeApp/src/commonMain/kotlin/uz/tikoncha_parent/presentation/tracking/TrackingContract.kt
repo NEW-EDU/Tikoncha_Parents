@@ -18,12 +18,18 @@ data class Person(
     val avatarUrl: String? = null
 )
 
+/** Joylashuvi eng yangi bo'lgan farzand (xarita shu yerda ochiladi). */
+fun List<Person>.freshestChild(): Person? =
+    filter { !it.isSelf && it.location != null }.maxByOrNull { it.lastSeenEpochMs ?: Long.MIN_VALUE }
+
 @Immutable
 data class TrackingState(
     val people: List<Person> = listOf(),
     val self: Person? = null,
     val selectedPersonId: String? = null,
     val isLoading: Boolean = false,
+    /** Farzandlar joylashuvi serverdan kamida bir marta keldi (yoki xato bo'ldi). */
+    val peopleLoaded: Boolean = false,
     val error: Outcome.Failure? = null,
     val permissionAsked: Boolean = false,           // avval so'ralganmi
     val permissionDenied: Boolean = false,          // bekor qilingan

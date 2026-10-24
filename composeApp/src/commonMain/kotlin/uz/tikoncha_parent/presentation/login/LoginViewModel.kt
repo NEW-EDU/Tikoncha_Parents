@@ -36,13 +36,16 @@ class LoginViewModel(
 
     private var exchangeJob: Job? = null
     private var sendOtpJob: Job? = null
+    private var mascotTaps = 0
+    private var lastMascotTap: kotlin.time.TimeMark? = null
 
     init {
-        val telegramInstalled = telegramAuth.isTelegramInstalled()
         val lang = LanguagePrefs.loadOrDefault().languageCode
         _state.update {
             it.copy(
-                showPhone = !telegramInstalled || BuildConfig.isDebug,
+                // SMS OTP 2026-yil maydan o'chiq — telefon orqali kirish hech kimga ko'rinmaydi (debug'da ham); faqat App Review uchun
+                // (tipratikonni 5 marta bosish, sinov raqamlari +99811…). Telegram muvaffaqiyatsiz bo'lsa ham chiqmaydi.
+                showPhone = false,
                 appleAvailable = socialAuth.isAppleAvailable(),
                 socialFirst = lang != "uz" && lang != "ru",
             )
@@ -125,11 +128,18 @@ class LoginViewModel(
             LoginEvent.OnDialogErrorDismissed ->
                 _state.update { it.copy(dialogError = null) }
 
+            LoginEvent.OnMascotTapped -> {
+                // App Review: 5 ta tez bosish (har biri 1.5 s ichida) — telefon orqali kirish ochiladi
+                val now = kotlin.time.TimeSource.Monotonic.markNow()
+                mascotTaps = if (lastMascotTap?.let { it.elapsedNow().inWholeMilliseconds < 1500 } == true) mascotTaps + 1 else 1
+                lastMascotTap = now
+                if (mascotTaps >= 5) _state.update { it.copy(showPhone = true) }
+            }
+
             LoginEvent.OnTelegramReturned -> {
                 if (exchangeJob?.isActive != true) {
                     _state.update {
                         it.copy(
-                            showPhone = true,
                             isTelegramLoading = false
                         )
                     }
@@ -148,7 +158,6 @@ class LoginViewModel(
             _state.update {
                 it.copy(
                     isTelegramLoading = false,
-                    showPhone = true,
                     error = Outcome.Failure(ErrorCause.Unknown),
                 )
             }
@@ -158,12 +167,11 @@ class LoginViewModel(
     private fun handleTelegramResult(result: TelegramAuthResult) {
         when (result) {
             TelegramAuthResult.Cancelled ->
-                _state.update { it.copy(isTelegramLoading = false, showPhone = true) }
+                _state.update { it.copy(isTelegramLoading = false) }
 
             is TelegramAuthResult.Error ->
                 _state.update {
                     it.copy(
-                        showPhone = true,
                         isTelegramLoading = false,
                         error = Outcome.Failure(
                             ErrorCause.Unknown, result.message
@@ -184,7 +192,6 @@ class LoginViewModel(
                     _state.update {
                         it.copy(
                             error = res,
-                            showPhone = true,
                             isTelegramLoading = false
                         )
                     }

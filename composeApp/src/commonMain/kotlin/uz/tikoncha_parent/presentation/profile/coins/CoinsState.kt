@@ -9,6 +9,8 @@ data class CoinsState(
     val isRefreshing: Boolean = false,
     val error: Outcome.Failure? = null,
     val myCoins: Int = 0,
+    /** Tangalar soni ma'lum (keshdan yoki serverdan) — aks holda "—". */
+    val coinsKnown: Boolean = false,
     val coinsToBuy: Int = 0,
     val coinPrice: Int = 100,
     val totalPrice: Int = 0,

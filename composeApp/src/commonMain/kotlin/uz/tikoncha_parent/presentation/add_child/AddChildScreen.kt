@@ -1,5 +1,12 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package uz.tikoncha_parent.presentation.add_child
 
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.toShape
+import androidx.compose.material3.MaterialShapes
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -8,10 +15,12 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +30,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -59,15 +69,19 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.mascot_guide
+import tikoncha_parents.composeapp.generated.resources.ac_step_show_code
+import tikoncha_parents.composeapp.generated.resources.ac_step_phone
+import tikoncha_parents.composeapp.generated.resources.ac_step_install
+import tikoncha_parents.composeapp.generated.resources.ac_step_enter_code
+import tikoncha_parents.composeapp.generated.resources.ac_step_child_enters
+import tikoncha_parents.composeapp.generated.resources.ac_hero_title
+import tikoncha_parents.composeapp.generated.resources.ac_hero_sub
 import tikoncha_parents.composeapp.generated.resources.dialog_success
 import tikoncha_parents.composeapp.generated.resources.dialog_warning
-import tikoncha_parents.composeapp.generated.resources.farzand_ilovasi
-import tikoncha_parents.composeapp.generated.resources.farzand_ilovasi_info
 import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
 import tikoncha_parents.composeapp.generated.resources.farzand_ulan_di
-import tikoncha_parents.composeapp.generated.resources.farzandingiz_raqami
 import tikoncha_parents.composeapp.generated.resources.farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash
-import tikoncha_parents.composeapp.generated.resources.hedgehog_heart
 import tikoncha_parents.composeapp.generated.resources.kod_amal_qilish_muddati
 import tikoncha_parents.composeapp.generated.resources.kod_muddati_tugadi
 import tikoncha_parents.composeapp.generated.resources.kod_nusxalandi
@@ -78,8 +92,6 @@ import tikoncha_parents.composeapp.generated.resources.ok
 import tikoncha_parents.composeapp.generated.resources.operator_kodi_topilmadi
 import tikoncha_parents.composeapp.generated.resources.sorov_yuborish
 import tikoncha_parents.composeapp.generated.resources.tasdiqlash_kodi
-import tikoncha_parents.composeapp.generated.resources.ulanish_kodi_tavsif
-import tikoncha_parents.composeapp.generated.resources.ulanish_kodini_kiriting
 import tikoncha_parents.composeapp.generated.resources.ulash_tugma
 import tikoncha_parents.composeapp.generated.resources.ulash_usuli_kod
 import tikoncha_parents.composeapp.generated.resources.ulash_usuli_telefon
@@ -102,7 +114,8 @@ import uz.tikoncha_parent.presentation.base.multi_phone_input.CountryPhoneInputF
 import uz.tikoncha_parent.presentation.otp.OtpInput
 import uz.tikoncha_parent.presentation.task.TaskSegmentedToggle
 import uz.tikoncha_parent.presentation.video_tutorial.TutorialType
-import uz.tikoncha_parent.presentation.video_tutorial.VideoTutorialYoutubeScreen
+import uz.tikoncha_parent.presentation.video_tutorial.hasTutorialVideo
+import uz.tikoncha_parent.presentation.video_tutorial.openTutorial
 import uz.tikoncha_parent.ui.NormalIconSize
 import uz.tikoncha_parent.ui.Space
 import uz.tikoncha_parent.ui.SpaceUltraSmall
@@ -204,7 +217,7 @@ class AddChildScreen : Screen {
                     screenModel.onEvent(intent)
                 },
                 onTutorial = {
-                    navigator.push(VideoTutorialYoutubeScreen(tutorialType = TutorialType.BIND_CHILD))
+                    navigator.openTutorial(TutorialType.BIND_CHILD)
                 },
                 onBack = {
                     navigator.pop()
@@ -227,8 +240,10 @@ private fun AddChildContent(
     val focusManager = LocalFocusManager.current
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.page,
-        navigationBarColor = AppColors.bg.surface
+        navigationBarColor = AppColors.bg.page
     )
+    // Qo'llanma videosi faqat o'zbekcha — boshqa tillarda sahifaning o'zi qadam-baqadam qo'llanma
+    val hasVideo = hasTutorialVideo()
 
     Column(
         modifier = Modifier
@@ -236,20 +251,15 @@ private fun AddChildContent(
             .then(systemBars.modifier)
             .background(AppColors.bg.page)
     ) {
-
-
         CustomHeader(
             title = stringResource(Res.string.farzand_qo_shish),
             onBackClick = onBack,
             showBackButton = true,
             trailingIcon = {
-                if (!state.showBindChildTutorial) {
+                if (hasVideo && !state.showBindChildTutorial) {
                     IconButton(
-                        onClick = {
-                            onTutorial()
-                        },
-                        modifier = Modifier
-                            .size(44.dp),
+                        onClick = onTutorial,
+                        modifier = Modifier.size(44.dp),
                         colors = IconButtonDefaults.iconButtonColors(
                             containerColor = AppColors.bg.surfaceTertiary,
                             contentColor = AppColors.icon.accentPrimary
@@ -258,8 +268,7 @@ private fun AddChildContent(
                         Icon(
                             painter = painterResource(Res.drawable.media_play),
                             contentDescription = "",
-                            modifier = Modifier
-                                .size(NormalIconSize)
+                            modifier = Modifier.size(NormalIconSize)
                         )
                     }
                     SpaceUltraSmall()
@@ -267,28 +276,28 @@ private fun AddChildContent(
             }
         )
 
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(horizontal = 16.dp)
                 .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             AnimatedVisibility(
-                visible = state.showBindChildTutorial,
+                visible = hasVideo && state.showBindChildTutorial,
                 enter = fadeIn() + expandVertically(),
                 exit = fadeOut() + shrinkVertically()
             ) {
-                Space(12.dp)
-                ConnectChildTutorialCard(
-                    onClick = onTutorial
-                )
+                Column {
+                    Space(8.dp)
+                    ConnectChildTutorialCard(onClick = onTutorial)
+                }
             }
 
-            Space(12.dp)
+            Space(8.dp)
+            Hero()
+            Space(18.dp)
 
-            // 1) Bog'lash usuli: telefonsiz ulanish kodi (standart, SIWA uchun ham) yoki telefon raqami
+            // Bog'lash usuli: telefonsiz ulanish kodi (standart) yoki telefon raqami
             TaskSegmentedToggle(
                 options = listOf(
                     stringResource(Res.string.ulash_usuli_kod) to null,
@@ -301,125 +310,211 @@ private fun AddChildContent(
                 },
                 modifier = Modifier.fillMaxWidth()
             )
+            Space(20.dp)
 
-            if (state.mode == LinkMode.PHONE) {
-                // 2) Telefon raqami
-                PhoneInputCard(
-                    phone = state.phoneNumber,
-                    onPhoneChange = { event(AddChildEvent.PhoneChanged(it)) },
-                    onCountryChange = {
-                        event(AddChildEvent.OnCountryChange(it))
-                    },
-                    enabled = !state.isLoading
-                )
-
-                if (state.showPrefixHint) {
-                    Text(
-                        text = stringResource(Res.string.operator_kodi_topilmadi),
-                        style = AppTypography.emphasizedSm,
-                        color = AppColors.text.accentWarning,
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.End
+            // 1) Ilovani o'rnatish — havolani ulashish yoki do'konni ochish
+            StepRow(number = 1, title = stringResource(Res.string.ac_step_install), active = false) {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    ShareActionButton(
+                        text = stringResource(Res.string.ulashish),
+                        icon = Icons.Filled.Share,
+                        primary = false,
+                        onClick = { event(AddChildEvent.ShareLink) },
+                        modifier = Modifier.weight(1f)
+                    )
+                    ShareActionButton(
+                        text = stringResource(Res.string.ochish),
+                        icon = Icons.AutoMirrored.Filled.OpenInNew,
+                        primary = false,
+                        onClick = { event(AddChildEvent.OpenAppLink) },
+                        modifier = Modifier.weight(1f)
                     )
                 }
-
-                // 3) Tugma <-> Kod card (telefon raqam ostida)
-                AnimatedContent(
-                    targetState = state.showCodeCard,
-                    label = "request_or_code"
-                ) { showCode ->
-                    if (showCode && state.code != null) {
-                        CodeCard(
-                            code = state.code,
-                            isRefreshing = state.isLoading,
-                            isExpired = state.isCodeExpired,
-                            remainingText = state.remainingText,
-                            onRefresh = { event(AddChildEvent.RefreshCode) },
-                            onCopy = { event(AddChildEvent.CodeCopied) }
-                        )
-                    } else {
-                        CustomButtonNew(
-                            text = if (state.isLoading) stringResource(Res.string.yuborilmoqda) else stringResource(
-                                Res.string.sorov_yuborish
-                            ),
-                            enabled = state.canRequestCode,
-                            onClick = {
-                                focusManager.clearFocus()
-                                event(AddChildEvent.RequestCode)
-                            },
-                            modifier = Modifier.fillMaxWidth(),
-                            leadingIcon = if (state.isLoading) {
-                                {
-                                    CircularProgressIndicator(
-                                        modifier = Modifier.size(16.dp),
-                                        color = AppColors.text.inverse,
-                                        strokeWidth = 2.dp
-                                    )
-                                }
-                            } else null
-                        )
-                    }
-                }
-            } else {
-                // 2') Telefonsiz ulanish kodi — farzand ko'rsatgan 8 xonali kodni kiritish
-                LinkCodeCard(
-                    code = state.linkCode,
-                    isLoading = state.isLoading,
-                    canRedeem = state.canRedeem,
-                    onCodeChange = { event(AddChildEvent.LinkCodeChanged(it)) },
-                    onRedeem = {
-                        focusManager.clearFocus()
-                        event(AddChildEvent.RedeemCode)
-                    }
-                )
             }
 
-            Spacer(Modifier.weight(1f))
-
-            // 4) Share card — pastda
-            ShareCard(
-                onOpen = { event(AddChildEvent.OpenAppLink) },
-                onShare = { event(AddChildEvent.ShareLink) }
-            )
-
-            Spacer(Modifier.height(16.dp))
+            AnimatedContent(targetState = state.mode, label = "link_mode") { mode ->
+                Column {
+                    if (mode == LinkMode.CODE) {
+                        // 2) Farzand telefonida kodni ko'rsatish  3) Kodni shu yerga kiritish
+                        StepRow(number = 2, title = stringResource(Res.string.ac_step_show_code), active = false)
+                        StepRow(number = 3, title = stringResource(Res.string.ac_step_enter_code), active = true, isLast = true) {
+                            LinkCodeCard(
+                                code = state.linkCode,
+                                isLoading = state.isLoading,
+                                canRedeem = state.canRedeem,
+                                onCodeChange = { event(AddChildEvent.LinkCodeChanged(it)) },
+                                onRedeem = {
+                                    focusManager.clearFocus()
+                                    event(AddChildEvent.RedeemCode)
+                                }
+                            )
+                        }
+                    } else {
+                        // 2) Farzand raqami → kod olish  3) Kodni farzand telefonida kiritish
+                        StepRow(number = 2, title = stringResource(Res.string.ac_step_phone), active = !state.showCodeCard) {
+                            PhoneInputCard(
+                                phone = state.phoneNumber,
+                                country = state.selectedCountry,
+                                onPhoneChange = { event(AddChildEvent.PhoneChanged(it)) },
+                                onCountryChange = { event(AddChildEvent.OnCountryChange(it)) },
+                            )
+                            if (state.showPrefixHint) {
+                                Space(6.dp)
+                                Text(
+                                    text = stringResource(Res.string.operator_kodi_topilmadi),
+                                    style = AppTypography.emphasizedSm,
+                                    color = AppColors.text.accentWarning,
+                                    modifier = Modifier.fillMaxWidth(),
+                                    textAlign = TextAlign.End
+                                )
+                            }
+                            if (!state.showCodeCard) {
+                                Space(12.dp)
+                                CustomButtonNew(
+                                    text = if (state.isLoading) stringResource(Res.string.yuborilmoqda) else stringResource(Res.string.sorov_yuborish),
+                                    enabled = state.canRequestCode,
+                                    onClick = {
+                                        focusManager.clearFocus()
+                                        event(AddChildEvent.RequestCode)
+                                    },
+                                    modifier = Modifier.fillMaxWidth(),
+                                    leadingIcon = if (state.isLoading) {
+                                        {
+                                            CircularProgressIndicator(
+                                                modifier = Modifier.size(16.dp),
+                                                color = AppColors.text.inverse,
+                                                strokeWidth = 2.dp
+                                            )
+                                        }
+                                    } else null
+                                )
+                            }
+                        }
+                        StepRow(number = 3, title = stringResource(Res.string.ac_step_child_enters), active = state.showCodeCard, isLast = true) {
+                            if (state.showCodeCard && state.code != null) {
+                                CodeCard(
+                                    code = state.code,
+                                    isRefreshing = state.isLoading,
+                                    isExpired = state.isCodeExpired,
+                                    remainingText = state.remainingText,
+                                    onRefresh = { event(AddChildEvent.RefreshCode) },
+                                    onCopy = { event(AddChildEvent.CodeCopied) }
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+            Space(24.dp)
         }
     }
 }
 
+/** Sahifa boshi: tipratikon + nima qilishimiz haqida bir jumla. */
+@Composable
+private fun Hero() {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Image(
+            painter = painterResource(Res.drawable.mascot_guide),
+            contentDescription = null,
+            modifier = Modifier.size(84.dp)
+        )
+        Spacer(Modifier.width(12.dp))
+        Column(Modifier.weight(1f)) {
+            Text(
+                text = stringResource(Res.string.ac_hero_title),
+                style = AppTypography.headlineSmSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+                color = AppColors.text.primary
+            )
+            Space(4.dp)
+            Text(
+                text = stringResource(Res.string.ac_hero_sub),
+                style = AppTypography.emphasizedSmMedium,
+                color = AppColors.text.tertiary
+            )
+        }
+    }
+}
+
+/**
+ * Raqamlangan qadam: chapda doira (faol bo'lsa karamel) va keyingi qadamgacha chiziq,
+ * o'ngda sarlavha va (bo'lsa) shu qadamning boshqaruvlari.
+ */
+@Composable
+private fun StepRow(
+    number: Int,
+    title: String,
+    active: Boolean,
+    isLast: Boolean = false,
+    content: (@Composable () -> Unit)? = null,
+) {
+    Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min)) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(32.dp)) {
+            // M3 Expressive: faol qadam raqami 6 qirrali "Cookie" shaklida, kelganda prujina bilan kattalashadi
+            val stepShape = if (active) MaterialShapes.Cookie6Sided.toShape() else CircleShape
+            val pop by animateFloatAsState(
+                targetValue = if (active) 1f else 0.86f,
+                animationSpec = MaterialTheme.motionScheme.defaultSpatialSpec(),
+                label = "stepPop",
+            )
+            Box(
+                modifier = Modifier
+                    .size(30.dp)
+                    .graphicsLayer { scaleX = pop; scaleY = pop }
+                    .clip(stepShape)
+                    .background(if (active) AppColors.button.primary else AppColors.bg.surface)
+                    .then(if (active) Modifier else Modifier.border(1.dp, AppColors.border.secondary, CircleShape)),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = number.toString(),
+                    style = AppTypography.titleSmSemiBold,
+                    color = if (active) AppColors.text.onPrimary else AppColors.text.secondary
+                )
+            }
+            if (!isLast) {
+                Box(
+                    Modifier
+                        .padding(vertical = 4.dp)
+                        .width(2.dp)
+                        .weight(1f)
+                        .clip(CircleShape)
+                        .background(AppColors.border.secondary)
+                )
+            }
+        }
+        Spacer(Modifier.width(12.dp))
+        Column(Modifier.weight(1f).padding(bottom = if (isLast) 0.dp else 18.dp)) {
+            Text(
+                text = title,
+                style = AppTypography.titleMdSemiBold,
+                color = if (active) AppColors.text.primary else AppColors.text.secondary,
+                modifier = Modifier.padding(top = 4.dp)
+            )
+            if (content != null) {
+                Space(10.dp)
+                content()
+            }
+        }
+    }
+}
 
 @Composable
 private fun PhoneInputCard(
     phone: String,
+    country: Country,
     onPhoneChange: (String) -> Unit,
     onCountryChange: (Country) -> Unit,
-    enabled: Boolean
 ) {
-    Column(
+    CountryPhoneInputField(
+        phoneNumber = phone,
+        initialCountry = country,
+        onPhoneNumberChange = { onPhoneChange(it) },
+        onCountryChange = { onCountryChange(it) },
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .background(AppColors.bg.surface)
-            .padding(16.dp)
-    ) {
-        Text(
-            text = stringResource(Res.string.farzandingiz_raqami),
-            style = AppTypography.titleSmSemiBold,
-            color = AppColors.text.primary
-        )
-        Spacer(Modifier.height(10.dp))
-
-        CountryPhoneInputField(
-            phoneNumber = phone,
-            onPhoneNumberChange = { onPhoneChange(it) },
-            onCountryChange = { country ->
-                onCountryChange(country)
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(AppColors.field.page, RoundedCornerShape(TextFieldCornerRadius)),
-        )
-    }
+            .background(AppColors.bg.surface, RoundedCornerShape(TextFieldCornerRadius)),
+    )
 }
 
 @Composable
@@ -556,22 +651,10 @@ private fun LinkCodeCard(
             .background(AppColors.bg.surface)
             .padding(16.dp)
     ) {
-        Text(
-            text = stringResource(Res.string.ulanish_kodini_kiriting),
-            style = AppTypography.titleSmSemiBold,
-            color = AppColors.text.primary
-        )
-        Space(4.dp)
-        Text(
-            text = stringResource(Res.string.ulanish_kodi_tavsif),
-            style = AppTypography.bodyMdRegular,
-            color = AppColors.text.tertiary
-        )
-        Spacer(Modifier.height(14.dp))
         OtpInput(
             otpLength = 8,
             otpText = code,
-            autoFocus = true,
+            autoFocus = false,
             onOtpUpdate = onCodeChange
         )
         Spacer(Modifier.height(14.dp))
@@ -590,72 +673,6 @@ private fun LinkCodeCard(
                 }
             } else null
         )
-    }
-}
-
-@Composable
-private fun ShareCard(
-    onOpen: () -> Unit,
-    onShare: () -> Unit
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .background(AppColors.bg.surface)
-            .padding(horizontal = 16.dp, vertical = 14.dp)
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Box(
-                modifier = Modifier
-                    .size(50.dp)
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(AppColors.bg.primaryContainer),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(Res.drawable.hedgehog_heart),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize(0.8f)
-                )
-            }
-            Spacer(Modifier.width(10.dp))
-            Column {
-                Text(
-                    text = stringResource(Res.string.farzand_ilovasi),
-                    style = AppTypography.titleSmSemiBold,
-                    color = AppColors.text.primary
-                )
-                Space(4.dp)
-                Text(
-                    text = stringResource(Res.string.farzand_ilovasi_info),
-                    style = AppTypography.bodyMdRegular,
-                    color = AppColors.text.tertiary
-                )
-            }
-        }
-
-        Spacer(Modifier.height(12.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ShareActionButton(
-                text = stringResource(Res.string.ochish),
-                icon = Icons.AutoMirrored.Filled.OpenInNew,
-                primary = false,
-                onClick = onOpen,
-                modifier = Modifier.weight(1f)
-            )
-            ShareActionButton(
-                text = stringResource(Res.string.ulashish),
-                icon = Icons.Filled.Share,
-                primary = true,
-                onClick = onShare,
-                modifier = Modifier.weight(1f)
-            )
-        }
     }
 }
 

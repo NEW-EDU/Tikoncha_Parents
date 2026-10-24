@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.payment_history
 
+import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -190,10 +191,7 @@ private fun FullScreenLoader() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        CircularProgressIndicator(
-            color = AppColors.bg.primary,
-            trackColor = AppColors.bg.primary.copy(alpha = 0.2f),
-        )
+        DelayedLoadingIndicator(color = AppColors.action.primary)
     }
 }
 

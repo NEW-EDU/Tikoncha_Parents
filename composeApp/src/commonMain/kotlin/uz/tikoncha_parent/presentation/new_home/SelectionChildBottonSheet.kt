@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -122,7 +123,6 @@ fun SelectionChildBottomSheet(
             Spacer(Modifier.height(24.dp))
 
             CustomButton(
-                shape = CircleShape,
                 modifier = Modifier.fillMaxWidth().height(40.dp),
                 text = stringResource(Res.string.farzand_qo_shish),
                 onClick = {
@@ -133,7 +133,7 @@ fun SelectionChildBottomSheet(
                         painter = painterResource(Res.drawable.add),
                         contentDescription = "",
                         tint = AppColors.icon.inverse,
-                        modifier = Modifier.size(10.dp)
+                        modifier = Modifier.size(16.dp)
                     )
                 }
             )
@@ -178,10 +178,9 @@ fun ChildListItem(
                 contentAlignment = Alignment.Center
             ) {
                 AsyncImage(
-                    model = userInfo.avatarUrl,
+                    model = rememberCachedImage(userInfo.avatarUrl),
                     contentDescription = "",
                     error = painterResource(Res.drawable.profile_hedgehog_img),
-                    placeholder = painterResource(Res.drawable.profile_hedgehog_img),
                     modifier = Modifier
                         .fillMaxSize()
                         .clip(CircleShape)

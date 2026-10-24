@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
+import uz.tikoncha_parent.presentation.base.rememberDelayedLoading
 import uz.tikoncha_parent.presentation.base.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -113,6 +114,7 @@ fun CompletedTaskUi(
     event: (CompletedTaskEvent) -> Unit
 ) {
     val loadFailure = state.error
+    val showShimmer = rememberDelayedLoading(state.isInitialLoading)
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.secondary,
         navigationBarColor = AppColors.bg.secondary
@@ -184,8 +186,8 @@ fun CompletedTaskUi(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 when {
-                    state.isInitialLoading -> {
-                        items(count = 5, key = { "shimmer-$it" }) {
+                    state.isInitialLoading || showShimmer -> {
+                        if (showShimmer) items(count = 5, key = { "shimmer-$it" }) {
                             CompletedTaskItemShimmer()
                         }
                     }

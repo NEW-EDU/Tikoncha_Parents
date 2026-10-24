@@ -41,7 +41,7 @@ class PaymentMethodViewModel(
         val childId = e.childId
         if (childId.isNullOrBlank()) {
             // Ro'yxatdan o'tmagan bola — avto-to'lov farzand hisobiga bog'lanadi, shuning uchun faqat Click
-            _state.update { it.copy(loading = false, cardAvailable = false, selected = PayMethod.CLICK) }
+            _state.update { it.copy(loading = false, cardAvailable = false, cardNeedsChild = true, selected = PayMethod.CLICK) }
             return
         }
         screenModelScope.launch {

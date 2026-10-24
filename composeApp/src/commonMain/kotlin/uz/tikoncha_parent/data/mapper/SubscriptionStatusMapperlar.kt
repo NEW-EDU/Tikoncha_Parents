@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.data.mapper
 
+import uz.tikoncha_parent.common.DateTimeUtil
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.number
 import kotlinx.datetime.toLocalDateTime
@@ -24,8 +25,7 @@ private fun String?.toAppDate(): String? = runCatching {
     this?.takeIf { it.isNotBlank() }?.let { raw ->
         val instant = Instant.parse(raw)
         val ld = instant.toLocalDateTime(TimeZone.currentSystemDefault()).date
-        val dd = ld.day.toString().padStart(2, '0')
-        val mm = ld.month.number.toString().padStart(2, '0')
-        "$dd.$mm.${ld.year}"
+        // Oy nomi bilan ("11 January 2027" / "11-yanvar 2027"), raqamli "11.01.2027" emas
+        DateTimeUtil.formatLongDate(ld)
     }
 }.getOrNull()

@@ -1,5 +1,11 @@
 package uz.tikoncha_parent.presentation.profile.children
 
+import uz.tikoncha_parent.ui.rememberHapticSource
+import uz.tikoncha_parent.ui.expressiveSegment
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.FilledTonalIconButton
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -41,6 +47,7 @@ import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun ChildrenItem(
     modifier: Modifier = Modifier,
@@ -50,23 +57,26 @@ fun ChildrenItem(
     imageUrl: String = "",
     lastSeen: String = "",
     gadget: String = "",
+    /** [gadget] oldidagi Google / Apple belgisi (telefon raqami yo'q farzand). */
+    gadgetBrand: SignInMethod? = null,
     name: String = "",
     subscription: String? = null,
+    segmentIndex: Int = 0,
+    segmentCount: Int = 1,
 ) {
     val hasSubscription = !subscription.isNullOrBlank() && subscription != "FREE"
 
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .heightIn(min = 88.dp)
-            .singleClick { onClick() }
-            .background(AppColors.bg.surface, RoundedCornerShape(12.dp))
-            .padding(horizontal = 12.dp, vertical = 12.dp),
+            .heightIn(min = 84.dp)
+            .expressiveSegment(segmentIndex, segmentCount, color = AppColors.bg.surface, onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         // ── Avatar: clip qilingan doira + yonida (kesilmaydigan) badge ──
         Box(
-            modifier = Modifier.size(61.dp),
+            modifier = Modifier.size(56.dp),
             contentAlignment = Alignment.Center
         ) {
             // Doira + rasm (clip qilinadi, border shu yerda)
@@ -85,10 +95,9 @@ fun ChildrenItem(
                 contentAlignment = Alignment.Center
             ) {
                 AsyncImage(
-                    model = imageUrl,
+                    model = rememberCachedImage(imageUrl),
                     contentDescription = "",
                     error = painterResource(Res.drawable.profile_hedgehog_img),
-                    placeholder = painterResource(Res.drawable.profile_hedgehog_img),
                     modifier = Modifier
                         .fillMaxSize()
                         .clip(CircleShape)
@@ -112,7 +121,7 @@ fun ChildrenItem(
                 }
             }
         }
-        Space(18.dp)
+        Space(14.dp)
 
         // ── Ism → telefon → oxirgi faollik (har biri o'z qatorida) ──
         Column(modifier = Modifier.weight(1f)) {
@@ -124,13 +133,21 @@ fun ChildrenItem(
                 overflow = TextOverflow.Ellipsis
             )
 
-            Text(
-                text = gadget,
-                style = AppTypography.titleSmMedium,
-                color = AppColors.text.secondary,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            if (gadget.isNotBlank()) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (gadgetBrand != null && gadgetBrand != SignInMethod.PHONE) {
+                        BrandMark(gadgetBrand, 14.dp)
+                        Spacer(Modifier.width(6.dp))
+                    }
+                    Text(
+                        text = gadget,
+                        style = AppTypography.titleSmMedium,
+                        color = AppColors.text.secondary,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
 
             if (lastSeen.isNotBlank()) {
                 Text(
@@ -147,14 +164,21 @@ fun ChildrenItem(
         if (endingIcon != null) {
             endingIcon()
         } else {
-            Icon(
-                painter = painterResource(Res.drawable.link),
-                contentDescription = "",
-                tint = AppColors.icon.secondary,
-                modifier = Modifier
-                    .size(24.dp)
-                    .singleClick { onMenuClick() }
-            )
+            FilledTonalIconButton(
+                onClick = onMenuClick,
+                interactionSource = rememberHapticSource(),
+                shapes = IconButtonDefaults.shapes(),
+                colors = IconButtonDefaults.filledTonalIconButtonColors(
+                    containerColor = AppColors.bg.secondary,
+                    contentColor = AppColors.icon.secondary,
+                ),
+            ) {
+                Icon(
+                    painter = painterResource(Res.drawable.link),
+                    contentDescription = "",
+                    modifier = Modifier.size(20.dp)
+                )
+            }
         }
     }
 }

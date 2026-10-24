@@ -1,5 +1,11 @@
 package uz.tikoncha_parent.presentation.profile
 
+import tikoncha_parents.composeapp.generated.resources.pr_section_help
+import tikoncha_parents.composeapp.generated.resources.pr_section_payments
+import tikoncha_parents.composeapp.generated.resources.pr_section_prefs
+import tikoncha_parents.composeapp.generated.resources.pr_section_account
+import androidx.compose.foundation.layout.Arrangement
+import uz.tikoncha_parent.ui.SegmentGap
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.cards.AutopayCardsScreen
 import tikoncha_parents.composeapp.generated.resources.ap_my_cards
 import androidx.compose.material.icons.rounded.CreditCard
@@ -91,6 +97,7 @@ import uz.tikoncha_parent.platform.rememberImagePicker
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
 import uz.tikoncha_parent.presentation.base.CustomBottomDialog
 import uz.tikoncha_parent.presentation.base.CustomButtonDash
+import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.LoadingDialog
@@ -100,6 +107,7 @@ import uz.tikoncha_parent.presentation.profile.children.ChildrenSelectScreen
 import uz.tikoncha_parent.presentation.profile.coins.CoinsScreen
 import uz.tikoncha_parent.presentation.profile.coins.CoinsViewModel
 import uz.tikoncha_parent.presentation.profile.language.LanguageScreen
+import uz.tikoncha_parent.presentation.support.SupportSheet
 import uz.tikoncha_parent.presentation.profile.logout.LogoutScreen
 import uz.tikoncha_parent.presentation.profile.payment_history.PaymentHistoryScreen
 import uz.tikoncha_parent.presentation.profile.personal_information.PersonalInformationScreen
@@ -149,7 +157,8 @@ class ProfileScreen : Screen {
         }
 
         val ui by coinsViewModel.state.collectAsStateWithLifecycle()
-        val aiTokens = ui.myCoins
+        // Hali hech qachon yuklanmagan bo'lsa — "0" emas, "—" (keyin son silliq paydo bo'ladi).
+        val aiTokens: Int? = ui.myCoins.takeIf { ui.coinsKnown }
 
         val taskViewModel = rememberSharedScreenModel<TaskListViewModel>()
         val taskState by taskViewModel.state.collectAsStateWithLifecycle()
@@ -157,13 +166,14 @@ class ProfileScreen : Screen {
         LaunchedEffect(Unit) {
             taskViewModel.onEvent(TaskListEvent.LoadAllChildrenActiveTasks)
         }
-        val activeTasksCount = taskState.allChildrenActiveTaskCount
+        val activeTasksCount: Int? = taskState.allChildrenActiveTaskCount
+            .takeIf { taskState.allChildrenActiveTaskCountKnown }
 
         ProfileUi(
             navigator = navigator,
             event = event,
             state = state.value,
-            aiTokens = aiTokens ?: 0,
+            aiTokens = aiTokens,
             activeTasksCount = activeTasksCount,
         )
     }
@@ -173,11 +183,13 @@ class ProfileScreen : Screen {
 fun ProfileUi(
     navigator: Navigator?,
     state: ProfileState,
-    aiTokens: Int,
-    activeTasksCount: Int,
+    aiTokens: Int?,
+    activeTasksCount: Int?,
     event: (ProfileEvent) -> Unit
 ) {
     var showQrCode by remember { mutableStateOf(false) }
+    var showSupport by remember { mutableStateOf(false) }
+    if (showSupport) SupportSheet(onDismiss = { showSupport = false })
     var showFullscreenAvatar by remember { mutableStateOf(false) }
     var showDeleteAvatarDialog by remember { mutableStateOf(false) }
     var showDeleteAvatarErrorDialog by remember { mutableStateOf(false) }
@@ -296,9 +308,11 @@ fun ProfileUi(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     UserStatsItem(
+                        segmentIndex = 0,
+                        segmentCount = 2,
                         icon = painterResource(Res.drawable.coin_3d),
                         title = stringResource(Res.string.tangachalaringiz),
-                        value = "$aiTokens ${stringResource(Res.string.ta)}",
+                        value = aiTokens?.let { "$it ${stringResource(Res.string.ta)}" } ?: "—",
                         modifier = Modifier
                             .height(ProfileStatsContainerHeight)
                             .weight(1f),
@@ -306,12 +320,14 @@ fun ProfileUi(
                             navigator?.push(CoinsScreen())
                         }
                     )
-                    Spacer(Modifier.width(12.dp))
+                    Spacer(Modifier.width(SegmentGap))
 
                     UserStatsItem(
+                        segmentIndex = 1,
+                        segmentCount = 2,
                         icon = painterResource(Res.drawable.file_3d),
                         title = stringResource(Res.string.faol_vazifalar),
-                        value = "$activeTasksCount ${stringResource(Res.string.ta)}",
+                        value = activeTasksCount?.let { "$it ${stringResource(Res.string.ta)}" } ?: "—",
                         modifier = Modifier
                             .height(ProfileStatsContainerHeight)
                             .weight(1f),
@@ -337,62 +353,72 @@ fun ProfileUi(
                 )
                 Spacer(Modifier.height(12.dp))
 
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(AppColors.bg.surface, RoundedCornerShape(24.dp))
-                        .padding(horizontal = 8.dp)
-                ) {
+                ProfileSectionLabel(stringResource(Res.string.pr_section_account))
+                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                     ProfileSectionItem(
+                        segmentIndex = 0,
+                        segmentCount = 2,
                         title = stringResource(Res.string.shaxsiy_malumotlar),
                         icon = painterResource(Res.drawable.person),
                         onItemClick = {
                             navigator?.push(PersonalInformationScreen())
                         }
                     )
-
                     ProfileSectionItem(
+                        segmentIndex = 1,
+                        segmentCount = 2,
                         title = stringResource(Res.string.farzandlarim),
                         icon = painterResource(Res.drawable.family),
                         onItemClick = {
                             navigator?.push(ChildrenSelectScreen())
                         }
                     )
-
+                }
+                ProfileSectionLabel(stringResource(Res.string.pr_section_prefs))
+                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                     ProfileSectionItem(
+                        segmentIndex = 0,
+                        segmentCount = 2,
                         title = stringResource(Res.string.tema),
                         icon = painterResource(Res.drawable.theme_mode),
                         onItemClick = {
                             navigator?.push(ThemeScreen())
                         }
                     )
-
                     ProfileSectionItem(
+                        segmentIndex = 1,
+                        segmentCount = 2,
                         title = stringResource(Res.string.til),
                         icon = painterResource(Res.drawable.global),
                         onItemClick = {
                             navigator?.push(LanguageScreen())
                         }
                     )
-
+                }
+                ProfileSectionLabel(stringResource(Res.string.pr_section_payments))
+                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                     ProfileSectionItem(
+                        segmentIndex = 0,
+                        segmentCount = 4,
                         title = stringResource(Res.string.obuna),
                         icon = painterResource(Res.drawable.star_vector),
                         onItemClick = {
                             navigator?.push(SubscriptionScreen())
                         }
                     )
-
                     // Obunasiz ham: saqlangan kartani ko'rish, asosiy qilish, o'chirish
                     ProfileSectionItem(
+                        segmentIndex = 1,
+                        segmentCount = 4,
                         title = stringResource(Res.string.ap_my_cards),
                         icon = rememberVectorPainter(Icons.Rounded.CreditCard),
                         onItemClick = {
                             navigator?.push(AutopayCardsScreen())
                         }
                     )
-
                     ProfileSectionItem(
+                        segmentIndex = 2,
+                        segmentCount = 4,
                         title = stringResource(Res.string.tangachalar),
                         icon = painterResource(Res.drawable.coins_profile),
                         onItemClick = {
@@ -400,31 +426,39 @@ fun ProfileUi(
                         }
                     )
                     ProfileSectionItem(
+                        segmentIndex = 3,
+                        segmentCount = 4,
                         title = stringResource(Res.string.tolovlar_tarixi),
                         icon = painterResource(Res.drawable.id_card),
                         onItemClick = {
                             navigator?.push(PaymentHistoryScreen())
                         }
                     )
-
+                }
+                ProfileSectionLabel(stringResource(Res.string.pr_section_help))
+                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                     ProfileSectionItem(
+                        segmentIndex = 0,
+                        segmentCount = 2,
                         title = stringResource(Res.string.biz_haqimizda),
                         icon = painterResource(Res.drawable.info_profile_us),
                         onItemClick = {
                             navigator?.push(AboutUsScreen())
                         }
                     )
-
                     ProfileSectionItem(
+                        segmentIndex = 1,
+                        segmentCount = 2,
                         title = stringResource(Res.string.biz_bilan_aloqa),
                         icon = painterResource(Res.drawable.call_filled),
-                        onItemClick = {
-                            openUrl("https://t.me/tikoncha_support")
-                        }
+                        onItemClick = { showSupport = true }
                     )
-
+                }
+                Spacer(Modifier.height(20.dp))
+                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                     ProfileSectionItem(
-                        divider = false,
+                        segmentIndex = 0,
+                        segmentCount = 1,
                         title = stringResource(Res.string.chiqish),
                         icon = painterResource(Res.drawable.logout),
                         iconColor = AppColors.icon.accentDanger,

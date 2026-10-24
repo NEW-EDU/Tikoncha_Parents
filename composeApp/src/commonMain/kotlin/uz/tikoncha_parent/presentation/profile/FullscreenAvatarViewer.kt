@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.profile
 
+import tikoncha_parents.composeapp.generated.resources.parent_avatar_default
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -91,9 +93,8 @@ fun FullscreenAvatarViewer(
                     start = 16.dp,
                     end = 16.dp
                 ),
-            model = imageUrL?.takeIf { it.isNotEmpty() },
-            placeholder = painterResource(Res.drawable.profile_hedgehog_img),
-            error = painterResource(Res.drawable.profile_hedgehog_img),
+            model = rememberCachedImage(imageUrL),
+            error = painterResource(Res.drawable.parent_avatar_default),
             contentScale = ContentScale.Fit,
             contentDescription = null
         )

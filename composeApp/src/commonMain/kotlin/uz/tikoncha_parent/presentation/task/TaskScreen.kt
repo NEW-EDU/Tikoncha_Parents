@@ -1,5 +1,9 @@
 package uz.tikoncha_parent.presentation.task
 
+import uz.tikoncha_parent.presentation.base.island.roundedContentEdges
+import uz.tikoncha_parent.presentation.base.island.IslandFabSpace
+import uz.tikoncha_parent.presentation.base.island.IslandFab
+import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
 import androidx.compose.animation.core.animate
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -77,6 +81,7 @@ import tikoncha_parents.composeapp.generated.resources.vazifalar
 import tikoncha_parents.composeapp.generated.resources.xatolik
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
+import uz.tikoncha_parent.presentation.base.rememberDelayedLoading
 import uz.tikoncha_parent.presentation.base.ChildSelectionButton
 import uz.tikoncha_parent.presentation.base.ConfirmationBottomSheet
 import uz.tikoncha_parent.presentation.base.CustomButton
@@ -157,6 +162,10 @@ fun TaskUi(
     var showChildSelector by remember { mutableStateOf(false) }
     var taskToDelete by remember { mutableStateOf<Task?>(null) }
     val loadFailure = state.error
+    // Shimmer faqat yuklash 300 ms dan uzoq cho'zilsa (tez javobda chaqnab o'tmaydi).
+    val showShimmer = rememberDelayedLoading(state.isInitialLoading)
+    val waitingFirstData = state.isInitialLoading ||
+        (!state.hasLoaded && state.selectedChild != null && loadFailure == null)
 
     // ── Bottom sheetlar ─────────────────────────────────────
     if (showChildSelector) {
@@ -210,74 +219,7 @@ fun TaskUi(
             .collect { event(TaskListEvent.OnLoadMore) }
     }
 
-    // ── Collapsing header setup ─────────────────────────────
-    val density = LocalDensity.current
-    val headerHeight = 56.dp
-    val headerHeightPx = with(density) { headerHeight.toPx() }
-    val headerOffsetPx = remember { mutableFloatStateOf(0f) }
     val pullState = rememberPullToRefreshState()
-
-    val collapseConnection = remember(headerHeightPx, pullState, listState) {
-        object : NestedScrollConnection {
-
-            // Joriy tortishda header biror lahza yashirin bo'lganmi.
-            // Bo'lgan bo'lsa — shu tortish faqat header'ni ochadi, refresh keyingi tortishda.
-            private var headerHiddenInThisDrag = false
-
-            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-                val dy = available.y
-                // Indikator tortilgan bo'lsa, yuqoriga harakatni avval u qaytarib olsin
-                if (dy < 0 && pullState.distanceFraction > 0f) return Offset.Zero
-
-                val isUserDrag = source == NestedScrollSource.UserInput
-                val old = headerOffsetPx.floatValue
-                if (isUserDrag && old < 0f) headerHiddenInThisDrag = true
-
-                // Header ro'yxat va pull-to-refresh'dan OLDIN o'zgaradi (yig'iladi yoki ochiladi)
-                val new = (old + dy).coerceIn(-headerHeightPx, 0f)
-                headerOffsetPx.floatValue = new
-                val byHeader = new - old
-
-                // Header yashirin holatdan ochilayotgan tortishda refresh tushmasin:
-                // ro'yxat tepaga yetgach, qolgan pastga harakatni o'zimiz yutamiz — PTR'ga yetmaydi.
-                if (isUserDrag && headerHiddenInThisDrag && dy > 0 && listState.firstVisibleItemIndex == 0) {
-                    val leftAfterHeader = dy - byHeader
-                    val listCanTake = listState.firstVisibleItemScrollOffset.toFloat()
-                    val swallow = (leftAfterHeader - listCanTake).coerceAtLeast(0f)
-                    return Offset(0f, byHeader + swallow)
-                }
-                return Offset(0f, byHeader)
-            }
-
-            // Barmoq qo'yib yuborildi — keyingi tortish yangidan baholanadi
-            override suspend fun onPreFling(available: Velocity): Velocity {
-                headerHiddenInThisDrag = false
-                return Velocity.Zero
-            }
-
-            // Header yarim holatda qolmasin — yaqin chetiga silliq suriladi
-            override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
-                val current = headerOffsetPx.floatValue
-                if (current != 0f && current != -headerHeightPx) {
-                    val target = if (current > -headerHeightPx / 2) 0f else -headerHeightPx
-                    animate(initialValue = current, targetValue = target) { value, _ ->
-                        headerOffsetPx.floatValue = value
-                    }
-                }
-                return Velocity.Zero
-            }
-        }
-    }
-
-    val headerCurrentHeight = with(density) {
-        (headerHeightPx + headerOffsetPx.floatValue).toDp()
-    }
-
-    val headerAlpha by remember {
-        derivedStateOf {
-            ((headerHeightPx + headerOffsetPx.floatValue) / headerHeightPx).coerceIn(0f, 1f)
-        }
-    }
 
     // ── UI ──────────────────────────────────────────────────
     Box(
@@ -296,34 +238,31 @@ fun TaskUi(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .nestedScroll(collapseConnection)
             ) {
-            // ── Collapsing Header ──
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(headerCurrentHeight)
-                    .graphicsLayer { alpha = headerAlpha }
-                    .clipToBounds()
-            ) {
-                CustomHeader(
-                    showBackButton = true,
-                    onBackClick = { navigator?.pop() },
-                    title = stringResource(Res.string.vazifalar),
-                    trailingIcon = {
-                        Icon(
-                            painter = painterResource(Res.drawable.circle_clock),
-                            contentDescription = null,
-                            tint = AppColors.icon.accentPrimary,
-                            modifier = Modifier
-                                .size(24.dp)
-                                .singleClick {
-                                    navigator?.push(CompletedTaskScreen())
-                                }
-                        )
-                    }
-                )
-            }
+            // Sarlavha, orqaga, tarix va farzand tanlagich — pastdagi orolda (tepada joy egallamaydi)
+            CustomHeader(
+                showBackButton = true,
+                onBackClick = { navigator?.pop() },
+                title = stringResource(Res.string.vazifalar),
+                childPicker = ChildPickerSpec(
+                    children = state.childrenList,
+                    selected = state.selectedChild,
+                    onSelect = { event(TaskListEvent.OnChildSelected(it)) },
+                    onAddChild = { navigator?.push(AddChildScreen()) },
+                ),
+                trailingIcon = {
+                    Icon(
+                        painter = painterResource(Res.drawable.circle_clock),
+                        contentDescription = null,
+                        tint = AppColors.icon.accentPrimary,
+                        modifier = Modifier
+                            .size(24.dp)
+                            .singleClick {
+                                navigator?.push(CompletedTaskScreen())
+                            }
+                    )
+                }
+            )
 
             // ── Sticky Toggle ──
             Column(
@@ -360,30 +299,17 @@ fun TaskUi(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f),
+                    .weight(1f)
+                    .roundedContentEdges(),
                     state = listState,
                     contentPadding = PaddingValues(
                         start = ContainerPadding,
                         end = ContainerPadding,
                         top = 12.dp,
-                        bottom = ButtonHeight + ContainerPadding * 2,
+                        bottom = IslandFabSpace + 12.dp,
                     ),
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                 ) {
-                    item(key = "child-selector") {
-                        ChildSelectionButton(
-                            text = state.selectedChild?.name.orEmpty(),
-                            label = stringResource(Res.string.farzandlaringiz),
-                            imageUrl = state.selectedChild?.avatarUrl.orEmpty(),
-                            modifier = Modifier.fillMaxWidth(),
-                            userInfo = state.selectedChild,
-                            onClick = {
-                                if (state.childrenList.isEmpty()) navigator?.push(AddChildScreen())
-                                else showChildSelector = true
-                            }
-                        )
-                    }
-
                     item(key = "status-chips") {
                         StatusChips(
                             items = listOf(
@@ -398,8 +324,8 @@ fun TaskUi(
                     }
 
                     when {
-                        state.isInitialLoading -> {
-                            items(count = 5, key = { "shimmer-$it" }) {
+                        waitingFirstData || showShimmer -> {
+                            if (showShimmer) items(count = 5, key = { "shimmer-$it" }) {
                                 TaskCardItemShimmer()
                             }
                         }
@@ -448,7 +374,7 @@ fun TaskUi(
 
                         else -> {
                             items(items = state.taskList, key = { it.id }) { task ->
-                                TaskCardItem(
+                                Box(Modifier.animateItem()) { TaskCardItem(
                                     task = task,
                                     onDeleteClick = { taskToDelete = it },
                                     isDeleting = task.id in state.deletingIds,
@@ -462,7 +388,7 @@ fun TaskUi(
                                     onEditIconClick = {
                                         navigator?.push(CreateTaskScreen(task))
                                     }
-                                )
+                                ) }
                             }
 
                             if (state.isPaginating) {
@@ -487,25 +413,13 @@ fun TaskUi(
             }
         }
 
-        // ── Pastki tugma (fixed) ────────────────────────────
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(
-                    AppColors.bg.elevated,
-                    RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
-                )
-                .padding(horizontal = 20.dp, vertical = 12.dp)
-                .height(ButtonHeight)
-                .align(Alignment.BottomCenter)
-        ) {
-            CustomButton(
-                enabled = state.selectedChild != null,
-                text = stringResource(Res.string.vazifa_qo_shish),
-                onClick = { navigator?.push(CreateTaskScreen()) },
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
+        // ── "Vazifa qo'shish" — orol ustida, chap pastda alohida (orol bilan qo'shilmaydi) ──
+        IslandFab(
+            text = stringResource(Res.string.vazifa_qo_shish),
+            enabled = state.selectedChild != null,
+            onClick = { navigator?.push(CreateTaskScreen()) },
+            modifier = Modifier.align(Alignment.BottomStart),
+        )
     }
 }
 

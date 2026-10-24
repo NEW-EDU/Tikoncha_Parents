@@ -1,5 +1,10 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.Haptics
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
@@ -37,6 +42,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun CustomSwitch(
     checked: Boolean,
@@ -68,10 +74,8 @@ fun CustomSwitch(
 
     // Bitta umumiy spec — hamma animation'lar sinxron
     val colorSpec = tween<Color>(durationMillis = 220, easing = FastOutSlowInEasing)
-    val thumbSpec = spring<Dp>(
-        dampingRatio = Spring.DampingRatioLowBouncy,
-        stiffness = Spring.StiffnessMedium
-    )
+    // M3 Expressive: thumb harakati — mavzudagi tezkor fazoviy prujina (fast spatial: 0.6 / 800)
+    val thumbSpec = MaterialTheme.motionScheme.fastSpatialSpec<Dp>()
 
     val trackColor by animateColorAsState(
         targetValue = if (checked) trackOnColor else trackOffColor,
@@ -96,6 +100,17 @@ fun CustomSwitch(
 
     // Ripple'ni o'chirish uchun
     val interactionSource = remember { MutableInteractionSource() }
+    // M3 switch kabi: o'chiqda thumb kichik, yoqilganda to'liq, bosib turilganda biroz kattalashadi
+    val pressed by interactionSource.collectIsPressedAsState()
+    val thumbScale by animateFloatAsState(
+        targetValue = when {
+            pressed -> 1.08f
+            checked -> 1f
+            else -> 0.74f
+        },
+        animationSpec = MaterialTheme.motionScheme.fastSpatialSpec(),
+        label = "thumbScale",
+    )
 
     Box(
         modifier = modifier
@@ -111,7 +126,7 @@ fun CustomSwitch(
                 role = Role.Switch,
                 interactionSource = interactionSource,
                 indication = null,  // iOS-uslub: ripple yo'q
-                onClick = { onCheckedChange(!checked) }
+                onClick = { Haptics.toggle(); onCheckedChange(!checked) }
             ),
         contentAlignment = Alignment.CenterStart
     ) {
@@ -120,6 +135,7 @@ fun CustomSwitch(
                 .padding(horizontal = padding)
                 .offset { IntOffset(animatedOffset.roundToPx(), 0) }
                 .size(thumbSize)
+                .graphicsLayer { scaleX = thumbScale; scaleY = thumbScale }
                 .clip(CircleShape)
                 .background(thumbColor),
             contentAlignment = Alignment.Center,

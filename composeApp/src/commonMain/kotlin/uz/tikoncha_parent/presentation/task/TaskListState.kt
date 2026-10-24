@@ -33,6 +33,8 @@ data class TaskListState(
     val isRefreshing: Boolean = false,
     val isPaginating: Boolean = false,
     val isRefiltering: Boolean = false,
+    /** Joriy (bola/tab/filtr) uchun ro'yxat kamida bir marta keldi (serverdan yoki keshdan) — bo'sh holat shundan keyingina. */
+    val hasLoaded: Boolean = false,
 
     // Per-item optimistic UI
     val completingIds: Set<String> = emptySet(),
@@ -42,6 +44,7 @@ data class TaskListState(
     // Counters
     val activeTaskCount: Int = 0,
     val allChildrenActiveTaskCount: Int = 0,
+    val allChildrenActiveTaskCountKnown: Boolean = false,
 
     // Response
     val listResponseState: ResponseState<Nothing> = ResponseState.Idle,

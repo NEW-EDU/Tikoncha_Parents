@@ -1,5 +1,16 @@
 package uz.tikoncha_parent.presentation.task
 
+import uz.tikoncha_parent.ui.Haptics
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.Role
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material3.ToggleButtonDefaults
+import androidx.compose.material3.ToggleButton
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.ButtonGroupDefaults
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -39,6 +50,12 @@ import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 
+/**
+ * Material 3 Expressive "connected button group": har bir variant — ToggleButton; tanlangani karamel to'ldiriladi va
+ * shakli to'liq yumaloqqa o'tadi (morf), qo'shnilari ichki burchaklari bilan bir-biriga yopishadi.
+ * Imzo avvalgidek ([options] dagi rasm hozircha ko'rsatilmaydi — avvalgi komponent ham ko'rsatmagan).
+ */
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun TaskSegmentedToggle(
     options: List<Pair<String, Painter?>>,
@@ -49,72 +66,42 @@ fun TaskSegmentedToggle(
     containerColor: Color = Color.Transparent,
     shape: Shape = RoundedCornerShape(100.dp)
 ) {
-
-    val itemCount = options.size
-    val itemWidth = remember { mutableStateOf(0.dp) }
-
-    val density = LocalDensity.current
-
-    Box(
-        modifier = modifier
-            .height(36.dp)
-            .background(containerColor, shape)
-            .border(1.dp, AppColors.border.secondarySubtle, shape)
-            .padding(4.dp)
-            .onGloballyPositioned { layoutCoordinates ->
-                val totalWidth = layoutCoordinates.size.width
-
-                itemWidth.value = with(density) {
-                    (totalWidth.toDp() / itemCount)
-                }
-            }
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(ButtonGroupDefaults.ConnectedSpaceBetween),
     ) {
-        // Sliding background indicator
-        val indicatorOffset by animateDpAsState(
-            targetValue = itemWidth.value * selectedIndex,
-            label = "IndicatorOffset"
-        )
-
-        Box(
-            modifier = Modifier
-                .fillMaxHeight()
-                .width(itemWidth.value)
-                .offset(x = indicatorOffset)
-                .clip(shape = shape)
-                .background(AppColors.modal.primary)
-        )
-
-        Row(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            options.forEachIndexed { index, (label) ->
-
-                Row(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .clickable(
-                            indication = null,
-                            interactionSource = remember { MutableInteractionSource() }
-                        ) {
-                            onOptionSelected(index)
-                        },
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Text(
-                        text = label,
-                        color = AppColors.text.primary,
-                        style = style
-                    )
-                }
+        options.forEachIndexed { index, (label) ->
+            val checked = index == selectedIndex
+            ToggleButton(
+                checked = checked,
+                onCheckedChange = { if (!checked) { Haptics.tick(); onOptionSelected(index) } },
+                modifier = Modifier
+                    .weight(1f)
+                    .semantics { role = Role.RadioButton },
+                shapes = when (index) {
+                    0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+                    options.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+                    else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+                },
+                colors = ToggleButtonDefaults.toggleButtonColors(
+                    // Tanlanmagan tomon oq kartada ham, krem fonda ham ko'rinsin — neytral tonal kulrang
+                    containerColor = AppColors.section.secondary,
+                    contentColor = AppColors.text.secondary,
+                    checkedContainerColor = AppColors.button.primary,
+                    checkedContentColor = AppColors.text.onPrimary,
+                ),
+                contentPadding = PaddingValues(horizontal = 12.dp),
+            ) {
+                Text(
+                    text = label,
+                    style = if (checked) style.copy(fontWeight = FontWeight.Bold) else style,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
             }
         }
     }
 }
-
-
-
 
 @Preview
 @Composable

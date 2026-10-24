@@ -10,4 +10,6 @@ sealed interface LoginEvent {
     data object OnErrorDismissed : LoginEvent
     data object OnDialogErrorDismissed : LoginEvent    // YANGI
     data object OnTelegramReturned : LoginEvent
+    /** Kirish ekranidagi tipratikon bosildi (5 marta — App Review uchun telefon orqali kirish). */
+    data object OnMascotTapped : LoginEvent
 }

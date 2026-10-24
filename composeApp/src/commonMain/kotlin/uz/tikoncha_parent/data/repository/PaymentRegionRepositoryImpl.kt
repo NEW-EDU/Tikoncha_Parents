@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.data.repository
 
+import uz.tikoncha_parent.platform.Logger
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,8 +14,11 @@ class PaymentRegionRepositoryImpl(
     override val localPayments: StateFlow<Boolean?> = _local.asStateFlow()
 
     override suspend fun refresh(): Boolean? {
-        val r = runCatching { api.paymentRegion() }.getOrNull()
+        val r = runCatching { api.paymentRegion() }
+            .onFailure { Logger.d("PaymentRegion", "request failed: ${it.message}") }
+            .getOrNull()
         val local = r?.data?.localPayments?.takeIf { r.success }
+        Logger.d("PaymentRegion", "success=${r?.success} country=${r?.data?.country} local=$local")
         if (local != null) _local.value = local
         return _local.value
     }

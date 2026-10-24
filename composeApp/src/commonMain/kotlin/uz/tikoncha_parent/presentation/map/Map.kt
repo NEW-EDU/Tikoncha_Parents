@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.map
 
+import androidx.compose.ui.unit.Dp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
@@ -51,7 +52,9 @@ expect fun YandexMap(
     onMapTap: (LatLng) -> Unit = {},
     onCameraIdle: (LatLng) -> Unit = {},
     isDark: Boolean = false,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    /** Berilsa — Yandex logotipi o'ng yuqori burchakda, tepadan shuncha pastda (pastda orol/kartalar bo'lsa). */
+    logoTopInset: Dp? = null,
 )
 
 

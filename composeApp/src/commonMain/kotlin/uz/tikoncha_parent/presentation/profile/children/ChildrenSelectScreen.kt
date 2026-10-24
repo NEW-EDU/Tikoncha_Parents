@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.profile.children
 
+import uz.tikoncha_parent.ui.SegmentGap
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -208,6 +210,14 @@ fun ChildrenSelectUi(
                 Space(40.dp)
                 DashedBorderButton(
                     text = stringResource(Res.string.farzand_qo_shish),
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(Res.drawable.add),
+                            contentDescription = null,
+                            tint = AppColors.icon.accentPrimary,
+                            modifier = Modifier.size(16.dp)
+                        )
+                    },
                     onClick = {
                         navigator?.push(AddChildScreen())
                     },
@@ -216,16 +226,22 @@ fun ChildrenSelectUi(
                 )
             }
         } else {
+            // Ro'yxat qisqa bo'lsa — pastda, bosh barmoqqa yaqin
             LazyColumn(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                verticalArrangement = Arrangement.spacedBy(SegmentGap, Alignment.Bottom)
             ) {
-                items(state.children, key = { it.userId }) { child ->
+                itemsIndexed(state.children, key = { _, it -> it.userId }) { index, child ->
+                    // Telefon → email → Apple (email yashirilgan) → Google hisobi
+                    val account = child.accountLine()
                     ChildrenItem(
+                        segmentIndex = index,
+                        segmentCount = state.children.size,
                         name = child.name,
-                        gadget = child.phoneNumber,
+                        gadget = account?.text.orEmpty(),
+                        gadgetBrand = account?.brand,
                         lastSeen = child.last_seen ?: "",
                         imageUrl = child.avatarUrl ?: "",
                         subscription = child.subscription,

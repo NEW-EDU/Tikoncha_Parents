@@ -1,5 +1,14 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package uz.tikoncha_parent.presentation.profile.subscription.autopay.confirm
 
+import androidx.compose.foundation.layout.PaddingValues
+import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
+import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
+import uz.tikoncha_parent.ui.segmentShape
+import uz.tikoncha_parent.ui.SegmentGap
+import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 import androidx.compose.ui.text.withLink
 import androidx.compose.ui.text.TextLinkStyles
@@ -115,15 +124,13 @@ fun AutopayConfirmUi(state: AutopayConfirmState, child: ChildArgs, event: (Autop
             CustomHeader(showBackButton = true, title = stringResource(Res.string.ap_confirm_title), onBackClick = onBack)
             if (state.loading) {
                 Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator(color = AppColors.action.primary)
+                    DelayedLoadingIndicator(color = AppColors.action.primary)
                 }
             } else {
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                        .verticalScroll(rememberScrollState())
-                        .padding(horizontal = 16.dp),
-                    verticalArrangement = Arrangement.spacedBy(14.dp),
+                BottomAnchoredColumn(
+                    modifier = Modifier.weight(1f),
+                    contentPadding = PaddingValues(horizontal = 16.dp),
+                    spacing = 14.dp,
                 ) {
                     Group {
                         // Parent: qaysi farzandning PLUS'iga to'lanayotgani — birinchi qator
@@ -489,7 +496,7 @@ private fun Checking(checking: Boolean) {
         contentAlignment = Alignment.Center,
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(32.dp)) {
-            CircularProgressIndicator(color = AppColors.action.primary)
+            LoadingIndicator(color = AppColors.action.primary)
             if (checking) {
                 Spacer(Modifier.height(16.dp))
                 Text(stringResource(Res.string.ap_checking_title), style = AppTypography.titleMdSemiBold, color = AppColors.text.primary)
@@ -505,9 +512,23 @@ internal fun Group(content: @Composable () -> Unit) {
     Column(
         Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
-            .background(AppColors.bg.section),
+            .clip(RoundedCornerShape(28.dp))
+            .background(AppColors.bg.surface),
     ) { content() }
+}
+
+/**
+ * M3 Expressive guruhlangan qatorlar: har qator alohida oq segment, oralig'i ingichka, faqat guruhning tashqi
+ * burchaklari katta (chiziqli bo'luvchi o'rniga).
+ */
+@Composable
+internal fun SegmentedRows(rows: List<@Composable () -> Unit>) {
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
+        rows.forEachIndexed { i, row ->
+            val shape = segmentShape(i, rows.size)
+            Box(Modifier.fillMaxWidth().clip(shape).background(AppColors.bg.surface, shape)) { row() }
+        }
+    }
 }
 
 @Composable

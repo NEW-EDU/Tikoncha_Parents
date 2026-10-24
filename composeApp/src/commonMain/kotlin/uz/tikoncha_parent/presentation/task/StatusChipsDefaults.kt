@@ -1,5 +1,16 @@
 package uz.tikoncha_parent.presentation.task
 
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Icon
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.Row
+import androidx.compose.runtime.remember
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import uz.tikoncha_parent.ui.expressivePress
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
@@ -87,21 +98,35 @@ private fun StatusChip(
         label = "chip-text",
     )
 
+    // M3 Expressive filter chip: soya yo'q, tanlanganda karamel to'ladi va oldida ✓ paydo bo'ladi, bosilganda prujina
+    val source = remember { MutableInteractionSource() }
     Surface(
         onClick = onClick,
         shape = shape,
         color = background,
-        shadowElevation = StatusChipsDefaults.Elevation,
-        tonalElevation = 0.dp,
+        interactionSource = source,
+        modifier = Modifier.expressivePress(source, pressedScale = 0.94f),
     ) {
-        Text(
-            text = label,
-            color = textColor,
-            style = AppTypography.bodyMdMedium,
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.padding(
-                horizontal = StatusChipsDefaults.HorizontalPadding,
+                horizontal = if (isSelected) 16.dp else StatusChipsDefaults.HorizontalPadding,
                 vertical = StatusChipsDefaults.VerticalPadding,
             ),
-        )
+        ) {
+            AnimatedVisibility(visible = isSelected) {
+                Icon(
+                    imageVector = Icons.Rounded.Check,
+                    contentDescription = null,
+                    tint = textColor,
+                    modifier = Modifier.padding(end = 6.dp).size(16.dp),
+                )
+            }
+            Text(
+                text = label,
+                color = textColor,
+                style = if (isSelected) AppTypography.bodyMdMedium.copy(fontWeight = FontWeight.Bold) else AppTypography.bodyMdMedium,
+            )
+        }
     }
 }

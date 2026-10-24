@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.theme.NunitoFontFamily
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,11 +20,7 @@ import uz.tikoncha_parent.ui.NormalTextSize
 
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.baloo_2_medium
-import tikoncha_parents.composeapp.generated.resources.comfortaa
 import tikoncha_parents.composeapp.generated.resources.nunito_bold
-import tikoncha_parents.composeapp.generated.resources.nunito_italic
-import tikoncha_parents.composeapp.generated.resources.nunito_normal
 import uz.tikoncha_parent.ui.theme.extendedColor
 
 @Composable
@@ -41,11 +38,7 @@ fun CustomText(
     letterSpacing: TextUnit = TextUnit.Unspecified,
     fontStyle: FontStyle = FontStyle.Normal,
     overflow: TextOverflow = TextOverflow.Ellipsis,
-    fontFamily: FontFamily = FontFamily(
-        Font(
-            resource = Res.font.comfortaa
-        )
-    )
+    fontFamily: FontFamily = NunitoFontFamily()
 ) {
     Text(
         overflow = overflow,
@@ -83,11 +76,7 @@ fun CustomText(
     textAlign: TextAlign = TextAlign.Start,
     textDecoration: TextDecoration = TextDecoration.None,
     overflow: TextOverflow = TextOverflow.Ellipsis,
-    fontFamily: FontFamily = FontFamily(
-        Font(
-            resource = Res.font.comfortaa
-        )
-    )
+    fontFamily: FontFamily = NunitoFontFamily()
 ) {
     Text(
         overflow = overflow,

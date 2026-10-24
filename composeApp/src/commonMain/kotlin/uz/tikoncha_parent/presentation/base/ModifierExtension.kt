@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.getValue
@@ -21,7 +22,7 @@ fun Modifier.singleClick(
 
     this.clickable(
         indication = null,
-        interactionSource = remember { MutableInteractionSource() }
+        interactionSource = rememberHapticSource()
     ) {
         val now = Clock.System.now().toEpochMilliseconds()
         if (now - lastClickTime >= delay) {

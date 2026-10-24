@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.ui.theme
 
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -9,31 +10,38 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.Font
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.fredoka_semibold
+import tikoncha_parents.composeapp.generated.resources.nunito_black
+import tikoncha_parents.composeapp.generated.resources.nunito_bold
+import tikoncha_parents.composeapp.generated.resources.nunito_extrabold
+import tikoncha_parents.composeapp.generated.resources.nunito_medium
+import tikoncha_parents.composeapp.generated.resources.nunito_regular
+import tikoncha_parents.composeapp.generated.resources.nunito_semibold
 
 /**
- * KMP uchun font — platformaga qarab expect/actual bilan berish mumkin.
- * Hozircha default [FontFamily.Default] ishlatiladi,
- * platformalarda GolosText ni actual qilib o'zgartiring.
+ * Ilovaning yagona shrifti — Nunito (Android va iOS'da bir xil; bola ilovasidagi SF Rounded'ga yaqin).
+ * Barcha og'irliklar statik fayl, shuning uchun FontWeight to'g'ridan-to'g'ri ishlaydi.
  */
-
-
-val FredokaSemiBoldFontFamily: FontFamily
-    @Composable
-    get() = FontFamily(Font(Res.font.fredoka_semibold))
-
-expect val TikonchaFontFamily: FontFamily
+@Composable
+fun NunitoFontFamily(): FontFamily = FontFamily(
+    Font(Res.font.nunito_regular, FontWeight.Normal),
+    Font(Res.font.nunito_medium, FontWeight.Medium),
+    Font(Res.font.nunito_semibold, FontWeight.SemiBold),
+    Font(Res.font.nunito_bold, FontWeight.Bold),
+    Font(Res.font.nunito_extrabold, FontWeight.ExtraBold),
+    Font(Res.font.nunito_black, FontWeight.Black),
+)
 
 /* ---------------------------
    TextStyle builder (Figma JSON)
    --------------------------- */
 
-private fun ts(
+private fun textStyle(
+    family: FontFamily,
     weight: FontWeight,
     size: Int,
     lineHeight: Int,
 ): TextStyle = TextStyle(
-    fontFamily = TikonchaFontFamily,
+    fontFamily = family,
     fontWeight = weight,
     fontSize = size.sp,
     lineHeight = lineHeight.sp,
@@ -137,7 +145,9 @@ data class TikonchaTypography(
     val emphasizedXsSemiBold: TextStyle,
 )
 
-fun createTypography(): TikonchaTypography {
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+fun createTypography(family: FontFamily): TikonchaTypography {
+    fun ts(weight: FontWeight, size: Int, lineHeight: Int) = textStyle(family, weight, size, lineHeight)
     val r = FontWeight.Normal
     val m = FontWeight.Medium
     val s = FontWeight.SemiBold
@@ -190,6 +200,23 @@ fun createTypography(): TikonchaTypography {
         labelLarge  = eLgR,
         labelMedium = eMdR,
         labelSmall  = eSmR,
+
+        // Material 3 Expressive — ta'kidlangan uslublar: o'sha o'lcham, og'irroq Nunito (sarlavhalar, faol holatlar)
+        displayLargeEmphasized  = d2xlR.copy(fontWeight = FontWeight.ExtraBold),
+        displayMediumEmphasized = dLgR.copy(fontWeight = FontWeight.ExtraBold),
+        displaySmallEmphasized  = dMdR.copy(fontWeight = FontWeight.ExtraBold),
+        headlineLargeEmphasized  = hLgR.copy(fontWeight = FontWeight.ExtraBold),
+        headlineMediumEmphasized = hMdR.copy(fontWeight = FontWeight.ExtraBold),
+        headlineSmallEmphasized  = hSmR.copy(fontWeight = FontWeight.ExtraBold),
+        titleLargeEmphasized  = tLgM.copy(fontWeight = FontWeight.Bold),
+        titleMediumEmphasized = tMdM.copy(fontWeight = FontWeight.Bold),
+        titleSmallEmphasized  = tSmM.copy(fontWeight = FontWeight.Bold),
+        bodyLargeEmphasized  = bLgR.copy(fontWeight = FontWeight.SemiBold),
+        bodyMediumEmphasized = bMdR.copy(fontWeight = FontWeight.SemiBold),
+        bodySmallEmphasized  = bSmR.copy(fontWeight = FontWeight.SemiBold),
+        labelLargeEmphasized  = eLgR.copy(fontWeight = FontWeight.Bold),
+        labelMediumEmphasized = eMdR.copy(fontWeight = FontWeight.Bold),
+        labelSmallEmphasized  = eSmR.copy(fontWeight = FontWeight.Bold),
     )
 
     return TikonchaTypography(

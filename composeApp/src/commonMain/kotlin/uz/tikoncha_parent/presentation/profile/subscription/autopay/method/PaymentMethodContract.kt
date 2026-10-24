@@ -17,6 +17,8 @@ data class PaymentMethodState(
     val loading: Boolean = true,
     /** Server karta to'lovini ochgan (sozlangan, sandbox emas) va farzand ma'lum. Yo'q bo'lsa faqat Click. */
     val cardAvailable: Boolean = false,
+    /** Farzand tanlanmagan/ulanmagan — karta (Paylov avto-to'lov) farzandga bog'lanadi, avval farzand kerak. */
+    val cardNeedsChild: Boolean = false,
     val hasSavedCards: Boolean = false,
     val selected: PayMethod = PayMethod.CARD,
 ) {

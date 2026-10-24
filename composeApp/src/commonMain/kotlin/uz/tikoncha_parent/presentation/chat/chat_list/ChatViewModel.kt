@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.chat.chat_list
 
+import uz.tikoncha_parent.presentation.model.ChatUi
+import uz.tikoncha_parent.data.local.SessionCache
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Job
@@ -26,11 +28,19 @@ class ChatViewModel(
     private var chatListJob: Job? = null
     private var eventsJob: Job? = null
     val langType = LanguagePrefs.loadOrDefault()
-    private val _state = MutableStateFlow(ChatState())
+    private val _state = MutableStateFlow(
+        SessionCache.get<List<ChatUi>>(CACHE_KEY)
+            ?.let { ChatState(chats = it, hasLoadedOnce = true) }
+            ?: ChatState()
+    )
     val state = _state.asStateFlow()
 
     init {
         syncChild()
+        // Ro'yxat (WS yangilanishlari bilan birga) keshda — keyingi ochilishda darhol ko'rinadi.
+        screenModelScope.launch {
+            _state.collect { if (it.hasLoadedOnce) SessionCache.put(CACHE_KEY, it.chats) }
+        }
     }
 
     fun onEvent(event: ChatEvent) {
@@ -165,5 +175,9 @@ class ChatViewModel(
                 hasChild = AppSettings.children.isNotEmpty()
             )
         }
+    }
+
+    private companion object {
+        const val CACHE_KEY = "chat_list"
     }
 }
