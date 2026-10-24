@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.statistic
 
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -114,7 +115,7 @@ private fun UsageDetailRow(item: UsageDetailItem, rowHeight: androidx.compose.ui
         ) {
             if (!item.iconUrl.isNullOrBlank()) {
                 AsyncImage(
-                    model = item.iconUrl,
+                    model = rememberCachedImage(item.iconUrl),
                     contentDescription = null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop,

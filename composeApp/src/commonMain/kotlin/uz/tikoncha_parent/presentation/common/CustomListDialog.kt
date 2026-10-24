@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.common
 
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -212,10 +213,9 @@ fun <T>CustomListDialog(
                                                 )
                                         ) {
                                             AsyncImage(
-                                                model = userInfo?.avatarUrl,
+                                                model = rememberCachedImage(userInfo?.avatarUrl),
                                                 contentDescription = "",
                                                 error = painterResource(Res.drawable.profile_hedgehog_img),
-                                                placeholder = painterResource(Res.drawable.profile_hedgehog_img),
                                                 modifier = Modifier
                                                     .fillMaxSize()
                                                     .clip(CircleShape)

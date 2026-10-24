@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.otp
 
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -60,6 +62,7 @@ fun OtpInput(
 ) {
     val onOtpUpdateLatest by rememberUpdatedState(onOtpUpdate)
     val focusRequester = remember { FocusRequester() }
+    val focusManager = LocalFocusManager.current
     var value by remember { mutableStateOf(TextFieldValue(otpText?.onlyDigits(otpLength).orEmpty())) }
     var focused by remember { mutableStateOf(false) }
 
@@ -80,9 +83,12 @@ fun OtpInput(
             val changed = digits != value.text
             value = TextFieldValue(digits, TextRange(digits.length))
             if (changed) onOtpUpdateLatest(digits)
+            // Kod to'liq kiritildi — klaviatura yopiladi (raqam klaviaturasida yopish tugmasi yo'q)
+            if (changed && digits.length == otpLength) focusManager.clearFocus()
         },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword, imeAction = ImeAction.Done),
+        keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
         cursorBrush = SolidColor(Color.Transparent),
         textStyle = AppTypography.headlineMdMedium.merge(color = Color.Transparent),
         modifier = Modifier
@@ -104,10 +110,12 @@ fun OtpInput(
                             .aspectRatio(1f)
                             .sizeIn(minWidth = 34.dp, minHeight = 44.dp)
                             .clip(RoundedCornerShape(TextFieldCornerRadius))
-                            .background(AppColors.field.secondary)
-                            .then(
-                                if (isActive) Modifier.border(1.5.dp, AppColors.action.primary, RoundedCornerShape(TextFieldCornerRadius))
-                                else Modifier
+                            // Fon rangidan qat'i nazar ko'rinsin (qorong'i rejimda field rangi karta bilan bir xil edi)
+                            .background(AppColors.text.primary.copy(alpha = 0.07f))
+                            .border(
+                                if (isActive) 1.5.dp else 1.dp,
+                                if (isActive) AppColors.action.primary else AppColors.text.primary.copy(alpha = 0.14f),
+                                RoundedCornerShape(TextFieldCornerRadius),
                             ),
                         contentAlignment = Alignment.Center,
                     ) {

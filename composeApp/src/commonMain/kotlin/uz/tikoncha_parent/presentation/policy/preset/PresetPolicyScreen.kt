@@ -1,5 +1,10 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package uz.tikoncha_parent.presentation.policy.preset
 
+import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
+import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import tikoncha_parents.composeapp.generated.resources.preset_info_coparent
 import tikoncha_parents.composeapp.generated.resources.preset_info_child
 import uz.tikoncha_parent.presentation.policy.components.summaryText
@@ -203,7 +208,7 @@ fun PresetPolicyUi(
 
         if (draft == null) {
             Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator(color = AppColors.action.primary)
+                DelayedLoadingIndicator(color = AppColors.action.primary)
             }
             return@Column
         }

@@ -1,5 +1,17 @@
 package uz.tikoncha_parent.presentation.splash
 
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.method.ChildArgs
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.method.PaymentMethodScreen
+import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
+import uz.tikoncha_parent.presentation.profile.coins.CoinsScreen
+import uz.tikoncha_parent.presentation.profile.subscription.info.SubscriptionScreen
+import uz.tikoncha_parent.presentation.profile.children.ChildrenSelectScreen
+import uz.tikoncha_parent.presentation.chat.chat_list.ChatScreen
+import uz.tikoncha_parent.presentation.protection.ProtectionScreen
+import uz.tikoncha_parent.presentation.task.TaskScreen
+import uz.tikoncha_parent.presentation.policy.list.PolicyListScreen
+import uz.tikoncha_parent.presentation.statistic.StatisticScreen
+import uz.tikoncha_parent.presentation.profile.ProfileScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +29,10 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import kotlinx.coroutines.delay
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.presentation.login.LoginScreen
+import uz.tikoncha_parent.presentation.onboarding.OnboardingScreen
+import uz.tikoncha_parent.presentation.onboarding.NotificationPermissionScreen
+import uz.tikoncha_parent.presentation.add_child.AddChildScreen
+import uz.tikoncha_parent.platform.BuildConfig
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import tikoncha_parents.composeapp.generated.resources.Res
@@ -42,16 +58,47 @@ class SplashScreen : Screen {
 
 
             delay(1000) // 1 sekund
+            // Faqat debug: tanishtiruv ekranlarini tizimga kirgan holda ham ko'rish (ekran rasmlari uchun)
+            val debugArgs = BuildConfig.debugLaunchArgs
+            when {
+                "-hoglt.onboarding" in debugArgs -> { navigator?.replaceAll(OnboardingScreen()); return@LaunchedEffect }
+                "-hoglt.notif" in debugArgs -> { navigator?.replaceAll(NotificationPermissionScreen()); return@LaunchedEffect }
+                "-hoglt.addchild" in debugArgs -> { navigator?.replaceAll(AddChildScreen()); return@LaunchedEffect }
+                "-hoglt.profile" in debugArgs -> { navigator?.replaceAll(listOf(NewHomeScreen(), ProfileScreen())); return@LaunchedEffect }
+                "-hoglt.screen" in debugArgs -> {
+                    val target: Screen? = when (debugArgs.getOrNull(debugArgs.indexOf("-hoglt.screen") + 1)) {
+                        "statistic" -> StatisticScreen()
+                        "policy" -> PolicyListScreen()
+                        "task" -> TaskScreen()
+                        "protection" -> ProtectionScreen()
+                        "chat" -> ChatScreen()
+                        "children" -> ChildrenSelectScreen()
+                        "theme" -> uz.tikoncha_parent.presentation.profile.settings.theme.ThemeScreen()
+                        "map" -> uz.tikoncha_parent.presentation.tracking.TrackingScreen()
+                        "language" -> uz.tikoncha_parent.presentation.profile.language.LanguageScreen()
+                        "personal" -> uz.tikoncha_parent.presentation.profile.personal_information.PersonalInformationScreen()
+                        "about" -> uz.tikoncha_parent.presentation.profile.about_us.AboutUsScreen()
+                        "cards" -> uz.tikoncha_parent.presentation.profile.subscription.autopay.cards.AutopayCardsScreen()
+                        "childdetail" -> AppSettings.selectedChild?.let { uz.tikoncha_parent.presentation.profile.children.ChildDetailScreen(it) } ?: ChildrenSelectScreen()
+                        "subscription" -> SubscriptionScreen()
+                        "coins" -> CoinsScreen()
+                        "paywall" -> SubscriptionPaymentScreen()
+                        "paymethod" -> PaymentMethodScreen(
+                            child = ChildArgs(id = AppSettings.selectedChild?.userId, name = AppSettings.selectedChild?.name.orEmpty(), avatarUrl = null, plusUntil = null),
+                            planId = "debug", period = "MONTHLY", cardAmount = 27000, clickAmount = 30000,
+                        )
+                        else -> null
+                    }
+                    if (target != null) { navigator?.replaceAll(listOf(NewHomeScreen(), target)); return@LaunchedEffect }
+                }
+            }
             if (AppSettings.hasUserLogin) {
                 Logger.d("SplashScreen", "hasUserLogin")
                 navigator?.replaceAll(NewHomeScreen())
+            } else if (!AppSettings.onboardingDone) {
+                // Birinchi ishga tushirish: tanishtiruv → bildirishnoma ruxsati → kirish
+                navigator?.replaceAll(OnboardingScreen())
             } else {
-//                if (AppSettings.isFirstLaunch){
-//                    navigator?.replaceAll(SliderScreen())
-//                }
-//                else{
-//                    navigator?.replaceAll(LoginScreen())
-//                }
                 navigator?.replaceAll(LoginScreen())
             }
         }

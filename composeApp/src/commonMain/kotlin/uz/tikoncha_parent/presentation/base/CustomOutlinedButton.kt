@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.base
 
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import uz.tikoncha_parent.ui.expressiveButtonShapes
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -32,17 +35,18 @@ import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.extendedColor
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun CustomOutlinedButton(
     text: String,
     modifier: Modifier = Modifier,
-    style: TextStyle = AppTypography.titleSmMedium,
+    style: TextStyle = AppTypography.titleMdSemiBold,
     containerColor: Color = Color.Transparent,
     contentColor: Color = AppColors.text.accentEmphasis,
     borderColor: Color = AppColors.border.primary,
     enabled: Boolean = true,
     onClick: () -> Unit,
-    shape: Shape = RoundedCornerShape(16.dp),
+    shape: Shape = CircleShape,
     leadingIcon: (@Composable () -> Unit)? = null,
     endingIcon: (@Composable () -> Unit)? = null,
     disabledContainerColor: Color = AppColors.button.disabled,
@@ -52,8 +56,9 @@ fun CustomOutlinedButton(
 
     OutlinedButton(
         onClick = onClick,
+        shapes = expressiveButtonShapes(shape),
         modifier = modifier
-            .height(48.dp),
+            .height(ButtonDefaults.MediumContainerHeight),
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = containerColor,
             contentColor = contentColor,
@@ -61,7 +66,6 @@ fun CustomOutlinedButton(
             disabledContentColor = disabledContentColor,
         ),
         border = BorderStroke(1.dp, borderColor),
-        shape = shape,
         enabled = enabled,
         contentPadding = PaddingValues(horizontal = 5.dp)
     ) {

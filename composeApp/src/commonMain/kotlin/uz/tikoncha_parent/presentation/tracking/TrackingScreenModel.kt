@@ -323,10 +323,11 @@ class TrackingScreenModel(
             when (val res = childRepository.childrenLocation()) {
                 is Outcome.Success -> {
                     val children = res.data.map { it.toPerson() }
-                    mutableState.update { it.copy(people = children, isLoading = false) }
+                    children.freshestChild()?.location?.let { AppSettings.lastChildLocation = it }
+                    mutableState.update { it.copy(people = children, isLoading = false, peopleLoaded = true) }
                 }
                 is Outcome.Failure -> {
-                    mutableState.update { it.copy(isLoading = false, error = res) }
+                    mutableState.update { it.copy(isLoading = false, peopleLoaded = true, error = res) }
                 }
             }
         }

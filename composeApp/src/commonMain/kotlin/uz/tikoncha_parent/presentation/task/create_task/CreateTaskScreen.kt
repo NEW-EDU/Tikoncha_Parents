@@ -413,7 +413,6 @@ fun CreateTaskUI(
                 enabled = isFormValid,
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(Res.string.davom_etish),
-                shape = RoundedCornerShape(24.dp),
                 onClick = {
                     navigator?.push(CreateTaskCheckScreen())
                 }

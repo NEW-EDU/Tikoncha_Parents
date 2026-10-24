@@ -22,6 +22,8 @@ data class HomeState(
     val todayUsage: HourMinute = HourMinute(0, 0),
     val topApps: List<TopApp> = emptyList(),
     val topAppsFromRecentDays: Boolean = false,
+    /** Statistika bloki qaysi kunni ko'rsatyapti: null — bugun; aks holda bugun bo'sh bo'lgani uchun so'nggi kun. */
+    val usageShownDay: kotlinx.datetime.LocalDate? = null,
     val protectionPendingRequestCount: Int = 0,
     val protectionPermissionOffCount: Int = 0,
     val protectionLoaded: Boolean = false,

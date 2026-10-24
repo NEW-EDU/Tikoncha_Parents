@@ -118,7 +118,7 @@ fun NotificationUi(
                 ) {
                     Icon(
                         painter = painterResource(Res.drawable.read_notification),
-                        contentDescription = "Barchsi o`qildi",
+                        contentDescription = "Barchsi öqildi",
                         tint = PrimaryColor,
                         modifier = Modifier
                             .fillMaxSize()

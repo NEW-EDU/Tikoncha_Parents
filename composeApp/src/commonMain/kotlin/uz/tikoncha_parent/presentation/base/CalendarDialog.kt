@@ -187,7 +187,6 @@ fun CalendarDialog(
                     modifier = Modifier
                         .height(DialogButtonHeight)
                         .fillMaxWidth(),
-                    shape = RoundedCornerShape(TextFieldCornerRadius)
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -201,7 +200,6 @@ fun CalendarDialog(
                         .height(DialogButtonHeight),
                     enabled = tempSelectedDate != null,
                     text = stringResource(Res.string.saqlash),
-                    shape = RoundedCornerShape(TextFieldCornerRadius)
                 )
             }
         }

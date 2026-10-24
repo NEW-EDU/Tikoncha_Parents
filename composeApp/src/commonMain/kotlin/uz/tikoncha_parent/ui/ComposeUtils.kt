@@ -19,10 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.Font
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.inter_tight_bold
-import tikoncha_parents.composeapp.generated.resources.inter_tight_italic
-import tikoncha_parents.composeapp.generated.resources.inter_tight_regular
-import tikoncha_parents.composeapp.generated.resources.inter_tight_semibold
 import uz.tikoncha_parent.ui.theme.extendedColor
 
 val ButtonHeight = 50.dp
@@ -70,7 +66,8 @@ val NormalTextSizeSp = 16.sp
 val ContainerPadding = 16.dp
 
 val HeaderHeight = 56.dp
-val HomeItemHeight = 130.dp
+/** Bosh sahifa bloki balandligi — ixchamroq, ekranga ko'proq blok sig'sin (avval 130). */
+val HomeItemHeight = 106.dp
 val TextFieldTextStyle: TextStyle @Composable get() = MaterialTheme.typography.titleMedium
 val ChatTextSize:TextUnit @Composable get() =  14.sp //.responsiveSp()
 val UltraLargeTextSize:TextUnit @Composable get() =  20.sp //.responsiveSp()
@@ -94,7 +91,7 @@ val AppIconSize: Dp = 45.dp
 val AppIconInnerPadding: Dp = 10.dp
 val AppItemHeight: Dp = 60.dp
 val SmallIconSize: Dp = 18.dp
-val HomeIconSize: Dp = 90.dp
+val HomeIconSize: Dp = 76.dp
 val NormalIconSize: Dp = 20.dp
 val LargeIconSize: Dp = 28.dp
 
@@ -143,14 +140,4 @@ fun DividerHorizontal(
 }
 
 @Composable
-fun MyFontFamily() = FontFamily(
-    Font(Res.font.inter_tight_regular, FontWeight.Normal),
-    Font(Res.font.inter_tight_semibold, FontWeight.SemiBold),
-    Font(Res.font.inter_tight_italic, FontWeight.Normal, FontStyle.Italic),
-    Font(Res.font.inter_tight_bold, FontWeight.Bold),
-
-//    Font(R.font.playwritehu_regular, FontWeight.Normal),
-//    Font(R.font.playwritehu_regular, FontWeight.SemiBold),
-//    Font(R.font.playwritehu_regular, FontWeight.Normal, FontStyle.Italic),
-//    Font(R.font.playwritehu_regular, FontWeight.Bold),
-)
+fun MyFontFamily() = uz.tikoncha_parent.ui.theme.NunitoFontFamily()

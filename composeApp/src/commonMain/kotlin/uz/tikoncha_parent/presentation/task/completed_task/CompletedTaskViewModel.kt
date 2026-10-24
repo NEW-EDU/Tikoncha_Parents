@@ -33,7 +33,9 @@ class CompletedTaskViewModel(
         _state.update {
             it.copy(
                 selectedChild = AppSettings.selectedChild,
-                userId = AppSettings.userId
+                userId = AppSettings.userId,
+                // Birinchi kadrda "vazifa yo'q" chaqnamasin — yuklash boshlanmoqda deb hisoblaymiz.
+                isInitialLoading = AppSettings.selectedChild != null,
             )
         }
     }
@@ -65,11 +67,12 @@ class CompletedTaskViewModel(
             return
         }
 
+        // Ro'yxat bor bo'lsa — ko'rsatkichsiz, jimgina yangilaymiz.
         val hasData = s.taskList.isNotEmpty()
         _state.update {
             it.copy(
                 isInitialLoading = !hasData,
-                isRefiltering = hasData
+                isRefiltering = false
             )
         }
         firstPage()

@@ -41,7 +41,7 @@ fun PresetKind.iconRes(): DrawableResource = when (this) {
 fun Ownership.tone(enabled: Boolean): IconTone = if (enabled) IconTone.SOLID else IconTone.GRAY
 
 @Composable
-fun PresetPolicyCard(ui: PresetPolicyUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun PresetPolicyCard(ui: PresetPolicyUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier, segmentIndex: Int = 0, segmentCount: Int = 1) {
     PolicyCardBody(
         icon = ui.kind.iconRes(),
         // Ikonka — farzand uchun amaldagi holat (kimdir yoqqan), switch — o'zimniki
@@ -55,6 +55,8 @@ fun PresetPolicyCard(ui: PresetPolicyUi, busy: Boolean, onToggle: (Boolean) -> U
         },
         onClick = onClick,
         modifier = modifier,
+        segmentIndex = segmentIndex,
+        segmentCount = segmentCount,
     ) {
         PolicySwitch(checked = ui.isEnabled, onCheckedChange = onToggle, busy = busy)
     }
@@ -62,7 +64,7 @@ fun PresetPolicyCard(ui: PresetPolicyUi, busy: Boolean, onToggle: (Boolean) -> U
 
 /** Bitta switch hamma paket uchun; farzand yoki ikkinchi ota-ona yoqqan bo'lsa — izohda aytiladi. */
 @Composable
-fun ContentProtectionCard(ui: ContentProtectionUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun ContentProtectionCard(ui: ContentProtectionUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier, segmentIndex: Int = 0, segmentCount: Int = 1) {
     PolicyCardBody(
         icon = Res.drawable.shield,
         tone = if (ui.isEnabled || ui.byOthers) IconTone.SOLID else IconTone.GRAY,
@@ -71,6 +73,8 @@ fun ContentProtectionCard(ui: ContentProtectionUi, busy: Boolean, onToggle: (Boo
         subtitle = stringResource(if (!ui.isEnabled && ui.byOthers) Res.string.policy_content_protection_others else Res.string.policy_content_protection_short),
         onClick = onClick,
         modifier = modifier,
+        segmentIndex = segmentIndex,
+        segmentCount = segmentCount,
         note = stringResource(Res.string.protection_shield_short),
     ) {
         PolicySwitch(checked = ui.isEnabled, onCheckedChange = onToggle, busy = busy, enabled = ui.isAvailable)
@@ -79,7 +83,7 @@ fun ContentProtectionCard(ui: ContentProtectionUi, busy: Boolean, onToggle: (Boo
 
 /** "Tezkor blok" shabloni: shartsiz, faqat ilovalar ro'yxati. Bo'sh bo'lsa switch o'chiq. */
 @Composable
-fun QuickBlockCard(ui: QuickBlockUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun QuickBlockCard(ui: QuickBlockUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier, segmentIndex: Int = 0, segmentCount: Int = 1) {
     PolicyCardBody(
         icon = Res.drawable.blocklist,
         tone = if (ui.isOn) IconTone.SOLID else IconTone.GRAY,
@@ -91,6 +95,8 @@ fun QuickBlockCard(ui: QuickBlockUi, busy: Boolean, onToggle: (Boolean) -> Unit,
         },
         onClick = onClick,
         modifier = modifier,
+        segmentIndex = segmentIndex,
+        segmentCount = segmentCount,
     ) {
         PolicySwitch(checked = ui.isOn, onCheckedChange = onToggle, busy = busy)
     }
@@ -98,7 +104,7 @@ fun QuickBlockCard(ui: QuickBlockUi, busy: Boolean, onToggle: (Boolean) -> Unit,
 
 /** O'zim yaratgan / farzand / ikkinchi ota-ona / maktab jadvali va boshqalarning tezkor bloki. */
 @Composable
-fun PolicyCard(ui: PolicyCardUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier) {
+fun PolicyCard(ui: PolicyCardUi, busy: Boolean, onToggle: (Boolean) -> Unit, onClick: () -> Unit, modifier: Modifier = Modifier, segmentIndex: Int = 0, segmentCount: Int = 1) {
     PolicyCardBody(
         icon = if (ui.isQuickBlock) Res.drawable.blocklist else Res.drawable.ic_policy,
         tone = ui.ownership.tone(ui.isEnabled),
@@ -111,6 +117,8 @@ fun PolicyCard(ui: PolicyCardUi, busy: Boolean, onToggle: (Boolean) -> Unit, onC
         },
         onClick = onClick,
         modifier = modifier,
+        segmentIndex = segmentIndex,
+        segmentCount = segmentCount,
     ) {
         if (ui.canControl) PolicySwitch(checked = ui.isEnabled, onCheckedChange = onToggle, busy = busy)
         else LockIcon()

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.chat.chat_details
 
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -105,9 +106,8 @@ fun ChatDetailsHeader(
                 SpaceSmall()
 
                 AsyncImage(
-                    model = state.chatAvatar,
+                    model = rememberCachedImage(state.chatAvatar),
                     error = painterResource(Res.drawable.chat_icon),
-                    placeholder = painterResource(Res.drawable.chat_icon),
                     contentDescription = null,
                     modifier = Modifier.size(NormalIconButtonSize)
                         .border(1.dp, MaterialTheme.extendedColor.borderColor, CircleShape)

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.subscription.autopay.components
 
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -235,10 +236,9 @@ fun PayOptionRow(
 @Composable
 fun ChildAvatar(avatarUrl: String?, size: Dp = 40.dp) {
     AsyncImage(
-        model = avatarUrl,
+        model = rememberCachedImage(avatarUrl),
         contentDescription = null,
         error = painterResource(Res.drawable.profile_hedgehog_img),
-        placeholder = painterResource(Res.drawable.profile_hedgehog_img),
         contentScale = ContentScale.Crop,
         modifier = Modifier.size(size).clip(CircleShape).background(AppColors.bg.tertiary),
     )

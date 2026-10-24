@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.profile.children
 
+import uz.tikoncha_parent.ui.SegmentGap
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -208,6 +210,14 @@ fun ChildrenSelectUi(
                 Space(40.dp)
                 DashedBorderButton(
                     text = stringResource(Res.string.farzand_qo_shish),
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(Res.drawable.add),
+                            contentDescription = null,
+                            tint = AppColors.icon.accentPrimary,
+                            modifier = Modifier.size(16.dp)
+                        )
+                    },
                     onClick = {
                         navigator?.push(AddChildScreen())
                     },
@@ -220,10 +230,12 @@ fun ChildrenSelectUi(
                 modifier = Modifier
                     .fillMaxWidth(),
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                verticalArrangement = Arrangement.spacedBy(SegmentGap)
             ) {
-                items(state.children, key = { it.userId }) { child ->
+                itemsIndexed(state.children, key = { _, it -> it.userId }) { index, child ->
                     ChildrenItem(
+                        segmentIndex = index,
+                        segmentCount = state.children.size,
                         name = child.name,
                         gadget = child.phoneNumber,
                         lastSeen = child.last_seen ?: "",

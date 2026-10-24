@@ -1,6 +1,10 @@
 // composeApp/src/commonMain/kotlin/uz/tikoncha_parent/App.kt
 package uz.tikoncha_parent
 
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalInspectionMode
@@ -64,7 +68,14 @@ fun App() {
             }
 
             TikonchaParentTheme(mode = mode) {
-                Surface {
+                // Bo'sh joyga bosish klaviaturani yopadi (iPhone raqam klaviaturasida "Tayyor" tugmasi yo'q).
+                // Tugma/maydon bosilsa ular hodisani o'zlari egallaydi — bu faqat bo'sh joyda ishlaydi.
+                val focusManager = LocalFocusManager.current
+                Surface(
+                    modifier = Modifier.pointerInput(Unit) {
+                        detectTapGestures(onTap = { focusManager.clearFocus() })
+                    }
+                ) {
 
                     // Cold start uchun yig'ilgan deep linklar
                     val pendingLinks = remember { PendingDeepLinks.drain() }

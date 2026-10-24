@@ -39,12 +39,50 @@ class TaskListViewModel(
     private var loadJob: Job? = null
     private var countJob: Job? = null
 
+    /*
+     * Oxirgi ko'rilgan birinchi sahifalar (bola/tab/filtr bo'yicha). Tabga qaytganda yoki filtr almashganda
+     * shimmer "chaqnab" o'tmasin — eski ro'yxat darhol ko'rinadi, yangisi jimgina keladi.
+     */
+    private data class CachedPage(val list: List<Task>, val total: Int, val hasMore: Boolean)
+    private val pageCache = mutableMapOf<String, CachedPage>()
+    private var shownKey: String? = null
+    private fun TaskListState.cacheKey() = "${selectedChild?.userId}|$taskIndex|$activeChip"
+
+    private fun TaskListState.withCachedOrLoading(): TaskListState {
+        val key = cacheKey()
+        val cached = pageCache[key]
+        return if (cached != null) {
+            shownKey = key
+            copy(
+                taskList = cached.list, totalCount = cached.total, offset = cached.list.size, hasMore = cached.hasMore,
+                hasLoaded = true, isInitialLoading = false, isRefiltering = false, isPaginating = false, error = null,
+            )
+        } else {
+            shownKey = null
+            copy(
+                taskList = emptyList(), totalCount = 0, offset = 0, hasMore = true,
+                hasLoaded = false, isInitialLoading = canFetch, isRefiltering = false, isPaginating = false, error = null,
+            )
+        }
+    }
+
+    private fun forgetTask(id: String) {
+        for (k in pageCache.keys.toList()) {
+            val page = pageCache[k] ?: continue
+            if (page.list.any { it.id == id }) {
+                pageCache[k] = page.copy(list = page.list.filterNot { it.id == id }, total = (page.total - 1).coerceAtLeast(0))
+            }
+        }
+    }
+
     init {
         _state.update {
             it.copy(
                 selectedChild = AppSettings.selectedChild,
                 userId = AppSettings.userId,
-                childrenList = AppSettings.children
+                childrenList = AppSettings.children,
+                allChildrenActiveTaskCount = AppSettings.lastActiveTaskCount ?: 0,
+                allChildrenActiveTaskCountKnown = AppSettings.lastActiveTaskCount != null,
             )
         }
     }
@@ -136,6 +174,7 @@ class TaskListViewModel(
         val s = state.value
         if (!s.canFetch) {
             // Child tanlanmagan — yuklamaymiz
+            shownKey = null
             _state.update {
                 it.copy(
                     taskList = emptyList(),
@@ -146,17 +185,13 @@ class TaskListViewModel(
                     isInitialLoading = false,
                     isRefiltering = false,
                     isPaginating = false,
+                    hasLoaded = true,
                 )
             }
             return
         }
-        val hasData = s.taskList.isNotEmpty()
-        _state.update {
-            it.copy(
-                isInitialLoading = !hasData,
-                isRefiltering = hasData,
-            )
-        }
+        // Ekrandagi ro'yxat shu kalitniki bo'lsa — ko'rsatkichsiz, jimgina yangilaymiz.
+        if (shownKey != s.cacheKey()) _state.update { it.withCachedOrLoading() }
         firstPage()
     }
 
@@ -167,22 +202,8 @@ class TaskListViewModel(
         if (index == state.value.taskIndex) return
 
         loadJob?.cancel()
-        val willFetch = state.value.selectedChild != null
-
-        _state.update {
-            it.copy(
-                taskIndex = index,
-                error = null,
-                taskList = emptyList(),
-                totalCount = 0,
-                offset = 0,
-                hasMore = true,
-                isInitialLoading = willFetch,
-                isRefiltering = false,
-                isPaginating = false,
-            )
-        }
-        if (willFetch) firstPage()
+        _state.update { it.copy(taskIndex = index).withCachedOrLoading() }
+        if (state.value.canFetch) firstPage()
     }
 
     private fun selectChild(child: UserInfo) {
@@ -190,38 +211,13 @@ class TaskListViewModel(
         AppSettings.selectedChild = child
 
         loadJob?.cancel()
-        _state.update {
-            it.copy(
-                selectedChild = child,
-                error = null,
-                taskList = emptyList(),
-                totalCount = 0,
-                offset = 0,
-                hasMore = true,
-                isInitialLoading = true,
-                isRefiltering = false,
-                isPaginating = false,
-            )
-        }
+        _state.update { it.copy(selectedChild = child).withCachedOrLoading() }
         firstPage()
     }
 
     private fun toggleChip(chip: TaskFilterChip) {
         loadJob?.cancel()
-        _state.update {
-            val new = if (it.activeChip == chip) null else chip
-            it.copy(
-                activeChip = new,
-                error = null,
-                taskList = emptyList(),
-                totalCount = 0,
-                offset = 0,
-                hasMore = true,
-                isInitialLoading = it.canFetch,
-                isRefiltering = false,
-                isPaginating = false,
-            )
-        }
+        _state.update { it.copy(activeChip = if (it.activeChip == chip) null else chip).withCachedOrLoading() }
         if (state.value.canFetch) firstPage()
     }
 
@@ -281,6 +277,7 @@ class TaskListViewModel(
 
     private suspend fun fetchPage(reset: Boolean) {
         val s = state.value
+        val key = s.cacheKey()
         val query = TodosQuery(
             targetUserId = s.currentTargetUserId,   // doimiy child
             filter = buildFilter(
@@ -296,9 +293,12 @@ class TaskListViewModel(
             is Outcome.Success -> {
                 val page = res.data
                 val mapped = page.items.map { it.toTask() }
+                if (reset) pageCache[key] = CachedPage(mapped, page.total, page.hasMore)
+                shownKey = key
                 _state.update { current ->
                     val newList = if (reset) mapped else current.taskList + mapped
                     current.copy(
+                        hasLoaded = true,
                         taskList = newList,
                         totalCount = page.total,
                         offset = newList.size,
@@ -318,6 +318,7 @@ class TaskListViewModel(
             is Outcome.Failure -> {
                 _state.update { current ->
                     current.copy(
+                        hasLoaded = true,
                         isInitialLoading = false,
                         isRefiltering = false,
                         isRefreshing = false,
@@ -343,6 +344,7 @@ class TaskListViewModel(
         screenModelScope.launch {
             when (val res = completeTodoUseCase(task.id)) {
                 is Outcome.Success -> {
+                    forgetTask(task.id)
                     _state.update {
                         val newList = it.taskList.filterNot { t -> t.id == task.id }
                         it.copy(
@@ -372,6 +374,7 @@ class TaskListViewModel(
         screenModelScope.launch {
             when (val res = deleteTodoUseCase(task.id)) {
                 is Outcome.Success -> {
+                    forgetTask(task.id)
                     _state.update {
                         val newList = it.taskList.filterNot { t -> t.id == task.id }
                         it.copy(
@@ -397,7 +400,8 @@ class TaskListViewModel(
     private fun loadAllChildrenActiveTasks() {
         val children = state.value.childrenList
         if (children.isEmpty()) {
-            _state.update { it.copy(allChildrenActiveTaskCount = 0) }
+            AppSettings.lastActiveTaskCount = 0
+            _state.update { it.copy(allChildrenActiveTaskCount = 0, allChildrenActiveTaskCountKnown = true) }
             return
         }
         countJob?.cancel()
@@ -427,7 +431,8 @@ class TaskListViewModel(
                     is Outcome.Failure -> return@launch
                 }
             }
-            _state.update { it.copy(allChildrenActiveTaskCount = total) }
+            AppSettings.lastActiveTaskCount = total
+            _state.update { it.copy(allChildrenActiveTaskCount = total, allChildrenActiveTaskCountKnown = true) }
         }
     }
 

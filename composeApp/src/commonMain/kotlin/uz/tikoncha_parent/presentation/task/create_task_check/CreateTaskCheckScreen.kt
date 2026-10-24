@@ -338,7 +338,6 @@ fun CreateTaskCheckUI(
                 enabled = canSave,
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(Res.string.vazifani_saqlash),
-                shape = RoundedCornerShape(24.dp),
                 onClick = {
                     event(CreateTaskEvent.OnConfirmClicked)
                 }

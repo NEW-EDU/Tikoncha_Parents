@@ -11,7 +11,7 @@ enum class LanguageType(
     val iconId: DrawableResource,
     val languageName: String
 ) {
-    UZ("uz", iconId = Res.drawable.lang_uz, languageName = "O’zbek tili"),
+    UZ("uz", iconId = Res.drawable.lang_uz, languageName = "Özbek tili"),
     RU("ru", iconId = Res.drawable.lang_ru, languageName = "Русский"),
     EN("en", iconId = Res.drawable.lang_en, languageName = "English");
 

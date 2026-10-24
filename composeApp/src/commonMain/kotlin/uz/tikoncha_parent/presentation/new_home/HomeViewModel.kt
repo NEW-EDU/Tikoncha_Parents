@@ -10,7 +10,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.todayIn
 import uz.tikoncha_parent.data.local.AppSettings
+import uz.tikoncha_parent.data.local.HomeSnapshot
 import uz.tikoncha_parent.domain.model.HourMinute
 import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.UserInfo
@@ -29,6 +32,7 @@ import uz.tikoncha_parent.domain.use_case.policy.ObservePoliciesUseCase
 import uz.tikoncha_parent.domain.use_case.todo.GetTodosUseCase
 import uz.tikoncha_parent.platform.Logger
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
+import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 
 class HomeViewModel(
@@ -60,7 +64,46 @@ class HomeViewModel(
     private var protectionChildId: String? = null
 
     init {
+        // Birinchi kadrdanoq oxirgi ma'lum holat: farzandlar ro'yxati + kartalar raqamlari.
+        _state.update {
+            it.copy(childrenList = AppSettings.children, selectedChild = AppSettings.selectedChild)
+                .withSnapshot(AppSettings.selectedChild?.userId)
+        }
         loadOnce()
+    }
+
+    private fun today(): String = Clock.System.todayIn(TimeZone.currentSystemDefault()).toString()
+
+    /** [childId] ning oxirgi ko'rinishi; bo'lmasa — nollar (oldingi farzandning raqamlari qolmasin). */
+    private fun HomeState.withSnapshot(childId: String?): HomeState {
+        val snap = childId?.let { AppSettings.homeSnapshots[it] } ?: HomeSnapshot()
+        val usageFresh = snap.usageDay == today()
+        return copy(
+            activeTaskCount = snap.activeTaskCount,
+            todayUsage = if (usageFresh) snap.todayUsage else HourMinute(0, 0),
+            topApps = if (usageFresh) snap.topApps else emptyList(),
+            topAppsFromRecentDays = if (usageFresh) snap.topAppsFromRecentDays else false,
+            usageShownDay = if (usageFresh) snap.usageShownDay.takeIf { d -> d.isNotBlank() }?.let { d -> runCatching { kotlinx.datetime.LocalDate.parse(d) }.getOrNull() } else null,
+            protectionPendingRequestCount = snap.protectionPendingRequestCount,
+            protectionPermissionOffCount = snap.protectionPermissionOffCount,
+            protectionLoaded = snap.protectionLoaded,
+        )
+    }
+
+    private fun saveSnapshot(childId: String) {
+        val s = _state.value
+        if (s.selectedChild?.userId != childId) return
+        AppSettings.homeSnapshots = AppSettings.homeSnapshots + (childId to HomeSnapshot(
+            activeTaskCount = s.activeTaskCount,
+            usageDay = today(),
+            todayUsage = s.todayUsage,
+            topApps = s.topApps,
+            topAppsFromRecentDays = s.topAppsFromRecentDays,
+            usageShownDay = s.usageShownDay?.toString().orEmpty(),
+            protectionPendingRequestCount = s.protectionPendingRequestCount,
+            protectionPermissionOffCount = s.protectionPermissionOffCount,
+            protectionLoaded = s.protectionLoaded,
+        ))
     }
 
     fun loadOnce() {
@@ -111,16 +154,7 @@ class HomeViewModel(
             if (it.selectedChild?.userId == selectedChild?.userId) {
                 updated
             } else {
-                updated.copy(
-                    activeTaskCount = 0,
-                    parentPolicyCount = 0,
-                    todayUsage = HourMinute(0, 0),
-                    topApps = emptyList(),
-                    topAppsFromRecentDays = false,
-                    protectionPendingRequestCount = 0,
-                    protectionPermissionOffCount = 0,
-                    protectionLoaded = false,
-                )
+                updated.copy(parentPolicyCount = 0).withSnapshot(selectedChild?.userId)
             }
         }
     }
@@ -165,12 +199,15 @@ class HomeViewModel(
         protectionChildId = childId
         return screenModelScope.launch {
             when (val res = protectionRepository.protectionStatus(childId)) {
-                is Outcome.Success -> _state.update {
-                    it.copy(
-                        protectionPendingRequestCount = res.data.pendingRequestCount(),
-                        protectionPermissionOffCount = res.data.missingRequiredPermissionCount(),
-                        protectionLoaded = true,
-                    )
+                is Outcome.Success -> {
+                    _state.update {
+                        it.copy(
+                            protectionPendingRequestCount = res.data.pendingRequestCount(),
+                            protectionPermissionOffCount = res.data.missingRequiredPermissionCount(),
+                            protectionLoaded = true,
+                        )
+                    }
+                    saveSnapshot(childId)
                 }
 
                 is Outcome.Failure -> Unit
@@ -261,6 +298,7 @@ class HomeViewModel(
             _state.update {
                 it.copy(activeTaskCount = res.data.items.count { todo -> !todo.isCompleted })
             }
+            saveSnapshot(childId)
         }.also { taskJob = it }
     }
 
@@ -305,15 +343,19 @@ class HomeViewModel(
             // "Bugun" har chaqiruvda qayta hisoblanadi — kun almashganda kechagi raqam qolmaydi.
             if (res !is Outcome.Success || _state.value.selectedChild?.userId != childId) return@launch
 
-            // Bugun ishlatilgan bo'lsa — bugungilar; bo'lmasa oxirgi kunlarniki (UI xira chizadi)
-            val useRecent = res.data.topApps.isEmpty() && res.data.recentTopApps.isNotEmpty()
+            // Bugun bo'sh bo'lsa use case ma'lumoti bor so'nggi kunni beradi — o'sha kun to'liq (xira emas) ko'rsatiladi.
+            // Umuman ma'lumot bo'lmasa — oxirgi kunlarning ilovalari xira.
+            val data = res.data
+            val useRecent = data.topApps.isEmpty() && data.recentTopApps.isNotEmpty()
             _state.update {
                 it.copy(
-                    todayUsage = res.data.total,
-                    topApps = if (useRecent) res.data.recentTopApps else res.data.topApps,
+                    todayUsage = data.total,
+                    topApps = if (useRecent) data.recentTopApps else data.topApps,
                     topAppsFromRecentDays = useRecent,
+                    usageShownDay = if (data.isToday) null else data.day,
                 )
             }
+            saveSnapshot(childId)
         }.also { todayUsageJob = it }
     }
 }

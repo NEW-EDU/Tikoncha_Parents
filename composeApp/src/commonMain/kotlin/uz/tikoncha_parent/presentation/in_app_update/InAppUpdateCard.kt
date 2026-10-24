@@ -88,7 +88,6 @@ fun InAppUpdateCard(
                     CustomButton(
                         style = AppTypography.bodyMdMedium,
                         text = stringResource(Res.string.yangilash),
-                        shape = RoundedCornerShape(16.dp),
                         onClick = {
                             event(
                                 UpdateEvent.StartUpdateClicked(

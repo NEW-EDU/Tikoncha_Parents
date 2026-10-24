@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.subscription.info
 
+import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
 import tikoncha_parents.composeapp.generated.resources.toliq_nazorat_statistika
 import tikoncha_parents.composeapp.generated.resources.uchtagacha_jadval
 import tikoncha_parents.composeapp.generated.resources.qattiq_bloklash_qalqon
@@ -40,10 +41,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -98,6 +97,7 @@ import uz.tikoncha_parent.domain.model.subscription.PlanType
 import uz.tikoncha_parent.platform.Logger
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomHeader
+import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
 import uz.tikoncha_parent.presentation.base.DashedDivider
 import uz.tikoncha_parent.presentation.base.LoadingDialog
 import uz.tikoncha_parent.presentation.base.singleClick
@@ -226,19 +226,12 @@ fun SubscriptionUI(
             title = stringResource(Res.string.obuna),
             onBackClick = { event(SubscriptionEvent.OnBackClick) },
             // Statistika'dagi tanlagichning o'zi — obuna qaysi farzandniki ekani doim ko'rinib tursin
-            trailingIcon = {
-                ChildSelectionButton(
-                    modifier = Modifier.widthIn(120.dp, 160.dp),
-                    text = state.selectedChild?.name ?: "",
-                    imageUrl = state.selectedChild?.avatarUrl ?: "",
-                    label = stringResource(Res.string.farzandingizni_tanlang),
-                    userInfo = state.selectedChild,
-                    onClick = {
-                        if (state.children.isEmpty()) navigator?.push(AddChildScreen())
-                        else showChildSheet = true
-                    }
-                )
-            }
+            childPicker = ChildPickerSpec(
+                children = state.children,
+                selected = state.selectedChild,
+                onSelect = { event(SubscriptionEvent.SelectChild(it)) },
+                onAddChild = { navigator?.push(AddChildScreen()) },
+            ),
         )
 
         if (showChildSheet) {
@@ -257,12 +250,11 @@ fun SubscriptionUI(
 
         // PLUS bor — karta va tafsilotlar; PLUS yo'q (yoki tugagan) — pastdagi "… uchun obuna bo'lish".
         if (subscription != null && subscription.planType == PlanType.PLUS) {
-            Column(
+            BottomAnchoredColumn(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth()
                     .padding(horizontal = ContainerPadding)
-                    .verticalScroll(rememberScrollState())
             ) {
                 // ── Gradient card (info modeda to'lov ekraniga olib boradi) ──
                 Row(
@@ -471,11 +463,15 @@ fun SubscriptionUI(
                 Spacer(Modifier.height(24.dp))
             }
         } else if (subscription != null) {
-            FreeChildBlock(
-                name = state.selectedChild?.name.orEmpty(),
-                fromPrice = state.freeFromPrice,
-                onSubscribe = { event(SubscriptionEvent.OpenPaywall) },
-            )
+            // "… uchun obuna bo'lish" — pastda, bosh barmoq yetadigan joyda (bo'sh joy tepada qoladi)
+            BottomAnchoredColumn(Modifier.weight(1f).fillMaxWidth()) {
+                FreeChildBlock(
+                    name = state.selectedChild?.name.orEmpty(),
+                    fromPrice = state.freeFromPrice,
+                    onSubscribe = { event(SubscriptionEvent.OpenPaywall) },
+                )
+                Spacer(Modifier.height(8.dp))
+            }
         }
     }
 }

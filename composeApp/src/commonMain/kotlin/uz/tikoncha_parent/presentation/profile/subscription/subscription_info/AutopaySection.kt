@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.subscription.subscription_info
 
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.confirm.SegmentedRows
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -79,35 +80,40 @@ fun AutopaySection(state: SubscriptionState, event: (SubscriptionEvent) -> Unit)
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         if (info.pastDue) FailureBanner(info, busy = state.autopayBusy, event = event)
 
-        Group {
-            InfoRow(Icons.Rounded.Autorenew, stringResource(Res.string.ap_autopay), sub = if (info.enabled) null else stringResource(Res.string.ap_off)) {
-                CustomSwitch(
-                    checked = info.enabled,
-                    enabled = !state.autopayBusy,
-                    showCheckIcon = true,
-                    onCheckedChange = { event(SubscriptionEvent.AutopaySwitch(it)) },
-                )
+        val autopayRows = buildList<@Composable () -> Unit> {
+            add {
+                InfoRow(Icons.Rounded.Autorenew, stringResource(Res.string.ap_autopay), sub = if (info.enabled) null else stringResource(Res.string.ap_off)) {
+                    CustomSwitch(
+                        checked = info.enabled,
+                        enabled = !state.autopayBusy,
+                        showCheckIcon = true,
+                        onCheckedChange = { event(SubscriptionEvent.AutopaySwitch(it)) },
+                    )
+                }
             }
             if (info.enabled) {
                 info.nextChargeAt?.let { next ->
-                    RowDivider()
-                    InfoRow(Icons.Rounded.CalendarMonth, stringResource(Res.string.ap_next_payment), sub = info.amount?.let { sumText(it) }) {
-                        Text(formatDate(next), style = AppTypography.titleSmMedium, color = AppColors.text.primary)
+                    add {
+                        InfoRow(Icons.Rounded.CalendarMonth, stringResource(Res.string.ap_next_payment), sub = info.amount?.let { sumText(it) }) {
+                            Text(formatDate(next), style = AppTypography.titleSmMedium, color = AppColors.text.primary)
+                        }
                     }
                 }
-                RowDivider()
-                InfoRow(Icons.Rounded.CreditCard, stringResource(Res.string.ap_card), onClick = { event(SubscriptionEvent.OpenCardPicker) }) {
-                    info.card?.let { CardMask(it, color = AppColors.text.primary) }
+                add {
+                    InfoRow(Icons.Rounded.CreditCard, stringResource(Res.string.ap_card), onClick = { event(SubscriptionEvent.OpenCardPicker) }) {
+                        info.card?.let { CardMask(it, color = AppColors.text.primary) }
+                    }
                 }
             }
         }
+        SegmentedRows(autopayRows)
 
-        Group {
-            InfoRow(Icons.Rounded.Wallet, stringResource(Res.string.ap_my_cards), onClick = { event(SubscriptionEvent.OpenCards) }) {}
-            RowDivider()
-            InfoRow(Icons.AutoMirrored.Rounded.ReceiptLong, stringResource(Res.string.tolovlar_tarixi), onClick = { event(SubscriptionEvent.OpenHistory) }) {}
-
-        }
+        SegmentedRows(
+            listOf(
+                { InfoRow(Icons.Rounded.Wallet, stringResource(Res.string.ap_my_cards), onClick = { event(SubscriptionEvent.OpenCards) }) {} },
+                { InfoRow(Icons.AutoMirrored.Rounded.ReceiptLong, stringResource(Res.string.tolovlar_tarixi), onClick = { event(SubscriptionEvent.OpenHistory) }) {} },
+            )
+        )
 
         if (info.enabled) {
             Text(

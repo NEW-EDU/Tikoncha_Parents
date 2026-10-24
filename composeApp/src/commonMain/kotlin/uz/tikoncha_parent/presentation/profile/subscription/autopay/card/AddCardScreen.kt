@@ -2,6 +2,8 @@
 
 package uz.tikoncha_parent.presentation.profile.subscription.autopay.card
 
+import androidx.compose.foundation.layout.PaddingValues
+import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
 import uz.tikoncha_parent.presentation.base.LoadingDialog
 import cafe.adriel.voyager.koin.koinScreenModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -87,11 +89,9 @@ fun AddCardUi(state: AddCardState, event: (AddCardEvent) -> Unit) {
             onBackClick = { event(AddCardEvent.Back) },
         )
         Stepper(current = if (state.step == AddCardStep.FORM) 1 else 2)
-        Column(
-            modifier = Modifier
-                .weight(1f)
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp),
+        BottomAnchoredColumn(
+            modifier = Modifier.weight(1f),
+            contentPadding = PaddingValues(horizontal = 16.dp),
         ) {
             when (state.step) {
                 AddCardStep.FORM -> CardForm(state, event)

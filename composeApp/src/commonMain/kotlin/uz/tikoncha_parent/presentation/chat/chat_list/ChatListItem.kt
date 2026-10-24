@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.chat.chat_list
 
+import uz.tikoncha_parent.ui.rememberCachedImage
+import uz.tikoncha_parent.ui.expressiveSegment
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -69,13 +71,16 @@ import kotlin.toString
 fun ChatListItem(
     chatUi: ChatUi,
     modifier: Modifier = Modifier,
+    /** M3 Expressive guruhlangan ro'yxatdagi o'rni. */
+    segmentIndex: Int = 0,
+    segmentCount: Int = 1,
     onClick: () -> Unit = {}
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick)
-            .padding(vertical = 8.dp),
+            .expressiveSegment(segmentIndex, segmentCount, color = AppColors.bg.surface, onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
 
@@ -88,14 +93,13 @@ fun ChatListItem(
 
         if (chatUi.avatar.isNotEmpty()){
             AsyncImage(
-                model = chatUi.avatar,
+                model = rememberCachedImage(chatUi.avatar),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.size(52.dp)
                     .border(1.dp, AppColors.bg.surface, CircleShape)
                     .clip(CircleShape),
                 error = painterResource(Res.drawable.chat_icon),
-                placeholder = painterResource(Res.drawable.chat_icon)
 
             )
         }

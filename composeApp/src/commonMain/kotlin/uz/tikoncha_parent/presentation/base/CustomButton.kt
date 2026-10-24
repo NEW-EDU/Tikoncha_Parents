@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.base
 
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import uz.tikoncha_parent.ui.expressiveButtonShapes
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -31,6 +34,7 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.extendedColor
 import kotlin.time.TimeSource
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun CustomButton(
     text: String,
@@ -41,8 +45,9 @@ fun CustomButton(
     textColor: Color = AppColors.text.inverse,
     endingIcon: (@Composable () -> Unit)? = null,
     leadingIcon: (@Composable () -> Unit)? = null,
-    style: TextStyle = AppTypography.titleSmMedium,
-    shape: Shape = RoundedCornerShape(TextFieldCornerRadius),
+    style: TextStyle = AppTypography.titleMdSemiBold,
+    /** Dam olishdagi shakl; sukut — M3 Expressive bo'yicha to'liq yumaloq, bosilganda siqiladi. */
+    shape: Shape = CircleShape,
     disabledContainerColor: Color = MaterialTheme.extendedColor.disabledBgColor
 ) {
 
@@ -60,17 +65,17 @@ fun CustomButton(
 
     Button(
         onClick = debouncedClick,
+        shapes = expressiveButtonShapes(shape),
         modifier = modifier
-            .height(ButtonHeight),
+            .height(ButtonDefaults.MediumContainerHeight),
         colors = ButtonDefaults.buttonColors(
             containerColor = color,
             contentColor = contentColor,
             disabledContainerColor = disabledContainerColor,
             disabledContentColor = AppColors.text.disabled
         ),
-        shape = shape,
         enabled = enabled,
-        contentPadding = PaddingValues(horizontal = 5.dp)
+        contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         if (leadingIcon != null) {
             leadingIcon()

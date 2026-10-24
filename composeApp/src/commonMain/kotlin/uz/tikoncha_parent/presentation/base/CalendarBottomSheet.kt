@@ -242,7 +242,6 @@ fun CalendarBottomSheet(
                 contentColor = AppColors.text.inverse,
                 containerColor = AppColors.button.primary,
                 text = stringResource(Res.string.bajarildi),
-                shape = RoundedCornerShape(16.dp),
                 onClick = {
                     tempSelectedDate?.let { onDateSelected(it) }
                 },
@@ -256,7 +255,6 @@ fun CalendarBottomSheet(
             CustomButtonNew(
                 onClick = onDismissRequest,
                 text = stringResource(Res.string.bekor_qilish),
-                shape = RoundedCornerShape(16.dp),
                 containerColor = AppColors.section.secondary,
                 contentColor = AppColors.text.primary,
                 modifier = Modifier

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.navigation
 
+import uz.tikoncha_parent.presentation.base.island.ScreenWithIsland
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -125,10 +126,10 @@ fun SwipeBackContent(navigator: Navigator) {
                         previousScreen.key !in animatedKeys
                 if (canRestore) {
                     stateHolder.SaveableStateProvider(previousScreen.key) {
-                        previousScreen.Content()
+                        ScreenWithIsland(previousScreen.key) { previousScreen.Content() }
                     }
                 } else {
-                    previousScreen.Content()
+                    ScreenWithIsland(previousScreen.key) { previousScreen.Content() }
                 }
             }
 
@@ -290,7 +291,7 @@ private fun AnimatedScreenContent(
             onDispose { animatedKeys -= screen.key }
         }
         stateHolder.SaveableStateProvider(screen.key) {
-            screen.Content()
+            ScreenWithIsland(screen.key) { screen.Content() }
         }
     }
 }

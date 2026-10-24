@@ -12,10 +12,10 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
     <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Bolaning va o'z joylashuvingizni xaritada ko'rish uchun joylashuvga ruxsat kerak</string>
+    <string>Bolaning va öz joylaşuvingizni xaritada köriş uçun joylaşuvga ruxsat kerak</string>
 
     <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Bolaning va o'z joylashuvingizni xaritada ko'rish uchun joylashuvga ruxsat kerak</string>
+    <string>Bolaning va öz joylaşuvingizni xaritada köriş uçun joylaşuvga ruxsat kerak</string>
 
     <key>UISupportedInterfaceOrientations</key>
     <array>

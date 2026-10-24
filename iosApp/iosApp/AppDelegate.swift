@@ -9,13 +9,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
 
-        if #available(iOS 14.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-                print("Permission granted: \(granted)")
-            }
-            UNUserNotificationCenter.current().delegate = self
-            Messaging.messaging().delegate = self
-        }
+        // Bildirishnoma ruxsati ilova ochilganda so'ralmaydi — tanishtiruvdagi alohida ekranda
+        // (NotificationPermissionScreen → PushPlatform.requestNotificationPermission).
+        UNUserNotificationCenter.current().delegate = self
+        Messaging.messaging().delegate = self
         application.registerForRemoteNotifications()
         return true
     }

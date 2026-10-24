@@ -127,7 +127,6 @@ fun TimePickerDialog(
                             modifier = Modifier
                                 .height(DialogButtonHeight)
                                 .fillMaxWidth(),
-                            shape = RoundedCornerShape(TextFieldCornerRadius)
                         )
 
                         Spacer(modifier = Modifier.height(8.dp))
@@ -141,7 +140,6 @@ fun TimePickerDialog(
                                 .fillMaxWidth()
                                 .height(DialogButtonHeight),
                             text = stringResource(Res.string.saqlash),
-                            shape = RoundedCornerShape(TextFieldCornerRadius)
                         )
                     }
                 }

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,12 +33,11 @@ fun ChildAppIcon(iconUrl: String?, modifier: Modifier = Modifier, size: Dp = 40.
     ) {
         if (!iconUrl.isNullOrBlank()) {
             AsyncImage(
-                model = iconUrl,
+                model = rememberCachedImage(iconUrl),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Fit,
                 error = painterResource(Res.drawable.android),
-                placeholder = painterResource(Res.drawable.android),
             )
         } else {
             Icon(

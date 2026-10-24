@@ -1,5 +1,15 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package uz.tikoncha_parent.presentation.profile.subscription.autopay.cards
 
+import androidx.compose.foundation.layout.PaddingValues
+import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
+import androidx.compose.foundation.layout.heightIn
+import uz.tikoncha_parent.ui.expressiveSegment
+import uz.tikoncha_parent.ui.SegmentGap
+import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
+import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import cafe.adriel.voyager.koin.koinScreenModel
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -73,21 +83,23 @@ fun MyCardsUi(state: MyCardsState, event: (MyCardsEvent) -> Unit, onBack: () -> 
         CustomHeader(showBackButton = true, title = stringResource(Res.string.ap_my_cards), onBackClick = onBack)
         Box(Modifier.weight(1f).fillMaxWidth()) {
             when {
-                state.loading -> CircularProgressIndicator(color = AppColors.action.primary, modifier = Modifier.align(Alignment.Center))
+                state.loading -> DelayedLoadingIndicator(color = AppColors.action.primary, modifier = Modifier.align(Alignment.Center))
                 state.cards.isEmpty() -> EmptyState(
                     icon = Icons.Rounded.CreditCard,
                     title = stringResource(Res.string.ap_cards_empty_title),
                     subtitle = stringResource(Res.string.ap_cards_empty_sub),
                     modifier = Modifier.align(Alignment.Center),
                 )
-                else -> Column(
-                    Modifier.verticalScroll(rememberScrollState()).padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                else -> BottomAnchoredColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(16.dp),
+                    spacing = 12.dp,
                 ) {
-                    Group {
+                    Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                         state.cards.forEachIndexed { i, card ->
-                            if (i > 0) RowDivider()
-                            CardRow(card, enabled = !state.busy) { event(MyCardsEvent.OpenActions(card)) }
+                            CardRow(card, enabled = !state.busy, index = i, count = state.cards.size) {
+                                event(MyCardsEvent.OpenActions(card))
+                            }
                         }
                     }
                     Row(Modifier.padding(horizontal = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -134,9 +146,13 @@ fun MyCardsUi(state: MyCardsState, event: (MyCardsEvent) -> Unit, onBack: () -> 
 }
 
 @Composable
-private fun CardRow(card: PayCard, enabled: Boolean, onMore: () -> Unit) {
+private fun CardRow(card: PayCard, enabled: Boolean, index: Int = 0, count: Int = 1, onMore: () -> Unit) {
     Row(
-        Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp, top = 8.dp, bottom = 8.dp),
+        Modifier
+            .fillMaxWidth()
+            .heightIn(min = 68.dp)
+            .expressiveSegment(index, count, color = AppColors.bg.surface, onClick = { if (enabled) onMore() })
+            .padding(start = 16.dp, end = 4.dp, top = 8.dp, bottom = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         BrandMark(card.vendor, height = 24.dp)

@@ -5,9 +5,12 @@ import com.russhwolf.settings.get
 import com.russhwolf.settings.set
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.builtins.MapSerializer
+import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.Json
 import uz.tikoncha_parent.domain.model.SubscriptionLimit
 import uz.tikoncha_parent.domain.model.UserInfo
+import uz.tikoncha_parent.presentation.map.LatLng
 
 object AppSettings {
 
@@ -31,6 +34,12 @@ object AppSettings {
     private const val KEY_POLICY_ID = "policyId"
     private const val KEY_HAS_USER_LOGIN = "hasUserLogin"
     private const val KEY_IS_FIRST_LAUNCH = "isFirstLaunch"
+    private const val KEY_ONBOARDING_DONE = "onboardingDone"
+    private const val KEY_LAST_COINS = "lastCoins"
+    private const val KEY_LAST_ACTIVE_TASKS = "lastActiveTaskCount"
+    private const val KEY_HOME_SNAPSHOTS = "homeSnapshots"
+    private const val KEY_LAST_CHILD_LOCATION = "lastChildLocation"
+    private const val KEY_HOME_LAYOUT = "homeLayout"
 
     private const val KEY_USER_INFO = "userInfo"
     private const val KEY_CHILDREN = "children"
@@ -82,6 +91,44 @@ object AppSettings {
     var isFirstLaunch: Boolean
         get() = settings.get(KEY_IS_FIRST_LAUNCH) ?: true
         set(value) = settings.set(KEY_IS_FIRST_LAUNCH, value)
+
+    /** Birinchi ishga tushirishdagi tanishtiruv + bildirishnoma ruxsati ko'rsatildi (logout'da o'chmaydi). */
+    var onboardingDone: Boolean
+        get() = settings.get(KEY_ONBOARDING_DONE) ?: false
+        set(value) = settings.set(KEY_ONBOARDING_DONE, value)
+
+    /*
+     * Oxirgi ma'lum qiymatlar — ekran ochilganda "0" ko'rinib, keyin haqiqiy songa sakramasligi uchun.
+     * null = hali hech qachon yuklanmagan.
+     */
+    var lastCoins: Int?
+        get() = settings.getIntOrNull(KEY_LAST_COINS)
+        set(value) = if (value == null) settings.remove(KEY_LAST_COINS) else settings.putInt(KEY_LAST_COINS, value)
+
+    var lastActiveTaskCount: Int?
+        get() = settings.getIntOrNull(KEY_LAST_ACTIVE_TASKS)
+        set(value) = if (value == null) settings.remove(KEY_LAST_ACTIVE_TASKS) else settings.putInt(KEY_LAST_ACTIVE_TASKS, value)
+
+    private val homeSnapshotsSerializer = MapSerializer(String.serializer(), HomeSnapshot.serializer())
+
+    /** Bosh sahifa kartalarining oxirgi ko'rinishi (farzand bo'yicha) — sovuq ishga tushishda nollar chaqnamasin. */
+    var homeSnapshots: Map<String, HomeSnapshot>
+        get() = getJsonOrDefault(KEY_HOME_SNAPSHOTS, homeSnapshotsSerializer, emptyMap())
+        set(value) = putJson(KEY_HOME_SNAPSHOTS, homeSnapshotsSerializer, value)
+
+    /** Eng yangi joylashuvi bor farzandning oxirgi nuqtasi — xarita darhol o'sha yerda ochilsin. */
+    var lastChildLocation: LatLng?
+        get() = settings.getStringOrNull(KEY_LAST_CHILD_LOCATION)?.split(",")?.let { p ->
+            val lat = p.getOrNull(0)?.toDoubleOrNull(); val lon = p.getOrNull(1)?.toDoubleOrNull()
+            if (lat != null && lon != null) LatLng(lat, lon) else null
+        }
+        set(value) = if (value == null) settings.remove(KEY_LAST_CHILD_LOCATION)
+            else settings.putString(KEY_LAST_CHILD_LOCATION, "${value.lat},${value.lon}")
+
+    /** Bosh sahifa ko'rinishi ("LIST" | "GRID") — logout'da o'chmaydi (qurilma sozlamasi). */
+    var homeLayoutName: String
+        get() = settings.getStringOrNull(KEY_HOME_LAYOUT) ?: "LIST"
+        set(value) = settings.putString(KEY_HOME_LAYOUT, value)
 
     var showTikonchaTutorial: Boolean
         get() = settings.get(KEY_TIKONCHA_TUTORIAL) ?: true
@@ -192,6 +239,7 @@ object AppSettings {
      * Logout qilganda chaqir: "Said" qaytib kelishini butunlay yo‘q qiladi.
      */
     fun clearSession() {
+        SessionCache.clear()
         // auth
         settings.remove(KEY_ACCESS_TOKEN)
         settings.remove(KEY_REFRESH_TOKEN)
@@ -206,6 +254,10 @@ object AppSettings {
         settings.remove(KEY_CHILDREN)
         settings.remove(KEY_SELECTED_CHILD)
         settings.remove(KEY_SELECTED_CHILD_ID)
+        settings.remove(KEY_LAST_COINS)
+        settings.remove(KEY_LAST_ACTIVE_TASKS)
+        settings.remove(KEY_HOME_SNAPSHOTS)
+        settings.remove(KEY_LAST_CHILD_LOCATION)
 
 
         // optional

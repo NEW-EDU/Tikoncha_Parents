@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.chat.chat_room
 
+import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -311,14 +312,13 @@ fun ChatRoomScreenUi(
 
                 if (state.chatAvatar.isNotEmpty()) {
                     AsyncImage(
-                        model = state.chatAvatar,
+                        model = rememberCachedImage(state.chatAvatar),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .size(ChatHeaderAvatarSize)
                             .clip(CircleShape),
                         error = painterResource(Res.drawable.chat_icon),
-                        placeholder = painterResource(Res.drawable.chat_icon)
 
                     )
                 } else {

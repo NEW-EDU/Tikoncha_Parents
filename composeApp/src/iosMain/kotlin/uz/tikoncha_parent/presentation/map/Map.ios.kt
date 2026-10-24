@@ -2,6 +2,11 @@
 
 package uz.tikoncha_parent.presentation.map
 
+import androidx.compose.ui.unit.Dp
+import cocoapods.YandexMapsMobile.YMKLogoPadding
+import cocoapods.YandexMapsMobile.YMKLogoVerticalAlignment
+import cocoapods.YandexMapsMobile.YMKLogoHorizontalAlignment
+import cocoapods.YandexMapsMobile.YMKLogoAlignment
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -290,7 +295,8 @@ actual fun YandexMap(
     onMapTap: (LatLng) -> Unit,
     onCameraIdle: (LatLng) -> Unit,
     isDark: Boolean,
-    modifier: Modifier
+    modifier: Modifier,
+    logoTopInset: Dp?,
 ) {
     val density = LocalDensity.current
     val scope = rememberCoroutineScope()
@@ -343,6 +349,21 @@ actual fun YandexMap(
                     tilt = initialCamera.tilt
                 )
             )
+            logoTopInset?.let { inset ->
+                view.mapWindow?.map?.logo?.setAlignmentWithAlignment(
+                    YMKLogoAlignment.alignmentWithHorizontalAlignment(
+                        horizontalAlignment = YMKLogoHorizontalAlignment.YMKLogoHorizontalAlignmentRight,
+                        verticalAlignment = YMKLogoVerticalAlignment.YMKLogoVerticalAlignmentTop,
+                    )
+                )
+                view.mapWindow?.map?.logo?.setPaddingWithPadding(
+                    // MapKit iOS'da logotip chekinishi piksellarda (nuqtada emas)
+                    YMKLogoPadding.paddingWithHorizontalPadding(
+                        (12 * density.density).toULong(),
+                        verticalPadding = (inset.value * density.density).toULong(),
+                    )
+                )
+            }
             view.mapWindow?.map?.addInputListenerWithInputListener(mapInputListener)
             view.mapWindow?.map?.addCameraListenerWithCameraListener(cameraListener)
             view as UIView

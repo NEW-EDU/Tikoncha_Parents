@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.statistic
 
+import uz.tikoncha_parent.data.local.SessionCache
+import uz.tikoncha_parent.domain.model.app_usage.UsageHistory
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Dispatchers
@@ -55,6 +57,15 @@ class StatisticViewModel(
     private var observedQuickBlockChildId: String? = null
 
     init {
+        // Birinchi kadrdanoq: tanlangan farzand va (shu sessiyada ko'rilgan bo'lsa) uning bugungi statistikasi —
+        // har kirishda yuklanish dialogi va bo'sh grafik chaqnamasin.
+        val child = AppSettings.selectedChild
+        _state.update { it.copy(selectedChild = child, childrenList = AppSettings.children) }
+        child?.userId?.let { id -> SessionCache.get<UsageHistory>(usageKey(id, today())) }?.let { cached ->
+            _state.update { it.copy(history = cached, appUsageResponseState = ResponseState.Success()) }
+            rebuildPagesForCurrentMode()
+        }
+
         // Pauza tugashi "hozir"ga bog'liq — daqiqada bir marta yangilanadi
         screenModelScope.launch {
             while (isActive) {
@@ -130,11 +141,12 @@ class StatisticViewModel(
         AppSettings.selectedChildId = child.userId
         AppSettings.selectedChild = child
 
-        // Yangi bola — boshqa ma'lumot; eskisi bir lahza ham ko'rinmasin
+        // Yangi bola — boshqa ma'lumot; eskisi bir lahza ham ko'rinmasin (keshda bo'lsa — darhol o'shanisi)
         _state.update {
             it.copy(
                 selectedChild = child,
                 history = StatisticState().history,
+                appUsageResponseState = ResponseState.Idle,
                 pages = emptyList(),
                 bars = emptyBars(it.dateSelectionType),
                 apps = emptyList(),
@@ -166,7 +178,15 @@ class StatisticViewModel(
         appUsageJob?.cancel()
         appUsageJob = screenModelScope.launch {
             val today = today()
-            _state.update { it.copy(appUsageResponseState = ResponseState.Loading, today = today) }
+            val cached = SessionCache.get<UsageHistory>(usageKey(childId, today))
+            if (cached != null && _state.value.history !== cached) {
+                _state.update { it.copy(history = cached, today = today) }
+                rebuildPagesForCurrentMode()
+            }
+            // Keshdan ko'rinib turgan bo'lsa — jimgina yangilaymiz (dialogsiz).
+            _state.update {
+                it.copy(appUsageResponseState = if (cached != null) it.appUsageResponseState else ResponseState.Loading, today = today)
+            }
 
             when (val res = getUsageHistory(childId, today)) {
                 is Outcome.Failure -> _state.update {
@@ -174,6 +194,7 @@ class StatisticViewModel(
                 }
 
                 is Outcome.Success -> {
+                    SessionCache.put(usageKey(childId, today), res.data)
                     _state.update {
                         it.copy(appUsageResponseState = ResponseState.Success(), history = res.data, isRefreshing = false)
                     }
@@ -303,6 +324,8 @@ class StatisticViewModel(
         }
         _state.update { it.copy(usageDetails = details, showUsageDetailsDialog = true) }
     }
+
+    private fun usageKey(childId: String, day: LocalDate) = "usage|$childId|$day"
 
     private fun today(): LocalDate = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
 

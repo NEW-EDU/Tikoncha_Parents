@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.theme.AppColors
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.ContainedLoadingIndicator
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -17,12 +20,15 @@ import androidx.compose.ui.window.Dialog
 import uz.tikoncha_parent.ui.theme.extendedColor
 
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun LoadingDialog(
     show: Boolean,
 ) {
-
-    if (!show){
+    // Tez tugaydigan so'rovlarda dialog bir lahza "chaqnab" o'tmasin: 250 ms dan keyin chiqadi,
+    // chiqqan bo'lsa kamida 400 ms turadi.
+    val visible = rememberDelayedLoading(show, delayMillis = 250L, minShowMillis = 400L)
+    if (!visible) {
         return
     }
 
@@ -31,27 +37,12 @@ fun LoadingDialog(
     Dialog(
         onDismissRequest = {}
     ) {
-        Card(
-            modifier = Modifier
-                .size(100.dp),
-            shape = RoundedCornerShape(20.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.extendedColor.backgroundColor
-            )
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(10.dp),
-                contentAlignment = Alignment.Center,
-
-            ){
-                CircularProgressIndicator(
-                    color = MaterialTheme.extendedColor.primaryColor,
-                    modifier = Modifier
-                        .fillMaxSize()
-                )
-            }
-        }
+        // Material 3 Expressive: shakli o'zgarib turadigan yuklanish ko'rsatkichi (aylanma spinner o'rniga)
+        ContainedLoadingIndicator(
+            modifier = Modifier.size(84.dp),
+            containerColor = AppColors.bg.surface,
+            indicatorColor = AppColors.icon.accentPrimary,
+            containerShape = MaterialTheme.shapes.extraLarge,
+        )
     }
 }

@@ -1,5 +1,10 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package uz.tikoncha_parent.presentation.video_tutorial
 
+import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
+import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -59,7 +64,7 @@ data class VideoTutorialYoutubeScreen(val tutorialType: TutorialType) : Screen {
         when {
             state.isLoading -> {
                 Box(Modifier.fillMaxSize().background(AppColors.bg.page), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
+                    DelayedLoadingIndicator()
                 }
             }
             state.videoUrl.isNotBlank() -> {

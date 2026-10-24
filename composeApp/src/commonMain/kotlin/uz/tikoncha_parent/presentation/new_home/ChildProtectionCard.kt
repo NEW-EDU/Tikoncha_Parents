@@ -1,5 +1,11 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.height
+import uz.tikoncha_parent.ui.HomeItemHeight
+import uz.tikoncha_parent.ui.expressiveSegment
+import androidx.compose.ui.text.font.FontWeight
+import uz.tikoncha_parent.ui.expressiveCard
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -60,69 +66,28 @@ fun ChildProtectionCard(
     isLoaded: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    /** Bosh sahifadagi guruhlangan blokdagi o'rni (M3 Expressive segmented list). */
+    segmentIndex: Int = 0,
+    segmentCount: Int = 1,
 ) {
     // Farzand yo'q, holat yuklanmagan yoki xato — "hammasi joyida" deb ko'rsatmaymiz
-    val level = when {
-        !hasChild || !isLoaded -> ProtectionLevel.Unknown
-        permissionOffCount > 0 -> ProtectionLevel.Danger
-        pendingRequestCount > 0 -> ProtectionLevel.Warning
-        else -> ProtectionLevel.Ok
-    }
+    val level = protectionLevel(hasChild, isLoaded, permissionOffCount, pendingRequestCount)
 
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .simpleShadow(RoundedCornerShape(CardCornerRadius))
-            .background(AppColors.bg.surface, RoundedCornerShape(CardCornerRadius))
-            .clip(RoundedCornerShape(CardCornerRadius))
-            .singleClick { onClick() }
-            .padding(CardCornerPadding),
+            .height(HomeItemHeight)
+            .expressiveSegment(segmentIndex, segmentCount, color = AppColors.section.tertiary) { onClick() }
+            .padding(horizontal = CardCornerPadding, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = stringResource(Res.string.farzand_himoyasi),
-                style = AppTypography.displaySmRegular,
+                style = AppTypography.displaySmRegular.copy(fontWeight = FontWeight.Bold),
                 color = AppColors.text.primary,
             )
-            when (level) {
-                ProtectionLevel.Unknown -> ProtectionSubtitle(
-                    text = stringResource(
-                        if (hasChild) Res.string.tekshirilmoqda else Res.string.farzand_qoshilmagan
-                    ),
-                    color = AppColors.text.tertiary,
-                )
-
-                // Hammasi joyida — ko'k ✓ qalqonning o'zi yetarli, pastki matn yo'q
-                ProtectionLevel.Ok -> Unit
-
-                // Sariq matn oq fonda o'qilmaydi — sariqlikni qalqon beradi, matn oddiy rangda
-                ProtectionLevel.Warning -> ProtectionSubtitle(
-                    text = pluralStringResource(
-                        Res.plurals.ta_yangi_sorov_kutilmoqda, pendingRequestCount, pendingRequestCount
-                    ),
-                    color = AppColors.text.secondary,
-                )
-
-                // Ikkalasi bo'lsa — ikki qator: bitta qatorga sig'maydi
-                ProtectionLevel.Danger -> {
-                    ProtectionSubtitle(
-                        text = pluralStringResource(
-                            Res.plurals.ta_ruxsat_ochirilgan, permissionOffCount, permissionOffCount
-                        ),
-                        color = AppColors.text.accentDanger,
-                    )
-                    if (pendingRequestCount > 0) {
-                        ProtectionSubtitle(
-                            text = pluralStringResource(
-                                Res.plurals.ta_yangi_sorov_kutilmoqda, pendingRequestCount, pendingRequestCount
-                            ),
-                            color = AppColors.text.secondary,
-                            topPadding = 0.dp,
-                        )
-                    }
-                }
-            }
+            ProtectionStatusLines(level, hasChild, permissionOffCount, pendingRequestCount)
         }
         Spacer(Modifier.width(12.dp))
         Image(
@@ -131,9 +96,84 @@ fun ChildProtectionCard(
             contentDescription = null,
             modifier = Modifier
                 .padding(end = 5.6.dp)
-                .size(80.dp),
+                .size(70.dp),
         )
     }
+}
+
+/** Holat matni (qalqon rangi bilan birga ma'noni beradi). Ro'yxat bloki ham, panjara katagi ham shuni ishlatadi. */
+@Composable
+private fun ProtectionStatusLines(
+    level: ProtectionLevel,
+    hasChild: Boolean,
+    permissionOffCount: Int,
+    pendingRequestCount: Int,
+) {
+    when (level) {
+        ProtectionLevel.Unknown -> ProtectionSubtitle(
+            text = stringResource(
+                if (hasChild) Res.string.tekshirilmoqda else Res.string.farzand_qoshilmagan
+            ),
+            color = AppColors.text.tertiary,
+        )
+
+        // Hammasi joyida — ko'k ✓ qalqonning o'zi yetarli, pastki matn yo'q
+        ProtectionLevel.Ok -> Unit
+
+        // Sariq matn oq fonda o'qilmaydi — sariqlikni qalqon beradi, matn oddiy rangda
+        ProtectionLevel.Warning -> ProtectionSubtitle(
+            text = pluralStringResource(
+                Res.plurals.ta_yangi_sorov_kutilmoqda, pendingRequestCount, pendingRequestCount
+            ),
+            color = AppColors.text.secondary,
+        )
+
+        // Ikkalasi bo'lsa — ikki qator: bitta qatorga sig'maydi
+        ProtectionLevel.Danger -> {
+            ProtectionSubtitle(
+                text = pluralStringResource(
+                    Res.plurals.ta_ruxsat_ochirilgan, permissionOffCount, permissionOffCount
+                ),
+                color = AppColors.text.accentDanger,
+            )
+            if (pendingRequestCount > 0) {
+                ProtectionSubtitle(
+                    text = pluralStringResource(
+                        Res.plurals.ta_yangi_sorov_kutilmoqda, pendingRequestCount, pendingRequestCount
+                    ),
+                    color = AppColors.text.secondary,
+                    topPadding = 0.dp,
+                )
+            }
+        }
+    }
+}
+
+private fun protectionLevel(hasChild: Boolean, isLoaded: Boolean, permissionOffCount: Int, pendingRequestCount: Int) = when {
+    !hasChild || !isLoaded -> ProtectionLevel.Unknown
+    permissionOffCount > 0 -> ProtectionLevel.Danger
+    pendingRequestCount > 0 -> ProtectionLevel.Warning
+    else -> ProtectionLevel.Ok
+}
+
+/** Panjara ko'rinishidagi "Farzand himoyasi" katagi. */
+@Composable
+fun RowScope.ChildProtectionGridTile(
+    cell: GridCell,
+    permissionOffCount: Int,
+    pendingRequestCount: Int,
+    hasChild: Boolean,
+    isLoaded: Boolean,
+    onClick: () -> Unit,
+) {
+    val level = protectionLevel(hasChild, isLoaded, permissionOffCount, pendingRequestCount)
+    HomeGridTile(
+        cell = cell,
+        title = stringResource(Res.string.farzand_himoyasi),
+        onClick = onClick,
+        subtitle = { ProtectionStatusLines(level, hasChild, permissionOffCount, pendingRequestCount) },
+        art = { TileArt(painterResource(level.shield), size = 136.dp, rotation = -8f) },
+    )
 }
 
 @Composable

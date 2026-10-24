@@ -1,5 +1,9 @@
 package uz.tikoncha_parent.presentation.chat.chat_list
 
+import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.itemsIndexed
+import uz.tikoncha_parent.ui.SegmentGap
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import uz.tikoncha_parent.presentation.base.rememberDelayedLoading
 import uz.tikoncha_parent.presentation.base.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -94,6 +99,7 @@ fun ChatUi(
 
     val loadFailure = state.error
     val errorText = loadFailure?.asText()
+    val showShimmer = rememberDelayedLoading(!state.hasLoadedOnce)
 
     // Ro'yxat bo'sh bo'lsa xato ekran ichida ko'rsatiladi — dialog ortiqcha.
     // Dialog faqat yangilash yiqilganda kerak (ro'yxat allaqachon ko'rinib turibdi).
@@ -147,8 +153,8 @@ fun ChatUi(
             )
 
             when {
-                !state.hasLoadedOnce -> {
-                    ChatListShimmer(
+                !state.hasLoadedOnce || showShimmer -> {
+                    if (showShimmer) ChatListShimmer(
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(horizontal = ContainerPadding)
@@ -195,12 +201,15 @@ fun ChatUi(
                     Column(
                         modifier = Modifier.padding(horizontal = ContainerPadding)
                     ) {
-                        LazyColumn {
-                            items(
+                        LazyColumn(
+                            verticalArrangement = Arrangement.spacedBy(SegmentGap),
+                            contentPadding = PaddingValues(top = 8.dp, bottom = 16.dp),
+                        ) {
+                            itemsIndexed(
                                 items = state.chats,
-                                key = { it.chatId },
-                                contentType = { "chat_item" }
-                            ) { item ->
+                                key = { _, it -> it.chatId },
+                                contentType = { _, _ -> "chat_item" }
+                            ) { index, item ->
                                 val onClick = remember(item.chatId) {
                                     {
                                         if (item.type == ChatType.BOT) {
@@ -224,13 +233,12 @@ fun ChatUi(
                                     }
                                 }
 
-                                Column {
-                                    ChatListItem(
-                                        chatUi = item,
-                                        onClick = onClick
-                                    )
-                                    DividerHorizontal()
-                                }
+                                ChatListItem(
+                                    chatUi = item,
+                                    segmentIndex = index,
+                                    segmentCount = state.chats.size,
+                                    onClick = onClick
+                                )
                             }
                         }
                     }

@@ -1,5 +1,10 @@
+@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+
 package uz.tikoncha_parent.presentation.policy.protection
 
+import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
+import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
@@ -117,7 +122,7 @@ fun ContentProtectionUi(
 
         if (!state.loaded) {
             Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator(color = AppColors.action.primary)
+                DelayedLoadingIndicator(color = AppColors.action.primary)
             }
             return@Column
         }

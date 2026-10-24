@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.coins
 
+import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
 import androidx.compose.animation.SharedTransitionDefaults
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -163,23 +164,12 @@ fun CoinsUi(
                 onBackClick = {
                     navigator!!.pop()
                 },
-                trailingIcon = {
-                    ChildSelectionButton(
-                        modifier = Modifier
-                            .widthIn(120.dp, 160.dp),
-                        text = state.selectedChild?.name ?: "",
-                        imageUrl = state.selectedChild?.avatarUrl ?: "",
-                        label = stringResource(Res.string.farzandingizni_tanlang),
-                        userInfo = state.selectedChild,
-                        onClick = {
-                            if (state.childrenList.isEmpty()) {
-                                navigator?.push(AddChildScreen())
-                            } else {
-                                showDialog = true
-                            }
-                        },
-                    )
-                }
+                childPicker = ChildPickerSpec(
+                    children = state.childrenList,
+                    selected = state.selectedChild,
+                    onSelect = { event(CoinsEvent.OnChildSelected(it)) },
+                    onAddChild = { navigator?.push(AddChildScreen()) },
+                ),
             )
             Spacer(Modifier.height(12.dp))
 

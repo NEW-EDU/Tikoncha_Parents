@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.subscription.subscription_info
 
+import uz.tikoncha_parent.data.local.SessionCache
 import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.domain.repository.ChildRepository
 import cafe.adriel.voyager.core.model.ScreenModel
@@ -37,11 +38,15 @@ class SubscriptionViewModel(
     val effect: Flow<SubscriptionEffect> = _effect.receiveAsFlow()
 
     init {
+        val childId = AppSettings.selectedChild?.userId
         _state.update {
             it.copy(
-                selectedChildId = AppSettings.selectedChild?.userId,
+                selectedChildId = childId,
                 selectedChild = AppSettings.selectedChild,
                 children = AppSettings.children,
+                // Oxirgi ko'rilgan holat darhol — har kirishda yuklanish dialogi chaqnamasin.
+                subscription = childId?.let { id -> SessionCache.get(subKey(id)) },
+                autopay = childId?.let { id -> SessionCache.get(autopayKey(id)) },
             )
         }
         onEvent(SubscriptionEvent.Load)
@@ -105,9 +110,15 @@ class SubscriptionViewModel(
         }
     }
 
+    private fun subKey(childId: String) = "subscription|$childId"
+    private fun autopayKey(childId: String) = "autopay|$childId"
+
     private fun loadStatus() {
         screenModelScope.launch {
-            _state.update { it.copy(subscriptionStatusState = ResponseState.Loading) }
+            // Keshdagi holat ko'rinib turgan bo'lsa — jimgina yangilaymiz (dialogsiz).
+            if (_state.value.subscription == null) {
+                _state.update { it.copy(subscriptionStatusState = ResponseState.Loading) }
+            }
 
             when (val res = paymentRepository.getSubscriptionStatus(_state.value.selectedChildId)) {
                 is Outcome.Failure -> {
@@ -117,6 +128,7 @@ class SubscriptionViewModel(
                 }
 
                 is Outcome.Success -> {
+                    _state.value.selectedChildId?.let { SessionCache.put(subKey(it), res.data) }
                     _state.update {
                         it.copy(
                             subscription = res.data,
@@ -150,7 +162,9 @@ class SubscriptionViewModel(
         _state.update {
             it.copy(
                 selectedChildId = child.userId, selectedChild = child,
-                subscription = null, autopay = null, freeFromPrice = null,
+                subscription = SessionCache.get(subKey(child.userId)),
+                autopay = SessionCache.get(autopayKey(child.userId)),
+                freeFromPrice = null,
                 confirmDisable = false, showCardPicker = false,
             )
         }
@@ -161,9 +175,12 @@ class SubscriptionViewModel(
     /** "Karta orqali oyiga … dan" — karta narxi; server bermasa Click narxi. */
     private fun loadFromPrice() {
         if (_state.value.freeFromPrice != null) return
+        SessionCache.get<Int>("subscription_from_price")?.let { cached -> _state.update { it.copy(freeFromPrice = cached) } }
         screenModelScope.launch {
             val plan = paymentRepository.subscriptionPlans().getOrNull()?.firstOrNull()?.toSubscriptionPlanUi() ?: return@launch
-            _state.update { it.copy(freeFromPrice = plan.cardMonthly ?: plan.monthly.price) }
+            val price = plan.cardMonthly ?: plan.monthly.price
+            SessionCache.put("subscription_from_price", price)
+            _state.update { it.copy(freeFromPrice = price) }
         }
     }
 
@@ -171,6 +188,7 @@ class SubscriptionViewModel(
     private fun refreshStatusSilently() {
         screenModelScope.launch {
             paymentRepository.getSubscriptionStatus(_state.value.selectedChildId).getOrNull()?.let { s ->
+                _state.value.selectedChildId?.let { SessionCache.put(subKey(it), s) }
                 _state.update { it.copy(subscription = s) }
             }
         }
@@ -183,7 +201,10 @@ class SubscriptionViewModel(
     private fun loadAutopay() {
         val child = childId ?: return
         screenModelScope.launch {
-            autopay.state(child).getOrNull()?.let { info -> _state.update { it.copy(autopay = info) } }
+            autopay.state(child).getOrNull()?.let { info ->
+                SessionCache.put(autopayKey(child), info)
+                _state.update { it.copy(autopay = info) }
+            }
         }
     }
 

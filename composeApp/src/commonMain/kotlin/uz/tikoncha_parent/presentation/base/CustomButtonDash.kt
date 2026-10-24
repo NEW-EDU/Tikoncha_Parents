@@ -1,6 +1,8 @@
 package uz.tikoncha_parent.presentation.base
 
 
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import uz.tikoncha_parent.ui.expressiveButtonShapes
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -32,6 +34,7 @@ import kotlin.time.TimeSource
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun CustomButtonDash(
     modifier: Modifier = Modifier,
@@ -43,7 +46,7 @@ fun CustomButtonDash(
     dashLength: Dp = 6.dp,
     dashGap: Dp = 3.dp,
     height: Dp = DialogButtonHeight,
-    style: TextStyle = AppTypography.titleSmMedium,
+    style: TextStyle = AppTypography.titleMdSemiBold,
     color: Color = AppColors.bg.surface,
     textColor: Color = AppColors.text.accentEmphasis,
     borderColor: Color = AppColors.border.accentEmphasis,
@@ -65,46 +68,20 @@ fun CustomButtonDash(
         }
     }
 
+    // M3 Expressive: punktir chegara o'rniga tonal (shaffof karamel) yumaloq tugma — bosilganda shakli siqiladi.
+    // `border`/`dash*` parametrlari eski chaqiruvlar uchun qoldirilgan.
     Button(
         onClick = debouncedClick,
-        modifier = modifier
-            .drawWithContent {
-                drawContent() // Avval Button kontentini chizamiz
-
-                // Keyin ustidan dashed border chizamiz
-                val strokeWidthPx = borderWidth.toPx()
-                val dashPx = dashLength.toPx()
-                val gapPx = dashGap.toPx()
-                val cornerRadius = size.height / 2
-                val inset = strokeWidthPx / 2
-
-                drawRoundRect(
-                    color = actualBorderColor,
-                    topLeft = Offset(inset, inset),
-                    size = Size(
-                        size.width - strokeWidthPx,
-                        size.height - strokeWidthPx
-                    ),
-                    style = Stroke(
-                        width = strokeWidthPx,
-                        pathEffect = PathEffect.dashPathEffect(
-                            floatArrayOf(dashPx, gapPx),
-                            phase = 0f
-                        )
-                    ),
-                    cornerRadius = CornerRadius(cornerRadius, cornerRadius)
-                )
-            }
-            .height(height),
+        shapes = expressiveButtonShapes(),
+        modifier = modifier.height(maxOf(height, 52.dp)),
         colors = ButtonDefaults.buttonColors(
-            containerColor = color,
+            containerColor = textColor.copy(alpha = 0.12f),
             contentColor = contentColor,
             disabledContainerColor = disabledContainerColor,
             disabledContentColor = AppColors.text.disabledTertiary
         ),
-        shape = shape,
         enabled = enabled,
-        contentPadding = contentPadding
+        contentPadding = PaddingValues(horizontal = 16.dp)
     ) {
         if (leadingIcon != null) {
             leadingIcon()

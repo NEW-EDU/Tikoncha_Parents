@@ -123,7 +123,6 @@ fun InAppUpdateDialog(
                         CustomButton(
                             modifier = Modifier.fillMaxWidth(),
                             text = stringResource(Res.string.yangilash),
-                            shape = RoundedCornerShape(CardCornerRadius),
                             onClick = {
                                 onConfirm(type)
                             },
@@ -137,7 +136,6 @@ fun InAppUpdateDialog(
                             modifier = Modifier.fillMaxWidth(),
                             textColor = AppColors.text.primary,
                             text = stringResource(Res.string.hozir_emas),
-                            shape = RoundedCornerShape(CardCornerRadius),
                         )
                     }
                 }

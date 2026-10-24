@@ -27,10 +27,17 @@ class TodayUsageUseCase(
         val from = today.minus(RECENT_DAYS - 1, DateTimeUnit.DAY)
         return repository.appUsages(userId, from = from, to = today).map { apps ->
             val history = UsageHistory(apps)
+            // Bugun hali ma'lumot yo'q bo'lsa — ma'lumoti bor eng so'nggi kun (Bosh sahifa doim to'liq ko'rinsin)
+            val day = generateSequence(today) { it.minus(1, DateTimeUnit.DAY) }
+                .take(RECENT_DAYS)
+                .firstOrNull { history.totalOn(it) > 0L }
+            val shown = day ?: today
             TodayUsage(
-                total = HourMinute.fromMillis(history.totalOn(today)),
-                topApps = history.appTotals(today, today).top(),
+                total = HourMinute.fromMillis(history.totalOn(shown)),
+                topApps = history.appTotals(shown, shown).top(),
                 recentTopApps = history.appTotals(from, today).top(),
+                day = day,
+                isToday = shown == today,
             )
         }
     }
@@ -40,6 +47,6 @@ class TodayUsageUseCase(
 
     private companion object {
         const val TOP_APPS_COUNT = 3
-        const val RECENT_DAYS = 7
+        const val RECENT_DAYS = 14
     }
 }

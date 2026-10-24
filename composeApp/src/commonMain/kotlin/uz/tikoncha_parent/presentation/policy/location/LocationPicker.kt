@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.location
 
+import uz.tikoncha_parent.data.local.AppSettings
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -59,6 +60,7 @@ import uz.tikoncha_parent.presentation.map.MarkerStyle
 import uz.tikoncha_parent.presentation.map.YandexMap
 import uz.tikoncha_parent.presentation.map.awaitReady
 import uz.tikoncha_parent.presentation.map.rememberMapController
+import uz.tikoncha_parent.presentation.map.regionFallbackCamera
 import uz.tikoncha_parent.presentation.map.zoomForCircleRadius
 import uz.tikoncha_parent.presentation.policy.components.PolicyText
 import uz.tikoncha_parent.presentation.policy.components.SegmentedTabs
@@ -67,7 +69,6 @@ import uz.tikoncha_parent.ui.theme.rememberIsDarkTheme
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
 
 /** Markaz ham, bola joylashuvi ham bo'lmasa — Farg'ona vodiysi (eski ekran bilan bir xil). */
-private val DEFAULT_CENTER = LatLng(40.7821, 72.3442)
 
 /**
  * Hudud tanlash (Student `LocationPicker` bilan bir xil): Yandex xaritasi, markazdagi pin,
@@ -137,12 +138,16 @@ fun LocationPicker(
             state.userLocation?.let { MapMarker(id = "me", position = it, style = MarkerStyle.Self(), zIndex = 100f) },
         )
     }
-    val initialCenter = remember { state.center ?: state.userLocation ?: DEFAULT_CENTER }
+    // Hudud markazi → farzand → oxirgi ma'lum farzand nuqtasi → men → telefon hududi (avval qat'iy Andijon edi)
+    val initialCamera = remember {
+        val known = state.center ?: state.child?.position ?: AppSettings.lastChildLocation ?: state.userLocation
+        if (known != null) CameraPosition(known, zoom = zoomForCircleRadius(state.radiusMeters)) else regionFallbackCamera()
+    }
 
     Box(modifier = Modifier.fillMaxSize().then(systemBars.modifier)) {
         YandexMap(
             controller = mapController,
-            initialCamera = CameraPosition(initialCenter, zoom = zoomForCircleRadius(state.radiusMeters)),
+            initialCamera = initialCamera,
             circles = circles,
             markers = markers,
             onCameraIdle = { event(LocationPickerEvent.CameraIdle(it)) },
