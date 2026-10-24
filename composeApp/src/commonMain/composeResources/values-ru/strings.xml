@@ -1258,4 +1258,21 @@
     <string name="kecha_sarfladi">Вчера потратил(а)</string>
     <string name="sana_sarfladi">%1$s потратил(а)</string>
     <string name="stat_no_usage_day">В этот день телефоном ещё не пользовались</string>
+    <string name="kirish_usuli">Способ входа</string>
+    <string name="google_hisobi">Аккаунт Google</string>
+    <string name="apple_id">Apple ID</string>
+    <string name="email_label">Эл. почта</string>
+    <string name="email_yashirilgan_apple">Скрыта (Apple)</string>
+    <string name="apple_email_hidden_line">Apple ID · почта скрыта</string>
+    <string name="haptics_title">Вибрация</string>
+    <string name="haptics_section">Сила вибрации</string>
+    <string name="haptics_off">Выкл.</string>
+    <string name="haptics_off_desc">Кнопки без вибрации</string>
+    <string name="haptics_light">Лёгкая</string>
+    <string name="haptics_light_desc">Едва заметная</string>
+    <string name="haptics_standard">Стандартная</string>
+    <string name="haptics_standard_desc">Сбалансированная</string>
+    <string name="haptics_strong">Сильная</string>
+    <string name="haptics_strong_desc">Чёткий отклик на каждое нажатие</string>
+    <string name="haptics_footer">При нажатии кнопок, смене выбора и результатах. Выберите — и сразу почувствуете.</string>
 </resources>

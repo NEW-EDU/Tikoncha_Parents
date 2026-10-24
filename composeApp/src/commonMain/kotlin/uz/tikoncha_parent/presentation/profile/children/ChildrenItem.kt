@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.children
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import uz.tikoncha_parent.ui.expressiveSegment
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.IconButtonDefaults
@@ -56,6 +57,8 @@ fun ChildrenItem(
     imageUrl: String = "",
     lastSeen: String = "",
     gadget: String = "",
+    /** [gadget] oldidagi Google / Apple belgisi (telefon raqami yo'q farzand). */
+    gadgetBrand: SignInMethod? = null,
     name: String = "",
     subscription: String? = null,
     segmentIndex: Int = 0,
@@ -130,13 +133,21 @@ fun ChildrenItem(
                 overflow = TextOverflow.Ellipsis
             )
 
-            Text(
-                text = gadget,
-                style = AppTypography.titleSmMedium,
-                color = AppColors.text.secondary,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            if (gadget.isNotBlank()) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (gadgetBrand != null && gadgetBrand != SignInMethod.PHONE) {
+                        BrandMark(gadgetBrand, 14.dp)
+                        Spacer(Modifier.width(6.dp))
+                    }
+                    Text(
+                        text = gadget,
+                        style = AppTypography.titleSmMedium,
+                        color = AppColors.text.secondary,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+            }
 
             if (lastSeen.isNotBlank()) {
                 Text(
@@ -155,6 +166,7 @@ fun ChildrenItem(
         } else {
             FilledTonalIconButton(
                 onClick = onMenuClick,
+                interactionSource = rememberHapticSource(),
                 shapes = IconButtonDefaults.shapes(),
                 colors = IconButtonDefaults.filledTonalIconButtonColors(
                     containerColor = AppColors.bg.secondary,

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -125,7 +126,7 @@ fun CustomSwitch(
                 role = Role.Switch,
                 interactionSource = interactionSource,
                 indication = null,  // iOS-uslub: ripple yo'q
-                onClick = { onCheckedChange(!checked) }
+                onClick = { Haptics.toggle(); onCheckedChange(!checked) }
             ),
         contentAlignment = Alignment.CenterStart
     ) {

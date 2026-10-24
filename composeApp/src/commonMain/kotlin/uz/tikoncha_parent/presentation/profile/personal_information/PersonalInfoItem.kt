@@ -1,5 +1,16 @@
 package uz.tikoncha_parent.presentation.profile.personal_information
 
+import uz.tikoncha_parent.presentation.profile.children.signIn
+import uz.tikoncha_parent.presentation.profile.children.SignInMethod
+import tikoncha_parents.composeapp.generated.resources.kirish_usuli
+import tikoncha_parents.composeapp.generated.resources.ic_google_g
+import tikoncha_parents.composeapp.generated.resources.ic_apple_logo
+import tikoncha_parents.composeapp.generated.resources.email_yashirilgan_apple
+import tikoncha_parents.composeapp.generated.resources.email_label
+import tikoncha_parents.composeapp.generated.resources.apple_id
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.material.icons.rounded.AlternateEmail
+import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -66,7 +77,27 @@ fun PersonalInfoItem(
                 gender,
             )
         )
-        add(InfoRowData(Res.drawable.phone, stringResource(Res.string.telefon_nomer), userInfo?.phoneNumber.orEmpty()))
+        // Hisob: telefon (bo'lsa), Google / Apple orqali kirgan bo'lsa — kirish usuli va email (Apple yashirgan bo'lsa,
+        // manzil emas — "Yashirilgan (Apple)")
+        val method = userInfo?.signIn
+        if (!userInfo?.phoneNumber.isNullOrBlank() || method == null || method == SignInMethod.PHONE) {
+            add(InfoRowData(Res.drawable.phone, stringResource(Res.string.telefon_nomer), userInfo?.phoneNumber.orEmpty()))
+        }
+        if (method == SignInMethod.GOOGLE || method == SignInMethod.APPLE) {
+            add(
+                InfoRowData(
+                    if (method == SignInMethod.GOOGLE) Res.drawable.ic_google_g else Res.drawable.ic_apple_logo,
+                    stringResource(Res.string.kirish_usuli),
+                    if (method == SignInMethod.GOOGLE) "Google" else stringResource(Res.string.apple_id),
+                )
+            )
+        }
+        when {
+            !userInfo?.email.isNullOrBlank() ->
+                add(InfoRowData(null, stringResource(Res.string.email_label), userInfo.email, vector = Icons.Rounded.AlternateEmail))
+            userInfo?.emailHidden == true ->
+                add(InfoRowData(null, stringResource(Res.string.email_label), stringResource(Res.string.email_yashirilgan_apple), vector = Icons.Rounded.AlternateEmail))
+        }
         if (userInfo?.schoolName != null) {
             add(InfoRowData(Res.drawable.school_icon, stringResource(Res.string.maktab), userInfo.schoolName))
             add(InfoRowData(Res.drawable.class_icon, stringResource(Res.string.sinf), userInfo.schoolClassName.orEmpty()))
@@ -85,6 +116,7 @@ fun PersonalInfoItem(
             rows.forEachIndexed { index, row ->
                 PersonalInformationItemRow(
                     icon = row.icon,
+                    iconVector = row.vector,
                     title = row.title,
                     value = row.value,
                     segmentIndex = index,
@@ -109,7 +141,12 @@ fun PersonalInfoItem(
     }
 }
 
-private class InfoRowData(val icon: DrawableResource, val title: String, val value: String)
+private class InfoRowData(
+    val icon: DrawableResource?,
+    val title: String,
+    val value: String,
+    val vector: ImageVector? = null,
+)
 
 @Preview(name = "Phone", "spec:width=360dp,height=800dp,dpi=420")
 //@Preview(name = "Small",  "spec:width=320dp,height=640dp,dpi=420")

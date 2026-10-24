@@ -73,6 +73,9 @@ fun SettingsUi(
                         SettingType.THEME -> {
                             navigator?.push(ThemeScreen())
                         }
+                        SettingType.HAPTICS -> {
+                            navigator?.push(uz.tikoncha_parent.presentation.profile.settings.haptics.HapticsScreen())
+                        }
                         SettingType.LOGOUT -> {
                             navigator?.push(LogoutScreen())
                         }

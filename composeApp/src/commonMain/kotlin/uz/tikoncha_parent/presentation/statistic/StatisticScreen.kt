@@ -250,7 +250,7 @@ fun StatisticUi(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .padding(horizontal = 12.dp)
+                    .padding(horizontal = ContainerPadding)
                     .clip(RoundedCornerShape(28.dp))
                     .verticalScroll(rememberScrollState())
             ) {
@@ -338,7 +338,7 @@ fun StatisticUi(
             /* ============ Kun tanlagich — PASTDA, bosh barmoqqa yaqin ============ */
             Column(
                 modifier = Modifier
-                    .padding(horizontal = 12.dp)
+                    .padding(horizontal = ContainerPadding)
                     .padding(top = 8.dp, bottom = 4.dp)
                     .fillMaxWidth()
                     .background(AppColors.bg.surface, RoundedCornerShape(28.dp))

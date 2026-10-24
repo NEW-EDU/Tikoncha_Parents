@@ -1,5 +1,19 @@
 package uz.tikoncha_parent.presentation.base.island
 
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.tween
+import uz.tikoncha_parent.ui.rememberHapticSource
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.foundation.gestures.detectTapGestures
+import kotlinx.coroutines.delay
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.DisposableEffect
+import kotlinx.coroutines.launch
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
 import org.jetbrains.compose.resources.DrawableResource
 import uz.tikoncha_parent.ui.SuccessColor
 import uz.tikoncha_parent.presentation.profile.children.ChildrenSelectScreen
@@ -152,14 +166,26 @@ fun IslandChildPicker(
             }
         }
 
-        ChildDropUp(
-            open = open,
-            children = spec.children,
-            selected = spec.selected,
-            onSelect = { open.targetState = false; spec.onSelect(it) },
-            onAddChild = { open.targetState = false; spec.onAddChild() },
-            onDismiss = { open.targetState = false },
-        )
+        // Ro'yxat ekran qatlamida chiziladi (alohida oyna emas) — boshqa sahifaga o'tilganda u sahifa bilan birga
+        // siljib ketadi: "yopildi → keyin o'tdi" bo'shlig'i umuman yo'q.
+        val island = LocalIsland.current
+        val currentSpec by rememberUpdatedState(spec)
+        val layer: @Composable () -> Unit = remember(open) {
+            {
+                ChildDropUp(
+                    open = open,
+                    children = currentSpec.children,
+                    selected = currentSpec.selected,
+                    onSelect = { open.targetState = false; currentSpec.onSelect(it) },
+                    onAddChild = currentSpec.onAddChild,
+                    onDismiss = { open.targetState = false },
+                )
+            }
+        }
+        DisposableEffect(island, layer) {
+            island?.dropUp = layer
+            onDispose { if (island?.dropUp === layer) island.dropUp = null }
+        }
     }
 }
 
@@ -210,33 +236,39 @@ private fun ChildDropUp(
     onDismiss: () -> Unit,
 ) {
     if (!open.currentState && !open.targetState) return
-    val gapPx = with(LocalDensity.current) { 14.dp.roundToPx() }
-    val marginPx = with(LocalDensity.current) { 14.dp.roundToPx() }
-    val islandPx = with(LocalDensity.current) { IslandHeight.roundToPx() }
-    val position = remember(gapPx, marginPx, islandPx) {
-        object : PopupPositionProvider {
-            override fun calculatePosition(
-                anchorBounds: IntRect,
-                windowSize: IntSize,
-                layoutDirection: LayoutDirection,
-                popupContentSize: IntSize,
-            ): IntOffset {
-                // Orol tepasidan yuqoriga (anchor — markaziy tugma; orol undan biroz baland)
-                val islandTop = anchorBounds.center.y - islandPx / 2
-                return IntOffset(marginPx, islandTop - gapPx - popupContentSize.height)
-            }
+    // Boshqa sahifaga o'tish: ro'yxat yopilmaydi — eski sahifa bilan birga siljib ketadi; sahifa qatlamdan
+    // chiqqach holat o'z-o'zidan tozalanadi (qaytilganda yopiq). Shu sahifa qolib ketsa — keyinroq yopiladi.
+    val scope = rememberCoroutineScope()
+    val navigateAway: (() -> Unit) -> Unit = { go ->
+        go()
+        scope.launch {
+            delay(700)
+            open.targetState = false
         }
     }
-    Popup(popupPositionProvider = position, onDismissRequest = onDismiss, properties = PopupProperties(focusable = true)) {
-        val widthDp = with(LocalDensity.current) { (androidx.compose.ui.platform.LocalWindowInfo.current.containerSize.width - marginPx * 2).toDp() }
+    @OptIn(cafe.adriel.voyager.core.annotation.InternalVoyagerApi::class)
+    cafe.adriel.voyager.navigator.internal.BackHandler(open.targetState) { onDismiss() }
+    Box(Modifier.fillMaxSize()) {
+        // Tashqariga bosish — yopadi (avvalgi oynadagidek); fon o'zgarmaydi
+        Box(
+            Modifier
+                .fillMaxSize()
+                .pointerInput(Unit) { detectTapGestures { onDismiss() } }
+        )
         AnimatedVisibility(
             visibleState = open,
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(start = 14.dp, end = 14.dp, bottom = islandBottomOffset() + IslandHeight + 14.dp),
             enter = scaleIn(MaterialTheme.motionScheme.defaultSpatialSpec(), initialScale = 0.85f, transformOrigin = TransformOrigin(0.5f, 1f)) + fadeIn(),
-            exit = scaleOut(MaterialTheme.motionScheme.fastSpatialSpec(), targetScale = 0.9f, transformOrigin = TransformOrigin(0.5f, 1f)) + fadeOut(),
+            // Yopilish — prujinasiz (prujina "ortga sakrab" keyin yo'qolardi): tez, bir yo'nalishda pastga cho'kadi
+            exit = fadeOut(tween(150)) +
+                scaleOut(tween(170, easing = FastOutLinearInEasing), targetScale = 0.95f, transformOrigin = TransformOrigin(0.5f, 1f)) +
+                slideOutVertically(tween(170, easing = FastOutLinearInEasing)) { it / 14 },
         ) {
             Column(
                 modifier = Modifier
-                    .width(widthDp)
+                    .fillMaxWidth()
                     .shadow(16.dp, RoundedCornerShape(28.dp))
                     .clip(RoundedCornerShape(28.dp))
                     .background(AppColors.bg.page)
@@ -252,7 +284,7 @@ private fun ChildDropUp(
                         color = AppColors.text.tertiary,
                         modifier = Modifier.weight(1f),
                     )
-                    TextButton(onClick = { onDismiss(); navigator?.push(ChildrenSelectScreen()) }) {
+                    TextButton(interactionSource = rememberHapticSource(), onClick = { navigateAway { navigator?.push(ChildrenSelectScreen()) } }) {
                         Text(stringResource(Res.string.hammasi), style = AppTypography.titleSmMedium, color = AppColors.text.accentEmphasis)
                         Icon(Icons.AutoMirrored.Rounded.KeyboardArrowRight, contentDescription = null, tint = AppColors.text.accentEmphasis, modifier = Modifier.size(18.dp))
                     }
@@ -299,7 +331,7 @@ private fun ChildDropUp(
                     modifier = Modifier
                         .fillMaxWidth()
                         .heightIn(min = 56.dp)
-                        .expressiveSegment(children.size, count, color = AppColors.bg.surface, outer = 22.dp) { onAddChild() }
+                        .expressiveSegment(children.size, count, color = AppColors.bg.surface, outer = 22.dp) { navigateAway(onAddChild) }
                         .padding(horizontal = 16.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {

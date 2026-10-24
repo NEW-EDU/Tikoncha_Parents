@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.chat.item
 
+import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -153,7 +154,7 @@ fun MessageSentItem(
 
                                 if (!fired.value && abs(newOffset) >= threshold) {
                                     fired.value = true
-                                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                                    Haptics.tap()
                                 }
                             }
                         } while (drag.pressed)

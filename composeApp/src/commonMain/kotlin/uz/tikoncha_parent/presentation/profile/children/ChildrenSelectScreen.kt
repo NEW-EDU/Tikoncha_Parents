@@ -226,18 +226,22 @@ fun ChildrenSelectUi(
                 )
             }
         } else {
+            // Ro'yxat qisqa bo'lsa — pastda, bosh barmoqqa yaqin
             LazyColumn(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(SegmentGap)
+                verticalArrangement = Arrangement.spacedBy(SegmentGap, Alignment.Bottom)
             ) {
                 itemsIndexed(state.children, key = { _, it -> it.userId }) { index, child ->
+                    // Telefon → email → Apple (email yashirilgan) → Google hisobi
+                    val account = child.accountLine()
                     ChildrenItem(
                         segmentIndex = index,
                         segmentCount = state.children.size,
                         name = child.name,
-                        gadget = child.phoneNumber,
+                        gadget = account?.text.orEmpty(),
+                        gadgetBrand = account?.brand,
                         lastSeen = child.last_seen ?: "",
                         imageUrl = child.avatarUrl ?: "",
                         subscription = child.subscription,

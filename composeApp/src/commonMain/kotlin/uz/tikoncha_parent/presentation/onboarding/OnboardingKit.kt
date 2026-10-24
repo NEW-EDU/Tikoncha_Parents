@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.onboarding
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import uz.tikoncha_parent.ui.expressiveButtonShapes
 import androidx.compose.material3.ButtonDefaults
@@ -301,6 +302,7 @@ internal fun CtaButton(text: String, onClick: () -> Unit, modifier: Modifier = M
     // M3 Expressive tugma: dam olishda to'liq yumaloq, bosilganda burchaklari siqiladi (shape morph)
     Button(
         onClick = onClick,
+        interactionSource = rememberHapticSource(),
         enabled = enabled,
         shapes = expressiveButtonShapes(),
         colors = ButtonDefaults.buttonColors(containerColor = Night.caramel, contentColor = Color.White),

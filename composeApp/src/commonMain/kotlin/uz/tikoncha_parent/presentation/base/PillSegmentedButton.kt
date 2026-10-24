@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.animation.core.Animatable
@@ -234,7 +235,7 @@ fun PillSegmentedButton(
                     enabled = enabled,
                     textStyle = textStyle,
                     colors = colors,
-                    onClick = { onSelected(index) },
+                    onClick = { Haptics.tick(); onSelected(index) },
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxHeight()

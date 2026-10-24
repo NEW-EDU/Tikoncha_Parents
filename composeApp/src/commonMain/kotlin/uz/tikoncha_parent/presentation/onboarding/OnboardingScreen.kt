@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.onboarding
 
+import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
@@ -147,7 +148,7 @@ internal fun OnboardingUi(tourOnly: Boolean, onFinish: () -> Unit, onClose: () -
     // Har bir yangi sahnada yengil "tik"
     var firstSettle by remember { mutableStateOf(true) }
     LaunchedEffect(pager.settledPage) {
-        if (firstSettle) firstSettle = false else haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+        if (firstSettle) firstSettle = false else Haptics.tick()
     }
 
     NightBackdrop(glowX = 0.5f + 0.2f * sin(pos * 1.4f)) {
@@ -231,7 +232,7 @@ internal fun OnboardingUi(tourOnly: Boolean, onFinish: () -> Unit, onClose: () -
                             }
                         ),
                         onClick = {
-                            haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                            Haptics.success()
                             if (isLast) onFinish()
                             else scope.launch { pager.animateScrollToPage(pager.currentPage + 1, animationSpec = tween(560, easing = FastOutSlowInEasing)) }
                         },

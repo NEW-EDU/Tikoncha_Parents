@@ -1261,4 +1261,21 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="kecha_sarfladi">Keça sarfladi</string>
     <string name="sana_sarfladi">%1$s sarfladi</string>
     <string name="stat_no_usage_day">Bu kunda telefon hali işlatilmagan</string>
+    <string name="kirish_usuli">Kiriş usuli</string>
+    <string name="google_hisobi">Google hisobi</string>
+    <string name="apple_id">Apple ID</string>
+    <string name="email_label">Email</string>
+    <string name="email_yashirilgan_apple">Yaşirilgan (Apple)</string>
+    <string name="apple_email_hidden_line">Apple ID · email yaşirilgan</string>
+    <string name="haptics_title">Tebraniş</string>
+    <string name="haptics_section">Tebraniş kuçi</string>
+    <string name="haptics_off">Öçiq</string>
+    <string name="haptics_off_desc">Tugmalar tebranmaydi</string>
+    <string name="haptics_light">Yengil</string>
+    <string name="haptics_light_desc">Nozik, zörğa seziladi</string>
+    <string name="haptics_standard">Standart</string>
+    <string name="haptics_standard_desc">Muvozanatli</string>
+    <string name="haptics_strong">Kuçli</string>
+    <string name="haptics_strong_desc">Har bosişda aniq zarba</string>
+    <string name="haptics_footer">Tugma bosilganda, tanlov özgarganda va natijalarda. Tanlaş bilan darhol sinab köring.</string>
 </resources>

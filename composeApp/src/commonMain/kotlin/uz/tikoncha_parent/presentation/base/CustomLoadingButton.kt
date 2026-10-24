@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -64,6 +65,7 @@ fun CustomLoadingButton(
         shape = shape,
         enabled = enabled,
         onClick = onClick,
+        interactionSource = rememberHapticSource(),
         modifier = modifier
             .height(ButtonHeight),
         colors = ButtonDefaults.buttonColors(

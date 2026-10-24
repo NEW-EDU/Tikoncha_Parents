@@ -2,6 +2,14 @@
 
 package uz.tikoncha_parent.presentation.new_home
 
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import uz.tikoncha_parent.ui.autumnBackground
+import uz.tikoncha_parent.ui.tileBlob
+import uz.tikoncha_parent.ui.BlobPlace
+import uz.tikoncha_parent.ui.TileTint
+import uz.tikoncha_parent.ui.rememberHapticSource
+import uz.tikoncha_parent.presentation.base.island.roundedContentEdges
 import kotlinx.datetime.minus
 import kotlinx.datetime.todayIn
 import uz.tikoncha_parent.common.DateTimeUtil
@@ -9,7 +17,6 @@ import tikoncha_parents.composeapp.generated.resources.sana_sarfladi
 import tikoncha_parents.composeapp.generated.resources.kecha_sarfladi
 import uz.tikoncha_parent.platform.BuildConfig
 import tikoncha_parents.composeapp.generated.resources.home_greeting
-import uz.tikoncha_parent.presentation.base.island.islandReservedFromBottom
 import uz.tikoncha_parent.presentation.base.island.ProvideIsland
 import uz.tikoncha_parent.presentation.base.island.IslandSpec
 import androidx.compose.runtime.rememberUpdatedState
@@ -200,15 +207,12 @@ fun NewHomeUi(
     var showSupport by remember { mutableStateOf(false) }
     if (showSupport) SupportSheet(onDismiss = { showSupport = false })
 
-    // Pastki tizim zonasi (iPhone home indicator) uchun alohida rangli tasma yo'q — ro'yxat uning ostidan
-    // o'tadi (edge-to-edge). Aks holda bloklar shu chiziqda "kesilib" qolardi.
+    // Kontent orol ustida tugaydi — boshqa ekranlardagidek yumaloq chekka bilan (orol atrofi ham ekran fonida)
+    // Fon — iliq gradient (kuz): tizim zonalari shaffof, gradient butun ekran bo'ylab
     val systemBars = rememberScreenSystemBars(
-        statusBarColor = AppColors.bg.page,
-        navigationBarColor = AppColors.bg.page,
-        hasNavigationBarPadding = false,
+        statusBarColor = Color.Transparent,
+        navigationBarColor = Color.Transparent,
     )
-    val navBarBottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    val islandReserved = islandReservedFromBottom()
     val homeLayout by HomeLayoutController.layout.collectAsState()
 
     val internetCheck = rememberInternetCheck(refreshScope)
@@ -257,8 +261,8 @@ fun NewHomeUi(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .autumnBackground()
                 .then(systemBars.modifier)
-                .background(AppColors.bg.page)
         ) {
             // Tepada — faqat salomlashuv (o'qish joyi). Boshqaruv (yordam, farzand, profil) — pastki orolda.
             Row(
@@ -268,7 +272,13 @@ fun NewHomeUi(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = stringResource(Res.string.home_greeting, state.userName),
+                    // Ism — urg'u rangida ("Salom, Dilmurod")
+                    text = buildAnnotatedString {
+                        val full = stringResource(Res.string.home_greeting, state.userName)
+                        append(full)
+                        val at = if (state.userName.isNotBlank()) full.lastIndexOf(state.userName) else -1
+                        if (at >= 0) addStyle(SpanStyle(color = AppColors.text.accentEmphasis), at, at + state.userName.length)
+                    },
                     style = AppTypography.headlineSmSemiBold.copy(fontWeight = FontWeight.ExtraBold),
                     color = AppColors.text.primary,
                     maxLines = 1,
@@ -277,6 +287,7 @@ fun NewHomeUi(
                 )
                 if (!showTikonchaTutorialCard) {
                     FilledTonalIconButton(
+                        interactionSource = rememberHapticSource(),
                         onClick = {
                             navigator?.openTutorial(TutorialType.TIKONCHA)
                         },
@@ -309,7 +320,7 @@ fun NewHomeUi(
                         onAddChild = { navigator?.push(AddChildScreen()) },
                         onChildSelected = { event(HomeEvent.OnChildSelected(it)) },
                     )
-                })
+                }, roundTop = false)
             }
             ProvideIsland(islandSpec)
 
@@ -335,14 +346,14 @@ fun NewHomeUi(
 
             if (homeLayout == HomeLayout.GRID) {
                 // Panjara: ekranning qolgan balandligini to'liq egallaydi (bo'sh joy qolmaydi); kichik ekranda — scroll.
-                BoxWithConstraints(Modifier.fillMaxWidth().weight(1f)) {
+                BoxWithConstraints(Modifier.fillMaxWidth().weight(1f).roundedContentEdges()) {
                     val viewport = maxHeight
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
                             .verticalScroll(rememberScrollState())
                             .heightIn(min = viewport)
-                            .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 16.dp + islandReserved),
+                            .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
                     ) {
                         topSection()
                         HomeGridBlocks(
@@ -364,8 +375,8 @@ fun NewHomeUi(
                 }
             } else {
                 LazyColumn(
-                    modifier = Modifier.fillMaxWidth(),
-                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 16.dp + islandReserved),
+                    modifier = Modifier.fillMaxWidth().weight(1f).roundedContentEdges(),
+                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(0.dp),
                 ) {
                     item { topSection() }
@@ -381,6 +392,7 @@ fun NewHomeUi(
                                         navigator?.push(TaskScreen())
                                     }
                                 }
+                                .tileBlob(TileTint.BUTTER.color(), BlobPlace.RowEnd)
                                 .padding(horizontal = CardCornerPadding, vertical = HomeItemVerticalPadding),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -468,6 +480,7 @@ fun NewHomeUi(
                                         navigator?.push(PolicyListScreen())
                                     }
                                 }
+                                .tileBlob(TileTint.WHEAT.color(), BlobPlace.RowEnd)
                                 .padding(horizontal = CardCornerPadding, vertical = HomeItemVerticalPadding),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -594,6 +607,8 @@ private fun HomeGridBlocks(
                 title = stringResource(HomeSelectionItem.SIHBAT.title),
                 onClick = onChat,
                 subtitle = { HomeGridSubtitle(stringResource(HomeSelectionItem.SIHBAT.subtitle)) },
+                tint = TileTint.PEACH,
+                blob = BlobPlace.GridBottomStart,
                 art = { TileArt(painterResource(HomeSelectionItem.SIHBAT.iconId), rotation = 10f) },
             )
             HomeGridTile(
@@ -601,6 +616,8 @@ private fun HomeGridBlocks(
                 title = stringResource(Res.string.topshiriqlar),
                 onClick = { guard(onTasks) },
                 subtitle = { HomeGridSubtitle(stringResource(Res.string.faol_vazifa, taskCount)) },
+                tint = TileTint.BUTTER,
+                blob = BlobPlace.GridBottomEnd,
                 art = { TileArt(painterResource(Res.drawable.home_task), rotation = -8f) },
             )
         }
@@ -610,6 +627,8 @@ private fun HomeGridBlocks(
                 title = stringResource(HomeSelectionItem.XARITA.title),
                 onClick = onMap,
                 subtitle = { HomeGridSubtitle(stringResource(HomeSelectionItem.XARITA.subtitle)) },
+                tint = TileTint.SAGE,
+                blob = BlobPlace.GridBottomStart,
                 art = { TileArt(painterResource(HomeSelectionItem.XARITA.iconId), rotation = -6f) },
             )
             ChildProtectionGridTile(
@@ -634,6 +653,8 @@ private fun HomeGridBlocks(
                 title = stringResource(Res.string.cheklovlar),
                 onClick = { guard(onRestrictions) },
                 subtitle = { HomeGridSubtitle(pluralStringResource(Res.plurals.apps_restricted, tableCount, tableCount)) },
+                tint = TileTint.WHEAT,
+                blob = BlobPlace.GridBottomStart,
                 art = { TileArt(painterResource(Res.drawable.home_table), rotation = 8f) },
             )
         }

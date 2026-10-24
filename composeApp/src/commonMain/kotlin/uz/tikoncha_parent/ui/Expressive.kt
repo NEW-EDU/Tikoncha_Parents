@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.ui
 
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.animation.core.animateDpAsState
@@ -52,8 +53,14 @@ fun expressiveButtonShapes(rest: Shape? = null): ButtonShapes {
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-fun Modifier.expressivePress(interactionSource: InteractionSource, pressedScale: Float = 0.97f): Modifier {
+fun Modifier.expressivePress(
+    interactionSource: InteractionSource,
+    pressedScale: Float = 0.97f,
+    /** Bosilgan zahoti taktil zarba ([Haptics]) — student ilovasidagi tugmalar kabi. */
+    haptic: Boolean = true,
+): Modifier {
     val pressed by interactionSource.collectIsPressedAsState()
+    if (haptic) LaunchedEffect(pressed) { if (pressed) Haptics.tap() }
     val scale by animateFloatAsState(
         targetValue = if (pressed) pressedScale else 1f,
         animationSpec = MaterialTheme.motionScheme.fastSpatialSpec(),
@@ -72,12 +79,13 @@ fun Modifier.expressiveCard(
     color: Color,
     shape: Shape = RoundedCornerShape(LargeCardCornerRadius),
     debounceMs: Long = 500L,
+    haptic: Boolean = true,
     onClick: () -> Unit,
 ): Modifier {
     val source = remember { MutableInteractionSource() }
     var lastClick by remember { mutableLongStateOf(0L) }
     return this
-        .expressivePress(source)
+        .expressivePress(source, haptic = haptic)
         .clip(shape)
         .background(color, shape)
         .clickable(interactionSource = source, indication = null) {
@@ -111,6 +119,7 @@ fun Modifier.expressiveSegment(
     /** Tanlangan element — barcha burchaklari katta (M3E: tanlov shakl bilan ham bildiriladi). */
     selected: Boolean = false,
     debounceMs: Long = 500L,
+    haptic: Boolean = true,
     onClick: () -> Unit,
 ): Modifier {
     val source = remember { MutableInteractionSource() }
@@ -127,7 +136,7 @@ fun Modifier.expressiveSegment(
         RoundedCornerShape(topStart = lead, topEnd = lead, bottomEnd = trail, bottomStart = trail)
     }
     return this
-        .expressivePress(source, pressedScale = 0.985f)
+        .expressivePress(source, pressedScale = 0.985f, haptic = haptic)
         .clip(shape)
         .background(color, shape)
         .clickable(interactionSource = source, indication = null) {

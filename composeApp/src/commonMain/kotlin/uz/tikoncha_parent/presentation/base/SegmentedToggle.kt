@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.animation.animateColorAsState
@@ -119,6 +120,7 @@ fun SegmentedToggle(
                             indication = null,
                             interactionSource = remember { MutableInteractionSource() }
                         ) {
+                            Haptics.tick()
                             onOptionSelected(index)
                         },
                     verticalAlignment = Alignment.CenterVertically,

@@ -74,6 +74,8 @@ class SplashScreen : Screen {
                         "chat" -> ChatScreen()
                         "children" -> ChildrenSelectScreen()
                         "theme" -> uz.tikoncha_parent.presentation.profile.settings.theme.ThemeScreen()
+                        "settings" -> uz.tikoncha_parent.presentation.profile.settings.SettingsScreen()
+                        "haptics" -> uz.tikoncha_parent.presentation.profile.settings.haptics.HapticsScreen()
                         "map" -> uz.tikoncha_parent.presentation.tracking.TrackingScreen()
                         "language" -> uz.tikoncha_parent.presentation.profile.language.LanguageScreen()
                         "personal" -> uz.tikoncha_parent.presentation.profile.personal_information.PersonalInformationScreen()

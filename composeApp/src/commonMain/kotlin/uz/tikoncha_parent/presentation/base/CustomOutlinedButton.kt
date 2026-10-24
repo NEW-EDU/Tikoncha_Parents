@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import uz.tikoncha_parent.ui.expressiveButtonShapes
 import androidx.compose.foundation.shape.CircleShape
@@ -56,6 +57,7 @@ fun CustomOutlinedButton(
 
     OutlinedButton(
         onClick = onClick,
+        interactionSource = rememberHapticSource(),
         shapes = expressiveButtonShapes(shape),
         modifier = modifier
             .height(ButtonDefaults.MediumContainerHeight),

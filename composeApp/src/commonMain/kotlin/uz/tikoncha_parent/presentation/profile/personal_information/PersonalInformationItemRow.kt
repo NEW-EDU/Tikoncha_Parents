@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.personal_information
 
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,11 +34,13 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 /** Ma'lumot qatori — guruhlangan ro'yxat segmenti (bosilmaydi): tonal doirada ikonka, kichik xira sarlavha, qiymat. */
 @Composable
 fun PersonalInformationItemRow(
-    icon: DrawableResource,
+    icon: DrawableResource?,
     title: String,
     value: String?,
     segmentIndex: Int = 0,
     segmentCount: Int = 1,
+    /** [icon] o'rniga Material ikonka (masalan, email "@"). */
+    iconVector: ImageVector? = null,
 ) {
     val shape = segmentShape(segmentIndex, segmentCount)
     Row(
@@ -56,12 +59,20 @@ fun PersonalInformationItemRow(
                 .background(AppColors.icon.accentPrimary.copy(alpha = 0.14f)),
             contentAlignment = Alignment.Center,
         ) {
-            Icon(
-                painter = painterResource(icon),
-                contentDescription = null,
-                tint = AppColors.icon.accentPrimary,
-                modifier = Modifier.size(20.dp)
-            )
+            when {
+                iconVector != null -> Icon(
+                    imageVector = iconVector,
+                    contentDescription = null,
+                    tint = AppColors.icon.accentPrimary,
+                    modifier = Modifier.size(20.dp)
+                )
+                icon != null -> Icon(
+                    painter = painterResource(icon),
+                    contentDescription = null,
+                    tint = AppColors.icon.accentPrimary,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
         }
         Spacer(Modifier.width(14.dp))
         Column(modifier = Modifier.weight(1f)) {

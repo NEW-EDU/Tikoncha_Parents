@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.onboarding
 
+import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -181,7 +182,7 @@ internal fun RulesIllustration(p: Float, modifier: Modifier = Modifier) {
                 val enter = easeOut(stage(p, 0.04f + i * 0.08f, 0.30f + i * 0.08f))
                 val on = stage(p, 0.42f + i * 0.16f, 0.52f + i * 0.16f)
                 val switched = on >= 1f
-                LaunchedEffect(switched) { if (switched) haptic.performHapticFeedback(HapticFeedbackType.ToggleOn) }
+                LaunchedEffect(switched) { if (switched) Haptics.toggle() }
                 Row(
                     Modifier
                         .fillMaxWidth()
@@ -259,7 +260,7 @@ internal fun MapIllustration(p: Float, modifier: Modifier = Modifier) {
     val pulse by rememberInfiniteTransition().animateFloat(0f, 1f, infiniteRepeatable(tween(1800, easing = LinearEasing)))
     val drop = stage(p, 0.30f, 0.62f)
     val landed = drop >= 1f
-    LaunchedEffect(landed) { if (landed) haptic.performHapticFeedback(HapticFeedbackType.Confirm) }
+    LaunchedEffect(landed) { if (landed) Haptics.tap() }
     val schoolLabel = stringResource(Res.string.maktab)
 
     Box(modifier.clip(RoundedCornerShape(28.dp)).border(1.dp, Night.cardBorder, RoundedCornerShape(28.dp))) {
@@ -335,7 +336,7 @@ internal fun ChatIllustration(p: Float, modifier: Modifier = Modifier) {
     val haptic = LocalHapticFeedback.current
     val press = stage(p, 0.74f, 0.84f)
     val pressed = press >= 1f
-    LaunchedEffect(pressed) { if (pressed) haptic.performHapticFeedback(HapticFeedbackType.Confirm) }
+    LaunchedEffect(pressed) { if (pressed) Haptics.tap() }
 
     Column(modifier, verticalArrangement = Arrangement.spacedBy(12.dp)) {
         // Farzand xabari
@@ -406,7 +407,7 @@ internal fun TasksIllustration(p: Float, modifier: Modifier = Modifier) {
     val haptic = LocalHapticFeedback.current
     val check = stage(p, 0.38f, 0.56f)
     val done = check >= 1f
-    LaunchedEffect(done) { if (done) haptic.performHapticFeedback(HapticFeedbackType.Confirm) }
+    LaunchedEffect(done) { if (done) Haptics.tap() }
     val fly = stage(p, 0.56f, 0.92f)
     val coins = 120 + (20 * easeOut(stage(p, 0.70f, 0.95f))).roundToInt()
 
@@ -503,7 +504,7 @@ internal fun NotificationStack(p: Float, modifier: Modifier = Modifier) {
         items.forEachIndexed { i, (title, body) ->
             val t = stage(p, 0.10f + i * 0.18f, 0.40f + i * 0.18f)
             val arrived = t >= 1f
-            LaunchedEffect(arrived) { if (arrived) haptic.performHapticFeedback(HapticFeedbackType.SegmentTick) }
+            LaunchedEffect(arrived) { if (arrived) Haptics.tick() }
             Row(
                 Modifier
                     .fillMaxWidth()

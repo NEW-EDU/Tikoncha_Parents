@@ -15,7 +15,7 @@ actual fun HandleUpdateEffect(viewModel: UpdateViewModel) {
                 is UpdateEffect.StartUpdateFlow,
                 UpdateEffect.OpenAppStore -> {
                     val url = NSURL.URLWithString("itms-apps://itunes.apple.com/app/id6756965935")
-                    url?.let { UIApplication.sharedApplication.openURL(it) }
+                    url?.let { UIApplication.sharedApplication.openURL(it, emptyMap<Any?, Any?>(), null) }
                 }
             }
         }

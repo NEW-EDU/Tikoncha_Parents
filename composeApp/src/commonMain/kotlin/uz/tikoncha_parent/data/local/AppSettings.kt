@@ -40,6 +40,7 @@ object AppSettings {
     private const val KEY_HOME_SNAPSHOTS = "homeSnapshots"
     private const val KEY_LAST_CHILD_LOCATION = "lastChildLocation"
     private const val KEY_HOME_LAYOUT = "homeLayout"
+    private const val KEY_HAPTICS_LEVEL = "hapticsLevel"
 
     private const val KEY_USER_INFO = "userInfo"
     private const val KEY_CHILDREN = "children"
@@ -129,6 +130,11 @@ object AppSettings {
     var homeLayoutName: String
         get() = settings.getStringOrNull(KEY_HOME_LAYOUT) ?: "LIST"
         set(value) = settings.putString(KEY_HOME_LAYOUT, value)
+
+    /** Tebranish kuchi ("OFF" | "LIGHT" | "STANDARD" | "STRONG") — qurilma sozlamasi, logout'da o'chmaydi. */
+    var hapticsLevelName: String
+        get() = settings.getStringOrNull(KEY_HAPTICS_LEVEL) ?: "STRONG"
+        set(value) = settings.putString(KEY_HAPTICS_LEVEL, value)
 
     var showTikonchaTutorial: Boolean
         get() = settings.get(KEY_TIKONCHA_TUTORIAL) ?: true

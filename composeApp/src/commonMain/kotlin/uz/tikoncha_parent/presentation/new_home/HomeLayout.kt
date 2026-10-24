@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.tileBlob
+import uz.tikoncha_parent.ui.BlobPlace
+import uz.tikoncha_parent.ui.TileTint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.graphics.painter.Painter
@@ -74,13 +77,18 @@ fun RowScope.HomeGridTile(
     title: String,
     onClick: () -> Unit,
     subtitle: @Composable ColumnScope.() -> Unit = {},
+    /** Rasm ostidagi pastel doira (null — yo'q). */
+    tint: TileTint? = null,
+    blob: BlobPlace = BlobPlace.GridBottomEnd,
     art: @Composable BoxScope.() -> Unit,
 ) {
+    val blobColor = tint?.color()
     Box(
         modifier = Modifier
             .weight(1f)
             .fillMaxHeight()
-            .expressiveGridSegment(cell.row, cell.col, cell.rows, cell.cols, color = AppColors.section.tertiary, onClick = onClick),
+            .expressiveGridSegment(cell.row, cell.col, cell.rows, cell.cols, color = AppColors.section.tertiary, onClick = onClick)
+            .then(if (blobColor != null) Modifier.tileBlob(blobColor, blob) else Modifier),
     ) {
         art()
         Column(Modifier.fillMaxWidth().padding(start = 16.dp, end = 14.dp, top = 16.dp)) {

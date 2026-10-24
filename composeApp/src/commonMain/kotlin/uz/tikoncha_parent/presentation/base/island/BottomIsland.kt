@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.base.island
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -110,12 +111,16 @@ class IslandSpec(
     val picker: (() -> ChildPickerSpec?)? = null,
     val actions: (@Composable RowScope.() -> Unit)? = null,
     val content: (@Composable RowScope.() -> Unit)? = null,
+    /** Kontent tepasi (status bar ostida) yumaloqlansinmi — ro'yxat [CustomHeader] dan keyin darhol boshlansa. */
+    val roundTop: Boolean = true,
 )
 
 @Stable
 class IslandState {
     var spec by mutableStateOf<IslandSpec?>(null)
     var imeVisible by mutableStateOf(false)
+    /** Oroldan ochiladigan qatlam (farzand ro'yxati) — ekran ichida, orol ustida chiziladi va sahifa bilan siljiydi. */
+    var dropUp by mutableStateOf<(@Composable () -> Unit)?>(null)
     /** Layout bosqichida o'qiladi (kompozitsiyada emas) — shu kadrning o'zida to'g'ri. */
     val active: Boolean get() = spec != null && !imeVisible
 }
@@ -130,6 +135,7 @@ fun ScreenWithIsland(key: Any, content: @Composable () -> Unit) {
         Box(Modifier.fillMaxSize()) {
             content()
             IslandOverlay(state)
+            state.dropUp?.invoke()
         }
     }
 }
@@ -148,7 +154,7 @@ fun ProvideIsland(spec: IslandSpec?) {
  * Kontent pastidan orol uchun joy (orol ko'rinmasa — 0). `rememberScreenSystemBars` modifikatoriga qo'shilgan,
  * `navigationBarsPadding()` dan KEYIN keladi — shuning uchun [navBottom] ayiriladi.
  */
-fun Modifier.islandInset(state: IslandState?, reserved: Dp, navBottom: Dp): Modifier =
+fun Modifier.islandInset(state: IslandState?, reserved: Dp, navBottom: Dp, topEdge: Dp? = null): Modifier =
     if (state == null) this
     else this
         .layout { measurable, constraints ->
@@ -156,32 +162,63 @@ fun Modifier.islandInset(state: IslandState?, reserved: Dp, navBottom: Dp): Modi
             val placeable = measurable.measure(constraints.offset(vertical = -inset))
             layout(placeable.width, placeable.height + inset) { placeable.place(0, 0) }
         }
-        .clip(IslandEdgeShape(state))
+        .clip(IslandEdgeShape(state, topEdge))
 
-/**
- * Kontentning orol tomondagi qirrasi: tepasi to'g'ri, pastki chekkasi esa kartalar chizig'ida (yon tomondan
- * [EdgeInset]) [EdgeRadius] bilan yumaloqlanadi — aylantirilgan kartalar orol ostiga keskin kesilib emas,
- * Statistika'dagidek yumaloq bo'lib kiradi. Orol ko'rinmasa (klaviatura ochiq, orolsiz ekran) — oddiy to'rtburchak.
+/*
+ * Kontent chekkalari: aylantirilgan kartalar orol ostiga (pastda) va status bar ostiga (tepada) keskin to'g'ri
+ * chiziqda emas, kartalar chizig'ida (yon tomondan [EdgeInset]) [EdgeRadius] bilan yumaloqlanib kiradi —
+ * Statistika'dagidek. Orol ko'rinmasa (klaviatura ochiq, orolsiz ekran) — oddiy to'rtburchak.
  */
-private val EdgeInset = 16.dp
-private val EdgeRadius = 28.dp
+val EdgeInset = 16.dp
+val EdgeRadius = 28.dp
 
-private class IslandEdgeShape(private val state: IslandState) : Shape {
+/** Tepada: status bar + [CustomHeader] bo'shlig'i — ro'yxatlar shu yerdan boshlanadi. */
+val ContentTopGap = 8.dp
+
+private class IslandEdgeShape(private val state: IslandState, private val topEdge: Dp?) : Shape {
     override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline {
         if (!state.active) return Outline.Rectangle(size.toRect())
-        val r = with(density) { EdgeRadius.toPx() }.coerceAtMost(size.height / 2)
-        val inset = with(density) { EdgeInset.toPx() }.coerceAtMost(size.width / 4)
-        val path = Path().apply {
-            addRect(Rect(0f, 0f, size.width, size.height - r))
-            addRoundRect(
-                RoundRect(
-                    left = inset, top = 0f, right = size.width - inset, bottom = size.height,
-                    topLeftCornerRadius = CornerRadius.Zero, topRightCornerRadius = CornerRadius.Zero,
-                    bottomRightCornerRadius = CornerRadius(r, r), bottomLeftCornerRadius = CornerRadius(r, r),
-                )
+        val top = if (state.spec?.roundTop == true) topEdge?.let { with(density) { it.toPx() } } else null
+        return Outline.Generic(edgePath(size, density, top, roundBottom = true))
+    }
+}
+
+/**
+ * Ekran o'zi joylashtirgan ro'yxat uchun (tepasida qotirilgan sarlavha/tugmalar bo'lsa — Bosh sahifa, Vazifalar):
+ * ro'yxat chekkasini kartalar chizig'ida yumaloqlaydi.
+ */
+fun Modifier.roundedContentEdges(top: Boolean = true, bottom: Boolean = false): Modifier =
+    clip(ContentEdgeShape(top, bottom))
+
+private class ContentEdgeShape(private val top: Boolean, private val bottom: Boolean) : Shape {
+    override fun createOutline(size: Size, layoutDirection: LayoutDirection, density: Density): Outline =
+        Outline.Generic(edgePath(size, density, if (top) 0f else null, roundBottom = bottom))
+}
+
+/**
+ * [topY] — yumaloq tepa chekka (null — tepasi to'g'ri); undan yuqorisi to'liq kenglikda qoladi (status bar foni).
+ * O'rtasi to'liq kenglikda, yumaloq burchaklar faqat chekka oldidagi [EdgeRadius] balandlikda.
+ */
+private fun edgePath(size: Size, density: Density, topY: Float?, roundBottom: Boolean): Path {
+    val w = size.width
+    val h = size.height
+    val r = with(density) { EdgeRadius.toPx() }.coerceAtMost(h / 4)
+    val inset = with(density) { EdgeInset.toPx() }.coerceAtMost(w / 4)
+    val top = (topY ?: 0f).coerceIn(0f, h)
+    val bandTop = if (topY != null) top + r else 0f
+    val bandBottom = if (roundBottom) h - r else h
+    val topCorner = if (topY != null) CornerRadius(r, r) else CornerRadius.Zero
+    val bottomCorner = if (roundBottom) CornerRadius(r, r) else CornerRadius.Zero
+    return Path().apply {
+        if (top > 0f) addRect(Rect(0f, 0f, w, top))
+        if (bandBottom > bandTop) addRect(Rect(0f, bandTop, w, bandBottom))
+        addRoundRect(
+            RoundRect(
+                left = inset, top = top, right = w - inset, bottom = h,
+                topLeftCornerRadius = topCorner, topRightCornerRadius = topCorner,
+                bottomRightCornerRadius = bottomCorner, bottomLeftCornerRadius = bottomCorner,
             )
-        }
-        return Outline.Generic(path)
+        )
     }
 }
 
@@ -246,6 +283,7 @@ private fun BoxScope.IslandOverlay(state: IslandState) {
 fun IslandTitlePill(title: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick,
+        interactionSource = rememberHapticSource(),
         shapes = expressiveButtonShapes(),
         colors = ButtonDefaults.buttonColors(
             containerColor = AppColors.action.primary.copy(alpha = 0.14f),

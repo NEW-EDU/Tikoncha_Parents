@@ -1251,4 +1251,21 @@ This information is used only for these features and is not shared with third pa
     <string name="kecha_sarfladi">Spent yesterday</string>
     <string name="sana_sarfladi">Spent on %1$s</string>
     <string name="stat_no_usage_day">No phone use on this day yet</string>
+    <string name="kirish_usuli">Sign-in method</string>
+    <string name="google_hisobi">Google account</string>
+    <string name="apple_id">Apple ID</string>
+    <string name="email_label">Email</string>
+    <string name="email_yashirilgan_apple">Hidden by Apple</string>
+    <string name="apple_email_hidden_line">Apple ID · email hidden</string>
+    <string name="haptics_title">Haptics</string>
+    <string name="haptics_section">Vibration strength</string>
+    <string name="haptics_off">Off</string>
+    <string name="haptics_off_desc">No vibration on buttons</string>
+    <string name="haptics_light">Light</string>
+    <string name="haptics_light_desc">Subtle, barely there</string>
+    <string name="haptics_standard">Standard</string>
+    <string name="haptics_standard_desc">Balanced</string>
+    <string name="haptics_strong">Strong</string>
+    <string name="haptics_strong_desc">A crisp tap on every press</string>
+    <string name="haptics_footer">On button presses, selection changes and results. Pick one to feel it right away.</string>
 </resources>

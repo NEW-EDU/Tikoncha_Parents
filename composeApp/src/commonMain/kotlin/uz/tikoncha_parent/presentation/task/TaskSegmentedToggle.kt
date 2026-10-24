@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.task
 
+import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.semantics.semantics
@@ -73,7 +74,7 @@ fun TaskSegmentedToggle(
             val checked = index == selectedIndex
             ToggleButton(
                 checked = checked,
-                onCheckedChange = { if (!checked) onOptionSelected(index) },
+                onCheckedChange = { if (!checked) { Haptics.tick(); onOptionSelected(index) } },
                 modifier = Modifier
                     .weight(1f)
                     .semantics { role = Role.RadioButton },

@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.tileBlob
+import uz.tikoncha_parent.ui.BlobPlace
+import uz.tikoncha_parent.ui.TileTint
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.height
 import uz.tikoncha_parent.ui.HomeItemHeight
@@ -78,6 +81,7 @@ fun ChildProtectionCard(
             .fillMaxWidth()
             .height(HomeItemHeight)
             .expressiveSegment(segmentIndex, segmentCount, color = AppColors.section.tertiary) { onClick() }
+            .tileBlob(TileTint.MAUVE.color(), BlobPlace.RowEnd)
             .padding(horizontal = CardCornerPadding, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -172,6 +176,8 @@ fun RowScope.ChildProtectionGridTile(
         title = stringResource(Res.string.farzand_himoyasi),
         onClick = onClick,
         subtitle = { ProtectionStatusLines(level, hasChild, permissionOffCount, pendingRequestCount) },
+        tint = TileTint.MAUVE,
+        blob = BlobPlace.GridEnd,
         art = { TileArt(painterResource(level.shield), size = 136.dp, rotation = -8f) },
     )
 }

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.tracking
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -197,6 +198,7 @@ fun PersonLocationCard(
             Spacer(Modifier.width(8.dp))
             FilledTonalIconButton(
                 onClick = onClose,
+                interactionSource = rememberHapticSource(),
                 modifier = Modifier.size(40.dp),
                 shapes = IconButtonDefaults.shapes(),
                 colors = IconButtonDefaults.filledTonalIconButtonColors(
@@ -278,6 +280,7 @@ private fun IssueBlock(issue: PermissionIssue, onWatchVideo: () -> Unit) {
             Spacer(Modifier.height(4.dp))
             Button(
                 onClick = onWatchVideo,
+                interactionSource = rememberHapticSource(),
                 shapes = expressiveButtonShapes(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = AppColors.button.primary,
@@ -299,6 +302,7 @@ private fun IssueBlock(issue: PermissionIssue, onWatchVideo: () -> Unit) {
 private fun CardAction(text: String, icon: ImageVector, onClick: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClick,
+        interactionSource = rememberHapticSource(),
         shapes = expressiveButtonShapes(),
         colors = ButtonDefaults.buttonColors(
             containerColor = AppColors.action.primary.copy(alpha = 0.14f),

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.protection
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -678,6 +679,7 @@ private fun RequestButtons(r: ProtectionRequestUi) {
     ) {
         Button(
             onClick = r.onDeny,
+            interactionSource = rememberHapticSource(),
             enabled = !r.isProcessing,
             shapes = expressiveButtonShapes(),
             colors = ButtonDefaults.buttonColors(
@@ -693,6 +695,7 @@ private fun RequestButtons(r: ProtectionRequestUi) {
         }
         Button(
             onClick = r.onAllow,
+            interactionSource = rememberHapticSource(),
             enabled = !r.isProcessing,
             shapes = expressiveButtonShapes(),
             colors = ButtonDefaults.buttonColors(

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.language
 
+import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.foundation.layout.PaddingValues
 import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
 import androidx.compose.animation.AnimatedContent
@@ -144,7 +145,7 @@ fun LanguageUi(navigator: Navigator?) {
                         count = all.size,
                         onClick = {
                             if (lang != current) {
-                                haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                                Haptics.tick()
                                 controller.select(lang)
                             }
                         },

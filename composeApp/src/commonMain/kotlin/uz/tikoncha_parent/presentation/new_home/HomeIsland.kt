@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import tikoncha_parents.composeapp.generated.resources.parent_avatar_default
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.background
@@ -84,6 +85,7 @@ fun RowScope.HomeIslandContent(
 
     FilledTonalIconButton(
         onClick = onSupport,
+        interactionSource = rememberHapticSource(),
         modifier = Modifier.size(48.dp),
         shapes = IconButtonDefaults.shapes(),
         colors = IconButtonDefaults.filledTonalIconButtonColors(

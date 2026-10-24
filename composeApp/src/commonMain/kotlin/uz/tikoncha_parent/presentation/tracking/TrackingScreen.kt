@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.tracking
 
+import uz.tikoncha_parent.ui.rememberHapticSource
 import uz.tikoncha_parent.data.local.AppSettings
 import androidx.compose.foundation.background
 import androidx.compose.animation.AnimatedContent
@@ -138,6 +139,7 @@ class TrackingScreen : Screen {
         var showGpsDialog by remember { mutableStateOf(false) }
 
         val placeholderBitmap = imageResource(Res.drawable.profile_hedgehog_img)
+        val cancelText = stringResource(Res.string.bekor_qilish)
         val selfText = stringResource(Res.string.siz)
 
         // ⬇️ Self text'ni ScreenModel'ga uzatamiz
@@ -192,7 +194,7 @@ class TrackingScreen : Screen {
             onWatchVideo = { event(TrackingEvent.OpenYoutubeUrl(it)) },
             onOpenInMaps = { person ->
                 Logger.d("TrackingScreen", "person = $person")
-                person.location?.let { loc -> openInExternalMaps(loc.lat, loc.lon, person.name) }
+                person.location?.let { loc -> openInExternalMaps(loc.lat, loc.lon, person.name, cancelText) }
             },
             onShare = { person ->
                 Logger.d("TrackingScreen", "person = $person")
@@ -522,6 +524,7 @@ fun TrackingContent(
 private fun MapIslandButton(icon: ImageVector, onClick: () -> Unit, loading: Boolean = false) {
     FilledTonalIconButton(
         onClick = onClick,
+        interactionSource = rememberHapticSource(),
         modifier = Modifier.size(48.dp),
         shapes = IconButtonDefaults.shapes(),
         colors = IconButtonDefaults.filledTonalIconButtonColors(

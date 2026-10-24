@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.tileBlob
+import uz.tikoncha_parent.ui.BlobPlace
+import uz.tikoncha_parent.ui.TileTint
 import uz.tikoncha_parent.ui.SegmentGap
 import uz.tikoncha_parent.ui.expressiveSegment
 import androidx.compose.ui.text.font.FontWeight
@@ -50,6 +53,11 @@ fun NewHomeItem(
                     .fillMaxWidth()
                     .height(HomeItemHeight)
                     .expressiveSegment(firstIndex + i, total, color = AppColors.section.tertiary) { onSettingSelected(selection) }
+                    // Rasm ostidagi pastel doira
+                    .tileBlob(
+                        (if (selection == HomeSelectionItem.XARITA) TileTint.SAGE else TileTint.PEACH).color(),
+                        BlobPlace.RowEnd,
+                    )
                     .padding(horizontal = 20.dp, vertical = 8.dp),
                 contentAlignment = Alignment.Center
             ) {
