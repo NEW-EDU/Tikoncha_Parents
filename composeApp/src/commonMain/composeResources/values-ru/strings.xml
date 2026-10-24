@@ -1275,4 +1275,6 @@
     <string name="haptics_strong">Сильная</string>
     <string name="haptics_strong_desc">Чёткий отклик на каждое нажатие</string>
     <string name="haptics_footer">При нажатии кнопок, смене выбора и результатах. Выберите — и сразу почувствуете.</string>
+    <string name="muhimligi">Важность</string>
+    <string name="vazifa_muddati">Срок</string>
 </resources>

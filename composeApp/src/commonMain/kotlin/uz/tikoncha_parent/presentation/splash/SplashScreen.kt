@@ -70,6 +70,7 @@ class SplashScreen : Screen {
                         "statistic" -> StatisticScreen()
                         "policy" -> PolicyListScreen()
                         "task" -> TaskScreen()
+                        "createtask" -> uz.tikoncha_parent.presentation.task.create_task.CreateTaskScreen()
                         "protection" -> ProtectionScreen()
                         "chat" -> ChatScreen()
                         "children" -> ChildrenSelectScreen()

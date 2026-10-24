@@ -343,7 +343,10 @@ class ChatRoomViewModel(
 
         val replyToMessage = state.value.replyToMessage
 
-        val optimisticTs = DateTimeUtil.nowMillis()
+        // Yuborilayotgan xabar doim eng oxirida turadi: telefon soati server soatidan orqada bo'lsa,
+        // telefon vaqti bilan u avvalgi (server vaqtli) xabarlar ustiga tushib qolardi.
+        val newestKnown = state.value.allMessages.maxOfOrNull { it.createdAt } ?: 0L
+        val optimisticTs = maxOf(DateTimeUtil.nowMillis(), newestKnown + 1)
         val optimistic = buildOptimisticTextMessage(
             text = text,
             clientMsgId = clientMsgId,

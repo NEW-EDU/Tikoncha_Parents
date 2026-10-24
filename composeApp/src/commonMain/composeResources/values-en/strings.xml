@@ -1268,4 +1268,6 @@ This information is used only for these features and is not shared with third pa
     <string name="haptics_strong">Strong</string>
     <string name="haptics_strong_desc">A crisp tap on every press</string>
     <string name="haptics_footer">On button presses, selection changes and results. Pick one to feel it right away.</string>
+    <string name="muhimligi">Priority</string>
+    <string name="vazifa_muddati">Deadline</string>
 </resources>

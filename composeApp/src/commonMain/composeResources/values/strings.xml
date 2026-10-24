@@ -1278,4 +1278,6 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="haptics_strong">Kuçli</string>
     <string name="haptics_strong_desc">Har bosişda aniq zarba</string>
     <string name="haptics_footer">Tugma bosilganda, tanlov özgarganda va natijalarda. Tanlaş bilan darhol sinab köring.</string>
+    <string name="muhimligi">Muhimligi</string>
+    <string name="vazifa_muddati">Muddati</string>
 </resources>
