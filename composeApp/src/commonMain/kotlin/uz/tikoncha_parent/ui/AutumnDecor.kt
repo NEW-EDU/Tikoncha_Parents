@@ -11,22 +11,16 @@ import uz.tikoncha_parent.ui.theme.rememberIsDarkTheme
 /*
  * "Kuz" bezagi — ko'zga yumshoq, iliq:
  *  • ekran foni — sezilar-sezilmas jigarrang/qaymoq gradient (tepasi ochroq);
- *  • bosh sahifa bloklarida 3D rasm ostida oddiy pastel doira: yorug' mavzuda — kuzgi pastel ranglar,
- *    qorong'ida — blokdan biroz ochroq jigarrang tuslar. 3D rasmlarning o'ziga tegilmaydi.
+ *  • bosh sahifa bloklarida 3D rasm ostida bitta rangdagi sokin doira ([tileBlobColor]).
+ *    3D rasmlarning o'ziga tegilmaydi.
  */
 
-/** Bosh sahifa bloklari uchun pastel tuslar (har blokka o'zi). */
-enum class TileTint(private val light: Long, private val dark: Long) {
-    BUTTER(0xFFF5E6BC, 0xFF4A3F2C),
-    PEACH(0xFFF8D9C5, 0xFF4D372C),
-    CLAY(0xFFF1D0C5, 0xFF4A332F),
-    SAGE(0xFFDCE5C9, 0xFF3D4031),
-    WHEAT(0xFFEDDDC4, 0xFF473A2E),
-    MAUVE(0xFFE7D6DC, 0xFF43353A);
-
-    @Composable
-    fun color(): Color = Color(if (rememberIsDarkTheme()) dark else light)
-}
+/**
+ * Rasm ostidagi doira rangi — barcha bloklarda BIR XIL (ota-ona ilovasi: sokin, bolalarcha rang-baranglik yo'q):
+ * yorug' mavzuda — iliq qum tusi, qorong'ida — blokdan biroz ochroq jigarrang.
+ */
+@Composable
+fun tileBlobColor(): Color = if (rememberIsDarkTheme()) Color(0xFF46382E) else Color(0xFFF4EADC)
 
 /** Doira qayerda turadi: markazi blok o'lchamiga nisbatan (0..1, chetdan chiqishi mumkin), radiusi — kenglikka nisbatan. */
 enum class BlobPlace(val cx: Float, val cy: Float, val r: Float) {

@@ -2,7 +2,7 @@ package uz.tikoncha_parent.presentation.new_home
 
 import uz.tikoncha_parent.ui.tileBlob
 import uz.tikoncha_parent.ui.BlobPlace
-import uz.tikoncha_parent.ui.TileTint
+import uz.tikoncha_parent.ui.tileBlobColor
 import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.graphics.painter.Painter
@@ -77,12 +77,12 @@ fun RowScope.HomeGridTile(
     title: String,
     onClick: () -> Unit,
     subtitle: @Composable ColumnScope.() -> Unit = {},
-    /** Rasm ostidagi pastel doira (null — yo'q). */
-    tint: TileTint? = null,
+    /** Rasm ostida sokin doira bo'lsinmi. */
+    blobbed: Boolean = false,
     blob: BlobPlace = BlobPlace.GridBottomEnd,
     art: @Composable BoxScope.() -> Unit,
 ) {
-    val blobColor = tint?.color()
+    val blobColor = if (blobbed) tileBlobColor() else null
     Box(
         modifier = Modifier
             .weight(1f)

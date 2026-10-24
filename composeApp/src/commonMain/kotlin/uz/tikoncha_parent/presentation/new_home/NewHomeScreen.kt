@@ -7,7 +7,7 @@ import androidx.compose.ui.text.SpanStyle
 import uz.tikoncha_parent.ui.autumnBackground
 import uz.tikoncha_parent.ui.tileBlob
 import uz.tikoncha_parent.ui.BlobPlace
-import uz.tikoncha_parent.ui.TileTint
+import uz.tikoncha_parent.ui.tileBlobColor
 import uz.tikoncha_parent.ui.rememberHapticSource
 import uz.tikoncha_parent.presentation.base.island.roundedContentEdges
 import kotlinx.datetime.minus
@@ -392,7 +392,7 @@ fun NewHomeUi(
                                         navigator?.push(TaskScreen())
                                     }
                                 }
-                                .tileBlob(TileTint.BUTTER.color(), BlobPlace.RowEnd)
+                                .tileBlob(tileBlobColor(), BlobPlace.RowEnd)
                                 .padding(horizontal = CardCornerPadding, vertical = HomeItemVerticalPadding),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -480,7 +480,7 @@ fun NewHomeUi(
                                         navigator?.push(PolicyListScreen())
                                     }
                                 }
-                                .tileBlob(TileTint.WHEAT.color(), BlobPlace.RowEnd)
+                                .tileBlob(tileBlobColor(), BlobPlace.RowEnd)
                                 .padding(horizontal = CardCornerPadding, vertical = HomeItemVerticalPadding),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -607,7 +607,7 @@ private fun HomeGridBlocks(
                 title = stringResource(HomeSelectionItem.SIHBAT.title),
                 onClick = onChat,
                 subtitle = { HomeGridSubtitle(stringResource(HomeSelectionItem.SIHBAT.subtitle)) },
-                tint = TileTint.PEACH,
+                blobbed = true,
                 blob = BlobPlace.GridBottomStart,
                 art = { TileArt(painterResource(HomeSelectionItem.SIHBAT.iconId), rotation = 10f) },
             )
@@ -616,7 +616,7 @@ private fun HomeGridBlocks(
                 title = stringResource(Res.string.topshiriqlar),
                 onClick = { guard(onTasks) },
                 subtitle = { HomeGridSubtitle(stringResource(Res.string.faol_vazifa, taskCount)) },
-                tint = TileTint.BUTTER,
+                blobbed = true,
                 blob = BlobPlace.GridBottomEnd,
                 art = { TileArt(painterResource(Res.drawable.home_task), rotation = -8f) },
             )
@@ -627,7 +627,7 @@ private fun HomeGridBlocks(
                 title = stringResource(HomeSelectionItem.XARITA.title),
                 onClick = onMap,
                 subtitle = { HomeGridSubtitle(stringResource(HomeSelectionItem.XARITA.subtitle)) },
-                tint = TileTint.SAGE,
+                blobbed = true,
                 blob = BlobPlace.GridBottomStart,
                 art = { TileArt(painterResource(HomeSelectionItem.XARITA.iconId), rotation = -6f) },
             )
@@ -653,7 +653,7 @@ private fun HomeGridBlocks(
                 title = stringResource(Res.string.cheklovlar),
                 onClick = { guard(onRestrictions) },
                 subtitle = { HomeGridSubtitle(pluralStringResource(Res.plurals.apps_restricted, tableCount, tableCount)) },
-                tint = TileTint.WHEAT,
+                blobbed = true,
                 blob = BlobPlace.GridBottomStart,
                 art = { TileArt(painterResource(Res.drawable.home_table), rotation = 8f) },
             )
