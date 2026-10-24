@@ -61,8 +61,22 @@ class PolicyListViewModel(
     private val childPaidStatus: ChildPaidStatusUseCase,
 ) : ScreenModel {
 
-    private val _state = MutableStateFlow(PolicyListState())
+    // Birinchi kadrdanoq saqlangan farzandlar va oxirgi tablar bilan — "Farzand qo'shish" / 2 ta tab "lip" etmasin
+    private val _state = MutableStateFlow(
+        AppSettings.selectedChild.let { selected ->
+            PolicyListState(
+                children = AppSettings.children,
+                selectedChild = selected,
+                tabs = selected?.userId?.let(::rememberedTabs) ?: listOf(PolicyTab.TEMPLATES, PolicyTab.MINE),
+            )
+        }
+    )
     val state = _state.asStateFlow()
+
+    /** Server javobi kelguncha tablar qisqarmaydi (kesh bo'sh/eski bo'lishi mumkin); keyin — server bo'yicha. */
+    private var serverFresh = false
+    private var computedTabs: List<PolicyTab> = emptyList()
+    private var firstLoad = true
 
     private val _effect = Channel<PolicyListEffect>(Channel.BUFFERED)
     val effect = _effect.receiveAsFlow()
@@ -129,10 +143,20 @@ class PolicyListViewModel(
 
     // ═══ Farzand ═══════════════════════════════════════════════
 
+    init {
+        // Kesh darhol o'qiladi (LaunchedEffect'ni — birinchi kadrdan keyingi — kutmaydi)
+        _state.value.selectedChild?.let { observe(it.userId) }
+    }
+
     private fun load() {
         val selected = AppSettings.selectedChild
-        _state.update { it.copy(children = AppSettings.children, selectedChild = selected) }
-        if (selected != null && dataJob?.isActive != true) observe(selected.userId) else selected?.let { refresh(it.userId, pull = false) }
+        _state.update { it.copy(children = AppSettings.children.ifEmpty { it.children }, selectedChild = selected ?: it.selectedChild) }
+        when {
+            selected != null && dataJob?.isActive != true -> observe(selected.userId)
+            firstLoad -> Unit // init'dagi observe allaqachon yangilayapti
+            else -> selected?.let { refresh(it.userId, pull = false) }
+        }
+        firstLoad = false
         screenModelScope.launch {
             val list = childRepository.children().getOrNull() ?: return@launch
             _state.update { it.copy(children = list) }
@@ -145,12 +169,20 @@ class PolicyListViewModel(
         mineBeforeCreate = null
         AppSettings.selectedChildId = child.userId
         AppSettings.selectedChild = child
-        _state.update { PolicyListState(children = it.children, selectedChild = child, tab = it.tab) }
+        _state.update {
+            PolicyListState(
+                children = it.children,
+                selectedChild = child,
+                tab = it.tab,
+                tabs = rememberedTabs(child.userId) ?: listOf(PolicyTab.TEMPLATES, PolicyTab.MINE),
+            )
+        }
         observe(child.userId)
     }
 
     private fun observe(childId: String) {
         dataJob?.cancel()
+        serverFresh = false
         paid.value = childPaidStatus(childId)
         location.value = null
         dataJob = screenModelScope.launch {
@@ -174,7 +206,12 @@ class PolicyListViewModel(
                     lastLng = loc?.second,
                 )
             }.collect { input ->
-                _state.update { input.reduce(it) }
+                _state.update { prev ->
+                    val next = input.reduce(prev)
+                    computedTabs = next.tabs
+                    val tabs = if (serverFresh) next.tabs else stableTabs(prev.tabs, next.tabs)
+                    next.copy(tabs = tabs, tab = if (prev.tab in tabs) prev.tab else next.tab)
+                }
                 showNewMine()
             }
         }
@@ -193,6 +230,7 @@ class PolicyListViewModel(
         if (pull) _state.update { it.copy(isRefreshing = true) }
         screenModelScope.launch {
             val res = refreshPolicies(childId, force = true)
+            if (res !is Outcome.Failure) settleTabs(childId)
             _state.update {
                 it.copy(isRefreshing = false, error = if (pull && res is Outcome.Failure) res else it.error)
             }
@@ -205,6 +243,15 @@ class PolicyListViewModel(
             if (lat != null && lng != null) location.value = lat to lng
         }
         refreshPaid(childId)
+    }
+
+    /** Server ma'lumoti keldi: tablar endi aniq — saqlanadi (keyingi ochilishda shu bilan boshlanadi). */
+    private fun settleTabs(childId: String) {
+        if (childId != this.childId) return
+        serverFresh = true
+        val tabs = computedTabs.ifEmpty { _state.value.tabs }
+        AppSettings.setPolicyTabs(childId, tabs.joinToString(",") { it.name })
+        _state.update { it.copy(tabs = tabs, tab = if (it.tab in tabs) it.tab else PolicyTab.TEMPLATES) }
     }
 
     private fun refreshPaid(childId: String) {
@@ -274,6 +321,14 @@ class PolicyListViewModel(
             }
         }
     }
+
+    private fun rememberedTabs(childId: String): List<PolicyTab>? =
+        AppSettings.policyTabs(childId)?.split(',')?.mapNotNull { n -> PolicyTab.entries.firstOrNull { it.name == n } }
+            ?.takeIf { it.isNotEmpty() }
+
+    /** Kesh bosqichida: ko'rsatilgan tablar yo'qolmaydi, yangilari qo'shiladi (tartib — enum bo'yicha). */
+    private fun stableTabs(shown: List<PolicyTab>, computed: List<PolicyTab>): List<PolicyTab> =
+        PolicyTab.entries.filter { it in shown || it in computed }
 
     companion object {
         const val KEY_PROTECTION = "protection"

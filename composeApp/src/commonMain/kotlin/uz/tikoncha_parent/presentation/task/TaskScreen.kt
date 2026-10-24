@@ -1,6 +1,5 @@
 package uz.tikoncha_parent.presentation.task
 
-import uz.tikoncha_parent.presentation.base.island.roundedContentEdges
 import uz.tikoncha_parent.presentation.base.island.IslandFabSpace
 import uz.tikoncha_parent.presentation.base.island.IslandFab
 import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
@@ -299,8 +298,7 @@ fun TaskUi(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f)
-                    .roundedContentEdges(),
+                    .weight(1f),
                     state = listState,
                     contentPadding = PaddingValues(
                         start = ContainerPadding,

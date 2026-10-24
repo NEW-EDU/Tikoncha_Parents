@@ -131,6 +131,10 @@ object AppSettings {
         get() = settings.getStringOrNull(KEY_HOME_LAYOUT) ?: "LIST"
         set(value) = settings.putString(KEY_HOME_LAYOUT, value)
 
+    /** Jadvallar ekranidagi oxirgi tablar to'plami (farzand bo'yicha) — ochilganda tablar "sakramasin". */
+    fun policyTabs(childId: String): String? = settings.getStringOrNull("policyTabs_$childId")
+    fun setPolicyTabs(childId: String, value: String) = settings.putString("policyTabs_$childId", value)
+
     /** Tebranish kuchi ("OFF" | "LIGHT" | "STANDARD" | "STRONG") — qurilma sozlamasi, logout'da o'chmaydi. */
     var hapticsLevelName: String
         get() = settings.getStringOrNull(KEY_HAPTICS_LEVEL) ?: "STRONG"
