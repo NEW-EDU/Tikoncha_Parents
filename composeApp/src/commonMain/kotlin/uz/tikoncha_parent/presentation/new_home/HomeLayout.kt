@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.homeSubtitleColor
 import uz.tikoncha_parent.ui.homeTileColor
 import uz.tikoncha_parent.ui.tileBlob
 import uz.tikoncha_parent.ui.BlobPlace
@@ -120,7 +121,7 @@ fun BoxScope.TileArt(painter: Painter, size: Dp = 148.dp, rotation: Float = -10f
 }
 /** Panjara katagining kichik, xira izohi. */
 @Composable
-fun HomeGridSubtitle(text: String, color: androidx.compose.ui.graphics.Color = AppColors.text.secondary) {
+fun HomeGridSubtitle(text: String, color: androidx.compose.ui.graphics.Color = homeSubtitleColor()) {
     Text(
         text = text,
         style = AppTypography.titleSmMedium,

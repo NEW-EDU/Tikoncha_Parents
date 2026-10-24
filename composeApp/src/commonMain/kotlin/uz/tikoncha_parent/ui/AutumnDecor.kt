@@ -24,6 +24,10 @@ fun homeTileColor(): Color = if (rememberIsDarkTheme()) Color(0xFF42362E) else A
 @Composable
 fun tileBlobColor(): Color = if (rememberIsDarkTheme()) Color(0xFF574436) else Color(0xFFF2E5D3)
 
+/** Bosh sahifa bloklaridagi izoh matni (namunada — iliq qaymoq rang). */
+@Composable
+fun homeSubtitleColor(): Color = if (rememberIsDarkTheme()) Color(0xFFF3E1CF) else AppColors.text.secondary
+
 /** Bosh sahifadagi kichik doira tugma (video) foni. */
 @Composable
 fun homeChipColor(): Color = if (rememberIsDarkTheme()) Color(0xFF49392D) else AppColors.bg.surfaceTertiary
@@ -45,11 +49,11 @@ fun homeBarColors(): List<Color> = if (rememberIsDarkTheme()) {
  * radiusi — kenglikka nisbatan. Panjara qiymatlari namunadagi doiralarga moslab o'lchangan — har blokda boshqacha.
  */
 enum class BlobPlace(val cx: Float, val cy: Float, val r: Float) {
-    GridChat(0.09f, 0.94f, 0.46f),
-    GridTasks(1.14f, 1.16f, 0.98f),
-    GridMap(0.83f, 1.05f, 0.63f),
-    GridProtection(0.99f, 0.90f, 0.63f),
-    GridRestrictions(-0.10f, 0.99f, 0.61f),
+    GridChat(0.10f, 0.93f, 0.45f),
+    GridTasks(1.13f, 1.09f, 0.91f),
+    GridMap(0.82f, 1.02f, 0.61f),
+    GridProtection(1.00f, 0.90f, 0.64f),
+    GridRestrictions(-0.11f, 1.00f, 0.63f),
 
     // Ro'yxat qatorlari (keng bloklar) — rasm ortida, lekin har birida boshqa joyda
     RowTasks(0.80f, 1.15f, 0.20f),

@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.ui.homeSubtitleColor
 import uz.tikoncha_parent.ui.homeBarColors
 import uz.tikoncha_parent.ui.homeChipColor
 import uz.tikoncha_parent.ui.homeNameAccent
@@ -409,7 +410,7 @@ fun NewHomeUi(
                                 )
                                 Text(
                                     text = stringResource(Res.string.faol_vazifa, taskCount),
-                                    color = AppColors.text.secondary,
+                                    color = homeSubtitleColor(),
                                     style = AppTypography.titleSmMedium,
                                 )
                             }
@@ -497,7 +498,7 @@ fun NewHomeUi(
                                 )
                                 Text(
                                     text = pluralStringResource(Res.plurals.apps_restricted, tableCount, tableCount),
-                                    color = AppColors.text.secondary,
+                                    color = homeSubtitleColor(),
                                     style = AppTypography.titleSmMedium,
                                 )
                             }
@@ -536,7 +537,7 @@ fun NewHomeUi(
                                 )
                                 Text(
                                     text = usageSubtitle(state.usageShownDay),
-                                    color = AppColors.text.secondary,
+                                    color = homeSubtitleColor(),
                                     style = AppTypography.titleSmMedium,
                                     maxLines = 2,
                                     overflow = TextOverflow.Ellipsis,
