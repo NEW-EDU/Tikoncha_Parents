@@ -1,5 +1,50 @@
 package uz.tikoncha_parent.presentation.task.create_task
 
+import uz.tikoncha_parent.ui.segmentShape
+import uz.tikoncha_parent.ui.rememberHapticSource
+import uz.tikoncha_parent.ui.expressiveSegment
+import uz.tikoncha_parent.ui.expressiveButtonShapes
+import uz.tikoncha_parent.ui.SegmentGap
+import uz.tikoncha_parent.ui.ContainerPadding
+import uz.tikoncha_parent.presentation.profile.coins.CoinNumberPicker
+import uz.tikoncha_parent.presentation.profile.ProfileSectionLabel
+import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
+import tikoncha_parents.composeapp.generated.resources.vazifa_tangalari
+import tikoncha_parents.composeapp.generated.resources.vazifa_muddati
+import tikoncha_parents.composeapp.generated.resources.tangachalar
+import tikoncha_parents.composeapp.generated.resources.ta
+import tikoncha_parents.composeapp.generated.resources.ozingiz_qoshing
+import tikoncha_parents.composeapp.generated.resources.o_rtacha
+import tikoncha_parents.composeapp.generated.resources.muhimligi
+import tikoncha_parents.composeapp.generated.resources.muhim
+import tikoncha_parents.composeapp.generated.resources.juda_muhim
+import tikoncha_parents.composeapp.generated.resources.coin
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.alpha
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Button
+import androidx.compose.material.icons.rounded.Schedule
+import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.CalendarMonth
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
@@ -158,7 +203,7 @@ class CreateTaskScreen(
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun CreateTaskUI(
     navigator: Navigator?,
@@ -221,206 +266,332 @@ fun CreateTaskUI(
         }
     )
 
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .then(systemBars.modifier)
             .background(AppColors.bg.secondary)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .pointerInput(Unit) {
-                    detectTapGestures {
-                        focusManager.clearFocus()
-                        hidKeyboard()
-                    }
+            .imePadding()
+            .pointerInput(Unit) {
+                detectTapGestures {
+                    focusManager.clearFocus()
+                    hidKeyboard()
                 }
-        ) {
-
-            CustomHeader(
-                title = headerText,
-                showBackButton = true,
-                onBackClick = {
-                    event(CreateTaskEvent.OnReset)
-                    navigator?.pop()
-                }
-            )
-
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(CardCornerPadding)
-                    .verticalScroll(rememberScrollState())
-            ) {
-
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(AppColors.modal.primary, RoundedCornerShape(24.dp))
-                        .padding(12.dp)
-                ) {
-                    Text(
-                        text = stringResource(Res.string.vazifa_nomi),
-                        style = AppTypography.bodyMdMedium,
-                        color = AppColors.text.primary,
-                        modifier = Modifier.padding(start = 8.dp)
-                    )
-                    Space(8.dp)
-
-                    CustomTextField(
-                        value = state.title,
-                        style = AppTypography.titleSmMedium,
-                        shape = RoundedCornerShape(20.dp),
-                        label = stringResource(Res.string.vazifa_nomi),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(48.dp),
-                        onValueChange = {
-                            event(CreateTaskEvent.OnTitleChange(it))
-                        },
-                        keyboardOptions = KeyboardOptions(
-                            capitalization = KeyboardCapitalization.Sentences,
-                            autoCorrectEnabled = true,
-                            keyboardType = KeyboardType.Text,
-                            imeAction = ImeAction.Next
-                        )
-                    )
-                    Space(12.dp)
-
-                    Text(
-                        text = stringResource(Res.string.izoh_ixtiyoriy),
-                        style = AppTypography.bodyMdMedium,
-                        color = AppColors.text.primary,
-                        modifier = Modifier.padding(start = 8.dp)
-                    )
-                    Space(8.dp)
-
-                    CustomTextFieldTask(
-                        minLine = true,
-                        singleLine = false,
-                        hasBorder = true,
-                        value = state.desc,
-                        shape = RoundedCornerShape(20.dp),
-                        modifier = Modifier.fillMaxWidth().height(120.dp),
-                        label = stringResource(Res.string.vazifa_haqida_qisqacha_ma_lumot),
-                        onValueChange = {
-                            event(CreateTaskEvent.OnDescChange(it))
-                        }
-                    )
-                    Space(12.dp)
-
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth(0.65f)
-                        ) {
-                            Text(
-                                text = stringResource(Res.string.tugatish_sanasi),
-                                style = AppTypography.bodyMdMedium,
-                                color = AppColors.text.primary,
-                                modifier = Modifier.padding(start = 8.dp, bottom = 8.dp)
-                            )
-
-                            CustomSelectionButton(
-                                text = dateText,
-                                label = "--.--.----",
-                                showTrailingIcon = false,
-                                style = AppTypography.titleSmMedium,
-                                tint = AppColors.icon.secondary,
-                                shape = RoundedCornerShape(20.dp),
-                                painter = painterResource(Res.drawable.calendar_2),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(48.dp),
-                                onClick = {
-                                    showDialogData = true
-                                },
-                            )
-                        }
-                        Space(12.dp)
-
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth(1f)
-                        ) {
-                            Text(
-                                text = stringResource(Res.string.tugash_vaqti),
-                                style = AppTypography.bodyMdMedium,
-                                color = AppColors.text.primary,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                                modifier = Modifier.padding(start = 8.dp, bottom = 8.dp)
-                            )
-
-                            CustomSelectionButton(
-                                text = timeText,
-                                label = "--:--",
-                                tint = AppColors.icon.secondary,
-                                style = AppTypography.titleSmMedium,
-                                shape = RoundedCornerShape(20.dp),
-                                painter = painterResource(Res.drawable.time_square),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(48.dp),
-                                onClick = {
-                                    showDialogTime = true
-                                },
-                                showTrailingIcon = false,
-                            )
-                        }
-                    }
-                }
-                Space(16.dp)
-
-                ImportanceSelector(
-                    selected = state.importance,
-                    onSelect = {
-                        event(CreateTaskEvent.OnImportanceChange(it))
-                    }
-                )
-                Space(16.dp)
-
-                RewardCard(
-                    state = state,
-                    onEvent = event
-                )
-                Space(ButtonHeight + 24.dp)
             }
+    ) {
+        CustomHeader(
+            title = headerText,
+            showBackButton = true,
+            onBackClick = {
+                event(CreateTaskEvent.OnReset)
+                navigator?.pop()
+            }
+        )
+
+        // Bo'sh joy bo'lsa — pastga (bosh barmoqqa yaqin); klaviatura ochilsa — uning ustida
+        BottomAnchoredColumn(
+            modifier = Modifier.fillMaxWidth().weight(1f),
+            contentPadding = PaddingValues(start = ContainerPadding, end = ContainerPadding, top = 8.dp, bottom = 8.dp),
+        ) {
+            // ── Vazifa: nomi + izoh — bitta guruh
+            Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
+                TaskTextSegment(
+                    index = 0, count = 2,
+                    value = state.title,
+                    placeholder = stringResource(Res.string.vazifa_nomi),
+                    style = AppTypography.titleLgSemiBold,
+                    singleLine = true,
+                    onValueChange = { event(CreateTaskEvent.OnTitleChange(it)) },
+                )
+                TaskTextSegment(
+                    index = 1, count = 2,
+                    value = state.desc,
+                    placeholder = stringResource(Res.string.vazifa_haqida_qisqacha_ma_lumot),
+                    style = AppTypography.bodyLgRegular,
+                    singleLine = false,
+                    minHeight = 96.dp,
+                    onValueChange = { event(CreateTaskEvent.OnDescChange(it)) },
+                )
+            }
+
+            // ── Muddati: sana | vaqt — yonma-yon bog'langan
+            ProfileSectionLabel(stringResource(Res.string.vazifa_muddati))
+            Row(horizontalArrangement = Arrangement.spacedBy(SegmentGap)) {
+                PickerSegment(
+                    modifier = Modifier.weight(1.4f),
+                    index = 0, count = 2,
+                    icon = Icons.Rounded.CalendarMonth,
+                    label = stringResource(Res.string.tugatish_sanasi),
+                    value = state.date?.let { dateText },
+                    placeholder = "--.--.----",
+                    onClick = { showDialogData = true },
+                )
+                PickerSegment(
+                    modifier = Modifier.weight(1f),
+                    index = 1, count = 2,
+                    icon = Icons.Rounded.Schedule,
+                    label = stringResource(Res.string.tugash_vaqti),
+                    value = state.time?.let { timeText },
+                    placeholder = "--:--",
+                    onClick = { showDialogTime = true },
+                )
+            }
+
+            // ── Muhimligi: bog'langan uch tugma; rang — kichik nuqtada
+            ProfileSectionLabel(stringResource(Res.string.muhimligi))
+            Row(horizontalArrangement = Arrangement.spacedBy(SegmentGap)) {
+                val levels = listOf(ImportanceType.MEDIUM, ImportanceType.IMPORTANT, ImportanceType.MOST_IMPORTANT)
+                levels.forEachIndexed { i, level ->
+                    ImportanceSegment(
+                        modifier = Modifier.weight(1f),
+                        level = level,
+                        index = i,
+                        count = levels.size,
+                        selected = state.importance == level,
+                        onClick = { event(CreateTaskEvent.OnImportanceChange(level)) },
+                    )
+                }
+            }
+
+            // ── Mukofot: tangalar
+            RewardSection(state = state, event = event)
         }
 
-        Column(
+        // Davom etish — orol ustida, bosh barmoq yetadigan joyda (og'ir pastki panel o'rniga)
+        Button(
+            onClick = { navigator?.push(CreateTaskCheckScreen()) },
+            enabled = isFormValid,
+            interactionSource = rememberHapticSource(),
+            shapes = expressiveButtonShapes(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = AppColors.button.primary,
+                contentColor = AppColors.text.inverse,
+                disabledContainerColor = AppColors.action.primary.copy(alpha = 0.14f),
+                disabledContentColor = AppColors.text.tertiary,
+            ),
             modifier = Modifier
+                .padding(start = ContainerPadding, end = ContainerPadding, top = 4.dp, bottom = 8.dp)
                 .fillMaxWidth()
-                .bottomShadow(
-                    shape = RoundedCornerShape(
-                        topStart = ButtonCornerRadius,
-                        topEnd = ButtonCornerRadius
-                    ),
-                    color = AppColors.bg.secondary
-                )
-                .background(
-                    AppColors.bg.elevated,
-                    RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
-                )
-                .padding(horizontal = 20.dp, vertical = 12.dp)
-                .height(ButtonHeight)
-                .align(Alignment.BottomCenter)
+                .height(56.dp),
         ) {
-            CustomButton(
-                enabled = isFormValid,
-                modifier = Modifier.fillMaxWidth(),
-                text = stringResource(Res.string.davom_etish),
-                onClick = {
-                    navigator?.push(CreateTaskCheckScreen())
-                }
+            Text(stringResource(Res.string.davom_etish), style = AppTypography.titleMdSemiBold)
+        }
+    }
+}
+
+/** Matn maydoni — guruh elementi ichida, ramkasiz (placeholder — xira). */
+@Composable
+private fun TaskTextSegment(
+    index: Int,
+    count: Int,
+    value: String,
+    placeholder: String,
+    style: TextStyle,
+    singleLine: Boolean,
+    onValueChange: (String) -> Unit,
+    minHeight: Dp = 0.dp,
+) {
+    val shape = segmentShape(index, count)
+    BasicTextField(
+        value = value,
+        onValueChange = onValueChange,
+        singleLine = singleLine,
+        textStyle = style.copy(color = AppColors.text.primary),
+        cursorBrush = SolidColor(AppColors.action.primary),
+        keyboardOptions = KeyboardOptions(
+            capitalization = KeyboardCapitalization.Sentences,
+            autoCorrectEnabled = true,
+            keyboardType = KeyboardType.Text,
+            imeAction = if (singleLine) ImeAction.Next else ImeAction.Default,
+        ),
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = maxOf(minHeight, 64.dp))
+            .clip(shape)
+            .background(AppColors.bg.surface, shape),
+        decorationBox = { inner ->
+            Box(Modifier.padding(horizontal = 20.dp, vertical = 18.dp)) {
+                if (value.isEmpty()) Text(placeholder, style = style, color = AppColors.text.tertiary)
+                inner()
+            }
+        },
+    )
+}
+
+/** Sana / vaqt tanlash — tonal doiradagi ikonka, xira yorliq va qiymat. */
+@Composable
+private fun PickerSegment(
+    modifier: Modifier,
+    index: Int,
+    count: Int,
+    icon: ImageVector,
+    label: String,
+    value: String?,
+    placeholder: String,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = modifier
+            .heightIn(min = 72.dp)
+            .expressiveSegment(index, count, color = AppColors.bg.surface, horizontal = true, onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier.size(40.dp).clip(CircleShape).background(AppColors.action.primary.copy(alpha = 0.14f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(icon, contentDescription = null, tint = AppColors.icon.accentPrimary, modifier = Modifier.size(20.dp))
+        }
+        Spacer(Modifier.width(12.dp))
+        Column(Modifier.weight(1f)) {
+            Text(label, style = AppTypography.bodySmMedium, color = AppColors.text.tertiary, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(
+                text = value ?: placeholder,
+                style = AppTypography.titleMdSemiBold,
+                color = if (value != null) AppColors.text.primary else AppColors.text.tertiary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
         }
     }
 }
 
+/** Muhimlik darajasi — tanlangani tonal va to'liq yumaloq; ma'nosi kichik rangli nuqtada. */
+@Composable
+private fun ImportanceSegment(
+    modifier: Modifier,
+    level: ImportanceType,
+    index: Int,
+    count: Int,
+    selected: Boolean,
+    onClick: () -> Unit,
+) {
+    val (label, dot) = when (level) {
+        ImportanceType.MEDIUM -> stringResource(Res.string.o_rtacha) to AppColors.text.accentSuccess
+        ImportanceType.IMPORTANT -> stringResource(Res.string.muhim) to AppColors.text.accentWarning
+        ImportanceType.MOST_IMPORTANT -> stringResource(Res.string.juda_muhim) to AppColors.text.accentDanger
+        ImportanceType.NONE -> "" to AppColors.text.tertiary
+    }
+    Row(
+        modifier = modifier
+            .heightIn(min = 56.dp)
+            .expressiveSegment(
+                index, count,
+                color = if (selected) AppColors.action.primary.copy(alpha = 0.18f) else AppColors.bg.surface,
+                horizontal = true,
+                selected = selected,
+                debounceMs = 150L,
+                onClick = onClick,
+            )
+            .padding(horizontal = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        Box(Modifier.size(8.dp).clip(CircleShape).background(dot))
+        Spacer(Modifier.width(8.dp))
+        Text(
+            text = label,
+            style = AppTypography.titleSmSemiBold,
+            color = AppColors.text.primary,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+    }
+}
+
+/** Mukofot: tayyor miqdorlar (pill), o'z miqdori va jami — hammasi bitta oqimda. */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun RewardSection(state: CreateTaskState, event: (CreateTaskEvent) -> Unit) {
+    val available = state.availableCoins
+    val total = state.totalCoin
+    val enabled = available > 0
+    val maxExtra = (available - state.selectedChips.sum()).coerceAtLeast(0)
+
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 20.dp, bottom = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = stringResource(Res.string.tangachalar),
+            style = AppTypography.titleSmMedium,
+            color = AppColors.text.tertiary,
+            modifier = Modifier.weight(1f),
+        )
+        Image(painterResource(Res.drawable.coin), contentDescription = null, modifier = Modifier.size(16.dp))
+        Spacer(Modifier.width(6.dp))
+        Text(
+            text = "${state.remainingCoins} ${stringResource(Res.string.ta)}",
+            style = AppTypography.titleSmMedium,
+            color = AppColors.text.tertiary,
+        )
+    }
+
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        maxItemsInEachRow = 3,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        listOf(10, 25, 50, 100, 300, 500).forEach { amount ->
+            val selected = amount in state.selectedChips
+            val canSelect = enabled && (selected || total + amount <= available)
+            Row(
+                modifier = Modifier
+                    .weight(1f)
+                    .heightIn(min = 48.dp)
+                    .alpha(if (canSelect) 1f else 0.4f)
+                    .clip(CircleShape)
+                    .background(if (selected) AppColors.action.primary.copy(alpha = 0.18f) else AppColors.bg.surface)
+                    .clickable(enabled = canSelect, interactionSource = rememberHapticSource(), indication = null) {
+                        event(CreateTaskEvent.OnChipToggle(amount))
+                    }
+                    .padding(horizontal = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+            ) {
+                Image(painterResource(Res.drawable.coin), contentDescription = null, modifier = Modifier.size(20.dp))
+                Spacer(Modifier.width(6.dp))
+                Text("$amount", style = AppTypography.titleSmSemiBold, color = AppColors.text.primary)
+                if (selected) {
+                    Spacer(Modifier.width(6.dp))
+                    Icon(Icons.Rounded.Check, contentDescription = null, tint = AppColors.icon.accentPrimary, modifier = Modifier.size(16.dp))
+                }
+            }
+        }
+    }
+
+    Spacer(Modifier.height(SegmentGap * 3))
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 72.dp)
+            .alpha(if (enabled) 1f else 0.5f)
+            .clip(RoundedCornerShape(28.dp))
+            .background(AppColors.bg.surface)
+            .padding(start = 20.dp, end = 12.dp, top = 12.dp, bottom = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = stringResource(Res.string.ozingiz_qoshing),
+            style = AppTypography.titleMdSemiBold,
+            color = AppColors.text.primary,
+            modifier = Modifier.weight(1f),
+        )
+        CoinNumberPicker(
+            value = state.extraCoin,
+            max = maxExtra,
+            onValueChanged = { event(CreateTaskEvent.OnExtraCoinChange(it)) },
+        )
+    }
+    Text(
+        text = "${stringResource(Res.string.vazifa_tangalari)}: $total ${stringResource(Res.string.ta)}",
+        style = AppTypography.bodyMdMedium,
+        color = AppColors.text.secondary,
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 10.dp),
+    )
+}
 
 @Preview
 @Composable

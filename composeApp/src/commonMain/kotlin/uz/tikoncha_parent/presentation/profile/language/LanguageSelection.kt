@@ -53,11 +53,7 @@ fun LanguageSelection(
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    Image(
-                        painter = painterResource(language.iconId),
-                        contentDescription = null,
-                        modifier = Modifier.size(24.dp)
-                    )
+                    LanguageFlag(language, 24.dp)
                 }
 
                 Spacer(Modifier.width(12.dp))

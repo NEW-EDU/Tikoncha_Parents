@@ -56,6 +56,8 @@ kotlin {
     sourceSets {
 
         androidMain.dependencies {
+            // Google Play Billing — chet el foydalanuvchilari uchun PLUS (oilaviy, 3 tagacha farzand)
+            implementation("com.android.billingclient:billing-ktx:9.1.0")
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
 
@@ -201,8 +203,8 @@ android {
         applicationId = "uz.tikoncha.parent"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 27
-        versionName = "2.1.1"
+        versionCode = 28
+        versionName = "2.2.0"
         // Lokal backend bilan sinash (Paylov sandbox Mac'da):
         //   ./gradlew :composeApp:installRelease -Ptikoncha.api=http://127.0.0.1:8000  +  adb reverse tcp:8000 tcp:8000
         // Parametrsiz — odatdagidek api.tikoncha.uz
@@ -241,13 +243,6 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-            signingConfig = signingConfigs.getByName("debug")
-//            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {

@@ -1,5 +1,41 @@
 package uz.tikoncha_parent.presentation.profile.coins
 
+import androidx.compose.foundation.layout.Box
+import uz.tikoncha_parent.ui.tileBlobColor
+import uz.tikoncha_parent.ui.tileBlob
+import uz.tikoncha_parent.ui.rememberHapticSource
+import uz.tikoncha_parent.ui.homeTileColor
+import uz.tikoncha_parent.ui.expressiveSegment
+import uz.tikoncha_parent.ui.expressiveButtonShapes
+import uz.tikoncha_parent.ui.SegmentGap
+import uz.tikoncha_parent.ui.BlobPlace
+import uz.tikoncha_parent.presentation.profile.ProfileSectionLabel
+import uz.tikoncha_parent.presentation.profile.ProfileSectionItem
+import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
+import tikoncha_parents.composeapp.generated.resources.sizda_mavjud_tangachalar
+import tikoncha_parents.composeapp.generated.resources.coin
+import org.jetbrains.compose.resources.painterResource
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.draw.clip
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Button
+import androidx.compose.material.icons.rounded.Savings
+import androidx.compose.material.icons.automirrored.rounded.HelpOutline
+import androidx.compose.material.icons.Icons
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.Image
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.AnimatedVisibility
 import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
 import androidx.compose.animation.SharedTransitionDefaults
 import androidx.compose.foundation.background
@@ -104,7 +140,6 @@ fun CoinsUi(
     state: CoinsState,
     event: (CoinsEvent) -> Unit
 ) {
-    val borderColor = AppColors.border.tertiary
     var helpType by remember { mutableStateOf<CoinsHelpType?>(null) }
     val currentLocale = SharedTransitionDefaults
     var showDialog by remember { mutableStateOf(false) }
@@ -144,292 +179,269 @@ fun CoinsUi(
 
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.page,
-        navigationBarColor = AppColors.bg.surface
+        navigationBarColor = AppColors.bg.page,
     )
 
-    PullToRefreshBox(
-        isRefreshing = state.isRefreshing,
-        onRefresh = { event(CoinsEvent.PullRefresh) }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .then(systemBars.modifier)
+            .imePadding()
+            .background(AppColors.bg.page)
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .then(systemBars.modifier)
-                .imePadding()
-                .background(AppColors.bg.page)
+        CustomHeader(
+            title = stringResource(Res.string.tangachalar),
+            showBackButton = true,
+            onBackClick = { navigator?.pop() },
+            childPicker = ChildPickerSpec(
+                children = state.childrenList,
+                selected = state.selectedChild,
+                onSelect = { event(CoinsEvent.OnChildSelected(it)) },
+                onAddChild = { navigator?.push(AddChildScreen()) },
+            ),
+        )
+
+        PullToRefreshBox(
+            isRefreshing = state.isRefreshing,
+            onRefresh = { event(CoinsEvent.PullRefresh) },
+            modifier = Modifier.fillMaxWidth().weight(1f),
         ) {
-            CustomHeader(
-                title = stringResource(Res.string.tangachalar),
-                showBackButton = true,
-                onBackClick = {
-                    navigator!!.pop()
-                },
-                childPicker = ChildPickerSpec(
-                    children = state.childrenList,
-                    selected = state.selectedChild,
-                    onSelect = { event(CoinsEvent.OnChildSelected(it)) },
-                    onAddChild = { navigator?.push(AddChildScreen()) },
-                ),
-            )
-            Spacer(Modifier.height(12.dp))
-
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f)
-                    .padding(
-                        top = ContainerPadding,
-                        start = ContainerPadding,
-                        end = ContainerPadding
-                    )
-                    .verticalScroll(rememberScrollState())
+            // Bo'sh joy bo'lsa — pastga (bosh barmoqqa yaqin); paketlar va o'z miqdori — bitta sokin oqim
+            BottomAnchoredColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(start = ContainerPadding, end = ContainerPadding, top = 8.dp, bottom = 8.dp),
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(72.dp)
-                        .background(AppColors.bg.surface, RoundedCornerShape(24.dp))
-                        .padding(horizontal = 20.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = stringResource(Res.string.ozingiz_qoshing),
-                        color = AppColors.text.primary,
-                        style = AppTypography.titleMdMedium,
-                        modifier = Modifier
-                            .weight(1f)
+                CoinBalanceHero(coins = state.myCoins, known = state.coinsKnown)
+
+                ProfileSectionLabel(stringResource(Res.string.tavsiya_etilgan_paketlar))
+                val failure = state.error
+                if (failure != null && state.coinPackageList.isEmpty()) {
+                    ErrorRetryState(
+                        failure = failure,
+                        isRetrying = retrying || state.isLoading,
+                        onRetry = {
+                            retrying = true
+                            event(CoinsEvent.LoadCoinList)
+                        },
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp),
                     )
-
-                    CoinNumberPicker(
-                        value = state.coinsToBuy,
-                        onValueChanged = {
-                            event(CoinsEvent.OnCoinsChanged(it))
-                        }
-                    )
-                }
-                Spacer(Modifier.height(24.dp))
-
-                Text(
-                    text = stringResource(Res.string.tavsiya_etilgan_paketlar),
-                    color = AppColors.text.secondary,
-                    style = AppTypography.titleMdSemiBold
-                )
-                Spacer(Modifier.height(16.dp))
-
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    val failure = state.error
-                    if (failure != null && state.coinPackageList.isEmpty()) {
-                        ErrorRetryState(
-                            failure = failure,
-                            isRetrying = retrying || state.isLoading,
-                            onRetry = {
-                                retrying = true
-                                event(CoinsEvent.LoadCoinList)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 24.dp)
-                        )
-                    } else {
+                } else {
+                    Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                         state.coinPackageList.forEachIndexed { index, item ->
-                            CoinPackageItem(
-                                coinPackageUi = item,
-                                hasBorder = state.selectedPackageIndex == index,
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable {
-                                        event(CoinsEvent.OnPackageSelected(index))
-                                        navigator?.push(
-                                            CoinPurchaseScreen(
-                                                coins = item.coins,
-                                                totalPrice = item.price.toInt(),
-                                                discountPrice = item.discountedPrice.toInt()
-                                            )
+                            CoinPackageRow(
+                                pack = item,
+                                index = index,
+                                count = state.coinPackageList.size,
+                                onClick = {
+                                    event(CoinsEvent.OnPackageSelected(index))
+                                    navigator?.push(
+                                        CoinPurchaseScreen(
+                                            coins = item.coins,
+                                            totalPrice = item.price.toInt(),
+                                            discountPrice = item.discountedPrice.toInt(),
                                         )
-                                    }
+                                    )
+                                },
                             )
                         }
                     }
                 }
-                Spacer(Modifier.height(24.dp))
 
-                CoinQuestionItem(
-                    title = stringResource(Res.string.qanday_qilib_ishlatish),
-                    onClick = {
-                        helpType = CoinsHelpType.USE
-                    }
+                ProfileSectionLabel(stringResource(Res.string.ozingiz_qoshing))
+                CustomAmountRow(
+                    value = state.coinsToBuy,
+                    pricePerCoin = state.coinPrice,
+                    onValueChanged = { event(CoinsEvent.OnCoinsChanged(it)) },
                 )
-                Spacer(Modifier.height(8.dp))
 
-                CoinQuestionItem(
-                    title = stringResource(Res.string.qanday_qilib_ishlab_topish),
-                    onClick = {
-                        helpType = CoinsHelpType.EARN
-                    }
-                )
-                SpaceMedium()
+                Spacer(Modifier.height(20.dp))
+                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
+                    ProfileSectionItem(
+                        icon = rememberVectorPainter(Icons.AutoMirrored.Rounded.HelpOutline),
+                        title = stringResource(Res.string.qanday_qilib_ishlatish),
+                        onItemClick = { helpType = CoinsHelpType.USE },
+                        segmentIndex = 0,
+                        segmentCount = 2,
+                    )
+                    ProfileSectionItem(
+                        icon = rememberVectorPainter(Icons.Rounded.Savings),
+                        title = stringResource(Res.string.qanday_qilib_ishlab_topish),
+                        onItemClick = { helpType = CoinsHelpType.EARN },
+                        segmentIndex = 1,
+                        segmentCount = 2,
+                    )
+                }
             }
+        }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .simpleShadow(RoundedCornerShape(16.dp))
-                    .background(
-                        AppColors.bg.surface,
-                        shape = RoundedCornerShape(topEnd = 16.dp, topStart = 16.dp)
-                    )
-                    .drawWithContent {
-                        drawContent()
-                        val strokeWidth = 2.dp.toPx()
-                        val halfStroke = strokeWidth / 2f
-                        val cornerRadius = MainCornerRadius.toPx()
-                        val segments = 100 // ko'p bo'lsa, silliqroq
-
-                        // Chap burchak yoyi — 180°→270°, shaffofdan to'liq rangga
-                        repeat(segments) { i ->
-                            val progress =
-                                i.toFloat() / segments       // 0.0 → 1.0 (astar shaffof)
-                            val nextProgress = (i + 1f) / segments
-                            val midProgress = (progress + nextProgress) / 2f
-
-                            val alpha = midProgress                     // 0.0 → 1.0
-                            val width =
-                                strokeWidth * midProgress       // ingichkadan qalinlikka
-
-                            val startAngle = 180f + progress * 90f
-                            val sweepAngle = 90f / segments
-
-                            drawArc(
-                                color = borderColor.copy(alpha = alpha),
-                                startAngle = startAngle,
-                                sweepAngle = sweepAngle + 0.5f,         // overlap — bo'shliqsiz
-                                useCenter = false,
-                                topLeft = Offset(halfStroke, halfStroke),
-                                size = Size(
-                                    cornerRadius * 2 - strokeWidth,
-                                    cornerRadius * 2 - strokeWidth
-                                ),
-                                style = Stroke(width = width)
-                            )
-                        }
-
-                        // Yuqori to'g'ri chiziq — to'liq rang
-                        drawLine(
-                            color = borderColor,
-                            start = Offset(cornerRadius, halfStroke),
-                            end = Offset(size.width - cornerRadius, halfStroke),
-                            strokeWidth = strokeWidth
+        // O'z miqdori tanlansa — pastda to'lov paneli (orol ustida, bosh barmoq yetadigan joyda)
+        AnimatedVisibility(
+            visible = state.continueButtonEnabled,
+            enter = expandVertically(expandFrom = Alignment.Top) + fadeIn(),
+            exit = shrinkVertically(shrinkTowards = Alignment.Top) + fadeOut(),
+        ) {
+            CheckoutBar(
+                coins = state.coinsToBuy,
+                total = state.totalPrice,
+                onContinue = {
+                    navigator?.push(
+                        CoinPurchaseScreen(
+                            coins = state.coinsToBuy,
+                            totalPrice = state.totalPrice,
+                            discountPrice = state.coinPrice,
                         )
-
-                        // O'ng burchak yoyi — 270°→360°, to'liq rangdan shaffofga
-                        repeat(segments) { i ->
-                            val progress = i.toFloat() / segments       // 0.0 → 1.0
-                            val nextProgress = (i + 1f) / segments
-                            val midProgress = (progress + nextProgress) / 2f
-
-                            val alpha = 1f - midProgress                // 1.0 → 0.0
-                            val width =
-                                strokeWidth * (1f - midProgress) // qalindan ingichkaga
-
-                            val startAngle = 270f + progress * 90f
-                            val sweepAngle = 90f / segments
-
-                            drawArc(
-                                color = borderColor.copy(alpha = alpha),
-                                startAngle = startAngle,
-                                sweepAngle = sweepAngle + 0.5f,
-                                useCenter = false,
-                                topLeft = Offset(
-                                    size.width - cornerRadius * 2 + halfStroke,
-                                    halfStroke
-                                ),
-                                size = Size(
-                                    cornerRadius * 2 - strokeWidth,
-                                    cornerRadius * 2 - strokeWidth
-                                ),
-                                style = Stroke(width = width)
-                            )
-                        }
-                    }
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(top = 12.dp, start = 24.dp, end = 24.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = "${stringResource(Res.string.tangachalar)}:",
-                        color = AppColors.text.secondary,
-                        style = AppTypography.bodyMdMedium
                     )
-                    Text(
-                        text = stringResource(Res.string.tanga_s, state.coinsToBuy.toCurrency()),
-                        color = AppColors.text.secondary,
-                        style = AppTypography.bodyMdMedium
-                    )
-                }
-                Row(
-                    modifier = Modifier
-                        .padding(top = 5.dp, start = 24.dp, end = 24.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = "${stringResource(Res.string.narx)}:",
-                        color = AppColors.text.secondary,
-                        style = AppTypography.bodyMdMedium
-                    )
-                    Text(
-                        text = "${state.coinPrice.toCurrency()} UZS",
-                        color = AppColors.text.secondary,
-                        style = AppTypography.bodyMdMedium
-                    )
-                }
+                },
+            )
+        }
+    }
+}
 
-                Row(
-                    modifier = Modifier
-                        .padding(top = 12.dp, start = 24.dp, end = 24.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
+/** Ota-onaning tangalari: katta raqam, o'ngda tanga (ortida sokin doira — Bosh sahifadagidek). */
+@Composable
+private fun CoinBalanceHero(coins: Int, known: Boolean) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(28.dp))
+            .background(homeTileColor())
+            .tileBlob(tileBlobColor(), BlobPlace.RowChat)
+            .padding(start = 20.dp, end = 16.dp, top = 20.dp, bottom = 20.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(
+                text = stringResource(Res.string.sizda_mavjud_tangachalar),
+                style = AppTypography.titleSmMedium,
+                color = AppColors.text.tertiary,
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = if (known) stringResource(Res.string.tanga_s, coins.toCurrency()) else "—",
+                style = AppTypography.displaySmRegular.copy(fontWeight = FontWeight.Bold),
+                color = AppColors.text.primary,
+            )
+        }
+        Image(painter = painterResource(Res.drawable.coin), contentDescription = null, modifier = Modifier.size(64.dp))
+    }
+}
+
+/** Paket: tanga soni, eski narx (chizilgan) + chegirma, o'ngda yangi narx. Bosilsa — to'lov. */
+@Composable
+private fun CoinPackageRow(pack: CoinPackageUi, index: Int, count: Int, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 72.dp)
+            .expressiveSegment(index, count, color = AppColors.bg.surface, onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier.size(44.dp).clip(CircleShape).background(AppColors.action.primary.copy(alpha = 0.14f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Image(painter = painterResource(Res.drawable.coin), contentDescription = null, modifier = Modifier.size(26.dp))
+        }
+        Spacer(Modifier.width(14.dp))
+        Column(Modifier.weight(1f)) {
+            Text(
+                text = stringResource(Res.string.tanga_s, pack.coins.toCurrency()),
+                style = AppTypography.titleMdSemiBold,
+                color = AppColors.text.primary,
+                maxLines = 1,
+            )
+            if (pack.discountPercent > 0) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = "${stringResource(Res.string.tolov)}:",
-                        color = AppColors.text.primary,
-                        style = AppTypography.titleLgSemiBold
+                        text = pack.priceInString,
+                        style = AppTypography.bodySmMedium,
+                        color = AppColors.text.tertiary,
+                        textDecoration = TextDecoration.LineThrough,
+                        maxLines = 1,
                     )
+                    Spacer(Modifier.width(6.dp))
                     Text(
-                        text = "${state.totalPrice.toCurrency()} UZS",
+                        text = "−${pack.discountPercent}%",
+                        style = AppTypography.bodySmSemiBold,
                         color = AppColors.text.accentEmphasis,
-                        style = AppTypography.titleLgSemiBold
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .background(AppColors.action.primary.copy(alpha = 0.14f))
+                            .padding(horizontal = 7.dp, vertical = 1.dp),
                     )
                 }
-
-                CustomButton(
-                    enabled = state.continueButtonEnabled,
-                    text = stringResource(Res.string.davom_etish),
-                    onClick = {
-                        navigator?.push(
-                            CoinPurchaseScreen(
-                                coins = state.coinsToBuy,
-                                totalPrice = state.totalPrice,
-                                discountPrice = state.coinPrice
-                            )
-                        )
-                    },
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxWidth()
-                        .height(52.dp),
-                )
             }
+        }
+        Spacer(Modifier.width(10.dp))
+        Text(
+            text = pack.priceWithDiscountInString,
+            style = AppTypography.titleMdSemiBold,
+            color = AppColors.text.accentEmphasis,
+            maxLines = 1,
+        )
+    }
+}
+
+/** O'z miqdori: tanga narxi izohi va ± tanlagich — bitta blok. */
+@Composable
+private fun CustomAmountRow(value: Int, pricePerCoin: Int, onValueChanged: (Int) -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 72.dp)
+            .clip(RoundedCornerShape(28.dp))
+            .background(AppColors.bg.surface)
+            .padding(start = 20.dp, end = 12.dp, top = 12.dp, bottom = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = "${stringResource(Res.string.tanga_s, "1")} = ${pricePerCoin.toCurrency()} UZS",
+            style = AppTypography.bodyMdMedium,
+            color = AppColors.text.tertiary,
+            modifier = Modifier.weight(1f),
+        )
+        CoinNumberPicker(value = value, onValueChanged = onValueChanged)
+    }
+}
+
+/** To'lov paneli: chapda jami (kichik izoh + katta summa), o'ngda "Davom etish". */
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+@Composable
+private fun CheckoutBar(coins: Int, total: Int, onContinue: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .padding(start = ContainerPadding, end = ContainerPadding, top = 4.dp, bottom = 8.dp)
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(28.dp))
+            .background(AppColors.bg.surface)
+            .padding(start = 20.dp, end = 10.dp, top = 10.dp, bottom = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(
+                text = stringResource(Res.string.tanga_s, coins.toCurrency()),
+                style = AppTypography.bodySmMedium,
+                color = AppColors.text.tertiary,
+            )
+            Text(
+                text = "${total.toCurrency()} UZS",
+                style = AppTypography.titleLgSemiBold,
+                color = AppColors.text.accentEmphasis,
+            )
+        }
+        Button(
+            onClick = onContinue,
+            interactionSource = rememberHapticSource(),
+            shapes = expressiveButtonShapes(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = AppColors.button.primary,
+                contentColor = AppColors.text.inverse,
+            ),
+            contentPadding = PaddingValues(horizontal = 22.dp),
+            modifier = Modifier.height(52.dp),
+        ) {
+            Text(stringResource(Res.string.davom_etish), style = AppTypography.titleMdSemiBold)
         }
     }
 }

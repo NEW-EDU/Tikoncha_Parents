@@ -158,6 +158,7 @@ val sharedModule = module {
     single { ChildApiService(get()) }
     single { AvatarApiService(get()) }
     single { ChatApiService(get()) }
+    single { uz.tikoncha_parent.data.remote.AiApiService(get()) }
     single { ChatSocketService(get()) }
     single { DeviceApiService(get()) }
     single { NewApiService(get()) }
@@ -176,6 +177,7 @@ val sharedModule = module {
     single<ChildRepository> { ChildRepositoryImpl(get()) }
     single<AvatarRepository> { AvatarRepositoryImpl(get()) }
     single<ChatRepository> { ChatRepositoryImpl(get(), get()) }
+    single<uz.tikoncha_parent.domain.repository.AiRepository> { uz.tikoncha_parent.data.repository.AiRepositoryImpl(get()) }
     single<DeviceRepository> { DeviceRepositoryImpl(get()) }
     single<NewsRepository> { NewsRepositoryImpl(get()) }
     single<MyCoinsRepository> { MyCoinsRepositoryImpl(get()) }
@@ -347,6 +349,7 @@ val sharedModule = module {
     factory { SubscriptionPaymentViewModel(get(), get()) }
     single<uz.tikoncha_parent.domain.repository.PaymentRegionRepository> { uz.tikoncha_parent.data.repository.PaymentRegionRepositoryImpl(get()) }
     factory { CoinsViewModel(get(), get(), get()) }
+    factory { uz.tikoncha_parent.presentation.assistant.AssistantViewModel(get()) }
     factory { (child: UserInfo) ->
         ChildInfoEditViewModel(
             loginRepository = get(),

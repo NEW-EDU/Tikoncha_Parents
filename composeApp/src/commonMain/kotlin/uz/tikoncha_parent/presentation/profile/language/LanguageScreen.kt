@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.profile.language
 
+import androidx.compose.ui.unit.sp
+import uz.tikoncha_parent.platform.languageDisplayName
 import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.foundation.layout.PaddingValues
 import uz.tikoncha_parent.presentation.base.island.BottomAnchoredColumn
@@ -203,23 +205,17 @@ private fun LanguageHero(language: LanguageType) {
     }
 }
 
-private fun LanguageType.greeting() = when (this) {
-    LanguageType.UZ -> "Assalomu alaykum!"
-    LanguageType.RU -> "Здравствуйте!"
-    LanguageType.EN -> "Hello!"
-}
+private fun LanguageType.greeting() = greeting
 
-private fun LanguageType.tagline() = when (this) {
-    LanguageType.UZ -> "Ilova özbek tilida"
-    LanguageType.RU -> "Приложение на русском"
-    LanguageType.EN -> "The app is in English"
-}
+private fun LanguageType.tagline() = tagline
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
-private fun LanguageType.polygon(): RoundedPolygon = when (this) {
-    LanguageType.UZ -> MaterialShapes.Cookie9Sided
-    LanguageType.RU -> MaterialShapes.Clover4Leaf
-    LanguageType.EN -> MaterialShapes.Sunny
+private fun LanguageType.polygon(): RoundedPolygon = when (ordinal % 5) {
+    0 -> MaterialShapes.Cookie9Sided
+    1 -> MaterialShapes.Clover4Leaf
+    2 -> MaterialShapes.Sunny
+    3 -> MaterialShapes.Cookie6Sided
+    else -> MaterialShapes.Flower
 }
 
 /** Bayroq nishoni: til almashganda shakl prujina bilan morf bo'ladi va biroz aylanadi (bayroq tik turadi). */
@@ -258,12 +254,25 @@ private fun MorphingFlag(language: LanguageType) {
             modifier = Modifier.graphicsLayer { rotationZ = -rotation },
             label = "flag",
         ) { lang ->
-            Image(
-                painter = painterResource(lang.iconId),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.size(48.dp).clip(CircleShape),
-            )
+            LanguageFlag(lang, 48.dp)
+        }
+    }
+}
+
+/** Bayroq: özbek / rus / ingliz uçun rasm, qolgan tillarda — emoji bayroq. */
+@Composable
+internal fun LanguageFlag(language: LanguageType, size: androidx.compose.ui.unit.Dp) {
+    val icon = language.iconId
+    if (icon != null) {
+        Image(
+            painter = painterResource(icon),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(size).clip(CircleShape),
+        )
+    } else {
+        Box(Modifier.size(size), contentAlignment = Alignment.Center) {
+            Text(text = language.flag, fontSize = (size.value * 0.62f).sp)
         }
     }
 }
@@ -319,12 +328,7 @@ private fun LanguageRow(
             .padding(horizontal = 14.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Image(
-            painter = painterResource(language.iconId),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier.size(40.dp).clip(CircleShape),
-        )
+        LanguageFlag(language, 40.dp)
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
             Text(
@@ -332,17 +336,19 @@ private fun LanguageRow(
                 style = AppTypography.titleMdSemiBold,
                 color = AppColors.text.primary,
             )
-            Text(
-                text = stringResource(
-                    when (language) {
-                        LanguageType.UZ -> Res.string.lang_name_uz
-                        LanguageType.RU -> Res.string.lang_name_ru
-                        LanguageType.EN -> Res.string.lang_name_en
-                    }
-                ),
-                style = AppTypography.emphasizedSmRegular,
-                color = AppColors.text.tertiary,
-            )
+            // Tilning nomi interfeys tilida ("rus tili"); öz nomi bilan bir xil bölsa — ko'rsatilmaydi
+            val ui = LocalLanguageController.current.current.collectAsState().value
+            val local = remember(language, ui) {
+                languageDisplayName(language.languageCode, ui.localeTag).replaceFirstChar { it.uppercase() }
+                    .let { if (ui == LanguageType.UZ) it.toUz2026() else it }
+            }
+            if (local.isNotBlank() && !local.equals(language.languageName, ignoreCase = true)) {
+                Text(
+                    text = local,
+                    style = AppTypography.emphasizedSmRegular,
+                    color = AppColors.text.tertiary,
+                )
+            }
         }
         Box(
             modifier = Modifier
@@ -369,3 +375,8 @@ private fun PreviewLanguageScreen() {
         LanguageUi(navigator = null)
     }
 }
+
+/** Tizim özbekça nomlarni eski yozuvda beradi ("O‘zbek", "Inglizcha") — 2026 alifbosiga. */
+private fun String.toUz2026(): String = this
+    .replace(Regex("[OoGg][‘ʻ’'`]")) { m -> when (m.value[0]) { 'O' -> "Ö"; 'o' -> "ö"; 'G' -> "Ğ"; else -> "ğ" } }
+    .replace("Sh", "Ş").replace("sh", "ş").replace("Ch", "Ç").replace("ch", "ç")

@@ -4,6 +4,7 @@ import uz.tikoncha_parent.ui.rememberHapticSource
 import tikoncha_parents.composeapp.generated.resources.parent_avatar_default
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.heightIn
@@ -15,6 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import org.jetbrains.compose.resources.stringResource
+import androidx.compose.foundation.Image
+import androidx.compose.ui.layout.ContentScale
+import tikoncha_parents.composeapp.generated.resources.chat_ai_icon
+import tikoncha_parents.composeapp.generated.resources.ai_assistant_title
 import tikoncha_parents.composeapp.generated.resources.profil
 import uz.tikoncha_parent.ui.theme.AppTypography
 import androidx.compose.foundation.clickable
@@ -52,34 +57,59 @@ fun RowScope.HomeIslandContent(
     state: HomeState,
     pickerOpen: MutableTransitionState<Boolean>,
     onSupport: () -> Unit,
+    onAssistant: () -> Unit,
     onProfile: () -> Unit,
     onAddChild: () -> Unit,
     onChildSelected: (UserInfo) -> Unit,
 ) {
     val profileSource = remember { MutableInteractionSource() }
-    Row(
-        modifier = Modifier
-            .weight(1f)
-            .heightIn(min = 48.dp)
-            .expressivePress(profileSource, pressedScale = 0.96f)
-            .clip(CircleShape)
-            .clickable(interactionSource = profileSource, indication = null, onClick = onProfile)
-            .padding(start = 4.dp, end = 8.dp),
-        verticalAlignment = Alignment.CenterVertically,
+    // Tor ekranda ismga joy qolmasa ("." bo'lib qolardi) — faqat avatar
+    BoxWithConstraints(Modifier.weight(1f)) {
+        val showName = maxWidth >= 40.dp + 10.dp + 12.dp + MIN_NAME_WIDTH
+        Row(
+            modifier = Modifier
+                .heightIn(min = 48.dp)
+                .expressivePress(profileSource, pressedScale = 0.96f)
+                .clip(CircleShape)
+                .clickable(interactionSource = profileSource, indication = null, onClick = onProfile)
+                .padding(start = 4.dp, end = 8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            // Ota-onaning standart rasmi — farzandlarnikidan farqli (qaysi tugma qayerga olib borishi adashmasin)
+            ChildAvatar(
+                state.userImageUrl,
+                Modifier.size(40.dp),
+                fallback = Res.drawable.parent_avatar_default,
+            )
+            if (showName) {
+                Spacer(Modifier.width(10.dp))
+                Text(
+                    text = state.userName.substringBefore(' ').ifBlank { stringResource(Res.string.profil) },
+                    style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+                    color = AppColors.text.primary,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        }
+    }
+
+    // Yordamçi (AI): hisobot + "qoida ayting" — orolda, bosh barmoq yonida
+    FilledTonalIconButton(
+        onClick = onAssistant,
+        interactionSource = rememberHapticSource(),
+        modifier = Modifier.size(48.dp),
+        shapes = IconButtonDefaults.shapes(),
+        colors = IconButtonDefaults.filledTonalIconButtonColors(
+            containerColor = AppColors.action.primary.copy(alpha = 0.14f),
+            contentColor = AppColors.icon.accentPrimary,
+        ),
     ) {
-        // Ota-onaning standart rasmi — farzandlarnikidan farqli (qaysi tugma qayerga olib borishi adashmasin)
-        ChildAvatar(
-            state.userImageUrl,
-            Modifier.size(40.dp),
-            fallback = Res.drawable.parent_avatar_default,
-        )
-        Spacer(Modifier.width(10.dp))
-        Text(
-            text = state.userName.substringBefore(' ').ifBlank { stringResource(Res.string.profil) },
-            style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
-            color = AppColors.text.primary,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
+        Image(
+            painter = painterResource(Res.drawable.chat_ai_icon),
+            contentDescription = stringResource(Res.string.ai_assistant_title),
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(36.dp).clip(CircleShape),
         )
     }
 
@@ -102,3 +132,5 @@ fun RowScope.HomeIslandContent(
         open = pickerOpen,
     )
 }
+
+private val MIN_NAME_WIDTH = 64.dp

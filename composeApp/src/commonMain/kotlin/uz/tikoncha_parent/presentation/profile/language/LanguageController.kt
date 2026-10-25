@@ -15,13 +15,13 @@ class LanguageController {
     val current: StateFlow<LanguageType> = _current
 
     init {
-        customAppLocale = current.value.languageCode
+        customAppLocale = current.value.localeTag
     }
     fun select(newLang: LanguageType) {
         if (newLang == _current.value) return
         _current.value = newLang
         LanguagePrefs.save(newLang)
-        customAppLocale = newLang.languageCode
+        customAppLocale = newLang.localeTag
     }
 }
 

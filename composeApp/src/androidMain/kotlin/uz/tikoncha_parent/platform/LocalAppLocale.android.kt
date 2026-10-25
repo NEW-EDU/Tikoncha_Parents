@@ -24,6 +24,7 @@ actual object LocalAppLocale {
 
         val newConfig = Configuration(config)
         newConfig.setLocale(newLocale)
+        newConfig.setLayoutDirection(newLocale)
         ctx.resources.updateConfiguration(newConfig, ctx.resources.displayMetrics)
 
         return LocalConfiguration.provides(newConfig)

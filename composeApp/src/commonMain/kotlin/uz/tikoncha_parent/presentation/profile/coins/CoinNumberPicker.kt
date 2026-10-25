@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.profile.coins
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -55,8 +57,9 @@ fun CoinNumberPicker(
 
     Row(
         modifier = modifier
-            .height(32.dp)
-            .background(AppColors.action.secondary, shape = RoundedCornerShape(12.dp)),
+            .height(44.dp)
+            .background(AppColors.action.primary.copy(alpha = 0.14f), shape = CircleShape)
+            .padding(horizontal = 4.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
@@ -66,9 +69,9 @@ fun CoinNumberPicker(
                 onValueChanged(newValue)
             },
             modifier = Modifier
-                .size(32.dp),
+                .size(40.dp),
             colors = IconButtonDefaults.iconButtonColors(
-                contentColor = AppColors.icon.primary,
+                contentColor = AppColors.icon.accentPrimary,
                 disabledContentColor = AppColors.icon.disabledTertiary
             ),
             enabled = value > min
@@ -97,9 +100,8 @@ fun CoinNumberPicker(
                 }
             },
             modifier = Modifier
-                .width(80.dp)
-                .height(28.dp)
-                .background(AppColors.bg.surface, RoundedCornerShape(8.dp)),
+                .width(72.dp)
+                .height(28.dp),
             textStyle = TextStyle(
                 color = AppColors.text.primary,
                 textAlign = TextAlign.Center,
@@ -126,9 +128,9 @@ fun CoinNumberPicker(
                 onValueChanged(newValue)
             },
             modifier = Modifier
-                .size(32.dp),
+                .size(40.dp),
             colors = IconButtonDefaults.iconButtonColors(
-                contentColor = AppColors.icon.primary,
+                contentColor = AppColors.icon.accentPrimary,
                 disabledContentColor = AppColors.icon.disabledTertiary
             ),
             enabled = value < max
