@@ -147,6 +147,7 @@ class AssistantViewModel(private val ai: AiRepository) : ScreenModel {
             _state.update { it.copy(reportLoading = true, reportFailed = false) }
             when (val r = ai.report(child.userId, period)) {
                 is Outcome.Success -> _state.update {
+                    r.data.coins?.let { c -> AppSettings.lastCoins = c }
                     // Javob kelguncha boshqa farzand yoki davr tanlangan bo'lsa — eski javobni ko'rsatmaymiz
                     if (it.child?.userId == child.userId && it.period == period) {
                         it.copy(report = r.data, reportLoading = false, coins = r.data.coins ?: it.coins)
@@ -198,6 +199,8 @@ class AssistantViewModel(private val ai: AiRepository) : ScreenModel {
     }
 
     private fun finish(coins: Int?) {
+        // Tangalar ekrani shu sonni darhol ko'rsatadi (keyin serverdan yangilaydi)
+        coins?.let { AppSettings.lastCoins = it }
         _state.update {
             val reply = it.streamingText.trim()
             // Matn — tepada, şu javobdagi kartalar (tasdiqlaş, xarita, himoya) — uning ostida, bosh barmoqqa yaqin

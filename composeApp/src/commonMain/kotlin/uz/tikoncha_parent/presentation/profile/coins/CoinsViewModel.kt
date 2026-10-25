@@ -44,11 +44,13 @@ class CoinsViewModel(
             }
 
             CoinsEvent.LoadCoinList -> {
+                load()
                 getCoinPackagesList()
             }
 
             CoinsEvent.PullRefresh -> {
                 _state.update { it.copy(isRefreshing = true) }
+                load()
                 getCoinPackagesList()
             }
 
@@ -119,22 +121,18 @@ class CoinsViewModel(
         }
     }
 
-    fun load() {
-        if (_state.value.isLoading) return
+    private var balanceJob: Job? = null
 
-        _state.update {
-            it.copy(
-                isLoading = true,
-                error = null
-            )
-        }
-        screenModelScope.launch {
+    /** Balans har kirişda va pastga tortilganda qayta olinadi (paket röyxatidan alohida). */
+    fun load() {
+        if (balanceJob?.isActive == true) return
+        _state.update { it.copy(error = null) }
+        balanceJob = screenModelScope.launch {
             when (val res = myCoinsRepository.getMyCoins()) {
                 is Outcome.Success -> {
                     AppSettings.lastCoins = res.data.coins
                     _state.update {
                         it.copy(
-                            isLoading = false,
                             myCoins = res.data.coins,
                             coinsKnown = true,
                             error = null
@@ -144,12 +142,7 @@ class CoinsViewModel(
 
                 is Outcome.Failure -> {
                     // Tarmoq xatosida oxirgi ma'lum sonni saqlaymiz — "0 ta" degan yolg'on chiqmaydi.
-                    _state.update {
-                        it.copy(
-                            isLoading = false,
-                            error = res
-                        )
-                    }
+                    _state.update { it.copy(error = res) }
                 }
             }
         }

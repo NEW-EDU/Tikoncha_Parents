@@ -66,6 +66,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
@@ -269,7 +270,9 @@ private fun ChildDropUp(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .shadow(16.dp, RoundedCornerShape(28.dp))
+                    // Tizim soyasi (elevation) ochiliş animatsiyasida (fade) bir lahza töğri burçakli çizilardi —
+                    // öz soyamiz: kartaning şaklida, u bilan birga paydo böladi
+                    .softShadow(28.dp)
                     .clip(RoundedCornerShape(28.dp))
                     .background(AppColors.bg.page)
                     .padding(8.dp),
@@ -344,3 +347,19 @@ private fun ChildDropUp(
     }
 }
 
+/** Yumşoq soya: [cornerRadius] li burçakli bir neçta qatlam, pastga biroz siljigan. Fade va scale bilan töğri çiziladi. */
+private fun Modifier.softShadow(cornerRadius: androidx.compose.ui.unit.Dp): Modifier = drawBehind {
+    val layers = 8
+    val spread = 14.dp.toPx()
+    val dy = 4.dp.toPx()
+    val r = cornerRadius.toPx()
+    for (i in layers downTo 1) {
+        val grow = spread * i / layers
+        drawRoundRect(
+            color = androidx.compose.ui.graphics.Color.Black.copy(alpha = 0.035f),
+            topLeft = androidx.compose.ui.geometry.Offset(-grow, -grow + dy),
+            size = androidx.compose.ui.geometry.Size(size.width + 2 * grow, size.height + 2 * grow),
+            cornerRadius = androidx.compose.ui.geometry.CornerRadius(r + grow, r + grow),
+        )
+    }
+}
