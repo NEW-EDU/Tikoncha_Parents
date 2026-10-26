@@ -216,7 +216,7 @@ fun ChatUi(
                                     {
                                         if (item.type == ChatType.BOT) {
                                             // Bilimdon AI → ota-ona yordamçisi (native; eski WebView o'rniga)
-                                            navigator?.push(AssistantScreen())
+                                            navigator?.push(AssistantScreen(botChatId = item.chatId))
                                         } else {
                                             navigator?.push(
                                                 ChatRoomScreen(

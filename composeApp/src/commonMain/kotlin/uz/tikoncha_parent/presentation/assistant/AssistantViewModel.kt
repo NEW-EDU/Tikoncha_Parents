@@ -16,6 +16,7 @@ import uz.tikoncha_parent.domain.model.ai.LocationCard
 import uz.tikoncha_parent.domain.model.ai.ProtectionCard
 import uz.tikoncha_parent.domain.model.ai.ReportPeriod
 import uz.tikoncha_parent.domain.model.ai.RuleDraft
+import uz.tikoncha_parent.domain.model.ai.SafetyAlert
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.repository.AiRepository
 
@@ -51,6 +52,8 @@ data class AssistantState(
     val reminded: Set<Long> = emptySet(),
     /** Qoidani yoqish xatosi (serverning tarjima qilingan matni). */
     val draftError: Outcome.Failure? = null,
+    /** Farzand Bilimdonga yuborgan xavotirli xabarlar (oxirgi 7 kun) — hisobot ostida. */
+    val alerts: List<SafetyAlert> = emptyList(),
 )
 
 sealed interface AssistantEventUi {
@@ -92,6 +95,27 @@ class AssistantViewModel(private val ai: AiRepository) : ScreenModel {
 
     init {
         loadReport()
+        loadAlerts()
+    }
+
+    /** "Bilimdon AI" suhbatidan oçilgan bölsa — öqilmagan belgisi tozalansin. */
+    fun markChatRead(chatId: String) {
+        screenModelScope.launch { ai.markChatRead(chatId) }
+    }
+
+    @OptIn(kotlin.time.ExperimentalTime::class)
+    private fun loadAlerts() {
+        val child = _state.value.child ?: return
+        screenModelScope.launch {
+            val res = ai.alerts(child.userId)
+            if (res is Outcome.Success) {
+                val weekAgo = kotlin.time.Clock.System.now() - kotlin.time.Duration.parse("7d")
+                val recent = res.data.filter { a ->
+                    runCatching { kotlin.time.Instant.parse(a.createdAt) > weekAgo }.getOrDefault(true)
+                }
+                _state.update { if (it.child?.userId == child.userId) it.copy(alerts = recent) else it }
+            }
+        }
     }
 
     fun onEvent(event: AssistantEventUi) {
@@ -109,8 +133,9 @@ class AssistantViewModel(private val ai: AiRepository) : ScreenModel {
                 if (event.child.userId == _state.value.child?.userId) return
                 AppSettings.selectedChild = event.child
                 AppSettings.selectedChildId = event.child.userId
-                _state.update { it.copy(child = event.child, report = null) }
+                _state.update { it.copy(child = event.child, report = null, alerts = emptyList()) }
                 loadReport()
+                loadAlerts()
             }
             AssistantEventUi.RetryReport -> loadReport()
             is AssistantEventUi.Apply -> apply(event.itemId, event.coin)

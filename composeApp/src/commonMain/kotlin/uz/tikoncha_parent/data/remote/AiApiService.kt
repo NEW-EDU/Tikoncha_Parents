@@ -25,6 +25,7 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import uz.tikoncha_parent.data.remote.model.ApiEnvelope
 import uz.tikoncha_parent.data.remote.model.ai.ChildReportDto
+import uz.tikoncha_parent.data.remote.model.ai.SafetyAlertDto
 import uz.tikoncha_parent.data.remote.model.ai.ParentChatRequest
 
 /**
@@ -117,6 +118,25 @@ class AiApiService(private val client: HttpClient) {
             block = {
                 contentType(ContentType.Application.Json)
                 setBody("""{"kind":"$kind"}""")
+            },
+        )
+
+    /** Farzand(lar) Bilimdonga yuborgan xavotirli xabarlar (yangisi birinçi). */
+    suspend fun alerts(childId: String?): ApiEnvelope<List<SafetyAlertDto>> =
+        client.safeRequest(
+            method = HttpMethod.Get,
+            url = "ai/parent/alerts",
+            block = { childId?.let { parameter("child_id", it) } },
+        )
+
+    /** AI suhbati oçildi — ro'yxatdagi öqilmagan belgisi tozalanadi. */
+    suspend fun markChatRead(chatId: String, readAtIso: String): ApiEnvelope<JsonElement> =
+        client.safeRequest(
+            method = HttpMethod.Post,
+            url = "chat/read",
+            block = {
+                contentType(ContentType.Application.Json)
+                setBody("""{"chat_id":"$chatId","read_at":"$readAtIso"}""")
             },
         )
 

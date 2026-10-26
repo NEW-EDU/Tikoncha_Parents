@@ -1,5 +1,8 @@
 package uz.tikoncha_parent.presentation.assistant
 
+import kotlinx.datetime.toLocalDateTime
+import uz.tikoncha_parent.domain.model.ai.SafetyAlert
+import coil3.compose.AsyncImage
 import androidx.compose.ui.text.style.TextDirection
 import tikoncha_parents.composeapp.generated.resources.ai_done_saved
 import tikoncha_parents.composeapp.generated.resources.ai_done_deleted
@@ -209,6 +212,8 @@ class AssistantScreen(
     private val initialQuestion: String? = null,
     /** Faqat debug: "day" · "yesterday" · "week". */
     private val initialPeriod: String? = null,
+    /** Hoglt Chat ro'yxatidagi "Bilimdon AI" suhbati — oçilganda öqilgan deb belgilanadi (ogohlantirişlar shu yerda). */
+    private val botChatId: String? = null,
 ) : Screen {
 
     @Composable
@@ -219,6 +224,7 @@ class AssistantScreen(
         LaunchedEffect(Unit) {
             if (started) return@LaunchedEffect
             started = true
+            botChatId?.let { viewModel.markChatRead(it) }
             ReportPeriod.entries.firstOrNull { it.key == initialPeriod }?.let {
                 viewModel.onEvent(AssistantEventUi.SelectPeriod(it))
             }
@@ -338,6 +344,8 @@ private fun AssistantUi(state: AssistantState, event: (AssistantEventUi) -> Unit
                     item(key = "report") {
                         ReportCard(state = state, open = true, onToggle = {}, event = event)
                     }
+                    // Farzand Bilimdonga yuborgan xavotirli xabarlar (oxirgi 7 kun) — hisobot ostida, birinçi körinadi
+                    items(state.alerts, key = { "alert-" + it.id }) { alert -> SafetyAlertCard(alert) }
                 }
                 items(state.items, key = { it.id }) { item ->
                     when (item) {
@@ -523,6 +531,51 @@ private fun MascotAvatar(size: androidx.compose.ui.unit.Dp, active: Boolean) {
 }
 
 // ── hisobot ──
+
+/** Xavotirli xabar: sarlavha, ota-onaga maslahat, vaqt va (giyohvand modda / qurol / zöravonlik bölsa) rasm. */
+@Composable
+private fun SafetyAlertCard(alert: SafetyAlert) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(24.dp))
+            .background(AppColors.bg.secondary)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                alert.title,
+                style = AppTypography.titleSmSemiBold,
+                color = AppColors.text.accentWarning,
+                modifier = Modifier.weight(1f),
+                maxLines = 2,
+            )
+            Text(alertTime(alert.createdAt), style = AppTypography.bodyMdRegular, color = AppColors.text.tertiary)
+        }
+        Text(alert.text, style = AppTypography.bodyLgRegular, color = AppColors.text.primary)
+        alert.imageUrl?.let { url ->
+            AsyncImage(
+                model = url,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = 220.dp)
+                    .clip(RoundedCornerShape(16.dp)),
+            )
+        }
+    }
+}
+
+@OptIn(kotlin.time.ExperimentalTime::class)
+private fun alertTime(iso: String): String = runCatching {
+    val local = kotlin.time.Instant.parse(iso).let {
+        kotlinx.datetime.Instant.fromEpochMilliseconds(it.toEpochMilliseconds())
+    }.toLocalDateTime(kotlinx.datetime.TimeZone.currentSystemDefault())
+    val hm = "${local.hour.toString().padStart(2, '0')}:${local.minute.toString().padStart(2, '0')}"
+    "${local.dayOfMonth.toString().padStart(2, '0')}.${local.monthNumber.toString().padStart(2, '0')} $hm"
+}.getOrDefault("")
 
 @Composable
 private fun ReportCard(

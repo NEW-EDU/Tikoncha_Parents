@@ -19,6 +19,7 @@ import uz.tikoncha_parent.data.remote.model.ai.ParentChatRequest
 import uz.tikoncha_parent.domain.model.ai.AssistantEvent
 import uz.tikoncha_parent.domain.model.ai.AssistantTurn
 import uz.tikoncha_parent.domain.model.ai.ChildReport
+import uz.tikoncha_parent.domain.model.ai.SafetyAlert
 import uz.tikoncha_parent.domain.model.ai.LocationCard
 import uz.tikoncha_parent.domain.model.ai.ProtectionCard
 import uz.tikoncha_parent.domain.model.ai.TopApp
@@ -70,6 +71,23 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
     override suspend fun remind(childId: String, kind: String): Outcome<Unit> = apiCall(TAG) {
         val env = api.remind(childId, kind)
         if (env.success) Outcome.Success(Unit) else Outcome.Failure(ApiErrorMapper.fromCode(env.code), env.error)
+    }
+
+    override suspend fun alerts(childId: String?): Outcome<List<SafetyAlert>> = apiCall(TAG) {
+        val env = api.alerts(childId)
+        if (env.success) {
+            Outcome.Success(env.data.orEmpty().map {
+                SafetyAlert(
+                    id = it.id, childId = it.child_id, childName = it.child_name, title = it.title, text = it.text,
+                    imageUrl = it.image_url, createdAt = it.created_at,
+                )
+            })
+        } else Outcome.Failure(ApiErrorMapper.fromCode(env.code), env.error)
+    }
+
+    @OptIn(kotlin.time.ExperimentalTime::class)
+    override suspend fun markChatRead(chatId: String) {
+        runCatching { api.markChatRead(chatId, kotlin.time.Clock.System.now().toString()) }
     }
 
     override suspend fun discardDraft(draftId: String) {

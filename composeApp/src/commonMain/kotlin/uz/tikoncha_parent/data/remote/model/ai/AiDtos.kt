@@ -61,3 +61,18 @@ data class ActivityDto(val status: String = "active", val inactive_days: Int = 0
 
 @Serializable
 data class TutorDto(val questions: Int = 0, val days: Int = 0)
+
+
+/** GET /ai/parent/alerts — farzand Bilimdonga yuborgan xavotirli xabar (matn ota-ona tilida, serverdan). */
+@Serializable
+data class SafetyAlertDto(
+    val id: String = "",
+    val child_id: String = "",
+    val child_name: String = "",
+    val title: String = "",
+    val text: String = "",
+    val category: String = "",
+    val had_photo: Boolean = false,
+    val image_url: String? = null,
+    val created_at: String = "",
+)

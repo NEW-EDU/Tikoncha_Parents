@@ -5,6 +5,7 @@ import uz.tikoncha_parent.domain.model.ai.AssistantEvent
 import uz.tikoncha_parent.domain.model.ai.AssistantTurn
 import uz.tikoncha_parent.domain.model.ai.ChildReport
 import uz.tikoncha_parent.domain.model.ai.ReportPeriod
+import uz.tikoncha_parent.domain.model.ai.SafetyAlert
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 
 interface AiRepository {
@@ -17,4 +18,9 @@ interface AiRepository {
 
     suspend fun remind(childId: String, kind: String): Outcome<Unit>
     suspend fun discardDraft(draftId: String)
+
+    suspend fun alerts(childId: String?): Outcome<List<SafetyAlert>>
+
+    /** Ro'yxatdagi "Bilimdon AI" suhbatini öqilgan deb belgilaş (ogohlantiriş xabarlari shu yerda). */
+    suspend fun markChatRead(chatId: String)
 }

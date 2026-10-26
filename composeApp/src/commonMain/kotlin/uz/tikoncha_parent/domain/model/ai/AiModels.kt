@@ -71,3 +71,16 @@ sealed interface AssistantEvent {
 }
 
 data class AssistantTurn(val fromParent: Boolean, val text: String)
+
+
+/** Farzand Bilimdonga yuborgan xavotirli xabar (giyohvand modda, qurol, zöravonlik, öziga zarar, jinsiy mazmun). */
+data class SafetyAlert(
+    val id: String,
+    val childId: String,
+    val childName: String,
+    val title: String,
+    val text: String,
+    val imageUrl: String?,
+    /** Server vaqti (UTC ISO). */
+    val createdAt: String,
+)
