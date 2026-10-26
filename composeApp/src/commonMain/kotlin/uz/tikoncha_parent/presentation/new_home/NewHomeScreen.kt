@@ -2,6 +2,10 @@
 
 package uz.tikoncha_parent.presentation.new_home
 
+import tikoncha_parents.composeapp.generated.resources.profil
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.foundation.clickable
 import tikoncha_parents.composeapp.generated.resources.parent_avatar_default
 import uz.tikoncha_parent.presentation.base.island.ChildAvatar
@@ -295,18 +299,36 @@ fun NewHomeUi(
                     modifier = Modifier.weight(1f),
                 )
                 // Profil — tepada, o'ng burçakda (pastki orolda AI keng tugma)
+                // Kiçkina tişli belgi — rasm profil va sozlamalarga olib borişini bildiradi
                 Box(
                     modifier = Modifier
-                        .size(44.dp)
-                        .clip(CircleShape)
-                        .clickable { navigator?.push(ProfileScreen()) },
-                    contentAlignment = Alignment.Center,
+                        .size(46.dp)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null,
+                        ) { navigator?.push(ProfileScreen()) },
                 ) {
                     ChildAvatar(
                         state.userImageUrl,
-                        Modifier.size(40.dp),
+                        Modifier.size(42.dp).align(Alignment.Center),
                         fallback = Res.drawable.parent_avatar_default,
                     )
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.BottomEnd)
+                            .size(18.dp)
+                            .clip(CircleShape)
+                            .background(homeChipColor())
+                            .padding(2.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Settings,
+                            contentDescription = stringResource(Res.string.profil),
+                            tint = AppColors.icon.accentPrimary,
+                            modifier = Modifier.size(13.dp),
+                        )
+                    }
                 }
                 Spacer(Modifier.width(8.dp))
                 if (!showTikonchaTutorialCard) {
