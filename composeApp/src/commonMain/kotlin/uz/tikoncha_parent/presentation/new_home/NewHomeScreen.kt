@@ -2,6 +2,9 @@
 
 package uz.tikoncha_parent.presentation.new_home
 
+import androidx.compose.foundation.clickable
+import tikoncha_parents.composeapp.generated.resources.parent_avatar_default
+import uz.tikoncha_parent.presentation.base.island.ChildAvatar
 import uz.tikoncha_parent.ui.homeSubtitleColor
 import uz.tikoncha_parent.ui.homeBarColors
 import uz.tikoncha_parent.ui.homeChipColor
@@ -291,6 +294,21 @@ fun NewHomeUi(
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.weight(1f),
                 )
+                // Profil — tepada, o'ng burçakda (pastki orolda AI keng tugma)
+                Box(
+                    modifier = Modifier
+                        .size(44.dp)
+                        .clip(CircleShape)
+                        .clickable { navigator?.push(ProfileScreen()) },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    ChildAvatar(
+                        state.userImageUrl,
+                        Modifier.size(40.dp),
+                        fallback = Res.drawable.parent_avatar_default,
+                    )
+                }
+                Spacer(Modifier.width(8.dp))
                 if (!showTikonchaTutorialCard) {
                     FilledTonalIconButton(
                         interactionSource = rememberHapticSource(),

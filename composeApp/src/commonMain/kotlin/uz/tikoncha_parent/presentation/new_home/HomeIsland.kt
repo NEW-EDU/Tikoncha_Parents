@@ -62,54 +62,32 @@ fun RowScope.HomeIslandContent(
     onAddChild: () -> Unit,
     onChildSelected: (UserInfo) -> Unit,
 ) {
-    val profileSource = remember { MutableInteractionSource() }
-    // Tor ekranda ismga joy qolmasa ("." bo'lib qolardi) — faqat avatar
-    BoxWithConstraints(Modifier.weight(1f)) {
-        val showName = maxWidth >= 40.dp + 10.dp + 12.dp + MIN_NAME_WIDTH
-        Row(
-            modifier = Modifier
-                .heightIn(min = 48.dp)
-                .expressivePress(profileSource, pressedScale = 0.96f)
-                .clip(CircleShape)
-                .clickable(interactionSource = profileSource, indication = null, onClick = onProfile)
-                .padding(start = 4.dp, end = 8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            // Ota-onaning standart rasmi — farzandlarnikidan farqli (qaysi tugma qayerga olib borishi adashmasin)
-            ChildAvatar(
-                state.userImageUrl,
-                Modifier.size(40.dp),
-                fallback = Res.drawable.parent_avatar_default,
-            )
-            if (showName) {
-                Spacer(Modifier.width(10.dp))
-                Text(
-                    text = state.userName.substringBefore(' ').ifBlank { stringResource(Res.string.profil) },
-                    style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
-                    color = AppColors.text.primary,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
-            }
-        }
-    }
-
-    // Yordamçi (AI): hisobot + "qoida ayting" — orolda, bosh barmoq yonida
-    FilledTonalIconButton(
-        onClick = onAssistant,
-        interactionSource = rememberHapticSource(),
-        modifier = Modifier.size(48.dp),
-        shapes = IconButtonDefaults.shapes(),
-        colors = IconButtonDefaults.filledTonalIconButtonColors(
-            containerColor = AppColors.action.primary.copy(alpha = 0.14f),
-            contentColor = AppColors.icon.accentPrimary,
-        ),
+    // AI — muhimrog'i: orolning keng tugmasi (profil tepaga, o'ng burçakka ötdi)
+    val aiSource = remember { MutableInteractionSource() }
+    Row(
+        modifier = Modifier
+            .weight(1f)
+            .heightIn(min = 48.dp)
+            .expressivePress(aiSource, pressedScale = 0.96f)
+            .clip(CircleShape)
+            .background(AppColors.action.primary.copy(alpha = 0.14f))
+            .clickable(interactionSource = aiSource, indication = null, onClick = onAssistant)
+            .padding(start = 6.dp, end = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             painter = painterResource(Res.drawable.chat_ai_icon),
-            contentDescription = stringResource(Res.string.ai_assistant_title),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.size(36.dp).clip(CircleShape),
+        )
+        Spacer(Modifier.width(10.dp))
+        Text(
+            text = "AI",  // qisqa: farzand tanlagich yonida "Yordamçi" kesilib qolardi
+            style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+            color = AppColors.text.primary,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 
