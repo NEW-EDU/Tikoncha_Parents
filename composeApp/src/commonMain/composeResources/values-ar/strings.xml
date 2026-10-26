@@ -498,6 +498,17 @@
 
     <string name="tracking_checking_settings">جارٍ فحص إعدادات الطفل...</string>
     <string name="tracking_watch_video">مشاهدة الفيديو</string>
+    <string name="danger_places">أماكن خطرة</string>
+    <string name="danger_places_help">ضمن 1.5 كم من طفلك: النوادي الليلية والحانات ومقاهي الشيشة والكازينوهات ومكاتب المراهنات ومتاجر الكحول والتبغ. البيانات من OpenStreetMap — قد تنقص بعض الأماكن.</string>
+    <string name="danger_places_radius">ضمن 1.5 كم</string>
+    <string name="danger_places_none">لم يُعثر على أماكن خطرة</string>
+    <string name="danger_places_failed">تعذّر التحميل</string>
+    <string name="danger_cat_nightlife">نادٍ ليلي أو حانة</string>
+    <string name="danger_cat_gambling">قمار ومراهنات</string>
+    <string name="danger_cat_adult">للبالغين فقط</string>
+    <string name="danger_cat_alcohol">كحول</string>
+    <string name="danger_cat_tobacco">تبغ وسجائر إلكترونية</string>
+    <string name="danger_distance_m">%1$d م</string>
     <string name="radius">نصف القطر</string>
     <string name="farzandim">طفلي</string>
     <string name="ozim">أنا</string>

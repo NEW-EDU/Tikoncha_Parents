@@ -481,6 +481,17 @@
 
     <string name="tracking_checking_settings">Бала баптаулары тексерілуде...</string>
     <string name="tracking_watch_video">Бейнені көру</string>
+    <string name="danger_places">Қауіпті орындар</string>
+    <string name="danger_places_help">Балаңыздан 1,5 км радиуста: түнгі клубтар, барлар, кальянханалар, казино, букмекерлер, алкоголь мен темекі дүкендері. Деректер OpenStreetMap-тен — кейбір орындар болмауы мүмкін.</string>
+    <string name="danger_places_radius">1,5 км радиуста</string>
+    <string name="danger_places_none">Қауіпті орын табылмады</string>
+    <string name="danger_places_failed">Жүктеу мүмкін болмады</string>
+    <string name="danger_cat_nightlife">Түнгі клуб не бар</string>
+    <string name="danger_cat_gambling">Құмар ойындар мен бәс тігу</string>
+    <string name="danger_cat_adult">Тек ересектерге</string>
+    <string name="danger_cat_alcohol">Алкоголь</string>
+    <string name="danger_cat_tobacco">Темекі мен вейп</string>
+    <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радиус</string>
     <string name="farzandim">Менің балам</string>
     <string name="ozim">Өзім</string>

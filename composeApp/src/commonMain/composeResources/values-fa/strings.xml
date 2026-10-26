@@ -482,6 +482,17 @@
 
     <string name="tracking_checking_settings">در حال بررسی تنظیمات فرزند...</string>
     <string name="tracking_watch_video">تماشای ویدیو</string>
+    <string name="danger_places">مکان‌های خطرناک</string>
+    <string name="danger_places_help">در شعاع ۱٫۵ کیلومتری فرزندتان: کلوپ‌های شبانه، بارها، قلیان‌سراها، کازینوها، مراکز شرط‌بندی، فروشگاه‌های مشروبات الکلی و دخانیات. داده‌ها از OpenStreetMap — ممکن است برخی مکان‌ها نباشند.</string>
+    <string name="danger_places_radius">در شعاع ۱٫۵ کیلومتر</string>
+    <string name="danger_places_none">مکان خطرناکی پیدا نشد</string>
+    <string name="danger_places_failed">بارگیری نشد</string>
+    <string name="danger_cat_nightlife">کلوپ شبانه یا بار</string>
+    <string name="danger_cat_gambling">قمار و شرط‌بندی</string>
+    <string name="danger_cat_adult">فقط بزرگسالان</string>
+    <string name="danger_cat_alcohol">مشروبات الکلی</string>
+    <string name="danger_cat_tobacco">دخانیات و ویپ</string>
+    <string name="danger_distance_m">%1$d متر</string>
     <string name="radius">شعاع</string>
     <string name="farzandim">فرزند من</string>
     <string name="ozim">خودم</string>

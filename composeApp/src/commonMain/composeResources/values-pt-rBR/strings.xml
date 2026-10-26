@@ -498,6 +498,17 @@
 
     <string name="tracking_checking_settings">Verificando as configurações do filho...</string>
     <string name="tracking_watch_video">Assistir ao vídeo</string>
+    <string name="danger_places">Locais perigosos</string>
+    <string name="danger_places_help">Num raio de 1,5 km do seu filho: casas noturnas, bares, narguilerias, cassinos, casas de apostas, lojas de bebidas e de tabaco. Dados do OpenStreetMap — alguns locais podem faltar.</string>
+    <string name="danger_places_radius">num raio de 1,5 km</string>
+    <string name="danger_places_none">Nenhum local perigoso encontrado</string>
+    <string name="danger_places_failed">Não foi possível carregar</string>
+    <string name="danger_cat_nightlife">Casa noturna ou bar</string>
+    <string name="danger_cat_gambling">Jogos de azar e apostas</string>
+    <string name="danger_cat_adult">Só para adultos</string>
+    <string name="danger_cat_alcohol">Bebidas alcoólicas</string>
+    <string name="danger_cat_tobacco">Tabaco e vapes</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Raio</string>
     <string name="farzandim">Meu filho</string>
     <string name="ozim">Eu mesmo</string>

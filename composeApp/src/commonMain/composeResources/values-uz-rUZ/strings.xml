@@ -498,6 +498,17 @@
 
     <string name="tracking_checking_settings">Фарзанд созламалари текширилмоқда...</string>
     <string name="tracking_watch_video">Видео кўриш</string>
+    <string name="danger_places">Хавфли жойлар</string>
+    <string name="danger_places_help">Фарзандингиз атрофидаги 1,5 км ичида: тунги клуб, бар, қалёнхона, казино, букмекер, спиртли ичимлик ва тамаки дўконлари. Маълумот OpenStreetMap’дан олинади — баъзи жойлар бўлмаслиги мумкин.</string>
+    <string name="danger_places_radius">1,5 км ичида</string>
+    <string name="danger_places_none">Хавфли жой топилмади</string>
+    <string name="danger_places_failed">Юклаб бўлмади</string>
+    <string name="danger_cat_nightlife">Тунги клуб ёки бар</string>
+    <string name="danger_cat_gambling">Қимор ва тикиш</string>
+    <string name="danger_cat_adult">Катталар учун</string>
+    <string name="danger_cat_alcohol">Спиртли ичимликлар</string>
+    <string name="danger_cat_tobacco">Тамаки ва вейп</string>
+    <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радиус</string>
     <string name="farzandim">Фарзандим</string>
     <string name="ozim">Ўзим</string>

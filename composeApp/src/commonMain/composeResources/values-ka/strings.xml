@@ -498,6 +498,17 @@
 
     <string name="tracking_checking_settings">შვილის პარამეტრები მოწმდება...</string>
     <string name="tracking_watch_video">ვიდეოს ნახვა</string>
+    <string name="danger_places">სახიფათო ადგილები</string>
+    <string name="danger_places_help">ბავშვიდან 1,5 კმ რადიუსში: ღამის კლუბები, ბარები, კალიანის ბარები, კაზინოები, ტოტალიზატორები, ალკოჰოლისა და თამბაქოს მაღაზიები. მონაცემები OpenStreetMap-იდან — ზოგი ადგილი შეიძლება აკლდეს.</string>
+    <string name="danger_places_radius">1,5 კმ რადიუსში</string>
+    <string name="danger_places_none">სახიფათო ადგილი ვერ მოიძებნა</string>
+    <string name="danger_places_failed">ჩატვირთვა ვერ მოხერხდა</string>
+    <string name="danger_cat_nightlife">ღამის კლუბი ან ბარი</string>
+    <string name="danger_cat_gambling">აზარტული თამაშები და ფსონები</string>
+    <string name="danger_cat_adult">მხოლოდ ზრდასრულებისთვის</string>
+    <string name="danger_cat_alcohol">ალკოჰოლი</string>
+    <string name="danger_cat_tobacco">თამბაქო და ვეიპი</string>
+    <string name="danger_distance_m">%1$d მ</string>
     <string name="radius">რადიუსი</string>
     <string name="farzandim">ჩემი შვილი</string>
     <string name="ozim">მე თავად</string>

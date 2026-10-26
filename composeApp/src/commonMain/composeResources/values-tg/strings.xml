@@ -482,6 +482,17 @@
 
     <string name="tracking_checking_settings">Танзимоти фарзанд санҷида мешавад...</string>
     <string name="tracking_watch_video">Тамошои видео</string>
+    <string name="danger_places">Ҷойҳои хатарнок</string>
+    <string name="danger_places_help">Дар радиуси 1,5 км аз фарзандатон: клубҳои шабона, барҳо, қалъёнхонаҳо, казино, букмекерҳо, мағозаҳои машрубот ва тамоку. Маълумот аз OpenStreetMap — баъзе ҷойҳо шояд набошанд.</string>
+    <string name="danger_places_radius">дар радиуси 1,5 км</string>
+    <string name="danger_places_none">Ҷои хатарнок ёфт нашуд</string>
+    <string name="danger_places_failed">Бор нашуд</string>
+    <string name="danger_cat_nightlife">Клуби шабона ё бар</string>
+    <string name="danger_cat_gambling">Қимор ва гарав</string>
+    <string name="danger_cat_adult">Танҳо барои калонсолон</string>
+    <string name="danger_cat_alcohol">Машрубот</string>
+    <string name="danger_cat_tobacco">Тамоку ва вейп</string>
+    <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радиус</string>
     <string name="farzandim">Фарзандам</string>
     <string name="ozim">Худам</string>

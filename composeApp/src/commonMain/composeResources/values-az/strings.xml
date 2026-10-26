@@ -481,6 +481,17 @@
 
     <string name="tracking_checking_settings">Uşağın ayarları yoxlanılır...</string>
     <string name="tracking_watch_video">Videoya bax</string>
+    <string name="danger_places">Təhlükəli yerlər</string>
+    <string name="danger_places_help">Uşağınızdan 1,5 km radiusda: gecə klubları, barlar, qəlyanxanalar, kazinolar, bukmeker məntəqələri, spirtli içki və tütün mağazaları. Məlumat OpenStreetMap-dəndir — bəzi yerlər olmaya bilər.</string>
+    <string name="danger_places_radius">1,5 km radiusda</string>
+    <string name="danger_places_none">Təhlükəli yer tapılmadı</string>
+    <string name="danger_places_failed">Yükləmək alınmadı</string>
+    <string name="danger_cat_nightlife">Gecə klubu və ya bar</string>
+    <string name="danger_cat_gambling">Qumar və mərclər</string>
+    <string name="danger_cat_adult">Yalnız böyüklər üçün</string>
+    <string name="danger_cat_alcohol">Spirtli içkilər</string>
+    <string name="danger_cat_tobacco">Tütün və veyp</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
     <string name="farzandim">Uşağım</string>
     <string name="ozim">Özüm</string>

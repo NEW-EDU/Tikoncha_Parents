@@ -49,7 +49,8 @@ actual val targetModule = module {
             locationTracker = get(),
             permissionsController = get(),
             paymentRepository = get(),
-            permissionStatusRepository = get()
+            permissionStatusRepository = get(),
+            safetyRepository = get(),
         )
     }
 

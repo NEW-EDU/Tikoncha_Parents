@@ -481,6 +481,17 @@
 
     <string name="tracking_checking_settings">Menyemak tetapan anak...</string>
     <string name="tracking_watch_video">Tonton video</string>
+    <string name="danger_places">Tempat berbahaya</string>
+    <string name="danger_places_help">Dalam radius 1.5 km dari anak anda: kelab malam, bar, lounge shisha, kasino, kedai pertaruhan, kedai arak dan tembakau. Data daripada OpenStreetMap — sesetengah tempat mungkin tiada.</string>
+    <string name="danger_places_radius">dalam radius 1.5 km</string>
+    <string name="danger_places_none">Tiada tempat berbahaya ditemui</string>
+    <string name="danger_places_failed">Gagal dimuatkan</string>
+    <string name="danger_cat_nightlife">Kelab malam atau bar</string>
+    <string name="danger_cat_gambling">Judi dan pertaruhan</string>
+    <string name="danger_cat_adult">Dewasa sahaja</string>
+    <string name="danger_cat_alcohol">Arak</string>
+    <string name="danger_cat_tobacco">Tembakau dan vape</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
     <string name="farzandim">Anak saya</string>
     <string name="ozim">Saya sendiri</string>

@@ -481,6 +481,17 @@
 
     <string name="tracking_checking_settings">Bala sazlawları tekserilmekte...</string>
     <string name="tracking_watch_video">Video kóriw</string>
+    <string name="danger_places">Qáwipli orınlar</string>
+    <string name="danger_places_help">Balańızdıń átirapındaǵı 1,5 km ishinde: túngi klub, bar, kalyanxana, kazino, bukmeker, spirtli ishimlik hám temeki dúkanları. Maǵlıwmat OpenStreetMap’tan alınadı — ayırım orınlar bolmawı múmkin.</string>
+    <string name="danger_places_radius">1,5 km ishinde</string>
+    <string name="danger_places_none">Qáwipli orın tabılmadı</string>
+    <string name="danger_places_failed">Júklep bolmadı</string>
+    <string name="danger_cat_nightlife">Túngi klub yamasa bar</string>
+    <string name="danger_cat_gambling">Qumar hám bás tigiw</string>
+    <string name="danger_cat_adult">Úlkenler ushın</string>
+    <string name="danger_cat_alcohol">Spirtli ishimlikler</string>
+    <string name="danger_cat_tobacco">Temeki hám vape</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
     <string name="farzandim">Balam</string>
     <string name="ozim">Ózim</string>

@@ -60,5 +60,6 @@ expect fun YandexMap(
 
 internal fun MarkerStyle.cacheKey(): String = when (this) {
     is MarkerStyle.Self -> "self_${accentColor}_${borderColor}"
+    is MarkerStyle.Danger -> "danger_${category}_${tint}_${isSelected}_${glyph != null}"
     else -> "${backgroundColor}_${isSelected}_${avatarUrl ?: text}_${showText}"
 }

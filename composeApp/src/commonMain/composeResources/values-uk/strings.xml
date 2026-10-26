@@ -481,6 +481,17 @@
 
     <string name="tracking_checking_settings">Перевіряємо налаштування дитини...</string>
     <string name="tracking_watch_video">Дивитися відео</string>
+    <string name="danger_places">Небезпечні місця</string>
+    <string name="danger_places_help">У радіусі 1,5 км від дитини: нічні клуби, бари, кальянні, казино, букмекери, магазини алкоголю й тютюну. Дані OpenStreetMap — деяких місць може не бути.</string>
+    <string name="danger_places_radius">у радіусі 1,5 км</string>
+    <string name="danger_places_none">Небезпечних місць не знайдено</string>
+    <string name="danger_places_failed">Не вдалося завантажити</string>
+    <string name="danger_cat_nightlife">Нічний клуб або бар</string>
+    <string name="danger_cat_gambling">Азартні ігри та ставки</string>
+    <string name="danger_cat_adult">Лише для дорослих</string>
+    <string name="danger_cat_alcohol">Алкоголь</string>
+    <string name="danger_cat_tobacco">Тютюн і вейпи</string>
+    <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радіус</string>
     <string name="farzandim">Моя дитина</string>
     <string name="ozim">Я сам(а)</string>

@@ -498,6 +498,17 @@
 
     <string name="tracking_checking_settings">সন্তানের সেটিংস যাচাই হচ্ছে...</string>
     <string name="tracking_watch_video">ভিডিও দেখুন</string>
+    <string name="danger_places">বিপজ্জনক স্থান</string>
+    <string name="danger_places_help">আপনার সন্তানের 1.5 কিমির মধ্যে: নাইট ক্লাব, বার, হুক্কা লাউঞ্জ, ক্যাসিনো, বাজির দোকান, মদ ও তামাকের দোকান। তথ্য OpenStreetMap থেকে — কিছু স্থান বাদ পড়তে পারে।</string>
+    <string name="danger_places_radius">1.5 কিমির মধ্যে</string>
+    <string name="danger_places_none">কোনো বিপজ্জনক স্থান পাওয়া যায়নি</string>
+    <string name="danger_places_failed">লোড করা যায়নি</string>
+    <string name="danger_cat_nightlife">নাইট ক্লাব বা বার</string>
+    <string name="danger_cat_gambling">জুয়া ও বাজি</string>
+    <string name="danger_cat_adult">শুধু প্রাপ্তবয়স্কদের জন্য</string>
+    <string name="danger_cat_alcohol">মদ</string>
+    <string name="danger_cat_tobacco">তামাক ও ভেপ</string>
+    <string name="danger_distance_m">%1$d মি</string>
     <string name="radius">ব্যাসার্ধ</string>
     <string name="farzandim">আমার সন্তান</string>
     <string name="ozim">আমি নিজে</string>

@@ -506,6 +506,17 @@ This information is used only for these features and is not shared with third pa
 
     <string name="tracking_checking_settings">Checking child settings...</string>
     <string name="tracking_watch_video">Watch video</string>
+    <string name="danger_places">Dangerous places</string>
+    <string name="danger_places_help">Within 1.5 km of your child: night clubs, bars, hookah lounges, casinos, betting shops, liquor and tobacco stores. Data from OpenStreetMap — some places may be missing.</string>
+    <string name="danger_places_radius">within 1.5 km</string>
+    <string name="danger_places_none">No dangerous places found</string>
+    <string name="danger_places_failed">Couldn’t load</string>
+    <string name="danger_cat_nightlife">Night club or bar</string>
+    <string name="danger_cat_gambling">Gambling and betting</string>
+    <string name="danger_cat_adult">Adults only</string>
+    <string name="danger_cat_alcohol">Alcohol</string>
+    <string name="danger_cat_tobacco">Tobacco and vapes</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
     <string name="farzandim">My child</string>
     <string name="ozim">Myself</string>

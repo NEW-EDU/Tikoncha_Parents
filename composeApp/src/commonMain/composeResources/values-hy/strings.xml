@@ -498,6 +498,17 @@
 
     <string name="tracking_checking_settings">Երեխայի կարգավորումները ստուգվում են...</string>
     <string name="tracking_watch_video">Դիտել տեսանյութը</string>
+    <string name="danger_places">Վտանգավոր վայրեր</string>
+    <string name="danger_places_help">Երեխայից 1,5 կմ շառավղում՝ գիշերային ակումբներ, բարեր, նարգիլեի սրահներ, խաղատներ, խաղադրույքների կետեր, ալկոհոլի և ծխախոտի խանութներ։ Տվյալները OpenStreetMap-ից են, որոշ վայրեր կարող են բացակայել։</string>
+    <string name="danger_places_radius">1,5 կմ շառավղում</string>
+    <string name="danger_places_none">Վտանգավոր վայրեր չեն գտնվել</string>
+    <string name="danger_places_failed">Չհաջողվեց բեռնել</string>
+    <string name="danger_cat_nightlife">Գիշերային ակումբ կամ բար</string>
+    <string name="danger_cat_gambling">Մոլախաղեր և խաղադրույքներ</string>
+    <string name="danger_cat_adult">Միայն մեծահասակների համար</string>
+    <string name="danger_cat_alcohol">Ալկոհոլ</string>
+    <string name="danger_cat_tobacco">Ծխախոտ և վեյփ</string>
+    <string name="danger_distance_m">%1$d մ</string>
     <string name="radius">Շառավիղ</string>
     <string name="farzandim">Իմ երեխան</string>
     <string name="ozim">Ես ինքս</string>

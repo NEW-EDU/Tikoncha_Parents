@@ -498,6 +498,17 @@
 
     <string name="tracking_checking_settings">Хүүхдийн тохиргоог шалгаж байна...</string>
     <string name="tracking_watch_video">Видео үзэх</string>
+    <string name="danger_places">Аюултай газрууд</string>
+    <string name="danger_places_help">Хүүхдээс 1.5 км радиуст: шөнийн клуб, баар, кальяны газар, казино, бооцооны газар, архи болон тамхины дэлгүүр. Мэдээлэл OpenStreetMap-аас — зарим газар дутуу байж болно.</string>
+    <string name="danger_places_radius">1.5 км радиуст</string>
+    <string name="danger_places_none">Аюултай газар олдсонгүй</string>
+    <string name="danger_places_failed">Ачаалж чадсангүй</string>
+    <string name="danger_cat_nightlife">Шөнийн клуб эсвэл баар</string>
+    <string name="danger_cat_gambling">Мөрийтэй тоглоом ба бооцоо</string>
+    <string name="danger_cat_adult">Зөвхөн насанд хүрэгчдэд</string>
+    <string name="danger_cat_alcohol">Согтууруулах ундаа</string>
+    <string name="danger_cat_tobacco">Тамхи ба вейп</string>
+    <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радиус</string>
     <string name="farzandim">Миний хүүхэд</string>
     <string name="ozim">Би өөрөө</string>

@@ -482,6 +482,17 @@
 
     <string name="tracking_checking_settings">正在检查孩子的设置...</string>
     <string name="tracking_watch_video">观看视频</string>
+    <string name="danger_places">危险场所</string>
+    <string name="danger_places_help">孩子周边 1.5 公里内的夜店、酒吧、水烟馆、赌场、博彩点、烟酒商店。数据来自 OpenStreetMap，可能不完整。</string>
+    <string name="danger_places_radius">1.5 公里内</string>
+    <string name="danger_places_none">未发现危险场所</string>
+    <string name="danger_places_failed">加载失败</string>
+    <string name="danger_cat_nightlife">夜店或酒吧</string>
+    <string name="danger_cat_gambling">赌博与投注</string>
+    <string name="danger_cat_adult">仅限成人</string>
+    <string name="danger_cat_alcohol">酒类</string>
+    <string name="danger_cat_tobacco">烟草与电子烟</string>
+    <string name="danger_distance_m">%1$d 米</string>
     <string name="radius">半径</string>
     <string name="farzandim">我的孩子</string>
     <string name="ozim">我自己</string>

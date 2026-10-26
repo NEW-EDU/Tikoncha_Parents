@@ -498,6 +498,17 @@
 
     <string name="tracking_checking_settings">بچے کی ترتیبات کی جانچ ہو رہی ہے...</string>
     <string name="tracking_watch_video">ویڈیو دیکھیں</string>
+    <string name="danger_places">خطرناک جگہیں</string>
+    <string name="danger_places_help">آپ کے بچے سے 1.5 کلومیٹر کے اندر: نائٹ کلب، بار، حقہ لاؤنج، کیسینو، سٹے بازی کے مراکز، شراب اور تمباکو کی دکانیں۔ ڈیٹا OpenStreetMap سے — کچھ جگہیں شاید شامل نہ ہوں۔</string>
+    <string name="danger_places_radius">1.5 کلومیٹر کے اندر</string>
+    <string name="danger_places_none">کوئی خطرناک جگہ نہیں ملی</string>
+    <string name="danger_places_failed">لوڈ نہیں ہو سکا</string>
+    <string name="danger_cat_nightlife">نائٹ کلب یا بار</string>
+    <string name="danger_cat_gambling">جوا اور سٹہ</string>
+    <string name="danger_cat_adult">صرف بالغوں کے لیے</string>
+    <string name="danger_cat_alcohol">شراب</string>
+    <string name="danger_cat_tobacco">تمباکو اور ویپ</string>
+    <string name="danger_distance_m">%1$d میٹر</string>
     <string name="radius">رداس</string>
     <string name="farzandim">میرا بچہ</string>
     <string name="ozim">میں خود</string>

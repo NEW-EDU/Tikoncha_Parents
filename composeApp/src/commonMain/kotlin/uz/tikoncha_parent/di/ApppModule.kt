@@ -167,6 +167,7 @@ val sharedModule = module {
     single { PaymentApiService(get()) }
     single { AutopayApiService(get()) }
     single { PermissionStatusApiService(get()) }
+    single { uz.tikoncha_parent.data.remote.SafetyApiService(get()) }
     single { TutorialApiService(get()) }
 
     single { ProtectionApiService(get()) }
@@ -189,6 +190,7 @@ val sharedModule = module {
     single<AutopayRepository> { AutopayRepositoryImpl(get()) }
     single<UpdateRepository> { UpdateRepositoryImpl(get()) }
     single<PermissionStatusRepository> { PermissionStatusRepositoryImpl(get()) }
+    single<uz.tikoncha_parent.domain.repository.SafetyRepository> { uz.tikoncha_parent.data.repository.SafetyRepositoryImpl(get()) }
 
     single<PlayerRepository> { PlayerRepositoryImpl(get()) }
     single<TutorialRepository> { TutorialRepositoryImpl(get()) }

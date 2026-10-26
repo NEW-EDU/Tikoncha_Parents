@@ -22,6 +22,7 @@ import uz.tikoncha_parent.domain.model.permission_status.PermissionStatusType
 import uz.tikoncha_parent.domain.repository.ChildRepository
 import uz.tikoncha_parent.domain.repository.PaymentRepository
 import uz.tikoncha_parent.domain.repository.PermissionStatusRepository
+import uz.tikoncha_parent.domain.repository.SafetyRepository
 import uz.tikoncha_parent.platform.Logger
 import uz.tikoncha_parent.platform.isLocationServiceEnabled
 import uz.tikoncha_parent.presentation.map.LatLng
@@ -37,7 +38,8 @@ class TrackingScreenModel(
     private val locationTracker: LocationTracker,
     private val permissionsController: PermissionsController,
     private val paymentRepository: PaymentRepository,
-    private val permissionStatusRepository: PermissionStatusRepository
+    private val permissionStatusRepository: PermissionStatusRepository,
+    private val safetyRepository: SafetyRepository,
 ) : StateScreenModel<TrackingState>(TrackingState()) {
 
     private val _effect = Channel<TrackingEffect>(Channel.BUFFERED)
@@ -46,6 +48,9 @@ class TrackingScreenModel(
     private var trackingJob: Job? = null
     private var idleStopJob: Job? = null
     private var lastLocation: LatLng? = null
+    private var dangerJob: Job? = null
+    /** Oxirgi so'rov: qaysi farzand, qaysi nuqta atrofida. */
+    private var dangerFetchedFor: Pair<String, LatLng>? = null
 
     init {
         loadChildren()
@@ -114,6 +119,10 @@ class TrackingScreenModel(
 
             is TrackingEvent.SetSelfText ->
                 mutableState.update { it.copy(selfText = event.text) }
+
+            TrackingEvent.ToggleDangerPlaces -> toggleDangerPlaces()
+            TrackingEvent.DismissDangerPlace ->
+                mutableState.update { it.copy(selectedDangerId = null) }
 
             TrackingEvent.PermissionGranted,
             TrackingEvent.PermissionDenied,
@@ -268,8 +277,10 @@ class TrackingScreenModel(
                 sheetPerson = person,
                 showPersonSheet = true,
                 isCheckingPermissionStatus = true,
+                selectedDangerId = null,
             )
         }
+        refreshDangerPlaces()
         if (person.location != null) {
             screenModelScope.launch {
                 _effect.send(TrackingEffect.MoveCamera(person.location, zoom = 16f))
@@ -279,6 +290,19 @@ class TrackingScreenModel(
     }
 
     private fun handleMarkerClicked(id: String) {
+        if (id.startsWith(DANGER_MARKER_PREFIX)) {
+            val placeId = id.removePrefix(DANGER_MARKER_PREFIX)
+            mutableState.update {
+                it.copy(
+                    selectedDangerId = placeId,
+                    showPersonSheet = false,
+                    sheetPerson = null,
+                    sheetIssues = emptyList(),
+                    isCheckingPermissionStatus = false,
+                )
+            }
+            return
+        }
         if (id == "self" || state.value.self?.id == id) {
             ensureLocation(focusSelf = true)
             return
@@ -313,6 +337,7 @@ class TrackingScreenModel(
         screenModelScope.launch {
             paymentRepository.syncSubscriptionLimits()
             mutableState.update { it.copy(subscriptionLimits = AppSettings.subscriptionLimitList) }
+            refreshDangerPlaces()
         }
     }
 
@@ -325,9 +350,93 @@ class TrackingScreenModel(
                     val children = res.data.map { it.toPerson() }
                     children.freshestChild()?.location?.let { AppSettings.lastChildLocation = it }
                     mutableState.update { it.copy(people = children, isLoading = false, peopleLoaded = true) }
+                    refreshDangerPlaces()
                 }
                 is Outcome.Failure -> {
                     mutableState.update { it.copy(isLoading = false, peopleLoaded = true, error = res) }
+                }
+            }
+        }
+    }
+
+    // ── Xavfli joylar ──
+
+    private fun toggleDangerPlaces() {
+        if (state.value.dangerMode) {
+            dangerJob?.cancel()
+            dangerFetchedFor = null
+            mutableState.update {
+                it.copy(
+                    dangerMode = false, dangerLoading = false, dangerFailed = false,
+                    dangerPlaces = emptyList(), dangerAnchor = null, selectedDangerId = null,
+                )
+            }
+            return
+        }
+        // Farzandlar bor, lekin hech birida PLUS yo'q — joylashuv (va uning atrofi) PLUS imkoniyati.
+        // Obuna ma'lumoti hali kelmagan bo'lsa dialog ko'rsatilmaydi (keyin yuklanganda qatlam o'zi to'ladi).
+        val children = state.value.people.filter { !it.isSelf }
+        if (children.isNotEmpty() && state.value.subscriptionLimits.isNotEmpty() &&
+            children.none { hasPlusSubscription(it.id) }
+        ) {
+            mutableState.update { it.copy(showSubscriptionDialog = true) }
+            return
+        }
+        mutableState.update { it.copy(dangerMode = true, dangerFailed = false) }
+        refreshDangerPlaces(fitCamera = true)
+    }
+
+    /** Tanlangan farzand, bo'lmasa joylashuvi eng yangi PLUS farzand. */
+    private fun dangerAnchorOf(s: TrackingState): Person? {
+        val eligible = s.people.filter { !it.isSelf && it.location != null && hasPlusSubscription(it.id) }
+        return eligible.firstOrNull { it.id == s.selectedPersonId } ?: eligible.freshestChild()
+    }
+
+    /**
+     * Qatlam yoqiq bo'lsa — farzand atrofidagi xavfli joylarni yuklaydi. Farzand o'zgarsa yoki
+     * [DANGER_REFETCH_M] dan ko'p siljisa qayta so'raydi, aks holda hech narsa qilmaydi.
+     */
+    private fun refreshDangerPlaces(fitCamera: Boolean = false) {
+        val s = state.value
+        if (!s.dangerMode) return
+        val anchor = dangerAnchorOf(s)
+        val loc = anchor?.location
+        if (anchor == null || loc == null) {
+            dangerJob?.cancel()
+            dangerFetchedFor = null
+            mutableState.update {
+                it.copy(dangerAnchor = null, dangerPlaces = emptyList(), dangerLoading = false, selectedDangerId = null)
+            }
+            return
+        }
+        val last = dangerFetchedFor
+        if (!fitCamera && last != null && last.first == anchor.id && haversineMeters(last.second, loc) < DANGER_REFETCH_M) {
+            mutableState.update { it.copy(dangerAnchor = anchor) }
+            return
+        }
+        dangerFetchedFor = anchor.id to loc
+        dangerJob?.cancel()
+        mutableState.update { it.copy(dangerAnchor = anchor, dangerLoading = true, dangerFailed = false) }
+        dangerJob = screenModelScope.launch {
+            when (val res = safetyRepository.dangerPlaces(loc.lat, loc.lon, DANGER_RADIUS_M)) {
+                is Outcome.Success -> {
+                    val places = res.data.places
+                    mutableState.update { st ->
+                        st.copy(
+                            dangerLoading = false,
+                            dangerPlaces = places,
+                            dangerAttribution = res.data.attribution,
+                            selectedDangerId = st.selectedDangerId?.takeIf { id -> places.any { it.id == id } },
+                        )
+                    }
+                    if (fitCamera) {
+                        if (places.isEmpty()) _effect.send(TrackingEffect.MoveCamera(loc, zoom = 15f))
+                        else _effect.send(TrackingEffect.FitBounds(listOf(loc) + places.map { LatLng(it.lat, it.lng) }))
+                    }
+                }
+                is Outcome.Failure -> {
+                    dangerFetchedFor = null
+                    mutableState.update { it.copy(dangerLoading = false, dangerFailed = true, dangerPlaces = emptyList()) }
                 }
             }
         }
@@ -355,8 +464,12 @@ class TrackingScreenModel(
 
     override fun onDispose() {
         trackingJob?.cancel()
+        dangerJob?.cancel()
         idleStopJob?.cancel()
         runCatching { locationTracker.stopTracking() }
         super.onDispose()
     }
 }
+
+/** Farzand shundan ko'p siljisa xavfli joylar qayta so'raladi, metr. */
+private const val DANGER_REFETCH_M = 200.0

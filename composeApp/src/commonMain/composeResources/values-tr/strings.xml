@@ -498,6 +498,17 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
 
     <string name="tracking_checking_settings">Çocuğun ayarları kontrol ediliyor...</string>
     <string name="tracking_watch_video">Videoyu izle</string>
+    <string name="danger_places">Tehlikeli yerler</string>
+    <string name="danger_places_help">Çocuğunun 1,5 km çevresinde: gece kulüpleri, barlar, nargile kafeler, kumarhaneler, bahis bayileri, içki ve tütün dükkânları. Veriler OpenStreetMap’ten — bazı yerler eksik olabilir.</string>
+    <string name="danger_places_radius">1,5 km içinde</string>
+    <string name="danger_places_none">Tehlikeli yer bulunamadı</string>
+    <string name="danger_places_failed">Yüklenemedi</string>
+    <string name="danger_cat_nightlife">Gece kulübü veya bar</string>
+    <string name="danger_cat_gambling">Kumar ve bahis</string>
+    <string name="danger_cat_adult">Yalnızca yetişkinler</string>
+    <string name="danger_cat_alcohol">Alkol</string>
+    <string name="danger_cat_tobacco">Tütün ve elektronik sigara</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Yarıçap</string>
     <string name="farzandim">Çocuğum</string>
     <string name="ozim">Kendim</string>

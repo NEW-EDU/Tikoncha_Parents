@@ -498,6 +498,17 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
 
     <string name="tracking_checking_settings">Đang kiểm tra cài đặt của con...</string>
     <string name="tracking_watch_video">Xem video</string>
+    <string name="danger_places">Địa điểm nguy hiểm</string>
+    <string name="danger_places_help">Trong bán kính 1,5 km quanh con bạn: hộp đêm, quán bar, quán shisha, sòng bạc, điểm cá cược, cửa hàng rượu và thuốc lá. Dữ liệu từ OpenStreetMap — có thể thiếu một số địa điểm.</string>
+    <string name="danger_places_radius">trong bán kính 1,5 km</string>
+    <string name="danger_places_none">Không tìm thấy địa điểm nguy hiểm</string>
+    <string name="danger_places_failed">Không tải được</string>
+    <string name="danger_cat_nightlife">Hộp đêm hoặc quán bar</string>
+    <string name="danger_cat_gambling">Cờ bạc và cá cược</string>
+    <string name="danger_cat_adult">Chỉ dành cho người lớn</string>
+    <string name="danger_cat_alcohol">Rượu bia</string>
+    <string name="danger_cat_tobacco">Thuốc lá và vape</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Bán kính</string>
     <string name="farzandim">Con của tôi</string>
     <string name="ozim">Bản thân tôi</string>

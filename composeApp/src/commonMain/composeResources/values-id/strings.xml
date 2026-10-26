@@ -498,6 +498,17 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
 
     <string name="tracking_checking_settings">Memeriksa pengaturan anak...</string>
     <string name="tracking_watch_video">Tonton video</string>
+    <string name="danger_places">Tempat berbahaya</string>
+    <string name="danger_places_help">Dalam radius 1,5 km dari anakmu: kelab malam, bar, lounge shisha, kasino, tempat taruhan, toko minuman keras dan tembakau. Data dari OpenStreetMap — beberapa tempat mungkin belum ada.</string>
+    <string name="danger_places_radius">dalam radius 1,5 km</string>
+    <string name="danger_places_none">Tidak ada tempat berbahaya</string>
+    <string name="danger_places_failed">Gagal memuat</string>
+    <string name="danger_cat_nightlife">Kelab malam atau bar</string>
+    <string name="danger_cat_gambling">Judi dan taruhan</string>
+    <string name="danger_cat_adult">Khusus dewasa</string>
+    <string name="danger_cat_alcohol">Minuman keras</string>
+    <string name="danger_cat_tobacco">Tembakau dan vape</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
     <string name="farzandim">Anakku</string>
     <string name="ozim">Diriku sendiri</string>

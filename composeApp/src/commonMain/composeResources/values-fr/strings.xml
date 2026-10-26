@@ -492,6 +492,17 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
 
     <string name="tracking_checking_settings">Vérification des réglages de l’enfant...</string>
     <string name="tracking_watch_video">Regarder la vidéo</string>
+    <string name="danger_places">Lieux dangereux</string>
+    <string name="danger_places_help">Dans un rayon de 1,5 km autour de votre enfant : boîtes de nuit, bars, bars à chicha, casinos, paris sportifs, magasins d’alcool et de tabac. Données OpenStreetMap — certains lieux peuvent manquer.</string>
+    <string name="danger_places_radius">dans un rayon de 1,5 km</string>
+    <string name="danger_places_none">Aucun lieu dangereux trouvé</string>
+    <string name="danger_places_failed">Échec du chargement</string>
+    <string name="danger_cat_nightlife">Boîte de nuit ou bar</string>
+    <string name="danger_cat_gambling">Jeux d’argent et paris</string>
+    <string name="danger_cat_adult">Réservé aux adultes</string>
+    <string name="danger_cat_alcohol">Alcool</string>
+    <string name="danger_cat_tobacco">Tabac et vapotage</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Rayon</string>
     <string name="farzandim">Mon enfant</string>
     <string name="ozim">Moi-même</string>

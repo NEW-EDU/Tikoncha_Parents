@@ -498,6 +498,17 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
 
     <string name="tracking_checking_settings">Çaganyň sazlamalary barlanýar...</string>
     <string name="tracking_watch_video">Wideo gör</string>
+    <string name="danger_places">Howply ýerler</string>
+    <string name="danger_places_help">Çagaňyzdan 1,5 km aralykda: gijeki klublar, barlar, kalýanhanalar, kazinolar, bukmekerler, alkogol we temmäki dükanlary. Maglumat OpenStreetMap-dan — käbir ýerler bolmazlygy mümkin.</string>
+    <string name="danger_places_radius">1,5 km aralykda</string>
+    <string name="danger_places_none">Howply ýer tapylmady</string>
+    <string name="danger_places_failed">Ýükläp bolmady</string>
+    <string name="danger_cat_nightlife">Gijeki klub ýa-da bar</string>
+    <string name="danger_cat_gambling">Kumar we stawkalar</string>
+    <string name="danger_cat_adult">Diňe ulular üçin</string>
+    <string name="danger_cat_alcohol">Alkogol</string>
+    <string name="danger_cat_tobacco">Temmäki we weýp</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
     <string name="farzandim">Meniň çagam</string>
     <string name="ozim">Özüm</string>

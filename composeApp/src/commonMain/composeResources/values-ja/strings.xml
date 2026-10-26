@@ -482,6 +482,17 @@
 
     <string name="tracking_checking_settings">お子さまの設定を確認しています...</string>
     <string name="tracking_watch_video">動画を見る</string>
+    <string name="danger_places">危険な場所</string>
+    <string name="danger_places_help">お子さまから半径1.5km以内のナイトクラブ、バー、シーシャバー、カジノ、賭博店、酒店、たばこ店。データはOpenStreetMapより（一部の場所が載っていない場合があります）。</string>
+    <string name="danger_places_radius">半径1.5km以内</string>
+    <string name="danger_places_none">危険な場所は見つかりませんでした</string>
+    <string name="danger_places_failed">読み込めませんでした</string>
+    <string name="danger_cat_nightlife">ナイトクラブ・バー</string>
+    <string name="danger_cat_gambling">ギャンブル・賭け事</string>
+    <string name="danger_cat_adult">成人向け</string>
+    <string name="danger_cat_alcohol">酒類</string>
+    <string name="danger_cat_tobacco">たばこ・電子たばこ</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">半径</string>
     <string name="farzandim">うちの子</string>
     <string name="ozim">自分</string>

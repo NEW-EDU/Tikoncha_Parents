@@ -481,6 +481,17 @@
 
     <string name="tracking_checking_settings">Einstellungen des Kindes werden geprüft …</string>
     <string name="tracking_watch_video">Video ansehen</string>
+    <string name="danger_places">Gefährliche Orte</string>
+    <string name="danger_places_help">Im Umkreis von 1,5 km um dein Kind: Nachtclubs, Bars, Shisha-Lounges, Casinos, Wettbüros, Spirituosen- und Tabakläden. Daten von OpenStreetMap – einige Orte können fehlen.</string>
+    <string name="danger_places_radius">im Umkreis von 1,5 km</string>
+    <string name="danger_places_none">Keine gefährlichen Orte gefunden</string>
+    <string name="danger_places_failed">Laden fehlgeschlagen</string>
+    <string name="danger_cat_nightlife">Nachtclub oder Bar</string>
+    <string name="danger_cat_gambling">Glücksspiel und Wetten</string>
+    <string name="danger_cat_adult">Nur für Erwachsene</string>
+    <string name="danger_cat_alcohol">Alkohol</string>
+    <string name="danger_cat_tobacco">Tabak und Vapes</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
     <string name="farzandim">Mein Kind</string>
     <string name="ozim">Ich selbst</string>

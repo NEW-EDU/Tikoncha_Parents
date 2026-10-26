@@ -4,6 +4,7 @@ import androidx.compose.runtime.Immutable
 import uz.tikoncha_parent.domain.model.SubscriptionLimit
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.permission_status.PermissionIssue
+import uz.tikoncha_parent.domain.model.safety.DangerPlace
 import uz.tikoncha_parent.presentation.map.LatLng
 
 
@@ -47,9 +48,25 @@ data class TrackingState(
 
     val selfText: String = "",
     val isLocatingSelf: Boolean = false,
-) {
 
+    // "Xavfli joylar" qatlami — farzand atrofidagi klub, bar, kazino, alkogol/tamaki do'konlari
+    val dangerMode: Boolean = false,
+    val dangerLoading: Boolean = false,
+    val dangerFailed: Boolean = false,
+    val dangerPlaces: List<DangerPlace> = emptyList(),
+    val dangerAttribution: String = "",
+    /** Atrofi qidirilgan farzand (tanlangan, bo'lmasa joylashuvi eng yangi PLUS farzand). */
+    val dangerAnchor: Person? = null,
+    val selectedDangerId: String? = null,
+) {
+    val selectedDanger: DangerPlace? get() = selectedDangerId?.let { id -> dangerPlaces.firstOrNull { it.id == id } }
 }
+
+/** Xavfli joy markerlari id'si shu bilan boshlanadi (farzand id'lari bilan to'qnashmasin). */
+const val DANGER_MARKER_PREFIX = "danger:"
+
+/** Qidiruv radiusi, metr. */
+const val DANGER_RADIUS_M = 1500
 
 sealed interface TrackingEvent {
     data object Refresh : TrackingEvent
@@ -73,6 +90,8 @@ sealed interface TrackingEvent {
     data class OpenYoutubeUrl(val url: String) : TrackingEvent
 
     data class SetSelfText(val text: String) : TrackingEvent
+    data object ToggleDangerPlaces : TrackingEvent
+    data object DismissDangerPlace : TrackingEvent
     data object DismissError : TrackingEvent
 }
 

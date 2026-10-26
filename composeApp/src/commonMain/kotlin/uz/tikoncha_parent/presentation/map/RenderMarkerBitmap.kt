@@ -5,6 +5,8 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.CanvasDrawScope
@@ -52,6 +54,9 @@ fun renderMarkerBitmap(
 
     if (style is MarkerStyle.Self) {
         return renderUserLocationBitmap(style, density)
+    }
+    if (style is MarkerStyle.Danger) {
+        return renderDangerBitmap(style, density)
     }
 
     val scale = if (style.isSelected) 1.15f else 1.0f
@@ -242,6 +247,52 @@ private fun renderUserLocationBitmap(
         drawPath(path, color = accentColor)
     }
 
+    return image
+}
+
+/** Xavfli joy belgisi: oq doira + ingichka [tint] halqa + bo'yalgan belgi; tanlanganda to'la doira, oq belgi. */
+private fun renderDangerBitmap(
+    style: MarkerStyle.Danger,
+    density: Density,
+): ImageBitmap {
+    val diameterDp = if (style.isSelected) 46f else 34f
+    val haloDp = 3f
+    val sizePx = with(density) { (diameterDp + haloDp * 2).dp.toPx() }.toInt()
+
+    val image = ImageBitmap(sizePx, sizePx)
+    val canvas = Canvas(image)
+    CanvasDrawScope().draw(
+        density = density,
+        layoutDirection = LayoutDirection.Ltr,
+        canvas = canvas,
+        size = Size(sizePx.toFloat(), sizePx.toFloat())
+    ) {
+        val center = Offset(sizePx / 2f, sizePx / 2f)
+        val r = with(density) { (diameterDp / 2).dp.toPx() }
+        val tint = Color(style.tint)
+        val glyphColor: Color
+        if (style.isSelected) {
+            drawCircle(color = Color.White, radius = r + with(density) { haloDp.dp.toPx() }, center = center)
+            drawCircle(color = tint, radius = r, center = center)
+            glyphColor = Color.White
+        } else {
+            drawCircle(color = tint, radius = r, center = center)
+            drawCircle(color = Color.White, radius = r - with(density) { 2.5f.dp.toPx() }, center = center)
+            glyphColor = tint
+        }
+        style.glyph?.let { glyph ->
+            val g = with(density) { (if (style.isSelected) 24f else 18f).dp.toPx() }.toInt()
+            drawImage(
+                image = glyph,
+                srcOffset = IntOffset.Zero,
+                srcSize = IntSize(glyph.width, glyph.height),
+                dstOffset = IntOffset((center.x - g / 2f).toInt(), (center.y - g / 2f).toInt()),
+                dstSize = IntSize(g, g),
+                colorFilter = ColorFilter.tint(glyphColor),
+                filterQuality = FilterQuality.High,
+            )
+        }
+    }
     return image
 }
 

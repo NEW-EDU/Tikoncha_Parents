@@ -506,6 +506,17 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
 
     <string name="tracking_checking_settings">Farzand sozlamalari tekşirilmoqda...</string>
     <string name="tracking_watch_video">Video köriş</string>
+    <string name="danger_places">Xavfli joylar</string>
+    <string name="danger_places_help">Farzandingiz atrofidagi 1,5 km içida: tungi klub, bar, qalyonxona, kazino, bukmeker, spirtli içimlik va tamaki dökonlari. Ma’lumot OpenStreetMap’dan olinadi — ba’zi joylar bölmasligi mumkin.</string>
+    <string name="danger_places_radius">1,5 km içida</string>
+    <string name="danger_places_none">Xavfli joy topilmadi</string>
+    <string name="danger_places_failed">Yuklab bölmadi</string>
+    <string name="danger_cat_nightlife">Tungi klub yoki bar</string>
+    <string name="danger_cat_gambling">Qimor va tikiş</string>
+    <string name="danger_cat_adult">Kattalar uçun</string>
+    <string name="danger_cat_alcohol">Spirtli içimliklar</string>
+    <string name="danger_cat_tobacco">Tamaki va vape</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
     <string name="farzandim">Farzandim</string>
     <string name="ozim">Özim</string>

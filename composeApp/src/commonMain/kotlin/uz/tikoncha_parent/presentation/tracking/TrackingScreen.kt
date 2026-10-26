@@ -83,6 +83,7 @@ import tikoncha_parents.composeapp.generated.resources.tracking_permission_setti
 import tikoncha_parents.composeapp.generated.resources.tracking_permission_settings_title
 import tikoncha_parents.composeapp.generated.resources.tracking_permission_title
 import uz.tikoncha_parent.domain.model.SubscriptionType
+import uz.tikoncha_parent.domain.model.safety.DangerPlace
 import uz.tikoncha_parent.platform.Logger
 import uz.tikoncha_parent.platform.openAppSettings
 import uz.tikoncha_parent.platform.openInExternalMaps
@@ -341,31 +342,56 @@ fun TrackingContent(
     val accuracyFillColor = dangerColor.copy(alpha = 0.20f).toArgbLong()
     val accuracyStrokeColor = dangerColor.copy(alpha = 0.40f).toArgbLong()
 
+    // "Xavfli joylar": qidirilgan doira (juda xira) + har joy uchun belgi
+    val dangerTint = dangerColor.toArgbLong()
+    val dangerAreaFill = dangerColor.copy(alpha = 0.04f).toArgbLong()
+    val dangerAreaStroke = dangerColor.copy(alpha = 0.30f).toArgbLong()
+    val dangerGlyphs = rememberDangerGlyphs()
+    val dangerCenter = state.dangerAnchor?.location?.takeIf { state.dangerMode }
+
     val userAccuracyCircle = remember(
         state.self?.location,
         accuracyFillColor,
         accuracyStrokeColor,
+        dangerCenter,
+        dangerAreaFill,
+        dangerAreaStroke,
     ) {
-        val loc = state.self?.location
-        if (loc != null) {
-            listOf(
-                MapCircle(
-                    id = "user_accuracy",
-                    center = loc,
-                    radiusMeters = 30.0,
-                    reverse = false,
-                    fillColor = accuracyFillColor,
-                    strokeColor = accuracyStrokeColor,
-                    strokeWidthDp = 1f,
+        buildList {
+            state.self?.location?.let { loc ->
+                add(
+                    MapCircle(
+                        id = "user_accuracy",
+                        center = loc,
+                        radiusMeters = 30.0,
+                        reverse = false,
+                        fillColor = accuracyFillColor,
+                        strokeColor = accuracyStrokeColor,
+                        strokeWidthDp = 1f,
+                    )
                 )
-            )
-        } else emptyList()
+            }
+            dangerCenter?.let { center ->
+                add(
+                    MapCircle(
+                        id = "danger_area",
+                        center = center,
+                        radiusMeters = DANGER_RADIUS_M.toDouble(),
+                        reverse = false,
+                        fillColor = dangerAreaFill,
+                        strokeColor = dangerAreaStroke,
+                        strokeWidthDp = 1f,
+                    )
+                )
+            }
+        }
     }
 
     // ⬇️ YANGI — Self ham MapMarker bo'ldi
     val markers = remember(
         state.people, state.self, state.selectedPersonId,
         state.subscriptionLimits, placeholderBitmap, selfText,
+        state.dangerMode, state.dangerPlaces, state.selectedDangerId, dangerGlyphs, dangerTint,
     ) {
         buildList {
             state.people
@@ -394,10 +420,30 @@ fun TrackingContent(
                             id = person.id,
                             position = person.location!!,
                             style = style,
-                            zIndex = if (isSelected) 100f else 0f,
+                            zIndex = if (isSelected) 100f else 20f,
                         )
                     )
                 }
+
+            // Xavfli joylar — farzand belgisidan pastda (tanlangani bundan mustasno)
+            if (state.dangerMode) {
+                state.dangerPlaces.forEach { place ->
+                    val selected = place.id == state.selectedDangerId
+                    add(
+                        MapMarker(
+                            id = DANGER_MARKER_PREFIX + place.id,
+                            position = LatLng(place.lat, place.lng),
+                            style = MarkerStyle.Danger(
+                                category = place.category.apiKey,
+                                glyph = dangerGlyphs[place.category],
+                                tint = dangerTint,
+                                isSelected = selected,
+                            ),
+                            zIndex = if (selected) 90f else 10f,
+                        )
+                    )
+                }
+            }
 
             // Self alohida marker
             state.self?.location?.let { selfLoc ->
@@ -436,8 +482,16 @@ fun TrackingContent(
     )
 
     val cardPerson = if (state.showPersonSheet) state.sheetPerson else null
+    val cardDanger = state.selectedDanger
     // Android "orqaga" — avval kartani yopadi
-    BackHandler(cardPerson != null) { onEvent(TrackingEvent.DismissPersonSheet) }
+    BackHandler(cardPerson != null || cardDanger != null) {
+        onEvent(if (cardDanger != null) TrackingEvent.DismissDangerPlace else TrackingEvent.DismissPersonSheet)
+    }
+    val bottomLayer: BottomLayer = when {
+        cardPerson != null -> BottomLayer.PersonCard(cardPerson)
+        cardDanger != null -> BottomLayer.DangerCard(cardDanger)
+        else -> BottomLayer.Rail
+    }
 
     BoxWithConstraints(Modifier.fillMaxSize().background(AppColors.bg.page)) {
         val cardMax = maxHeight * 0.55f
@@ -448,7 +502,10 @@ fun TrackingContent(
             markers = markers,
             circles = userAccuracyCircle,
             onMarkerClick = { id -> onEvent(TrackingEvent.MarkerClicked(id)) },
-            onMapTap = { if (cardPerson != null) onEvent(TrackingEvent.DismissPersonSheet) },
+            onMapTap = {
+                if (cardPerson != null) onEvent(TrackingEvent.DismissPersonSheet)
+                if (cardDanger != null) onEvent(TrackingEvent.DismissDangerPlace)
+            },
             modifier = Modifier.fillMaxSize(),
             isDark = isDark,
             logoTopInset = statusTop + 8.dp,
@@ -460,6 +517,15 @@ fun TrackingContent(
                 .fillMaxWidth()
                 .height(statusTop + 28.dp)
                 .background(Brush.verticalGradient(listOf(AppColors.bg.page.copy(alpha = 0.85f), Color.Transparent)))
+        )
+
+        // Tepada chapda: "Xavfli joylar" (Yandex logotipi o'ngda)
+        DangerPlacesControl(
+            state = state,
+            onToggle = { onEvent(TrackingEvent.ToggleDangerPlaces) },
+            modifier = Modifier
+                .align(Alignment.TopStart)
+                .padding(top = statusTop + 12.dp, start = 12.dp, end = 72.dp),
         )
 
         if (state.isLoading) {
@@ -478,8 +544,8 @@ fun TrackingContent(
         val enterSlide = MaterialTheme.motionScheme.defaultSpatialSpec<IntOffset>()
         val exitFade = MaterialTheme.motionScheme.fastEffectsSpec<Float>()
         AnimatedContent(
-            targetState = cardPerson,
-            contentKey = { it?.id },
+            targetState = bottomLayer,
+            contentKey = { it.key },
             transitionSpec = {
                 (fadeIn(enterFade) + slideInVertically(enterSlide) { it / 3 }) togetherWith
                     fadeOut(exitFade) using SizeTransform(clip = false)
@@ -489,10 +555,15 @@ fun TrackingContent(
                 .fillMaxWidth()
                 .padding(bottom = bottomReserved),
             label = "mapBottom",
-        ) { person ->
-            if (person != null) {
+        ) { layer ->
+            if (layer is BottomLayer.DangerCard) {
+                DangerPlaceCard(
+                    place = layer.place,
+                    onClose = { onEvent(TrackingEvent.DismissDangerPlace) },
+                )
+            } else if (layer is BottomLayer.PersonCard) {
                 PersonLocationCard(
-                    person = person,
+                    person = layer.person,
                     issues = state.sheetIssues,
                     isCheckingStatus = state.isCheckingPermissionStatus,
                     maxHeight = cardMax,
@@ -515,6 +586,23 @@ fun TrackingContent(
                 Spacer(Modifier.height(0.dp))
             }
         }
+    }
+}
+
+/** Xarita ostidagi pastki qatlam: farzand kartasi, xavfli joy kartasi yoki farzandlar qatori. */
+private sealed interface BottomLayer {
+    val key: String
+
+    data class PersonCard(val person: Person) : BottomLayer {
+        override val key: String get() = "person:${person.id}"
+    }
+
+    data class DangerCard(val place: DangerPlace) : BottomLayer {
+        override val key: String get() = "danger:${place.id}"
+    }
+
+    data object Rail : BottomLayer {
+        override val key: String get() = "rail"
     }
 }
 

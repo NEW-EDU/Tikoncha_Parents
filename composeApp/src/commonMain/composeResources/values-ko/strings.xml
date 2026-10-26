@@ -482,6 +482,17 @@
 
     <string name="tracking_checking_settings">자녀 설정을 확인하는 중...</string>
     <string name="tracking_watch_video">영상 보기</string>
+    <string name="danger_places">위험한 장소</string>
+    <string name="danger_places_help">자녀 반경 1.5km 이내의 나이트클럽, 바, 물담배 카페, 카지노, 도박장, 주류·담배 판매점. 데이터 출처: OpenStreetMap (일부 장소가 빠져 있을 수 있음).</string>
+    <string name="danger_places_radius">반경 1.5km 이내</string>
+    <string name="danger_places_none">위험한 장소가 없습니다</string>
+    <string name="danger_places_failed">불러오지 못했습니다</string>
+    <string name="danger_cat_nightlife">나이트클럽 또는 바</string>
+    <string name="danger_cat_gambling">도박 및 베팅</string>
+    <string name="danger_cat_adult">성인 전용</string>
+    <string name="danger_cat_alcohol">주류</string>
+    <string name="danger_cat_tobacco">담배 및 전자담배</string>
+    <string name="danger_distance_m">%1$d m</string>
     <string name="radius">반경</string>
     <string name="farzandim">내 자녀</string>
     <string name="ozim">나</string>

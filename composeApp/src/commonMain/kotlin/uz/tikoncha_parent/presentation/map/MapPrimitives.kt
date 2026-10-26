@@ -91,6 +91,25 @@ sealed interface MarkerStyle {
         override val anchorX: Float get() = 0.5f
         override val anchorY: Float get() = USER_LOCATION_ANCHOR_Y
     }
+
+    /**
+     * "Xavfli joylar" qatlami: kichik doira, ichida joy turi belgisi. [glyph] — oq rangda oldindan chizilgan
+     * belgi (bu yerda [tint] ga bo'yaladi). Tanlanganda doira to'la [tint], belgi oq va kattaroq.
+     */
+    data class Danger(
+        val category: String,
+        val glyph: ImageBitmap?,
+        val tint: Long,
+        override val isSelected: Boolean = false,
+    ) : MarkerStyle {
+        override val backgroundColor: Long get() = tint
+        override val text: String get() = ""
+        override val avatarUrl: String? get() = null
+        override val placeholderBitmap: ImageBitmap? get() = glyph
+        override val showText: Boolean get() = false
+        override val anchorX: Float get() = 0.5f
+        override val anchorY: Float get() = 0.5f
+    }
 }
 
 internal const val USER_LOCATION_ANCHOR_Y = 0.7f
