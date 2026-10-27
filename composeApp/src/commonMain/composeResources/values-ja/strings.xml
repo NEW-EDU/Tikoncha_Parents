@@ -1355,4 +1355,7 @@
     <string name="del_acc_confirm">完全に削除</string>
     <string name="del_acc_store_title">サブスクリプション</string>
     <string name="del_acc_store_note">App Store や Google Play のサブスクリプションは自動では解約されません。ストアの設定で解約してください。</string>
+    <string name="offline_saved_data">オフライン — 保存済みのデータを表示中</string>
+    <string name="offline_pending_n">オフライン — %1$d件の変更はあとで送信されます</string>
+    <string name="offline_sending_n">%1$d件の変更を送信中…</string>
 </resources>

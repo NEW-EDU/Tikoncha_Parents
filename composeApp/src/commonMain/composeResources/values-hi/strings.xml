@@ -1354,4 +1354,7 @@
     <string name="del_acc_confirm">हमेशा के लिए हटाएँ</string>
     <string name="del_acc_store_title">सदस्यता</string>
     <string name="del_acc_store_note">App Store या Google Play की सदस्यता अपने आप रद्द नहीं होती — इसे स्टोर की सेटिंग में रद्द करें।</string>
+    <string name="offline_saved_data">ऑफ़लाइन — सहेजा गया डेटा दिख रहा है</string>
+    <string name="offline_pending_n">ऑफ़लाइन — %1$d बदलाव बाद में भेजे जाएँगे</string>
+    <string name="offline_sending_n">%1$d बदलाव भेजे जा रहे हैं…</string>
 </resources>

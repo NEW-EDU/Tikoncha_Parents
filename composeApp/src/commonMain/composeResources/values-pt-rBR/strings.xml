@@ -1371,4 +1371,7 @@
     <string name="del_acc_confirm">Excluir para sempre</string>
     <string name="del_acc_store_title">Assinatura</string>
     <string name="del_acc_store_note">A assinatura da App Store ou do Google Play não é cancelada sozinha — cancele nas configurações da loja.</string>
+    <string name="offline_saved_data">Offline — mostrando dados salvos</string>
+    <string name="offline_pending_n">Offline — %1$d alterações serão enviadas depois</string>
+    <string name="offline_sending_n">Enviando %1$d alterações…</string>
 </resources>

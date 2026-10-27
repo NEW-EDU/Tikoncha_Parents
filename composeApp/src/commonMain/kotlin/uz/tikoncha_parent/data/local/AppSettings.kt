@@ -132,6 +132,14 @@ object AppSettings {
         set(value) = settings.putString(KEY_HOME_LAYOUT, value)
 
     /** Jadvallar ekranidagi oxirgi tablar to'plami (farzand bo'yicha) — ochilganda tablar "sakramasin". */
+    // ------------ Offline-first (outbox, oxirgi server holati) ------------
+    // Hammasi "offline_" bilan boşlanadi — clearSession() ularni birga tozalaydi.
+
+    fun offlineValue(key: String): String? = settings.getStringOrNull("offline_$key")
+    fun setOfflineValue(key: String, value: String?) {
+        if (value == null) settings.remove("offline_$key") else settings.putString("offline_$key", value)
+    }
+
     fun policyTabs(childId: String): String? = settings.getStringOrNull("policyTabs_$childId")
     fun setPolicyTabs(childId: String, value: String) = settings.putString("policyTabs_$childId", value)
 
@@ -250,6 +258,7 @@ object AppSettings {
      */
     fun clearSession() {
         SessionCache.clear()
+        settings.keys.filter { it.startsWith("offline_") }.forEach { settings.remove(it) }
         // auth
         settings.remove(KEY_ACCESS_TOKEN)
         settings.remove(KEY_REFRESH_TOKEN)

@@ -1354,4 +1354,7 @@
     <string name="del_acc_confirm">Padam selama-lamanya</string>
     <string name="del_acc_store_title">Langganan</string>
     <string name="del_acc_store_note">Langganan App Store atau Google Play tidak berhenti sendiri — batalkan dalam tetapan kedai.</string>
+    <string name="offline_saved_data">Luar talian — memaparkan data tersimpan</string>
+    <string name="offline_pending_n">Luar talian — %1$d perubahan akan dihantar kemudian</string>
+    <string name="offline_sending_n">Menghantar %1$d perubahan…</string>
 </resources>

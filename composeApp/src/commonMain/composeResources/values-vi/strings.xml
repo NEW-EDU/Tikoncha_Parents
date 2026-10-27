@@ -1371,4 +1371,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="del_acc_confirm">Xóa vĩnh viễn</string>
     <string name="del_acc_store_title">Gói đăng ký</string>
     <string name="del_acc_store_note">Gói đăng ký App Store hoặc Google Play không tự hủy — hãy hủy trong cài đặt cửa hàng.</string>
+    <string name="offline_saved_data">Ngoại tuyến — đang hiển thị dữ liệu đã lưu</string>
+    <string name="offline_pending_n">Ngoại tuyến — %1$d thay đổi sẽ được gửi sau</string>
+    <string name="offline_sending_n">Đang gửi %1$d thay đổi…</string>
 </resources>

@@ -1354,4 +1354,7 @@
     <string name="del_acc_confirm">Birdəfəlik sil</string>
     <string name="del_acc_store_title">Abunə</string>
     <string name="del_acc_store_note">App Store və ya Google Play abunəsi özü ləğv olunmur — onu mağaza ayarlarında ləğv edin.</string>
+    <string name="offline_saved_data">İnternet yoxdur — saxlanmış məlumatlar göstərilir</string>
+    <string name="offline_pending_n">İnternet yoxdur — %1$d dəyişiklik sonra göndəriləcək</string>
+    <string name="offline_sending_n">%1$d dəyişiklik göndərilir…</string>
 </resources>

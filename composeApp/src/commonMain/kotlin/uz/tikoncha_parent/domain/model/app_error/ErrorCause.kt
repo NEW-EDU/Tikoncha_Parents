@@ -71,6 +71,13 @@ sealed interface ErrorCause {
      */
     val isRetryable: Boolean
         get() = this == NoInternet || this == Timeout || this is Server
+
+    /**
+     * Server bilan aloqa yöq (internet, javob kelmadi, 5xx / texnik ishlar 503) — rad etiş emas.
+     * Offline-first: keşdagi ma'lumot körsatiladi, yozişlar navbatga tuşadi, xato oynasi çiqmaydi.
+     */
+    val isUnreachable: Boolean
+        get() = this == NoInternet || this == Timeout || (this is Server && (code == null || code >= 500))
 }
 
 

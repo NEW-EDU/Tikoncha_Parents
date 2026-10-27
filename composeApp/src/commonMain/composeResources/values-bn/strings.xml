@@ -1371,4 +1371,7 @@
     <string name="del_acc_confirm">চিরতরে মুছুন</string>
     <string name="del_acc_store_title">সাবস্ক্রিপশন</string>
     <string name="del_acc_store_note">App Store বা Google Play সাবস্ক্রিপশন নিজে থেকে বাতিল হয় না — স্টোরের সেটিংসে গিয়ে বাতিল করুন।</string>
+    <string name="offline_saved_data">অফলাইন — সংরক্ষিত তথ্য দেখানো হচ্ছে</string>
+    <string name="offline_pending_n">অফলাইন — %1$dটি পরিবর্তন পরে পাঠানো হবে</string>
+    <string name="offline_sending_n">%1$dটি পরিবর্তন পাঠানো হচ্ছে…</string>
 </resources>

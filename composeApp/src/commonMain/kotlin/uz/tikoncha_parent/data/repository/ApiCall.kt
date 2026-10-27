@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.data.repository
 
+import uz.tikoncha_parent.data.remote.ServerReachability
+
 import uz.tikoncha_parent.platform.Logger
 import kotlinx.coroutines.CancellationException
 import uz.tikoncha_parent.data.remote.app_error.ApiErrorMapper
@@ -21,4 +23,4 @@ suspend inline fun <T> apiCall(
     if (t is CancellationException) throw t
     Logger.e(tag, t.message ?: "api error", t)
     Outcome.Failure(ApiErrorMapper.from(t))
-}
+}.also { ServerReachability.report(it) }

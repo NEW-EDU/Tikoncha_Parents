@@ -1371,4 +1371,7 @@ This information is used only for these features and is not shared with third pa
     <string name="del_acc_confirm">Delete for good</string>
     <string name="del_acc_store_title">Subscription</string>
     <string name="del_acc_store_note">An App Store or Google Play subscription isn\'t cancelled by itself — cancel it in the store settings.</string>
+    <string name="offline_saved_data">Offline — showing saved data</string>
+    <string name="offline_pending_n">Offline — %1$d changes will be sent later</string>
+    <string name="offline_sending_n">Sending %1$d changes…</string>
 </resources>

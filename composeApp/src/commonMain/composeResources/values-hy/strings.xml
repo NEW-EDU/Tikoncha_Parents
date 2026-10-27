@@ -1371,4 +1371,7 @@
     <string name="del_acc_confirm">Ջնջել ընդմիշտ</string>
     <string name="del_acc_store_title">Բաժանորդագրություն</string>
     <string name="del_acc_store_note">App Store-ի կամ Google Play-ի բաժանորդագրությունն ինքնըստինքյան չի չեղարկվում․ չեղարկեք այն խանութի կարգավորումներում։</string>
+    <string name="offline_saved_data">Անցանց — ցուցադրվում են պահված տվյալները</string>
+    <string name="offline_pending_n">Անցանց — %1$d փոփոխություն կուղարկվի ավելի ուշ</string>
+    <string name="offline_sending_n">Ուղարկվում է %1$d փոփոխություն…</string>
 </resources>

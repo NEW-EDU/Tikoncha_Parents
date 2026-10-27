@@ -1371,4 +1371,7 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="del_acc_confirm">Kalıcı olarak sil</string>
     <string name="del_acc_store_title">Abonelik</string>
     <string name="del_acc_store_note">App Store veya Google Play aboneliği kendiliğinden iptal olmaz — mağaza ayarlarından iptal edin.</string>
+    <string name="offline_saved_data">Çevrimdışı — kayıtlı veriler gösteriliyor</string>
+    <string name="offline_pending_n">Çevrimdışı — %1$d değişiklik sonra gönderilecek</string>
+    <string name="offline_sending_n">%1$d değişiklik gönderiliyor…</string>
 </resources>

@@ -27,4 +27,7 @@ interface PolicyRepository {
     suspend fun createPolicy(childId: String, draft: PolicyDraft): Outcome<Policy>
     suspend fun patchPolicy(policyId: String, patch: PolicyPatch): Outcome<Policy>
     suspend fun deletePolicy(policyId: String): Outcome<Unit>
+
+    /** Offline paytda navbatga tuşgan özgarişlarni yuboradi (internet qaytgaç). @return yuborilganlar soni. */
+    suspend fun flushOutbox(): Outcome<Int> = Outcome.Success(0)
 }

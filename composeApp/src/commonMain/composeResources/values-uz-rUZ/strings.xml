@@ -1371,4 +1371,7 @@
     <string name="del_acc_confirm">Бутунлай ўчириш</string>
     <string name="del_acc_store_title">Обуна</string>
     <string name="del_acc_store_note">App Store ёки Google Play обунаси ўз-ўзидан бекор бўлмайди — уни дўкон созламаларида бекор қилинг.</string>
+    <string name="offline_saved_data">Интернет йўқ — сақланган маълумотлар кўрсатилмоқда</string>
+    <string name="offline_pending_n">Интернет йўқ — %1$d та ўзгариш кейин юборилади</string>
+    <string name="offline_sending_n">%1$d та ўзгариш юборилмоқда…</string>
 </resources>

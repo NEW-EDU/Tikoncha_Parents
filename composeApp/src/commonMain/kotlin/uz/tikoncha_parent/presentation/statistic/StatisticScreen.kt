@@ -83,6 +83,7 @@ import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
 import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 import uz.tikoncha_parent.presentation.ui_state.errorText
+import uz.tikoncha_parent.presentation.ui_state.isOffline
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.Space
 import uz.tikoncha_parent.ui.SpaceLarge
@@ -136,7 +137,8 @@ fun StatisticUi(
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { event(StatisticEvent.Resumed) }
 
     LaunchedEffect(appUsageErrorText) {
-        if (appUsageErrorText.isNotEmpty()) showErrorDialog = true
+        // Offline — saqlangan tarix körinib turibdi, umumiy "offline" belgisi yetarli
+        if (appUsageErrorText.isNotEmpty() && !state.appUsageResponseState.isOffline()) showErrorDialog = true
     }
     ErrorHaptic(appUsageErrorText.takeIf { it.isNotEmpty() })
     ErrorHaptic(state.quickBlockFailure)

@@ -264,7 +264,8 @@ class TrackingScreen : Screen {
         )
 
         CustomDialog(
-            show = state.error != null,
+            // Offline — oxirgi joylaşuv körinib turibdi; umumiy "offline" belgisi yetarli
+            show = state.error != null && state.error?.cause?.isUnreachable != true,
             title = stringResource(Res.string.diqqat),
             message = state.error?.asText() ?: "",
             painter = painterResource(Res.drawable.dialog_warning),

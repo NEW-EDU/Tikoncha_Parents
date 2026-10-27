@@ -24,6 +24,8 @@ object ApiErrorMapper {
      * hech qachon "Timeout" deb tanilmaydi va hammasi "NoInternet" bo'ladi.
      */
     fun from(t: Throwable): ErrorCause = when (t) {
+        is uz.tikoncha_parent.data.remote.ServerUnavailableException -> ErrorCause.Server(t.status)
+
         is HttpRequestTimeoutException,
         is SocketTimeoutException,
         is ConnectTimeoutException -> ErrorCause.Timeout

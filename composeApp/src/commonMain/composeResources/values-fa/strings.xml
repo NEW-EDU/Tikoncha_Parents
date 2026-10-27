@@ -1355,4 +1355,7 @@
     <string name="del_acc_confirm">حذف برای همیشه</string>
     <string name="del_acc_store_title">اشتراک</string>
     <string name="del_acc_store_note">اشتراک App Store یا Google Play خودبه‌خود لغو نمی‌شود — آن را در تنظیمات فروشگاه لغو کنید.</string>
+    <string name="offline_saved_data">آفلاین — داده‌های ذخیره‌شده نمایش داده می‌شود</string>
+    <string name="offline_pending_n">آفلاین — %1$d تغییر بعداً فرستاده می‌شود</string>
+    <string name="offline_sending_n">در حال ارسال %1$d تغییر…</string>
 </resources>

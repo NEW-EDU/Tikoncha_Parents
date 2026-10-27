@@ -1371,4 +1371,7 @@
     <string name="del_acc_confirm">Биротоло өчүрүү</string>
     <string name="del_acc_store_title">Жазылуу</string>
     <string name="del_acc_store_note">App Store же Google Play жазылуусу өзүнөн өзү токтобойт — аны дүкөндүн жөндөөлөрүнөн токтотуңуз.</string>
+    <string name="offline_saved_data">Интернет жок — сакталган маалымат көрсөтүлүүдө</string>
+    <string name="offline_pending_n">Интернет жок — %1$d өзгөртүү кийин жөнөтүлөт</string>
+    <string name="offline_sending_n">%1$d өзгөртүү жөнөтүлүүдө…</string>
 </resources>

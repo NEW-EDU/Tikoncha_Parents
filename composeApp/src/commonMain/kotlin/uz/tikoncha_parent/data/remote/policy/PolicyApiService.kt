@@ -2,6 +2,8 @@ package uz.tikoncha_parent.data.remote.policy
 
 import io.ktor.client.HttpClient
 import io.ktor.client.request.parameter
+import io.ktor.client.request.header
+import uz.tikoncha_parent.data.remote.IDEMPOTENCY_KEY
 import io.ktor.client.request.setBody
 import io.ktor.http.HttpMethod
 import kotlinx.serialization.json.JsonObject
@@ -35,15 +37,16 @@ class PolicyApiService(private val client: HttpClient) {
             if (since != null) parameter("since", since)
         }
 
-    suspend fun create(body: PolicyCreateDto): ApiEnvelope<PolicyOutDto> =
-        client.safeRequest(HttpMethod.Post, "/v2/policies") { setBody(body) }
+    // [key] — navbatdagi amalning Idempotency-Key'i (qayta yuborişda ham bir xil); null → plagin özi qöyadi.
+    suspend fun create(body: PolicyCreateDto, key: String? = null): ApiEnvelope<PolicyOutDto> =
+        client.safeRequest(HttpMethod.Post, "/v2/policies") { setBody(body); key?.let { header(IDEMPOTENCY_KEY, it) } }
 
     /** Tana JsonObject — sabab PolicyPatchEncoder izohida. */
-    suspend fun patch(policyId: String, body: JsonObject): ApiEnvelope<PolicyOutDto> =
-        client.safeRequest(HttpMethod.Patch, "/v2/policies/$policyId") { setBody(body) }
+    suspend fun patch(policyId: String, body: JsonObject, key: String? = null): ApiEnvelope<PolicyOutDto> =
+        client.safeRequest(HttpMethod.Patch, "/v2/policies/$policyId") { setBody(body); key?.let { header(IDEMPOTENCY_KEY, it) } }
 
-    suspend fun delete(policyId: String): ApiEnvelope<PolicyDeleteOutDto> =
-        client.safeRequest(HttpMethod.Delete, "/v2/policies/$policyId")
+    suspend fun delete(policyId: String, key: String? = null): ApiEnvelope<PolicyDeleteOutDto> =
+        client.safeRequest(HttpMethod.Delete, "/v2/policies/$policyId") { key?.let { header(IDEMPOTENCY_KEY, it) } }
 
     suspend fun quickBlocks(childId: String): ApiEnvelope<QuickBlockListOutDto> =
         client.safeRequest(HttpMethod.Get, "/v2/policies/quick-block") {

@@ -13,4 +13,7 @@ interface SafetyRepository {
     suspend fun switches(childId: String): Outcome<SafetySwitches>
 
     suspend fun setSwitch(childId: String, switch: SafetySwitch, on: Boolean): Outcome<SafetySwitches>
+
+    /** Offline paytda navbatga tuşgan kalitlarni yuboradi. */
+    suspend fun flushOutbox(): Outcome<Int> = Outcome.Success(0)
 }

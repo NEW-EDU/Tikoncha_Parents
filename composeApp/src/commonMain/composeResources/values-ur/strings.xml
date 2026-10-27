@@ -1371,4 +1371,7 @@
     <string name="del_acc_confirm">ہمیشہ کے لیے حذف کریں</string>
     <string name="del_acc_store_title">سبسکرپشن</string>
     <string name="del_acc_store_note">App Store یا Google Play کی سبسکرپشن خود بخود منسوخ نہیں ہوتی — اسے اسٹور کی سیٹنگز میں منسوخ کریں۔</string>
+    <string name="offline_saved_data">آف لائن — محفوظ ڈیٹا دکھایا جا رہا ہے</string>
+    <string name="offline_pending_n">آف لائن — %1$d تبدیلیاں بعد میں بھیجی جائیں گی</string>
+    <string name="offline_sending_n">%1$d تبدیلیاں بھیجی جا رہی ہیں…</string>
 </resources>

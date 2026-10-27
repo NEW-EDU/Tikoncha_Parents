@@ -66,6 +66,7 @@ import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.Loading
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
 import uz.tikoncha_parent.presentation.ui_state.errorText
+import uz.tikoncha_parent.presentation.ui_state.isOffline
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.ThemeMode
@@ -122,7 +123,8 @@ fun ProtectionUi(
     val actionErrorText = state.actionResponseState.errorText()
 
     LaunchedEffect(loadErrorText, actionErrorText) {
-        if (loadErrorText.isNotEmpty() || actionErrorText.isNotEmpty()) {
+        val loadShown = loadErrorText.isNotEmpty() && !state.responseState.isOffline()
+        if (loadShown || actionErrorText.isNotEmpty()) {
             showErrorDialog = true
         }
     }

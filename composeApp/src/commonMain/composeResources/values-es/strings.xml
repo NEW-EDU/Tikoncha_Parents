@@ -1371,4 +1371,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="del_acc_confirm">Eliminar para siempre</string>
     <string name="del_acc_store_title">Suscripción</string>
     <string name="del_acc_store_note">Una suscripción de App Store o Google Play no se cancela sola: cancélala en los ajustes de la tienda.</string>
+    <string name="offline_saved_data">Sin conexión: se muestran datos guardados</string>
+    <string name="offline_pending_n">Sin conexión: %1$d cambios se enviarán más tarde</string>
+    <string name="offline_sending_n">Enviando %1$d cambios…</string>
 </resources>

@@ -37,6 +37,10 @@ suspend inline fun <reified T> HttpClient.safeRequest(
 
     // Check for 401
     val bodyText = response.bodyAsText()
+    // nginx 502/503/504 sahifasi (deploy, server öçgan): JSON emas — "server yetib bölmadi"
+    if (response.status.value >= 500 && !bodyText.trimStart().startsWith("{")) {
+        throw ServerUnavailableException(response.status.value)
+    }
     if (bodyText.contains("\"code\":401") || response.status == HttpStatusCode.Unauthorized) {
         when (val r = refreshAccessToken(this)) {
             RefreshResult.Success -> {
@@ -149,3 +153,6 @@ fun handleSessionExpired() {
     AppSettings.clearSession()
     AuthEventBus.emit(AuthEvent.SessionExpired)
 }
+
+/** Server javob bermadi (502/503/504 sahifasi). Offline bilan bir xil ishlanadi. */
+class ServerUnavailableException(val status: Int) : IOException("Server unavailable: $status")

@@ -272,7 +272,8 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
         )
     }
 
-    val error = state.error
+    // Offline — ro'yxat keşdan körinib turibdi, umumiy "offline" belgisi yetarli (xato oynasi emas)
+    val error = state.error?.takeUnless { it.cause.isUnreachable }
     ErrorHaptic(error)
     CustomDialog(
         painter = painterResource(Res.drawable.dialog_failed),

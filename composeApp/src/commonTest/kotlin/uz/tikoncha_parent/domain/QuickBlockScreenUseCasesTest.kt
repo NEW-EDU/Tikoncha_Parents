@@ -30,6 +30,7 @@ private class ScriptedQuickRepo(private val failOn: String? = null) : QuickBlock
     val added = mutableListOf<String>()
     val patches = mutableListOf<PolicyPatch>()
     override fun observeQuickBlocks(childId: String): Flow<List<QuickBlockEntry>> = emptyFlow()
+    override fun cachedQuickBlocks(childId: String): List<QuickBlockEntry> = emptyList()
     override suspend fun refresh(childId: String): Outcome<List<QuickBlockEntry>> = Outcome.Success(emptyList())
     override suspend fun add(childId: String, target: QuickBlockTarget): Outcome<QuickBlockResult> =
         if (target.key == failOn) Outcome.Failure(ErrorCause.PremiumRequired(PaidFeature.QUICK_BLOCK))
@@ -45,6 +46,7 @@ private class AppsRepo(private val apps: List<InstalledApp>) : PolicyRepository 
     override suspend fun childApps(userId: String): Outcome<List<InstalledApp>> = Outcome.Success(apps)
     override fun observePolicies(childId: String): Flow<List<Policy>> = emptyFlow()
     override fun cachedPolicies(childId: String): List<Policy> = emptyList()
+    override fun isCached(childId: String): Boolean = true
     override suspend fun refreshPolicies(childId: String, force: Boolean): Outcome<PolicyListSnapshot> = error("unused")
     override suspend fun createPolicy(childId: String, draft: PolicyDraft): Outcome<Policy> = error("unused")
     override suspend fun patchPolicy(policyId: String, patch: PolicyPatch): Outcome<Policy> = error("unused")

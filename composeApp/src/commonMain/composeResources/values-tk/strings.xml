@@ -1371,4 +1371,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="del_acc_confirm">Düýbünden poz</string>
     <string name="del_acc_store_title">Abuna</string>
     <string name="del_acc_store_note">App Store ýa-da Google Play abunasy öz-özünden ýatyrylmaýar — ony dükanyň sazlamalarynda ýatyryň.</string>
+    <string name="offline_saved_data">Internet ýok — ýatda saklanan maglumatlar görkezilýär</string>
+    <string name="offline_pending_n">Internet ýok — %1$d üýtgeşme soňra iberiler</string>
+    <string name="offline_sending_n">%1$d üýtgeşme iberilýär…</string>
 </resources>

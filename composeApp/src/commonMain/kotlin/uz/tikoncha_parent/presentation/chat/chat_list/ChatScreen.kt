@@ -106,7 +106,7 @@ fun ChatUi(
     // Ro'yxat bo'sh bo'lsa xato ekran ichida ko'rsatiladi — dialog ortiqcha.
     // Dialog faqat yangilash yiqilganda kerak (ro'yxat allaqachon ko'rinib turibdi).
     LaunchedEffect(errorText, state.chats.isEmpty()) {
-        if (!errorText.isNullOrEmpty() && state.chats.isNotEmpty()) {
+        if (!errorText.isNullOrEmpty() && state.chats.isNotEmpty() && loadFailure?.cause?.isUnreachable != true) {
             showDialog = true
         }
     }

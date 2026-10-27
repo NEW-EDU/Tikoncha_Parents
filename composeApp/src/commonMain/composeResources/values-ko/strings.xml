@@ -1355,4 +1355,7 @@
     <string name="del_acc_confirm">영구 삭제</string>
     <string name="del_acc_store_title">구독</string>
     <string name="del_acc_store_note">App Store 또는 Google Play 구독은 자동으로 해지되지 않습니다. 스토어 설정에서 해지하세요.</string>
+    <string name="offline_saved_data">오프라인 — 저장된 데이터를 보여 주고 있어요</string>
+    <string name="offline_pending_n">오프라인 — 변경 %1$d건은 나중에 전송돼요</string>
+    <string name="offline_sending_n">변경 %1$d건 전송 중…</string>
 </resources>

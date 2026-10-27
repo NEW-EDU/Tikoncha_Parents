@@ -1371,4 +1371,7 @@
     <string name="del_acc_confirm">حذف نهائي</string>
     <string name="del_acc_store_title">الاشتراك</string>
     <string name="del_acc_store_note">لا يُلغى اشتراك App Store أو Google Play تلقائيًا — ألغِه من إعدادات المتجر.</string>
+    <string name="offline_saved_data">غير متصل — يتم عرض البيانات المحفوظة</string>
+    <string name="offline_pending_n">غير متصل — سيتم إرسال %1$d تغييرات لاحقًا</string>
+    <string name="offline_sending_n">جارٍ إرسال %1$d تغييرات…</string>
 </resources>

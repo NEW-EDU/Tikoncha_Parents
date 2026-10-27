@@ -1354,4 +1354,7 @@
     <string name="del_acc_confirm">Endgültig löschen</string>
     <string name="del_acc_store_title">Abo</string>
     <string name="del_acc_store_note">Ein App-Store- oder Google-Play-Abo endet nicht von selbst – kündige es in den Store-Einstellungen.</string>
+    <string name="offline_saved_data">Offline – gespeicherte Daten werden angezeigt</string>
+    <string name="offline_pending_n">Offline – %1$d Änderungen werden später gesendet</string>
+    <string name="offline_sending_n">%1$d Änderungen werden gesendet…</string>
 </resources>

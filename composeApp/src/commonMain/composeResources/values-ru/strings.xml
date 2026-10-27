@@ -1378,4 +1378,7 @@
     <string name="del_acc_confirm">Удалить навсегда</string>
     <string name="del_acc_store_title">Подписка</string>
     <string name="del_acc_store_note">Подписка App Store или Google Play сама не отменяется — отмените её в настройках магазина.</string>
+    <string name="offline_saved_data">Нет интернета — показаны сохранённые данные</string>
+    <string name="offline_pending_n">Нет интернета — изменения (%1$d) отправятся позже</string>
+    <string name="offline_sending_n">Отправляем изменения (%1$d)…</string>
 </resources>

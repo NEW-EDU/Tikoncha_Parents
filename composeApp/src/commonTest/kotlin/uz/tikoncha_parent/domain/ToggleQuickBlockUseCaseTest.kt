@@ -21,6 +21,7 @@ import kotlin.test.assertTrue
 private class FakeQuickBlockRepository : QuickBlockRepository {
     val calls = mutableListOf<String>()
     override fun observeQuickBlocks(childId: String): Flow<List<QuickBlockEntry>> = emptyFlow()
+    override fun cachedQuickBlocks(childId: String): List<QuickBlockEntry> = emptyList()
     override suspend fun refresh(childId: String): Outcome<List<QuickBlockEntry>> = Outcome.Success(emptyList())
     override suspend fun add(childId: String, target: QuickBlockTarget): Outcome<QuickBlockResult> {
         calls += "add:${target.key}"; return Outcome.Success(QuickBlockResult.ADDED)

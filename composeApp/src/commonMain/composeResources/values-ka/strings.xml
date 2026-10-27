@@ -1371,4 +1371,7 @@
     <string name="del_acc_confirm">სამუდამოდ წაშლა</string>
     <string name="del_acc_store_title">გამოწერა</string>
     <string name="del_acc_store_note">App Store-ის ან Google Play-ის გამოწერა თავისით არ უქმდება — გააუქმეთ მაღაზიის პარამეტრებში.</string>
+    <string name="offline_saved_data">ოფლაინ — ნაჩვენებია შენახული მონაცემები</string>
+    <string name="offline_pending_n">ოფლაინ — %1$d ცვლილება მოგვიანებით გაიგზავნება</string>
+    <string name="offline_sending_n">იგზავნება %1$d ცვლილება…</string>
 </resources>

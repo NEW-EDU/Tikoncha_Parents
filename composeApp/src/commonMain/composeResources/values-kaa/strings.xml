@@ -1354,4 +1354,7 @@
     <string name="del_acc_confirm">Pútkilley óshiriw</string>
     <string name="del_acc_store_title">Jazılıw</string>
     <string name="del_acc_store_note">App Store yamasa Google Play jazılıwı óz-ózinen biykar bolmaydı — onı dúkan sazlawlarında biykar etiń.</string>
+    <string name="offline_saved_data">Internet joq — saqlanǵan maǵlıwmatlar kórsetilmekte</string>
+    <string name="offline_pending_n">Internet joq — %1$d ózgeris keyin jiberiledi</string>
+    <string name="offline_sending_n">%1$d ózgeris jiberilmekte…</string>
 </resources>

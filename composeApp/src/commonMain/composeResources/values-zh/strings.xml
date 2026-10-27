@@ -1355,4 +1355,7 @@
     <string name="del_acc_confirm">永久删除</string>
     <string name="del_acc_store_title">订阅</string>
     <string name="del_acc_store_note">App Store 或 Google Play 订阅不会自动取消，请在商店设置中取消。</string>
+    <string name="offline_saved_data">离线 — 正在显示已保存的数据</string>
+    <string name="offline_pending_n">离线 — %1$d 项更改将稍后发送</string>
+    <string name="offline_sending_n">正在发送 %1$d 项更改…</string>
 </resources>

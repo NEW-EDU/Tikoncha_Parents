@@ -1381,4 +1381,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="del_acc_confirm">Butunlay öçiriş</string>
     <string name="del_acc_store_title">Obuna</string>
     <string name="del_acc_store_note">App Store yoki Google Play obunasi öz-özidan bekor bölmaydi — uni dökon sozlamalarida bekor qiling.</string>
+    <string name="offline_saved_data">Internet yöq — saqlangan ma\'lumotlar körsatilmoqda</string>
+    <string name="offline_pending_n">Internet yöq — %1$d ta özgariş keyin yuboriladi</string>
+    <string name="offline_sending_n">%1$d ta özgariş yuborilmoqda…</string>
 </resources>

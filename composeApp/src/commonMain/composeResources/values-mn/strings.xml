@@ -1371,4 +1371,7 @@
     <string name="del_acc_confirm">Бүрмөсөн устгах</string>
     <string name="del_acc_store_title">Захиалга</string>
     <string name="del_acc_store_note">App Store эсвэл Google Play-ийн захиалга өөрөө цуцлагдахгүй — дэлгүүрийн тохиргооноос цуцална уу.</string>
+    <string name="offline_saved_data">Офлайн — хадгалсан мэдээлэл харагдаж байна</string>
+    <string name="offline_pending_n">Офлайн — %1$d өөрчлөлт дараа илгээгдэнэ</string>
+    <string name="offline_sending_n">%1$d өөрчлөлт илгээж байна…</string>
 </resources>

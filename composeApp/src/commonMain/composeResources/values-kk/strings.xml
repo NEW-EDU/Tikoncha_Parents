@@ -1354,4 +1354,7 @@
     <string name="del_acc_confirm">Біржола жою</string>
     <string name="del_acc_store_title">Жазылым</string>
     <string name="del_acc_store_note">App Store немесе Google Play жазылымы өздігінен тоқтамайды — оны дүкен баптауларында тоқтатыңыз.</string>
+    <string name="offline_saved_data">Интернет жоқ — сақталған деректер көрсетілуде</string>
+    <string name="offline_pending_n">Интернет жоқ — %1$d өзгеріс кейін жіберіледі</string>
+    <string name="offline_sending_n">%1$d өзгеріс жіберілуде…</string>
 </resources>

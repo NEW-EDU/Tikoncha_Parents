@@ -1354,4 +1354,7 @@
     <string name="del_acc_confirm">Видалити назавжди</string>
     <string name="del_acc_store_title">Підписка</string>
     <string name="del_acc_store_note">Підписка App Store або Google Play сама не скасовується — скасуйте її в налаштуваннях магазину.</string>
+    <string name="offline_saved_data">Немає інтернету — показано збережені дані</string>
+    <string name="offline_pending_n">Немає інтернету — зміни (%1$d) надішлються пізніше</string>
+    <string name="offline_sending_n">Надсилаємо зміни (%1$d)…</string>
 </resources>

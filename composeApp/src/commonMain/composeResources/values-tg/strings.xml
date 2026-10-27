@@ -1355,4 +1355,7 @@
     <string name="del_acc_confirm">Якбора нест кардан</string>
     <string name="del_acc_store_title">Обуна</string>
     <string name="del_acc_store_note">Обунаи App Store ё Google Play худ аз худ бекор намешавад — онро дар танзимоти мағоза бекор кунед.</string>
+    <string name="offline_saved_data">Интернет нест — маълумоти захирашуда нишон дода мешавад</string>
+    <string name="offline_pending_n">Интернет нест — %1$d тағйирот баъдтар фиристода мешавад</string>
+    <string name="offline_sending_n">%1$d тағйирот фиристода мешавад…</string>
 </resources>

@@ -2,6 +2,7 @@ package uz.tikoncha_parent.data.remote
 
 import io.ktor.client.HttpClient
 import io.ktor.client.request.parameter
+import io.ktor.client.request.header
 import io.ktor.client.request.setBody
 import io.ktor.http.HttpMethod
 import uz.tikoncha_parent.data.remote.model.ApiEnvelope
@@ -38,6 +39,9 @@ class SafetyApiService(
     suspend fun settings(childId: String): ApiEnvelope<SafetySettingsData> =
         httpClient.safeRequest(method = HttpMethod.Get, url = "safety/settings", block = { parameter("child_id", childId) })
 
-    suspend fun putSettings(body: SafetySettingsRequest): ApiEnvelope<SafetySettingsData> =
-        httpClient.safeRequest(method = HttpMethod.Put, url = "safety/settings", block = { setBody(body) })
+    suspend fun putSettings(body: SafetySettingsRequest, key: String? = null): ApiEnvelope<SafetySettingsData> =
+        httpClient.safeRequest(method = HttpMethod.Put, url = "safety/settings", block = {
+            setBody(body)
+            key?.let { header(IDEMPOTENCY_KEY, it) }
+        })
 }

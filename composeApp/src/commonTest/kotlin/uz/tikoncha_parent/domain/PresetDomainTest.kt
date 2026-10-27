@@ -123,6 +123,7 @@ class PresetDomainTest {
         override suspend fun childApps(userId: String): Outcome<List<InstalledApp>> = Outcome.Success(emptyList())
         override fun observePolicies(childId: String): Flow<List<Policy>> = emptyFlow()
         override fun cachedPolicies(childId: String): List<Policy> = emptyList()
+        override fun isCached(childId: String): Boolean = true
         override suspend fun refreshPolicies(childId: String, force: Boolean): Outcome<PolicyListSnapshot> = error("unused")
         override suspend fun createPolicy(childId: String, draft: PolicyDraft): Outcome<Policy> {
             calls += "create:${draft.preset}"; return Outcome.Success(policy())

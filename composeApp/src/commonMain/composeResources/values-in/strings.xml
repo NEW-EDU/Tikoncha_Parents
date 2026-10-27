@@ -1371,4 +1371,7 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="del_acc_confirm">Hapus selamanya</string>
     <string name="del_acc_store_title">Langganan</string>
     <string name="del_acc_store_note">Langganan App Store atau Google Play tidak berhenti sendiri — batalkan di pengaturan toko.</string>
+    <string name="offline_saved_data">Offline — menampilkan data tersimpan</string>
+    <string name="offline_pending_n">Offline — %1$d perubahan akan dikirim nanti</string>
+    <string name="offline_sending_n">Mengirim %1$d perubahan…</string>
 </resources>

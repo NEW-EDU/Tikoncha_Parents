@@ -24,3 +24,7 @@ fun ResponseState<*>.errorText(): String = when (this) {
     is ResponseState.Error -> failure?.asText() ?: message?:res?.let { stringResource(it) } ?:""
     else -> ""
 }
+
+/** Server yetib bölmadi (internet, 5xx, texnik ishlar) — offline-first: xato oynasi emas, keşdagi ma'lumot qoladi. */
+fun ResponseState<*>.isOffline(): Boolean =
+    (this as? ResponseState.Error)?.failure?.cause?.isUnreachable == true

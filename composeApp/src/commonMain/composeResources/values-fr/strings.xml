@@ -1365,4 +1365,7 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="del_acc_confirm">Supprimer définitivement</string>
     <string name="del_acc_store_title">Abonnement</string>
     <string name="del_acc_store_note">Un abonnement App Store ou Google Play ne s\'arrête pas tout seul : résiliez-le dans les réglages de la boutique.</string>
+    <string name="offline_saved_data">Hors ligne — données enregistrées affichées</string>
+    <string name="offline_pending_n">Hors ligne — %1$d modifications seront envoyées plus tard</string>
+    <string name="offline_sending_n">Envoi de %1$d modifications…</string>
 </resources>

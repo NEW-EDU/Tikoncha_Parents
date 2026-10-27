@@ -113,6 +113,9 @@ fun App() {
                             }
                         }
                     }
+
+                    // Offline-first: xotirjam belgi + internet qaytgaç navbatni yuboriş
+                    uz.tikoncha_parent.presentation.base.OfflineLayer()
                 }
             }
         }
