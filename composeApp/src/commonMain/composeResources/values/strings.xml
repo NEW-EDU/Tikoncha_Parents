@@ -1369,4 +1369,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="parent_special_zones_desc">Suv, qurilish yoki klub yonida uzoq qolsa, xabar boradi</string>
     <string name="parent_special_footer">Farzandingiz bu himoyalarni özi uçun ham yoqişi mumkin — unda ogohlantiriş faqat unga boradi.</string>
     <string name="parent_special_paywall">Xavfli yozişmalar va yaşirin rejim — PLUS obunasi bilan.</string>
+    <string name="pay_abroad_title">Bu mamlakatda to'lov hozircha yöq</string>
+    <string name="pay_abroad_body">Android ilovada PLUS'ni hozircha faqat O'zbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
+    <string name="pay_abroad_coins_body">Tangalarni hozircha faqat O'zbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
 </resources>

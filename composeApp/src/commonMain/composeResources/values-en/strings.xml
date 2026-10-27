@@ -1359,4 +1359,7 @@ This information is used only for these features and is not shared with third pa
     <string name="parent_special_zones_desc">You're notified if your child stays near water, a building site or a club</string>
     <string name="parent_special_footer">Your child can also turn these on for themselves — then only they get the warnings.</string>
     <string name="parent_special_paywall">Risky chats and incognito mode come with PLUS.</string>
+    <string name="pay_abroad_title">Payment isn't available in your country yet</string>
+    <string name="pay_abroad_body">In the Android app, PLUS can only be paid with an Uzbek card for now. Write to us and we'll help.</string>
+    <string name="pay_abroad_coins_body">Coins can only be bought with an Uzbek card for now. Write to us and we'll help.</string>
 </resources>

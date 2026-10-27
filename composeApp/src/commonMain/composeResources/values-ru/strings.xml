@@ -1366,4 +1366,7 @@
     <string name="parent_special_zones_desc">Уведомление, если ребёнок долго у воды, стройки или клуба</string>
     <string name="parent_special_footer">Ребёнок может включить эту защиту и для себя — тогда предупреждения получает только он.</string>
     <string name="parent_special_paywall">Опасные переписки и режим инкогнито — с подпиской PLUS.</string>
+    <string name="pay_abroad_title">Оплата в вашей стране пока недоступна</string>
+    <string name="pay_abroad_body">В приложении для Android PLUS пока можно оплатить только узбекской картой. Напишите нам — мы поможем.</string>
+    <string name="pay_abroad_coins_body">Монеты пока можно купить только узбекской картой. Напишите нам — мы поможем.</string>
 </resources>

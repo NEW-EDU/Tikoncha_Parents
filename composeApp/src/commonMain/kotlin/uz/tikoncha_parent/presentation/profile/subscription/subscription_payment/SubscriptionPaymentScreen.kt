@@ -121,8 +121,22 @@ fun SubscriptionPaymentUi(
     val planErrorText = state.subscriptionPlanState.errorText()
     var showPlanErrorDialog by remember { mutableStateOf(false) }
     var showDialog by remember { mutableStateOf(false) }
+    // Android, O'zbekistondan tashqarida: Click va O'zbek kartasi işlamaydi — boşi berk yöl örniga aniq javob
+    var showAbroad by remember { mutableStateOf(false) }
+    var showSupport by remember { mutableStateOf(false) }
 
     LoadingDialog(planLoading)
+
+    CustomDialog(
+        show = showAbroad,
+        title = stringResource(Res.string.pay_abroad_title),
+        message = stringResource(Res.string.pay_abroad_body),
+        buttonText = stringResource(Res.string.biz_bilan_aloqa),
+        showCloseButton = true,
+        onDismiss = { showAbroad = false },
+        onButtonClick = { showAbroad = false; showSupport = true },
+    )
+    if (showSupport) uz.tikoncha_parent.presentation.support.SupportSheet(onDismiss = { showSupport = false })
 
     LaunchedEffect(planErrorText) {
         if (planErrorText.isNotEmpty()) {
@@ -413,7 +427,9 @@ fun SubscriptionPaymentUi(
                             val cardPrice = (if (annual) sub.cardAnnual else sub.cardMonthly) ?: clickPrice
                             val duration = if (annual) SubscriptionDuration.ANNUAL else SubscriptionDuration.MONTHLY
 
-                            if (isIos() && state.localPayments != true) {
+                            if (!isIos() && state.localPayments == false) {
+                                showAbroad = true
+                            } else if (isIos() && state.localPayments != true) {
                                 // iPhone, O'zbekistondan tashqarida (server IP bo'yicha): faqat App Store
                                 navigator?.push(PaymentTypeScreen(amount = clickPrice, subDuration = duration, planId = sub.planId))
                             } else {

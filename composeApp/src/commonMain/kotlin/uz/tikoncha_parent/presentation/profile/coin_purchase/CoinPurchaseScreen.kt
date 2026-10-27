@@ -33,6 +33,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.biz_bilan_aloqa
+import tikoncha_parents.composeapp.generated.resources.pay_abroad_coins_body
+import tikoncha_parents.composeapp.generated.resources.pay_abroad_title
 import tikoncha_parents.composeapp.generated.resources.bekor_qilindi
 import tikoncha_parents.composeapp.generated.resources.chegirma
 import tikoncha_parents.composeapp.generated.resources.jami
@@ -129,6 +132,23 @@ fun CoinPurchaseUi(
     var showPaymentSuccessDialog by remember {
         mutableStateOf(false)
     }
+
+    // Tangalar faqat Click orqali sotiladi — O'zbekistondan tashqarida u işlamaydi: boşi berk yöl örniga aniq javob
+    val region: uz.tikoncha_parent.domain.repository.PaymentRegionRepository = org.koin.compose.koinInject()
+    val localPayments by region.localPayments.collectAsStateWithLifecycle()
+    LaunchedEffect(Unit) { region.refresh() }
+    var showAbroad by remember { mutableStateOf(false) }
+    var showSupport by remember { mutableStateOf(false) }
+    uz.tikoncha_parent.presentation.base.CustomDialog(
+        show = showAbroad,
+        title = stringResource(Res.string.pay_abroad_title),
+        message = stringResource(Res.string.pay_abroad_coins_body),
+        buttonText = stringResource(Res.string.biz_bilan_aloqa),
+        showCloseButton = true,
+        onDismiss = { showAbroad = false },
+        onButtonClick = { showAbroad = false; showSupport = true },
+    )
+    if (showSupport) uz.tikoncha_parent.presentation.support.SupportSheet(onDismiss = { showSupport = false })
 
     val uriHandler = LocalUriHandler.current
     LaunchedEffect(Unit) {
@@ -435,7 +455,7 @@ fun CoinPurchaseUi(
         CustomButton(
             text = "${state.finalPrice.toCurrency()} UZS - ${stringResource(Res.string.sotib_olish)}",
             onClick = {
-                event(CoinPurchaseEvent.StartPayment)
+                if (localPayments == false) showAbroad = true else event(CoinPurchaseEvent.StartPayment)
             },
             modifier = Modifier.padding(ContainerPadding)
                 .fillMaxWidth()
