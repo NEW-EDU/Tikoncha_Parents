@@ -10,7 +10,9 @@ import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.plugins.websocket.WebSockets
+import io.ktor.client.request.get
 import io.ktor.client.request.header
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.util.logging.KtorSimpleLogger
@@ -32,6 +34,19 @@ class TikonchaClient(private val engine: HttpClientEngine) {
         val BASE_URL = if (isDevelopment) _BASE_URL_TEST else _BASE_URL
 
         private const val LOG_TAG = "TIKONCHA_API"
+    }
+
+    /** Zaxira serverning `/role`ini sörovçi oddiy mijoz (Failover plaginisiz, tokensiz). */
+    private val probeClient = HttpClient(engine) {
+        install(HttpTimeout) { requestTimeoutMillis = 8_000; connectTimeoutMillis = 8_000 }
+    }
+
+    init {
+        Failover.restore()
+        Failover.fetchStandbyRole = {
+            val r = probeClient.get(Failover.STANDBY_ROLE_URL)
+            if (r.status.value == 200) r.bodyAsText() else null
+        }
     }
 
     val client = HttpClient(engine) {
@@ -74,6 +89,7 @@ class TikonchaClient(private val engine: HttpClientEngine) {
 
         install(IdempotencyKeyPlugin)
         install(ServerDownSimulationPlugin)   // faqat debug
+        install(Failover.Plugin)              // asosiy server yiqilib, zaxira "promoted" bölsa — unga
 
         install(HttpTimeout) {
             requestTimeoutMillis = 15_000
