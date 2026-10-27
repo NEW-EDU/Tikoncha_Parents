@@ -1368,4 +1368,11 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="offline_saved_data">Hors ligne — données enregistrées affichées</string>
     <string name="offline_pending_n">Hors ligne — %1$d modifications seront envoyées plus tard</string>
     <string name="offline_sending_n">Envoi de %1$d modifications…</string>
+    <string name="acc_delete_req_title">Supprimer le compte</string>
+    <string name="acc_delete_req_pending">%1$s veut supprimer son compte</string>
+    <string name="acc_delete_req_done">Le compte de %1$s a été supprimé</string>
+    <string name="acc_delete_req_confirm_title">Supprimer le compte de votre enfant ?</string>
+    <string name="acc_delete_req_confirm_msg">Le compte de %1$s, son historique et vos règles seront effacés définitivement. C\'est irréversible.</string>
+    <string name="del_acc_scheduled_title">Suppression du compte programmée</string>
+    <string name="del_acc_scheduled_msg">Votre compte sera supprimé le %1$s, pour que les règles de vos enfants ne disparaissent pas par erreur. Vous changez d\'avis ? Reconnectez-vous et la suppression sera annulée.</string>
 </resources>

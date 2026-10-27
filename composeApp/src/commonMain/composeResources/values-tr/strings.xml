@@ -1374,4 +1374,11 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="offline_saved_data">Çevrimdışı — kayıtlı veriler gösteriliyor</string>
     <string name="offline_pending_n">Çevrimdışı — %1$d değişiklik sonra gönderilecek</string>
     <string name="offline_sending_n">%1$d değişiklik gönderiliyor…</string>
+    <string name="acc_delete_req_title">Hesabı sil</string>
+    <string name="acc_delete_req_pending">%1$s kendi hesabını silmek istiyor</string>
+    <string name="acc_delete_req_done">%1$s hesabı silindi</string>
+    <string name="acc_delete_req_confirm_title">Çocuğunuzun hesabı silinsin mi?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s hesabı, geçmişi ve koyduğunuz kurallar kalıcı olarak silinir. Bu işlem geri alınamaz.</string>
+    <string name="del_acc_scheduled_title">Hesap silme planlandı</string>
+    <string name="del_acc_scheduled_msg">Çocuklarınızın kuralları yanlışlıkla kaybolmasın diye hesabınız %1$s tarihinde silinecek. Fikrinizi mi değiştirdiniz? Tekrar giriş yapın, silme iptal edilir.</string>
 </resources>

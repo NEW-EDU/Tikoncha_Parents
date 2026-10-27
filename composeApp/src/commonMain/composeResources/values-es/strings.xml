@@ -1374,4 +1374,11 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="offline_saved_data">Sin conexión: se muestran datos guardados</string>
     <string name="offline_pending_n">Sin conexión: %1$d cambios se enviarán más tarde</string>
     <string name="offline_sending_n">Enviando %1$d cambios…</string>
+    <string name="acc_delete_req_title">Eliminar cuenta</string>
+    <string name="acc_delete_req_pending">%1$s quiere eliminar su cuenta</string>
+    <string name="acc_delete_req_done">Se eliminó la cuenta de %1$s</string>
+    <string name="acc_delete_req_confirm_title">¿Eliminar la cuenta de tu hijo?</string>
+    <string name="acc_delete_req_confirm_msg">La cuenta de %1$s, su historial y las reglas que pusiste se borrarán para siempre. No se puede deshacer.</string>
+    <string name="del_acc_scheduled_title">Eliminación de la cuenta programada</string>
+    <string name="del_acc_scheduled_msg">Tu cuenta se eliminará el %1$s, para que las reglas de tus hijos no desaparezcan por error. ¿Cambiaste de idea? Vuelve a iniciar sesión y se cancelará.</string>
 </resources>

@@ -1374,4 +1374,11 @@
     <string name="offline_saved_data">Անցանց — ցուցադրվում են պահված տվյալները</string>
     <string name="offline_pending_n">Անցանց — %1$d փոփոխություն կուղարկվի ավելի ուշ</string>
     <string name="offline_sending_n">Ուղարկվում է %1$d փոփոխություն…</string>
+    <string name="acc_delete_req_title">Ջնջել հաշիվը</string>
+    <string name="acc_delete_req_pending">%1$s-ն ուզում է ջնջել իր հաշիվը</string>
+    <string name="acc_delete_req_done">%1$s-ի հաշիվը ջնջվեց</string>
+    <string name="acc_delete_req_confirm_title">Ջնջե՞լ երեխայի հաշիվը</string>
+    <string name="acc_delete_req_confirm_msg">%1$s-ի հաշիվը, պատմությունը և ձեր կանոնները ընդմիշտ կջնջվեն։ Սա հնարավոր չէ հետ շրջել։</string>
+    <string name="del_acc_scheduled_title">Հաշվի ջնջումը նախատեսված է</string>
+    <string name="del_acc_scheduled_msg">Ձեր հաշիվը կջնջվի %1$s-ին, որպեսզի երեխաների կանոնները պատահաբար չանհետանան։ Մտափոխվե՞լ եք։ Կրկին մուտք գործեք, և ջնջումը կչեղարկվի։</string>
 </resources>

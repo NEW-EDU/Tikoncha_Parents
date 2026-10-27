@@ -1374,4 +1374,11 @@
     <string name="offline_saved_data">ოფლაინ — ნაჩვენებია შენახული მონაცემები</string>
     <string name="offline_pending_n">ოფლაინ — %1$d ცვლილება მოგვიანებით გაიგზავნება</string>
     <string name="offline_sending_n">იგზავნება %1$d ცვლილება…</string>
+    <string name="acc_delete_req_title">ანგარიშის წაშლა</string>
+    <string name="acc_delete_req_pending">%1$s-ს სურს საკუთარი ანგარიშის წაშლა</string>
+    <string name="acc_delete_req_done">%1$s-ის ანგარიში წაიშალა</string>
+    <string name="acc_delete_req_confirm_title">წავშალოთ შვილის ანგარიში?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s-ის ანგარიში, ისტორია და თქვენი წესები სამუდამოდ წაიშლება. ამის გაუქმება შეუძლებელია.</string>
+    <string name="del_acc_scheduled_title">ანგარიშის წაშლა დაგეგმილია</string>
+    <string name="del_acc_scheduled_msg">თქვენი ანგარიში წაიშლება %1$s-ს, რომ შვილების წესები შემთხვევით არ გაქრეს. გადაიფიქრეთ? თავიდან შედით და წაშლა გაუქმდება.</string>
 </resources>

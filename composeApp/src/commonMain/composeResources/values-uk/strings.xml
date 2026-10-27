@@ -1357,4 +1357,11 @@
     <string name="offline_saved_data">Немає інтернету — показано збережені дані</string>
     <string name="offline_pending_n">Немає інтернету — зміни (%1$d) надішлються пізніше</string>
     <string name="offline_sending_n">Надсилаємо зміни (%1$d)…</string>
+    <string name="acc_delete_req_title">Видалення акаунта</string>
+    <string name="acc_delete_req_pending">%1$s хоче видалити свій акаунт</string>
+    <string name="acc_delete_req_done">Акаунт %1$s видалено</string>
+    <string name="acc_delete_req_confirm_title">Видалити акаунт дитини?</string>
+    <string name="acc_delete_req_confirm_msg">Акаунт %1$s, його історію та ваші правила буде видалено назавжди. Це не можна скасувати.</string>
+    <string name="del_acc_scheduled_title">Видалення акаунта заплановано</string>
+    <string name="del_acc_scheduled_msg">Акаунт буде видалено %1$s, щоб правила ваших дітей не зникли випадково. Передумали — увійдіть знову, і видалення скасується.</string>
 </resources>

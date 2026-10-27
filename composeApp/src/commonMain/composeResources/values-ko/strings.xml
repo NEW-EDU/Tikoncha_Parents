@@ -1358,4 +1358,11 @@
     <string name="offline_saved_data">오프라인 — 저장된 데이터를 보여 주고 있어요</string>
     <string name="offline_pending_n">오프라인 — 변경 %1$d건은 나중에 전송돼요</string>
     <string name="offline_sending_n">변경 %1$d건 전송 중…</string>
+    <string name="acc_delete_req_title">계정 삭제</string>
+    <string name="acc_delete_req_pending">%1$s 님이 계정 삭제를 원해요</string>
+    <string name="acc_delete_req_done">%1$s 님의 계정이 삭제되었어요</string>
+    <string name="acc_delete_req_confirm_title">자녀의 계정을 삭제할까요?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s 님의 계정, 기록, 설정한 규칙이 영구적으로 삭제됩니다. 되돌릴 수 없어요.</string>
+    <string name="del_acc_scheduled_title">계정 삭제 예약됨</string>
+    <string name="del_acc_scheduled_msg">자녀의 규칙이 실수로 사라지지 않도록 계정은 %1$s에 삭제됩니다. 마음이 바뀌면 다시 로그인하세요. 삭제가 취소돼요.</string>
 </resources>

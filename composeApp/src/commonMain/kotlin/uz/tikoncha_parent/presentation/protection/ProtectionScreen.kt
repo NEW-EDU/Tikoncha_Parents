@@ -42,6 +42,9 @@ import cafe.adriel.voyager.navigator.Navigator
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.acc_delete_req_title
+import tikoncha_parents.composeapp.generated.resources.acc_delete_req_confirm_msg
+import tikoncha_parents.composeapp.generated.resources.acc_delete_req_confirm_title
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
 import tikoncha_parents.composeapp.generated.resources.dialog_warning
 import tikoncha_parents.composeapp.generated.resources.farzand_chiqish_ruxsat
@@ -117,6 +120,7 @@ fun ProtectionUi(
     var approveStrictDialog by remember { mutableStateOf(false) }
     var allowLogoutDialog by remember { mutableStateOf(false) }
     var allowDeleteDialog by remember { mutableStateOf(false) }
+    var allowAccountDeleteDialog by remember { mutableStateOf(false) }
     var showErrorDialog by remember { mutableStateOf(false) }
 
     val loadErrorText = state.responseState.errorText()
@@ -199,6 +203,22 @@ fun ProtectionUi(
         },
     )
 
+    // ─────────── Farzand akkauntini öçirişga ruxsat (qaytarib bölmaydi) ───────────
+    CustomDialog(
+        painter = painterResource(Res.drawable.dialog_warning),
+        show = allowAccountDeleteDialog,
+        title = stringResource(Res.string.acc_delete_req_confirm_title),
+        message = stringResource(Res.string.acc_delete_req_confirm_msg, childName),
+        buttonText = stringResource(Res.string.ha),
+        buttonText2 = stringResource(Res.string.yoq),
+        showCloseButton = true,
+        onDismiss = { allowAccountDeleteDialog = false },
+        onButtonClick = {
+            allowAccountDeleteDialog = false
+            event(ProtectionEvent.AllowAccountRequest(AccountRequestAction.DELETE_ACCOUNT))
+        },
+    )
+
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.secondary,
         navigationBarColor = AppColors.bg.secondary,
@@ -250,6 +270,20 @@ fun ProtectionUi(
                     denyText = denyText,
                     onAllow = { allowDeleteDialog = true },
                     onDeny = { event(ProtectionEvent.DenyAccountRequest(AccountRequestAction.DELETE)) },
+                )
+            )
+        }
+        state.accountDeleteRequest?.let { req ->
+            add(
+                accountRequestUi(
+                    request = req,
+                    childName = childName,
+                    title = stringResource(Res.string.acc_delete_req_title),
+                    isProcessing = state.actionInProgressId == req.id,
+                    allowText = allowText,
+                    denyText = denyText,
+                    onAllow = { allowAccountDeleteDialog = true },
+                    onDeny = { event(ProtectionEvent.DenyAccountRequest(AccountRequestAction.DELETE_ACCOUNT)) },
                 )
             )
         }

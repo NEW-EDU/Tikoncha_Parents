@@ -1374,4 +1374,11 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="offline_saved_data">Offline — menampilkan data tersimpan</string>
     <string name="offline_pending_n">Offline — %1$d perubahan akan dikirim nanti</string>
     <string name="offline_sending_n">Mengirim %1$d perubahan…</string>
+    <string name="acc_delete_req_title">Hapus akun</string>
+    <string name="acc_delete_req_pending">%1$s ingin menghapus akunnya</string>
+    <string name="acc_delete_req_done">Akun %1$s telah dihapus</string>
+    <string name="acc_delete_req_confirm_title">Hapus akun anak Anda?</string>
+    <string name="acc_delete_req_confirm_msg">Akun %1$s, riwayatnya, dan aturan yang Anda buat akan dihapus selamanya. Tindakan ini tidak dapat dibatalkan.</string>
+    <string name="del_acc_scheduled_title">Penghapusan akun dijadwalkan</string>
+    <string name="del_acc_scheduled_msg">Akun Anda akan dihapus pada %1$s agar aturan anak-anak Anda tidak hilang tanpa sengaja. Berubah pikiran? Masuk lagi dan penghapusan dibatalkan.</string>
 </resources>

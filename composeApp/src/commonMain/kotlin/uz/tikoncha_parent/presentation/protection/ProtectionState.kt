@@ -32,6 +32,7 @@ data class ProtectionState(
     val strictDisableRequest: ChildRequest? = null,
     val logoutRequest: AccountRequest? = null,
     val deleteRequest: AccountRequest? = null,
+    val accountDeleteRequest: AccountRequest? = null,
     // remainingSeconds ← O'CHIRILDI (endi alohida flow)
     val actionInProgressId: String? = null,
     val actionResponseState: ResponseState<Any> = ResponseState.Idle,
@@ -70,10 +71,14 @@ data class ProtectionState(
     val isDeleteRequestPending: Boolean
         get() = deleteRequest?.status.equals("process", ignoreCase = true)
 
+    val isAccountDeleteRequestPending: Boolean
+        get() = accountDeleteRequest?.status.equals("process", ignoreCase = true)
+
     val pendingRequestCount: Int
-        get() = listOf(isStrictRequestPending, isLogoutRequestPending, isDeleteRequestPending)
+        get() = listOf(isStrictRequestPending, isLogoutRequestPending, isDeleteRequestPending, isAccountDeleteRequestPending)
             .count { it }
 
     val showRequestsCard: Boolean
-        get() = strictDisableRequest != null || logoutRequest != null || deleteRequest != null
+        get() = strictDisableRequest != null || logoutRequest != null || deleteRequest != null ||
+            accountDeleteRequest != null
 }

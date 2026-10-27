@@ -1357,4 +1357,11 @@
     <string name="offline_saved_data">Offline – gespeicherte Daten werden angezeigt</string>
     <string name="offline_pending_n">Offline – %1$d Änderungen werden später gesendet</string>
     <string name="offline_sending_n">%1$d Änderungen werden gesendet…</string>
+    <string name="acc_delete_req_title">Konto löschen</string>
+    <string name="acc_delete_req_pending">%1$s möchte das eigene Konto löschen</string>
+    <string name="acc_delete_req_done">Das Konto von %1$s wurde gelöscht</string>
+    <string name="acc_delete_req_confirm_title">Konto deines Kindes löschen?</string>
+    <string name="acc_delete_req_confirm_msg">Das Konto von %1$s, sein Verlauf und deine Regeln werden endgültig gelöscht. Das kann nicht rückgängig gemacht werden.</string>
+    <string name="del_acc_scheduled_title">Kontolöschung geplant</string>
+    <string name="del_acc_scheduled_msg">Dein Konto wird am %1$s gelöscht, damit die Regeln deiner Kinder nicht versehentlich verschwinden. Meinung geändert? Melde dich wieder an, dann wird die Löschung abgebrochen.</string>
 </resources>

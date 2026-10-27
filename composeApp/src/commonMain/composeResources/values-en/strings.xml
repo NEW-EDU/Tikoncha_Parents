@@ -1374,4 +1374,11 @@ This information is used only for these features and is not shared with third pa
     <string name="offline_saved_data">Offline — showing saved data</string>
     <string name="offline_pending_n">Offline — %1$d changes will be sent later</string>
     <string name="offline_sending_n">Sending %1$d changes…</string>
+    <string name="acc_delete_req_title">Delete account</string>
+    <string name="acc_delete_req_pending">%1$s wants to delete their account</string>
+    <string name="acc_delete_req_done">%1$s\'s account was deleted</string>
+    <string name="acc_delete_req_confirm_title">Delete your child\'s account?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s\'s account, its history and the rules you set are erased for good. This can\'t be undone.</string>
+    <string name="del_acc_scheduled_title">Account deletion scheduled</string>
+    <string name="del_acc_scheduled_msg">Your account will be deleted on %1$s, so your children\'s rules don\'t vanish by mistake. Changed your mind? Sign in again and the deletion is cancelled.</string>
 </resources>

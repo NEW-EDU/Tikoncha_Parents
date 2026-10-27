@@ -1357,4 +1357,11 @@
     <string name="offline_saved_data">İnternet yoxdur — saxlanmış məlumatlar göstərilir</string>
     <string name="offline_pending_n">İnternet yoxdur — %1$d dəyişiklik sonra göndəriləcək</string>
     <string name="offline_sending_n">%1$d dəyişiklik göndərilir…</string>
+    <string name="acc_delete_req_title">Hesabı sil</string>
+    <string name="acc_delete_req_pending">%1$s öz hesabını silmək istəyir</string>
+    <string name="acc_delete_req_done">%1$s hesabı silindi</string>
+    <string name="acc_delete_req_confirm_title">Uşağın hesabı silinsin?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s hesabı, onun tarixçəsi və qoyduğunuz qaydalar birdəfəlik silinəcək. Bunu geri qaytarmaq olmaz.</string>
+    <string name="del_acc_scheduled_title">Hesabın silinməsi planlaşdırıldı</string>
+    <string name="del_acc_scheduled_msg">Hesabınız %1$s tarixində silinəcək ki, uşaqlarınızın qaydaları təsadüfən yox olmasın. Fikrinizi dəyişdiniz? Yenidən daxil olun — silinmə ləğv olunacaq.</string>
 </resources>

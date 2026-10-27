@@ -29,4 +29,5 @@ fun ProtectionStatusData.toProtectionStatus() = ProtectionStatus(
     strictDisableRequest = strictDisableRequest?.toChildRequest(),
     logoutRequest = logoutRequest?.toAccountRequest(),
     deleteRequest = deleteRequest?.toAccountRequest(),
+    accountDeleteRequest = accountDeleteRequest?.toAccountRequest(),
 )

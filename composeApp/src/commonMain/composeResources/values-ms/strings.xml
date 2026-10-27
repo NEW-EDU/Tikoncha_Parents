@@ -1357,4 +1357,11 @@
     <string name="offline_saved_data">Luar talian — memaparkan data tersimpan</string>
     <string name="offline_pending_n">Luar talian — %1$d perubahan akan dihantar kemudian</string>
     <string name="offline_sending_n">Menghantar %1$d perubahan…</string>
+    <string name="acc_delete_req_title">Padam akaun</string>
+    <string name="acc_delete_req_pending">%1$s mahu memadam akaunnya</string>
+    <string name="acc_delete_req_done">Akaun %1$s telah dipadam</string>
+    <string name="acc_delete_req_confirm_title">Padam akaun anak anda?</string>
+    <string name="acc_delete_req_confirm_msg">Akaun %1$s, sejarahnya dan peraturan yang anda tetapkan akan dipadam selama-lamanya. Tindakan ini tidak boleh dibuat asal.</string>
+    <string name="del_acc_scheduled_title">Pemadaman akaun dijadualkan</string>
+    <string name="del_acc_scheduled_msg">Akaun anda akan dipadam pada %1$s supaya peraturan anak-anak anda tidak hilang secara tidak sengaja. Ubah fikiran? Log masuk semula dan pemadaman dibatalkan.</string>
 </resources>

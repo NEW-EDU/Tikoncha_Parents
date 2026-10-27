@@ -44,6 +44,8 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.acc_delete_req_done
+import tikoncha_parents.composeapp.generated.resources.acc_delete_req_pending
 import tikoncha_parents.composeapp.generated.resources.berilgan
 import tikoncha_parents.composeapp.generated.resources.berilmagan
 import tikoncha_parents.composeapp.generated.resources.boshqa_rejimlar_uchun
@@ -564,8 +566,11 @@ fun accountRequestUi(
     val accessed = request.status.equals("access", ignoreCase = true)
     val denied = request.status.equals("deny", ignoreCase = true)
     val isDelete = request.action == "delete"
+    val isAccountDelete = request.action == "delete_account"
     // Holatga mos matn — "so'ramoqda" faqat kutilayotganda
     val descRes = when {
+        isPending && isAccountDelete -> Res.string.acc_delete_req_pending
+        accessed && isAccountDelete -> Res.string.acc_delete_req_done
         isPending && isDelete -> Res.string.farzand_ilovani_ochirish_sorovi
         isPending -> Res.string.farzand_ilovadan_chiqish_sorovi
         accessed && isDelete -> Res.string.ilovani_ochirish_ruxsat_berildi_desc
@@ -579,8 +584,8 @@ fun accountRequestUi(
         else -> null to AppColors.text.tertiary
     }
     return ProtectionRequestUi(
-        key = if (isDelete) "delete" else "logout",
-        icon = if (isDelete) Icons.Rounded.Delete else Icons.AutoMirrored.Rounded.Logout,
+        key = request.action ?: "logout",
+        icon = if (isDelete || isAccountDelete) Icons.Rounded.Delete else Icons.AutoMirrored.Rounded.Logout,
         title = title,
         description = stringResource(descRes, childName),
         pending = isPending,

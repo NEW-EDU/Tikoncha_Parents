@@ -30,7 +30,7 @@ class DeviceApiService (
         )
 
     /** Akkauntni butunlay öçiriş (`DELETE /users/`): profil va unga boğliq hamma narsa kaskad bilan öçadi. */
-    suspend fun deleteAccount(): LogoutResponse =
+    suspend fun deleteAccount(): uz.tikoncha_parent.data.remote.device.DeleteAccountResponse =
         httpClient.safeRequest(
             method = HttpMethod.Delete,
             url = "users/",

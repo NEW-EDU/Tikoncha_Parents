@@ -15,7 +15,8 @@ class DeleteAccountViewModel(
     private val deviceRepository: DeviceRepository,
 ) : ScreenModel {
 
-    private val _state = MutableStateFlow<ResponseState<Nothing>>(ResponseState.Idle)
+    /** Success.data — rejalaştirilgan öçiriş sanasi (yyyy-MM-dd) yoki null (darhol öçdi). */
+    private val _state = MutableStateFlow<ResponseState<String>>(ResponseState.Idle)
     val state = _state.asStateFlow()
 
     fun delete() {
@@ -26,7 +27,7 @@ class DeleteAccountViewModel(
                 is Outcome.Failure -> _state.value = ResponseState.Error(failure = res)
                 is Outcome.Success -> {
                     AppSettings.clearSession()
-                    _state.value = ResponseState.Success()
+                    _state.value = ResponseState.Success(res.data?.take(10))
                 }
             }
         }

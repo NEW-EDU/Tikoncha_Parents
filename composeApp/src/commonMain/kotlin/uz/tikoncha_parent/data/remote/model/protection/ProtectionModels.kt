@@ -22,6 +22,7 @@ data class ProtectionStatusData(
     @SerialName("strict_disable_request") val strictDisableRequest: ChildRequestDto? = null,
     @SerialName("logout_request") val logoutRequest: AccountRequestDto? = null,
     @SerialName("delete_request") val deleteRequest: AccountRequestDto? = null,
+    @SerialName("account_delete_request") val accountDeleteRequest: AccountRequestDto? = null,
 )
 
 /**

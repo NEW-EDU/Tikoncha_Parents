@@ -1374,4 +1374,11 @@
     <string name="offline_saved_data">Офлайн — хадгалсан мэдээлэл харагдаж байна</string>
     <string name="offline_pending_n">Офлайн — %1$d өөрчлөлт дараа илгээгдэнэ</string>
     <string name="offline_sending_n">%1$d өөрчлөлт илгээж байна…</string>
+    <string name="acc_delete_req_title">Бүртгэл устгах</string>
+    <string name="acc_delete_req_pending">%1$s өөрийн бүртгэлийг устгахыг хүсэж байна</string>
+    <string name="acc_delete_req_done">%1$s-ийн бүртгэлийг устгалаа</string>
+    <string name="acc_delete_req_confirm_title">Хүүхдийн бүртгэлийг устгах уу?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s-ийн бүртгэл, түүх болон таны тогтоосон дүрмүүд бүрмөсөн устна. Үүнийг буцаах боломжгүй.</string>
+    <string name="del_acc_scheduled_title">Бүртгэл устгахаар товлосон</string>
+    <string name="del_acc_scheduled_msg">Хүүхдүүдийн дүрэм санамсаргүй алга болохгүйн тулд таны бүртгэл %1$s-нд устна. Бодол өөрчлөгдвөл дахин нэвтэрнэ үү — устгал цуцлагдана.</string>
 </resources>

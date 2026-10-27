@@ -6,5 +6,6 @@ import uz.tikoncha_parent.domain.model.app_error.Outcome
 interface DeviceRepository {
     suspend fun registerDevice(fcmToken: String): Outcome<Unit>
     suspend fun logout(fcmToken: String): Outcome<Unit>
-    suspend fun deleteAccount(): Outcome<Unit>
+    /** @return öçiriş sanasi (ISO), agar akkaunt 7 kunlik muddat bilan rejalaştirilgan bölsa; darhol öçsa null. */
+    suspend fun deleteAccount(): Outcome<String?>
 }

@@ -32,6 +32,8 @@ import cafe.adriel.voyager.navigator.Navigator
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import tikoncha_parents.composeapp.generated.resources.del_acc_scheduled_title
+import tikoncha_parents.composeapp.generated.resources.del_acc_scheduled_msg
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.akkauntdan_chiqish
 import tikoncha_parents.composeapp.generated.resources.akkauntdan_chiqmoqchimisiz
@@ -102,7 +104,7 @@ class DeleteAccountScreen : Screen {
 @Composable
 fun DeleteAccountUi(
     navigator: Navigator?,
-    state: ResponseState<Nothing> = ResponseState.Idle,
+    state: ResponseState<String> = ResponseState.Idle,
     onLogout: () -> Unit = {},
     onErrorDismissed: () -> Unit = {},
 ) {
@@ -113,12 +115,30 @@ fun DeleteAccountUi(
     val success = state is ResponseState.Success
     val errorText = state.errorText()
 
+    // Ota-ona akkaunti 7 kundan keyin öçadi: sanani aytib, keyin kiriş ekraniga
+    val scheduledFor = (state as? ResponseState.Success)?.data
     LaunchedEffect(success) {
-        if (success) {
+        if (success && scheduledFor == null) {
             navigator?.replaceAll(LoginScreen())
             AppRestartBus.restart()
         }
     }
+    CustomDialog(
+        painter = painterResource(Res.drawable.dialog_warning),
+        show = success && scheduledFor != null,
+        title = stringResource(Res.string.del_acc_scheduled_title),
+        message = stringResource(Res.string.del_acc_scheduled_msg, scheduledFor.orEmpty()),
+        buttonText = stringResource(Res.string.ok),
+        showCloseButton = false,
+        onDismiss = {
+            navigator?.replaceAll(LoginScreen())
+            AppRestartBus.restart()
+        },
+        onButtonClick = {
+            navigator?.replaceAll(LoginScreen())
+            AppRestartBus.restart()
+        },
+    )
 
     LaunchedEffect(errorText) {
         if (errorText.isNotEmpty()) showErrorDialog = true

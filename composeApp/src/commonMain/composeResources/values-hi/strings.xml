@@ -1357,4 +1357,11 @@
     <string name="offline_saved_data">ऑफ़लाइन — सहेजा गया डेटा दिख रहा है</string>
     <string name="offline_pending_n">ऑफ़लाइन — %1$d बदलाव बाद में भेजे जाएँगे</string>
     <string name="offline_sending_n">%1$d बदलाव भेजे जा रहे हैं…</string>
+    <string name="acc_delete_req_title">खाता हटाएँ</string>
+    <string name="acc_delete_req_pending">%1$s अपना खाता हटाना चाहता/चाहती है</string>
+    <string name="acc_delete_req_done">%1$s का खाता हटा दिया गया</string>
+    <string name="acc_delete_req_confirm_title">बच्चे का खाता हटाएँ?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s का खाता, उसका इतिहास और आपके नियम हमेशा के लिए मिट जाएँगे। इसे वापस नहीं किया जा सकता।</string>
+    <string name="del_acc_scheduled_title">खाता हटाना निर्धारित</string>
+    <string name="del_acc_scheduled_msg">आपका खाता %1$s को हटेगा, ताकि बच्चों के नियम गलती से न मिटें। मन बदल गया? फिर से साइन इन करें — हटाना रद्द हो जाएगा।</string>
 </resources>

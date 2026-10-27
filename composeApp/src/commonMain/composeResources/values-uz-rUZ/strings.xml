@@ -1374,4 +1374,11 @@
     <string name="offline_saved_data">Интернет йўқ — сақланган маълумотлар кўрсатилмоқда</string>
     <string name="offline_pending_n">Интернет йўқ — %1$d та ўзгариш кейин юборилади</string>
     <string name="offline_sending_n">%1$d та ўзгариш юборилмоқда…</string>
+    <string name="acc_delete_req_title">Аккаунтни ўчириш</string>
+    <string name="acc_delete_req_pending">%1$s ўз аккаунтини ўчирмоқчи</string>
+    <string name="acc_delete_req_done">%1$s аккаунти ўчирилди</string>
+    <string name="acc_delete_req_confirm_title">Фарзанд аккаунти ўчирилсинми?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s аккаунти, унинг тарихи ва сиз қўйган қоидалар бутунлай ўчади. Буни ортга қайтариб бўлмайди.</string>
+    <string name="del_acc_scheduled_title">Аккаунт ўчирилмоқда</string>
+    <string name="del_acc_scheduled_msg">Аккаунтингиз %1$s куни ўчирилади — фарзандларингиз қоидалари бирдан йўқолмасин. Фикрингиз ўзгарса, иловага қайта киринг: ўчириш бекор бўлади.</string>
 </resources>

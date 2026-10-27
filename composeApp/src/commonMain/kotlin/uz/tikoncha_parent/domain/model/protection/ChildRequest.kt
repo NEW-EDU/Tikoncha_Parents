@@ -32,4 +32,5 @@ data class ProtectionStatus(
     val strictDisableRequest: ChildRequest?,
     val logoutRequest: AccountRequest?,
     val deleteRequest: AccountRequest?,
+    val accountDeleteRequest: AccountRequest? = null,
 )

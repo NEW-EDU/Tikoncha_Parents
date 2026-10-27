@@ -1374,4 +1374,11 @@
     <string name="offline_saved_data">آف لائن — محفوظ ڈیٹا دکھایا جا رہا ہے</string>
     <string name="offline_pending_n">آف لائن — %1$d تبدیلیاں بعد میں بھیجی جائیں گی</string>
     <string name="offline_sending_n">%1$d تبدیلیاں بھیجی جا رہی ہیں…</string>
+    <string name="acc_delete_req_title">اکاؤنٹ حذف کریں</string>
+    <string name="acc_delete_req_pending">%1$s اپنا اکاؤنٹ حذف کرنا چاہتا/چاہتی ہے</string>
+    <string name="acc_delete_req_done">%1$s کا اکاؤنٹ حذف کر دیا گیا</string>
+    <string name="acc_delete_req_confirm_title">بچے کا اکاؤنٹ حذف کریں؟</string>
+    <string name="acc_delete_req_confirm_msg">%1$s کا اکاؤنٹ، اس کی تاریخ اور آپ کے بنائے اصول ہمیشہ کے لیے مٹ جائیں گے۔ اسے واپس نہیں کیا جا سکتا۔</string>
+    <string name="del_acc_scheduled_title">اکاؤنٹ حذف کرنا طے ہو گیا</string>
+    <string name="del_acc_scheduled_msg">آپ کا اکاؤنٹ %1$s کو حذف ہوگا تاکہ بچوں کے اصول غلطی سے غائب نہ ہوں۔ ارادہ بدل گیا؟ دوبارہ سائن ان کریں، حذف منسوخ ہو جائے گا۔</string>
 </resources>

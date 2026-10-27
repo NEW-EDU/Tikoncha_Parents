@@ -1358,4 +1358,11 @@
     <string name="offline_saved_data">آفلاین — داده‌های ذخیره‌شده نمایش داده می‌شود</string>
     <string name="offline_pending_n">آفلاین — %1$d تغییر بعداً فرستاده می‌شود</string>
     <string name="offline_sending_n">در حال ارسال %1$d تغییر…</string>
+    <string name="acc_delete_req_title">حذف حساب</string>
+    <string name="acc_delete_req_pending">%1$s می‌خواهد حساب خود را حذف کند</string>
+    <string name="acc_delete_req_done">حساب %1$s حذف شد</string>
+    <string name="acc_delete_req_confirm_title">حساب فرزندتان حذف شود؟</string>
+    <string name="acc_delete_req_confirm_msg">حساب %1$s، سابقهٔ آن و قوانینی که گذاشته‌اید برای همیشه پاک می‌شوند. این کار قابل بازگشت نیست.</string>
+    <string name="del_acc_scheduled_title">حذف حساب زمان‌بندی شد</string>
+    <string name="del_acc_scheduled_msg">حساب شما در %1$s حذف می‌شود تا قوانین فرزندانتان ناگهان از بین نروند. نظرتان عوض شد؟ دوباره وارد شوید تا حذف لغو شود.</string>
 </resources>

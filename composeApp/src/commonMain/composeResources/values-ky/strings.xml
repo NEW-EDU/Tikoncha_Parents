@@ -1374,4 +1374,11 @@
     <string name="offline_saved_data">Интернет жок — сакталган маалымат көрсөтүлүүдө</string>
     <string name="offline_pending_n">Интернет жок — %1$d өзгөртүү кийин жөнөтүлөт</string>
     <string name="offline_sending_n">%1$d өзгөртүү жөнөтүлүүдө…</string>
+    <string name="acc_delete_req_title">Аккаунтту өчүрүү</string>
+    <string name="acc_delete_req_pending">%1$s өз аккаунтун өчүргүсү келет</string>
+    <string name="acc_delete_req_done">%1$s аккаунту өчүрүлдү</string>
+    <string name="acc_delete_req_confirm_title">Баланын аккаунтун өчүрөсүзбү?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s аккаунту, анын тарыхы жана сиз койгон эрежелер биротоло өчөт. Муну артка кайтаруу мүмкүн эмес.</string>
+    <string name="del_acc_scheduled_title">Аккаунтту өчүрүү пландалды</string>
+    <string name="del_acc_scheduled_msg">Балдарыңыздын эрежелери кокусунан жоголбосун деп аккаунтуңуз %1$s күнү өчүрүлөт. Оюңуз өзгөрсө, кайра кириңиз — өчүрүү жокко чыгат.</string>
 </resources>

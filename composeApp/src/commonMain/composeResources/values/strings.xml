@@ -1384,4 +1384,11 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="offline_saved_data">Internet yöq — saqlangan ma\'lumotlar körsatilmoqda</string>
     <string name="offline_pending_n">Internet yöq — %1$d ta özgariş keyin yuboriladi</string>
     <string name="offline_sending_n">%1$d ta özgariş yuborilmoqda…</string>
+    <string name="acc_delete_req_title">Akkauntni öçiriş</string>
+    <string name="acc_delete_req_pending">%1$s öz akkauntini öçirmoqçi</string>
+    <string name="acc_delete_req_done">%1$s akkaunti öçirildi</string>
+    <string name="acc_delete_req_confirm_title">Farzand akkaunti öçirilsinmi?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s akkaunti, uning tarixi va siz qöygan qoidalar butunlay öçadi. Buni ortga qaytarib bölmaydi.</string>
+    <string name="del_acc_scheduled_title">Akkaunt öçirilmoqda</string>
+    <string name="del_acc_scheduled_msg">Akkauntingiz %1$s kuni öçiriladi — farzandlaringiz qoidalari birdan yöqolmasin. Fikringiz özgarsa, ilovaga qayta kiring: öçiriş bekor böladi.</string>
 </resources>

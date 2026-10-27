@@ -1358,4 +1358,11 @@
     <string name="offline_saved_data">离线 — 正在显示已保存的数据</string>
     <string name="offline_pending_n">离线 — %1$d 项更改将稍后发送</string>
     <string name="offline_sending_n">正在发送 %1$d 项更改…</string>
+    <string name="acc_delete_req_title">删除账户</string>
+    <string name="acc_delete_req_pending">%1$s 想删除自己的账户</string>
+    <string name="acc_delete_req_done">%1$s 的账户已删除</string>
+    <string name="acc_delete_req_confirm_title">删除孩子的账户？</string>
+    <string name="acc_delete_req_confirm_msg">%1$s 的账户、记录和你设置的规则将被永久删除。此操作无法撤销。</string>
+    <string name="del_acc_scheduled_title">已安排删除账户</string>
+    <string name="del_acc_scheduled_msg">为避免孩子的规则被误删，你的账户将在 %1$s 删除。改变主意了？重新登录即可取消删除。</string>
 </resources>

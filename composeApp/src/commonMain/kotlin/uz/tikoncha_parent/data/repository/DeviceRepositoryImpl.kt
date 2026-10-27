@@ -37,9 +37,9 @@ class DeviceRepositoryImpl(
         else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
     }
 
-    override suspend fun deleteAccount(): Outcome<Unit> = apiCall(TAG) {
+    override suspend fun deleteAccount(): Outcome<String?> = apiCall(TAG) {
         val r = api.deleteAccount()
-        if (r.success) Outcome.Success(Unit)
+        if (r.success) Outcome.Success(r.data?.scheduled_for?.takeIf { r.data.status == "scheduled" })
         else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
     }
 

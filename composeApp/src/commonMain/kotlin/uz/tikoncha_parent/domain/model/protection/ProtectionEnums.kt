@@ -55,6 +55,8 @@ enum class ChildPermission(val minMode: ChildMode) {
 enum class AccountRequestAction(val value: String) {
     LOGOUT("logout"),
     DELETE("delete"),
+    /** Farzand akkauntini öçiriş — ruxsat berilsa server akkauntni öçiradi. */
+    DELETE_ACCOUNT("delete_account"),
     UNKNOWN("");
 
     companion object {

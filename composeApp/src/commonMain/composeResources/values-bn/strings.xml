@@ -1374,4 +1374,11 @@
     <string name="offline_saved_data">অফলাইন — সংরক্ষিত তথ্য দেখানো হচ্ছে</string>
     <string name="offline_pending_n">অফলাইন — %1$dটি পরিবর্তন পরে পাঠানো হবে</string>
     <string name="offline_sending_n">%1$dটি পরিবর্তন পাঠানো হচ্ছে…</string>
+    <string name="acc_delete_req_title">অ্যাকাউন্ট মুছুন</string>
+    <string name="acc_delete_req_pending">%1$s নিজের অ্যাকাউন্ট মুছতে চায়</string>
+    <string name="acc_delete_req_done">%1$s-এর অ্যাকাউন্ট মুছে ফেলা হয়েছে</string>
+    <string name="acc_delete_req_confirm_title">সন্তানের অ্যাকাউন্ট মুছবেন?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s-এর অ্যাকাউন্ট, ইতিহাস ও আপনার নিয়ম চিরতরে মুছে যাবে। এটি আর ফেরানো যাবে না।</string>
+    <string name="del_acc_scheduled_title">অ্যাকাউন্ট মোছার সময় নির্ধারিত</string>
+    <string name="del_acc_scheduled_msg">আপনার অ্যাকাউন্ট %1$s তারিখে মুছে যাবে, যাতে সন্তানদের নিয়ম ভুলবশত হারিয়ে না যায়। মত বদলালে আবার সাইন ইন করুন — মোছা বাতিল হবে।</string>
 </resources>

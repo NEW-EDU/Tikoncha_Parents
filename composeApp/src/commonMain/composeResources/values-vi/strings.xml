@@ -1374,4 +1374,11 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="offline_saved_data">Ngoại tuyến — đang hiển thị dữ liệu đã lưu</string>
     <string name="offline_pending_n">Ngoại tuyến — %1$d thay đổi sẽ được gửi sau</string>
     <string name="offline_sending_n">Đang gửi %1$d thay đổi…</string>
+    <string name="acc_delete_req_title">Xóa tài khoản</string>
+    <string name="acc_delete_req_pending">%1$s muốn xóa tài khoản của mình</string>
+    <string name="acc_delete_req_done">Đã xóa tài khoản của %1$s</string>
+    <string name="acc_delete_req_confirm_title">Xóa tài khoản của con?</string>
+    <string name="acc_delete_req_confirm_msg">Tài khoản của %1$s, lịch sử và các quy tắc bạn đặt sẽ bị xóa vĩnh viễn. Không thể hoàn tác.</string>
+    <string name="del_acc_scheduled_title">Đã lên lịch xóa tài khoản</string>
+    <string name="del_acc_scheduled_msg">Tài khoản của bạn sẽ bị xóa vào %1$s để quy tắc của con không vô tình biến mất. Đổi ý? Hãy đăng nhập lại, việc xóa sẽ bị hủy.</string>
 </resources>

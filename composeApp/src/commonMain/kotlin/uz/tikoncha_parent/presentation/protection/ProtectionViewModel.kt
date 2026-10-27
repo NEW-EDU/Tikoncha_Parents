@@ -155,6 +155,7 @@ class ProtectionViewModel(
                 strictDisableRequest = data.strictDisableRequest,
                 logoutRequest = data.logoutRequest,
                 deleteRequest = data.deleteRequest,
+                accountDeleteRequest = data.accountDeleteRequest,
             )
         }
         restartCountdown(data.strictDisableRequest)
@@ -203,6 +204,7 @@ class ProtectionViewModel(
         val request = when (action) {
             AccountRequestAction.LOGOUT -> _state.value.logoutRequest
             AccountRequestAction.DELETE -> _state.value.deleteRequest
+            AccountRequestAction.DELETE_ACCOUNT -> _state.value.accountDeleteRequest
             AccountRequestAction.UNKNOWN -> null
         } ?: return
         val requestId = request.id ?: return
@@ -226,6 +228,8 @@ class ProtectionViewModel(
                         when (action) {
                             AccountRequestAction.LOGOUT ->
                                 it.copy(actionInProgressId = null, logoutRequest = updated)
+                            AccountRequestAction.DELETE_ACCOUNT ->
+                                it.copy(actionInProgressId = null, accountDeleteRequest = updated)
                             else ->
                                 it.copy(actionInProgressId = null, deleteRequest = updated)
                         }
