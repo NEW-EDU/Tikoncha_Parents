@@ -1119,8 +1119,8 @@ This information is used only for these features and is not shared with third pa
     <string name="ap_payment_failed">Payment failed</string>
     <string name="ap_payment_failed_generic">The bank declined the payment. Check the card and try again.</string>
     <string name="ap_checking_title">Checking the payment</string>
-    <string name="ap_checking_sub">Please wait. Don\'t pay again.</string>
-    <string name="ap_checking_long">No result yet. You\'ll see the status in “Subscription” — don\'t pay again.</string>
+    <string name="ap_checking_sub">Please wait. Don't pay again.</string>
+    <string name="ap_checking_long">No result yet. You'll see the status in “Subscription” — don't pay again.</string>
     <string name="ap_result_paid_title">Subscription activated</string>
     <string name="ap_result_until">Hoglt Plus is active until %1$s</string>
     <string name="ap_result_scheduled_title">Auto-pay is on</string>
@@ -1138,7 +1138,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ap_off_body_no_date">Paid days stay. After that nothing is charged to your card.</string>
     <string name="ap_off_confirm">Turn off</string>
     <string name="ap_keep_on">Keep it on</string>
-    <string name="ap_retry_note">We\'ll try again tomorrow (%1$d/3).</string>
+    <string name="ap_retry_note">We'll try again tomorrow (%1$d/3).</string>
     <string name="ap_retry_now">Retry</string>
     <string name="ap_other_card">Another card</string>
     <string name="ap_cards_empty_title">No saved cards</string>
@@ -1289,7 +1289,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ai_period_yesterday">Yesterday</string>
     <string name="ai_period_week">7 days</string>
     <string name="ai_report_no_data">The phone sent no data for this period</string>
-    <string name="ai_report_failed">Couldn\'t load the report</string>
+    <string name="ai_report_failed">Couldn't load the report</string>
     <string name="ai_report_screen_time">Screen time</string>
     <string name="ai_report_avg">%1$s a day on average</string>
     <string name="ai_report_night">%1$d nights after midnight · %2$s</string>
@@ -1304,7 +1304,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ai_draft_hint">Starts after you confirm</string>
     <string name="ai_thinking">Thinking…</string>
     <string name="ai_error_network">Connection problem. Please try again.</string>
-    <string name="ai_error_generic">The assistant couldn\'t answer. Please try again.</string>
+    <string name="ai_error_generic">The assistant couldn't answer. Please try again.</string>
     <string name="ai_buy_coins">Coins</string>
     <string name="ai_coins_left">%1$d coins</string>
     <string name="ai_cost_hint">Each answer costs 1 coin</string>
@@ -1333,7 +1333,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ai_protection_title">Protection</string>
     <string name="ai_protection_ok">All needed permissions are on</string>
     <string name="ai_open_protection">Open Protection</string>
-    <string name="ai_location_gps_off">GPS is off — location isn\'t updating</string>
+    <string name="ai_location_gps_off">GPS is off — location isn't updating</string>
     <string name="ai_new_chat_confirm">Unconfirmed cards will be cleared too. Start a new chat?</string>
     <string name="ai_task_reward">Reward</string>
     <string name="ai_remind_child">Send reminder</string>
@@ -1366,21 +1366,21 @@ This information is used only for these features and is not shared with third pa
     <string name="sub_child_app_note">Only one child? PLUS costs less in your child's Hoglt app — it covers that one child.</string>
     <string name="sub_family_caption">Family plan · up to 3 children</string>
     <string name="del_acc_question">Delete your account?</string>
-    <string name="del_acc_body">Your profile, links to your children, the rules you set, chats and payment history are erased for good. Your children\'s own accounts stay.</string>
-    <string name="del_acc_irreversible">This can\'t be undone.</string>
+    <string name="del_acc_body">Your profile, links to your children, the rules you set, chats and payment history are erased for good. Your children's own accounts stay.</string>
+    <string name="del_acc_irreversible">This can't be undone.</string>
     <string name="del_acc_confirm">Delete for good</string>
     <string name="del_acc_store_title">Subscription</string>
-    <string name="del_acc_store_note">An App Store or Google Play subscription isn\'t cancelled by itself — cancel it in the store settings.</string>
+    <string name="del_acc_store_note">An App Store or Google Play subscription isn't cancelled by itself — cancel it in the store settings.</string>
     <string name="offline_saved_data">Offline — showing saved data</string>
     <string name="offline_pending_n">Offline — %1$d changes will be sent later</string>
     <string name="offline_sending_n">Sending %1$d changes…</string>
     <string name="acc_delete_req_title">Delete account</string>
     <string name="acc_delete_req_pending">%1$s wants to delete their account</string>
-    <string name="acc_delete_req_done">%1$s\'s account was deleted</string>
-    <string name="acc_delete_req_confirm_title">Delete your child\'s account?</string>
-    <string name="acc_delete_req_confirm_msg">%1$s\'s account, its history and the rules you set are erased for good. This can\'t be undone.</string>
+    <string name="acc_delete_req_done">%1$s's account was deleted</string>
+    <string name="acc_delete_req_confirm_title">Delete your child's account?</string>
+    <string name="acc_delete_req_confirm_msg">%1$s's account, its history and the rules you set are erased for good. This can't be undone.</string>
     <string name="del_acc_scheduled_title">Account deletion scheduled</string>
-    <string name="del_acc_scheduled_msg">Your account will be deleted on %1$s, so your children\'s rules don\'t vanish by mistake. Changed your mind? Sign in again and the deletion is cancelled.</string>
-    <string name="del_acc_keep_msg">Your account will be deleted on %1$s. If this wasn\'t you, or you\'ve changed your mind, keep your account.</string>
+    <string name="del_acc_scheduled_msg">Your account will be deleted on %1$s, so your children's rules don't vanish by mistake. Changed your mind? Sign in again and the deletion is cancelled.</string>
+    <string name="del_acc_keep_msg">Your account will be deleted on %1$s. If this wasn't you, or you've changed your mind, keep your account.</string>
     <string name="del_acc_keep_button">Keep account</string>
 </resources>

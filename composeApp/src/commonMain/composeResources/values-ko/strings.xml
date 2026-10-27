@@ -407,7 +407,7 @@
     <string name="yangilash">업데이트</string>
     <string name="sahifaga_otish">페이지로 이동</string>
     <string name="farzand_ulan_di">자녀가 연결되었어요. 이제 자녀의 디지털 생활을 편하게 살펴볼 수 있어요</string>
-    <string name="confirm_code_instruction">자녀가 \'Hoglt\' 앱의 \'부모 추가\' 메뉴에서 이 코드를 입력해야 해요.</string>
+    <string name="confirm_code_instruction">자녀가 'Hoglt' 앱의 '부모 추가' 메뉴에서 이 코드를 입력해야 해요.</string>
 
     <string name="plus_obnuna_kerak">PLUS 구독이 필요해요</string>
     <string name="toliq_nazorat_statistika">완전한 관리와 통계</string>
@@ -591,7 +591,7 @@
     <string name="farzand_ilovasi_info">자녀의 휴대폰에 이 Hoglt 앱을 설치해 주세요.</string>
     <string name="kod_nusxalandi">코드를 복사했어요</string>
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">자녀가 Hoglt 앱을 열고 인증 코드를 입력해야 해요.</string>
-    <string name="bola_hali_bajardim_bosmagan">자녀가 아직 \'완료\' 버튼을 누르지 않았어요</string>
+    <string name="bola_hali_bajardim_bosmagan">자녀가 아직 '완료' 버튼을 누르지 않았어요</string>
     <string name="foydalanilmagan">사용 안 함</string>
     <string name="token_eskirgan">토큰이 만료되었어요</string>
     <string name="tokenni_yangilash_uchun">토큰을 갱신하려면 다시 로그인해야 해요.</string>
@@ -608,8 +608,8 @@
     <string name="kun">일</string>
     <string name="tugagan">만료됨</string>
     <string name="farzandingiz_sorovlari">자녀의 요청</string>
-    <string name="farzand_ilovadan_chiqish_sorovi">자녀가 \'%1$s\'에서 로그아웃할 수 있도록 허락을 요청하고 있어요</string>
-    <string name="farzand_ilovani_ochirish_sorovi">자녀가 \'%1$s\' 삭제를 허락해 달라고 요청하고 있어요</string>
+    <string name="farzand_ilovadan_chiqish_sorovi">자녀가 '%1$s'에서 로그아웃할 수 있도록 허락을 요청하고 있어요</string>
+    <string name="farzand_ilovani_ochirish_sorovi">자녀가 '%1$s' 삭제를 허락해 달라고 요청하고 있어요</string>
     <string name="farzandlarim">내 자녀</string>
     <string name="maxfiylik_siyosati">개인정보 처리방침</string>
     <string name="foydalanish_shartlari">이용약관</string>
@@ -738,7 +738,7 @@
     <string name="perm_accessibility">접근성</string>
     <string name="perm_device_admin">기기 관리자</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">자녀가 \'%1$s\'의 방패 해제를 허락해 달라고 요청하고 있어요</string>
+    <string name="farzand_qalqon_ochirish_sorovi">자녀가 '%1$s'의 방패 해제를 허락해 달라고 요청하고 있어요</string>
     <string name="javob_uchun">응답 가능 시간: %1$s</string>
     <string name="rad_etildi">거절됨</string>
 
@@ -993,8 +993,8 @@
     <string name="editor_outside">구역 밖</string>
     <string name="editor_rename">이름 변경</string>
     <string name="editor_delete_title">이 일정을 삭제할까요?</string>
-    <string name="editor_delete_message">\'%1$s\'이(가) 삭제돼요.</string>
-    <string name="editor_paywall_allow">\'선택한 항목만 열림\' 모드는 Plus에서 사용할 수 있어요.</string>
+    <string name="editor_delete_message">'%1$s'이(가) 삭제돼요.</string>
+    <string name="editor_paywall_allow">'선택한 항목만 열림' 모드는 Plus에서 사용할 수 있어요.</string>
     <string name="location_child_here">내 자녀 위치</string>
     <string name="protection_section">보호 대상</string>
     <string name="protection_footer">Hoglt가 목록을 최신으로 관리해요.</string>
@@ -1033,7 +1033,7 @@
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">자녀가 켰어요</string>
     <string name="preset_by_coparent">다른 부모님이 켰어요</string>
-    <string name="takeover_title">\'%1$s\'을(를) 켤까요?</string>
+    <string name="takeover_title">'%1$s'을(를) 켤까요?</string>
     <string name="takeover_body_child">자녀가 이것을 켰어요: %1$s. 내가 켜면 자녀의 것은 꺼지고 내 설정이 적용돼요. 나중에 내 것을 꺼도 자녀의 것은 꺼진 채로 남아요. 자녀가 다시 켤 수 있어요.</string>
     <string name="takeover_body_coparent">다른 부모님이 이것을 켰어요: %1$s. 내가 켜면 그분의 것은 꺼지고 내 설정이 적용돼요.</string>
     <string name="preset_info_child">자녀가 이것을 켰어요: %1$s. 내가 켜면 자녀의 것은 꺼져요.</string>
@@ -1097,14 +1097,14 @@
     <string name="ap_terms">자동결제 약관</string>
     <string name="ap_pay_now">결제 · %1$s</string>
     <string name="ap_enable_autopay">자동결제 켜기</string>
-    <string name="ap_confirm_footer">자동결제는 \'구독\'에서 언제든 끌 수 있어요</string>
+    <string name="ap_confirm_footer">자동결제는 '구독'에서 언제든 끌 수 있어요</string>
     <string name="ap_pick_card">카드 선택</string>
     <string name="ap_add_new_card">새 카드 추가</string>
     <string name="ap_payment_failed">결제하지 못했어요</string>
     <string name="ap_payment_failed_generic">은행에서 결제를 거절했어요. 카드를 확인하고 다시 시도해 주세요.</string>
     <string name="ap_checking_title">결제 확인 중</string>
     <string name="ap_checking_sub">잠시만 기다려 주세요. 다시 결제하지 마세요.</string>
-    <string name="ap_checking_long">아직 결과가 없어요. \'구독\'에서 상태를 확인할 수 있어요. 다시 결제하지 마세요.</string>
+    <string name="ap_checking_long">아직 결과가 없어요. '구독'에서 상태를 확인할 수 있어요. 다시 결제하지 마세요.</string>
     <string name="ap_result_paid_title">구독이 활성화되었어요</string>
     <string name="ap_result_until">Hoglt Plus가 %1$s까지 활성화돼요</string>
     <string name="ap_result_scheduled_title">자동결제 켜짐</string>
@@ -1165,7 +1165,7 @@
     <string name="ulash_usuli_telefon">전화번호</string>
     <string name="ulash_usuli_kod">연결 코드</string>
     <string name="ulanish_kodini_kiriting">연결 코드 입력</string>
-    <string name="ulanish_kodi_tavsif">자녀가 자기 앱에서 \'내 코드 보기\'로 8자리 코드를 만들어요. 그 코드를 여기에 입력해 주세요.</string>
+    <string name="ulanish_kodi_tavsif">자녀가 자기 앱에서 '내 코드 보기'로 8자리 코드를 만들어요. 그 코드를 여기에 입력해 주세요.</string>
     <string name="ulash_tugma">연결</string>
 
     <!-- Onboarding (parent) -->

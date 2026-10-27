@@ -1349,7 +1349,7 @@
     <string name="sub_child_app_note">Лише одна дитина? У застосунку Hoglt дитини PLUS дешевший — він діє лише для цієї дитини.</string>
     <string name="sub_family_caption">Сімейний тариф · до 3 дітей</string>
     <string name="del_acc_question">Видалити акаунт?</string>
-    <string name="del_acc_body">Ваш профіль, зв\'язок з дітьми, ваші правила, чати та історія платежів буде видалено назавжди. Власні акаунти дітей залишаться.</string>
+    <string name="del_acc_body">Ваш профіль, зв'язок з дітьми, ваші правила, чати та історія платежів буде видалено назавжди. Власні акаунти дітей залишаться.</string>
     <string name="del_acc_irreversible">Це не можна скасувати.</string>
     <string name="del_acc_confirm">Видалити назавжди</string>
     <string name="del_acc_store_title">Підписка</string>

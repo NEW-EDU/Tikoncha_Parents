@@ -407,7 +407,7 @@
     <string name="yangilash">Янгилаш</string>
     <string name="sahifaga_otish">Саҳифага ўтиш</string>
     <string name="farzand_ulan_di">Фарзандингиз муваффақиятли уланди, бемалол рақамли ҳаётини назорат қилишингиз мумкин бўлади</string>
-    <string name="confirm_code_instruction">Ушбу кодни фарзандингиз \"Tikoncha\" иловасида \"Ота-она қўшиш\" бўлимига киритиши керак.</string>
+    <string name="confirm_code_instruction">Ушбу кодни фарзандингиз "Tikoncha" иловасида "Ота-она қўшиш" бўлимига киритиши керак.</string>
 
     <string name="plus_obnuna_kerak">PLUS обуна керак</string>
     <string name="toliq_nazorat_statistika">Тўлиқ назорат ва статистика</string>
@@ -754,7 +754,7 @@
     <string name="perm_accessibility">Махсус имкониятлар</string>
     <string name="perm_device_admin">Қурилма администратори</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Фарзандингиз \"%1$s\" Қалқонни ўчириш учун сиздан рухсат сўрамоқда</string>
+    <string name="farzand_qalqon_ochirish_sorovi">Фарзандингиз "%1$s" Қалқонни ўчириш учун сиздан рухсат сўрамоқда</string>
     <string name="javob_uchun">Жавоб учун: %1$s</string>
     <string name="rad_etildi">Рад этилди</string>
 
@@ -1348,7 +1348,7 @@
     <string name="parent_special_info_title">Фарзанд телефонида ишлайди</string>
     <string name="parent_special_info_1">Сиз ёққан ҳимояни фарзандингиз ўчира олмайди. U буни иловада кўради.</string>
     <string name="parent_special_info_2">Хавф бўлса, сизга фақат тоифа ва илова номи келади — ёзишма матни ёки расм эмас.</string>
-    <string name="parent_special_info_3">Андроидъда Қалқон режими керак. iPhone\'da: 18+ сайтлар ва Tikonchagram ёзишмалари.</string>
+    <string name="parent_special_info_3">Андроидъда Қалқон режими керак. iPhone'da: 18+ сайтлар ва Tikonchagram ёзишмалари.</string>
     <string name="parent_special_nsfw_title">Номақбул расмлар</string>
     <string name="parent_special_nsfw_desc">18+ тасвир ёпилади, сизга хабар боради</string>
     <string name="parent_special_conv_title">Хавфли ёзишмалар</string>

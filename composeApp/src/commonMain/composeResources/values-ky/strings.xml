@@ -236,7 +236,7 @@
     <string name="tanga">%1$d тыйын</string>
     <string name="xozr_sizning_obunangiz">Учурдагы жазылууңуз</string>
     <string name="ilovaning_barcha_funksiyalaridan_foydalanish_uchun_pro_versiyasini_sotib_oling">Колдонмонун бардык мүмкүнчүлүктөрүн колдонуу үчүн Pro же Plus версиясын сатып алууну сунуштайбыз</string>
-    <string name="baxtli_foydalanuvchimisiz">Бактылуу колдонуучуларыбызга кошулуп, Hoglt\'ту бардык мүмкүнчүлүктөрү менен толук колдонуңуз.</string>
+    <string name="baxtli_foydalanuvchimisiz">Бактылуу колдонуучуларыбызга кошулуп, Hoglt'ту бардык мүмкүнчүлүктөрү менен толук колдонуңуз.</string>
     <string name="som">сум</string>
     <string name="foyda">Пайда</string>
     <string name="imkoniyatlar">Мүмкүнчүлүктөр</string>
@@ -336,13 +336,13 @@
     <string name="xabarni_o_chirish">Билдирүүнү өчүрүү</string>
     <string name="haqiqatan_ham_bu_xabarni_o_chirmoqchimisiz">Бул билдирүүнү чын эле өчүрөсүзбү?</string>
     <string name="raqamda_telegram_mavjud_emas">Бул номерде Telegram жок</string>
-    <string name="kod_telegramga_yuboriladi">Код Telegram\'га жөнөтүлөт</string>
+    <string name="kod_telegramga_yuboriladi">Код Telegram'га жөнөтүлөт</string>
     <string name="tasdiqlash_kodi_telegram">Ырастоо коду Telegram аркылуу жөнөтүлөт. Кодду алуу үчүн Telegram колдонмосун ачыңыз.</string>
-    <string name="telegramga_otish">Telegram\'га өтүү</string>
+    <string name="telegramga_otish">Telegram'га өтүү</string>
     <string name="boshqa_raqamga_ozgartish">Башка номерге өзгөртүү</string>
     <string name="tasdiqlash_kodi_usulini_tanlash">Ырастоо кодун кантип \n жөнөтүшүбүз керек экенин тандаңыз</string>
     <string name="tasdiqlash_kodini_olish">Ырастоо кодун алуу</string>
-    <string name="telegram_kod_kiritish">%1$s номерине байланган Telegram\'га жөнөтүлгөн кодду киргизиңиз</string>
+    <string name="telegram_kod_kiritish">%1$s номерине байланган Telegram'га жөнөтүлгөн кодду киргизиңиз</string>
     <string name="xato_kod_kiritdingiz">Туура эмес код киргиздиңиз</string>
     <string name="kod_olish_usulini_ozgartirish">Кодду алуу ыкмасын өзгөртүү</string>
     <string name="versiya">Версия</string>
@@ -380,7 +380,7 @@
     <string name="coins_help_use_intro">Bilimdon AI тыйындары — Hoglt ичинде Bilimdon AI менен баарлашуу үчүн колдонулуучу санариптик бирдиктер.</string>
     <string name="coins_help_earn_intro">Bilimdon AI тыйындарын бир нече жол менен таба аласыз:</string>
     <string-array name="coins_help_use_bullets">
-        <item>Bilimdon AI\'га суроо берүү</item>
+        <item>Bilimdon AI'га суроо берүү</item>
         <item>Китептер, темалар же тапшырмалар боюнча кыска жана түшүнүктүү түшүндүрмөлөрдү алуу</item>
         <item>Билимди бекемдөө жана окууну тездетүү</item>
     </string-array>
@@ -499,7 +499,7 @@
     <string name="tracking_checking_settings">Баланын жөндөөлөрү текшерилүүдө...</string>
     <string name="tracking_watch_video">Видео көрүү</string>
     <string name="danger_places">Коркунучтуу жерлер</string>
-    <string name="danger_places_help">Балаңыздан 1,5 км радиуста: түнкү клубдар, барлар, кальянканалар, казинолор, букмекердик кеңселер, спирт ичимдиктери жана тамеки дүкөндөрү. Маалымат OpenStreetMap\'тен — айрым жерлер жок болушу мүмкүн.</string>
+    <string name="danger_places_help">Балаңыздан 1,5 км радиуста: түнкү клубдар, барлар, кальянканалар, казинолор, букмекердик кеңселер, спирт ичимдиктери жана тамеки дүкөндөрү. Маалымат OpenStreetMap'тен — айрым жерлер жок болушу мүмкүн.</string>
     <string name="danger_places_radius">1,5 км радиуста</string>
     <string name="danger_places_none">Коркунучтуу жерлер табылган жок</string>
     <string name="danger_places_failed">Жүктөө мүмкүн болгон жок</string>
@@ -584,7 +584,7 @@
     <string name="status_bekor_qilindi">Жокко чыгарылды</string>
     <string name="status_muvaffaqiyatsiz">Ийгиликсиз</string>
     <string name="status_nomalum">Белгисиз</string>
-    <string name="youtube_ochilmoqda">Видео нускаманы YouTube\'дан көрө аласыз. \nYouTube ачылууда...</string>
+    <string name="youtube_ochilmoqda">Видео нускаманы YouTube'дан көрө аласыз. \nYouTube ачылууда...</string>
 
 
     <string name="izoh_ixtiyoriy">Комментарий (милдеттүү эмес)</string>
@@ -1348,7 +1348,7 @@
     <string name="parent_special_info_title">Балаңыздын телефонунда иштейт</string>
     <string name="parent_special_info_1">Сиз күйгүзгөн коргоону балаңыз өчүрө албайт. Ал аны өз колдонмосунда көрөт.</string>
     <string name="parent_special_info_2">Коркунуч болсо, сиз теманы жана колдонмонун атын гана аласыз — билдирүү текстин же сүрөттү эч качан албайсыз.</string>
-    <string name="parent_special_info_3">Android\'де Калкан режими керек. iPhone\'до: 18+ сайттар жана Hoglagram чаттары.</string>
+    <string name="parent_special_info_3">Android'де Калкан режими керек. iPhone'до: 18+ сайттар жана Hoglagram чаттары.</string>
     <string name="parent_special_nsfw_title">Ылайыксыз сүрөттөр</string>
     <string name="parent_special_nsfw_desc">18+ сүрөттөр жабылат жана сизге билдирилет</string>
     <string name="parent_special_conv_title">Тобокелдүү чаттар</string>

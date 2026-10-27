@@ -407,7 +407,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="yangilash">Cập nhật</string>
     <string name="sahifaga_otish">Đến trang</string>
     <string name="farzand_ulan_di">Đã kết nối con của bạn thành công, bạn có thể thoải mái theo dõi đời sống số của con</string>
-    <string name="confirm_code_instruction">Con bạn cần nhập mã này trong mục \"Thêm phụ huynh\" của ứng dụng \"Hoglt\".</string>
+    <string name="confirm_code_instruction">Con bạn cần nhập mã này trong mục "Thêm phụ huynh" của ứng dụng "Hoglt".</string>
 
     <string name="plus_obnuna_kerak">Cần có gói PLUS</string>
     <string name="toliq_nazorat_statistika">Kiểm soát toàn diện và thống kê</string>
@@ -607,7 +607,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="farzand_ilovasi_info">Hãy cài ứng dụng Hoglt này trên điện thoại của con bạn.</string>
     <string name="kod_nusxalandi">Đã sao chép mã</string>
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Con bạn cần mở ứng dụng Hoglt và nhập mã xác minh.</string>
-    <string name="bola_hali_bajardim_bosmagan">Con chưa nhấn nút \"Xong\"</string>
+    <string name="bola_hali_bajardim_bosmagan">Con chưa nhấn nút "Xong"</string>
     <string name="foydalanilmagan">Chưa dùng</string>
     <string name="token_eskirgan">Token đã hết hạn</string>
     <string name="tokenni_yangilash_uchun">Bạn cần đăng nhập lại để làm mới token.</string>
@@ -624,8 +624,8 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="kun">ngày</string>
     <string name="tugagan">Đã hết hạn</string>
     <string name="farzandingiz_sorovlari">Yêu cầu của con bạn</string>
-    <string name="farzand_ilovadan_chiqish_sorovi">Con bạn đang xin phép đăng xuất khỏi \"%1$s\"</string>
-    <string name="farzand_ilovani_ochirish_sorovi">Con bạn đang xin phép xóa \"%1$s\"</string>
+    <string name="farzand_ilovadan_chiqish_sorovi">Con bạn đang xin phép đăng xuất khỏi "%1$s"</string>
+    <string name="farzand_ilovani_ochirish_sorovi">Con bạn đang xin phép xóa "%1$s"</string>
     <string name="farzandlarim">Các con của tôi</string>
     <string name="maxfiylik_siyosati">Chính sách quyền riêng tư</string>
     <string name="foydalanish_shartlari">Điều khoản sử dụng</string>
@@ -754,7 +754,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="perm_accessibility">Trợ năng</string>
     <string name="perm_device_admin">Quản trị viên thiết bị</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Con bạn đang xin phép tắt Khiên cho \"%1$s\"</string>
+    <string name="farzand_qalqon_ochirish_sorovi">Con bạn đang xin phép tắt Khiên cho "%1$s"</string>
     <string name="javob_uchun">Thời gian còn lại để phản hồi: %1$s</string>
     <string name="rad_etildi">Đã từ chối</string>
 

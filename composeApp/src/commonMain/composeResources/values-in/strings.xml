@@ -407,7 +407,7 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="yangilash">Perbarui</string>
     <string name="sahifaga_otish">Buka halaman</string>
     <string name="farzand_ulan_di">Anakmu berhasil terhubung, kamu bisa dengan bebas memantau kehidupan digitalnya</string>
-    <string name="confirm_code_instruction">Anakmu perlu memasukkan kode ini di bagian \"Tambah orang tua\" pada aplikasi \"Hoglt\".</string>
+    <string name="confirm_code_instruction">Anakmu perlu memasukkan kode ini di bagian "Tambah orang tua" pada aplikasi "Hoglt".</string>
 
     <string name="plus_obnuna_kerak">Perlu langganan PLUS</string>
     <string name="toliq_nazorat_statistika">Kontrol penuh dan statistik</string>
@@ -607,7 +607,7 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="farzand_ilovasi_info">Pasang aplikasi Hoglt ini di ponsel anakmu.</string>
     <string name="kod_nusxalandi">Kode disalin</string>
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Anakmu perlu membuka aplikasi Hoglt dan memasukkan kode verifikasi.</string>
-    <string name="bola_hali_bajardim_bosmagan">Anak belum menekan tombol \"Selesai\"</string>
+    <string name="bola_hali_bajardim_bosmagan">Anak belum menekan tombol "Selesai"</string>
     <string name="foydalanilmagan">Belum digunakan</string>
     <string name="token_eskirgan">Token kedaluwarsa</string>
     <string name="tokenni_yangilash_uchun">Kamu perlu masuk lagi untuk menyegarkan token.</string>
@@ -624,8 +624,8 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="kun">hari</string>
     <string name="tugagan">Kedaluwarsa</string>
     <string name="farzandingiz_sorovlari">Permintaan anakmu</string>
-    <string name="farzand_ilovadan_chiqish_sorovi">Anakmu meminta izin untuk keluar dari \"%1$s\"</string>
-    <string name="farzand_ilovani_ochirish_sorovi">Anakmu meminta izin untuk menghapus \"%1$s\"</string>
+    <string name="farzand_ilovadan_chiqish_sorovi">Anakmu meminta izin untuk keluar dari "%1$s"</string>
+    <string name="farzand_ilovani_ochirish_sorovi">Anakmu meminta izin untuk menghapus "%1$s"</string>
     <string name="farzandlarim">Anak-anakku</string>
     <string name="maxfiylik_siyosati">Kebijakan privasi</string>
     <string name="foydalanish_shartlari">Ketentuan penggunaan</string>
@@ -754,7 +754,7 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="perm_accessibility">Aksesibilitas</string>
     <string name="perm_device_admin">Administrator perangkat</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Anakmu meminta izin untuk menonaktifkan Perisai untuk \"%1$s\"</string>
+    <string name="farzand_qalqon_ochirish_sorovi">Anakmu meminta izin untuk menonaktifkan Perisai untuk "%1$s"</string>
     <string name="javob_uchun">Sisa waktu untuk menjawab: %1$s</string>
     <string name="rad_etildi">Ditolak</string>
 

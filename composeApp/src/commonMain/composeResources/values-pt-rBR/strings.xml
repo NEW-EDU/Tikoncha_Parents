@@ -407,7 +407,7 @@
     <string name="yangilash">Atualizar</string>
     <string name="sahifaga_otish">Ir para a página</string>
     <string name="farzand_ulan_di">Seu filho foi conectado com sucesso; agora você pode acompanhar a vida digital dele com tranquilidade</string>
-    <string name="confirm_code_instruction">Seu filho precisa digitar este código na seção \"Adicionar responsável\" do app \"Hoglt\".</string>
+    <string name="confirm_code_instruction">Seu filho precisa digitar este código na seção "Adicionar responsável" do app "Hoglt".</string>
 
     <string name="plus_obnuna_kerak">Assinatura PLUS necessária</string>
     <string name="toliq_nazorat_statistika">Controle total e estatísticas</string>
@@ -607,7 +607,7 @@
     <string name="farzand_ilovasi_info">Instale este app Hoglt no celular do seu filho.</string>
     <string name="kod_nusxalandi">Código copiado</string>
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Seu filho precisa abrir o app Hoglt e digitar o código de verificação.</string>
-    <string name="bola_hali_bajardim_bosmagan">A criança ainda não tocou no botão \"Concluído\"</string>
+    <string name="bola_hali_bajardim_bosmagan">A criança ainda não tocou no botão "Concluído"</string>
     <string name="foydalanilmagan">Não usado</string>
     <string name="token_eskirgan">Token expirado</string>
     <string name="tokenni_yangilash_uchun">Você precisa entrar novamente para atualizar o token.</string>
@@ -624,8 +624,8 @@
     <string name="kun">dias</string>
     <string name="tugagan">Expirada</string>
     <string name="farzandingiz_sorovlari">Solicitações do seu filho</string>
-    <string name="farzand_ilovadan_chiqish_sorovi">Seu filho está pedindo permissão para sair de \"%1$s\"</string>
-    <string name="farzand_ilovani_ochirish_sorovi">Seu filho está pedindo permissão para excluir \"%1$s\"</string>
+    <string name="farzand_ilovadan_chiqish_sorovi">Seu filho está pedindo permissão para sair de "%1$s"</string>
+    <string name="farzand_ilovani_ochirish_sorovi">Seu filho está pedindo permissão para excluir "%1$s"</string>
     <string name="farzandlarim">Meus filhos</string>
     <string name="maxfiylik_siyosati">Política de privacidade</string>
     <string name="foydalanish_shartlari">Termos de uso</string>
@@ -754,7 +754,7 @@
     <string name="perm_accessibility">Acessibilidade</string>
     <string name="perm_device_admin">Administrador do dispositivo</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Seu filho está pedindo permissão para desativar o Escudo de \"%1$s\"</string>
+    <string name="farzand_qalqon_ochirish_sorovi">Seu filho está pedindo permissão para desativar o Escudo de "%1$s"</string>
     <string name="javob_uchun">Tempo restante para responder: %1$s</string>
     <string name="rad_etildi">Recusada</string>
 

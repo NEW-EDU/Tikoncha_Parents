@@ -406,7 +406,7 @@
     <string name="yangilash">Yenilə</string>
     <string name="sahifaga_otish">Səhifəyə keç</string>
     <string name="farzand_ulan_di">Uşağınız uğurla qoşuldu, artıq onun rəqəmsal həyatını rahatlıqla izləyə bilərsiniz</string>
-    <string name="confirm_code_instruction">Uşağınız bu kodu \"Hoglt\" tətbiqinin \"Valideyn əlavə et\" bölməsinə daxil etməlidir.</string>
+    <string name="confirm_code_instruction">Uşağınız bu kodu "Hoglt" tətbiqinin "Valideyn əlavə et" bölməsinə daxil etməlidir.</string>
 
     <string name="plus_obnuna_kerak">PLUS abunəliyi tələb olunur</string>
     <string name="toliq_nazorat_statistika">Tam nəzarət və statistika</string>
@@ -590,7 +590,7 @@
     <string name="farzand_ilovasi_info">Bu Hoglt tətbiqini uşağınızın telefonuna quraşdırın.</string>
     <string name="kod_nusxalandi">Kod kopyalandı</string>
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Uşağınız Hoglt tətbiqini açıb təsdiq kodunu daxil etməlidir.</string>
-    <string name="bola_hali_bajardim_bosmagan">Uşaq hələ \"Hazırdır\" düyməsini basmayıb</string>
+    <string name="bola_hali_bajardim_bosmagan">Uşaq hələ "Hazırdır" düyməsini basmayıb</string>
     <string name="foydalanilmagan">İstifadə olunmayıb</string>
     <string name="token_eskirgan">Tokenin vaxtı bitib</string>
     <string name="tokenni_yangilash_uchun">Tokeni yeniləmək üçün yenidən daxil olmalısınız.</string>
@@ -607,8 +607,8 @@
     <string name="kun">gün</string>
     <string name="tugagan">Vaxtı bitib</string>
     <string name="farzandingiz_sorovlari">Uşağınızın sorğuları</string>
-    <string name="farzand_ilovadan_chiqish_sorovi">Uşağınız \"%1$s\" tətbiqindən çıxmaq üçün icazə istəyir</string>
-    <string name="farzand_ilovani_ochirish_sorovi">Uşağınız \"%1$s\" tətbiqini silmək üçün icazə istəyir</string>
+    <string name="farzand_ilovadan_chiqish_sorovi">Uşağınız "%1$s" tətbiqindən çıxmaq üçün icazə istəyir</string>
+    <string name="farzand_ilovani_ochirish_sorovi">Uşağınız "%1$s" tətbiqini silmək üçün icazə istəyir</string>
     <string name="farzandlarim">Uşaqlarım</string>
     <string name="maxfiylik_siyosati">Məxfilik siyasəti</string>
     <string name="foydalanish_shartlari">İstifadə şərtləri</string>
@@ -737,7 +737,7 @@
     <string name="perm_accessibility">Əlçatımlılıq</string>
     <string name="perm_device_admin">Cihaz administratoru</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Uşağınız \"%1$s\" üçün Qalxanı söndürməyə icazə istəyir</string>
+    <string name="farzand_qalqon_ochirish_sorovi">Uşağınız "%1$s" üçün Qalxanı söndürməyə icazə istəyir</string>
     <string name="javob_uchun">Cavab üçün qalan vaxt: %1$s</string>
     <string name="rad_etildi">Rədd edildi</string>
 

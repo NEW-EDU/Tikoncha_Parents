@@ -261,16 +261,10 @@ fun NewHomeUi(
         }
     )
 
-    // Akkaunt öçirişga navbatda: sana + "Akkauntni saqlaş" (7 kunlik muddat ichida bir tugma bilan bekor)
-    CustomDialog(
-        show = state.deletionScheduledFor != null,
-        painter = painterResource(Res.drawable.dialog_warning),
-        title = stringResource(Res.string.del_acc_scheduled_title),
-        message = stringResource(Res.string.del_acc_keep_msg, state.deletionScheduledFor.orEmpty()),
-        buttonText = stringResource(Res.string.del_acc_keep_button),
-        showCloseButton = true,
+    DeletionScheduledDialog(
+        date = state.deletionScheduledFor,
+        onKeep = { event(HomeEvent.KeepAccount) },
         onDismiss = { event(HomeEvent.DismissDeletionNotice) },
-        onButtonClick = { event(HomeEvent.KeepAccount) },
     )
 
     InAppUpdateDialog(
@@ -826,3 +820,18 @@ private fun Pre() {
 
 /** Bosh sahifadagi guruhlangan blok: himoya, statistika, cheklovlar, xarita, suhbat, topshiriqlar. */
 private const val HomeBlockCount = 6
+
+/** Akkaunt öçirişga navbatda: sana + "Akkauntni saqlaş" (7 kunlik muddat ichida bir tugma bilan bekor). */
+@Composable
+fun DeletionScheduledDialog(date: String?, onKeep: () -> Unit, onDismiss: () -> Unit) {
+    CustomDialog(
+        show = date != null,
+        painter = painterResource(Res.drawable.dialog_warning),
+        title = stringResource(Res.string.del_acc_scheduled_title),
+        message = stringResource(Res.string.del_acc_keep_msg, date.orEmpty()),
+        buttonText = stringResource(Res.string.del_acc_keep_button),
+        showCloseButton = true,
+        onDismiss = onDismiss,
+        onButtonClick = onKeep,
+    )
+}

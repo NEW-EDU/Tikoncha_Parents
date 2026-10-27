@@ -1298,7 +1298,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ai_period_today">Bugun</string>
     <string name="ai_period_yesterday">Keça</string>
     <string name="ai_period_week">7 kun</string>
-    <string name="ai_report_no_data">Telefon bu davrda ma\'lumot yubormadi</string>
+    <string name="ai_report_no_data">Telefon bu davrda ma'lumot yubormadi</string>
     <string name="ai_report_failed">Hisobotni yuklab bölmadi</string>
     <string name="ai_report_screen_time">Ekran vaqti</string>
     <string name="ai_report_avg">kuniga örtaça %1$s</string>
@@ -1381,7 +1381,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="del_acc_confirm">Butunlay öçiriş</string>
     <string name="del_acc_store_title">Obuna</string>
     <string name="del_acc_store_note">App Store yoki Google Play obunasi öz-özidan bekor bölmaydi — uni dökon sozlamalarida bekor qiling.</string>
-    <string name="offline_saved_data">Internet yöq — saqlangan ma\'lumotlar körsatilmoqda</string>
+    <string name="offline_saved_data">Internet yöq — saqlangan ma'lumotlar körsatilmoqda</string>
     <string name="offline_pending_n">Internet yöq — %1$d ta özgariş keyin yuboriladi</string>
     <string name="offline_sending_n">%1$d ta özgariş yuborilmoqda…</string>
     <string name="acc_delete_req_title">Akkauntni öçiriş</string>
