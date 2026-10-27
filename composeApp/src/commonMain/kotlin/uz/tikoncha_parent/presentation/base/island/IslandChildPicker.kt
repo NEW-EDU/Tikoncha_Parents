@@ -258,15 +258,18 @@ private fun ChildDropUp(
         )
         AnimatedVisibility(
             visibleState = open,
+            // Soya kartadan tashqarida çiziladi; fade paytida qatlam öz çegarasi bilan kesilgani uçun soya animatsiya
+            // tugagandagina "sakrab" paydo bölardi (miltillaş). Endi soya uçun joy konteyner içida — u bilan birga söniq.
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(start = 14.dp, end = 14.dp, bottom = islandBottomOffset() + IslandHeight + 14.dp),
+                .padding(bottom = islandBottomOffset() + IslandHeight - 4.dp),
             enter = scaleIn(MaterialTheme.motionScheme.defaultSpatialSpec(), initialScale = 0.85f, transformOrigin = TransformOrigin(0.5f, 1f)) + fadeIn(),
             // Yopilish — prujinasiz (prujina "ortga sakrab" keyin yo'qolardi): tez, bir yo'nalishda pastga cho'kadi
             exit = fadeOut(tween(150)) +
                 scaleOut(tween(170, easing = FastOutLinearInEasing), targetScale = 0.95f, transformOrigin = TransformOrigin(0.5f, 1f)) +
                 slideOutVertically(tween(170, easing = FastOutLinearInEasing)) { it / 14 },
         ) {
+          Box(Modifier.padding(start = 14.dp, end = 14.dp, top = 14.dp, bottom = 18.dp)) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -343,6 +346,7 @@ private fun ChildDropUp(
                     Text(stringResource(Res.string.farzand_qo_shish), style = AppTypography.titleMdSemiBold, color = AppColors.text.accentEmphasis)
                 }
             }
+          }
         }
     }
 }
