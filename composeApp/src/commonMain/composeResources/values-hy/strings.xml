@@ -1383,4 +1383,8 @@
     <string name="del_acc_scheduled_msg">Ձեր հաշիվը կջնջվի %1$s-ին, որպեսզի երեխաների կանոնները պատահաբար չանհետանան։ Մտափոխվե՞լ եք։ Կրկին մուտք գործեք, և ջնջումը կչեղարկվի։</string>
     <string name="del_acc_keep_msg">Ձեր հաշիվը կջնջվի %1$s-ին։ Եթե դա դուք չեք եղել կամ մտափոխվել եք, պահեք հաշիվը։</string>
     <string name="del_acc_keep_button">Պահել հաշիվը</string>
+    <string name="contact_phone_title">Ձեր երեխայի անվտանգության համար</string>
+    <string name="contact_phone_msg">Խնդրում ենք ավելացնել ձեր հեռախոսահամարը. եթե երեխան սեղմի SOS, նրա հեռախոսը կզանգի ձեզ։ Համարն օգտագործվում է միայն դրա համար։</string>
+    <string name="contact_phone_hint">+374 91 234567</string>
+    <string name="contact_phone_save">Պահպանել</string>
 </resources>

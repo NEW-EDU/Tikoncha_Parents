@@ -114,6 +114,18 @@ class HomeViewModel(
         sendDeviceInfo()
         getSubscriptionLimit()
         checkScheduledDeletion()
+        checkContactPhone()
+    }
+
+    /**
+     * Google/Apple bilan kirgan ota-onada telefon raqami yöq — farzand SOS bossa hech kimga qönğiroq ketmaydi.
+     * Muloyimlik bilan söraymiz; "keyinroq" desa 7 kundan keyin yana.
+     */
+    private fun checkContactPhone() = screenModelScope.launch {
+        val askedAt = AppSettings.offlineValue(CONTACT_ASKED_AT)?.toLongOrNull() ?: 0L
+        if (Clock.System.now().toEpochMilliseconds() - askedAt < CONTACT_REASK_MS) return@launch
+        val r = deviceRepository.needsContactPhone()
+        if (r is Outcome.Success && r.data) _state.update { it.copy(askContactPhone = true) }
     }
 
     /**
@@ -155,6 +167,18 @@ class HomeViewModel(
             }
 
             HomeEvent.DismissDeletionNotice -> _state.update { it.copy(deletionScheduledFor = null) }
+
+            is HomeEvent.SaveContactPhone -> screenModelScope.launch {
+                when (val r = deviceRepository.setContactPhone(event.phone)) {
+                    is Outcome.Success -> _state.update { it.copy(askContactPhone = false, contactPhoneError = null) }
+                    is Outcome.Failure -> _state.update { it.copy(askContactPhone = true, contactPhoneError = r.serverMessage ?: "") }
+                }
+            }
+
+            HomeEvent.DismissContactPhone -> {
+                AppSettings.setOfflineValue(CONTACT_ASKED_AT, Clock.System.now().toEpochMilliseconds().toString())
+                _state.update { it.copy(askContactPhone = false, contactPhoneError = null) }
+            }
 
             HomeEvent.SyncSelectedChildFromSettings -> {
                 Logger.d(TAG, "SyncSelectedChildFromSettings = ${AppSettings.selectedChild}")
@@ -379,5 +403,10 @@ class HomeViewModel(
             }
             saveSnapshot(childId)
         }.also { todayUsageJob = it }
+    }
+
+    private companion object {
+        const val CONTACT_ASKED_AT = "contact_phone_asked_at"
+        const val CONTACT_REASK_MS = 7L * 24 * 3600 * 1000
     }
 }

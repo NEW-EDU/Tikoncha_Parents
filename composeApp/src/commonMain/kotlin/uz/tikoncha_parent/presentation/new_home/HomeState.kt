@@ -30,4 +30,8 @@ data class HomeState(
 
     /** Akkaunt öçirişga navbatda (sayt/bot/ilova, 7 kun): sana (YYYY-MM-DD) — "Akkauntni saqlaş" oynasi. */
     val deletionScheduledFor: String? = null,
+
+    /** Google/Apple bilan kirgan ota-ona: farzand SOS'i qönğiroq qila oladigan raqam söraladi. */
+    val askContactPhone: Boolean = false,
+    val contactPhoneError: String? = null,
 )

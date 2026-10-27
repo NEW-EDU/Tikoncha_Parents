@@ -1366,4 +1366,8 @@
     <string name="del_acc_scheduled_msg">Акаунт буде видалено %1$s, щоб правила ваших дітей не зникли випадково. Передумали — увійдіть знову, і видалення скасується.</string>
     <string name="del_acc_keep_msg">Акаунт буде видалено %1$s. Якщо це були не ви або ви передумали — залиште акаунт.</string>
     <string name="del_acc_keep_button">Залишити акаунт</string>
+    <string name="contact_phone_title">Для безпеки вашої дитини</string>
+    <string name="contact_phone_msg">Будь ласка, додайте номер телефону: якщо дитина натисне SOS, її телефон зателефонує вам. Номер використовується лише для цього.</string>
+    <string name="contact_phone_hint">+380 67 123 4567</string>
+    <string name="contact_phone_save">Зберегти</string>
 </resources>

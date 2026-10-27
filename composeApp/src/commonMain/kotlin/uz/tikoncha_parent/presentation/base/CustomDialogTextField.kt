@@ -36,6 +36,10 @@ fun CustomDialogTextField(
     modifier: Modifier = Modifier,
     show: Boolean = false,
     title: String = "",
+    /** Sarlavha ostidagi izoh (ixtiyoriy) — nega söralayotganini xotirjam tushuntirish uçun. */
+    message: String? = null,
+    /** false — tugma faqat [onButtonClick]ni chaqiradi ([onDismiss] = faqat yopiş, masalan "keyinroq"). */
+    dismissOnButton: Boolean = true,
     buttonText: String = "Ok",
     showCloseButton: Boolean = true,
     onDismiss: () -> Unit,
@@ -92,6 +96,15 @@ fun CustomDialogTextField(
                     fontWeight = FontWeight.Normal,
                     letterSpacing = 1.sp
                 )
+                if (!message.isNullOrBlank()) {
+                    SpaceMedium()
+                    CustomText(
+                        text = message,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = MaterialTheme.extendedColor.onBackgroundColor.copy(alpha = 0.7f),
+                    )
+                }
                 SpaceLarge()
                 CustomTextField(
                     containerColor = MaterialTheme.extendedColor.cardColor,
@@ -116,7 +129,7 @@ fun CustomDialogTextField(
                         .height(TextFieldHeight)
                         .fillMaxWidth(),
                     onClick = {
-                        onDismiss.invoke()
+                        if (dismissOnButton) onDismiss.invoke()
                         onButtonClick.invoke()
                     }
                 )

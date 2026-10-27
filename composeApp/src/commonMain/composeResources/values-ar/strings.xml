@@ -1383,4 +1383,8 @@
     <string name="del_acc_scheduled_msg">سيتم حذف حسابك في %1$s حتى لا تختفي قواعد أطفالك عن طريق الخطأ. غيّرت رأيك؟ سجّل الدخول مجددًا وسيُلغى الحذف.</string>
     <string name="del_acc_keep_msg">سيتم حذف حسابك في %1$s. إن لم تطلب ذلك أو غيّرت رأيك، احتفظ بحسابك.</string>
     <string name="del_acc_keep_button">الاحتفاظ بالحساب</string>
+    <string name="contact_phone_title">من أجل سلامة طفلك</string>
+    <string name="contact_phone_msg">يرجى إضافة رقم هاتفك: إذا ضغط طفلك على زر الاستغاثة فسيتصل بك هاتفه. يُستخدم الرقم لهذا الغرض فقط.</string>
+    <string name="contact_phone_hint">+971 50 123 4567</string>
+    <string name="contact_phone_save">حفظ</string>
 </resources>

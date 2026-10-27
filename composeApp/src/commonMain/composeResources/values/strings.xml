@@ -1393,4 +1393,8 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="del_acc_scheduled_msg">Akkauntingiz %1$s kuni öçiriladi — farzandlaringiz qoidalari birdan yöqolmasin. Fikringiz özgarsa, ilovaga qayta kiring: öçiriş bekor böladi.</string>
     <string name="del_acc_keep_msg">Akkauntingiz %1$s kuni öçiriladi. Bu sörov siz tomondan bölmagan bölsa yoki fikringiz özgargan bölsa, akkauntni saqlab qoling.</string>
     <string name="del_acc_keep_button">Akkauntni saqlaş</string>
+    <string name="contact_phone_title">Farzandingiz xavfsizligi uçun</string>
+    <string name="contact_phone_msg">Iltimos, telefon raqamingizni qöşing: farzandingiz SOS tugmasini bossa, telefoni sizga qönğiroq qiladi. Raqam faqat şu maqsadda işlatiladi.</string>
+    <string name="contact_phone_hint">+998 90 123 45 67</string>
+    <string name="contact_phone_save">Saqlaş</string>
 </resources>

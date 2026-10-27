@@ -1367,4 +1367,8 @@
     <string name="del_acc_scheduled_msg">حساب شما در %1$s حذف می‌شود تا قوانین فرزندانتان ناگهان از بین نروند. نظرتان عوض شد؟ دوباره وارد شوید تا حذف لغو شود.</string>
     <string name="del_acc_keep_msg">حساب شما در %1$s حذف می‌شود. اگر این درخواست از شما نبوده یا نظرتان عوض شده، حساب را نگه دارید.</string>
     <string name="del_acc_keep_button">نگه‌داشتن حساب</string>
+    <string name="contact_phone_title">برای امنیت فرزندتان</string>
+    <string name="contact_phone_msg">لطفاً شماره تلفن خود را اضافه کنید: اگر فرزندتان دکمه SOS را بزند، گوشی‌اش با شما تماس می‌گیرد. این شماره فقط برای همین استفاده می‌شود.</string>
+    <string name="contact_phone_hint">+98 912 345 6789</string>
+    <string name="contact_phone_save">ذخیره</string>
 </resources>

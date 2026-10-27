@@ -1377,4 +1377,8 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="del_acc_scheduled_msg">Votre compte sera supprimé le %1$s, pour que les règles de vos enfants ne disparaissent pas par erreur. Vous changez d'avis ? Reconnectez-vous et la suppression sera annulée.</string>
     <string name="del_acc_keep_msg">Votre compte sera supprimé le %1$s. Si ce n'était pas vous ou si vous avez changé d'avis, conservez votre compte.</string>
     <string name="del_acc_keep_button">Conserver le compte</string>
+    <string name="contact_phone_title">Pour la sécurité de votre enfant</string>
+    <string name="contact_phone_msg">Ajoutez votre numéro de téléphone : si votre enfant appuie sur SOS, son téléphone vous appellera. Le numéro sert uniquement à cela.</string>
+    <string name="contact_phone_hint">+33 6 12 34 56 78</string>
+    <string name="contact_phone_save">Enregistrer</string>
 </resources>

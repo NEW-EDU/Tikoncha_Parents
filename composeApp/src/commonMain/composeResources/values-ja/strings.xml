@@ -1367,4 +1367,8 @@
     <string name="del_acc_scheduled_msg">お子さまのルールが誤って消えないよう、アカウントは%1$sに削除されます。気が変わったら、もう一度サインインすると削除は取り消されます。</string>
     <string name="del_acc_keep_msg">アカウントは %1$s に削除されます。ご本人でない場合や気が変わった場合は、アカウントを残してください。</string>
     <string name="del_acc_keep_button">アカウントを残す</string>
+    <string name="contact_phone_title">お子さまの安全のために</string>
+    <string name="contact_phone_msg">電話番号を追加してください。お子さまが SOS を押すと、お子さまの電話からあなたに発信されます。番号はこの目的にのみ使われます。</string>
+    <string name="contact_phone_hint">+81 90 1234 5678</string>
+    <string name="contact_phone_save">保存</string>
 </resources>

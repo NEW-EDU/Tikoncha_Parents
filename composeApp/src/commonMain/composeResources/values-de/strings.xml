@@ -1366,4 +1366,8 @@
     <string name="del_acc_scheduled_msg">Dein Konto wird am %1$s gelöscht, damit die Regeln deiner Kinder nicht versehentlich verschwinden. Meinung geändert? Melde dich wieder an, dann wird die Löschung abgebrochen.</string>
     <string name="del_acc_keep_msg">Dein Konto wird am %1$s gelöscht. Wenn du das nicht warst oder es dir anders überlegt hast, behalte dein Konto.</string>
     <string name="del_acc_keep_button">Konto behalten</string>
+    <string name="contact_phone_title">Für die Sicherheit deines Kindes</string>
+    <string name="contact_phone_msg">Bitte füge deine Telefonnummer hinzu: Drückt dein Kind SOS, ruft sein Handy dich an. Die Nummer wird nur dafür verwendet.</string>
+    <string name="contact_phone_hint">+49 170 1234567</string>
+    <string name="contact_phone_save">Speichern</string>
 </resources>

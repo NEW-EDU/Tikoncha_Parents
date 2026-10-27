@@ -1366,4 +1366,8 @@
     <string name="del_acc_scheduled_msg">आपका खाता %1$s को हटेगा, ताकि बच्चों के नियम गलती से न मिटें। मन बदल गया? फिर से साइन इन करें — हटाना रद्द हो जाएगा।</string>
     <string name="del_acc_keep_msg">आपका खाता %1$s को हट जाएगा। अगर यह आपने नहीं किया या आपका मन बदल गया है, तो खाता रखें।</string>
     <string name="del_acc_keep_button">खाता रखें</string>
+    <string name="contact_phone_title">आपके बच्चे की सुरक्षा के लिए</string>
+    <string name="contact_phone_msg">कृपया अपना फ़ोन नंबर जोड़ें: अगर आपका बच्चा SOS दबाएगा तो उसका फ़ोन आपको कॉल करेगा। नंबर सिर्फ़ इसी के लिए इस्तेमाल होगा।</string>
+    <string name="contact_phone_hint">+91 98765 43210</string>
+    <string name="contact_phone_save">सहेजें</string>
 </resources>

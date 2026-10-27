@@ -1383,4 +1383,8 @@
     <string name="del_acc_scheduled_msg">آپ کا اکاؤنٹ %1$s کو حذف ہوگا تاکہ بچوں کے اصول غلطی سے غائب نہ ہوں۔ ارادہ بدل گیا؟ دوبارہ سائن ان کریں، حذف منسوخ ہو جائے گا۔</string>
     <string name="del_acc_keep_msg">آپ کا اکاؤنٹ %1$s کو حذف ہو جائے گا۔ اگر یہ آپ نے نہیں کیا یا آپ کا ارادہ بدل گیا ہے تو اکاؤنٹ رکھیں۔</string>
     <string name="del_acc_keep_button">اکاؤنٹ رکھیں</string>
+    <string name="contact_phone_title">آپ کے بچے کی حفاظت کے لیے</string>
+    <string name="contact_phone_msg">براہ کرم اپنا فون نمبر شامل کریں: اگر آپ کا بچہ SOS دبائے گا تو اس کا فون آپ کو کال کرے گا۔ نمبر صرف اسی مقصد کے لیے استعمال ہوگا۔</string>
+    <string name="contact_phone_hint">+92 300 1234567</string>
+    <string name="contact_phone_save">محفوظ کریں</string>
 </resources>

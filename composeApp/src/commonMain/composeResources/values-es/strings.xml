@@ -1383,4 +1383,8 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="del_acc_scheduled_msg">Tu cuenta se eliminará el %1$s, para que las reglas de tus hijos no desaparezcan por error. ¿Cambiaste de idea? Vuelve a iniciar sesión y se cancelará.</string>
     <string name="del_acc_keep_msg">Tu cuenta se eliminará el %1$s. Si no fuiste tú o cambiaste de opinión, conserva tu cuenta.</string>
     <string name="del_acc_keep_button">Conservar cuenta</string>
+    <string name="contact_phone_title">Por la seguridad de tu hijo</string>
+    <string name="contact_phone_msg">Añade tu número de teléfono: si tu hijo pulsa SOS, su teléfono te llamará. El número solo se usa para esto.</string>
+    <string name="contact_phone_hint">+34 612 345 678</string>
+    <string name="contact_phone_save">Guardar</string>
 </resources>

@@ -40,6 +40,14 @@ class DeviceApiService (
     suspend fun deletionStatus(): uz.tikoncha_parent.data.remote.device.DeletionStatusResponse =
         httpClient.safeRequest(method = HttpMethod.Get, url = "users/me/deletion", block = {})
 
+    suspend fun contactPhone(): uz.tikoncha_parent.data.remote.device.ContactPhoneResponse =
+        httpClient.safeRequest(method = HttpMethod.Get, url = "users/me/contact-phone", block = {})
+
+    suspend fun setContactPhone(phone: String): uz.tikoncha_parent.data.remote.device.ContactPhoneResponse =
+        httpClient.safeRequest(method = HttpMethod.Put, url = "users/me/contact-phone", block = {
+            setBody(uz.tikoncha_parent.data.remote.device.ContactPhoneRequest(phone))
+        })
+
     /** Rejalaştirilgan öçirişni bekor qiliş ("Akkauntni saqlaş"). */
     suspend fun cancelDeletion(): uz.tikoncha_parent.data.remote.device.DeletionStatusResponse =
         httpClient.safeRequest(method = HttpMethod.Post, url = "users/me/cancel-deletion", block = {})

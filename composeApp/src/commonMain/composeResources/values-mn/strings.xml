@@ -1383,4 +1383,8 @@
     <string name="del_acc_scheduled_msg">Хүүхдүүдийн дүрэм санамсаргүй алга болохгүйн тулд таны бүртгэл %1$s-нд устна. Бодол өөрчлөгдвөл дахин нэвтэрнэ үү — устгал цуцлагдана.</string>
     <string name="del_acc_keep_msg">Таны бүртгэл %1$s-нд устана. Хэрэв энэ та биш эсвэл бодлоо өөрчилсөн бол бүртгэлээ хадгална уу.</string>
     <string name="del_acc_keep_button">Бүртгэлээ хадгалах</string>
+    <string name="contact_phone_title">Хүүхдийнхээ аюулгүй байдлын төлөө</string>
+    <string name="contact_phone_msg">Утасны дугаараа нэмнэ үү: хүүхэд тань SOS дарвал утас нь танд залгана. Дугаарыг зөвхөн үүнд ашиглана.</string>
+    <string name="contact_phone_hint">+976 9911 2233</string>
+    <string name="contact_phone_save">Хадгалах</string>
 </resources>

@@ -1366,4 +1366,8 @@
     <string name="del_acc_scheduled_msg">Akaun anda akan dipadam pada %1$s supaya peraturan anak-anak anda tidak hilang secara tidak sengaja. Ubah fikiran? Log masuk semula dan pemadaman dibatalkan.</string>
     <string name="del_acc_keep_msg">Akaun anda akan dipadam pada %1$s. Jika ini bukan anda atau anda ubah fikiran, kekalkan akaun anda.</string>
     <string name="del_acc_keep_button">Kekalkan akaun</string>
+    <string name="contact_phone_title">Demi keselamatan anak anda</string>
+    <string name="contact_phone_msg">Sila tambah nombor telefon anda: jika anak menekan SOS, telefonnya akan menghubungi anda. Nombor hanya digunakan untuk tujuan ini.</string>
+    <string name="contact_phone_hint">+60 12 345 6789</string>
+    <string name="contact_phone_save">Simpan</string>
 </resources>

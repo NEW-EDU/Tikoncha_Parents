@@ -1383,4 +1383,8 @@
     <string name="del_acc_scheduled_msg">Балдарыңыздын эрежелери кокусунан жоголбосун деп аккаунтуңуз %1$s күнү өчүрүлөт. Оюңуз өзгөрсө, кайра кириңиз — өчүрүү жокко чыгат.</string>
     <string name="del_acc_keep_msg">Аккаунтуңуз %1$s күнү өчүрүлөт. Бул сиз болбосоңуз же оюңузду өзгөртсөңүз, аккаунтту сактап калыңыз.</string>
     <string name="del_acc_keep_button">Аккаунтту сактоо</string>
+    <string name="contact_phone_title">Балаңыздын коопсуздугу үчүн</string>
+    <string name="contact_phone_msg">Телефон номериңизди кошуңуз: балаңыз SOS баскычын басса, телефону сизге чалат. Номер ушул максатта гана колдонулат.</string>
+    <string name="contact_phone_hint">+996 555 123 456</string>
+    <string name="contact_phone_save">Сактоо</string>
 </resources>

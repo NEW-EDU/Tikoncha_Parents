@@ -1366,4 +1366,8 @@
     <string name="del_acc_scheduled_msg">Akkauntıńız %1$s kúni óshiriledi — balalarıńızdıń qaǵıydaları birden joǵalmasın. Pikirińiz ózgerse, qosımshaǵa qayta kiriń: óshiriw biykar boladı.</string>
     <string name="del_acc_keep_msg">Akkauntıńız %1$s kúni óshiriledi. Bul soraw sizden bolmaǵan bolsa yamasa pikirińiz ózgergen bolsa, akkauntti saqlap qalıń.</string>
     <string name="del_acc_keep_button">Akkauntti saqlaw</string>
+    <string name="contact_phone_title">Perzentińizdiń qáwipsizligi ushın</string>
+    <string name="contact_phone_msg">Telefon nomerińizdi qosıń: perzentińiz SOS túymesin bassa, telefonı sizge qońıraw etedi. Nomer tek usı maqset ushın paydalanıladı.</string>
+    <string name="contact_phone_hint">+998 90 123 45 67</string>
+    <string name="contact_phone_save">Saqlaw</string>
 </resources>

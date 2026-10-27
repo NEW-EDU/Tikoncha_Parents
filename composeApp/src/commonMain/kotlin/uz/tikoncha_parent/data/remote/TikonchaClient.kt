@@ -114,6 +114,8 @@ class TikonchaClient(private val engine: HttpClientEngine) {
             header("Content-Type", "application/json")
             header("X-DEVICE-TYPE", BuildConfig.deviceType) // ANDROID yoki IOS
             header("LANG-CODE", LanguagePrefs.loadOrDefault().languageCode)
+            // Telefon zonasi: server hisobot, AI "bugun" va jadvallarni foydalanuvçi vaqtida hisoblaydi (user_time.py)
+            header("X-Time-Zone", kotlinx.datetime.TimeZone.currentSystemDefault().id)
 
             // Token bo'sh bo'lsa "Bearer " yubormaslik uchun
             val token = AppSettings.accessToken

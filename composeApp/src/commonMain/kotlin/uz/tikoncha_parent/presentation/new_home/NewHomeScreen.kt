@@ -3,6 +3,11 @@
 package uz.tikoncha_parent.presentation.new_home
 
 import tikoncha_parents.composeapp.generated.resources.profil
+import uz.tikoncha_parent.presentation.base.CustomDialogTextField
+import tikoncha_parents.composeapp.generated.resources.contact_phone_title
+import tikoncha_parents.composeapp.generated.resources.contact_phone_msg
+import tikoncha_parents.composeapp.generated.resources.contact_phone_save
+import tikoncha_parents.composeapp.generated.resources.contact_phone_hint
 import tikoncha_parents.composeapp.generated.resources.del_acc_scheduled_title
 import tikoncha_parents.composeapp.generated.resources.del_acc_keep_msg
 import tikoncha_parents.composeapp.generated.resources.del_acc_keep_button
@@ -259,6 +264,22 @@ fun NewHomeUi(
             navigator?.push(AddChildScreen())
             showChildDialog = false
         }
+    )
+
+    // Google/Apple bilan kirgan ota-ona: farzand SOS'i qönğiroq qila oladigan raqam (muloyim, "keyinroq" mumkin)
+    var contactPhone by remember { mutableStateOf("") }
+    CustomDialogTextField(
+        show = state.askContactPhone,
+        title = stringResource(Res.string.contact_phone_title),
+        message = state.contactPhoneError?.takeIf { it.isNotBlank() } ?: stringResource(Res.string.contact_phone_msg),
+        buttonText = stringResource(Res.string.contact_phone_save),
+        value = contactPhone,
+        onValueChange = { contactPhone = it },
+        label = stringResource(Res.string.contact_phone_hint),
+        enabled = contactPhone.count { it.isDigit() } >= 7,
+        dismissOnButton = false,
+        onDismiss = { event(HomeEvent.DismissContactPhone) },   // × — "keyinroq": 7 kundan keyin yana söraladi
+        onButtonClick = { event(HomeEvent.SaveContactPhone(contactPhone)) },
     )
 
     DeletionScheduledDialog(

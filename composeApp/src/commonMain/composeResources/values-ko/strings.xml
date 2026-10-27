@@ -1367,4 +1367,8 @@
     <string name="del_acc_scheduled_msg">자녀의 규칙이 실수로 사라지지 않도록 계정은 %1$s에 삭제됩니다. 마음이 바뀌면 다시 로그인하세요. 삭제가 취소돼요.</string>
     <string name="del_acc_keep_msg">계정이 %1$s에 삭제됩니다. 본인이 요청하지 않았거나 마음이 바뀌었다면 계정을 유지하세요.</string>
     <string name="del_acc_keep_button">계정 유지</string>
+    <string name="contact_phone_title">자녀의 안전을 위해</string>
+    <string name="contact_phone_msg">전화번호를 추가해 주세요. 자녀가 SOS를 누르면 자녀의 휴대폰이 보호자에게 전화를 겁니다. 번호는 이 용도로만 사용돼요.</string>
+    <string name="contact_phone_hint">+82 10 1234 5678</string>
+    <string name="contact_phone_save">저장</string>
 </resources>

@@ -1390,4 +1390,8 @@
     <string name="del_acc_scheduled_msg">Аккаунт будет удалён %1$s — чтобы правила ваших детей не исчезли случайно. Передумали — снова войдите, и удаление отменится.</string>
     <string name="del_acc_keep_msg">Аккаунт будет удалён %1$s. Если это были не вы или вы передумали — оставьте аккаунт.</string>
     <string name="del_acc_keep_button">Оставить аккаунт</string>
+    <string name="contact_phone_title">Для безопасности вашего ребёнка</string>
+    <string name="contact_phone_msg">Пожалуйста, добавьте номер телефона: если ребёнок нажмёт SOS, его телефон позвонит вам. Номер используется только для этого.</string>
+    <string name="contact_phone_hint">+7 900 123 45 67</string>
+    <string name="contact_phone_save">Сохранить</string>
 </resources>

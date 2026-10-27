@@ -1383,4 +1383,8 @@
     <string name="del_acc_scheduled_msg">Sua conta será excluída em %1$s, para que as regras dos seus filhos não sumam por engano. Mudou de ideia? Entre de novo e a exclusão será cancelada.</string>
     <string name="del_acc_keep_msg">Sua conta será excluída em %1$s. Se não foi você ou se mudou de ideia, mantenha sua conta.</string>
     <string name="del_acc_keep_button">Manter conta</string>
+    <string name="contact_phone_title">Pela segurança do seu filho</string>
+    <string name="contact_phone_msg">Adicione seu número de telefone: se seu filho apertar SOS, o celular dele ligará para você. O número é usado só para isso.</string>
+    <string name="contact_phone_hint">+55 11 91234 5678</string>
+    <string name="contact_phone_save">Salvar</string>
 </resources>

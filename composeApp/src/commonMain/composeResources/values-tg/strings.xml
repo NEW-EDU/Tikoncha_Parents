@@ -1367,4 +1367,8 @@
     <string name="del_acc_scheduled_msg">Аккаунти шумо %1$s нест карда мешавад, то қоидаҳои фарзандонатон тасодуфан нопадид нашаванд. Фикратон дигар шуд? Аз нав ворид шавед — нест кардан бекор мешавад.</string>
     <string name="del_acc_keep_msg">Аккаунти шумо %1$s нест мешавад. Агар ин шумо набошед ё фикратонро иваз карда бошед, аккаунтро нигоҳ доред.</string>
     <string name="del_acc_keep_button">Нигоҳ доштани аккаунт</string>
+    <string name="contact_phone_title">Барои амнияти фарзандатон</string>
+    <string name="contact_phone_msg">Лутфан рақами телефонатонро илова кунед: агар фарзанд SOS-ро пахш кунад, телефонаш ба шумо занг мезанад. Рақам танҳо барои ҳамин истифода мешавад.</string>
+    <string name="contact_phone_hint">+992 90 123 4567</string>
+    <string name="contact_phone_save">Нигоҳ доштан</string>
 </resources>

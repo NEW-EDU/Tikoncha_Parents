@@ -11,4 +11,6 @@ sealed interface HomeEvent {
     data class OnChildSelected(val child: UserInfo) : HomeEvent
     data object KeepAccount : HomeEvent
     data object DismissDeletionNotice : HomeEvent
+    data class SaveContactPhone(val phone: String) : HomeEvent
+    data object DismissContactPhone : HomeEvent
 }

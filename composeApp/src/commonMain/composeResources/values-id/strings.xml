@@ -1383,4 +1383,8 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="del_acc_scheduled_msg">Akun Anda akan dihapus pada %1$s agar aturan anak-anak Anda tidak hilang tanpa sengaja. Berubah pikiran? Masuk lagi dan penghapusan dibatalkan.</string>
     <string name="del_acc_keep_msg">Akun Anda akan dihapus pada %1$s. Jika ini bukan Anda atau Anda berubah pikiran, pertahankan akun Anda.</string>
     <string name="del_acc_keep_button">Pertahankan akun</string>
+    <string name="contact_phone_title">Demi keselamatan anak Anda</string>
+    <string name="contact_phone_msg">Tambahkan nomor telepon Anda: jika anak menekan SOS, ponselnya akan menelepon Anda. Nomor hanya dipakai untuk ini.</string>
+    <string name="contact_phone_hint">+62 812 3456 7890</string>
+    <string name="contact_phone_save">Simpan</string>
 </resources>

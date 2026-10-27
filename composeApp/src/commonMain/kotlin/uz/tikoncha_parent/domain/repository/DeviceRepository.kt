@@ -11,4 +11,7 @@ interface DeviceRepository {
     /** @return rejalaştirilgan öçiriş sanasi (ISO) yoki null. */
     suspend fun scheduledDeletion(): Outcome<String?>
     suspend fun cancelDeletion(): Outcome<Unit>
+    /** @return true — akkauntda telefon yöq (Google/Apple), farzand SOS'i uçun raqam söraymiz. */
+    suspend fun needsContactPhone(): Outcome<Boolean>
+    suspend fun setContactPhone(phone: String): Outcome<Unit>
 }

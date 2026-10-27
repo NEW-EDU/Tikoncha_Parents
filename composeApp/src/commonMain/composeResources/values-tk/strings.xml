@@ -1383,4 +1383,8 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="del_acc_scheduled_msg">Çagalaryňyzyň düzgünleri tötänleýin ýitmez ýaly, hasabyňyz %1$s senesinde pozular. Pikiriňiz üýtgedimi? Täzeden giriň — pozmak ýatyrylar.</string>
     <string name="del_acc_keep_msg">Hasabyňyz %1$s senesinde pozular. Bu siz däl bolsaňyz ýa-da pikiriňizi üýtgeden bolsaňyz, hasaby saklaň.</string>
     <string name="del_acc_keep_button">Hasaby sakla</string>
+    <string name="contact_phone_title">Çagaňyzyň howpsuzlygy üçin</string>
+    <string name="contact_phone_msg">Telefon belgiňizi goşuň: çagaňyz SOS düwmesine bassa, telefony size jaň eder. Belgi diňe şu maksat üçin ulanylýar.</string>
+    <string name="contact_phone_hint">+993 65 123456</string>
+    <string name="contact_phone_save">Ýatda sakla</string>
 </resources>

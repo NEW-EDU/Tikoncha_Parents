@@ -1383,4 +1383,8 @@
     <string name="del_acc_scheduled_msg">Аккаунтингиз %1$s куни ўчирилади — фарзандларингиз қоидалари бирдан йўқолмасин. Фикрингиз ўзгарса, иловага қайта киринг: ўчириш бекор бўлади.</string>
     <string name="del_acc_keep_msg">Аккаунтингиз %1$s куни ўчирилади. Бу сўров сиз томондан бўлмаган бўлса ёки фикрингиз ўзгарган бўлса, аккаунтни сақлаб қолинг.</string>
     <string name="del_acc_keep_button">Аккаунтни сақлаш</string>
+    <string name="contact_phone_title">Фарзандингиз хавфсизлиги учун</string>
+    <string name="contact_phone_msg">Илтимос, телефон рақамингизни қўшинг: фарзандингиз SOS тугмасини босса, телефони сизга қўнғироқ қилади. Рақам фақат шу мақсадда ишлатилади.</string>
+    <string name="contact_phone_hint">+998 90 123 45 67</string>
+    <string name="contact_phone_save">Сақлаш</string>
 </resources>

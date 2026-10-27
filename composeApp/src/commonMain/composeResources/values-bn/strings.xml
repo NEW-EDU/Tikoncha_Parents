@@ -1383,4 +1383,8 @@
     <string name="del_acc_scheduled_msg">আপনার অ্যাকাউন্ট %1$s তারিখে মুছে যাবে, যাতে সন্তানদের নিয়ম ভুলবশত হারিয়ে না যায়। মত বদলালে আবার সাইন ইন করুন — মোছা বাতিল হবে।</string>
     <string name="del_acc_keep_msg">আপনার অ্যাকাউন্ট %1$s তারিখে মুছে যাবে। এটি আপনি না করে থাকলে বা মত বদলালে অ্যাকাউন্ট রেখে দিন।</string>
     <string name="del_acc_keep_button">অ্যাকাউন্ট রাখুন</string>
+    <string name="contact_phone_title">আপনার সন্তানের নিরাপত্তার জন্য</string>
+    <string name="contact_phone_msg">অনুগ্রহ করে আপনার ফোন নম্বর যোগ করুন: আপনার সন্তান SOS চাপলে তার ফোন আপনাকে কল করবে। নম্বরটি শুধু এই কাজেই ব্যবহার হবে।</string>
+    <string name="contact_phone_hint">+880 1712 345678</string>
+    <string name="contact_phone_save">সংরক্ষণ</string>
 </resources>

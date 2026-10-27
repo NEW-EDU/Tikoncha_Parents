@@ -1383,4 +1383,8 @@
     <string name="del_acc_scheduled_msg">თქვენი ანგარიში წაიშლება %1$s-ს, რომ შვილების წესები შემთხვევით არ გაქრეს. გადაიფიქრეთ? თავიდან შედით და წაშლა გაუქმდება.</string>
     <string name="del_acc_keep_msg">თქვენი ანგარიში წაიშლება %1$s-ს. თუ ეს თქვენ არ იყავით ან გადაიფიქრეთ, შეინარჩუნეთ ანგარიში.</string>
     <string name="del_acc_keep_button">ანგარიშის შენარჩუნება</string>
+    <string name="contact_phone_title">თქვენი შვილის უსაფრთხოებისთვის</string>
+    <string name="contact_phone_msg">გთხოვთ, დაამატოთ ტელეფონის ნომერი: თუ შვილი SOS-ს დააჭერს, მისი ტელეფონი დაგირეკავთ. ნომერი მხოლოდ ამისთვის გამოიყენება.</string>
+    <string name="contact_phone_hint">+995 555 12 34 56</string>
+    <string name="contact_phone_save">შენახვა</string>
 </resources>

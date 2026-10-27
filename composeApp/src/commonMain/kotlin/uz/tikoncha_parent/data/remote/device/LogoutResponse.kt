@@ -29,3 +29,17 @@ data class DeletionStatusResponse(
 
 @Serializable
 data class DeletionStatusData(val scheduled_for: String? = null)
+
+/** `GET/PUT /users/me/contact-phone`: SOS qönğirog'i uçun raqam (Google/Apple bilan kirganlarda login raqami yöq). */
+@Serializable
+data class ContactPhoneResponse(
+    val success: Boolean,
+    val data: ContactPhoneData? = null,
+    val error: String? = null,
+)
+
+@Serializable
+data class ContactPhoneData(val phone: String? = null, val needs_contact: Boolean = false)
+
+@Serializable
+data class ContactPhoneRequest(val phone: String)

@@ -55,5 +55,16 @@ class DeviceRepositoryImpl(
         else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
     }
 
+    override suspend fun needsContactPhone(): Outcome<Boolean> = apiCall(TAG) {
+        val r = api.contactPhone()
+        if (r.success) Outcome.Success(r.data?.needs_contact == true)
+        else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
+    }
+
+    override suspend fun setContactPhone(phone: String): Outcome<Unit> = apiCall(TAG) {
+        val r = api.setContactPhone(phone)
+        if (r.success) Outcome.Success(Unit) else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
+    }
+
     private companion object { const val TAG = "DeviceRepository" }
 }
