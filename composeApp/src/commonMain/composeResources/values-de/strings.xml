@@ -1347,4 +1347,11 @@
     <string name="pay_abroad_coins_body">Münzen können vorerst nur mit einer usbekischen Karte gekauft werden. Schreib uns – wir helfen dir.</string>
     <string name="apple_activation_pending">Zahlung erhalten – PLUS wird in wenigen Minuten aktiviert. Falls nicht, schreib uns.</string>
     <string name="sub_child_app_note">Nur ein Kind? PLUS ist in der Hoglt-App deines Kindes günstiger – es gilt nur für dieses Kind.</string>
+    <string name="sub_family_caption">Familientarif · bis zu 3 Kinder</string>
+    <string name="del_acc_question">Konto löschen?</string>
+    <string name="del_acc_body">Dein Profil, die Verknüpfungen zu deinen Kindern, deine Regeln, Chats und der Zahlungsverlauf werden endgültig gelöscht. Die eigenen Konten deiner Kinder bleiben bestehen.</string>
+    <string name="del_acc_irreversible">Das kann nicht rückgängig gemacht werden.</string>
+    <string name="del_acc_confirm">Endgültig löschen</string>
+    <string name="del_acc_store_title">Abo</string>
+    <string name="del_acc_store_note">Ein App-Store- oder Google-Play-Abo endet nicht von selbst – kündige es in den Store-Einstellungen.</string>
 </resources>

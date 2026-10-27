@@ -1364,4 +1364,11 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="pay_abroad_coins_body">Por ahora las monedas solo se pueden comprar con una tarjeta de Uzbekistán. Escríbenos y te ayudamos.</string>
     <string name="apple_activation_pending">Pago recibido: PLUS se activará en unos minutos. Si no, escríbenos.</string>
     <string name="sub_child_app_note">¿Solo un hijo? PLUS cuesta menos en la app Hoglt de tu hijo: cubre solo a ese hijo.</string>
+    <string name="sub_family_caption">Plan familiar · hasta 3 hijos</string>
+    <string name="del_acc_question">¿Eliminar tu cuenta?</string>
+    <string name="del_acc_body">Tu perfil, los vínculos con tus hijos, las reglas que pusiste, los chats y el historial de pagos se borrarán para siempre. Las cuentas propias de tus hijos se mantienen.</string>
+    <string name="del_acc_irreversible">Esto no se puede deshacer.</string>
+    <string name="del_acc_confirm">Eliminar para siempre</string>
+    <string name="del_acc_store_title">Suscripción</string>
+    <string name="del_acc_store_note">Una suscripción de App Store o Google Play no se cancela sola: cancélala en los ajustes de la tienda.</string>
 </resources>

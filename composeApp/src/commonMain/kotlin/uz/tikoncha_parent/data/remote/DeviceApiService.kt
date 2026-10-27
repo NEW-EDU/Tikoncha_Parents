@@ -29,6 +29,14 @@ class DeviceApiService (
             }
         )
 
+    /** Akkauntni butunlay öçiriş (`DELETE /users/`): profil va unga boğliq hamma narsa kaskad bilan öçadi. */
+    suspend fun deleteAccount(): LogoutResponse =
+        httpClient.safeRequest(
+            method = HttpMethod.Delete,
+            url = "users/",
+            block = {}
+        )
+
 
 
 

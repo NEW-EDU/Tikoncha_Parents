@@ -1364,4 +1364,11 @@
     <string name="pay_abroad_coins_body">কয়েন এখন শুধু উজবেকিস্তানের কার্ড দিয়ে কেনা যায়। আমাদের লিখুন — আমরা সাহায্য করব।</string>
     <string name="apple_activation_pending">পেমেন্ট পাওয়া গেছে — কয়েক মিনিটের মধ্যে PLUS চালু হবে। না হলে আমাদের লিখুন।</string>
     <string name="sub_child_app_note">শুধু একটি সন্তান? আপনার সন্তানের Hoglt অ্যাপে PLUS কম দামে — এটি শুধু সেই সন্তানের জন্য।</string>
+    <string name="sub_family_caption">ফ্যামিলি প্ল্যান · সর্বোচ্চ ৩ সন্তান</string>
+    <string name="del_acc_question">আপনার অ্যাকাউন্ট মুছবেন?</string>
+    <string name="del_acc_body">আপনার প্রোফাইল, সন্তানদের সাথে সংযোগ, আপনার সেট করা নিয়ম, চ্যাট ও পেমেন্টের ইতিহাস চিরতরে মুছে যাবে। আপনার সন্তানদের নিজস্ব অ্যাকাউন্ট থাকবে।</string>
+    <string name="del_acc_irreversible">এটি আর ফেরানো যাবে না।</string>
+    <string name="del_acc_confirm">চিরতরে মুছুন</string>
+    <string name="del_acc_store_title">সাবস্ক্রিপশন</string>
+    <string name="del_acc_store_note">App Store বা Google Play সাবস্ক্রিপশন নিজে থেকে বাতিল হয় না — স্টোরের সেটিংসে গিয়ে বাতিল করুন।</string>
 </resources>

@@ -37,5 +37,11 @@ class DeviceRepositoryImpl(
         else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
     }
 
+    override suspend fun deleteAccount(): Outcome<Unit> = apiCall(TAG) {
+        val r = api.deleteAccount()
+        if (r.success) Outcome.Success(Unit)
+        else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
+    }
+
     private companion object { const val TAG = "DeviceRepository" }
 }

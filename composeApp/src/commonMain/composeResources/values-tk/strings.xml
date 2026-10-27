@@ -1364,4 +1364,11 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="pay_abroad_coins_body">Teňňeleri häzirlikçe diňe Özbegistanyň kartasy bilen satyn almak bolýar. Bize ýazyň — kömek ederis.</string>
     <string name="apple_activation_pending">Töleg kabul edildi — PLUS birnäçe minutda işjeňleşer. Işjeňleşmese, bize ýazyň.</string>
     <string name="sub_child_app_note">Diňe bir çagamy? Çagaňyzyň Hoglt programmasynda PLUS arzanrak — ol diňe şol çaga üçin.</string>
+    <string name="sub_family_caption">Maşgala tarifi · 3 çaga çenli</string>
+    <string name="del_acc_question">Hasabyňyzy pozmalymy?</string>
+    <string name="del_acc_body">Profiliňiz, çagalar bilen baglanyşyk, goýan düzgünleriňiz, çatlar we töleg taryhy düýbünden pozular. Çagalaryňyzyň öz hasaplary galýar.</string>
+    <string name="del_acc_irreversible">Muny yzyna gaýtaryp bolmaýar.</string>
+    <string name="del_acc_confirm">Düýbünden poz</string>
+    <string name="del_acc_store_title">Abuna</string>
+    <string name="del_acc_store_note">App Store ýa-da Google Play abunasy öz-özünden ýatyrylmaýar — ony dükanyň sazlamalarynda ýatyryň.</string>
 </resources>

@@ -1348,4 +1348,11 @@
     <string name="pay_abroad_coins_body">코인은 현재 우즈베키스탄 카드로만 구매할 수 있어요. 문의해 주시면 도와드릴게요.</string>
     <string name="apple_activation_pending">결제가 완료됐어요. 몇 분 안에 PLUS가 켜져요. 켜지지 않으면 문의해 주세요.</string>
     <string name="sub_child_app_note">자녀가 한 명뿐인가요? 자녀의 Hoglt 앱에서 PLUS가 더 저렴해요. 해당 자녀에게만 적용돼요.</string>
+    <string name="sub_family_caption">가족 요금제 · 자녀 최대 3명</string>
+    <string name="del_acc_question">계정을 삭제할까요?</string>
+    <string name="del_acc_body">프로필, 자녀 연결, 설정한 규칙, 채팅, 결제 내역이 영구적으로 삭제됩니다. 자녀 본인의 계정은 그대로 남습니다.</string>
+    <string name="del_acc_irreversible">이 작업은 되돌릴 수 없습니다.</string>
+    <string name="del_acc_confirm">영구 삭제</string>
+    <string name="del_acc_store_title">구독</string>
+    <string name="del_acc_store_note">App Store 또는 Google Play 구독은 자동으로 해지되지 않습니다. 스토어 설정에서 해지하세요.</string>
 </resources>

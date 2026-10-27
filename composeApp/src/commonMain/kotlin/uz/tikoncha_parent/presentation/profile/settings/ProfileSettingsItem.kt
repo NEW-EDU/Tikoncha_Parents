@@ -15,6 +15,8 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.akkauntdan_chiqish
+import tikoncha_parents.composeapp.generated.resources.akkauntni_o_chirish
+import tikoncha_parents.composeapp.generated.resources.delete
 import tikoncha_parents.composeapp.generated.resources.haptics_title
 import tikoncha_parents.composeapp.generated.resources.logout
 import tikoncha_parents.composeapp.generated.resources.star_setting
@@ -68,6 +70,11 @@ enum class SettingType(
     LOGOUT(
         iconId = Res.drawable.logout,
         settingName = Res.string.akkauntdan_chiqish,
+        isDestructive = true
+    ),
+    DELETE_ACCOUNT(
+        iconId = Res.drawable.delete,
+        settingName = Res.string.akkauntni_o_chirish,
         isDestructive = true
     )
 }

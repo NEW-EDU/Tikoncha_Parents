@@ -1364,4 +1364,11 @@
     <string name="pay_abroad_coins_body">Por enquanto as moedas só podem ser compradas com um cartão do Uzbequistão. Fale com a gente que ajudamos.</string>
     <string name="apple_activation_pending">Pagamento recebido — o PLUS será ativado em alguns minutos. Se não for, fale com a gente.</string>
     <string name="sub_child_app_note">Só um filho? O PLUS custa menos no app Hoglt do seu filho — vale só para esse filho.</string>
+    <string name="sub_family_caption">Plano família · até 3 filhos</string>
+    <string name="del_acc_question">Excluir sua conta?</string>
+    <string name="del_acc_body">Seu perfil, os vínculos com seus filhos, as regras que você criou, os chats e o histórico de pagamentos serão apagados para sempre. As contas dos seus filhos continuam.</string>
+    <string name="del_acc_irreversible">Isso não pode ser desfeito.</string>
+    <string name="del_acc_confirm">Excluir para sempre</string>
+    <string name="del_acc_store_title">Assinatura</string>
+    <string name="del_acc_store_note">A assinatura da App Store ou do Google Play não é cancelada sozinha — cancele nas configurações da loja.</string>
 </resources>

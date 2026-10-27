@@ -123,6 +123,7 @@ import uz.tikoncha_parent.presentation.profile.ProfileViewModel
 import uz.tikoncha_parent.presentation.profile.child_user_edit.ChildInfoEditViewModel
 import uz.tikoncha_parent.presentation.profile.coin_purchase.CoinPurchaseViewModel
 import uz.tikoncha_parent.presentation.profile.coins.CoinsViewModel
+import uz.tikoncha_parent.presentation.profile.logout.DeleteAccountViewModel
 import uz.tikoncha_parent.presentation.profile.logout.LogoutViewModel
 import uz.tikoncha_parent.presentation.profile.payment_history.PaymentHistoryScreenModel
 import uz.tikoncha_parent.presentation.profile.subscription.payment.PaymentViewModel
@@ -255,6 +256,7 @@ val sharedModule = module {
     factory { RegisterViewmodel(get(), get()) }
     factory { ProfileViewModel(get(), get(), get(), get()) }
     factory { LogoutViewModel(get()) }
+    factory { DeleteAccountViewModel(get()) }
     factory { AddChildViewModel(get()) }
     factory { ChildConfirmViewModel() }
     factory { TaskListViewModel(get(), get(), get()) }

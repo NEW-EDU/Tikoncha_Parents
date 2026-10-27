@@ -1347,4 +1347,11 @@
     <string name="pay_abroad_coins_body">Tangalardı házirshe tek Ózbekstan kartası menen satıp alıw múmkin. Bizge jazıń — járdem beremiz.</string>
     <string name="apple_activation_pending">Tólem qabıl etildi — PLUS bir neshe minutta qosıladı. Qosılmasa, bizge jazıń.</string>
     <string name="sub_child_app_note">Tek bir balaǵa ma? Balańızdıń Hoglt qosımshasında PLUS arzanıraq — ol tek sol bala ushın.</string>
+    <string name="sub_family_caption">Shańaraq tarifi · 3 balaǵa shekem</string>
+    <string name="del_acc_question">Akkauntti óshiresiz be?</string>
+    <string name="del_acc_body">Profilińiz, balalar menen baylanıs, siz qoyǵan qaǵıydalar, chatlar hám tólem tariyxı pútkilley óshiriledi. Balalarıńızdıń óz akkauntları qaladı.</string>
+    <string name="del_acc_irreversible">Bunı keri qaytarıp bolmaydı.</string>
+    <string name="del_acc_confirm">Pútkilley óshiriw</string>
+    <string name="del_acc_store_title">Jazılıw</string>
+    <string name="del_acc_store_note">App Store yamasa Google Play jazılıwı óz-ózinen biykar bolmaydı — onı dúkan sazlawlarında biykar etiń.</string>
 </resources>

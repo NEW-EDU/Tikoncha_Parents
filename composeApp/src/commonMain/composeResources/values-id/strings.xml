@@ -1364,4 +1364,11 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="pay_abroad_coins_body">Koin untuk saat ini hanya bisa dibeli dengan kartu Uzbekistan. Hubungi kami, kami akan membantu.</string>
     <string name="apple_activation_pending">Pembayaran diterima — PLUS akan aktif dalam beberapa menit. Jika tidak, hubungi kami.</string>
     <string name="sub_child_app_note">Hanya satu anak? PLUS lebih murah di aplikasi Hoglt anak Anda — hanya untuk anak itu.</string>
+    <string name="sub_family_caption">Paket keluarga · hingga 3 anak</string>
+    <string name="del_acc_question">Hapus akun Anda?</string>
+    <string name="del_acc_body">Profil, tautan dengan anak, aturan yang Anda buat, obrolan, dan riwayat pembayaran akan dihapus selamanya. Akun milik anak Anda tetap ada.</string>
+    <string name="del_acc_irreversible">Tindakan ini tidak dapat dibatalkan.</string>
+    <string name="del_acc_confirm">Hapus selamanya</string>
+    <string name="del_acc_store_title">Langganan</string>
+    <string name="del_acc_store_note">Langganan App Store atau Google Play tidak berhenti sendiri — batalkan di pengaturan toko.</string>
 </resources>

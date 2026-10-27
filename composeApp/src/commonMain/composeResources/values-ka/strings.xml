@@ -1364,4 +1364,11 @@
     <string name="pay_abroad_coins_body">მონეტების ყიდვა ჯერჯერობით მხოლოდ უზბეკური ბარათით შეიძლება. მოგვწერეთ — დაგეხმარებით.</string>
     <string name="apple_activation_pending">გადახდა მიღებულია — PLUS რამდენიმე წუთში ჩაირთვება. თუ არა, მოგვწერეთ.</string>
     <string name="sub_child_app_note">მხოლოდ ერთი ბავშვი? ბავშვის Hoglt-ის აპში PLUS უფრო იაფია — ის მხოლოდ ამ ბავშვზე ვრცელდება.</string>
+    <string name="sub_family_caption">საოჯახო გეგმა · 3 ბავშვამდე</string>
+    <string name="del_acc_question">წავშალოთ ანგარიში?</string>
+    <string name="del_acc_body">თქვენი პროფილი, შვილებთან კავშირი, თქვენ მიერ დაყენებული წესები, ჩატები და გადახდების ისტორია სამუდამოდ წაიშლება. შვილების საკუთარი ანგარიშები დარჩება.</string>
+    <string name="del_acc_irreversible">ამის გაუქმება შეუძლებელია.</string>
+    <string name="del_acc_confirm">სამუდამოდ წაშლა</string>
+    <string name="del_acc_store_title">გამოწერა</string>
+    <string name="del_acc_store_note">App Store-ის ან Google Play-ის გამოწერა თავისით არ უქმდება — გააუქმეთ მაღაზიის პარამეტრებში.</string>
 </resources>

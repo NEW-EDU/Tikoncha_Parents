@@ -1364,4 +1364,11 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="pay_abroad_coins_body">Hiện chỉ có thể mua xu bằng thẻ Uzbekistan. Hãy nhắn cho chúng tôi để được hỗ trợ.</string>
     <string name="apple_activation_pending">Đã nhận thanh toán — PLUS sẽ bật trong vài phút. Nếu không, hãy nhắn cho chúng tôi.</string>
     <string name="sub_child_app_note">Chỉ một con? PLUS rẻ hơn trong ứng dụng Hoglt của con — chỉ áp dụng cho bé đó.</string>
+    <string name="sub_family_caption">Gói gia đình · tối đa 3 con</string>
+    <string name="del_acc_question">Xóa tài khoản của bạn?</string>
+    <string name="del_acc_body">Hồ sơ, liên kết với con, các quy tắc bạn đặt, trò chuyện và lịch sử thanh toán sẽ bị xóa vĩnh viễn. Tài khoản riêng của con vẫn được giữ.</string>
+    <string name="del_acc_irreversible">Không thể hoàn tác.</string>
+    <string name="del_acc_confirm">Xóa vĩnh viễn</string>
+    <string name="del_acc_store_title">Gói đăng ký</string>
+    <string name="del_acc_store_note">Gói đăng ký App Store hoặc Google Play không tự hủy — hãy hủy trong cài đặt cửa hàng.</string>
 </resources>

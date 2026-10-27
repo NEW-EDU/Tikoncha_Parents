@@ -1348,4 +1348,11 @@
     <string name="pay_abroad_coins_body">سکه‌ها فعلاً فقط با کارت ازبکستان خریدنی است. به ما پیام دهید تا کمک کنیم.</string>
     <string name="apple_activation_pending">پرداخت دریافت شد — PLUS تا چند دقیقهٔ دیگر فعال می‌شود. اگر نشد، به ما پیام دهید.</string>
     <string name="sub_child_app_note">فقط یک فرزند؟ PLUS در برنامهٔ Hoglt فرزندتان ارزان‌تر است — فقط برای همان فرزند.</string>
+    <string name="sub_family_caption">طرح خانوادگی · تا ۳ فرزند</string>
+    <string name="del_acc_question">حساب شما حذف شود؟</string>
+    <string name="del_acc_body">نمایه، پیوند با فرزندان، قوانینی که گذاشته‌اید، گفتگوها و سابقهٔ پرداخت برای همیشه پاک می‌شوند. حساب‌های خود فرزندانتان باقی می‌مانند.</string>
+    <string name="del_acc_irreversible">این کار قابل بازگشت نیست.</string>
+    <string name="del_acc_confirm">حذف برای همیشه</string>
+    <string name="del_acc_store_title">اشتراک</string>
+    <string name="del_acc_store_note">اشتراک App Store یا Google Play خودبه‌خود لغو نمی‌شود — آن را در تنظیمات فروشگاه لغو کنید.</string>
 </resources>

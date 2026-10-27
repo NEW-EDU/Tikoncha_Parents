@@ -1348,4 +1348,11 @@
     <string name="pay_abroad_coins_body">金币目前只能用乌兹别克斯坦的银行卡购买。联系我们，我们会帮你。</string>
     <string name="apple_activation_pending">已收到付款，PLUS 将在几分钟内开通。如未开通，请联系我们。</string>
     <string name="sub_child_app_note">只有一个孩子？在孩子的 Hoglt 应用中购买 PLUS 更便宜——仅限该孩子使用。</string>
+    <string name="sub_family_caption">家庭方案 · 最多 3 个孩子</string>
+    <string name="del_acc_question">删除你的账户？</string>
+    <string name="del_acc_body">你的资料、与孩子的关联、你设置的规则、聊天和付款记录将被永久删除。孩子自己的账户会保留。</string>
+    <string name="del_acc_irreversible">此操作无法撤销。</string>
+    <string name="del_acc_confirm">永久删除</string>
+    <string name="del_acc_store_title">订阅</string>
+    <string name="del_acc_store_note">App Store 或 Google Play 订阅不会自动取消，请在商店设置中取消。</string>
 </resources>

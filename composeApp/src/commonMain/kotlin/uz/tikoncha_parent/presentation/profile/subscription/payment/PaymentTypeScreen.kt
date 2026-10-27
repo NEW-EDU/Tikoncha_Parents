@@ -382,6 +382,14 @@ fun PaymentTypeScreenUi(
                         style = AppTypography.titleLgSemiBold,
                         color = AppColors.text.inverse
                     )
+                    if (storePrice != null) {
+                        Spacer(Modifier.height(4.dp))
+                        Text(
+                            text = stringResource(Res.string.sub_family_caption),
+                            style = AppTypography.bodySmRegular,
+                            color = AppColors.text.inverse.copy(alpha = 0.8f)
+                        )
+                    }
                     Spacer(Modifier.height(16.dp))
 
 

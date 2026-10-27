@@ -1364,4 +1364,11 @@
     <string name="pay_abroad_coins_body">Монеталарды азырынча Өзбекстан картасы менен гана сатып алууга болот. Бизге жазыңыз — жардам беребиз.</string>
     <string name="apple_activation_pending">Төлөм кабыл алынды — PLUS бир нече мүнөттө иштей баштайт. Болбосо, бизге жазыңыз.</string>
     <string name="sub_child_app_note">Бир гана баладабы? Балаңыздын Hoglt тиркемесинде PLUS арзаныраак — ал ошол балага гана тиешелүү.</string>
+    <string name="sub_family_caption">Үй-бүлөлүк тариф · 3 балага чейин</string>
+    <string name="del_acc_question">Аккаунтту өчүрөсүзбү?</string>
+    <string name="del_acc_body">Профилиңиз, балдар менен байланыш, сиз койгон эрежелер, чаттар жана төлөм тарыхы биротоло өчөт. Балдарыңыздын өз аккаунттары калат.</string>
+    <string name="del_acc_irreversible">Муну артка кайтаруу мүмкүн эмес.</string>
+    <string name="del_acc_confirm">Биротоло өчүрүү</string>
+    <string name="del_acc_store_title">Жазылуу</string>
+    <string name="del_acc_store_note">App Store же Google Play жазылуусу өзүнөн өзү токтобойт — аны дүкөндүн жөндөөлөрүнөн токтотуңуз.</string>
 </resources>

@@ -1374,4 +1374,11 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="pay_abroad_coins_body">Tangalarni hozircha faqat O'zbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
     <string name="apple_activation_pending">Tölov qabul qilindi — PLUS bir necha daqiqada yoqiladi. Yoqilmasa, bizga yozing.</string>
     <string name="sub_child_app_note">Bitta farzand uçunmi? Farzandingizning Tikoncha ilovasida PLUS arzonroq — u faqat şu farzand uçun amal qiladi.</string>
+    <string name="sub_family_caption">Oilaviy tarif · 3 tagaça farzand</string>
+    <string name="del_acc_question">Akkauntni öçirasizmi?</string>
+    <string name="del_acc_body">Profilingiz, farzandlar bilan boğlaniş, siz qöygan qoidalar, çatlar va tölov tarixi butunlay öçadi. Farzandlaringizning özi akkauntlari qoladi.</string>
+    <string name="del_acc_irreversible">Buni ortga qaytarib bölmaydi.</string>
+    <string name="del_acc_confirm">Butunlay öçiriş</string>
+    <string name="del_acc_store_title">Obuna</string>
+    <string name="del_acc_store_note">App Store yoki Google Play obunasi öz-özidan bekor bölmaydi — uni dökon sozlamalarida bekor qiling.</string>
 </resources>

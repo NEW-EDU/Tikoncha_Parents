@@ -1364,4 +1364,11 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="pay_abroad_coins_body">Jetonlar şimdilik yalnızca Özbekistan kartıyla alınabiliyor. Bize yaz, yardımcı olalım.</string>
     <string name="apple_activation_pending">Ödeme alındı — PLUS birkaç dakika içinde açılacak. Açılmazsa bize yaz.</string>
     <string name="sub_child_app_note">Tek bir çocuk mu? Çocuğunun Hoglt uygulamasında PLUS daha ucuz — yalnızca o çocuğu kapsar.</string>
+    <string name="sub_family_caption">Aile planı · en fazla 3 çocuk</string>
+    <string name="del_acc_question">Hesabınız silinsin mi?</string>
+    <string name="del_acc_body">Profiliniz, çocuklarınızla bağlantılar, koyduğunuz kurallar, sohbetler ve ödeme geçmişi kalıcı olarak silinir. Çocuklarınızın kendi hesapları kalır.</string>
+    <string name="del_acc_irreversible">Bu işlem geri alınamaz.</string>
+    <string name="del_acc_confirm">Kalıcı olarak sil</string>
+    <string name="del_acc_store_title">Abonelik</string>
+    <string name="del_acc_store_note">App Store veya Google Play aboneliği kendiliğinden iptal olmaz — mağaza ayarlarından iptal edin.</string>
 </resources>

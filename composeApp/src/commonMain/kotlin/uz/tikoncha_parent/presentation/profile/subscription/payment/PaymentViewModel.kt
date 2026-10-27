@@ -170,8 +170,9 @@ class PaymentViewModel(
         }
     }
 
+    /** Ota-ona ilovasida App Store orqali faqat oilaviy tarif (3 tagaça farzand); bitta farzand uçun — bola ilovasida. */
     private fun productId(duration: SubscriptionDuration) =
-        if (duration == SubscriptionDuration.MONTHLY) "tikoncha.parent.monthly.v2" else "tikoncha.parent.yearly.v2"
+        if (duration == SubscriptionDuration.MONTHLY) "tikoncha.parent.family.monthly" else "tikoncha.parent.family.yearly"
 
     /** App Store ko'rsatadigan narx (UZS emas) — foydalanuvchi qancha to'lashini aynan ko'radi. */
     private fun loadStorePrice(duration: SubscriptionDuration) {
@@ -183,15 +184,11 @@ class PaymentViewModel(
 
     private fun requestApplyPay(){
         screenModelScope.launch {
-            val productId = if (state.value.subscriptionDuration == SubscriptionDuration.MONTHLY){
-                "tikoncha.parent.monthly.v2"
-            }
-            else{
-                "tikoncha.parent.yearly.v2"
-            }
+            val productId = productId(state.value.subscriptionDuration)
 
             _state.update { it.copy(applePaymentResponseState = ResponseState.Loading) }
-            when(val result = purchaseIApPremiumUseCase.invoke(productId, AppSettings.selectedChild?.userId)){
+            // Oilaviy tarif ota-onaning özi uçun: appAccountToken = ota-onaning id'si (server farzand tanlovini e'tiborsiz qoldiradi)
+            when(val result = purchaseIApPremiumUseCase.invoke(productId, AppSettings.userId.ifBlank { null })){
                 PurchaseResult.Cancelled -> {
                     _state.update {
                         it.copy(

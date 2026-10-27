@@ -1364,4 +1364,11 @@ This information is used only for these features and is not shared with third pa
     <string name="pay_abroad_coins_body">Coins can only be bought with an Uzbek card for now. Write to us and we'll help.</string>
     <string name="apple_activation_pending">Payment received — PLUS will turn on within a few minutes. If it doesn't, write to us.</string>
     <string name="sub_child_app_note">Only one child? PLUS costs less in your child's Hoglt app — it covers that one child.</string>
+    <string name="sub_family_caption">Family plan · up to 3 children</string>
+    <string name="del_acc_question">Delete your account?</string>
+    <string name="del_acc_body">Your profile, links to your children, the rules you set, chats and payment history are erased for good. Your children\'s own accounts stay.</string>
+    <string name="del_acc_irreversible">This can\'t be undone.</string>
+    <string name="del_acc_confirm">Delete for good</string>
+    <string name="del_acc_store_title">Subscription</string>
+    <string name="del_acc_store_note">An App Store or Google Play subscription isn\'t cancelled by itself — cancel it in the store settings.</string>
 </resources>

@@ -1347,4 +1347,11 @@
     <string name="pay_abroad_coins_body">सिक्के अभी केवल उज़्बेकिस्तान के कार्ड से खरीदे जा सकते हैं। हमें लिखें — हम मदद करेंगे।</string>
     <string name="apple_activation_pending">भुगतान मिल गया — PLUS कुछ मिनटों में चालू हो जाएगा। न हो तो हमें लिखें।</string>
     <string name="sub_child_app_note">सिर्फ़ एक बच्चा? आपके बच्चे के Hoglt ऐप में PLUS सस्ता है — यह केवल उसी बच्चे के लिए है।</string>
+    <string name="sub_family_caption">फ़ैमिली प्लान · अधिकतम 3 बच्चे</string>
+    <string name="del_acc_question">अपना खाता हटाएँ?</string>
+    <string name="del_acc_body">आपकी प्रोफ़ाइल, बच्चों से जुड़ाव, आपके बनाए नियम, चैट और भुगतान इतिहास हमेशा के लिए मिट जाएँगे। आपके बच्चों के अपने खाते बने रहेंगे।</string>
+    <string name="del_acc_irreversible">इसे वापस नहीं किया जा सकता।</string>
+    <string name="del_acc_confirm">हमेशा के लिए हटाएँ</string>
+    <string name="del_acc_store_title">सदस्यता</string>
+    <string name="del_acc_store_note">App Store या Google Play की सदस्यता अपने आप रद्द नहीं होती — इसे स्टोर की सेटिंग में रद्द करें।</string>
 </resources>

@@ -1364,4 +1364,11 @@
     <string name="pay_abroad_coins_body">Тангаларни ҳозирча фақат Ўзбекистон картаси билан олиш мумкин. Бизга ёзинг — ёрдам берамиз.</string>
     <string name="apple_activation_pending">Тўлов қабул қилинди — PLUS бир неча дақиқада ёқилади. Ёқилмаса, бизга ёзинг.</string>
     <string name="sub_child_app_note">Битта фарзанд учунми? Фарзандингизнинг Tikoncha иловасида PLUS арзонроқ — у фақат шу фарзанд учун амал қилади.</string>
+    <string name="sub_family_caption">Оилавий тариф · 3 тагача фарзанд</string>
+    <string name="del_acc_question">Аккаунтни ўчирасизми?</string>
+    <string name="del_acc_body">Профилингиз, фарзандлар билан боғланиш, сиз қўйган қоидалар, чатлар ва тўлов тарихи бутунлай ўчади. Фарзандларингизнинг ўз аккаунтлари қолади.</string>
+    <string name="del_acc_irreversible">Буни ортга қайтариб бўлмайди.</string>
+    <string name="del_acc_confirm">Бутунлай ўчириш</string>
+    <string name="del_acc_store_title">Обуна</string>
+    <string name="del_acc_store_note">App Store ёки Google Play обунаси ўз-ўзидан бекор бўлмайди — уни дўкон созламаларида бекор қилинг.</string>
 </resources>

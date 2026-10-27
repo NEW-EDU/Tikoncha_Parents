@@ -1364,4 +1364,11 @@
     <string name="pay_abroad_coins_body">Зоосыг одоогоор зөвхөн Узбекистаны картаар худалдан авах боломжтой. Бидэнд бичээрэй — тусална.</string>
     <string name="apple_activation_pending">Төлбөр хүлээн авлаа — PLUS хэдэн минутын дотор идэвхжинэ. Үгүй бол бидэнд бичээрэй.</string>
     <string name="sub_child_app_note">Ганцхан хүүхэд үү? Хүүхдийн Hoglt апп-д PLUS хямд — зөвхөн тэр хүүхдэд хамаарна.</string>
+    <string name="sub_family_caption">Гэр бүлийн багц · 3 хүртэлх хүүхэд</string>
+    <string name="del_acc_question">Бүртгэлээ устгах уу?</string>
+    <string name="del_acc_body">Таны профайл, хүүхдүүдтэй холбоос, тогтоосон дүрэм, чат болон төлбөрийн түүх бүрмөсөн устна. Хүүхдүүдийн өөрсдийн бүртгэл хэвээр үлдэнэ.</string>
+    <string name="del_acc_irreversible">Үүнийг буцаах боломжгүй.</string>
+    <string name="del_acc_confirm">Бүрмөсөн устгах</string>
+    <string name="del_acc_store_title">Захиалга</string>
+    <string name="del_acc_store_note">App Store эсвэл Google Play-ийн захиалга өөрөө цуцлагдахгүй — дэлгүүрийн тохиргооноос цуцална уу.</string>
 </resources>

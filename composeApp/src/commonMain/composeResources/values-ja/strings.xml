@@ -1348,4 +1348,11 @@
     <string name="pay_abroad_coins_body">コインは現在ウズベキスタンのカードでのみご購入いただけます。お問い合わせいただければサポートします。</string>
     <string name="apple_activation_pending">お支払いを受け付けました。数分以内に PLUS が有効になります。有効にならない場合はお問い合わせください。</string>
     <string name="sub_child_app_note">お子さまが1人だけですか？お子さまの Hoglt アプリなら PLUS がお得です（その子のみ対象）。</string>
+    <string name="sub_family_caption">ファミリープラン · お子さま3人まで</string>
+    <string name="del_acc_question">アカウントを削除しますか？</string>
+    <string name="del_acc_body">プロフィール、お子さまとの連携、設定したルール、チャット、支払い履歴が完全に削除されます。お子さま自身のアカウントは残ります。</string>
+    <string name="del_acc_irreversible">この操作は取り消せません。</string>
+    <string name="del_acc_confirm">完全に削除</string>
+    <string name="del_acc_store_title">サブスクリプション</string>
+    <string name="del_acc_store_note">App Store や Google Play のサブスクリプションは自動では解約されません。ストアの設定で解約してください。</string>
 </resources>

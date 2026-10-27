@@ -1364,4 +1364,11 @@
     <string name="pay_abroad_coins_body">Մետաղադրամները առայժմ կարելի է գնել միայն ուզբեկական քարտով։ Գրեք մեզ՝ կօգնենք։</string>
     <string name="apple_activation_pending">Վճարումը ստացվել է — PLUS-ը կմիանա մի քանի րոպեում։ Եթե ոչ, գրեք մեզ։</string>
     <string name="sub_child_app_note">Միայն մեկ երեխա՞։ Երեխայի Hoglt հավելվածում PLUS-ն ավելի էժան է՝ միայն այդ երեխայի համար։</string>
+    <string name="sub_family_caption">Ընտանեկան սակագին · մինչև 3 երեխա</string>
+    <string name="del_acc_question">Ջնջե՞լ հաշիվը</string>
+    <string name="del_acc_body">Ձեր պրոֆիլը, երեխաների հետ կապերը, ձեր կանոնները, զրույցները և վճարումների պատմությունը ընդմիշտ կջնջվեն։ Երեխաների սեփական հաշիվները կմնան։</string>
+    <string name="del_acc_irreversible">Սա հնարավոր չէ հետ շրջել։</string>
+    <string name="del_acc_confirm">Ջնջել ընդմիշտ</string>
+    <string name="del_acc_store_title">Բաժանորդագրություն</string>
+    <string name="del_acc_store_note">App Store-ի կամ Google Play-ի բաժանորդագրությունն ինքնըստինքյան չի չեղարկվում․ չեղարկեք այն խանութի կարգավորումներում։</string>
 </resources>

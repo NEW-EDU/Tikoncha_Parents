@@ -1347,4 +1347,11 @@
     <string name="pay_abroad_coins_body">Syiling buat masa ini hanya boleh dibeli dengan kad Uzbekistan. Hubungi kami, kami akan bantu.</string>
     <string name="apple_activation_pending">Bayaran diterima — PLUS akan aktif dalam beberapa minit. Jika tidak, hubungi kami.</string>
     <string name="sub_child_app_note">Hanya seorang anak? PLUS lebih murah dalam aplikasi Hoglt anak anda — untuk anak itu sahaja.</string>
+    <string name="sub_family_caption">Pelan keluarga · sehingga 3 anak</string>
+    <string name="del_acc_question">Padam akaun anda?</string>
+    <string name="del_acc_body">Profil, pautan dengan anak, peraturan yang anda tetapkan, sembang dan sejarah pembayaran akan dipadam selama-lamanya. Akaun anak anda sendiri kekal.</string>
+    <string name="del_acc_irreversible">Tindakan ini tidak boleh dibuat asal.</string>
+    <string name="del_acc_confirm">Padam selama-lamanya</string>
+    <string name="del_acc_store_title">Langganan</string>
+    <string name="del_acc_store_note">Langganan App Store atau Google Play tidak berhenti sendiri — batalkan dalam tetapan kedai.</string>
 </resources>

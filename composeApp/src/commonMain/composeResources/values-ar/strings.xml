@@ -1364,4 +1364,11 @@
     <string name="pay_abroad_coins_body">يمكن شراء العملات حاليًا ببطاقة أوزبكية فقط. راسلنا وسنساعدك.</string>
     <string name="apple_activation_pending">تم استلام الدفع — سيتفعّل PLUS خلال دقائق. إن لم يتفعّل، راسلنا.</string>
     <string name="sub_child_app_note">طفل واحد فقط؟ PLUS أرخص في تطبيق Hoglt الخاص بطفلك — ويشمل ذلك الطفل فقط.</string>
+    <string name="sub_family_caption">خطة العائلة · حتى 3 أطفال</string>
+    <string name="del_acc_question">هل تريد حذف حسابك؟</string>
+    <string name="del_acc_body">سيتم حذف ملفك الشخصي وروابطك بأطفالك والقواعد التي وضعتها والمحادثات وسجل المدفوعات نهائيًا. تبقى حسابات أطفالك الخاصة.</string>
+    <string name="del_acc_irreversible">لا يمكن التراجع عن ذلك.</string>
+    <string name="del_acc_confirm">حذف نهائي</string>
+    <string name="del_acc_store_title">الاشتراك</string>
+    <string name="del_acc_store_note">لا يُلغى اشتراك App Store أو Google Play تلقائيًا — ألغِه من إعدادات المتجر.</string>
 </resources>

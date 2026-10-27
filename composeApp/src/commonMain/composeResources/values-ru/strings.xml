@@ -1371,4 +1371,11 @@
     <string name="pay_abroad_coins_body">Монеты пока можно купить только узбекской картой. Напишите нам — мы поможем.</string>
     <string name="apple_activation_pending">Оплата получена — PLUS включится в течение нескольких минут. Если нет, напишите нам.</string>
     <string name="sub_child_app_note">Только один ребёнок? В приложении Tikoncha у ребёнка PLUS дешевле — он действует только для этого ребёнка.</string>
+    <string name="sub_family_caption">Семейный тариф · до 3 детей</string>
+    <string name="del_acc_question">Удалить аккаунт?</string>
+    <string name="del_acc_body">Профиль, связь с детьми, ваши правила, чаты и история платежей удалятся навсегда. Собственные аккаунты детей останутся.</string>
+    <string name="del_acc_irreversible">Это нельзя отменить.</string>
+    <string name="del_acc_confirm">Удалить навсегда</string>
+    <string name="del_acc_store_title">Подписка</string>
+    <string name="del_acc_store_note">Подписка App Store или Google Play сама не отменяется — отмените её в настройках магазина.</string>
 </resources>
