@@ -1343,4 +1343,20 @@ This information is used only for these features and is not shared with third pa
     <string name="ai_done_deleted">Deleted</string>
     <string name="ai_done_approved">Allowed</string>
     <string name="ai_done_rejected">Declined</string>
+    <string name="parent_special_title">Extra protection</string>
+    <string name="parent_special_card">Images, chats, incognito, risky places</string>
+    <string name="parent_special_info_title">Works on your child's phone</string>
+    <string name="parent_special_info_1">Your child can't turn off protection you turn on. They'll see it in their app.</string>
+    <string name="parent_special_info_2">If there's a risk, you only get the topic and the app name — never the message text or the image.</string>
+    <string name="parent_special_info_3">On Android, Shield mode is needed. On iPhone: 18+ websites and Hoglagram chats.</string>
+    <string name="parent_special_nsfw_title">Inappropriate images</string>
+    <string name="parent_special_nsfw_desc">18+ images get closed and you're notified</string>
+    <string name="parent_special_conv_title">Risky chats</string>
+    <string name="parent_special_conv_desc">You're notified about risky conversations in messengers</string>
+    <string name="parent_special_incognito_title">Incognito mode</string>
+    <string name="parent_special_incognito_desc">Private browser tabs get closed</string>
+    <string name="parent_special_zones_title">Risky places</string>
+    <string name="parent_special_zones_desc">You're notified if your child stays near water, a building site or a club</string>
+    <string name="parent_special_footer">Your child can also turn these on for themselves — then only they get the warnings.</string>
+    <string name="parent_special_paywall">Risky chats and incognito mode come with PLUS.</string>
 </resources>

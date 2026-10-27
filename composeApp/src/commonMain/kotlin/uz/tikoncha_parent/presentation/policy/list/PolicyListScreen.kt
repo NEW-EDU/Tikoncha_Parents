@@ -71,6 +71,7 @@ import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.haptics.ErrorHaptic
 import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
 import uz.tikoncha_parent.presentation.policy.components.ContentProtectionCard
+import uz.tikoncha_parent.presentation.policy.components.SpecialProtectionCard
 import uz.tikoncha_parent.presentation.policy.components.PolicyCard
 import uz.tikoncha_parent.presentation.policy.components.PolicyInfoBox
 import uz.tikoncha_parent.presentation.policy.components.PolicyText
@@ -122,6 +123,7 @@ class PolicyListScreen : Screen {
                 when (e) {
                     is PolicyListEffect.OpenQuickBlock -> navigator.push(QuickBlockScreen(e.childId))
                     is PolicyListEffect.OpenProtection -> navigator.push(ContentProtectionScreen(e.childId))
+                    is PolicyListEffect.OpenSpecial -> navigator.push(uz.tikoncha_parent.presentation.policy.special.SpecialProtectionScreen(e.childId))
                     is PolicyListEffect.OpenPreset -> navigator.push(PresetPolicyScreen(e.childId, e.kind))
                     is PolicyListEffect.OpenPolicy -> navigator.push(PolicyEditorScreen(e.childId, e.policyId))
                     is PolicyListEffect.OpenCreate -> navigator.push(PolicyEditorScreen(e.childId, null))
@@ -283,8 +285,8 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
 }
 
 private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEvent) -> Unit) {
-    // Himoya + shablonlar + tezkor blok — bitta guruhlangan blok
-    val total = state.presets.size + 2
+    // Himoya + maxsus himoya + shablonlar + tezkor blok — bitta guruhlangan blok
+    val total = state.presets.size + 3
     item(key = "protection") {
         ContentProtectionCard(
             ui = state.protection,
@@ -295,6 +297,13 @@ private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEv
             segmentCount = total,
         )
     }
+    item(key = "special") {
+        SpecialProtectionCard(
+            onClick = { event(PolicyListEvent.SpecialClicked) },
+            segmentIndex = 1,
+            segmentCount = total,
+        )
+    }
     itemsIndexed(state.presets, key = { _, it -> it.kind.name }) { i, preset ->
         val title = preset.kind.title()
         PresetPolicyCard(
@@ -302,7 +311,7 @@ private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEv
             busy = state.isBusy(PolicyListViewModel.presetKey(preset.kind)),
             onToggle = { event(PolicyListEvent.PresetToggled(preset.kind, it, title)) },
             onClick = { event(PolicyListEvent.PresetClicked(preset.kind)) },
-            segmentIndex = i + 1,
+            segmentIndex = i + 2,
             segmentCount = total,
         )
     }

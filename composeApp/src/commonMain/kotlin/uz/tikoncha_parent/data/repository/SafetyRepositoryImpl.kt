@@ -7,6 +7,11 @@ import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.model.safety.DangerCategory
 import uz.tikoncha_parent.domain.model.safety.DangerPlace
 import uz.tikoncha_parent.domain.model.safety.DangerPlaces
+import uz.tikoncha_parent.domain.model.safety.SafetySwitch
+import uz.tikoncha_parent.domain.model.safety.SafetySwitches
+import uz.tikoncha_parent.data.remote.model.ApiEnvelope
+import uz.tikoncha_parent.data.remote.model.safety.SafetySettingsData
+import uz.tikoncha_parent.data.remote.model.safety.SafetySettingsRequest
 import uz.tikoncha_parent.domain.repository.SafetyRepository
 
 class SafetyRepositoryImpl(private val api: SafetyApiService) : SafetyRepository {
@@ -39,6 +44,29 @@ class SafetyRepositoryImpl(private val api: SafetyApiService) : SafetyRepository
                 else -> Outcome.Failure(ApiErrorMapper.fromCode(r.code), r.error)
             }
         }
+
+    override suspend fun switches(childId: String): Outcome<SafetySwitches> =
+        apiCall(TAG) { api.settings(childId).toSwitches() }
+
+    override suspend fun setSwitch(childId: String, switch: SafetySwitch, on: Boolean): Outcome<SafetySwitches> =
+        apiCall(TAG) {
+            val body = when (switch) {
+                SafetySwitch.DANGER_ZONES -> SafetySettingsRequest(childId, dangerZones = on)
+                SafetySwitch.IMAGE -> SafetySettingsRequest(childId, imageDetection = on)
+                SafetySwitch.CONVERSATION -> SafetySettingsRequest(childId, conversation = on)
+                SafetySwitch.INCOGNITO -> SafetySettingsRequest(childId, blockIncognito = on)
+            }
+            api.putSettings(body).toSwitches()
+        }
+
+    private fun ApiEnvelope<SafetySettingsData>.toSwitches(): Outcome<SafetySwitches> {
+        val d = data
+        return when {
+            success && d != null -> Outcome.Success(SafetySwitches(d.dangerZones, d.conversation, d.imageDetection, d.blockIncognito))
+            success -> Outcome.Failure(ErrorCause.InvalidResponse)
+            else -> Outcome.Failure(ApiErrorMapper.fromCode(code), error)
+        }
+    }
 
     private companion object { const val TAG = "SafetyRepository" }
 }

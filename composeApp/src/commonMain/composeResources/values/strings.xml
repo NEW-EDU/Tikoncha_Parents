@@ -1353,4 +1353,20 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ai_done_deleted">Öçirildi</string>
     <string name="ai_done_approved">Ruxsat berildi</string>
     <string name="ai_done_rejected">Rad etildi</string>
+    <string name="parent_special_title">Maxsus himoya</string>
+    <string name="parent_special_card">Rasm, yozişma, yaşirin rejim, xavfli joylar</string>
+    <string name="parent_special_info_title">Farzand telefonida işlaydi</string>
+    <string name="parent_special_info_1">Siz yoqqan himoyani farzandingiz öçira olmaydi. U buni ilovada köradi.</string>
+    <string name="parent_special_info_2">Xavf bölsa, sizga faqat toifa va ilova nomi keladi — yozişma matni yoki rasm emas.</string>
+    <string name="parent_special_info_3">Android'da Qalqon rejimi kerak. iPhone'da: 18+ saytlar va Tikonchagram yozişmalari.</string>
+    <string name="parent_special_nsfw_title">Nomaqbul rasmlar</string>
+    <string name="parent_special_nsfw_desc">18+ tasvir yopiladi, sizga xabar boradi</string>
+    <string name="parent_special_conv_title">Xavfli yozişmalar</string>
+    <string name="parent_special_conv_desc">Messenjerda xavfli suhbat bölsa, sizga xabar boradi</string>
+    <string name="parent_special_incognito_title">Yaşirin rejim</string>
+    <string name="parent_special_incognito_desc">Brauzerning yaşirin oynasi yopiladi</string>
+    <string name="parent_special_zones_title">Xavfli joylar</string>
+    <string name="parent_special_zones_desc">Suv, qurilish yoki klub yonida uzoq qolsa, xabar boradi</string>
+    <string name="parent_special_footer">Farzandingiz bu himoyalarni özi uçun ham yoqişi mumkin — unda ogohlantiriş faqat unga boradi.</string>
+    <string name="parent_special_paywall">Xavfli yozişmalar va yaşirin rejim — PLUS obunasi bilan.</string>
 </resources>

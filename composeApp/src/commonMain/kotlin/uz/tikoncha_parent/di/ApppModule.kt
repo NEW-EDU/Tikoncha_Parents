@@ -295,6 +295,7 @@ val sharedModule = module {
         )
     }
     factory { uz.tikoncha_parent.presentation.policy.protection.ContentProtectionViewModel(get(), get(), get(), get()) }
+    factory { uz.tikoncha_parent.presentation.policy.special.SpecialProtectionViewModel(get(), get()) }
     factory {
         uz.tikoncha_parent.presentation.policy.editor.PolicyEditorViewModel(
             observePolicies = get(),

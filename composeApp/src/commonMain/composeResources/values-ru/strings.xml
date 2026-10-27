@@ -1350,4 +1350,20 @@
     <string name="ai_done_deleted">Удалено</string>
     <string name="ai_done_approved">Разрешено</string>
     <string name="ai_done_rejected">Отклонено</string>
+    <string name="parent_special_title">Особая защита</string>
+    <string name="parent_special_card">Картинки, переписки, инкогнито, опасные места</string>
+    <string name="parent_special_info_title">Работает на телефоне ребёнка</string>
+    <string name="parent_special_info_1">Включённую вами защиту ребёнок отключить не сможет. Он увидит это в приложении.</string>
+    <string name="parent_special_info_2">При опасности вы получите только тему и название приложения — не текст переписки и не фото.</string>
+    <string name="parent_special_info_3">На Android нужен режим «Щит». На iPhone: сайты 18+ и переписки в Tikonchagram.</string>
+    <string name="parent_special_nsfw_title">Неприличные картинки</string>
+    <string name="parent_special_nsfw_desc">Картинка 18+ закрывается, вам — уведомление</string>
+    <string name="parent_special_conv_title">Опасные переписки</string>
+    <string name="parent_special_conv_desc">Уведомление об опасной переписке в мессенджерах</string>
+    <string name="parent_special_incognito_title">Режим инкогнито</string>
+    <string name="parent_special_incognito_desc">Вкладки инкогнито в браузере закрываются</string>
+    <string name="parent_special_zones_title">Опасные места</string>
+    <string name="parent_special_zones_desc">Уведомление, если ребёнок долго у воды, стройки или клуба</string>
+    <string name="parent_special_footer">Ребёнок может включить эту защиту и для себя — тогда предупреждения получает только он.</string>
+    <string name="parent_special_paywall">Опасные переписки и режим инкогнито — с подпиской PLUS.</string>
 </resources>

@@ -36,3 +36,16 @@ data class DangerPlaces(
     /** Ma'lumot manbai (OpenStreetMap, ODbL) — xaritada ko'rsatilishi shart. */
     val attribution: String,
 )
+
+/**
+ * Farzand uçun maxsus himoyalar — ota-ona yoqqanlari. Yoqilgan himoyani farzand öçira olmaydi va xavf bölsa
+ * ota-onaga xabar boradi. Farzand özi ham yoqişi mumkin (u faqat uni ogohlantiradi) — bu yerda körinmaydi.
+ */
+data class SafetySwitches(
+    val dangerZones: Boolean = true,
+    val conversation: Boolean = false,
+    val image: Boolean = false,
+    val incognito: Boolean = false,
+)
+
+enum class SafetySwitch(val plusOnly: Boolean) { DANGER_ZONES(false), IMAGE(false), CONVERSATION(true), INCOGNITO(true) }

@@ -8,6 +8,9 @@ import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.camera
+import tikoncha_parents.composeapp.generated.resources.parent_special_card
+import tikoncha_parents.composeapp.generated.resources.parent_special_title
 import tikoncha_parents.composeapp.generated.resources.ic_policy
 import tikoncha_parents.composeapp.generated.resources.bed_sleeping
 import tikoncha_parents.composeapp.generated.resources.blocklist
@@ -78,6 +81,23 @@ fun ContentProtectionCard(ui: ContentProtectionUi, busy: Boolean, onToggle: (Boo
         note = stringResource(Res.string.protection_shield_short),
     ) {
         PolicySwitch(checked = ui.isEnabled, onCheckedChange = onToggle, busy = busy, enabled = ui.isAvailable)
+    }
+}
+
+/** "Maxsus himoya" — nomaqbul rasm, xavfli yozişma, yaşirin rejim, xavfli joylar (alohida ekran). */
+@Composable
+fun SpecialProtectionCard(onClick: () -> Unit, modifier: Modifier = Modifier, segmentIndex: Int = 0, segmentCount: Int = 1) {
+    PolicyCardBody(
+        icon = Res.drawable.camera,
+        tone = IconTone.GRAY,
+        title = stringResource(Res.string.parent_special_title),
+        subtitle = stringResource(Res.string.parent_special_card),
+        onClick = onClick,
+        modifier = modifier,
+        segmentIndex = segmentIndex,
+        segmentCount = segmentCount,
+    ) {
+        Chevron()
     }
 }
 
