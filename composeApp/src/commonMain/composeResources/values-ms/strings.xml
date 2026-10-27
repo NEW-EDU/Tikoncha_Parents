@@ -1364,4 +1364,6 @@
     <string name="acc_delete_req_confirm_msg">Akaun %1$s, sejarahnya dan peraturan yang anda tetapkan akan dipadam selama-lamanya. Tindakan ini tidak boleh dibuat asal.</string>
     <string name="del_acc_scheduled_title">Pemadaman akaun dijadualkan</string>
     <string name="del_acc_scheduled_msg">Akaun anda akan dipadam pada %1$s supaya peraturan anak-anak anda tidak hilang secara tidak sengaja. Ubah fikiran? Log masuk semula dan pemadaman dibatalkan.</string>
+    <string name="del_acc_keep_msg">Akaun anda akan dipadam pada %1$s. Jika ini bukan anda atau anda ubah fikiran, kekalkan akaun anda.</string>
+    <string name="del_acc_keep_button">Kekalkan akaun</string>
 </resources>

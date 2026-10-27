@@ -1365,4 +1365,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s 님의 계정, 기록, 설정한 규칙이 영구적으로 삭제됩니다. 되돌릴 수 없어요.</string>
     <string name="del_acc_scheduled_title">계정 삭제 예약됨</string>
     <string name="del_acc_scheduled_msg">자녀의 규칙이 실수로 사라지지 않도록 계정은 %1$s에 삭제됩니다. 마음이 바뀌면 다시 로그인하세요. 삭제가 취소돼요.</string>
+    <string name="del_acc_keep_msg">계정이 %1$s에 삭제됩니다. 본인이 요청하지 않았거나 마음이 바뀌었다면 계정을 유지하세요.</string>
+    <string name="del_acc_keep_button">계정 유지</string>
 </resources>

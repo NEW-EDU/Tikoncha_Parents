@@ -1381,4 +1381,6 @@ This information is used only for these features and is not shared with third pa
     <string name="acc_delete_req_confirm_msg">%1$s\'s account, its history and the rules you set are erased for good. This can\'t be undone.</string>
     <string name="del_acc_scheduled_title">Account deletion scheduled</string>
     <string name="del_acc_scheduled_msg">Your account will be deleted on %1$s, so your children\'s rules don\'t vanish by mistake. Changed your mind? Sign in again and the deletion is cancelled.</string>
+    <string name="del_acc_keep_msg">Your account will be deleted on %1$s. If this wasn\'t you, or you\'ve changed your mind, keep your account.</string>
+    <string name="del_acc_keep_button">Keep account</string>
 </resources>

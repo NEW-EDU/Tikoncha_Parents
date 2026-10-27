@@ -1364,4 +1364,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s akkauntı, onıń tariyxı hám siz qoyǵan qaǵıydalar pútkilley óshedi. Bunı keri qaytarıp bolmaydı.</string>
     <string name="del_acc_scheduled_title">Akkaunt óshirilmekte</string>
     <string name="del_acc_scheduled_msg">Akkauntıńız %1$s kúni óshiriledi — balalarıńızdıń qaǵıydaları birden joǵalmasın. Pikirińiz ózgerse, qosımshaǵa qayta kiriń: óshiriw biykar boladı.</string>
+    <string name="del_acc_keep_msg">Akkauntıńız %1$s kúni óshiriledi. Bul soraw sizden bolmaǵan bolsa yamasa pikirińiz ózgergen bolsa, akkauntti saqlap qalıń.</string>
+    <string name="del_acc_keep_button">Akkauntti saqlaw</string>
 </resources>

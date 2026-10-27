@@ -37,6 +37,13 @@ class DeviceApiService (
             block = {}
         )
 
+    suspend fun deletionStatus(): uz.tikoncha_parent.data.remote.device.DeletionStatusResponse =
+        httpClient.safeRequest(method = HttpMethod.Get, url = "users/me/deletion", block = {})
+
+    /** Rejalaştirilgan öçirişni bekor qiliş ("Akkauntni saqlaş"). */
+    suspend fun cancelDeletion(): uz.tikoncha_parent.data.remote.device.DeletionStatusResponse =
+        httpClient.safeRequest(method = HttpMethod.Post, url = "users/me/cancel-deletion", block = {})
+
 
 
 

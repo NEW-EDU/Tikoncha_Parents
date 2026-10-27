@@ -1381,4 +1381,6 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="acc_delete_req_confirm_msg">%1$s hasaby, onuň taryhy we goýan düzgünleriňiz düýbünden pozular. Muny yzyna gaýtaryp bolmaýar.</string>
     <string name="del_acc_scheduled_title">Hasaby pozmak meýilleşdirildi</string>
     <string name="del_acc_scheduled_msg">Çagalaryňyzyň düzgünleri tötänleýin ýitmez ýaly, hasabyňyz %1$s senesinde pozular. Pikiriňiz üýtgedimi? Täzeden giriň — pozmak ýatyrylar.</string>
+    <string name="del_acc_keep_msg">Hasabyňyz %1$s senesinde pozular. Bu siz däl bolsaňyz ýa-da pikiriňizi üýtgeden bolsaňyz, hasaby saklaň.</string>
+    <string name="del_acc_keep_button">Hasaby sakla</string>
 </resources>

@@ -43,5 +43,17 @@ class DeviceRepositoryImpl(
         else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
     }
 
+    override suspend fun scheduledDeletion(): Outcome<String?> = apiCall(TAG) {
+        val r = api.deletionStatus()
+        if (r.success) Outcome.Success(r.data?.scheduled_for)
+        else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
+    }
+
+    override suspend fun cancelDeletion(): Outcome<Unit> = apiCall(TAG) {
+        val r = api.cancelDeletion()
+        if (r.success) Outcome.Success(Unit)
+        else Outcome.Failure(ApiErrorMapper.fromCode(null), r.error)
+    }
+
     private companion object { const val TAG = "DeviceRepository" }
 }

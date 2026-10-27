@@ -1381,4 +1381,6 @@
     <string name="acc_delete_req_confirm_msg">سيتم حذف حساب %1$s وسجله والقواعد التي وضعتها نهائيًا. لا يمكن التراجع عن ذلك.</string>
     <string name="del_acc_scheduled_title">تمت جدولة حذف الحساب</string>
     <string name="del_acc_scheduled_msg">سيتم حذف حسابك في %1$s حتى لا تختفي قواعد أطفالك عن طريق الخطأ. غيّرت رأيك؟ سجّل الدخول مجددًا وسيُلغى الحذف.</string>
+    <string name="del_acc_keep_msg">سيتم حذف حسابك في %1$s. إن لم تطلب ذلك أو غيّرت رأيك، احتفظ بحسابك.</string>
+    <string name="del_acc_keep_button">الاحتفاظ بالحساب</string>
 </resources>

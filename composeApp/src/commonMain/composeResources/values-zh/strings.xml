@@ -1365,4 +1365,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s 的账户、记录和你设置的规则将被永久删除。此操作无法撤销。</string>
     <string name="del_acc_scheduled_title">已安排删除账户</string>
     <string name="del_acc_scheduled_msg">为避免孩子的规则被误删，你的账户将在 %1$s 删除。改变主意了？重新登录即可取消删除。</string>
+    <string name="del_acc_keep_msg">您的账户将于 %1$s 删除。如果这不是您本人操作或您改变了主意，请保留账户。</string>
+    <string name="del_acc_keep_button">保留账户</string>
 </resources>

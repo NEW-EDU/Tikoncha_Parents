@@ -3,6 +3,10 @@
 package uz.tikoncha_parent.presentation.new_home
 
 import tikoncha_parents.composeapp.generated.resources.profil
+import tikoncha_parents.composeapp.generated.resources.del_acc_scheduled_title
+import tikoncha_parents.composeapp.generated.resources.del_acc_keep_msg
+import tikoncha_parents.composeapp.generated.resources.del_acc_keep_button
+import tikoncha_parents.composeapp.generated.resources.dialog_warning
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Settings
@@ -255,6 +259,18 @@ fun NewHomeUi(
             navigator?.push(AddChildScreen())
             showChildDialog = false
         }
+    )
+
+    // Akkaunt öçirişga navbatda: sana + "Akkauntni saqlaş" (7 kunlik muddat ichida bir tugma bilan bekor)
+    CustomDialog(
+        show = state.deletionScheduledFor != null,
+        painter = painterResource(Res.drawable.dialog_warning),
+        title = stringResource(Res.string.del_acc_scheduled_title),
+        message = stringResource(Res.string.del_acc_keep_msg, state.deletionScheduledFor.orEmpty()),
+        buttonText = stringResource(Res.string.del_acc_keep_button),
+        showCloseButton = true,
+        onDismiss = { event(HomeEvent.DismissDeletionNotice) },
+        onButtonClick = { event(HomeEvent.KeepAccount) },
     )
 
     InAppUpdateDialog(

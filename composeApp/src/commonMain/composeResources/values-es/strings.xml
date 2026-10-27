@@ -1381,4 +1381,6 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="acc_delete_req_confirm_msg">La cuenta de %1$s, su historial y las reglas que pusiste se borrarán para siempre. No se puede deshacer.</string>
     <string name="del_acc_scheduled_title">Eliminación de la cuenta programada</string>
     <string name="del_acc_scheduled_msg">Tu cuenta se eliminará el %1$s, para que las reglas de tus hijos no desaparezcan por error. ¿Cambiaste de idea? Vuelve a iniciar sesión y se cancelará.</string>
+    <string name="del_acc_keep_msg">Tu cuenta se eliminará el %1$s. Si no fuiste tú o cambiaste de opinión, conserva tu cuenta.</string>
+    <string name="del_acc_keep_button">Conservar cuenta</string>
 </resources>

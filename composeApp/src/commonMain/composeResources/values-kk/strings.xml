@@ -1364,4 +1364,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s аккаунты, оның тарихы және сіз қойған ережелер біржола жойылады. Мұны қайтару мүмкін емес.</string>
     <string name="del_acc_scheduled_title">Аккаунтты жою жоспарланды</string>
     <string name="del_acc_scheduled_msg">Балаларыңыздың ережелері кездейсоқ жоғалмауы үшін аккаунтыңыз %1$s күні жойылады. Ойыңыз өзгерсе, қайта кіріңіз — жою тоқтатылады.</string>
+    <string name="del_acc_keep_msg">Аккаунтыңыз %1$s күні жойылады. Бұл сіз болмасаңыз немесе ойыңызды өзгертсеңіз, аккаунтты сақтап қалыңыз.</string>
+    <string name="del_acc_keep_button">Аккаунтты сақтау</string>
 </resources>

@@ -1364,4 +1364,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s का खाता, उसका इतिहास और आपके नियम हमेशा के लिए मिट जाएँगे। इसे वापस नहीं किया जा सकता।</string>
     <string name="del_acc_scheduled_title">खाता हटाना निर्धारित</string>
     <string name="del_acc_scheduled_msg">आपका खाता %1$s को हटेगा, ताकि बच्चों के नियम गलती से न मिटें। मन बदल गया? फिर से साइन इन करें — हटाना रद्द हो जाएगा।</string>
+    <string name="del_acc_keep_msg">आपका खाता %1$s को हट जाएगा। अगर यह आपने नहीं किया या आपका मन बदल गया है, तो खाता रखें।</string>
+    <string name="del_acc_keep_button">खाता रखें</string>
 </resources>

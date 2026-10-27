@@ -1381,4 +1381,6 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="acc_delete_req_confirm_msg">%1$s hesabı, geçmişi ve koyduğunuz kurallar kalıcı olarak silinir. Bu işlem geri alınamaz.</string>
     <string name="del_acc_scheduled_title">Hesap silme planlandı</string>
     <string name="del_acc_scheduled_msg">Çocuklarınızın kuralları yanlışlıkla kaybolmasın diye hesabınız %1$s tarihinde silinecek. Fikrinizi mi değiştirdiniz? Tekrar giriş yapın, silme iptal edilir.</string>
+    <string name="del_acc_keep_msg">Hesabınız %1$s tarihinde silinecek. Bu siz değilseniz ya da fikrinizi değiştirdiyseniz hesabınızı koruyun.</string>
+    <string name="del_acc_keep_button">Hesabı koru</string>
 </resources>

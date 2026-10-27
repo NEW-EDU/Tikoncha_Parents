@@ -1391,4 +1391,6 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="acc_delete_req_confirm_msg">%1$s akkaunti, uning tarixi va siz qöygan qoidalar butunlay öçadi. Buni ortga qaytarib bölmaydi.</string>
     <string name="del_acc_scheduled_title">Akkaunt öçirilmoqda</string>
     <string name="del_acc_scheduled_msg">Akkauntingiz %1$s kuni öçiriladi — farzandlaringiz qoidalari birdan yöqolmasin. Fikringiz özgarsa, ilovaga qayta kiring: öçiriş bekor böladi.</string>
+    <string name="del_acc_keep_msg">Akkauntingiz %1$s kuni öçiriladi. Bu sörov siz tomondan bölmagan bölsa yoki fikringiz özgargan bölsa, akkauntni saqlab qoling.</string>
+    <string name="del_acc_keep_button">Akkauntni saqlaş</string>
 </resources>

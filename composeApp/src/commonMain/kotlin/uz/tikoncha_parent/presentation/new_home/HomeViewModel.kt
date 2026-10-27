@@ -113,6 +113,16 @@ class HomeViewModel(
         if (!setOk) return
         sendDeviceInfo()
         getSubscriptionLimit()
+        checkScheduledDeletion()
+    }
+
+    /**
+     * Akkaunt saytdan, botdan yoki ilovadan öçirişga söralgan bölsa, 7 kun kutadi. Ota-ona ilovani oçganda buni
+     * körsin va bir tugma bilan bekor qila olsin — begona odam yoki tasodifiy so'rov akkauntni jimgina öçirmasin.
+     */
+    private fun checkScheduledDeletion() = screenModelScope.launch {
+        val r = deviceRepository.scheduledDeletion()
+        if (r is Outcome.Success) _state.update { it.copy(deletionScheduledFor = r.data?.take(10)) }
     }
 
     fun onEvent(event: HomeEvent) {
@@ -137,6 +147,14 @@ class HomeViewModel(
             HomeEvent.RefreshParentRequest -> {
                 loadProtectionStatus()
             }
+
+            HomeEvent.KeepAccount -> screenModelScope.launch {
+                if (deviceRepository.cancelDeletion() is Outcome.Success) {
+                    _state.update { it.copy(deletionScheduledFor = null) }
+                }
+            }
+
+            HomeEvent.DismissDeletionNotice -> _state.update { it.copy(deletionScheduledFor = null) }
 
             HomeEvent.SyncSelectedChildFromSettings -> {
                 Logger.d(TAG, "SyncSelectedChildFromSettings = ${AppSettings.selectedChild}")

@@ -9,4 +9,6 @@ sealed interface HomeEvent {
     data object RefreshParentRequest : HomeEvent
     data object SyncSelectedChildFromSettings : HomeEvent
     data class OnChildSelected(val child: UserInfo) : HomeEvent
+    data object KeepAccount : HomeEvent
+    data object DismissDeletionNotice : HomeEvent
 }

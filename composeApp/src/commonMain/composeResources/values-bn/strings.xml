@@ -1381,4 +1381,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s-এর অ্যাকাউন্ট, ইতিহাস ও আপনার নিয়ম চিরতরে মুছে যাবে। এটি আর ফেরানো যাবে না।</string>
     <string name="del_acc_scheduled_title">অ্যাকাউন্ট মোছার সময় নির্ধারিত</string>
     <string name="del_acc_scheduled_msg">আপনার অ্যাকাউন্ট %1$s তারিখে মুছে যাবে, যাতে সন্তানদের নিয়ম ভুলবশত হারিয়ে না যায়। মত বদলালে আবার সাইন ইন করুন — মোছা বাতিল হবে।</string>
+    <string name="del_acc_keep_msg">আপনার অ্যাকাউন্ট %1$s তারিখে মুছে যাবে। এটি আপনি না করে থাকলে বা মত বদলালে অ্যাকাউন্ট রেখে দিন।</string>
+    <string name="del_acc_keep_button">অ্যাকাউন্ট রাখুন</string>
 </resources>

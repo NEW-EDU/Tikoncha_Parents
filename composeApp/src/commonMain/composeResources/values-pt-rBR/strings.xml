@@ -1381,4 +1381,6 @@
     <string name="acc_delete_req_confirm_msg">A conta de %1$s, o histórico e as regras que você criou serão apagados para sempre. Isso não pode ser desfeito.</string>
     <string name="del_acc_scheduled_title">Exclusão da conta agendada</string>
     <string name="del_acc_scheduled_msg">Sua conta será excluída em %1$s, para que as regras dos seus filhos não sumam por engano. Mudou de ideia? Entre de novo e a exclusão será cancelada.</string>
+    <string name="del_acc_keep_msg">Sua conta será excluída em %1$s. Se não foi você ou se mudou de ideia, mantenha sua conta.</string>
+    <string name="del_acc_keep_button">Manter conta</string>
 </resources>

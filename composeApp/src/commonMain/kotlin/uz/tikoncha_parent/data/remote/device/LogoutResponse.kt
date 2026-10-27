@@ -18,3 +18,14 @@ data class DeleteAccountResponse(
 
 @Serializable
 data class DeleteAccountData(val status: String? = null, val scheduled_for: String? = null)
+
+/** `GET /users/me/deletion`: sayt, bot yoki ilovadan söralgan öçiriş 7 kun kutayotgan bölsa — sanasi. */
+@Serializable
+data class DeletionStatusResponse(
+    val success: Boolean,
+    val data: DeletionStatusData? = null,
+    val error: String? = null,
+)
+
+@Serializable
+data class DeletionStatusData(val scheduled_for: String? = null)

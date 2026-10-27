@@ -27,4 +27,7 @@ data class HomeState(
     val protectionPendingRequestCount: Int = 0,
     val protectionPermissionOffCount: Int = 0,
     val protectionLoaded: Boolean = false,
+
+    /** Akkaunt öçirişga navbatda (sayt/bot/ilova, 7 kun): sana (YYYY-MM-DD) — "Akkauntni saqlaş" oynasi. */
+    val deletionScheduledFor: String? = null,
 )

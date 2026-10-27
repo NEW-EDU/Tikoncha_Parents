@@ -1381,4 +1381,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s-ის ანგარიში, ისტორია და თქვენი წესები სამუდამოდ წაიშლება. ამის გაუქმება შეუძლებელია.</string>
     <string name="del_acc_scheduled_title">ანგარიშის წაშლა დაგეგმილია</string>
     <string name="del_acc_scheduled_msg">თქვენი ანგარიში წაიშლება %1$s-ს, რომ შვილების წესები შემთხვევით არ გაქრეს. გადაიფიქრეთ? თავიდან შედით და წაშლა გაუქმდება.</string>
+    <string name="del_acc_keep_msg">თქვენი ანგარიში წაიშლება %1$s-ს. თუ ეს თქვენ არ იყავით ან გადაიფიქრეთ, შეინარჩუნეთ ანგარიში.</string>
+    <string name="del_acc_keep_button">ანგარიშის შენარჩუნება</string>
 </resources>

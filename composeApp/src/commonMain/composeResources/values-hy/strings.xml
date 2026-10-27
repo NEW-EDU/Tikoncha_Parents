@@ -1381,4 +1381,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s-ի հաշիվը, պատմությունը և ձեր կանոնները ընդմիշտ կջնջվեն։ Սա հնարավոր չէ հետ շրջել։</string>
     <string name="del_acc_scheduled_title">Հաշվի ջնջումը նախատեսված է</string>
     <string name="del_acc_scheduled_msg">Ձեր հաշիվը կջնջվի %1$s-ին, որպեսզի երեխաների կանոնները պատահաբար չանհետանան։ Մտափոխվե՞լ եք։ Կրկին մուտք գործեք, և ջնջումը կչեղարկվի։</string>
+    <string name="del_acc_keep_msg">Ձեր հաշիվը կջնջվի %1$s-ին։ Եթե դա դուք չեք եղել կամ մտափոխվել եք, պահեք հաշիվը։</string>
+    <string name="del_acc_keep_button">Պահել հաշիվը</string>
 </resources>

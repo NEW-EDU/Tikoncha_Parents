@@ -8,4 +8,7 @@ interface DeviceRepository {
     suspend fun logout(fcmToken: String): Outcome<Unit>
     /** @return öçiriş sanasi (ISO), agar akkaunt 7 kunlik muddat bilan rejalaştirilgan bölsa; darhol öçsa null. */
     suspend fun deleteAccount(): Outcome<String?>
+    /** @return rejalaştirilgan öçiriş sanasi (ISO) yoki null. */
+    suspend fun scheduledDeletion(): Outcome<String?>
+    suspend fun cancelDeletion(): Outcome<Unit>
 }

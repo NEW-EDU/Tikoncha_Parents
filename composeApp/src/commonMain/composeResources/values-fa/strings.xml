@@ -1365,4 +1365,6 @@
     <string name="acc_delete_req_confirm_msg">حساب %1$s، سابقهٔ آن و قوانینی که گذاشته‌اید برای همیشه پاک می‌شوند. این کار قابل بازگشت نیست.</string>
     <string name="del_acc_scheduled_title">حذف حساب زمان‌بندی شد</string>
     <string name="del_acc_scheduled_msg">حساب شما در %1$s حذف می‌شود تا قوانین فرزندانتان ناگهان از بین نروند. نظرتان عوض شد؟ دوباره وارد شوید تا حذف لغو شود.</string>
+    <string name="del_acc_keep_msg">حساب شما در %1$s حذف می‌شود. اگر این درخواست از شما نبوده یا نظرتان عوض شده، حساب را نگه دارید.</string>
+    <string name="del_acc_keep_button">نگه‌داشتن حساب</string>
 </resources>

@@ -1364,4 +1364,6 @@
     <string name="acc_delete_req_confirm_msg">Акаунт %1$s, його історію та ваші правила буде видалено назавжди. Це не можна скасувати.</string>
     <string name="del_acc_scheduled_title">Видалення акаунта заплановано</string>
     <string name="del_acc_scheduled_msg">Акаунт буде видалено %1$s, щоб правила ваших дітей не зникли випадково. Передумали — увійдіть знову, і видалення скасується.</string>
+    <string name="del_acc_keep_msg">Акаунт буде видалено %1$s. Якщо це були не ви або ви передумали — залиште акаунт.</string>
+    <string name="del_acc_keep_button">Залишити акаунт</string>
 </resources>

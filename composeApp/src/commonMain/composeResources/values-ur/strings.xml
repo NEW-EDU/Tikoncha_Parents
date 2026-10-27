@@ -1381,4 +1381,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s کا اکاؤنٹ، اس کی تاریخ اور آپ کے بنائے اصول ہمیشہ کے لیے مٹ جائیں گے۔ اسے واپس نہیں کیا جا سکتا۔</string>
     <string name="del_acc_scheduled_title">اکاؤنٹ حذف کرنا طے ہو گیا</string>
     <string name="del_acc_scheduled_msg">آپ کا اکاؤنٹ %1$s کو حذف ہوگا تاکہ بچوں کے اصول غلطی سے غائب نہ ہوں۔ ارادہ بدل گیا؟ دوبارہ سائن ان کریں، حذف منسوخ ہو جائے گا۔</string>
+    <string name="del_acc_keep_msg">آپ کا اکاؤنٹ %1$s کو حذف ہو جائے گا۔ اگر یہ آپ نے نہیں کیا یا آپ کا ارادہ بدل گیا ہے تو اکاؤنٹ رکھیں۔</string>
+    <string name="del_acc_keep_button">اکاؤنٹ رکھیں</string>
 </resources>

@@ -1381,4 +1381,6 @@
     <string name="acc_delete_req_confirm_msg">%1$s аккаунту, анын тарыхы жана сиз койгон эрежелер биротоло өчөт. Муну артка кайтаруу мүмкүн эмес.</string>
     <string name="del_acc_scheduled_title">Аккаунтту өчүрүү пландалды</string>
     <string name="del_acc_scheduled_msg">Балдарыңыздын эрежелери кокусунан жоголбосун деп аккаунтуңуз %1$s күнү өчүрүлөт. Оюңуз өзгөрсө, кайра кириңиз — өчүрүү жокко чыгат.</string>
+    <string name="del_acc_keep_msg">Аккаунтуңуз %1$s күнү өчүрүлөт. Бул сиз болбосоңуз же оюңузду өзгөртсөңүз, аккаунтту сактап калыңыз.</string>
+    <string name="del_acc_keep_button">Аккаунтту сактоо</string>
 </resources>

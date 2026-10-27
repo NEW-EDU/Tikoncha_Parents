@@ -1381,4 +1381,6 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="acc_delete_req_confirm_msg">Tài khoản của %1$s, lịch sử và các quy tắc bạn đặt sẽ bị xóa vĩnh viễn. Không thể hoàn tác.</string>
     <string name="del_acc_scheduled_title">Đã lên lịch xóa tài khoản</string>
     <string name="del_acc_scheduled_msg">Tài khoản của bạn sẽ bị xóa vào %1$s để quy tắc của con không vô tình biến mất. Đổi ý? Hãy đăng nhập lại, việc xóa sẽ bị hủy.</string>
+    <string name="del_acc_keep_msg">Tài khoản của bạn sẽ bị xóa vào %1$s. Nếu không phải bạn yêu cầu hoặc bạn đổi ý, hãy giữ tài khoản.</string>
+    <string name="del_acc_keep_button">Giữ tài khoản</string>
 </resources>

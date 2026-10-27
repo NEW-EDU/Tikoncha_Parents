@@ -1364,4 +1364,6 @@
     <string name="acc_delete_req_confirm_msg">Das Konto von %1$s, sein Verlauf und deine Regeln werden endgültig gelöscht. Das kann nicht rückgängig gemacht werden.</string>
     <string name="del_acc_scheduled_title">Kontolöschung geplant</string>
     <string name="del_acc_scheduled_msg">Dein Konto wird am %1$s gelöscht, damit die Regeln deiner Kinder nicht versehentlich verschwinden. Meinung geändert? Melde dich wieder an, dann wird die Löschung abgebrochen.</string>
+    <string name="del_acc_keep_msg">Dein Konto wird am %1$s gelöscht. Wenn du das nicht warst oder es dir anders überlegt hast, behalte dein Konto.</string>
+    <string name="del_acc_keep_button">Konto behalten</string>
 </resources>

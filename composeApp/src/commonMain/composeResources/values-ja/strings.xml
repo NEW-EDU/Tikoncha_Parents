@@ -1365,4 +1365,6 @@
     <string name="acc_delete_req_confirm_msg">%1$sさんのアカウント、履歴、設定したルールが完全に削除されます。この操作は取り消せません。</string>
     <string name="del_acc_scheduled_title">アカウント削除を予約しました</string>
     <string name="del_acc_scheduled_msg">お子さまのルールが誤って消えないよう、アカウントは%1$sに削除されます。気が変わったら、もう一度サインインすると削除は取り消されます。</string>
+    <string name="del_acc_keep_msg">アカウントは %1$s に削除されます。ご本人でない場合や気が変わった場合は、アカウントを残してください。</string>
+    <string name="del_acc_keep_button">アカウントを残す</string>
 </resources>

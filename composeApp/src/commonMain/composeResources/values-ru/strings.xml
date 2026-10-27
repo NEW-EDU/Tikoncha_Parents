@@ -1388,4 +1388,6 @@
     <string name="acc_delete_req_confirm_msg">Аккаунт %1$s, его история и ваши правила будут удалены навсегда. Это нельзя отменить.</string>
     <string name="del_acc_scheduled_title">Аккаунт будет удалён</string>
     <string name="del_acc_scheduled_msg">Аккаунт будет удалён %1$s — чтобы правила ваших детей не исчезли случайно. Передумали — снова войдите, и удаление отменится.</string>
+    <string name="del_acc_keep_msg">Аккаунт будет удалён %1$s. Если это были не вы или вы передумали — оставьте аккаунт.</string>
+    <string name="del_acc_keep_button">Оставить аккаунт</string>
 </resources>

@@ -1375,4 +1375,6 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="acc_delete_req_confirm_msg">Le compte de %1$s, son historique et vos règles seront effacés définitivement. C\'est irréversible.</string>
     <string name="del_acc_scheduled_title">Suppression du compte programmée</string>
     <string name="del_acc_scheduled_msg">Votre compte sera supprimé le %1$s, pour que les règles de vos enfants ne disparaissent pas par erreur. Vous changez d\'avis ? Reconnectez-vous et la suppression sera annulée.</string>
+    <string name="del_acc_keep_msg">Votre compte sera supprimé le %1$s. Si ce n\'était pas vous ou si vous avez changé d\'avis, conservez votre compte.</string>
+    <string name="del_acc_keep_button">Conserver le compte</string>
 </resources>
