@@ -31,6 +31,13 @@ class MainActivity : AppCompatActivity() {
             window.isNavigationBarContrastEnforced = false
         }
         super.onCreate(savedInstanceState)
+        // Faqat debug: "server öçdi" sinovi —
+        //   adb shell am start -n uz.tikoncha.parent/uz.tikoncha_parent.MainActivity --es simulate_server_down 1   (öçiriş: 0)
+        if (uz.tikoncha_parent.platform.BuildConfig.isDebug) {
+            intent?.getStringExtra("simulate_server_down")?.let {
+                uz.tikoncha_parent.data.local.AppSettings.setOfflineValue("simulate_server_down", it.takeIf { v -> v == "1" })
+            }
+        }
 
         TelegramLoginCoordinator.bindActivity(this)
         GoogleSignInCoordinator.bindActivity(this)

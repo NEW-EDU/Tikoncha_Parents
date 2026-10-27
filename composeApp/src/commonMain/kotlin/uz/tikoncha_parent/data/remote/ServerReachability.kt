@@ -55,3 +55,17 @@ val IdempotencyKeyPlugin = createClientPlugin("IdempotencyKey") {
         }
     }
 }
+
+
+/**
+ * Faqat debug: "server öçdi" sinovi — yoqilganda har bir so'rov 503 (ServerUnavailableException) bilan yiqiladi va
+ * ilova offline rejimga ötadi (keş, navbat, pill). Android: `am start … --es simulate_server_down 1`;
+ * iPhone: Xcode scheme'da launch argument `-offline_simulate_server_down 1`.
+ */
+val ServerDownSimulationPlugin = createClientPlugin("ServerDownSimulation") {
+    onRequest { _, _ ->
+        if (uz.tikoncha_parent.platform.BuildConfig.isDebug &&
+            uz.tikoncha_parent.data.local.AppSettings.offlineValue("simulate_server_down") == "1"
+        ) throw ServerUnavailableException(503)
+    }
+}

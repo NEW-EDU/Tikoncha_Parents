@@ -73,6 +73,7 @@ class TikonchaClient(private val engine: HttpClientEngine) {
         }
 
         install(IdempotencyKeyPlugin)
+        install(ServerDownSimulationPlugin)   // faqat debug
 
         install(HttpTimeout) {
             requestTimeoutMillis = 15_000
