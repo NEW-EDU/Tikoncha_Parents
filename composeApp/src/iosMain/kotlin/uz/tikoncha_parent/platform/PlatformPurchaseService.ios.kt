@@ -1,149 +1,50 @@
 package uz.tikoncha_parent.platform
 
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
-import kotlin.native.concurrent.ThreadLocal
-import platform.Foundation.NSError
-import platform.StoreKit.*
-import platform.darwin.NSObject
+import kotlinx.coroutines.suspendCancellableCoroutine
 import uz.tikoncha_parent.domain.model.PurchaseResult
 
-@ThreadLocal
-private val storeKitManager = StoreKitPurchaseManager()
-
+/** App Store xaridi StoreKit 2 orqali (Swift ko'prigi). 2026-10-27 gacha StoreKit 1 xaridni serverga yubormasdan
+ *  yopardi — pul yechilardi, PLUS yoqilmasdi. */
 actual class PlatformPurchaseService actual constructor() {
-    actual suspend fun purchase(productId: String): PurchaseResult {
-        return storeKitManager.purchase(productId)
-    }
-}
 
-private class StoreKitPurchaseManager : NSObject(),
-    SKPaymentTransactionObserverProtocol,
-    SKProductsRequestDelegateProtocol {
-
-    private var purchaseCont: ((PurchaseResult) -> Unit)? = null
-    private var productsCont: ((SKProduct?, String?) -> Unit)? = null
-
-    private var inProgress = false
-    private val cache = mutableMapOf<String, SKProduct>()
-
-    // ✅ IMPORTANT: request'ni saqlab turamiz (GC bo‘lib ketmasin)
-    private var productsRequest: SKProductsRequest? = null
-
-    init {
-        SKPaymentQueue.defaultQueue().addTransactionObserver(this)
+    actual suspend fun purchase(productId: String, appAccountToken: String?): PurchaseResult {
+        val bridge = StoreKitBridgeProvider.bridge ?: return PurchaseResult.Error("App Store is not available")
+        return suspendCancellableCoroutine { cont ->
+            bridge.purchase(productId, appAccountToken, object : StoreKitPurchaseCallback {
+                override fun onSigned(jws: String, transactionId: String) { if (cont.isActive) cont.resume(PurchaseResult.Signed(jws, transactionId)) }
+                override fun onCancel() { if (cont.isActive) cont.resume(PurchaseResult.Cancelled) }
+                override fun onPending() { if (cont.isActive) cont.resume(PurchaseResult.Pending) }
+                override fun onError(message: String) { if (cont.isActive) cont.resume(PurchaseResult.Error(message)) }
+            })
+        }
     }
 
-    suspend fun purchase(productId: String): PurchaseResult =
-        suspendCoroutine { cont ->
+    actual fun finish(transactionId: String) {
+        StoreKitBridgeProvider.bridge?.finish(transactionId)
+    }
 
-            if (inProgress) {
-                cont.resume(PurchaseResult.Error("Purchase already in progress"))
-                return@suspendCoroutine
-            }
-
-            if (!SKPaymentQueue.canMakePayments()) {
-                cont.resume(PurchaseResult.Error("Payments are disabled on this device"))
-                return@suspendCoroutine
-            }
-
-            inProgress = true
-            purchaseCont = { r ->
-                inProgress = false
-                cont.resume(r)
-            }
-
-            fetchProduct(productId) { product, error ->
-                if (product == null) {
-                    purchaseCont?.invoke(PurchaseResult.Error(error ?: "Product not found"))
-                    purchaseCont = null
-                    return@fetchProduct
+    actual suspend fun unfinished(): List<PurchaseResult.Signed> {
+        val bridge = StoreKitBridgeProvider.bridge ?: return emptyList()
+        return suspendCancellableCoroutine { cont ->
+            bridge.unfinished(object : StoreKitListCallback {
+                override fun onResult(items: List<String>) {
+                    if (!cont.isActive) return
+                    cont.resume(items.mapNotNull { line ->
+                        val i = line.indexOf('\t')
+                        if (i <= 0) null else PurchaseResult.Signed(jws = line.substring(i + 1), transactionId = line.substring(0, i))
+                    })
                 }
-
-                val payment = SKPayment.paymentWithProduct(product)
-                SKPaymentQueue.defaultQueue().addPayment(payment)
-            }
+            })
         }
-
-    private fun fetchProduct(productId: String, cb: (SKProduct?, String?) -> Unit) {
-        cache[productId]?.let { cached ->
-            cb(cached, null)
-            return
-        }
-
-        productsCont = cb
-
-        // ✅ StoreKit expects Set<String> — setOf(productId) to‘g‘ri
-        val req = SKProductsRequest(productIdentifiers = setOf(productId))
-        productsRequest = req
-        req.delegate = this
-        req.start()
     }
 
-    override fun productsRequest(request: SKProductsRequest, didReceiveResponse: SKProductsResponse) {
-        // request tugadi — endi release qilamiz
-        productsRequest = null
-
-        val products = didReceiveResponse.products.filterIsInstance<SKProduct>()
-        val invalid = didReceiveResponse.invalidProductIdentifiers
-            ?.filterIsInstance<String>()
-            ?: emptyList()
-
-        // ✅ DEBUG LOG (Xcode console’da ko‘rasiz)
-        println("IAP products returned: ${products.map { it.productIdentifier }}")
-        println("IAP invalid ids: $invalid")
-
-        val product = products.firstOrNull()
-        if (product != null) {
-            cache[product.productIdentifier] = product
-            productsCont?.invoke(product, null)
-        } else {
-            val reason =
-                if (invalid.isNotEmpty()) "Invalid product id(s): ${invalid.joinToString()}"
-                else "No products returned. Check App Store Connect status / sandbox / bundleId / build."
-            productsCont?.invoke(null, reason)
+    actual suspend fun displayPrice(productId: String): String? {
+        val bridge = StoreKitBridgeProvider.bridge ?: return null
+        return suspendCancellableCoroutine { cont ->
+            bridge.displayPrice(productId, object : StoreKitPriceCallback {
+                override fun onResult(price: String?) { if (cont.isActive) cont.resume(price) }
+            })
         }
-
-        productsCont = null
-    }
-
-    override fun request(request: SKRequest, didFailWithError: NSError) {
-        productsRequest = null
-        productsCont?.invoke(null, didFailWithError.localizedDescription ?: "Products request failed")
-        productsCont = null
-    }
-
-    override fun paymentQueue(queue: SKPaymentQueue, updatedTransactions: List<*>) {
-        updatedTransactions
-            .filterIsInstance<SKPaymentTransaction>()
-            .forEach { tx ->
-                when (tx.transactionState) {
-
-                    SKPaymentTransactionState.SKPaymentTransactionStatePurchased -> {
-                        purchaseCont?.invoke(PurchaseResult.Success)
-                        purchaseCont = null
-                        queue.finishTransaction(tx)
-                    }
-
-                    SKPaymentTransactionState.SKPaymentTransactionStateFailed -> {
-                        val cancelled = (tx.error as? NSError)?.code == SKErrorCode.SKErrorPaymentCancelled.value
-                        val msg = tx.error?.localizedDescription ?: "Purchase failed"
-
-                        purchaseCont?.invoke(
-                            if (cancelled) PurchaseResult.Cancelled
-                            else PurchaseResult.Error(msg)
-                        )
-                        purchaseCont = null
-                        queue.finishTransaction(tx)
-                    }
-
-                    SKPaymentTransactionState.SKPaymentTransactionStateDeferred -> {
-                        purchaseCont?.invoke(PurchaseResult.Pending)
-                        purchaseCont = null
-                    }
-
-                    else -> Unit
-                }
-            }
     }
 }

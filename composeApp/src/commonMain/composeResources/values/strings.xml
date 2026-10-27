@@ -1372,4 +1372,5 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="pay_abroad_title">Bu mamlakatda to'lov hozircha yöq</string>
     <string name="pay_abroad_body">Android ilovada PLUS'ni hozircha faqat O'zbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
     <string name="pay_abroad_coins_body">Tangalarni hozircha faqat O'zbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
+    <string name="apple_activation_pending">Tölov qabul qilindi — PLUS bir necha daqiqada yoqiladi. Yoqilmasa, bizga yozing.</string>
 </resources>

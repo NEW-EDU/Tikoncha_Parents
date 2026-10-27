@@ -27,6 +27,16 @@ class PaymentApiService(private val client: HttpClient) {
             block = {}
         )
 
+    /** App Store xaridi (StoreKit 2 JWS) — server tekshiradi va PLUS'ni farzandga yoqadi. */
+    suspend fun reportAppleTransaction(
+        body: uz.tikoncha_parent.data.remote.model.payment.AppleTransactionRequest,
+    ): uz.tikoncha_parent.data.remote.model.ApiEnvelope<uz.tikoncha_parent.data.remote.model.payment.AppleSubscriptionData> =
+        client.safeRequest(
+            method = HttpMethod.Post,
+            url = "subscriptions/apple/transactions",
+            block = { setBody(body) }
+        )
+
     suspend fun subscriptionLimits(): SubscriptionLimitResponse =
         client.safeRequest(
             method = HttpMethod.Get,

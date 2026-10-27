@@ -1362,4 +1362,5 @@ This information is used only for these features and is not shared with third pa
     <string name="pay_abroad_title">Payment isn't available in your country yet</string>
     <string name="pay_abroad_body">In the Android app, PLUS can only be paid with an Uzbek card for now. Write to us and we'll help.</string>
     <string name="pay_abroad_coins_body">Coins can only be bought with an Uzbek card for now. Write to us and we'll help.</string>
+    <string name="apple_activation_pending">Payment received — PLUS will turn on within a few minutes. If it doesn't, write to us.</string>
 </resources>

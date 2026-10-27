@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 import uz.tikoncha_parent.domain.repository.PaymentRegionRepository
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.tolov_amalga_oshmadi
+import tikoncha_parents.composeapp.generated.resources.apple_activation_pending
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.data.remote.model.SubscriptionPaymentRequest
 import uz.tikoncha_parent.data.remote.model.subscription.PromoCodeValidationRequest
@@ -100,6 +101,7 @@ class PaymentViewModel(
             }
 
             is PaymentEvent.SetSubscriptionDuration -> {
+                loadStorePrice(event.duration)
                 _state.update {
                     it.copy(
                         subscriptionDuration = event.duration
@@ -168,6 +170,17 @@ class PaymentViewModel(
         }
     }
 
+    private fun productId(duration: SubscriptionDuration) =
+        if (duration == SubscriptionDuration.MONTHLY) "tikoncha.parent.monthly.v2" else "tikoncha.parent.yearly.v2"
+
+    /** App Store ko'rsatadigan narx (UZS emas) — foydalanuvchi qancha to'lashini aynan ko'radi. */
+    private fun loadStorePrice(duration: SubscriptionDuration) {
+        screenModelScope.launch {
+            val price = runCatching { purchaseIApPremiumUseCase.displayPrice(productId(duration)) }.getOrNull()
+            _state.update { it.copy(storePrice = price) }
+        }
+    }
+
     private fun requestApplyPay(){
         screenModelScope.launch {
             val productId = if (state.value.subscriptionDuration == SubscriptionDuration.MONTHLY){
@@ -177,7 +190,8 @@ class PaymentViewModel(
                 "tikoncha.parent.yearly.v2"
             }
 
-            when(val result = purchaseIApPremiumUseCase.invoke(productId)){
+            _state.update { it.copy(applePaymentResponseState = ResponseState.Loading) }
+            when(val result = purchaseIApPremiumUseCase.invoke(productId, AppSettings.selectedChild?.userId)){
                 PurchaseResult.Cancelled -> {
                     _state.update {
                         it.copy(
@@ -190,12 +204,14 @@ class PaymentViewModel(
                 is PurchaseResult.Error -> {
                     _state.update {
                         it.copy(
-                            applePaymentResponseState = ResponseState.Error(
-                                message = result.message
-                            )
+                            // Pul yechildi, server hali tasdiqlamadi — xarid ochiq qoladi va keyin qayta yuboriladi
+                            applePaymentResponseState = if (result.message == "activation_pending")
+                                ResponseState.Error(res = Res.string.apple_activation_pending)
+                            else ResponseState.Error(message = result.message)
                         )
                     }
                 }
+                is PurchaseResult.Signed -> Unit // use case serverga yuborib Success/Error qaytaradi
                 PurchaseResult.Pending -> {
                     _state.update {
                         it.copy(

@@ -169,6 +169,12 @@ private fun AuthEventListener(navigator: Navigator) {
         onDismiss = { showDialog = false },
     )
 
+    // iPhone: pul yechilgan, lekin server hali tasdiqlamagan App Store xaridlari (internet uzilgan, ilova yopilgan)
+    val iap: uz.tikoncha_parent.domain.use_case.payment.PurchaseIApPremiumUseCase = org.koin.compose.koinInject()
+    LaunchedEffect(Unit) {
+        if (uz.tikoncha_parent.platform.isIos()) runCatching { iap.retryPending() }
+    }
+
     LaunchedEffect(navigator) {
         AuthEventBus.events.collect { event ->
             when (event) {

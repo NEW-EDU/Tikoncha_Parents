@@ -113,4 +113,13 @@ class PaymentRepositoryImpl(
     private companion object {
         const val TAG = "PaymentRepository"
     }
+
+    override suspend fun reportApplePurchase(jws: String, childId: String?): Outcome<Unit> =
+        apiCall(TAG) {
+            val r = api.reportAppleTransaction(
+                uz.tikoncha_parent.data.remote.model.payment.AppleTransactionRequest(jws, childId)
+            )
+            if (r.success) Outcome.Success(Unit) else Outcome.Failure(ApiErrorMapper.fromCode(r.code), r.error)
+        }
+
 }

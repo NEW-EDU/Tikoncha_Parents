@@ -306,7 +306,12 @@ fun PaymentTypeScreenUi(
             Spacer(Modifier.height(29.dp))
 
 
-            val priceText = buildAnnotatedString {
+            val storePrice = state.storePrice.takeIf { state.selectedPaymentType == PaymentType.AppStore }
+            val periodLabel = stringResource(if (state.subscriptionDuration == SubscriptionDuration.MONTHLY) Res.string.oylik else Res.string.yillik)
+            val priceText = if (storePrice != null) buildAnnotatedString {
+                // App Store narxi foydalanuvchi valyutasida — UZS emas
+                withStyle(SpanStyle(color = AppColors.text.inverse)) { append("$storePrice · $periodLabel") }
+            } else buildAnnotatedString {
                 withStyle(
                     SpanStyle(
                         color = AppColors.text.inverse,

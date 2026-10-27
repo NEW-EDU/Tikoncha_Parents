@@ -37,4 +37,7 @@
         suspend fun paymentTransactions(limit: Int, offset: Int): Outcome<TransactionPage>
 
         suspend fun getSubscriptionStatus(userId: String? = null): Outcome<SubscriptionStatus>
+
+        /** App Store xaridini serverga tasdiqlatish: PLUS [childId]ga (null — xariddagi appAccountToken). */
+        suspend fun reportApplePurchase(jws: String, childId: String?): Outcome<Unit>
     }

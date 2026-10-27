@@ -17,6 +17,8 @@ data class PaymentState(
     val paymentStatusError: Outcome.Failure? = null,
     /** iPhone va O'zbekistondan tashqarida: faqat App Store (mahalliy to'lovlar ko'rsatilmaydi). */
     val appStoreOnly: Boolean = false,
+    /** App Store narxi foydalanuvchi valyutasida ("4,99 €"); null — hali yo'q yoki Android. */
+    val storePrice: String? = null,
     val planId: String = "",
 
     val promoCodeResponseState: ResponseState<Nothing> = ResponseState.Idle,

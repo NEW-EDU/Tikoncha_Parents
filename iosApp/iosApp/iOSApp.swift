@@ -28,6 +28,8 @@ struct iOSApp: App {
         TelegramAuthBridgeProvider.shared.bridge = TelegramAuthBridgeImpl()
         // --- Apple / Google ---
         SocialAuthBridgeProvider.shared.bridge = SocialAuthBridgeImpl()
+        // --- App Store (StoreKit 2) ---
+        StoreKitBridgeProvider.shared.bridge = StoreKitBridgeImpl()
     }
 
     var body: some Scene {

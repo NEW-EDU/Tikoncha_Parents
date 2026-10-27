@@ -208,7 +208,7 @@ val sharedModule = module {
     single { SendMessageApiUseCase(get()) }
 
     single { ChatConnectionManager(get()) }
-    single { PurchaseIApPremiumUseCase(get()) }
+    single { PurchaseIApPremiumUseCase(get(), get()) }
     single { CheckUpdateUseCase(get()) }
     single { ObserveInstallEventsUseCase(get()) }
     single { CompleteFlexibleUpdateUseCase(get()) }
