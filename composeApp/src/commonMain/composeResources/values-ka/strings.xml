@@ -498,16 +498,16 @@
 
     <string name="tracking_checking_settings">შვილის პარამეტრები მოწმდება...</string>
     <string name="tracking_watch_video">ვიდეოს ნახვა</string>
-    <string name="danger_places">სახიფათო ადგილები</string>
-    <string name="danger_places_help">ბავშვიდან 1,5 კმ რადიუსში: ღამის კლუბები, ბარები, კალიანის ბარები, კაზინოები, ტოტალიზატორები, ალკოჰოლისა და თამბაქოს მაღაზიები. მონაცემები OpenStreetMap-იდან — ზოგი ადგილი შეიძლება აკლდეს.</string>
-    <string name="danger_places_radius">1,5 კმ რადიუსში</string>
-    <string name="danger_places_none">სახიფათო ადგილი ვერ მოიძებნა</string>
+    <string name="danger_places">საშიში ადგილები</string>
+    <string name="danger_places_help">თქვენი შვილიდან 1,5 კმ-ის რადიუსში: ღამის კლუბები, ბარები, კალიანის ბარები, კაზინოები, ტოტალიზატორები, ალკოჰოლისა და თამბაქოს მაღაზიები. მონაცემები OpenStreetMap-დან — ზოგი ადგილი შეიძლება არ იყოს.</string>
+    <string name="danger_places_radius">1,5 კმ-ის რადიუსში</string>
+    <string name="danger_places_none">საშიში ადგილები ვერ მოიძებნა</string>
     <string name="danger_places_failed">ჩატვირთვა ვერ მოხერხდა</string>
     <string name="danger_cat_nightlife">ღამის კლუბი ან ბარი</string>
     <string name="danger_cat_gambling">აზარტული თამაშები და ფსონები</string>
-    <string name="danger_cat_adult">მხოლოდ ზრდასრულებისთვის</string>
+    <string name="danger_cat_adult">მხოლოდ ზრდასრულთათვის</string>
     <string name="danger_cat_alcohol">ალკოჰოლი</string>
-    <string name="danger_cat_tobacco">თამბაქო და ვეიპი</string>
+    <string name="danger_cat_tobacco">თამბაქო და ვეიპები</string>
     <string name="danger_distance_m">%1$d მ</string>
     <string name="radius">რადიუსი</string>
     <string name="farzandim">ჩემი შვილი</string>
@@ -1343,4 +1343,24 @@
     <string name="ai_done_deleted">წაიშალა</string>
     <string name="ai_done_approved">დაშვებულია</string>
     <string name="ai_done_rejected">უარყოფილია</string>
+    <string name="parent_special_title">დამატებითი დაცვა</string>
+    <string name="parent_special_card">სურათები, საუბრები, ინკოგნიტო, სარისკო ადგილები</string>
+    <string name="parent_special_info_title">მუშაობს თქვენი შვილის ტელეფონზე</string>
+    <string name="parent_special_info_1">თქვენ მიერ ჩართულ დაცვას შვილი ვერ გამორთავს. ის ამას თავის აპში დაინახავს.</string>
+    <string name="parent_special_info_2">რისკის შემთხვევაში მხოლოდ თემასა და აპის სახელს იღებთ — არასოდეს შეტყობინების ტექსტს ან სურათს.</string>
+    <string name="parent_special_info_3">Android-ზე საჭიროა ფარის რეჟიმი. iPhone-ზე: 18+ ვებსაიტები და Hoglagram-ის საუბრები.</string>
+    <string name="parent_special_nsfw_title">შეუფერებელი სურათები</string>
+    <string name="parent_special_nsfw_desc">18+ სურათები იხურება და შეტყობინებას იღებთ</string>
+    <string name="parent_special_conv_title">სარისკო საუბრები</string>
+    <string name="parent_special_conv_desc">შეტყობინებას იღებთ მესენჯერებში სარისკო საუბრების შესახებ</string>
+    <string name="parent_special_incognito_title">ინკოგნიტო რეჟიმი</string>
+    <string name="parent_special_incognito_desc">ბრაუზერის პირადი ჩანართები იხურება</string>
+    <string name="parent_special_zones_title">სარისკო ადგილები</string>
+    <string name="parent_special_zones_desc">შეტყობინებას მიიღებთ, თუ შვილი დიდხანს დარჩება წყალთან, სამშენებლო მოედანთან ან კლუბთან</string>
+    <string name="parent_special_footer">შვილს შეუძლია ეს საკუთარი თავისთვისაც ჩართოს — მაშინ გაფრთხილებებს მხოლოდ ის მიიღებს.</string>
+    <string name="parent_special_paywall">სარისკო საუბრები და ინკოგნიტო რეჟიმი PLUS-შია.</string>
+    <string name="pay_abroad_title">გადახდა თქვენს ქვეყანაში ჯერ მიუწვდომელია</string>
+    <string name="pay_abroad_body">Android-ის აპში PLUS-ის გადახდა ჯერჯერობით მხოლოდ უზბეკური ბარათით შეიძლება. მოგვწერეთ — დაგეხმარებით.</string>
+    <string name="pay_abroad_coins_body">მონეტების ყიდვა ჯერჯერობით მხოლოდ უზბეკური ბარათით შეიძლება. მოგვწერეთ — დაგეხმარებით.</string>
+    <string name="apple_activation_pending">გადახდა მიღებულია — PLUS რამდენიმე წუთში ჩაირთვება. თუ არა, მოგვწერეთ.</string>
 </resources>

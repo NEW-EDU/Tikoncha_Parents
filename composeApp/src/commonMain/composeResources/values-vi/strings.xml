@@ -1343,4 +1343,24 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="ai_done_deleted">Đã xóa</string>
     <string name="ai_done_approved">Được phép</string>
     <string name="ai_done_rejected">Đã từ chối</string>
+    <string name="parent_special_title">Bảo vệ thêm</string>
+    <string name="parent_special_card">Hình ảnh, trò chuyện, ẩn danh, địa điểm rủi ro</string>
+    <string name="parent_special_info_title">Hoạt động trên điện thoại của con</string>
+    <string name="parent_special_info_1">Con không thể tắt bảo vệ do bạn bật. Con sẽ thấy điều này trong ứng dụng của mình.</string>
+    <string name="parent_special_info_2">Nếu có rủi ro, bạn chỉ nhận được chủ đề và tên ứng dụng — không bao giờ nhận nội dung tin nhắn hay hình ảnh.</string>
+    <string name="parent_special_info_3">Trên Android cần chế độ Khiên. Trên iPhone: trang web 18+ và trò chuyện Hoglagram.</string>
+    <string name="parent_special_nsfw_title">Hình ảnh không phù hợp</string>
+    <string name="parent_special_nsfw_desc">Ảnh 18+ bị đóng và bạn được thông báo</string>
+    <string name="parent_special_conv_title">Trò chuyện rủi ro</string>
+    <string name="parent_special_conv_desc">Bạn được thông báo về các cuộc trò chuyện rủi ro trong ứng dụng nhắn tin</string>
+    <string name="parent_special_incognito_title">Chế độ ẩn danh</string>
+    <string name="parent_special_incognito_desc">Các tab riêng tư của trình duyệt sẽ bị đóng</string>
+    <string name="parent_special_zones_title">Địa điểm rủi ro</string>
+    <string name="parent_special_zones_desc">Bạn được thông báo nếu con ở lâu gần nước, công trường hoặc câu lạc bộ</string>
+    <string name="parent_special_footer">Con cũng có thể tự bật các tính năng này — khi đó chỉ con nhận được cảnh báo.</string>
+    <string name="parent_special_paywall">Trò chuyện rủi ro và chế độ ẩn danh có trong gói PLUS.</string>
+    <string name="pay_abroad_title">Thanh toán chưa có ở quốc gia của bạn</string>
+    <string name="pay_abroad_body">Trong ứng dụng Android, hiện chỉ có thể thanh toán PLUS bằng thẻ Uzbekistan. Hãy nhắn cho chúng tôi để được hỗ trợ.</string>
+    <string name="pay_abroad_coins_body">Hiện chỉ có thể mua xu bằng thẻ Uzbekistan. Hãy nhắn cho chúng tôi để được hỗ trợ.</string>
+    <string name="apple_activation_pending">Đã nhận thanh toán — PLUS sẽ bật trong vài phút. Nếu không, hãy nhắn cho chúng tôi.</string>
 </resources>

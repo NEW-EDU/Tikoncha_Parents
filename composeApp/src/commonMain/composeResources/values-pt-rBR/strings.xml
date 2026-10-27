@@ -498,15 +498,15 @@
 
     <string name="tracking_checking_settings">Verificando as configurações do filho...</string>
     <string name="tracking_watch_video">Assistir ao vídeo</string>
-    <string name="danger_places">Locais perigosos</string>
-    <string name="danger_places_help">Num raio de 1,5 km do seu filho: casas noturnas, bares, narguilerias, cassinos, casas de apostas, lojas de bebidas e de tabaco. Dados do OpenStreetMap — alguns locais podem faltar.</string>
+    <string name="danger_places">Lugares perigosos</string>
+    <string name="danger_places_help">Num raio de 1,5 km do seu filho: casas noturnas, bares, tabacarias de narguilé, cassinos, casas de apostas, lojas de bebidas e de tabaco. Dados do OpenStreetMap: alguns lugares podem estar faltando.</string>
     <string name="danger_places_radius">num raio de 1,5 km</string>
-    <string name="danger_places_none">Nenhum local perigoso encontrado</string>
+    <string name="danger_places_none">Nenhum lugar perigoso encontrado</string>
     <string name="danger_places_failed">Não foi possível carregar</string>
     <string name="danger_cat_nightlife">Casa noturna ou bar</string>
     <string name="danger_cat_gambling">Jogos de azar e apostas</string>
     <string name="danger_cat_adult">Só para adultos</string>
-    <string name="danger_cat_alcohol">Bebidas alcoólicas</string>
+    <string name="danger_cat_alcohol">Álcool</string>
     <string name="danger_cat_tobacco">Tabaco e vapes</string>
     <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Raio</string>
@@ -1343,4 +1343,24 @@
     <string name="ai_done_deleted">Excluída</string>
     <string name="ai_done_approved">Permitido</string>
     <string name="ai_done_rejected">Recusado</string>
+    <string name="parent_special_title">Proteção extra</string>
+    <string name="parent_special_card">Imagens, conversas, modo anônimo, lugares de risco</string>
+    <string name="parent_special_info_title">Funciona no celular do seu filho</string>
+    <string name="parent_special_info_1">Seu filho não pode desativar a proteção que você ativar. Ele vai vê-la no app dele.</string>
+    <string name="parent_special_info_2">Se houver risco, você recebe só o tema e o nome do app — nunca o texto da mensagem nem a imagem.</string>
+    <string name="parent_special_info_3">No Android, é preciso o Modo Escudo. No iPhone: sites 18+ e conversas do Hoglagram.</string>
+    <string name="parent_special_nsfw_title">Imagens impróprias</string>
+    <string name="parent_special_nsfw_desc">Imagens 18+ são fechadas e você é avisado</string>
+    <string name="parent_special_conv_title">Conversas de risco</string>
+    <string name="parent_special_conv_desc">Você é avisado sobre conversas de risco em mensageiros</string>
+    <string name="parent_special_incognito_title">Modo anônimo</string>
+    <string name="parent_special_incognito_desc">Abas privadas do navegador são fechadas</string>
+    <string name="parent_special_zones_title">Lugares de risco</string>
+    <string name="parent_special_zones_desc">Você é avisado se seu filho ficar perto de água, de uma obra ou de uma casa noturna</string>
+    <string name="parent_special_footer">Seu filho também pode ativar isso para si mesmo — aí só ele recebe os avisos.</string>
+    <string name="parent_special_paywall">Conversas de risco e modo anônimo vêm com o PLUS.</string>
+    <string name="pay_abroad_title">O pagamento ainda não está disponível no seu país</string>
+    <string name="pay_abroad_body">No app para Android, o PLUS por enquanto só pode ser pago com um cartão do Uzbequistão. Fale com a gente que ajudamos.</string>
+    <string name="pay_abroad_coins_body">Por enquanto as moedas só podem ser compradas com um cartão do Uzbequistão. Fale com a gente que ajudamos.</string>
+    <string name="apple_activation_pending">Pagamento recebido — o PLUS será ativado em alguns minutos. Se não for, fale com a gente.</string>
 </resources>

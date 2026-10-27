@@ -482,7 +482,7 @@
     <string name="tracking_checking_settings">Einstellungen des Kindes werden geprüft …</string>
     <string name="tracking_watch_video">Video ansehen</string>
     <string name="danger_places">Gefährliche Orte</string>
-    <string name="danger_places_help">Im Umkreis von 1,5 km um dein Kind: Nachtclubs, Bars, Shisha-Lounges, Casinos, Wettbüros, Spirituosen- und Tabakläden. Daten von OpenStreetMap – einige Orte können fehlen.</string>
+    <string name="danger_places_help">Im Umkreis von 1,5 km um dein Kind: Nachtclubs, Bars, Shisha-Bars, Casinos, Wettbüros, Alkohol- und Tabakläden. Daten von OpenStreetMap – einige Orte können fehlen.</string>
     <string name="danger_places_radius">im Umkreis von 1,5 km</string>
     <string name="danger_places_none">Keine gefährlichen Orte gefunden</string>
     <string name="danger_places_failed">Laden fehlgeschlagen</string>
@@ -1326,4 +1326,24 @@
     <string name="ai_done_deleted">Gelöscht</string>
     <string name="ai_done_approved">Erlaubt</string>
     <string name="ai_done_rejected">Abgelehnt</string>
+    <string name="parent_special_title">Zusätzlicher Schutz</string>
+    <string name="parent_special_card">Bilder, Chats, Inkognito, riskante Orte</string>
+    <string name="parent_special_info_title">Funktioniert auf dem Handy deines Kindes</string>
+    <string name="parent_special_info_1">Dein Kind kann Schutz, den du einschaltest, nicht ausschalten. Es sieht ihn in seiner App.</string>
+    <string name="parent_special_info_2">Bei einem Risiko erfährst du nur das Thema und den App-Namen – nie den Nachrichtentext oder das Bild.</string>
+    <string name="parent_special_info_3">Auf Android ist der Schutzschild-Modus nötig. Auf dem iPhone: Websites ab 18 und Hoglagram-Chats.</string>
+    <string name="parent_special_nsfw_title">Unangemessene Bilder</string>
+    <string name="parent_special_nsfw_desc">Bilder ab 18 werden geschlossen und du wirst benachrichtigt</string>
+    <string name="parent_special_conv_title">Riskante Chats</string>
+    <string name="parent_special_conv_desc">Du wirst über riskante Gespräche in Messengern benachrichtigt</string>
+    <string name="parent_special_incognito_title">Inkognito-Modus</string>
+    <string name="parent_special_incognito_desc">Private Browser-Tabs werden geschlossen</string>
+    <string name="parent_special_zones_title">Riskante Orte</string>
+    <string name="parent_special_zones_desc">Du wirst benachrichtigt, wenn dein Kind sich länger an Gewässern, Baustellen oder Clubs aufhält</string>
+    <string name="parent_special_footer">Dein Kind kann sie auch für sich selbst einschalten – dann bekommt nur es die Warnungen.</string>
+    <string name="parent_special_paywall">Riskante Chats und Inkognito-Modus gibt es mit PLUS.</string>
+    <string name="pay_abroad_title">Zahlung in deinem Land noch nicht verfügbar</string>
+    <string name="pay_abroad_body">In der Android-App kann PLUS vorerst nur mit einer usbekischen Karte bezahlt werden. Schreib uns – wir helfen dir.</string>
+    <string name="pay_abroad_coins_body">Münzen können vorerst nur mit einer usbekischen Karte gekauft werden. Schreib uns – wir helfen dir.</string>
+    <string name="apple_activation_pending">Zahlung erhalten – PLUS wird in wenigen Minuten aktiviert. Falls nicht, schreib uns.</string>
 </resources>

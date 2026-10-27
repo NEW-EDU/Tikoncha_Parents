@@ -499,7 +499,7 @@
     <string name="tracking_checking_settings">Երեխայի կարգավորումները ստուգվում են...</string>
     <string name="tracking_watch_video">Դիտել տեսանյութը</string>
     <string name="danger_places">Վտանգավոր վայրեր</string>
-    <string name="danger_places_help">Երեխայից 1,5 կմ շառավղում՝ գիշերային ակումբներ, բարեր, նարգիլեի սրահներ, խաղատներ, խաղադրույքների կետեր, ալկոհոլի և ծխախոտի խանութներ։ Տվյալները OpenStreetMap-ից են, որոշ վայրեր կարող են բացակայել։</string>
+    <string name="danger_places_help">Ձեր երեխայից 1,5 կմ շառավղում՝ գիշերային ակումբներ, բարեր, նարգիլեի սրահներ, կազինոներ, խաղադրույքների կետեր, ալկոհոլի և ծխախոտի խանութներ։ Տվյալները OpenStreetMap-ից են, որոշ վայրեր կարող են բացակայել։</string>
     <string name="danger_places_radius">1,5 կմ շառավղում</string>
     <string name="danger_places_none">Վտանգավոր վայրեր չեն գտնվել</string>
     <string name="danger_places_failed">Չհաջողվեց բեռնել</string>
@@ -507,7 +507,7 @@
     <string name="danger_cat_gambling">Մոլախաղեր և խաղադրույքներ</string>
     <string name="danger_cat_adult">Միայն մեծահասակների համար</string>
     <string name="danger_cat_alcohol">Ալկոհոլ</string>
-    <string name="danger_cat_tobacco">Ծխախոտ և վեյփ</string>
+    <string name="danger_cat_tobacco">Ծխախոտ և վեյփեր</string>
     <string name="danger_distance_m">%1$d մ</string>
     <string name="radius">Շառավիղ</string>
     <string name="farzandim">Իմ երեխան</string>
@@ -1343,4 +1343,24 @@
     <string name="ai_done_deleted">Ջնջված</string>
     <string name="ai_done_approved">Թույլատրված</string>
     <string name="ai_done_rejected">Մերժված</string>
+    <string name="parent_special_title">Լրացուցիչ պաշտպանություն</string>
+    <string name="parent_special_card">Պատկերներ, զրույցներ, ինկոգնիտո, ռիսկային վայրեր</string>
+    <string name="parent_special_info_title">Աշխատում է ձեր երեխայի հեռախոսում</string>
+    <string name="parent_special_info_1">Ձեր երեխան չի կարող անջատել ձեր միացրած պաշտպանությունը։ Նա դա կտեսնի իր հավելվածում։</string>
+    <string name="parent_special_info_2">Ռիսկի դեպքում դուք ստանում եք միայն թեման և հավելվածի անունը՝ երբեք հաղորդագրության տեքստը կամ պատկերը։</string>
+    <string name="parent_special_info_3">Android-ում անհրաժեշտ է «Վահան» ռեժիմը։ iPhone-ում՝ 18+ կայքեր և Hoglagram-ի զրույցներ։</string>
+    <string name="parent_special_nsfw_title">Անպատշաճ պատկերներ</string>
+    <string name="parent_special_nsfw_desc">18+ պատկերները փակվում են, և դուք ծանուցում եք ստանում</string>
+    <string name="parent_special_conv_title">Ռիսկային զրույցներ</string>
+    <string name="parent_special_conv_desc">Դուք ծանուցում եք ստանում մեսենջերներում ռիսկային զրույցների մասին</string>
+    <string name="parent_special_incognito_title">Ինկոգնիտո ռեժիմ</string>
+    <string name="parent_special_incognito_desc">Բրաուզերի գաղտնի ներդիրները փակվում են</string>
+    <string name="parent_special_zones_title">Ռիսկային վայրեր</string>
+    <string name="parent_special_zones_desc">Դուք ծանուցում կստանաք, եթե երեխան երկար մնա ջրի, շինհրապարակի կամ ակումբի մոտ</string>
+    <string name="parent_special_footer">Ձեր երեխան նույնպես կարող է դրանք միացնել իր համար՝ այդ դեպքում զգուշացումները կստանա միայն նա։</string>
+    <string name="parent_special_paywall">Ռիսկային զրույցները և ինկոգնիտո ռեժիմը հասանելի են PLUS-ով։</string>
+    <string name="pay_abroad_title">Ձեր երկրում վճարումը դեռ հասանելի չէ</string>
+    <string name="pay_abroad_body">Android հավելվածում PLUS-ը առայժմ կարելի է վճարել միայն ուզբեկական քարտով։ Գրեք մեզ՝ կօգնենք։</string>
+    <string name="pay_abroad_coins_body">Մետաղադրամները առայժմ կարելի է գնել միայն ուզբեկական քարտով։ Գրեք մեզ՝ կօգնենք։</string>
+    <string name="apple_activation_pending">Վճարումը ստացվել է — PLUS-ը կմիանա մի քանի րոպեում։ Եթե ոչ, գրեք մեզ։</string>
 </resources>

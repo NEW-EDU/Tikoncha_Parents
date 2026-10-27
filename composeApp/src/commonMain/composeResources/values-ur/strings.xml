@@ -498,16 +498,16 @@
 
     <string name="tracking_checking_settings">بچے کی ترتیبات کی جانچ ہو رہی ہے...</string>
     <string name="tracking_watch_video">ویڈیو دیکھیں</string>
-    <string name="danger_places">خطرناک جگہیں</string>
-    <string name="danger_places_help">آپ کے بچے سے 1.5 کلومیٹر کے اندر: نائٹ کلب، بار، حقہ لاؤنج، کیسینو، سٹے بازی کے مراکز، شراب اور تمباکو کی دکانیں۔ ڈیٹا OpenStreetMap سے — کچھ جگہیں شاید شامل نہ ہوں۔</string>
+    <string name="danger_places">خطرناک مقامات</string>
+    <string name="danger_places_help">آپ کے بچے سے 1.5 کلومیٹر کے اندر: نائٹ کلب، بار، حقہ لاؤنج، کیسینو، سٹے بازی کے مراکز، شراب اور تمباکو کی دکانیں۔ ڈیٹا OpenStreetMap سے ہے — کچھ مقامات شاید شامل نہ ہوں۔</string>
     <string name="danger_places_radius">1.5 کلومیٹر کے اندر</string>
-    <string name="danger_places_none">کوئی خطرناک جگہ نہیں ملی</string>
+    <string name="danger_places_none">کوئی خطرناک مقام نہیں ملا</string>
     <string name="danger_places_failed">لوڈ نہیں ہو سکا</string>
     <string name="danger_cat_nightlife">نائٹ کلب یا بار</string>
     <string name="danger_cat_gambling">جوا اور سٹہ</string>
     <string name="danger_cat_adult">صرف بالغوں کے لیے</string>
     <string name="danger_cat_alcohol">شراب</string>
-    <string name="danger_cat_tobacco">تمباکو اور ویپ</string>
+    <string name="danger_cat_tobacco">تمباکو اور ویپس</string>
     <string name="danger_distance_m">%1$d میٹر</string>
     <string name="radius">رداس</string>
     <string name="farzandim">میرا بچہ</string>
@@ -1343,4 +1343,24 @@
     <string name="ai_done_deleted">ڈیلیٹ کیا گیا</string>
     <string name="ai_done_approved">اجازت ہے</string>
     <string name="ai_done_rejected">مسترد</string>
+    <string name="parent_special_title">اضافی تحفظ</string>
+    <string name="parent_special_card">تصاویر، چیٹس، انکوگنیٹو، خطرناک مقامات</string>
+    <string name="parent_special_info_title">آپ کے بچے کے فون پر کام کرتا ہے</string>
+    <string name="parent_special_info_1">آپ کا آن کیا ہوا تحفظ آپ کا بچہ بند نہیں کر سکتا۔ وہ اسے اپنی ایپ میں دیکھے گا۔</string>
+    <string name="parent_special_info_2">خطرے کی صورت میں آپ کو صرف موضوع اور ایپ کا نام ملتا ہے — کبھی پیغام کا متن یا تصویر نہیں۔</string>
+    <string name="parent_special_info_3">Android پر Shield موڈ درکار ہے۔ iPhone پر: 18+ ویب سائٹس اور Hoglagram چیٹس۔</string>
+    <string name="parent_special_nsfw_title">نامناسب تصاویر</string>
+    <string name="parent_special_nsfw_desc">18+ تصاویر بند ہو جاتی ہیں اور آپ کو اطلاع ملتی ہے</string>
+    <string name="parent_special_conv_title">خطرناک چیٹس</string>
+    <string name="parent_special_conv_desc">میسنجرز میں خطرناک گفتگو کی آپ کو اطلاع ملتی ہے</string>
+    <string name="parent_special_incognito_title">انکوگنیٹو موڈ</string>
+    <string name="parent_special_incognito_desc">براؤزر کے پرائیویٹ ٹیبز بند ہو جاتے ہیں</string>
+    <string name="parent_special_zones_title">خطرناک مقامات</string>
+    <string name="parent_special_zones_desc">اگر آپ کا بچہ پانی، تعمیراتی جگہ یا کلب کے پاس رکا رہے تو آپ کو اطلاع ملتی ہے</string>
+    <string name="parent_special_footer">آپ کا بچہ یہ اپنے لیے بھی آن کر سکتا ہے — پھر انتباہات صرف اسی کو ملتے ہیں۔</string>
+    <string name="parent_special_paywall">خطرناک چیٹس اور انکوگنیٹو موڈ PLUS کے ساتھ ملتے ہیں۔</string>
+    <string name="pay_abroad_title">آپ کے ملک میں ادائیگی ابھی دستیاب نہیں</string>
+    <string name="pay_abroad_body">Android ایپ میں PLUS کی ادائیگی فی الحال صرف ازبکستان کے کارڈ سے ہو سکتی ہے۔ ہمیں لکھیں — ہم مدد کریں گے۔</string>
+    <string name="pay_abroad_coins_body">سکے فی الحال صرف ازبکستان کے کارڈ سے خریدے جا سکتے ہیں۔ ہمیں لکھیں — ہم مدد کریں گے۔</string>
+    <string name="apple_activation_pending">ادائیگی موصول ہو گئی — PLUS چند منٹ میں فعال ہو جائے گا۔ اگر نہ ہو تو ہمیں لکھیں۔</string>
 </resources>

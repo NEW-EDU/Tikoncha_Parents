@@ -499,7 +499,7 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="tracking_checking_settings">Çocuğun ayarları kontrol ediliyor...</string>
     <string name="tracking_watch_video">Videoyu izle</string>
     <string name="danger_places">Tehlikeli yerler</string>
-    <string name="danger_places_help">Çocuğunun 1,5 km çevresinde: gece kulüpleri, barlar, nargile kafeler, kumarhaneler, bahis bayileri, içki ve tütün dükkânları. Veriler OpenStreetMap’ten — bazı yerler eksik olabilir.</string>
+    <string name="danger_places_help">Çocuğunun 1,5 km yakınında: gece kulüpleri, barlar, nargile kafeler, kumarhaneler, bahis bayileri, içki ve tütün satan dükkânlar. Veriler OpenStreetMap’ten alınır; bazı yerler eksik olabilir.</string>
     <string name="danger_places_radius">1,5 km içinde</string>
     <string name="danger_places_none">Tehlikeli yer bulunamadı</string>
     <string name="danger_places_failed">Yüklenemedi</string>
@@ -1343,4 +1343,24 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="ai_done_deleted">Silindi</string>
     <string name="ai_done_approved">İzinli</string>
     <string name="ai_done_rejected">Reddedildi</string>
+    <string name="parent_special_title">Ek koruma</string>
+    <string name="parent_special_card">Görseller, sohbetler, gizli mod, riskli yerler</string>
+    <string name="parent_special_info_title">Çocuğunun telefonunda çalışır</string>
+    <string name="parent_special_info_1">Açtığın korumayı çocuğun kapatamaz. Bunu kendi uygulamasında görür.</string>
+    <string name="parent_special_info_2">Bir risk olursa sana yalnızca konu ve uygulama adı gelir, mesaj metni veya görsel asla gelmez.</string>
+    <string name="parent_special_info_3">Android’de Kalkan modu gerekir. iPhone’da: 18+ siteler ve Hoglagram sohbetleri.</string>
+    <string name="parent_special_nsfw_title">Uygunsuz görseller</string>
+    <string name="parent_special_nsfw_desc">18+ görseller kapatılır ve sana bildirilir</string>
+    <string name="parent_special_conv_title">Riskli sohbetler</string>
+    <string name="parent_special_conv_desc">Mesajlaşma uygulamalarındaki riskli konuşmalar sana bildirilir</string>
+    <string name="parent_special_incognito_title">Gizli mod</string>
+    <string name="parent_special_incognito_desc">Tarayıcının gizli sekmeleri kapatılır</string>
+    <string name="parent_special_zones_title">Riskli yerler</string>
+    <string name="parent_special_zones_desc">Çocuğun su kenarında, bir inşaat alanında veya bir kulüp yakınında uzun süre kalırsa sana bildirilir</string>
+    <string name="parent_special_footer">Çocuğun bunları kendisi için de açabilir; o zaman uyarıları yalnızca o alır.</string>
+    <string name="parent_special_paywall">Riskli sohbetler ve gizli mod PLUS ile gelir.</string>
+    <string name="pay_abroad_title">Ülkende ödeme henüz kullanılamıyor</string>
+    <string name="pay_abroad_body">Android uygulamasında PLUS şimdilik yalnızca Özbekistan kartıyla ödenebiliyor. Bize yaz, yardımcı olalım.</string>
+    <string name="pay_abroad_coins_body">Jetonlar şimdilik yalnızca Özbekistan kartıyla alınabiliyor. Bize yaz, yardımcı olalım.</string>
+    <string name="apple_activation_pending">Ödeme alındı — PLUS birkaç dakika içinde açılacak. Açılmazsa bize yaz.</string>
 </resources>

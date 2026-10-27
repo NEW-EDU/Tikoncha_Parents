@@ -499,7 +499,7 @@
     <string name="tracking_checking_settings">Фарзанд созламалари текширилмоқда...</string>
     <string name="tracking_watch_video">Видео кўриш</string>
     <string name="danger_places">Хавфли жойлар</string>
-    <string name="danger_places_help">Фарзандингиз атрофидаги 1,5 км ичида: тунги клуб, бар, қалёнхона, казино, букмекер, спиртли ичимлик ва тамаки дўконлари. Маълумот OpenStreetMap’дан олинади — баъзи жойлар бўлмаслиги мумкин.</string>
+    <string name="danger_places_help">Фарзандингиз атрофидаги 1,5 км ичида: тунги клуб, бар, қалёнхона, казино, букмекер, спиртли ичимлик ва тамаки дўконлари. Маълумот OpenStreetMap’dan олинади — баъзи жойлар бўлмаслиги мумкин.</string>
     <string name="danger_places_radius">1,5 км ичида</string>
     <string name="danger_places_none">Хавфли жой топилмади</string>
     <string name="danger_places_failed">Юклаб бўлмади</string>
@@ -507,7 +507,7 @@
     <string name="danger_cat_gambling">Қимор ва тикиш</string>
     <string name="danger_cat_adult">Катталар учун</string>
     <string name="danger_cat_alcohol">Спиртли ичимликлар</string>
-    <string name="danger_cat_tobacco">Тамаки ва вейп</string>
+    <string name="danger_cat_tobacco">Тамаки ва вапе</string>
     <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радиус</string>
     <string name="farzandim">Фарзандим</string>
@@ -1343,4 +1343,24 @@
     <string name="ai_done_deleted">Ўчирилди</string>
     <string name="ai_done_approved">Рухсат берилди</string>
     <string name="ai_done_rejected">Рад этилди</string>
+    <string name="parent_special_title">Махсус ҳимоя</string>
+    <string name="parent_special_card">Расм, ёзишма, яширин режим, хавфли жойлар</string>
+    <string name="parent_special_info_title">Фарзанд телефонида ишлайди</string>
+    <string name="parent_special_info_1">Сиз ёққан ҳимояни фарзандингиз ўчира олмайди. U буни иловада кўради.</string>
+    <string name="parent_special_info_2">Хавф бўлса, сизга фақат тоифа ва илова номи келади — ёзишма матни ёки расм эмас.</string>
+    <string name="parent_special_info_3">Андроидъда Қалқон режими керак. iPhone\'da: 18+ сайтлар ва Tikonchagram ёзишмалари.</string>
+    <string name="parent_special_nsfw_title">Номақбул расмлар</string>
+    <string name="parent_special_nsfw_desc">18+ тасвир ёпилади, сизга хабар боради</string>
+    <string name="parent_special_conv_title">Хавфли ёзишмалар</string>
+    <string name="parent_special_conv_desc">Мессенжерда хавфли суҳбат бўлса, сизга хабар боради</string>
+    <string name="parent_special_incognito_title">Яширин режим</string>
+    <string name="parent_special_incognito_desc">Браузернинг яширин ойнаси ёпилади</string>
+    <string name="parent_special_zones_title">Хавфли жойлар</string>
+    <string name="parent_special_zones_desc">Сув, қурилиш ёки клуб ёнида узоқ қолса, хабар боради</string>
+    <string name="parent_special_footer">Фарзандингиз бу ҳимояларни ўзи учун ҳам ёқиши мумкин — унда огоҳлантириш фақат унга боради.</string>
+    <string name="parent_special_paywall">Хавфли ёзишмалар ва яширин режим — PLUS обунаси билан.</string>
+    <string name="pay_abroad_title">Бу мамлакатда тўлов ҳозирча йўқ</string>
+    <string name="pay_abroad_body">Android иловада ПЛУСъни ҳозирча фақат Ўзбекистон картаси билан олиш мумкин. Бизга ёзинг — ёрдам берамиз.</string>
+    <string name="pay_abroad_coins_body">Тангаларни ҳозирча фақат Ўзбекистон картаси билан олиш мумкин. Бизга ёзинг — ёрдам берамиз.</string>
+    <string name="apple_activation_pending">Тўлов қабул қилинди — PLUS бир неча дақиқада ёқилади. Ёқилмаса, бизга ёзинг.</string>
 </resources>

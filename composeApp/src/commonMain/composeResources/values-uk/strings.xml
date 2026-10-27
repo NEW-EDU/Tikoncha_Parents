@@ -482,7 +482,7 @@
     <string name="tracking_checking_settings">Перевіряємо налаштування дитини...</string>
     <string name="tracking_watch_video">Дивитися відео</string>
     <string name="danger_places">Небезпечні місця</string>
-    <string name="danger_places_help">У радіусі 1,5 км від дитини: нічні клуби, бари, кальянні, казино, букмекери, магазини алкоголю й тютюну. Дані OpenStreetMap — деяких місць може не бути.</string>
+    <string name="danger_places_help">У радіусі 1,5 км від дитини: нічні клуби, бари, кальянні, казино, букмекерські контори, магазини алкоголю й тютюну. Дані з OpenStreetMap — деяких місць може не бути.</string>
     <string name="danger_places_radius">у радіусі 1,5 км</string>
     <string name="danger_places_none">Небезпечних місць не знайдено</string>
     <string name="danger_places_failed">Не вдалося завантажити</string>
@@ -1326,4 +1326,24 @@
     <string name="ai_done_deleted">Видалено</string>
     <string name="ai_done_approved">Дозволено</string>
     <string name="ai_done_rejected">Відхилено</string>
+    <string name="parent_special_title">Додатковий захист</string>
+    <string name="parent_special_card">Зображення, чати, інкогніто, ризиковані місця</string>
+    <string name="parent_special_info_title">Працює на телефоні дитини</string>
+    <string name="parent_special_info_1">Дитина не може вимкнути захист, який увімкнули ви. Вона побачить це у своєму застосунку.</string>
+    <string name="parent_special_info_2">Якщо є ризик, ви отримуєте лише тему й назву застосунку — ніколи текст повідомлення чи зображення.</string>
+    <string name="parent_special_info_3">На Android потрібен режим «Щит». На iPhone: сайти 18+ і чати Hoglagram.</string>
+    <string name="parent_special_nsfw_title">Непристойні зображення</string>
+    <string name="parent_special_nsfw_desc">Зображення 18+ закриваються, і ви отримуєте сповіщення</string>
+    <string name="parent_special_conv_title">Ризиковані чати</string>
+    <string name="parent_special_conv_desc">Ви отримуєте сповіщення про ризиковані розмови в месенджерах</string>
+    <string name="parent_special_incognito_title">Режим інкогніто</string>
+    <string name="parent_special_incognito_desc">Приватні вкладки браузера закриваються</string>
+    <string name="parent_special_zones_title">Ризиковані місця</string>
+    <string name="parent_special_zones_desc">Ви отримаєте сповіщення, якщо дитина затримається біля води, будівельного майданчика чи клубу</string>
+    <string name="parent_special_footer">Дитина також може увімкнути це для себе — тоді попередження отримуватиме лише вона.</string>
+    <string name="parent_special_paywall">Ризиковані чати й режим інкогніто доступні з PLUS.</string>
+    <string name="pay_abroad_title">Оплата у вашій країні поки недоступна</string>
+    <string name="pay_abroad_body">У застосунку для Android PLUS поки можна оплатити лише узбецькою карткою. Напишіть нам — ми допоможемо.</string>
+    <string name="pay_abroad_coins_body">Монети поки можна купити лише узбецькою карткою. Напишіть нам — ми допоможемо.</string>
+    <string name="apple_activation_pending">Оплату отримано — PLUS увімкнеться за кілька хвилин. Якщо ні, напишіть нам.</string>
 </resources>
