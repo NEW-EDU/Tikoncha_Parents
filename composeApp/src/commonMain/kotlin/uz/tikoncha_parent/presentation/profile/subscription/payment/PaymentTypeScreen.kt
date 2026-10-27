@@ -449,167 +449,171 @@ fun PaymentTypeScreenUi(
                         .height(165.dp)
                 )
             }
-            Spacer(Modifier.height(12.dp))
-
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(AppColors.bg.surface, RoundedCornerShape(16.dp))
-                    .padding(horizontal = 16.dp, vertical = 12.dp)
-            ) {
-                Text(
-                    text = stringResource(Res.string.tolov_tafsilotlari),
-                    style = AppTypography.titleMdSemiBold,
-                    color = AppColors.text.primary
-                )
+            // App Store: narx kartada (do'kon valyutasida). So'mdagi tafsilot va promokod faqat Click uçun — bu yerda
+            // chalğitadi, IAP yonidagi promokod esa App Store qoidasiga (3.1.1) zid.
+            if (storePrice == null) {
                 Spacer(Modifier.height(12.dp))
 
-                DashedDivider()
-                Spacer(Modifier.height(12.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(AppColors.bg.surface, RoundedCornerShape(16.dp))
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
                 ) {
-                    val priceText2 = buildAnnotatedString {
-                        withStyle(
-                            SpanStyle(
-                                color = AppColors.text.primary,
-                            )
-                        ) {
-                            append(state.originalAmount.toCurrency())
-                        }
-                        append(" ")
-                        withStyle(
-                            SpanStyle(
-                                color = AppColors.text.primary,
-                            )
-                        ) {
-                            val text = stringResource(Res.string.uzs)
-                            append(text = text)
-                        }
-                    }
                     Text(
-                        text = "${ stringResource(Res.string.narx) }:",
-                        style = AppTypography.titleSmMedium,
-                        color = AppColors.text.secondary,
-                        modifier = Modifier.weight(1f)
-                    )
-                    Text(
-                        text = priceText2,
-                        style = AppTypography.titleSmMedium,
+                        text = stringResource(Res.string.tolov_tafsilotlari),
+                        style = AppTypography.titleMdSemiBold,
                         color = AppColors.text.primary
                     )
+                    Spacer(Modifier.height(12.dp))
+
+                    DashedDivider()
+                    Spacer(Modifier.height(12.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val priceText2 = buildAnnotatedString {
+                            withStyle(
+                                SpanStyle(
+                                    color = AppColors.text.primary,
+                                )
+                            ) {
+                                append(state.originalAmount.toCurrency())
+                            }
+                            append(" ")
+                            withStyle(
+                                SpanStyle(
+                                    color = AppColors.text.primary,
+                                )
+                            ) {
+                                val text = stringResource(Res.string.uzs)
+                                append(text = text)
+                            }
+                        }
+                        Text(
+                            text = "${ stringResource(Res.string.narx) }:",
+                            style = AppTypography.titleSmMedium,
+                            color = AppColors.text.secondary,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Text(
+                            text = priceText2,
+                            style = AppTypography.titleSmMedium,
+                            color = AppColors.text.primary
+                        )
+                    }
+                    Spacer(Modifier.height(8.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val priceDiscount = buildAnnotatedString {
+                            withStyle(
+                                SpanStyle(
+                                    color = AppColors.text.accentEmphasis,
+                                )
+                            ) {
+                                append(state.discountSaving.toCurrency())
+                            }
+                            append(" ")
+                            withStyle(
+                                SpanStyle(
+                                    color = AppColors.text.accentEmphasis,
+                                )
+                            ) {
+                                val text = stringResource(Res.string.uzs)
+                                append(text = text)
+                            }
+                        }
+                        Text(
+                            text = stringResource(Res.string.promokod),
+                            style = AppTypography.titleSmMedium,
+                            color = AppColors.text.secondary,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Text(
+                            text = "- ${priceDiscount}",
+                            style = AppTypography.titleSmMedium,
+                            color = AppColors.text.accentEmphasis
+                        )
+                    }
+                    Spacer(Modifier.height(12.dp))
+
+                    DashedDivider()
+                    Spacer(Modifier.height(12.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val amount = (state.finalAmount).toCurrency()
+                        val priceFinal = buildAnnotatedString {
+                            withStyle(
+                                SpanStyle(
+                                    color = AppColors.text.accentEmphasis,
+                                )
+                            ) {
+                                append(amount)
+                            }
+                            append(" ")
+                            withStyle(
+                                SpanStyle(
+                                    color = AppColors.text.accentEmphasis,
+                                )
+                            ) {
+                                val text = stringResource(Res.string.uzs)
+                                append(text = text)
+                            }
+                        }
+                        Text(
+                            text = stringResource(Res.string.jami),
+                            style = AppTypography.titleLgSemiBold,
+                            color = AppColors.text.primary,
+                            modifier = Modifier.weight(1f)
+                        )
+                        Text(
+                            text = priceFinal,
+                            style = AppTypography.titleLgSemiBold,
+                            color = AppColors.text.accentEmphasis
+                        )
+                    }
                 }
-                Spacer(Modifier.height(8.dp))
+                Spacer(Modifier.height(12.dp))
 
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(46.dp)
+                        .background(
+                            AppColors.bg.surface,
+                            RoundedCornerShape(22.dp)
+                        )
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
+                        .singleClick {
+                            if (!state.promoActivated) {
+                                showPromoCodeDialog = true
+                            }
+                        },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    val priceDiscount = buildAnnotatedString {
-                        withStyle(
-                            SpanStyle(
-                                color = AppColors.text.accentEmphasis,
-                            )
-                        ) {
-                            append(state.discountSaving.toCurrency())
-                        }
-                        append(" ")
-                        withStyle(
-                            SpanStyle(
-                                color = AppColors.text.accentEmphasis,
-                            )
-                        ) {
-                            val text = stringResource(Res.string.uzs)
-                            append(text = text)
-                        }
-                    }
+
                     Text(
                         text = stringResource(Res.string.promokod),
-                        style = AppTypography.titleSmMedium,
-                        color = AppColors.text.secondary,
-                        modifier = Modifier.weight(1f)
-                    )
-                    Text(
-                        text = "- ${priceDiscount}",
-                        style = AppTypography.titleSmMedium,
-                        color = AppColors.text.accentEmphasis
-                    )
-                }
-                Spacer(Modifier.height(12.dp))
-
-                DashedDivider()
-                Spacer(Modifier.height(12.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    val amount = (state.finalAmount).toCurrency()
-                    val priceFinal = buildAnnotatedString {
-                        withStyle(
-                            SpanStyle(
-                                color = AppColors.text.accentEmphasis,
-                            )
-                        ) {
-                            append(amount)
-                        }
-                        append(" ")
-                        withStyle(
-                            SpanStyle(
-                                color = AppColors.text.accentEmphasis,
-                            )
-                        ) {
-                            val text = stringResource(Res.string.uzs)
-                            append(text = text)
-                        }
-                    }
-                    Text(
-                        text = stringResource(Res.string.jami),
-                        style = AppTypography.titleLgSemiBold,
+                        style = AppTypography.titleMdMedium,
                         color = AppColors.text.primary,
                         modifier = Modifier.weight(1f)
                     )
-                    Text(
-                        text = priceFinal,
-                        style = AppTypography.titleLgSemiBold,
-                        color = AppColors.text.accentEmphasis
+                    SpaceMedium()
+
+                    Icon(
+                        painter = painterResource(Res.drawable.arrow_down_reg),
+                        contentDescription = "",
+                        tint = AppColors.icon.secondary,
                     )
                 }
-            }
-            Spacer(Modifier.height(12.dp))
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(46.dp)
-                    .background(
-                        AppColors.bg.surface,
-                        RoundedCornerShape(22.dp)
-                    )
-                    .padding(horizontal = 16.dp, vertical = 12.dp)
-                    .singleClick {
-                        if (!state.promoActivated) {
-                            showPromoCodeDialog = true
-                        }
-                    },
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-
-                Text(
-                    text = stringResource(Res.string.promokod),
-                    style = AppTypography.titleMdMedium,
-                    color = AppColors.text.primary,
-                    modifier = Modifier.weight(1f)
-                )
-                SpaceMedium()
-
-                Icon(
-                    painter = painterResource(Res.drawable.arrow_down_reg),
-                    contentDescription = "",
-                    tint = AppColors.icon.secondary,
-                )
             }
             Spacer(Modifier.height(16.dp))
         }
