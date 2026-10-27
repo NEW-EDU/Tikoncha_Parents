@@ -1346,4 +1346,5 @@
     <string name="pay_abroad_body">Android ऐप में PLUS का भुगतान अभी केवल उज़्बेकिस्तान के कार्ड से हो सकता है। हमें लिखें — हम मदद करेंगे।</string>
     <string name="pay_abroad_coins_body">सिक्के अभी केवल उज़्बेकिस्तान के कार्ड से खरीदे जा सकते हैं। हमें लिखें — हम मदद करेंगे।</string>
     <string name="apple_activation_pending">भुगतान मिल गया — PLUS कुछ मिनटों में चालू हो जाएगा। न हो तो हमें लिखें।</string>
+    <string name="sub_child_app_note">सिर्फ़ एक बच्चा? आपके बच्चे के Hoglt ऐप में PLUS सस्ता है — यह केवल उसी बच्चे के लिए है।</string>
 </resources>

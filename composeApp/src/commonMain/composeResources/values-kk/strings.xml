@@ -1346,4 +1346,5 @@
     <string name="pay_abroad_body">Android қосымшасында PLUS-ты әзірге тек Өзбекстан картасымен төлеуге болады. Бізге жазыңыз — көмектесеміз.</string>
     <string name="pay_abroad_coins_body">Монеталарды әзірге тек Өзбекстан картасымен сатып алуға болады. Бізге жазыңыз — көмектесеміз.</string>
     <string name="apple_activation_pending">Төлем қабылданды — PLUS бірнеше минутта қосылады. Қосылмаса, бізге жазыңыз.</string>
+    <string name="sub_child_app_note">Тек бір балаға ма? Балаңыздың Hoglt қосымшасында PLUS арзанырақ — ол тек сол балаға арналған.</string>
 </resources>

@@ -1363,4 +1363,5 @@
     <string name="pay_abroad_body">Android-ის აპში PLUS-ის გადახდა ჯერჯერობით მხოლოდ უზბეკური ბარათით შეიძლება. მოგვწერეთ — დაგეხმარებით.</string>
     <string name="pay_abroad_coins_body">მონეტების ყიდვა ჯერჯერობით მხოლოდ უზბეკური ბარათით შეიძლება. მოგვწერეთ — დაგეხმარებით.</string>
     <string name="apple_activation_pending">გადახდა მიღებულია — PLUS რამდენიმე წუთში ჩაირთვება. თუ არა, მოგვწერეთ.</string>
+    <string name="sub_child_app_note">მხოლოდ ერთი ბავშვი? ბავშვის Hoglt-ის აპში PLUS უფრო იაფია — ის მხოლოდ ამ ბავშვზე ვრცელდება.</string>
 </resources>

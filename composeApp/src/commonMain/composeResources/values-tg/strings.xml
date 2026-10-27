@@ -1347,4 +1347,5 @@
     <string name="pay_abroad_body">Дар барномаи Android PLUS-ро ҳоло танҳо бо корти Ӯзбекистон пардохт кардан мумкин. Ба мо нависед — кӯмак мекунем.</string>
     <string name="pay_abroad_coins_body">Тангаҳоро ҳоло танҳо бо корти Ӯзбекистон харидан мумкин. Ба мо нависед — кӯмак мекунем.</string>
     <string name="apple_activation_pending">Пардохт қабул шуд — PLUS дар чанд дақиқа фаъол мешавад. Агар нашавад, ба мо нависед.</string>
+    <string name="sub_child_app_note">Танҳо як фарзанд? Дар барномаи Hoglt-и фарзанд PLUS арзонтар аст — танҳо барои ҳамон фарзанд.</string>
 </resources>

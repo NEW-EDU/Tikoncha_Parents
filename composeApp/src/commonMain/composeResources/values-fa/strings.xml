@@ -1347,4 +1347,5 @@
     <string name="pay_abroad_body">در برنامهٔ اندروید، PLUS فعلاً فقط با کارت ازبکستان پرداخت می‌شود. به ما پیام دهید تا کمک کنیم.</string>
     <string name="pay_abroad_coins_body">سکه‌ها فعلاً فقط با کارت ازبکستان خریدنی است. به ما پیام دهید تا کمک کنیم.</string>
     <string name="apple_activation_pending">پرداخت دریافت شد — PLUS تا چند دقیقهٔ دیگر فعال می‌شود. اگر نشد، به ما پیام دهید.</string>
+    <string name="sub_child_app_note">فقط یک فرزند؟ PLUS در برنامهٔ Hoglt فرزندتان ارزان‌تر است — فقط برای همان فرزند.</string>
 </resources>

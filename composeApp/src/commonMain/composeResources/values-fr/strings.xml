@@ -1357,4 +1357,5 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="pay_abroad_body">Dans l\'application Android, PLUS ne peut pour l\'instant être payé qu\'avec une carte ouzbèke. Écrivez-nous, nous vous aiderons.</string>
     <string name="pay_abroad_coins_body">Les pièces ne peuvent pour l\'instant être achetées qu\'avec une carte ouzbèke. Écrivez-nous, nous vous aiderons.</string>
     <string name="apple_activation_pending">Paiement reçu — PLUS sera activé dans quelques minutes. Sinon, écrivez-nous.</string>
+    <string name="sub_child_app_note">Un seul enfant ? PLUS coûte moins cher dans l\'app Hoglt de votre enfant — il ne couvre que cet enfant.</string>
 </resources>

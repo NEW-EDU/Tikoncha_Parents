@@ -1363,4 +1363,5 @@
     <string name="pay_abroad_body">Android апп-д PLUS-ийг одоогоор зөвхөн Узбекистаны картаар төлөх боломжтой. Бидэнд бичээрэй — тусална.</string>
     <string name="pay_abroad_coins_body">Зоосыг одоогоор зөвхөн Узбекистаны картаар худалдан авах боломжтой. Бидэнд бичээрэй — тусална.</string>
     <string name="apple_activation_pending">Төлбөр хүлээн авлаа — PLUS хэдэн минутын дотор идэвхжинэ. Үгүй бол бидэнд бичээрэй.</string>
+    <string name="sub_child_app_note">Ганцхан хүүхэд үү? Хүүхдийн Hoglt апп-д PLUS хямд — зөвхөн тэр хүүхдэд хамаарна.</string>
 </resources>

@@ -1346,4 +1346,5 @@
     <string name="pay_abroad_body">In der Android-App kann PLUS vorerst nur mit einer usbekischen Karte bezahlt werden. Schreib uns – wir helfen dir.</string>
     <string name="pay_abroad_coins_body">Münzen können vorerst nur mit einer usbekischen Karte gekauft werden. Schreib uns – wir helfen dir.</string>
     <string name="apple_activation_pending">Zahlung erhalten – PLUS wird in wenigen Minuten aktiviert. Falls nicht, schreib uns.</string>
+    <string name="sub_child_app_note">Nur ein Kind? PLUS ist in der Hoglt-App deines Kindes günstiger – es gilt nur für dieses Kind.</string>
 </resources>

@@ -456,6 +456,14 @@ fun SubscriptionPaymentUi(
                     color = AppColors.text.inverse,
                     textAlign = TextAlign.Center
                 )
+                Space(6.dp)
+                // Faqat ma'lumot (tugma/havola yöq — App Store qoidalariga mos): bitta farzand uçun bola ilovasida arzonroq
+                Text(
+                    text = stringResource(Res.string.sub_child_app_note),
+                    style = AppTypography.bodySmRegular,
+                    color = AppColors.text.inverse.copy(alpha = 0.7f),
+                    textAlign = TextAlign.Center
+                )
             }
         }
 

@@ -1346,4 +1346,5 @@
     <string name="pay_abroad_body">Android tətbiqində PLUS-ı hələlik yalnız Özbəkistan kartı ilə ödəmək olar. Bizə yazın — kömək edərik.</string>
     <string name="pay_abroad_coins_body">Sikkələri hələlik yalnız Özbəkistan kartı ilə almaq olar. Bizə yazın — kömək edərik.</string>
     <string name="apple_activation_pending">Ödəniş qəbul edildi — PLUS bir neçə dəqiqəyə aktivləşəcək. Aktivləşməsə, bizə yazın.</string>
+    <string name="sub_child_app_note">Yalnız bir uşaq? Uşağınızın Hoglt tətbiqində PLUS daha ucuzdur — yalnız həmin uşağa aiddir.</string>
 </resources>

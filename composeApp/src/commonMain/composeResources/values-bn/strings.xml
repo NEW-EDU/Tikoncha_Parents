@@ -1363,4 +1363,5 @@
     <string name="pay_abroad_body">Android অ্যাপে PLUS এখন শুধু উজবেকিস্তানের কার্ড দিয়ে পেমেন্ট করা যায়। আমাদের লিখুন — আমরা সাহায্য করব।</string>
     <string name="pay_abroad_coins_body">কয়েন এখন শুধু উজবেকিস্তানের কার্ড দিয়ে কেনা যায়। আমাদের লিখুন — আমরা সাহায্য করব।</string>
     <string name="apple_activation_pending">পেমেন্ট পাওয়া গেছে — কয়েক মিনিটের মধ্যে PLUS চালু হবে। না হলে আমাদের লিখুন।</string>
+    <string name="sub_child_app_note">শুধু একটি সন্তান? আপনার সন্তানের Hoglt অ্যাপে PLUS কম দামে — এটি শুধু সেই সন্তানের জন্য।</string>
 </resources>

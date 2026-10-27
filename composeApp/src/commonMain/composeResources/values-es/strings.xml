@@ -1363,4 +1363,5 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="pay_abroad_body">En la app de Android, PLUS por ahora solo se puede pagar con una tarjeta de Uzbekistán. Escríbenos y te ayudamos.</string>
     <string name="pay_abroad_coins_body">Por ahora las monedas solo se pueden comprar con una tarjeta de Uzbekistán. Escríbenos y te ayudamos.</string>
     <string name="apple_activation_pending">Pago recibido: PLUS se activará en unos minutos. Si no, escríbenos.</string>
+    <string name="sub_child_app_note">¿Solo un hijo? PLUS cuesta menos en la app Hoglt de tu hijo: cubre solo a ese hijo.</string>
 </resources>

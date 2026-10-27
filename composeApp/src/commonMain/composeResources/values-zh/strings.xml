@@ -1347,4 +1347,5 @@
     <string name="pay_abroad_body">在 Android 应用中，PLUS 目前只能用乌兹别克斯坦的银行卡支付。联系我们，我们会帮你。</string>
     <string name="pay_abroad_coins_body">金币目前只能用乌兹别克斯坦的银行卡购买。联系我们，我们会帮你。</string>
     <string name="apple_activation_pending">已收到付款，PLUS 将在几分钟内开通。如未开通，请联系我们。</string>
+    <string name="sub_child_app_note">只有一个孩子？在孩子的 Hoglt 应用中购买 PLUS 更便宜——仅限该孩子使用。</string>
 </resources>

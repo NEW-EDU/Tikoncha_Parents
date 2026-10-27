@@ -1370,4 +1370,5 @@
     <string name="pay_abroad_body">В приложении для Android PLUS пока можно оплатить только узбекской картой. Напишите нам — мы поможем.</string>
     <string name="pay_abroad_coins_body">Монеты пока можно купить только узбекской картой. Напишите нам — мы поможем.</string>
     <string name="apple_activation_pending">Оплата получена — PLUS включится в течение нескольких минут. Если нет, напишите нам.</string>
+    <string name="sub_child_app_note">Только один ребёнок? В приложении Tikoncha у ребёнка PLUS дешевле — он действует только для этого ребёнка.</string>
 </resources>

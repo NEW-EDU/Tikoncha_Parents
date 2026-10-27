@@ -1363,4 +1363,5 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="pay_abroad_body">Di aplikasi Android, PLUS untuk saat ini hanya bisa dibayar dengan kartu Uzbekistan. Hubungi kami, kami akan membantu.</string>
     <string name="pay_abroad_coins_body">Koin untuk saat ini hanya bisa dibeli dengan kartu Uzbekistan. Hubungi kami, kami akan membantu.</string>
     <string name="apple_activation_pending">Pembayaran diterima — PLUS akan aktif dalam beberapa menit. Jika tidak, hubungi kami.</string>
+    <string name="sub_child_app_note">Hanya satu anak? PLUS lebih murah di aplikasi Hoglt anak Anda — hanya untuk anak itu.</string>
 </resources>

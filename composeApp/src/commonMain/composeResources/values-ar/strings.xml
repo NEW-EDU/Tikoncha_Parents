@@ -1363,4 +1363,5 @@
     <string name="pay_abroad_body">في تطبيق Android يمكن دفع PLUS حاليًا ببطاقة أوزبكية فقط. راسلنا وسنساعدك.</string>
     <string name="pay_abroad_coins_body">يمكن شراء العملات حاليًا ببطاقة أوزبكية فقط. راسلنا وسنساعدك.</string>
     <string name="apple_activation_pending">تم استلام الدفع — سيتفعّل PLUS خلال دقائق. إن لم يتفعّل، راسلنا.</string>
+    <string name="sub_child_app_note">طفل واحد فقط؟ PLUS أرخص في تطبيق Hoglt الخاص بطفلك — ويشمل ذلك الطفل فقط.</string>
 </resources>

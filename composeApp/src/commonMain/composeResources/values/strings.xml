@@ -1373,4 +1373,5 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="pay_abroad_body">Android ilovada PLUS'ni hozircha faqat O'zbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
     <string name="pay_abroad_coins_body">Tangalarni hozircha faqat O'zbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
     <string name="apple_activation_pending">Tölov qabul qilindi — PLUS bir necha daqiqada yoqiladi. Yoqilmasa, bizga yozing.</string>
+    <string name="sub_child_app_note">Bitta farzand uçunmi? Farzandingizning Tikoncha ilovasida PLUS arzonroq — u faqat şu farzand uçun amal qiladi.</string>
 </resources>

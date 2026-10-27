@@ -1363,4 +1363,5 @@
     <string name="pay_abroad_body">Android иловада ПЛУСъни ҳозирча фақат Ўзбекистон картаси билан олиш мумкин. Бизга ёзинг — ёрдам берамиз.</string>
     <string name="pay_abroad_coins_body">Тангаларни ҳозирча фақат Ўзбекистон картаси билан олиш мумкин. Бизга ёзинг — ёрдам берамиз.</string>
     <string name="apple_activation_pending">Тўлов қабул қилинди — PLUS бир неча дақиқада ёқилади. Ёқилмаса, бизга ёзинг.</string>
+    <string name="sub_child_app_note">Битта фарзанд учунми? Фарзандингизнинг Tikoncha иловасида PLUS арзонроқ — у фақат шу фарзанд учун амал қилади.</string>
 </resources>

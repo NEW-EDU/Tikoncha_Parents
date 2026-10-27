@@ -1347,4 +1347,5 @@
     <string name="pay_abroad_body">Android 앱에서는 현재 우즈베키스탄 카드로만 PLUS를 결제할 수 있어요. 문의해 주시면 도와드릴게요.</string>
     <string name="pay_abroad_coins_body">코인은 현재 우즈베키스탄 카드로만 구매할 수 있어요. 문의해 주시면 도와드릴게요.</string>
     <string name="apple_activation_pending">결제가 완료됐어요. 몇 분 안에 PLUS가 켜져요. 켜지지 않으면 문의해 주세요.</string>
+    <string name="sub_child_app_note">자녀가 한 명뿐인가요? 자녀의 Hoglt 앱에서 PLUS가 더 저렴해요. 해당 자녀에게만 적용돼요.</string>
 </resources>
