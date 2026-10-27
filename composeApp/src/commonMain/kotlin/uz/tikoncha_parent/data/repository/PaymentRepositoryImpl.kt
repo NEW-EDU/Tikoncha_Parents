@@ -45,6 +45,9 @@ class PaymentRepositoryImpl(
                 r.success && body != null -> {
                     val limits = body.children.map { it.toSubscriptionLimit() }
                     AppSettings.subscriptionLimitList = limits      // kesh — endi shu yerda
+                    // Imzolangan holat: offline paytda har farzandning PLUS tugaşi shu bilan tekşiriladi
+                    runCatching { api.entitlement() }.getOrNull()?.takeIf { it.success }?.data?.token
+                        ?.let { uz.tikoncha_parent.data.entitlement.ParentEntitlement.store(it) }
                     Outcome.Success(limits)
                 }
 

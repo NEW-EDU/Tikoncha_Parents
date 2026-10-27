@@ -225,7 +225,10 @@ object AppSettings {
     private val subscriptionLimitListSerializer = ListSerializer(SubscriptionLimit.serializer())
 
     var subscriptionLimitList: List<SubscriptionLimit>
-        get() = getJsonOrDefault(KEY_SUBSCRIPTION_LIMIT_LIST, subscriptionLimitListSerializer, emptyList())
+        // Offline-first: imzolangan holatga köra PLUS'i tugagan farzand FREE (server yetib bölmasa ham)
+        get() = uz.tikoncha_parent.data.entitlement.ParentEntitlement.applyTo(
+            getJsonOrDefault(KEY_SUBSCRIPTION_LIMIT_LIST, subscriptionLimitListSerializer, emptyList())
+        )
         set(value) = putJson(KEY_SUBSCRIPTION_LIMIT_LIST, subscriptionLimitListSerializer, value)
 
     var selectSubscriptionLimit: SubscriptionLimit

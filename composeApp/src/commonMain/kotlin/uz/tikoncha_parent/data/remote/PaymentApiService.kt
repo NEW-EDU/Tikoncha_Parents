@@ -37,6 +37,10 @@ class PaymentApiService(private val client: HttpClient) {
             block = { setBody(body) }
         )
 
+    /** Imzolangan PLUS holati (ota-ona uçun har farzandning PLUS tugaşi) — data/entitlement/ParentEntitlement.kt. */
+    suspend fun entitlement(): uz.tikoncha_parent.data.remote.model.ApiEnvelope<EntitlementData> =
+        client.safeRequest(method = HttpMethod.Get, url = "subscriptions/entitlement", block = {})
+
     suspend fun subscriptionLimits(): SubscriptionLimitResponse =
         client.safeRequest(
             method = HttpMethod.Get,
@@ -117,3 +121,6 @@ class PaymentApiService(private val client: HttpClient) {
             }
         )
 }
+
+@kotlinx.serialization.Serializable
+data class EntitlementData(val plan: String? = null, val token: String? = null)

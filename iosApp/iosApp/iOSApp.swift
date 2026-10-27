@@ -30,6 +30,7 @@ struct iOSApp: App {
         SocialAuthBridgeProvider.shared.bridge = SocialAuthBridgeImpl()
         // --- App Store (StoreKit 2) ---
         StoreKitBridgeProvider.shared.bridge = StoreKitBridgeImpl()
+        EntitlementCryptoProvider.shared.bridge = EntitlementCryptoImpl()
     }
 
     var body: some Scene {
