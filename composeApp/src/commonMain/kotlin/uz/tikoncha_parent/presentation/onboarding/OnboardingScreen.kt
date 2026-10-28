@@ -288,8 +288,9 @@ private fun TopBar(tourOnly: Boolean, langAlpha: Float, skipAlpha: Float, onSkip
                     Icon(painterResource(Res.drawable.close_remove), contentDescription = null, tint = Night.ink, modifier = Modifier.size(18.dp))
                 }
             }
-        } else if (langAlpha > 0.01f) {
-            LanguagePill(Modifier.graphicsLayer { alpha = langAlpha })
+        } else {
+            // Til tanlagiç — butun tanişuv davomida (keyingi sahnalarda ham almaştirsa böladi)
+            uz.tikoncha_parent.presentation.base.LanguagePill(container = Night.card, content = Night.ink, subtle = Night.inkDim)
         }
         Spacer(Modifier.weight(1f))
         if (skipAlpha > 0.01f) {
@@ -304,34 +305,6 @@ private fun TopBar(tourOnly: Boolean, langAlpha: Float, skipAlpha: Float, onSkip
                     stringResource(Res.string.ob_skip),
                     style = labelStyle(15, FontWeight.Bold, Night.inkDim),
                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
-                )
-            }
-        }
-    }
-}
-
-/** Birinchi sahnadagi til tanlash — ilova tili darhol almashadi. */
-@Composable
-private fun LanguagePill(modifier: Modifier = Modifier) {
-    val controller = LocalLanguageController.current
-    val current by controller.current.collectAsState()
-    var open by remember { mutableStateOf(false) }
-    Box(modifier) {
-        Surface(onClick = { open = true }, shape = CircleShape, color = Night.card) {
-            Row(Modifier.padding(horizontal = 14.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text(current.languageName, style = labelStyle(14, FontWeight.Bold))
-                Spacer(Modifier.size(6.dp))
-                Text("▾", style = labelStyle(12, FontWeight.Bold, Night.inkDim))
-            }
-        }
-        DropdownMenu(expanded = open, onDismissRequest = { open = false }) {
-            LanguageType.entries.forEach { lang ->
-                DropdownMenuItem(
-                    text = { Text(lang.languageName, style = labelStyle(15, if (lang == current) FontWeight.ExtraBold else FontWeight.Medium, Color.Unspecified)) },
-                    onClick = {
-                        open = false
-                        controller.select(lang)
-                    },
                 )
             }
         }

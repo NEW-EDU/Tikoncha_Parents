@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -149,10 +150,14 @@ fun OtpUi(
             .background(AppColors.bg.page),
         horizontalAlignment = Alignment.Start,
     ) {
-        TopBackButton(
-            modifier = Modifier.padding(top = 25.dp, start = 16.dp),
-            onClick = { navigator?.pop() },
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = 14.dp, start = 16.dp, end = 16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            TopBackButton(onClick = { navigator?.pop() })
+            Spacer(Modifier.weight(1f))
+            uz.tikoncha_parent.presentation.base.LanguagePill()
+        }
 
         Spacer(Modifier.fillMaxHeight(0.1f))
 

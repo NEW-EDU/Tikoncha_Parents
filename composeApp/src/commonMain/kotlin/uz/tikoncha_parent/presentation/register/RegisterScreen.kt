@@ -16,6 +16,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -129,6 +131,10 @@ fun Register(
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 10.dp)
         ) {
+            // Til tanlagiç — öng yuqori burçakda (röyxatdan ötiş tugaguncha)
+            Row(Modifier.fillMaxWidth().padding(top = 8.dp, end = 6.dp), horizontalArrangement = Arrangement.End) {
+                uz.tikoncha_parent.presentation.base.LanguagePill()
+            }
             LogoHeader()
 
             Text(

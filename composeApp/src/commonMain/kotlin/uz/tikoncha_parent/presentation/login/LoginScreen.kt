@@ -47,6 +47,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.zIndex
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
@@ -167,6 +168,10 @@ fun LoginUi(
         // Terms uchun pastda joy qoldirib, qolganini ikki teng yarmga bo'lamiz
         val termsReserve = 64.dp
         val halfHeight = (maxHeight - termsReserve) / 2f
+        // Til tanlagiç — çap yuqori burçakda, kirişgaça har ekranda
+        uz.tikoncha_parent.presentation.base.LanguagePill(
+            Modifier.align(Alignment.TopStart).padding(start = 16.dp, top = 12.dp).zIndex(1f),
+        )
 
         Column(
             modifier = Modifier
