@@ -169,12 +169,13 @@ class LoginViewModel(
             TelegramAuthResult.Cancelled ->
                 _state.update { it.copy(isTelegramLoading = false) }
 
+            // Xom texnik matn (NSError) foydalanuvchiga ko'rsatilmaydi: tarmoq — "internet yo'q", qolgani — umumiy xato.
             is TelegramAuthResult.Error ->
                 _state.update {
                     it.copy(
                         isTelegramLoading = false,
                         error = Outcome.Failure(
-                            ErrorCause.Unknown, result.message
+                            if (result.message == "network") ErrorCause.NoInternet else ErrorCause.Unknown
                         )
                     )
                 }

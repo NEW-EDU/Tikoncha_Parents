@@ -54,7 +54,12 @@ struct iOSApp: App {
     private func handleTelegram(_ url: URL) {
         if TelegramConfig.shared.isTelegramHost(host: url.host) {
             print("TG -> host mos, handle() chaqirilmoqda")
-            TelegramLogin.handle(url)
+            // Telegram ilovasidan qaytganda URLSession.shared fonda o'lgan ulanishni qayta ishlatib, kod almashtirish
+            // (POST oauth.telegram.org/token) -1005 "Сетевое соединение потеряно" bilan yiqilardi. flush keyingi
+            // so'rovlarni yangi TCP ulanishda yuboradi.
+            URLSession.shared.flush {
+                DispatchQueue.main.async { TelegramLogin.handle(url) }
+            }
         } else {
             print("TG -> host MOS EMAS: \(url.host ?? "nil") (tashlab yuborildi)")
         }

@@ -14,7 +14,14 @@ final class TelegramAuthBridgeImpl: TelegramAuthBridge {
                 case .failure(let error):
                     if let tgError = error as? TelegramLoginError, case .cancelled = tgError {
                         callback.onCancel()
-                    } else { callback.onError(message: "\(error)") }
+                    } else if (error as NSError).domain == NSURLErrorDomain {
+                        // Foydalanuvchiga xom NSError emas — "internet" xabari (Kotlin tomoni tarjima qiladi).
+                        print("TG_BRIDGE network error: \(error)")
+                        callback.onError(message: "network")
+                    } else {
+                        print("TG_BRIDGE error: \(error)")
+                        callback.onError(message: "telegram")
+                    }
                 }
             }
         }
