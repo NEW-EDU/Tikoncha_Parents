@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 import ComposeApp
 import YandexMapsMobile
 import TelegramLogin
@@ -31,6 +32,21 @@ struct iOSApp: App {
         // --- App Store (StoreKit 2) ---
         StoreKitBridgeProvider.shared.bridge = StoreKitBridgeImpl()
         EntitlementCryptoProvider.shared.bridge = EntitlementCryptoImpl()
+        #if DEBUG
+        // `-storekit.diag`: App Store mahsulotlari sandbox'da kelayaptimi (App Review "Product not found" tekşiruvi)
+        if CommandLine.arguments.contains("-storekit.diag") {
+            _Concurrency.Task {
+                let ids = ["tikoncha.parent.family.monthly", "tikoncha.parent.family.yearly",
+                           "tikoncha.parent.monthly.v2", "tikoncha.parent.yearly.v2"]
+                do {
+                    let found = try await Product.products(for: ids)
+                    print("STOREKIT_DIAG found=\(found.map { "\($0.id)=\($0.displayPrice)" }) missing=\(Set(ids).subtracting(found.map(\.id)).sorted())")
+                } catch {
+                    print("STOREKIT_DIAG error=\(error)")
+                }
+            }
+        }
+        #endif
     }
 
     var body: some Scene {

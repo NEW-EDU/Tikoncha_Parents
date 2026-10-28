@@ -10,7 +10,7 @@ final class StoreKitBridgeImpl: NSObject, StoreKitBridge {
     func purchase(productId: String, appAccountToken: String?, callback: StoreKitPurchaseCallback) {
         _Concurrency.Task { @MainActor in
             do {
-                guard let product = try await Product.products(for: [productId]).first else {
+                guard let product = try await Self.product(productId) else {
                     callback.onError(message: "Product not found: \(productId)")
                     return
                 }
@@ -39,6 +39,15 @@ final class StoreKitBridgeImpl: NSObject, StoreKitBridge {
         }
     }
 
+    /// App Store ba'zan mahsulotni birinçi so'rovda qaytarmaydi (tarmoq, yangi mahsulot) — 3 marta urinib köriladi.
+    private static func product(_ id: String) async throws -> Product? {
+        for attempt in 0..<3 {
+            if let p = try await Product.products(for: [id]).first { return p }
+            if attempt < 2 { try? await _Concurrency.Task.sleep(nanoseconds: 1_500_000_000) }
+        }
+        return nil
+    }
+
     func finish(transactionId: String) {
         _Concurrency.Task {
             for await result in Transaction.unfinished {
@@ -63,7 +72,7 @@ final class StoreKitBridgeImpl: NSObject, StoreKitBridge {
 
     func displayPrice(productId: String, callback: StoreKitPriceCallback) {
         _Concurrency.Task { @MainActor in
-            let product = try? await Product.products(for: [productId]).first
+            let product = try? await Self.product(productId)
             callback.onResult(price: product?.displayPrice)
         }
     }
