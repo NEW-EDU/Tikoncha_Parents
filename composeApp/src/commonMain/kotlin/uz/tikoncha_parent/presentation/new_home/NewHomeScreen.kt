@@ -219,7 +219,8 @@ fun NewHomeUi(
         event(HomeEvent.RefreshParentRequest)
     }
 
-    val showTikonchaTutorialCard = state.showTikonchaTutorialCard
+    // "Tikoncha nima?" kartasi körsatilmaydi (u faqat tanişuvni qayta oçardi) — doim tepadagi o'ng burçakdagi tugma.
+    val showTikonchaTutorialCard = false
     val taskCount = state.activeTaskCount
     val tableCount = state.parentPolicyCount
     val refreshScope = rememberCoroutineScope()
