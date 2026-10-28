@@ -17,7 +17,8 @@ import uz.tikoncha_parent.domain.model.subscription.PurchaseCoinRequest
 import uz.tikoncha_parent.domain.repository.PaymentRepository
 
 class CoinPurchaseViewModel (
-    private val paymentRepository: PaymentRepository
+    private val paymentRepository: PaymentRepository,
+    private val autopay: uz.tikoncha_parent.domain.repository.AutopayRepository,
 ): ScreenModel {
 
     private val _state = MutableStateFlow(CoinPurchaseState())
@@ -48,8 +49,85 @@ class CoinPurchaseViewModel (
             }
 
             CoinPurchaseEvent.StartPayment -> {
-                requestPayment()
+                val s = _state.value
+                when {
+                    s.method == CoinPayMethod.CARD && s.cardAvailable ->
+                        if (s.card == null) _effect.tryEmit(CoinPurchaseEffect.OpenAddCard) else payByCard()
+                    else -> requestPayment()
+                }
             }
+
+            is CoinPurchaseEvent.SelectMethod -> _state.update { it.copy(method = event.method) }
+
+            CoinPurchaseEvent.Resumed -> if (!_state.value.paymentActive) loadCards()
+        }
+    }
+
+    /** Kartalar: ro'yxat kelsa — karta orqali tölov ochiq (server yopiq bölsa tölovda aniq xato chiqadi).
+     *  Karta bor (yoki yangi qöşilgan) bölsa — u oldindan tanlanadi. */
+    private fun loadCards() {
+        screenModelScope.launch {
+            val r = autopay.cards()
+            val cards = (r as? Outcome.Success)?.data.orEmpty()
+            _state.update {
+                it.copy(
+                    cardAvailable = r is Outcome.Success,
+                    cards = cards,
+                    method = if (cards.isNotEmpty() && (it.cards.isEmpty() || it.method == CoinPayMethod.CARD)) CoinPayMethod.CARD else it.method,
+                )
+            }
+        }
+    }
+
+    /** Saqlangan kartadan bir marta yeçiladi. Natija nomaʼlum bölsa — qayta tölanmaydi, holat sörab turiladi. */
+    private fun payByCard() {
+        val s = _state.value
+        if (s.paymentActive) return
+        _state.update { it.copy(paymentLoading = true, paymentActive = true, paymentStatus = PaymentStatus.PENDING) }
+        screenModelScope.launch {
+            when (val r = autopay.buyCoins(s.coins, s.card?.id, s.promoCode.takeIf { s.promoActivated })) {
+                is Outcome.Failure -> {
+                    _state.update { it.copy(paymentLoading = false, paymentActive = false, paymentStatus = PaymentStatus.START) }
+                    _effect.tryEmit(CoinPurchaseEffect.PaymentFailed(r))
+                }
+                is Outcome.Success -> when (r.data.status) {
+                    "paid" -> {
+                        _state.update { it.copy(paymentLoading = false, paymentActive = false, paymentStatus = PaymentStatus.COMPLETED) }
+                        _effect.tryEmit(CoinPurchaseEffect.PaymentSuccess)
+                    }
+                    "failed" -> {
+                        _state.update { it.copy(paymentLoading = false, paymentActive = false, paymentStatus = PaymentStatus.START) }
+                        _effect.tryEmit(CoinPurchaseEffect.CardPaymentFailed(r.data.errorText))
+                    }
+                    else -> {
+                        _state.update { it.copy(paymentLoading = false) }
+                        r.data.transactionId?.let { pollCardCharge(it) }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun pollCardCharge(transactionId: String) {
+        statusJob?.cancel()
+        statusJob = screenModelScope.launch {
+            repeat(60) {
+                delay(3000)
+                when ((autopay.chargeState(transactionId) as? Outcome.Success)?.data) {
+                    uz.tikoncha_parent.domain.model.autopay.ChargeState.COMPLETED -> {
+                        _state.update { it.copy(paymentActive = false, paymentStatus = PaymentStatus.COMPLETED) }
+                        _effect.tryEmit(CoinPurchaseEffect.PaymentSuccess)
+                        return@launch
+                    }
+                    uz.tikoncha_parent.domain.model.autopay.ChargeState.CANCELLED -> {
+                        _state.update { it.copy(paymentActive = false, paymentStatus = PaymentStatus.FAILED) }
+                        return@launch
+                    }
+                    else -> Unit
+                }
+            }
+            // Aniqlanmadi: tölov qayta yuborilmaydi — server özi aniqlaydi
+            _state.update { it.copy(paymentActive = false) }
         }
     }
 

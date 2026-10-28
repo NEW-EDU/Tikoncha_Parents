@@ -32,6 +32,10 @@ import cafe.adriel.voyager.navigator.Navigator
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import org.jetbrains.compose.resources.stringResource
+import tikoncha_parents.composeapp.generated.resources.ic_click
+import tikoncha_parents.composeapp.generated.resources.ap_add_card_title
+import tikoncha_parents.composeapp.generated.resources.ap_click_sub
+import tikoncha_parents.composeapp.generated.resources.ap_card_title
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.biz_bilan_aloqa
 import tikoncha_parents.composeapp.generated.resources.pay_abroad_coins_body
@@ -95,6 +99,8 @@ class CoinPurchaseScreen(
                 totalPrice = totalPrice,
                 discountPrice = discountPrice
             ))
+            // Har körinişda (karta qöşib qaytganda ham) — kartalar yangilanadi
+            event(CoinPurchaseEvent.Resumed)
         }
 
         ToastProvider {
@@ -184,6 +190,15 @@ fun CoinPurchaseUi(
                 CoinPurchaseEffect.PaymentSuccess -> {
                     showPaymentSuccessDialog = true
                 }
+
+                CoinPurchaseEffect.OpenAddCard ->
+                    navigator?.push(uz.tikoncha_parent.presentation.profile.subscription.autopay.card.AutopayAddCardScreen())
+
+                is CoinPurchaseEffect.CardPaymentFailed -> {
+                    paymentFailure = uz.tikoncha_parent.domain.model.app_error.Outcome.Failure(
+                        uz.tikoncha_parent.domain.model.app_error.ErrorCause.Unknown, eff.message,
+                    )
+                }
             }
         }
     }
@@ -242,19 +257,34 @@ fun CoinPurchaseUi(
         ) {
             Spacer(Modifier.height(10.dp))
 
-            PaymentOption(
-                isSelected = true,
-                onClick = { },
-            )
-            Spacer(Modifier.height(12.dp))
-
-            Text(
-                text = stringResource(Res.string.tolov_click_platformasi_orqali_amalga_oshiriladi),
-                color = AppColors.text.secondary,
-                style = AppTypography.bodyMdMedium,
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
-            )
+            // Karta (Paylov, saqlangan karta — bir bosişda) va Click
+            Column(verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(12.dp)) {
+                if (state.cardAvailable) {
+                    uz.tikoncha_parent.presentation.profile.subscription.autopay.components.PayOptionRow(
+                        selected = state.method == CoinPayMethod.CARD,
+                        onClick = { event(CoinPurchaseEvent.SelectMethod(CoinPayMethod.CARD)) },
+                        leading = { uz.tikoncha_parent.presentation.profile.subscription.autopay.components.AccentIconTile() },
+                        title = stringResource(Res.string.ap_card_title),
+                        price = null,
+                    ) {
+                        val card = state.card
+                        if (card != null) {
+                            uz.tikoncha_parent.presentation.profile.subscription.autopay.components.CardMask(card)
+                        } else {
+                            uz.tikoncha_parent.presentation.profile.subscription.autopay.components.AcceptedCards(modifier = Modifier.padding(end = 8.dp))
+                        }
+                    }
+                }
+                uz.tikoncha_parent.presentation.profile.subscription.autopay.components.PayOptionRow(
+                    selected = state.method == CoinPayMethod.CLICK || !state.cardAvailable,
+                    onClick = { event(CoinPurchaseEvent.SelectMethod(CoinPayMethod.CLICK)) },
+                    leading = { uz.tikoncha_parent.presentation.profile.subscription.autopay.components.WhiteLogoTile(org.jetbrains.compose.resources.painterResource(Res.drawable.ic_click), "Click") },
+                    title = "Click",
+                    price = null,
+                ) {
+                    Text(text = stringResource(Res.string.ap_click_sub), style = AppTypography.bodyMdMedium, color = AppColors.text.tertiary, maxLines = 1)
+                }
+            }
             Spacer(Modifier.height(24.dp))
 
             PromoCodeContainer(
@@ -453,7 +483,9 @@ fun CoinPurchaseUi(
         }
 
         CustomButton(
-            text = "${state.finalPrice.toCurrency()} UZS - ${stringResource(Res.string.sotib_olish)}",
+            text = if (state.method == CoinPayMethod.CARD && state.cardAvailable && state.card == null)
+                stringResource(Res.string.ap_add_card_title)
+            else "${state.finalPrice.toCurrency()} UZS - ${stringResource(Res.string.sotib_olish)}",
             onClick = {
                 if (localPayments == false) showAbroad = true else event(CoinPurchaseEvent.StartPayment)
             },

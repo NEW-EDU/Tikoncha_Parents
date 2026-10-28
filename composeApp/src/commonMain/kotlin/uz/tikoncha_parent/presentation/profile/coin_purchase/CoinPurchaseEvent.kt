@@ -9,4 +9,7 @@ sealed interface CoinPurchaseEvent {
     ): CoinPurchaseEvent
 
     data object StartPayment: CoinPurchaseEvent
+    data class SelectMethod(val method: CoinPayMethod): CoinPurchaseEvent
+    /** Ekran qayta körindi (karta qöşib qaytildi) — kartalar yangilanadi. */
+    data object Resumed: CoinPurchaseEvent
 }

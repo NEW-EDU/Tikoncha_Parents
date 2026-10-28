@@ -3,6 +3,8 @@
 package uz.tikoncha_parent.presentation.profile.subscription.autopay.method
 
 import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
+import tikoncha_parents.composeapp.generated.resources.davom_etish
+import tikoncha_parents.composeapp.generated.resources.sub_family_caption
 import tikoncha_parents.composeapp.generated.resources.ap_card_need_child
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.ui.draw.clip
@@ -28,6 +30,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Autorenew
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Wallet
+import androidx.compose.material.icons.rounded.PhoneIphone
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -115,6 +118,14 @@ class PaymentMethodScreen(
                             planId = e.planId,
                         )
                     )
+                    is PaymentMethodEffect.OpenAppStore -> navigator?.push(
+                        PaymentTypeScreen(
+                            subDuration = if (e.period == PlanPeriod.ANNUAL) SubscriptionDuration.ANNUAL else SubscriptionDuration.MONTHLY,
+                            amount = e.amount,
+                            planId = e.planId,
+                            appStore = true,
+                        )
+                    )
                     is PaymentMethodEffect.OpenConfirm -> navigator?.push(
                         AutopayConfirmScreen(child, e.planId, e.period.wire, e.amount)
                     )
@@ -198,6 +209,18 @@ fun PaymentMethodUi(
                     ) {
                         Text(text = stringResource(Res.string.ap_click_sub), style = AppTypography.bodyMdMedium, color = AppColors.text.tertiary, maxLines = 1)
                     }
+                    if (isIos()) {
+                        // iPhone: O'zbekistonda ham App Store orqali (oilaviy tarif) — Click/karta bilan bir qatorda
+                        PayOptionRow(
+                            selected = state.selected == PayMethod.APP_STORE,
+                            onClick = { event(PaymentMethodEvent.Select(PayMethod.APP_STORE)) },
+                            leading = { AccentIconTile(Icons.Rounded.PhoneIphone) },
+                            title = "App Store",
+                            price = null,
+                        ) {
+                            Text(text = stringResource(Res.string.sub_family_caption), style = AppTypography.bodyMdMedium, color = AppColors.text.tertiary, maxLines = 1)
+                        }
+                    }
                     ComingSoonRow(Modifier.padding(top = 4.dp))
                 }
             }
@@ -219,7 +242,8 @@ fun PaymentMethodUi(
             }
             Spacer(Modifier.height(12.dp))
             CustomButton(
-                text = stringResource(Res.string.ap_continue_with, sumText(state.selectedAmount)),
+                text = if (state.selected == PayMethod.APP_STORE) stringResource(Res.string.davom_etish)
+                else stringResource(Res.string.ap_continue_with, sumText(state.selectedAmount)),
                 enabled = !state.loading,
                 onClick = { event(PaymentMethodEvent.Continue) },
                 modifier = Modifier.fillMaxWidth().height(54.dp),

@@ -367,7 +367,7 @@ val sharedModule = module {
             userInfo = userInfo
         )
     }
-    factory { CoinPurchaseViewModel(get()) }
+    factory { CoinPurchaseViewModel(get(), get()) }
     single { UpdateViewModel(get(), get(), get()) }
     factory { PlayerScreenModel(get(), get()) }
     factory { VideoTutorialScreenModel(get()) }

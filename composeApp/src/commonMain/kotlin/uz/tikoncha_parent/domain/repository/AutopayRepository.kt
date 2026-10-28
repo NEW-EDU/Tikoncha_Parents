@@ -26,4 +26,6 @@ interface AutopayRepository {
     suspend fun retry(childId: String): Outcome<ChargeResult>
     suspend fun disable(childId: String): Outcome<AutopayInfo>
     suspend fun chargeState(transactionId: String): Outcome<ChargeState>
+    /** Tanga sotib oliş — saqlangan kartadan bir marta (cardId null — asosiy karta). */
+    suspend fun buyCoins(coins: Int, cardId: String?, promocode: String?): Outcome<uz.tikoncha_parent.domain.model.autopay.CoinCharge>
 }

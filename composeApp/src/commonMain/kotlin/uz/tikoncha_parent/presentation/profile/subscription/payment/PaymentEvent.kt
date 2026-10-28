@@ -11,6 +11,8 @@ sealed interface PaymentEvent {
     data object ResetPaymentResponse: PaymentEvent
     data class SetSubscriptionDuration(val duration: SubscriptionDuration): PaymentEvent
     data class SetPlanId(val planId: String): PaymentEvent
+    /** Foydalanuvçi App Store'ni özi tanladi (iPhone, O'zbekistonda ham). */
+    data object ForceAppStore: PaymentEvent
 
     data class OnPromoCode(val promoCode: String): PaymentEvent
     data object ValidatePromoCode: PaymentEvent

@@ -103,3 +103,6 @@ enum class ChargeState { PENDING, COMPLETED, CANCELLED;
         fun of(raw: String?): ChargeState = entries.firstOrNull { it.name == raw } ?: PENDING
     }
 }
+
+/** Tanga uçun kartadan tölov: `status` paid / failed / pending; `balance` — yangi balans. */
+data class CoinCharge(val status: String, val errorText: String?, val transactionId: String?, val balance: Int)

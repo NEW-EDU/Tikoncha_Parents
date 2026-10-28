@@ -22,7 +22,15 @@ data class CoinPurchaseState(
     val discountSaving: Int = 0,
     val discountPercentage: Int = 0,
     val promoCodeLoading: Boolean = false,
+    /** Saqlangan kartalar (birinçisi — asosiy) va kartadan tölov ochiqmi. */
+    val cards: List<uz.tikoncha_parent.domain.model.autopay.PayCard> = emptyList(),
+    val cardAvailable: Boolean = false,
+    val method: CoinPayMethod = CoinPayMethod.CLICK,
 ){
+    val card: uz.tikoncha_parent.domain.model.autopay.PayCard? get() = cards.firstOrNull()
+
     val finalPrice: Int
         get() = totalPrice - promoCodeDiscountPrice - discountPrice
 }
+
+enum class CoinPayMethod { CARD, CLICK }

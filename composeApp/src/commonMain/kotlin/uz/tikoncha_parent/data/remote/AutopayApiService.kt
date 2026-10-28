@@ -54,6 +54,10 @@ class AutopayApiService(private val client: HttpClient) {
     suspend fun disable(childId: String): AutopayResponse =
         client.safeRequest(HttpMethod.Delete, "/autopay") { parameter("child_user_id", childId) }
 
+    /** Tanga sotib oliş — saqlangan kartadan bir martalik (narx Click bilan bir xil). */
+    suspend fun buyCoins(body: uz.tikoncha_parent.data.remote.model.autopay.CoinChargeRequest): uz.tikoncha_parent.data.remote.model.autopay.CoinChargeResponse =
+        client.safeRequest(HttpMethod.Post, "/autopay/coins") { setBody(body) }
+
     suspend fun chargeStatus(transactionId: String): ChargeStatusResponse =
         client.safeRequest(HttpMethod.Get, "/autopay/charges/$transactionId")
 }

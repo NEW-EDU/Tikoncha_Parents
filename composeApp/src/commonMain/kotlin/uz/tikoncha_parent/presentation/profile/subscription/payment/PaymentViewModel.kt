@@ -41,8 +41,10 @@ class PaymentViewModel(
         screenModelScope.launch { applyRegion(region.refresh()) }
     }
 
+    private var forcedAppStore = false
+
     private fun applyRegion(localPayments: Boolean?) {
-        val appStoreOnly = isIos() && localPayments != true
+        val appStoreOnly = isIos() && (forcedAppStore || localPayments != true)
         _state.update {
             it.copy(
                 appStoreOnly = appStoreOnly,
@@ -107,6 +109,11 @@ class PaymentViewModel(
                         subscriptionDuration = event.duration
                     )
                 }
+            }
+
+            PaymentEvent.ForceAppStore -> {
+                forcedAppStore = true
+                applyRegion(region.localPayments.value)
             }
 
             is PaymentEvent.SetPlanId -> {

@@ -63,7 +63,9 @@ import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
 class PaymentTypeScreen(
     val subDuration: SubscriptionDuration,
     val amount: Int,
-    val planId: String
+    val planId: String,
+    /** iPhone'da "To'lov usuli"dan App Store tanlangan — O'zbekistonda ham faqat App Store körsatiladi. */
+    val appStore: Boolean = false,
 ) : Screen {
     @Composable
     override fun Content() {
@@ -78,6 +80,7 @@ class PaymentTypeScreen(
             event(PaymentEvent.SetSubscriptionDuration(subDuration))
             event(PaymentEvent.SetAmount(amount = amount))
             event(PaymentEvent.SetPlanId(planId))
+            if (appStore) event(PaymentEvent.ForceAppStore)
         }
 
         PaymentTypeScreenUi(

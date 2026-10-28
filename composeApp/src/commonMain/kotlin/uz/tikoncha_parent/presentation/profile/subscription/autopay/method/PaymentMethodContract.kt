@@ -3,7 +3,8 @@ package uz.tikoncha_parent.presentation.profile.subscription.autopay.method
 import uz.tikoncha_parent.domain.model.autopay.PlanPeriod
 import kotlin.math.roundToInt
 
-enum class PayMethod { CARD, CLICK }
+/** APP_STORE — faqat iPhone: oilaviy tarif (3 tagaça farzand), narx App Store valyutasida. */
+enum class PayMethod { CARD, CLICK, APP_STORE }
 
 data class PaymentMethodState(
     /** Farzand user id; null — ro'yxatdan o'tmagan bola (telefon raqami yo'li) → faqat Click. */
@@ -40,4 +41,5 @@ sealed interface PaymentMethodEffect {
     data class OpenAddCard(val planId: String, val period: PlanPeriod, val amount: Int) : PaymentMethodEffect
     data class OpenConfirm(val planId: String, val period: PlanPeriod, val amount: Int) : PaymentMethodEffect
     data class OpenClick(val planId: String, val period: PlanPeriod, val amount: Int) : PaymentMethodEffect
+    data class OpenAppStore(val planId: String, val period: PlanPeriod, val amount: Int) : PaymentMethodEffect
 }

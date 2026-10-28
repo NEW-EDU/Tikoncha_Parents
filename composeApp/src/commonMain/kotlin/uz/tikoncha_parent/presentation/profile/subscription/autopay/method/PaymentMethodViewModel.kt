@@ -64,6 +64,7 @@ class PaymentMethodViewModel(
         val s = _state.value
         if (s.loading) return
         val effect = when {
+            s.selected == PayMethod.APP_STORE -> PaymentMethodEffect.OpenAppStore(s.planId, s.period, s.clickAmount)
             s.selected == PayMethod.CLICK || !s.cardAvailable -> PaymentMethodEffect.OpenClick(s.planId, s.period, s.clickAmount)
             s.hasSavedCards -> PaymentMethodEffect.OpenConfirm(s.planId, s.period, s.cardAmount)
             else -> PaymentMethodEffect.OpenAddCard(s.planId, s.period, s.cardAmount)

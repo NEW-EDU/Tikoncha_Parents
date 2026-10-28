@@ -7,6 +7,10 @@ sealed class CoinPurchaseEffect {
     data class PaymentFailed(val failure: Outcome.Failure): CoinPurchaseEffect()
 
     data object PaymentSuccess: CoinPurchaseEffect()
+    /** Kartadan tölov tanlangan, saqlangan karta yöq — avval karta qöşiladi (SMS). Pul olinmaydi. */
+    data object OpenAddCard: CoinPurchaseEffect()
+    /** Kartadan tölov rad etildi — server matni. */
+    data class CardPaymentFailed(val message: String?): CoinPurchaseEffect()
     data object ShowPromoCodeSuccessToast: CoinPurchaseEffect()
 
     data class OpenClickPayment(

@@ -98,6 +98,18 @@ class AutopayRepositoryImpl(
         if (r.success && d != null) Outcome.Success(ChargeState.of(d.status)) else fail(r.code, r.error)
     }
 
+    override suspend fun buyCoins(coins: Int, cardId: String?, promocode: String?): Outcome<uz.tikoncha_parent.domain.model.autopay.CoinCharge> = apiCall(TAG) {
+        val r = api.buyCoins(
+            uz.tikoncha_parent.data.remote.model.autopay.CoinChargeRequest(
+                coins = coins, cardId = cardId, promocode = promocode?.takeIf { it.isNotBlank() },
+            )
+        )
+        val d = r.data
+        if (r.success && d != null) Outcome.Success(
+            uz.tikoncha_parent.domain.model.autopay.CoinCharge(d.status, d.errorText, d.transactionId, d.coins)
+        ) else fail(r.code, r.error)
+    }
+
     private fun fail(code: Int?, error: String?): Outcome.Failure =
         Outcome.Failure(ApiErrorMapper.fromCode(code), error)
 

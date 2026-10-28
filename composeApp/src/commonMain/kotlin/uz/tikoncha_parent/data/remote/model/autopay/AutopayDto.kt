@@ -124,3 +124,23 @@ data class ChargeStatusResponse(val success: Boolean, val data: ChargeStatusDto?
 
 @Serializable
 data class OkResponse(val success: Boolean, val error: String? = null, val code: Int? = null)
+
+@kotlinx.serialization.Serializable
+data class CoinChargeRequest(
+    val coins: Int,
+    @kotlinx.serialization.SerialName("card_id") val cardId: String? = null,
+    val promocode: String? = null,
+)
+
+/** Tanga — kartadan bir martalik tölov. `coins` — yangi balans. */
+@kotlinx.serialization.Serializable
+data class CoinChargeDto(
+    val status: String,
+    val error: String? = null,
+    @kotlinx.serialization.SerialName("error_text") val errorText: String? = null,
+    @kotlinx.serialization.SerialName("transaction_id") val transactionId: String? = null,
+    val coins: Int = 0,
+)
+
+@kotlinx.serialization.Serializable
+data class CoinChargeResponse(val success: Boolean, val data: CoinChargeDto? = null, val error: String? = null, val code: Int? = null)
