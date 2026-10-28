@@ -51,12 +51,15 @@ import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.foundation.Image
+import org.jetbrains.compose.resources.DrawableResource
+import tikoncha_parents.composeapp.generated.resources.ob_app_tiktok
+import tikoncha_parents.composeapp.generated.resources.ob_app_brawlstars
+import tikoncha_parents.composeapp.generated.resources.ob_app_youtube
 import tikoncha_parents.composeapp.generated.resources.maktab
 import tikoncha_parents.composeapp.generated.resources.ob_chat_child_msg
-import tikoncha_parents.composeapp.generated.resources.ob_day_games
-import tikoncha_parents.composeapp.generated.resources.ob_day_study
 import tikoncha_parents.composeapp.generated.resources.ob_day_today
-import tikoncha_parents.composeapp.generated.resources.ob_day_video
 import tikoncha_parents.composeapp.generated.resources.ob_min_fmt
 import tikoncha_parents.composeapp.generated.resources.ob_notif_message
 import tikoncha_parents.composeapp.generated.resources.ob_notif_request
@@ -112,22 +115,28 @@ internal fun ScreenTimeIllustration(p: Float, modifier: Modifier = Modifier) {
                 }
             }
             Spacer(Modifier.height(14.dp))
+            // Asl ilova belgilari — qo'lda chizilgan glif "qaysi ilova" ekanini aytmasdi.
             val apps = listOf(
-                Triple(Res.string.ob_day_video, 74, 1.0f),
-                Triple(Res.string.ob_day_games, 58, 0.78f),
-                Triple(Res.string.ob_day_study, 40, 0.54f),
+                Triple(DayApp("YouTube", Res.drawable.ob_app_youtube), 74, 1.0f),
+                Triple(DayApp("Brawl Stars", Res.drawable.ob_app_brawlstars), 58, 0.78f),
+                Triple(DayApp("TikTok", Res.drawable.ob_app_tiktok), 40, 0.54f),
             )
-            apps.forEachIndexed { i, (label, mins, share) ->
+            apps.forEachIndexed { i, (app, mins, share) ->
                 val t = easeOut(stage(p, 0.40f + i * 0.08f, 0.80f + i * 0.06f))
                 Row(
                     Modifier.fillMaxWidth().padding(vertical = 5.dp).graphicsLayer { alpha = stage(p, 0.36f + i * 0.08f, 0.5f + i * 0.08f) },
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    AppGlyph(i)
+                    Image(
+                        painter = painterResource(app.icon),
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.size(30.dp).clip(RoundedCornerShape(9.dp)),
+                    )
                     Spacer(Modifier.width(10.dp))
                     Column(Modifier.weight(1f)) {
                         Row(Modifier.fillMaxWidth()) {
-                            Text(stringResource(label), style = labelStyle(13), modifier = Modifier.weight(1f))
+                            Text(app.name, style = labelStyle(13), modifier = Modifier.weight(1f))
                             Text(stringResource(Res.string.ob_min_fmt, (mins * t).roundToInt()), style = labelStyle(12, FontWeight.Medium, Night.inkDim))
                         }
                         Spacer(Modifier.height(5.dp))
@@ -141,29 +150,7 @@ internal fun ScreenTimeIllustration(p: Float, modifier: Modifier = Modifier) {
     }
 }
 
-/** Ilova belgisi o'rnida neytral glif: video / o'yin / kitob. */
-@Composable
-private fun AppGlyph(kind: Int) {
-    Box(
-        Modifier.size(30.dp).clip(RoundedCornerShape(9.dp)).background(Night.caramel.copy(alpha = 0.18f)),
-        contentAlignment = Alignment.Center,
-    ) {
-        Canvas(Modifier.size(14.dp)) {
-            val c = Night.caramelSoft
-            when (kind) {
-                0 -> drawPath(Path().apply { moveTo(size.width * 0.2f, 0f); lineTo(size.width, size.height / 2); lineTo(size.width * 0.2f, size.height); close() }, c)
-                1 -> {
-                    drawRoundRect(c, size = Size(size.width, size.height * 0.62f), topLeft = Offset(0f, size.height * 0.2f), cornerRadius = CornerRadius(size.height * 0.3f))
-                    drawCircle(Night.top, radius = size.width * 0.09f, center = Offset(size.width * 0.72f, size.height * 0.5f))
-                }
-                else -> {
-                    drawRoundRect(c, size = Size(size.width * 0.46f, size.height), cornerRadius = CornerRadius(2f))
-                    drawRoundRect(c, topLeft = Offset(size.width * 0.54f, 0f), size = Size(size.width * 0.46f, size.height), cornerRadius = CornerRadius(2f))
-                }
-            }
-        }
-    }
-}
+private class DayApp(val name: String, val icon: DrawableResource)
 
 // ───────────────────────── 2. Qoidalar ─────────────────────────
 
