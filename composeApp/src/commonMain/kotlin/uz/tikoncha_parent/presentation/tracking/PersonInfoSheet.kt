@@ -26,6 +26,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Map
+import androidx.compose.material.icons.rounded.Videocam
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material3.Button
@@ -56,6 +57,7 @@ import tikoncha_parents.composeapp.generated.resources.tracking_last_update
 import tikoncha_parents.composeapp.generated.resources.tracking_location_unavailable
 import tikoncha_parents.composeapp.generated.resources.tracking_watch_video
 import tikoncha_parents.composeapp.generated.resources.ulashish
+import tikoncha_parents.composeapp.generated.resources.live_watch
 import tikoncha_parents.composeapp.generated.resources.xaritadan_ochish
 import uz.tikoncha_parent.domain.model.permission_status.PermissionIssue
 import uz.tikoncha_parent.presentation.base.island.ChildAvatar
@@ -155,6 +157,7 @@ fun PersonLocationCard(
     onOpenInMaps: (Person) -> Unit,
     onShare: (Person) -> Unit,
     modifier: Modifier = Modifier,
+    onLive: ((Person) -> Unit)? = null,
 ) {
     val hasLocation = person.location != null
     Column(
@@ -258,6 +261,17 @@ fun PersonLocationCard(
                     modifier = Modifier.weight(1f),
                 )
             }
+        }
+
+        // Jonli körish (rozilik bilan A/V + GPS): bolaga çaqiruv boradi, u rozi bölsa ulanadi
+        if (onLive != null) {
+            Spacer(Modifier.height(8.dp))
+            CardAction(
+                text = stringResource(Res.string.live_watch),
+                icon = Icons.Rounded.Videocam,
+                onClick = { onLive(person) },
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }

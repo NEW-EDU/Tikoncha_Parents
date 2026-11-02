@@ -1427,4 +1427,5 @@ This information is used only for these features and is not shared with third pa
     <string name="tg_max_chats_note">The most recent chats are shown</string>
     <string name="tg_rules_load_failed">Couldn't load the rules</string>
     <string name="tg_rules_retry">Try again</string>
+    <string name="live_watch">Watch live</string>
 </resources>

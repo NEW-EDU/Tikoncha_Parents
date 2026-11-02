@@ -9,6 +9,7 @@ import uz.tikoncha_parent.presentation.chat.chat_room.ChatRoomScreen
 import uz.tikoncha_parent.presentation.statistic.StatisticScreen
 import uz.tikoncha_parent.presentation.model.ChatType
 import uz.tikoncha_parent.presentation.protection.ProtectionScreen
+import uz.tikoncha_parent.presentation.live.ParentLiveScreen
 
 @Composable
 fun DeepLinkEffect(navigator: Navigator) {
@@ -36,6 +37,9 @@ fun navigateByDeepLink(navigator: Navigator, link: DeepLink){
         )
         DeepLink.ParentalRequest -> navigator.push(ProtectionScreen())
         DeepLink.StrictDisable -> navigator.push(ProtectionScreen())
+        is DeepLink.Live -> navigator.push(
+            ParentLiveScreen(joinSessionId = link.sessionId, childUserId = link.childId)
+        )
         is DeepLink.General -> {}
     }
 }

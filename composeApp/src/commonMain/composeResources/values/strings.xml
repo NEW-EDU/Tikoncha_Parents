@@ -1437,4 +1437,5 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="tg_max_chats_note">Eng so'nggi chatlar ko'rsatiladi</string>
     <string name="tg_rules_load_failed">Qoidalarni yuklab bo'lmadi</string>
     <string name="tg_rules_retry">Qayta urinish</string>
+    <string name="live_watch">Jonli köriş</string>
 </resources>

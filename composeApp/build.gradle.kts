@@ -51,6 +51,12 @@ kotlin {
         pod("YandexMapsMobile") {
             version = "4.24.0-lite"
         }
+        // WebRTC (jonli A/V viewer) — webrtc-kmp 0.125.x shu pod'ni talab qiladi.
+        pod("WebRTC-SDK") {
+            version = "125.6422.07"
+            moduleName = "WebRTC"
+            packageName = "WebRTC"
+        }
     }
     
     sourceSets {
@@ -90,6 +96,9 @@ kotlin {
 
             //telegram login
             implementation(libs.telegram.login.android)
+
+            //bouncycastle (live module — Ed25519 identity signatures)
+            implementation(libs.bouncycastle)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -124,6 +133,9 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
 
             implementation(libs.remember.settings)
+
+            //webrtc-kmp (live module — consensual A/V + GPS, parent viewer)
+            implementation(libs.webrtc.kmp)
 
 
 
@@ -243,6 +255,8 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            // BouncyCastle (bcprov-jdk18on) duplicate multi-release OSGI manifest.
+            excludes += "/META-INF/versions/9/OSGI-INF/MANIFEST.MF"
         }
     }
     compileOptions {

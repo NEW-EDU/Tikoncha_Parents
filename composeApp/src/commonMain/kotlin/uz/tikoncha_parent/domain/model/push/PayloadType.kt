@@ -10,4 +10,7 @@ enum class PayloadType {
     CHAT,
     PARENTAL_REQUEST,
     STRICT_DISABLE,
+
+    @SerialName("LIVE_RING")
+    LIVE_RING,
 }

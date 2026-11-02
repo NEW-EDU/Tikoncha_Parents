@@ -201,6 +201,7 @@ class TrackingScreen : Screen {
                 Logger.d("TrackingScreen", "person = $person")
                 person.location?.let { loc -> shareLocation(loc.lat, loc.lon, person.name) }
             },
+            onLive = { person -> navigator?.push(uz.tikoncha_parent.presentation.live.ParentLiveScreen(person.id)) },
         )
 
         // ============== DIALOGLAR ==============
@@ -304,6 +305,7 @@ fun TrackingContent(
     onWatchVideo: (String) -> Unit = {},
     onOpenInMaps: (Person) -> Unit = {},
     onShare: (Person) -> Unit = {},
+    onLive: ((Person) -> Unit)? = null,
 ) {
     val isDark = rememberIsDarkTheme()
 
@@ -572,6 +574,7 @@ fun TrackingContent(
                     onWatchVideo = onWatchVideo,
                     onOpenInMaps = onOpenInMaps,
                     onShare = onShare,
+                    onLive = onLive,
                 )
             } else if (state.people.isNotEmpty()) {
                 ChildrenRail(
