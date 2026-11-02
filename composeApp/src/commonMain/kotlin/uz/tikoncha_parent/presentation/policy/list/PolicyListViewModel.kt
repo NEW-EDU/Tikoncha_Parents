@@ -132,6 +132,7 @@ class PolicyListViewModel(
             is PolicyListEvent.ProtectionToggled -> toggleProtectionAll(e.enabled)
             PolicyListEvent.ProtectionClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenProtection(it)) }
             PolicyListEvent.SpecialClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenSpecial(it)) }
+            PolicyListEvent.TikonchagramClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenTikonchagram(it)) }
 
             is PolicyListEvent.PolicyToggled -> control(e.policyId, PayWallReason.POLICY_COUNT) { togglePolicy(e.policyId, e.enabled) }
             is PolicyListEvent.PolicyClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenPolicy(it, e.policyId)) }

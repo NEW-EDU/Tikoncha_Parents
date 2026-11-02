@@ -172,6 +172,7 @@ val sharedModule = module {
     single { TutorialApiService(get()) }
 
     single { ProtectionApiService(get()) }
+    single { uz.tikoncha_parent.data.remote.TikonchagramApiService(get()) }
 
     // Repository
     single<LoginRepository> { LoginRepositoryImpl(get()) }
@@ -198,6 +199,7 @@ val sharedModule = module {
 
     single<TelegramAuthRepository> { TelegramAuthRepositoryImpl() }
     single<ProtectionRepository> { ProtectionRepositoryImpl(get()) }
+    single<uz.tikoncha_parent.domain.repository.TikonchagramRepository> { uz.tikoncha_parent.data.repository.TikonchagramRepositoryImpl(get()) }
     single<SessionRepository> { SessionRepositoryImpl() }
     single<AuthRepository> { AuthRepositoryImpl(get()) }
 
@@ -298,6 +300,7 @@ val sharedModule = module {
     }
     factory { uz.tikoncha_parent.presentation.policy.protection.ContentProtectionViewModel(get(), get(), get(), get()) }
     factory { uz.tikoncha_parent.presentation.policy.special.SpecialProtectionViewModel(get(), get()) }
+    factory { uz.tikoncha_parent.presentation.policy.tikonchagram.TikonchagramRulesViewModel(get()) }
     factory {
         uz.tikoncha_parent.presentation.policy.editor.PolicyEditorViewModel(
             observePolicies = get(),

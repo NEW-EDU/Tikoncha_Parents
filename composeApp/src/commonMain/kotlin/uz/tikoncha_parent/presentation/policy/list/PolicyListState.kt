@@ -69,6 +69,7 @@ sealed interface PolicyListEvent {
     data class ProtectionToggled(val enabled: Boolean) : PolicyListEvent
     data object ProtectionClicked : PolicyListEvent
     data object SpecialClicked : PolicyListEvent
+    data object TikonchagramClicked : PolicyListEvent
 
     data class PolicyToggled(val policyId: String, val enabled: Boolean) : PolicyListEvent
     data class PolicyClicked(val policyId: String) : PolicyListEvent
@@ -84,6 +85,7 @@ sealed interface PolicyListEffect {
     data class OpenPreset(val childId: String, val kind: PresetKind) : PolicyListEffect
     data class OpenProtection(val childId: String) : PolicyListEffect
     data class OpenSpecial(val childId: String) : PolicyListEffect
+    data class OpenTikonchagram(val childId: String) : PolicyListEffect
     data class OpenQuickBlock(val childId: String) : PolicyListEffect
     data class OpenPolicy(val childId: String, val policyId: String) : PolicyListEffect
     data class OpenCreate(val childId: String) : PolicyListEffect
