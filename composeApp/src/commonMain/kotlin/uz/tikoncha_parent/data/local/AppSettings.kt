@@ -16,6 +16,10 @@ object AppSettings {
 
     private val settings = Settings()
 
+    init {
+        Secrets.ensureMigrated()
+    }
+
     // JSON konfiguratsiya: backend yangi field qo‘shsa ham crash bo‘lmaydi
     private val json = Json {
         ignoreUnknownKeys = true
@@ -26,8 +30,6 @@ object AppSettings {
 
     // Keys
     private const val KEY_FCM_TOKEN = "fcmToken"
-    private const val KEY_REFRESH_TOKEN = "refreshToken"
-    private const val KEY_ACCESS_TOKEN = "accessToken"
     private const val KEY_PROFILE_IMAGE_URL = "profileImageUrl"
     private const val KEY_USER_ID = "userId"
     private const val KEY_SELECTED_CHILD_ID = "selectedChildId"
@@ -61,13 +63,14 @@ object AppSettings {
         get() = settings.get(KEY_FCM_TOKEN) ?: ""
         set(value) = settings.set(KEY_FCM_TOKEN, value)
 
+    // Tokens are encrypted (Android Keystore / iOS Keychain), see Secrets
     var refreshToken: String
-        get() = settings.get(KEY_REFRESH_TOKEN) ?: ""
-        set(value) = settings.set(KEY_REFRESH_TOKEN, value)
+        get() = Secrets.get(Secrets.REFRESH_TOKEN) ?: ""
+        set(value) = Secrets.put(Secrets.REFRESH_TOKEN, value)
 
     var accessToken: String
-        get() = settings.get(KEY_ACCESS_TOKEN) ?: ""
-        set(value) = settings.set(KEY_ACCESS_TOKEN, value)
+        get() = Secrets.get(Secrets.ACCESS_TOKEN) ?: ""
+        set(value) = Secrets.put(Secrets.ACCESS_TOKEN, value)
 
     var profileImageUrl: String
         get() = settings.get(KEY_PROFILE_IMAGE_URL) ?: ""
@@ -263,8 +266,8 @@ object AppSettings {
         SessionCache.clear()
         settings.keys.filter { it.startsWith("offline_") }.forEach { settings.remove(it) }
         // auth
-        settings.remove(KEY_ACCESS_TOKEN)
-        settings.remove(KEY_REFRESH_TOKEN)
+        Secrets.remove(Secrets.ACCESS_TOKEN)
+        Secrets.remove(Secrets.REFRESH_TOKEN)
         settings.remove(KEY_USER_ID)
         settings.remove(KEY_PROFILE_IMAGE_URL)
         settings.remove(KEY_POLICY_ID)

@@ -1,6 +1,7 @@
 package uz.tikoncha_parent.core.crypto
 
 import com.russhwolf.settings.Settings
+import uz.tikoncha_parent.data.local.Secrets
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 import kotlin.random.Random
@@ -26,7 +27,7 @@ object LiveSigner {
     private val SIGNED = setOf("offer", "answer", "ice")
 
     private val settings = Settings()
-    private const val K_PRIV = "live_priv_b64"
+    private const val K_PRIV = Secrets.LIVE_PRIVATE_KEY // encrypted, see Secrets
     private const val K_DEV = "live_device_uid"
 
     private var priv: ByteArray? = null
@@ -39,7 +40,7 @@ object LiveSigner {
 
     fun ensure() {
         if (priv != null) return
-        val savedPriv = settings.getStringOrNull(K_PRIV)
+        val savedPriv = Secrets.get(K_PRIV)
         val savedDev = settings.getStringOrNull(K_DEV)
         val p: ByteArray
         if (savedPriv != null && savedDev != null) {
@@ -48,7 +49,7 @@ object LiveSigner {
         } else {
             p = Ed25519.generatePrivateKey()
             deviceUid = randomId()
-            settings.putString(K_PRIV, Base64.encode(p))
+            Secrets.put(K_PRIV, Base64.encode(p))
             settings.putString(K_DEV, deviceUid)
         }
         priv = p

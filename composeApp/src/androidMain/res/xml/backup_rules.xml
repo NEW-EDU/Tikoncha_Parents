@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <full-backup-content>
     <!-- Hech narsa backup qilinmaydi -->
+    <!-- Encrypted secrets: their Keystore key never leaves this phone, so a copy is useless -->
+    <exclude domain="sharedpref" path="tikoncha_secure.xml" />
 </full-backup-content>
