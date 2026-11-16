@@ -85,17 +85,23 @@ val IslandHeight = 64.dp
 /** Orol bilan kontent orasidagi bo'shliq. */
 private val IslandTopGap = 10.dp
 
-/** Orolni qo'shimcha ko'tarish: Android'da ko'proq (imo-ishora chizig'i orolga tegib turardi), iOS'da ozgina. */
-private val IslandExtraLift: Dp = if (isIos()) 5.dp else 12.dp
+/** iOS: orol uy indikatori zonasining yarmiga kirishi mumkin, ustidan ozgina ko'tariladi. */
+private val IosIslandLift: Dp = 5.dp
+
+/** Android: tizim navigatsiya paneli ustidagi bo'shliq. */
+private val AndroidIslandGap: Dp = 10.dp
 
 /**
- * Orolning ekran pastidan masofasi: tizim navigatsiya zonasining yarmi + platformaga xos ko'tarish ([IslandExtraLift]).
+ * Orolning ekran pastidan masofasi.
+ * iOS: uy indikatori zonasining yarmi + [IosIslandLift] (indikator ingichka, orol unga yaqin turadi).
+ * Android: tizim navigatsiya paneli TÖLIQ + [AndroidIslandGap]. 3 tugmali navigatsiyada panel 48dp
+ * tugmalar qatori — yarmini olsak, orolning pastki qismi tugmalar ostida qolardi.
  * Kontent uchun joy ([islandReservedFromBottom]) va farzand ro'yxati shu qiymatdan hisoblanadi — hammasi birga siljiydi.
  */
 @Composable
 fun islandBottomOffset(): Dp {
     val nav = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    return maxOf(nav * 0.5f, 8.dp) + IslandExtraLift
+    return if (isIos()) maxOf(nav * 0.5f, 8.dp) + IosIslandLift else nav + AndroidIslandGap
 }
 
 /** Ekran pastidan orol egallagan butun balandlik (kontent shundan yuqorida tugaydi). */
