@@ -41,11 +41,8 @@ suspend inline fun <reified T> HttpClient.safeRequest(
     if (response.status.value >= 500 && !bodyText.trimStart().startsWith("{")) {
         throw ServerUnavailableException(response.status.value)
     }
-    // Kelajakdagi server: `error_code == "session_ended"` — sessiya serverda tugatilgan, tokenni yangilaş befoyda.
-    if (isSessionEnded(bodyText) && AppSettings.accessToken.isNotBlank()) {
-        handleSessionExpired()
-        throw SessionExpiredException()
-    }
+    // `"error_code": "session_ended"` ham shu yerga tushadi: server uni MUDDATI ÖTGAN access token uçun ham yuboradi
+    // (har soatda). Avval refresh — sessiya haqiqatan tugatilgan bölsa (çiqiş/öçirilgan akkaunt) refresh ham rad etiladi.
     // Kirilmagan holatda (login, Google/Apple/Telegram tokeni rad etildi) 401 — sessiya tugaşi emas: javob özi qaytadi.
     if (isUnauthorized(response.status, bodyText) && AppSettings.accessToken.isNotBlank()) {
         when (val r = refreshAccessToken(this)) {
@@ -89,12 +86,7 @@ suspend inline fun <reified T> HttpClient.safeUploadMultipart(
 
     val bodyText = response.bodyAsText()
 
-    if (isSessionEnded(bodyText) && AppSettings.accessToken.isNotBlank()) {
-        handleSessionExpired()
-        throw SessionExpiredException()
-    }
-
-    // 🔁 2. Token expired (code == 501)
+    // 🔁 2. Token expired (`session_ended` ham — avval refresh, yuqoridagi izohga qarang)
     if (isUnauthorized(response.status, bodyText) && AppSettings.accessToken.isNotBlank()) {
         when (val r = refreshAccessToken(this)) {
             RefreshResult.Success -> {
@@ -122,13 +114,6 @@ suspend inline fun <reified T> HttpClient.safeUploadMultipart(
 /** Server "token yaroqsiz" dedi: HTTP 401 yoki envelope `"code":401` (backend xatolarni HTTP 200 + kod bilan qaytaradi). */
 fun isUnauthorized(status: HttpStatusCode, bodyText: String): Boolean =
     status == HttpStatusCode.Unauthorized || bodyText.contains("\"code\":401") || bodyText.contains("\"code\": 401")
-
-/**
- * Xato o'ramida `"error_code": "session_ended"` (backend-contract §6 — hali yöq, kelajak uçun). Hozirgi server bu
- * kodni yubormaydi, şuning uçun bugungi xatti-harakat özgarmaydi.
- */
-fun isSessionEnded(bodyText: String): Boolean =
-    bodyText.contains("\"error_code\":\"session_ended\"") || bodyText.contains("\"error_code\": \"session_ended\"")
 
 /** Token yangilash natijasi. */
 sealed interface RefreshResult {
