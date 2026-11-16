@@ -69,6 +69,8 @@ data class PolicyEditorState(
     val payWall: PaidFeature? = null,
     /** Bepul tarifdagi faol jadvallar çegarasi — çegara paywall'ida körsatiladi. */
     val freePolicyLimit: Int = ChildPaidStatusUseCase.DEFAULT_FREE_POLICY_LIMIT,
+    /** Bepul tarifda bitta jadvaldagi ilovalar çegarasi; null — noma'lum (paywall sonsiz matn körsatadi). */
+    val freeAppLimit: Int? = null,
     val error: Outcome.Failure? = null,
 ) {
     val isDetail: Boolean get() = policyId != null

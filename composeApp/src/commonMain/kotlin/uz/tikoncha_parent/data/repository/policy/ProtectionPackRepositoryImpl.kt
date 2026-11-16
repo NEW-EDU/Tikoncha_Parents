@@ -35,7 +35,7 @@ class ProtectionPackRepositoryImpl(
                 }
 
                 r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.PACKS, r.code), r.error)
+                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.PACKS, r.code, errorCode = r.errorCode), r.error)
             }
         }
     }

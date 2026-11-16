@@ -10,6 +10,9 @@ sealed class DeepLink {
     data object ParentalRequest : DeepLink()
     data object StrictDisable : DeepLink()
 
+    /** PERMISSION_OFF push: farzand telefonida muhim ruxsat öçirildi → şu farzandning himoya ekrani. */
+    data class PermissionOff(val childUserId: String? = null) : DeepLink()
+
     /** Incoming live session (child SOS / parent request) → open the live viewer to watch. */
     data class Live(
         val sessionId: String,

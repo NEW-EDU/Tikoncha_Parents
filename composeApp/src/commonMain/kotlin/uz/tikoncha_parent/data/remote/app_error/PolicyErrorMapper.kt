@@ -14,17 +14,32 @@ enum class PolicyCall {
 }
 
 /**
- * Server javobida mashina o'qiydigan xato kodi yo'q — faqat lokalizatsiyalangan matn
- * va HTTP status. Shuning uchun sabab (endpoint + kod + kontekst) bo'yicha aniqlanadi.
+ * Yangi server xato o'ramida `error_code` yuboradi — bor bo'lsa sabab aynan shundan olinadi (CREATE ham, PATCH ham).
+ * Eski serverda u yo'q: faqat lokalizatsiyalangan matn va HTTP status — sabab (endpoint + kod + kontekst)
+ * bo'yicha taxmin qilinadi.
  */
 object PolicyErrorMapper {
 
-    fun from(call: PolicyCall, code: Int?, draft: PolicyDraft? = null): ErrorCause = when (code) {
-        401 -> ErrorCause.SessionExpired
-        404 -> ErrorCause.NotFound
-        422 -> ErrorCause.Validation
-        403 -> forbidden(call, draft)
-        else -> ErrorCause.Server(code)
+    fun from(call: PolicyCall, code: Int?, draft: PolicyDraft? = null, errorCode: String? = null): ErrorCause =
+        fromErrorCode(errorCode, code) ?: when (code) {
+            401 -> ErrorCause.SessionExpired
+            404 -> ErrorCause.NotFound
+            422 -> ErrorCause.Validation
+            403 -> forbidden(call, draft)
+            else -> ErrorCause.Server(code)
+        }
+
+    /** `error_code` bo'yicha aniq sabab; kod yo'q yoki bu yerda ma'lum emas — null (eski taxmin ishlaydi). */
+    private fun fromErrorCode(errorCode: String?, code: Int?): ErrorCause? = when (errorCode) {
+        null, "" -> null
+        "policy_allow_mode_paid" -> ErrorCause.PremiumRequired(PaidFeature.ALLOW_MODE)
+        "policy_count_limit" -> ErrorCause.PremiumRequired(PaidFeature.POLICY_COUNT)
+        "policy_app_count_limit" -> ErrorCause.PremiumRequired(PaidFeature.POLICY_APP_COUNT)
+        "quick_block_paid" -> ErrorCause.PremiumRequired(PaidFeature.QUICK_BLOCK)
+        "protection_paid" -> ErrorCause.PremiumRequired(PaidFeature.PROTECTION_PACKS)
+        "session_ended" -> ErrorCause.SessionExpired
+        // Kodli 403, lekin pullik rad emas (policy_edit_forbidden, not_linked_to_child, preset_parent_active…)
+        else -> if (code == 403) ErrorCause.Forbidden else null
     }
 
     private fun forbidden(call: PolicyCall, draft: PolicyDraft?): ErrorCause = when (call) {

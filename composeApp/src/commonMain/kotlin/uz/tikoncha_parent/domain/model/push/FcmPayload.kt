@@ -15,6 +15,14 @@ data class FcmPayload(
 data class FcmPayloadBody(
     val message: MessageBlock? = null,
     val live: LiveBlock? = null,
+    @SerialName("permission_off") val permissionOff: PermissionOffBlock? = null,
+)
+
+@Serializable
+data class PermissionOffBlock(
+    @SerialName("child_user_id") val childUserId: String? = null,
+    @SerialName("child_name") val childName: String? = null,
+    val permissions: List<String>? = null,
 )
 
 @Serializable

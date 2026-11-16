@@ -23,7 +23,7 @@ enum class LanguageType(
     val localeTag: String = languageCode,
 ) {
     UZ("uz", "Özbekça", "🇺🇿", "Assalomu alaykum!", "Ilova özbek tilida", "Bugun", iconId = Res.drawable.lang_uz),
-    UZ_CYRL("uz-Cyrl", "Ўзбекча", "🇺🇿", "Ассалому алайкум!", "Илова ўзбек тилида", "Бугун", localeTag = "uz-Cyrl-UZ"),
+    UZ_CYRL("uz-Cyrl", "Ўзбекча", "🇺🇿", "Ассалому алайкум!", "Илова ўзбек тилида", "Бугун", iconId = Res.drawable.lang_uz, localeTag = "uz-Cyrl-UZ"),
     RU("ru", "Русский", "🇷🇺", "Здравствуйте!", "Приложение на русском", "Сегодня", iconId = Res.drawable.lang_ru),
     KAA("kaa", "Qaraqalpaqsha", "🇺🇿", "Assalawma áleykum!", "Qosımsha qaraqalpaq tilinde", "Búgin"),
     EN("en", "English", "🇬🇧", "Hello!", "The app is in English", "Today", iconId = Res.drawable.lang_en),

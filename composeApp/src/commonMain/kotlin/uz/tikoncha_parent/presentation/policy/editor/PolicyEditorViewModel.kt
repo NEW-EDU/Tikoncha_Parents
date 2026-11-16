@@ -232,6 +232,7 @@ class PolicyEditorViewModel(
                 now = Clock.System.now(),
                 paid = paidStatus(childId),
                 freePolicyLimit = paidStatus.freePolicyLimit(childId) ?: it.freePolicyLimit,
+                freeAppLimit = paidStatus.freeAppLimit(childId),
             )
         }
 
@@ -283,7 +284,7 @@ class PolicyEditorViewModel(
         }
         screenModelScope.launch {
             val paid = paidStatus.refresh(childId)
-            _state.update { it.copy(paid = paid ?: it.paid, freePolicyLimit = paidStatus.freePolicyLimit(childId) ?: it.freePolicyLimit) }
+            _state.update { it.copy(paid = paid ?: it.paid, freePolicyLimit = paidStatus.freePolicyLimit(childId) ?: it.freePolicyLimit, freeAppLimit = paidStatus.freeAppLimit(childId)) }
         }
     }
 

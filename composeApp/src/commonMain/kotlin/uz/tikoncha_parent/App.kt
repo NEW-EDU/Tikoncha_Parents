@@ -40,6 +40,7 @@ import uz.tikoncha_parent.presentation.protection.ProtectionScreen
 import uz.tikoncha_parent.presentation.push.DeepLinkEffect
 import uz.tikoncha_parent.presentation.push.PendingDeepLinks
 import uz.tikoncha_parent.presentation.push.navigateByDeepLink
+import uz.tikoncha_parent.presentation.push.selectChildForDeepLink
 import uz.tikoncha_parent.presentation.splash.SplashScreen
 import uz.tikoncha_parent.ui.theme.PlatformThemeBridge
 import uz.tikoncha_parent.ui.theme.ThemeController
@@ -138,6 +139,10 @@ private fun initialStackFor(link: DeepLink?): List<Screen>? = when (link) {
     DeepLink.ParentalRequest -> listOf(NewHomeScreen(), ProtectionScreen())
     // ⬇️ StrictDisable ekraniga moslang (hozircha ProtectionScreen)
     DeepLink.StrictDisable -> listOf(NewHomeScreen(), ProtectionScreen())
+    is DeepLink.PermissionOff -> {
+        selectChildForDeepLink(link.childUserId)
+        listOf(NewHomeScreen(), ProtectionScreen())
+    }
     is DeepLink.Live -> listOf(
         NewHomeScreen(),
         ParentLiveScreen(joinSessionId = link.sessionId, childUserId = link.childId),

@@ -9,6 +9,8 @@ data class RefreshTokenResponse(
     val data: RefreshTokenResponseData?,
     val error: String? = null,
     val code: Int,
+    /** Kelajak uçun (backend-contract §6): `session_ended` — sessiya tugatilgan. Hozir kelmaydi. */
+    val error_code: String? = null,
 )
 
 @Serializable

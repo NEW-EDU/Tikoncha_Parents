@@ -1473,4 +1473,6 @@
     <string name="perm_why_auto_start">После перезагрузки телефона или закрытия приложения Tikoncha не запускается сам — защита не работает, пока ребёнок не откроет приложение. На Xiaomi, Redmi и POCO включается в настройках телефона: Приложения → Tikoncha → Автозапуск.</string>
     <string name="perm_why_accessibility">Основа режима «Щит»: без него не закрываются сайты, YouTube Shorts и Instagram Reels и не работает защита от удаления приложения.</string>
     <string name="perm_why_device_admin">Ребёнок может удалить Tikoncha как обычное приложение, не спрашивая вас.</string>
+    <string name="policy_paywall_app_limits">На бесплатном тарифе в одно расписание можно добавить не больше %1$d приложений. Для большего нужен Plus.</string>
+    <string name="policy_paywall_app_limit">Достигнут лимит приложений в одном расписании для вашего тарифа.</string>
 </resources>

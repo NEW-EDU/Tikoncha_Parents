@@ -57,7 +57,7 @@ class QuickBlockRepositoryImpl(
                     }
 
                     r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                    else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.LIST, r.code), r.error)
+                    else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.LIST, r.code, errorCode = r.errorCode), r.error)
                 }
             }
         }
@@ -90,7 +90,7 @@ class QuickBlockRepositoryImpl(
                     }
 
                     r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                    else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.PATCH, r.code), r.error)
+                    else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.PATCH, r.code, errorCode = r.errorCode), r.error)
                 }
             }
         }
@@ -105,7 +105,7 @@ class QuickBlockRepositoryImpl(
             }
 
             r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-            else -> Outcome.Failure(PolicyErrorMapper.from(call, r.code), r.error)
+            else -> Outcome.Failure(PolicyErrorMapper.from(call, r.code, errorCode = r.errorCode), r.error)
         }
     }
 

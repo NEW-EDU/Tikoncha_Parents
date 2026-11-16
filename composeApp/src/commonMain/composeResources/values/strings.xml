@@ -1476,4 +1476,6 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="perm_why_auto_start">Telefon öçib yoqilgaç yoki ilova yopilgaç Tikoncha özi işga tuşmaydi — farzand ilovani oçmaguniça himoya işlamaydi. Xiaomi, Redmi va POCO’da telefon sozlamalarida yoqiladi: Ilovalar → Tikoncha → Avto-işga tuşiş.</string>
     <string name="perm_why_accessibility">Qalqon rejimining asosi: usiz saytlar, YouTube Shorts va Instagram Reels yopilmaydi, ilovani öçirib taşlaşdan himoya ham işlamaydi.</string>
     <string name="perm_why_device_admin">Farzand Tikoncha’ni oddiy ilova kabi, sizdan söramasdan öçirib taşlay oladi.</string>
+    <string name="policy_paywall_app_limits">Bepul tarifda bitta jadvalga %1$d tagaça ilova qöşiş mumkin. Köproq ilova uçun Plus kerak.</string>
+    <string name="policy_paywall_app_limit">Bitta jadvaldagi ilovalar soni tarif çegarasiga yetdi.</string>
 </resources>

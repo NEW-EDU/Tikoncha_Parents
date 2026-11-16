@@ -12,5 +12,8 @@ object DeepLinkBus {
     )
     val events: SharedFlow<DeepLink> = _events
 
+    /** UI tayyor (DeepLinkEffect tinglayapti) — link darhol oçiladi; aks holda PendingDeepLinks'ga. */
+    val hasListener: Boolean get() = _events.subscriptionCount.value > 0
+
     fun open(link: DeepLink) { _events.tryEmit(link) }
 }

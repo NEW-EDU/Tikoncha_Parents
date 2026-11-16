@@ -86,6 +86,16 @@ class ChildPaidStatusUseCase(
         return limit.policyCount.takeIf { it != Int.MAX_VALUE }
     }
 
+    /**
+     * Bepul tarifda bitta jadvaldagi ilovalar çegarasi (server `Limit.app_count`). `null` — pullik tarif,
+     * çeksiz yoki hali ma'lum emas.
+     */
+    fun freeAppLimit(childId: String): Int? {
+        val limit = repository.cachedSubscriptionLimit(childId) ?: return null
+        if (limit.subscriptionType != SubscriptionType.FREE) return null
+        return limit.appCount.takeIf { it != Int.MAX_VALUE }
+    }
+
     /** Serverdan yangilab o'qiydi — ekran qayta ko'ringanda (sotib olgandan keyin darhol ishlasin). */
     suspend fun refresh(childId: String): Boolean? {
         repository.syncSubscriptionLimits()

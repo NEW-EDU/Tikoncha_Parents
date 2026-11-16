@@ -2,6 +2,7 @@ package uz.tikoncha_parent.presentation.push
 
 import androidx.compose.runtime.*
 import cafe.adriel.voyager.navigator.Navigator
+import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.domain.model.DeepLink
 import uz.tikoncha_parent.platform.Logger
 import uz.tikoncha_parent.presentation.chat.chat_list.ChatScreen
@@ -37,9 +38,24 @@ fun navigateByDeepLink(navigator: Navigator, link: DeepLink){
         )
         DeepLink.ParentalRequest -> navigator.push(ProtectionScreen())
         DeepLink.StrictDisable -> navigator.push(ProtectionScreen())
+        is DeepLink.PermissionOff -> {
+            selectChildForDeepLink(link.childUserId)
+            navigator.push(ProtectionScreen())
+        }
         is DeepLink.Live -> navigator.push(
             ParentLiveScreen(joinSessionId = link.sessionId, childUserId = link.childId)
         )
         is DeepLink.General -> {}
     }
+}
+
+/**
+ * Push körsatgan farzandni tanlangan farzand qiladi (himoya ekrani `AppSettings.selectedChild` ni öqiydi).
+ * Farzand keşdagi röyxatda bölmasa hech narsa özgarmaydi — ekran joriy farzand uçun oçiladi.
+ */
+fun selectChildForDeepLink(childUserId: String?) {
+    if (childUserId.isNullOrBlank() || AppSettings.selectedChildId == childUserId) return
+    val child = AppSettings.children.firstOrNull { it.userId == childUserId } ?: return
+    AppSettings.selectedChild = child
+    AppSettings.selectedChildId = child.userId
 }

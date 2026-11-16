@@ -21,7 +21,7 @@ class PolicyAuditRepositoryImpl(
             when {
                 r.success && body != null -> Outcome.Success(body.toDomain())
                 r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.EVENTS, r.code), r.error)
+                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.EVENTS, r.code, errorCode = r.errorCode), r.error)
             }
         }
 

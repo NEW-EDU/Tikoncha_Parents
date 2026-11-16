@@ -1425,4 +1425,6 @@
     <string name="perm_why_auto_start">Телефон ўчиб ёқилгач ёки илова ёпилгач Tikoncha ўзи ишга тушмайди — фарзанд иловани очмагунича ҳимоя ишламайди. Xiaomi, Redmi ва POCO’да телефон созламаларида ёқилади: Иловалар → Tikoncha → Авто-ишга тушиш.</string>
     <string name="perm_why_accessibility">Қалқон режимининг асоси: усиз сайтлар, YouTube Shorts ва Instagram Reels ёпилмайди, иловани ўчириб ташлашдан ҳимоя ҳам ишламайди.</string>
     <string name="perm_why_device_admin">Фарзанд Tikoncha’ни оддий илова каби, сиздан сўрамасдан ўчириб ташлай олади.</string>
+    <string name="policy_paywall_app_limits">Бепул тарифда битта жадвалга %1$d тагача илова қўшиш мумкин. Кўпроқ илова учун Plus керак.</string>
+    <string name="policy_paywall_app_limit">Битта жадвалдаги иловалар сони тариф чегарасига етди.</string>
 </resources>

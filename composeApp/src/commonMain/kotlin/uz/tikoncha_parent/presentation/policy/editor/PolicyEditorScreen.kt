@@ -75,6 +75,8 @@ import tikoncha_parents.composeapp.generated.resources.editor_open_in_time
 import tikoncha_parents.composeapp.generated.resources.editor_open_in_time_sub
 import tikoncha_parents.composeapp.generated.resources.editor_outside
 import tikoncha_parents.composeapp.generated.resources.editor_paywall_allow
+import tikoncha_parents.composeapp.generated.resources.policy_paywall_app_limit
+import tikoncha_parents.composeapp.generated.resources.policy_paywall_app_limits
 import tikoncha_parents.composeapp.generated.resources.policy_paywall_limits
 import uz.tikoncha_parent.domain.model.app_error.PaidFeature
 import tikoncha_parents.composeapp.generated.resources.editor_rename
@@ -210,8 +212,13 @@ class PolicyEditorScreen(private val childId: String, private val policyId: Stri
             show = state.payWall != null,
             title = stringResource(Res.string.stat_quick_paywall_title),
             // Sabab böyiça: ALLOW rejimi yoki tarif çegarasi ("Bepul: 1 ta faol jadval · Plus: çeksiz")
-            message = if (state.payWall == PaidFeature.POLICY_COUNT) stringResource(Res.string.policy_paywall_limits, state.freePolicyLimit)
-            else stringResource(Res.string.editor_paywall_allow),
+            message = when (state.payWall) {
+                PaidFeature.POLICY_COUNT -> stringResource(Res.string.policy_paywall_limits, state.freePolicyLimit)
+                PaidFeature.POLICY_APP_COUNT -> state.freeAppLimit
+                    ?.let { stringResource(Res.string.policy_paywall_app_limits, it) }
+                    ?: stringResource(Res.string.policy_paywall_app_limit)
+                else -> stringResource(Res.string.editor_paywall_allow)
+            },
             onConfirm = {
                 event(PolicyEditorEvent.PayWallDismissed)
                 navigator.push(SubscriptionPaymentScreen())

@@ -11,6 +11,9 @@ enum class PayloadType {
     PARENTAL_REQUEST,
     STRICT_DISABLE,
 
+    /** Farzand telefonida muhim ruxsat öçirildi (backend-contract §1). */
+    PERMISSION_OFF,
+
     @SerialName("LIVE_RING")
     LIVE_RING,
 }
