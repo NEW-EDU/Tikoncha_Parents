@@ -57,12 +57,13 @@ fun LanguagePill(
     val haptics = rememberAppHaptics()
     Box(modifier) {
         Surface(onClick = { haptics.tick(); open = true }, shape = CircleShape, color = container) {
-            Row(Modifier.padding(start = 10.dp, end = 10.dp, top = 7.dp, bottom = 7.dp), verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Rounded.Language, contentDescription = null, tint = subtle, modifier = Modifier.size(17.dp))
-                Spacer(Modifier.size(6.dp))
-                Text(current.languageName, style = AppTypography.bodyMdMedium.copy(fontWeight = FontWeight.Bold), color = content, maxLines = 1)
-                Spacer(Modifier.size(2.dp))
-                Icon(Icons.Rounded.KeyboardArrowDown, contentDescription = null, tint = subtle, modifier = Modifier.size(18.dp))
+            // Kattaroq: kamida 44dp balandlik — bir qaraşda körinadi va barmoq bilan oson bosiladi
+            Row(Modifier.padding(start = 14.dp, end = 12.dp, top = 11.dp, bottom = 11.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Rounded.Language, contentDescription = null, tint = subtle, modifier = Modifier.size(22.dp))
+                Spacer(Modifier.size(8.dp))
+                Text(current.languageName, style = AppTypography.titleSmMedium.copy(fontWeight = FontWeight.Bold), color = content, maxLines = 1)
+                Spacer(Modifier.size(4.dp))
+                Icon(Icons.Rounded.KeyboardArrowDown, contentDescription = null, tint = subtle, modifier = Modifier.size(22.dp))
             }
         }
         if (open) {

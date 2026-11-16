@@ -1,5 +1,9 @@
 package uz.tikoncha_parent.ui.theme
 
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialExpressiveTheme
@@ -208,10 +212,18 @@ fun TikonchaParentTheme(
     }
 
 
+    // Ilova ichidagi matn o'lchami: tizim shrift ko'lamiga ko'paytiriladi (faqat matn — sp; dp o'zgarmaydi).
+    val textSize by TextSizeController.size.collectAsState()
+    val baseDensity = LocalDensity.current
+    val scaledDensity = remember(baseDensity, textSize) {
+        Density(density = baseDensity.density, fontScale = baseDensity.fontScale * textSize.scale)
+    }
+
     CompositionLocalProvider(
         LocalExtendedColors provides extendedColor,
         TikonchaLocalExtendedColors provides tikonchaColors,
         LocalTikonchaTypography provides typographyPack,
+        LocalDensity provides scaledDensity,
     ) {
         // Material 3 Expressive: prujinali harakat (MotionScheme.expressive — fast 0.6/800, default 0.8/380,
         // slow 0.8/200), kengaytirilgan burchak shkalasi (4…48 dp, full) va ta'kidlangan (emphasized) matn uslublari.

@@ -171,10 +171,16 @@ data class AlphaColors(
 )
 
 
+/*
+ * 2026-11 o'qilishi (UX audit): yorug' mavzuda sovuq kulranglar iliq jigarrang-kulranglarga almashtirildi.
+ * Eski ikkilamchi matn (#85888E) bej fonda (#F3EADE) 2.98:1 kontrast berardi — WCAG AA (4.5:1) dan past, kattalar
+ * o'qiy olmasdi. Yangi #665748 — 5.84:1. Qorong'i mavzuda ikkilamchi matn ham yorug'roq (#B5A698 — 7.2:1).
+ * Izohlardagi token nomlari (neutral.500 va h.k.) eski palitradan qolgan — qiymatlar shu yerdagisi.
+ */
 val TikonchaParentLightExtendedColors = TikonchaExtendedColors(
     bg = BgColors(
         page = Color(0xFFF3EADE),                               // orange.100
-        section = Color(0xFFEFEFF0),                            // neutral.200
+        section = Color(0xFFEDE5DA),                            // neutral.200
         surface = Color(0xFFFFFFFF),                            // base.white
         elevated = Color(0xFFFFFFFF),                           // base.white
         secondary = Color(0xFFF9F5EF),                          // orange.50
@@ -184,104 +190,104 @@ val TikonchaParentLightExtendedColors = TikonchaExtendedColors(
         secondaryContainer = Color(0xFFF9F5EF),                 // orange.50
         accentWarning = Color(0xFFF79009),                      // orange-variant.500
         accentWarningContainer = Color(0xFFF9F5EF),             // orange.50
-        tertiary = Color(0xFFEFEFF0),                           // gray.100
+        tertiary = Color(0xFFEDE5DA),                           // gray.100
         strong = Color(0xFF010D01),                             // base.black
         strongSecondary = Color(0xFF252528),                    // gray.700
-        secondarySurface = Color(0xFFEFEFF0),                   // gray.100
+        secondarySurface = Color(0xFFEDE5DA),                   // gray.100
         surfaceTertiary = Color(0xFFFFFFFF),                    // base.white
         accentDanger = Color(0xFFF04438),                       // red.500
         inverse = Color(0xFFFFFFFF),                            // base.white
     ),
     text = TextColors(
-        primary = Color(0xFF22262F),                            // neutral.800
-        secondary = Color(0xFF2F3137),                          // neutral.700
-        tertiary = Color(0xFF85888E),                           // neutral.500
+        primary = Color(0xFF241D18),                            // neutral.800
+        secondary = Color(0xFF3D342C),                          // neutral.700
+        tertiary = Color(0xFF665748),                           // neutral.500
         accentEmphasis = Color(0xFFC3955B),                     // orange.500
         disabled = Color(0xFFFFFFFF),                           // base.white
         onPrimary = Color(0xFFFFFFFF),                          // base.white
         inverse = Color(0xFFFFFFFF),                            // base.white
         strong = Color(0xFF010D01),                             // base.black
-        label = Color(0xFF94979C),                              // gray.400
-        placeholder = Color(0xFF94979C),                        // gray.400
+        label = Color(0xFF7D6D5E),                              // gray.400
+        placeholder = Color(0xFF7D6D5E),                        // gray.400
         accentWarning = Color(0xFFF79009),                      // orange-variant.500
-        strongSecondary = Color(0xFF85888E),                    // neutral.500
+        strongSecondary = Color(0xFF665748),                    // neutral.500
         accentDanger = Color(0xFFF04438),                       // red.500
-        disabledTertiary = Color(0xFF94979C),                   // gray.400
+        disabledTertiary = Color(0xFF7D6D5E),                   // gray.400
         accentSuccess = Color(0xFF4BB462),                      // green.500
     ),
     icon = IconColors(
         primary = Color(0xFF121212),                            // gray.900
-        secondary = Color(0xFF85888E),                          // neutral.500
+        secondary = Color(0xFF665748),                          // neutral.500
         tertiary = Color(0xFFFFFFFF),                           // base.white
-        onSecondary = Color(0xFFF9FAFA),                        // gray.50
+        onSecondary = Color(0xFFFAF6F0),                        // gray.50
         disabled = Color(0xFFFFFFFF),                           // base.white
         accentPrimary = Color(0xFFC3955B),                      // orange.500
         inverse = Color(0xFFFFFFFF),                            // base.white
         accentWarning = Color(0xFFF79009),                      // orange-variant.500
         accentWarningContainer = Color(0xFFF3EADE),             // orange.100
         accentDanger = Color(0xFFF04438),                       // red.500
-        disabledTertiary = Color(0xFF94979C),                   // gray.400
+        disabledTertiary = Color(0xFF7D6D5E),                   // gray.400
         strong = Color(0xFF010D01),                             // base.black
         accentPrimarySurface = Color(0xFFC3955B),               // orange.500
     ),
     border = BorderColors(
-        primary = Color(0xFFCECFD2),                            // gray.300
-        secondary = Color(0xFFE5E5E6),                          // gray.200
+        primary = Color(0xFFD3C4B5),                            // gray.300
+        secondary = Color(0xFFE6DCCF),                          // gray.200
         tertiary = Color(0xFFFFFFFF),                           // base.white
         inverse = Color(0xFFFFFFFF),                            // base.white
         accentEmphasis = Color(0xFFC3955B),                     // orange.500
-        disabled = Color(0xFFEFEFF0),                           // gray.100
+        disabled = Color(0xFFEDE5DA),                           // gray.100
         accentWarning = Color(0xFFF79009),                      // orange-variant.500
         tertiarySubtle = Color(0xFFFFFFFF),                     // base.white
-        secondarySubtle = Color(0xFFE5E5E6),                    // gray.200
+        secondarySubtle = Color(0xFFE6DCCF),                    // gray.200
         accentSuccess = Color(0xFF4BB462),                      // green.500
-        divider = Color(0xFFE0E1E3),                            // bg.section (#EFEFF0) ustida xira kulrang
+        divider = Color(0xFFDED3C6),                            // bg.section (#EFEFF0) ustida xira kulrang
     ),
     button = ButtonColors(
         primary = Color(0xFFC3955B),                            // orange.500
-        secondary = Color(0xFFEFEFF0),                          // neutral.200
-        tertiary = Color(0xFF85888E),                           // neutral.500
+        secondary = Color(0xFFEDE5DA),                          // neutral.200
+        tertiary = Color(0xFF665748),                           // neutral.500
         accentEmphasis = Color(0xFFF9F5EF),                     // orange.50
-        disabled = Color(0xFFEFEFF0),                           // neutral.200
+        disabled = Color(0xFFEDE5DA),                           // neutral.200
         primaryHover = Color(0xFF9C7749),                       // orange.600
         primaryPressed = Color(0xFF755937),                     // orange.700
-        secondaryPressed = Color(0xFFDCDDDF),                   // neutral.300
+        secondaryPressed = Color(0xFFDDD2C4),                   // neutral.300
         accentEmphasisPressed = Color(0xFFF3EADE),              // orange.100
         accentDanger = Color(0xFFF04438),                       // red.500
         surface = Color(0xFFFFFFFF),                            // base.white
     ),
     action = ActionColors(
         primary = Color(0xFFC3955B),                            // orange.500
-        secondary = Color(0xFFE5E5E6),                          // gray.200
-        section = Color(0xFFEFEFF0),                            // gray.100
+        secondary = Color(0xFFE6DCCF),                          // gray.200
+        section = Color(0xFFEDE5DA),                            // gray.100
         primaryHover = Color(0xFF9C7749),                       // orange.600
         primaryPressed = Color(0xFF755937),                     // orange.700
-        disabled = Color(0xFFE5E5E6),                           // gray.200
-        disabledTertiary = Color(0xFFE5E5E6),                   // gray.200
+        disabled = Color(0xFFE6DCCF),                           // gray.200
+        disabledTertiary = Color(0xFFE6DCCF),                   // gray.200
         tertiary = Color(0xFFFFFFFF),                           // base.white
         strong = Color(0xFF252528),                             // gray.700
         accentDanger = Color(0xFFF04438),                       // red.500
     ),
     section = SectionColors(
         primary = Color(0xFFC3955B),                            // orange.500
-        secondary = Color(0xFFE5E5E6),                          // gray.200
-        section = Color(0xFFEFEFF0),                            // gray.100
+        secondary = Color(0xFFE6DCCF),                          // gray.200
+        section = Color(0xFFEDE5DA),                            // gray.100
         tertiary = Color(0xFFFFFFFF),                           // base.white
-        disabledTertiary = Color(0xFFE5E5E6),                   // gray.200
+        disabledTertiary = Color(0xFFE6DCCF),                   // gray.200
     ),
     field = FieldColors(
-        page = Color(0xFFEFEFF0),                               // gray.100
-        secondary = Color(0xFFF2F2F3),                          // neutral.100
-        section = Color(0xFFF9FAFA),                            // gray.50
+        page = Color(0xFFEDE5DA),                               // gray.100
+        secondary = Color(0xFFF4EEE6),                          // neutral.100
+        section = Color(0xFFFAF6F0),                            // gray.50
         accentEmphasis = Color(0xFFC3955B),                     // orange.500
-        sectionEmphasis2 = Color(0xFFF9FAFA),                   // gray.50
-        sectionEmphasisTertiary = Color(0xFFF9FAFA),            // gray.50
+        sectionEmphasis2 = Color(0xFFFAF6F0),                   // gray.50
+        sectionEmphasisTertiary = Color(0xFFFAF6F0),            // gray.50
         accentEmphasisSecondary = Color(0xFFF3EADE),            // orange.100
-        switchTrack = Color(0xFFCECFD2),                        // gray.300
+        switchTrack = Color(0xFFD3C4B5),                        // gray.300
     ),
     modal = ModalColors(
         primary = Color(0xFFFFFFFF),                            // base.white
-        secondary = Color(0xFFE5E5E6),                          // gray.200
+        secondary = Color(0xFFE6DCCF),                          // gray.200
         tertiary = Color(0xFFFFFFFF),                           // base.white
     ),
     alpha = AlphaColors(
@@ -331,26 +337,26 @@ val TikonchaParentDarkExtendedColors = TikonchaExtendedColors(
     text = TextColors(
         primary = Color(0xFFFFFFFF),                            // base.white
         secondary = Color(0xFFCBBDB0),                          // neutral.400
-        tertiary = Color(0xFF9C8C7F),                           // neutral.500
+        tertiary = Color(0xFFB5A698),                           // neutral.500
         accentEmphasis = Color(0xFFC3955B),                     // orange.500
-        disabled = Color(0xFFA39486),                           // gray.400
+        disabled = Color(0xFFBBAD9F),                           // gray.400
         onPrimary = Color(0xFFFFFFFF),                          // base.white
         inverse = Color(0xFFFFFFFF),                            // base.white
         strong = Color(0xFF221B17),                             // base.black
-        label = Color(0xFFA39486),                              // gray.400
-        placeholder = Color(0xFFA39486),                        // gray.400
+        label = Color(0xFFBBAD9F),                              // gray.400
+        placeholder = Color(0xFFBBAD9F),                        // gray.400
         accentWarning = Color(0xFFF79009),                      // orange-variant.500
-        strongSecondary = Color(0xFF9C8C7F),                    // neutral.500
+        strongSecondary = Color(0xFFB5A698),                    // neutral.500
         accentDanger = Color(0xFFF04438),                       // red.500
         disabledTertiary = Color(0xFFD8CCC1),                   // gray.300
         accentSuccess = Color(0xFF4BB462),                      // green.500
     ),
     icon = IconColors(
         primary = Color(0xFFF7F0E8),                            // gray.50
-        secondary = Color(0xFFA39486),                          // gray.400
+        secondary = Color(0xFFBBAD9F),                          // gray.400
         tertiary = Color(0xFFFFFFFF),                           // base.white
         onSecondary = Color(0xFF121212),                        // gray.900
-        disabled = Color(0xFFA39486),                           // gray.400
+        disabled = Color(0xFFBBAD9F),                           // gray.400
         accentPrimary = Color(0xFFC3955B),                      // orange.500
         inverse = Color(0xFFFFFFFF),                            // base.white
         accentWarning = Color(0xFFF79009),                      // orange-variant.500

@@ -8,8 +8,10 @@ object ThemePrefs {
     private val settings: Settings = Settings() // Android: SharedPrefs, iOS: UserDefaults
 
     fun load(): ThemeMode {
-        val code = settings.getStringOrNull(KEY) ?: "SYSTEM"
-        return runCatching { ThemeMode.valueOf(code) }.getOrDefault(ThemeMode.SYSTEM)
+        // Standart — yorug' mavzu: telefoni qorong'i rejimda turgan (ko'pincha o'zi bilmagan holda) kattalarga qorong'i
+        // ekran noqulay. "Tizim" va "Qorong'i" Sozlamalar → Mavzu orqali tanlanadi.
+        val code = settings.getStringOrNull(KEY) ?: return ThemeMode.LIGHT
+        return runCatching { ThemeMode.valueOf(code) }.getOrDefault(ThemeMode.LIGHT)
     }
 
     fun save(mode: ThemeMode) {
