@@ -46,6 +46,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -71,6 +74,8 @@ import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.mascot_guide
 import tikoncha_parents.composeapp.generated.resources.ac_step_show_code
+import tikoncha_parents.composeapp.generated.resources.add_child_scan_qr
+import tikoncha_parents.composeapp.generated.resources.scan
 import tikoncha_parents.composeapp.generated.resources.ac_step_phone
 import tikoncha_parents.composeapp.generated.resources.ac_step_install
 import tikoncha_parents.composeapp.generated.resources.ac_step_enter_code
@@ -238,6 +243,17 @@ private fun AddChildContent(
 ) {
 
     val focusManager = LocalFocusManager.current
+    var showQrScanner by remember { mutableStateOf(false) }
+    if (showQrScanner) {
+        LinkQrScannerDialog(
+            onCode = { code ->
+                showQrScanner = false
+                // Faqat maydonni töldiradi — ulaşni ota-ona özi tasdiqlaydi
+                event(AddChildEvent.LinkCodeChanged(code))
+            },
+            onDismiss = { showQrScanner = false },
+        )
+    }
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.page,
         navigationBarColor = AppColors.bg.page
@@ -343,6 +359,10 @@ private fun AddChildContent(
                                 isLoading = state.isLoading,
                                 canRedeem = state.canRedeem,
                                 onCodeChange = { event(AddChildEvent.LinkCodeChanged(it)) },
+                                onScan = {
+                                    focusManager.clearFocus()
+                                    showQrScanner = true
+                                },
                                 onRedeem = {
                                     focusManager.clearFocus()
                                     event(AddChildEvent.RedeemCode)
@@ -642,6 +662,7 @@ private fun LinkCodeCard(
     isLoading: Boolean,
     canRedeem: Boolean,
     onCodeChange: (String) -> Unit,
+    onScan: () -> Unit,
     onRedeem: () -> Unit,
 ) {
     Column(
@@ -657,7 +678,25 @@ private fun LinkCodeCard(
             autoFocus = false,
             onOtpUpdate = onCodeChange
         )
-        Spacer(Modifier.height(14.dp))
+        Spacer(Modifier.height(12.dp))
+        // Farzand ilovasidagi QR kodni skanerlab, 8 xonali kodni qölda termasdan töldiriş
+        CustomButtonNew(
+            text = stringResource(Res.string.add_child_scan_qr),
+            enabled = !isLoading,
+            onClick = onScan,
+            modifier = Modifier.fillMaxWidth(),
+            containerColor = AppColors.button.secondary,
+            contentColor = AppColors.text.primary,
+            leadingIcon = {
+                Icon(
+                    painter = painterResource(Res.drawable.scan),
+                    contentDescription = null,
+                    tint = AppColors.text.primary,
+                    modifier = Modifier.size(18.dp)
+                )
+            }
+        )
+        Spacer(Modifier.height(10.dp))
         CustomButtonNew(
             text = if (isLoading) stringResource(Res.string.yuborilmoqda) else stringResource(Res.string.ulash_tugma),
             enabled = canRedeem,

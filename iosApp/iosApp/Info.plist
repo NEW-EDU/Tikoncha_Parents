@@ -17,6 +17,8 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>NSCameraUsageDescription</key>
+    <string>Farzandni ulaş uçun uning telefonidagi QR kodni skanerlaşga kamera kerak</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Bolaning va öz joylaşuvingizni xaritada köriş uçun joylaşuvga ruxsat kerak</string>
 

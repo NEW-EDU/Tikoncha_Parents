@@ -37,6 +37,8 @@ data class PolicySummary(
     val siteCount: Int = 0,
     val hasLocation: Boolean = false,
     val allApps: Boolean = false,
+    /** ALLOW: "Faqat tanlanganlar oçiq" — sanalganlar yopilmaydi, qolgani yopiladi. */
+    val allowList: Boolean = false,
 )
 
 /** Tayyor jadval kartasi. `policyId == null` — bazada hali yo'q: switch OFF, ikonka kulrang. */

@@ -8,4 +8,7 @@ data class ChildLocation(
     val latitude: Double?,
     val longitude: Double?,
     val updatedAt: String?,
+    /** null — server bu ma'lumotni bermaydi (hozircha doim shunday). */
+    val isMock: Boolean? = null,
+    val accuracyMeters: Double? = null,
 )

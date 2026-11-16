@@ -200,6 +200,7 @@ fun CalendarDialog(
                         .height(DialogButtonHeight),
                     enabled = tempSelectedDate != null,
                     text = stringResource(Res.string.saqlash),
+                    leadingIcon = { uz.tikoncha_parent.presentation.base.SaveIcon() },
                 )
             }
         }

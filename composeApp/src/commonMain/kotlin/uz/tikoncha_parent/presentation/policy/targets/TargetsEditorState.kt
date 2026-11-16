@@ -25,7 +25,8 @@ data class SiteDialogState(val original: String? = null, val error: SiteError? =
 
 data class TargetsEditorState(
     val page: TargetsPage = TargetsPage.MODE,
-    val mode: TargetsMode = TargetsMode.ALL,
+    // Standart — SELECTED: Custom'da ALL = "Faqat tanlanganlar oçiq" (ALLOW), u faqat ota-ona özi tanlasa yoqiladi
+    val mode: TargetsMode = TargetsMode.SELECTED,
     val packages: Set<String> = emptySet(),
     val categories: Set<String> = emptySet(),
     val sites: Set<String> = emptySet(),
@@ -201,7 +202,9 @@ fun targetsEditorFrom(draft: PolicyDraft, flavor: TargetsFlavor, popularSites: C
     )
     return when (flavor) {
         TargetsFlavor.Custom -> if (draft.action == PolicyAction.ALLOW) selection.copy(mode = TargetsMode.ALL) else selection
-        is TargetsFlavor.Preset -> if (t.isAllApps) TargetsEditorState(mode = TargetsMode.ALL) else selection
+        // Eski ALLOW şablon (oq röyxat = "barça ilovalar, röyxatdagilar oçiq") — "Faqat tanlanganlar" emas
+        is TargetsFlavor.Preset ->
+            if (t.isAllApps || draft.action == PolicyAction.ALLOW) TargetsEditorState(mode = TargetsMode.ALL) else selection
     }
 }
 
@@ -216,7 +219,11 @@ fun TargetsEditorState.applyTo(draft: PolicyDraft, flavor: TargetsFlavor): Polic
     return when {
         flavor is TargetsFlavor.Preset && mode == TargetsMode.ALL -> draft.copy(
             action = PolicyAction.DENY,
-            targets = t.copy(packages = listOf(PolicyTargets.ALL_APPS), categories = emptyList(), sites = emptyList(), features = emptyList()),
+            targets = t.copy(
+                packages = listOf(PolicyTargets.ALL_APPS), categories = emptyList(), sites = emptyList(), features = emptyList(),
+                // Eski ALLOW şablon: oçiq qoladiganlar `packages`da edi — ma'nosi saqlanib istisnolarga köçadi
+                excludePackages = if (draft.action == PolicyAction.ALLOW) t.packages.filter { it != PolicyTargets.ALL_APPS } else t.excludePackages,
+            ),
         )
         else -> draft.copy(
             action = if (allowList) PolicyAction.ALLOW else PolicyAction.DENY,

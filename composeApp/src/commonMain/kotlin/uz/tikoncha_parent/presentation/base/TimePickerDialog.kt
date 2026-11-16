@@ -140,6 +140,7 @@ fun TimePickerDialog(
                                 .fillMaxWidth()
                                 .height(DialogButtonHeight),
                             text = stringResource(Res.string.saqlash),
+                            leadingIcon = { uz.tikoncha_parent.presentation.base.SaveIcon() },
                         )
                     }
                 }

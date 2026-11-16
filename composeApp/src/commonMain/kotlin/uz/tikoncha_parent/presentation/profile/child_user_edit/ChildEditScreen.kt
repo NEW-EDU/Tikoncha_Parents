@@ -256,7 +256,8 @@ fun ChildEditUi(
                     .fillMaxWidth()
                     .height(ButtonHeight),
                 enabled = state.isFormValid,
-                text = stringResource(Res.string.saqlash)
+                text = stringResource(Res.string.saqlash),
+                leadingIcon = { uz.tikoncha_parent.presentation.base.SaveIcon() },
             )
         }
     }

@@ -73,6 +73,7 @@ import tikoncha_parents.composeapp.generated.resources.ok
 import tikoncha_parents.composeapp.generated.resources.operator_kodi_topilmadi
 import tikoncha_parents.composeapp.generated.resources.telefon_raqami
 import tikoncha_parents.composeapp.generated.resources.telegram
+import tikoncha_parents.composeapp.generated.resources.login_telegram_failed
 import tikoncha_parents.composeapp.generated.resources.telegram_ochilmoqda
 import tikoncha_parents.composeapp.generated.resources.telegram_orqali_kirish
 import tikoncha_parents.composeapp.generated.resources.telegram_phone_note
@@ -139,7 +140,8 @@ fun LoginUi(
     val scrollState = rememberScrollState()
     val scope = rememberCoroutineScope()
 
-    val errorText: String? = state.error?.asText()
+    val errorText: String? =
+        if (state.telegramFailed) stringResource(Res.string.login_telegram_failed) else state.error?.asText()
 
     val dialogError: String? = state.dialogError?.asText()
     LoadingDialog(show = state.isPhoneLoading)

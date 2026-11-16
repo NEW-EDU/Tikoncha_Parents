@@ -31,6 +31,23 @@ import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import org.jetbrains.compose.resources.StringResource
+import tikoncha_parents.composeapp.generated.resources.perm_why_accessibility
+import tikoncha_parents.composeapp.generated.resources.perm_why_auto_start
+import tikoncha_parents.composeapp.generated.resources.perm_why_battery
+import tikoncha_parents.composeapp.generated.resources.perm_why_dangerous
+import tikoncha_parents.composeapp.generated.resources.perm_why_device_admin
+import tikoncha_parents.composeapp.generated.resources.perm_why_gps
+import tikoncha_parents.composeapp.generated.resources.perm_why_location
+import tikoncha_parents.composeapp.generated.resources.perm_why_notification
+import tikoncha_parents.composeapp.generated.resources.perm_why_overlay
+import tikoncha_parents.composeapp.generated.resources.perm_why_overlay_popup
+import tikoncha_parents.composeapp.generated.resources.perm_why_usage_stats
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -393,98 +410,151 @@ private fun LevelTrack(step: Int, modifier: Modifier = Modifier) {
 
 // ═══════════════════════ RUXSATLAR ═══════════════════════
 
+/**
+ * Muhimlik tartibi: eng nozik ruxsatlar tepada. "Maxsus imkoniyatlar" doim birinçi —
+ * ekran oçilişi bilan körinadi (ilgari Qalqondan boşqa rejimda pastdagi holatsiz röyxatda edi).
+ */
+private val PermissionPriority = listOf(
+    ChildPermission.ACCESSIBILITY,
+    ChildPermission.USAGE_STATS,
+    ChildPermission.OVERLAY,
+    ChildPermission.OVERLAY_POPUP,
+    ChildPermission.AUTO_START,
+    ChildPermission.BATTERY,
+    ChildPermission.DEVICE_ADMIN,
+    ChildPermission.LOCATION,
+    ChildPermission.GPS_ENABLED,
+    ChildPermission.NOTIFICATION,
+)
+
+/** "Nega xavfli?" — ruxsat öçiq bölsa nima işlamay qolişi (bir-ikki gap). */
+private fun ChildPermission.whyRes(): StringResource = when (this) {
+    ChildPermission.NOTIFICATION -> Res.string.perm_why_notification
+    ChildPermission.USAGE_STATS -> Res.string.perm_why_usage_stats
+    ChildPermission.OVERLAY -> Res.string.perm_why_overlay
+    ChildPermission.OVERLAY_POPUP -> Res.string.perm_why_overlay_popup
+    ChildPermission.LOCATION -> Res.string.perm_why_location
+    ChildPermission.GPS_ENABLED -> Res.string.perm_why_gps
+    ChildPermission.BATTERY -> Res.string.perm_why_battery
+    ChildPermission.AUTO_START -> Res.string.perm_why_auto_start
+    ChildPermission.ACCESSIBILITY -> Res.string.perm_why_accessibility
+    ChildPermission.DEVICE_ADMIN -> Res.string.perm_why_device_admin
+}
+
 @Composable
 fun ProtectionPermissionsGroup(state: ProtectionState) {
     val required = state.requiredPermissions
     val missing = state.missingRequiredPermissions
-    if (required.isNotEmpty()) {
-        ProtectionSectionLabel(
-            text = stringResource(Res.string.ruxsatlar),
-            trailing = stringResource(Res.string.x_dan_y_berilgan, state.grantedRequiredCount, required.size),
-            trailingColor = if (missing.isEmpty()) AppColors.text.tertiary else AppColors.text.accentDanger,
-        )
-        // Berilmaganlari tepada — ota-ona birinchi shularni ko'radi
-        val ordered = required.sortedBy { it in state.enabledPermissions }
-        Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
-            ordered.forEachIndexed { i, permission ->
-                Segment(i, ordered.size) {
-                    PermissionRow(permission = permission, granted = permission in state.enabledPermissions)
-                }
+    val higher = state.higherTierPermissions
+    if (required.isEmpty() && higher.isEmpty()) return
+
+    ProtectionSectionLabel(
+        text = stringResource(Res.string.ruxsatlar),
+        trailing = if (required.isEmpty()) null
+        else stringResource(Res.string.x_dan_y_berilgan, state.grantedRequiredCount, required.size),
+        trailingColor = if (missing.isEmpty()) AppColors.text.tertiary else AppColors.text.accentDanger,
+    )
+    // Bitta röyxat: zarur bölib öçiq turganlari tepada, qolgani muhimlik tartibida.
+    // Yuqori rejim ruxsatlari ham haqiqiy holati bilan körinadi (ilgari holatsiz, pastda edi).
+    val ordered = (required + higher).sortedWith(
+        compareBy<ChildPermission>({ it !in missing }, { PermissionPriority.indexOf(it) })
+    )
+    var explained by rememberSaveable { mutableStateOf<String?>(null) }
+    Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
+        ordered.forEachIndexed { i, permission ->
+            val granted = permission in state.enabledPermissions
+            Segment(
+                index = i,
+                count = ordered.size,
+                // Öçiq ruxsat bosilsa — "Nega xavfli?" izohi oçiladi
+                onClick = if (granted) null else ({
+                    explained = if (explained == permission.name) null else permission.name
+                }),
+            ) {
+                PermissionRow(
+                    permission = permission,
+                    granted = granted,
+                    required = permission in required,
+                    expanded = explained == permission.name,
+                )
             }
-        }
-        if (missing.isNotEmpty()) {
-            ProtectionFootnote(stringResource(Res.string.zarur_ruxsat_banner_desc))
         }
     }
-
-    val higher = state.higherTierPermissions
-    if (higher.isNotEmpty()) {
-        ProtectionSectionLabel(
-            text = if (required.isEmpty()) stringResource(Res.string.ruxsatlar)
-            else stringResource(Res.string.boshqa_rejimlar_uchun),
-        )
-        Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
-            higher.forEachIndexed { i, permission ->
-                Segment(i, higher.size) { HigherTierPermissionRow(permission) }
-            }
-        }
+    if (missing.isNotEmpty()) {
+        ProtectionFootnote(stringResource(Res.string.zarur_ruxsat_banner_desc))
     }
 }
 
 @Composable
-private fun PermissionRow(permission: ChildPermission, granted: Boolean) {
-    Row(
+private fun PermissionRow(permission: ChildPermission, granted: Boolean, required: Boolean, expanded: Boolean) {
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = 56.dp)
             .padding(horizontal = RowPaddingH, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
+        verticalArrangement = Arrangement.Center,
     ) {
-        Text(
-            text = stringResource(permission.label()),
-            style = AppTypography.titleMdMedium,
-            color = AppColors.text.primary,
-            modifier = Modifier.weight(1f),
-        )
-        Spacer(Modifier.width(12.dp))
-        Text(
-            text = stringResource(if (granted) Res.string.berilgan else Res.string.berilmagan),
-            style = AppTypography.bodyMdMedium,
-            color = if (granted) AppColors.text.tertiary else AppColors.text.accentDanger,
-        )
-        Spacer(Modifier.width(8.dp))
-        Icon(
-            imageVector = if (granted) Icons.Rounded.CheckCircle else Icons.Rounded.Error,
-            contentDescription = null,
-            tint = if (granted) AppColors.icon.accentPrimary else AppColors.icon.accentDanger,
-            modifier = Modifier.size(22.dp),
-        )
-    }
-}
-
-@Composable
-private fun HigherTierPermissionRow(permission: ChildPermission) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = 52.dp)
-            .padding(horizontal = RowPaddingH, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text = stringResource(permission.label()),
-            style = AppTypography.titleMdMedium,
-            color = AppColors.text.tertiary,
-            modifier = Modifier.weight(1f),
-        )
-        Spacer(Modifier.width(12.dp))
-        Text(
-            text = stringResource(
-                if (permission.minMode == ChildMode.STRICT) Res.string.qalqon_uchun else Res.string.gujanak_uchun
-            ),
-            style = AppTypography.bodyMdMedium,
-            color = AppColors.text.tertiary,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(permission.label()),
+                    style = AppTypography.titleMdMedium,
+                    color = AppColors.text.primary,
+                )
+                if (!granted) {
+                    // Izoh matni ekranda turmaydi — şu belgi ortida
+                    Row(modifier = Modifier.padding(top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = Icons.Rounded.Info,
+                            contentDescription = null,
+                            tint = AppColors.icon.accentPrimary,
+                            modifier = Modifier.size(14.dp),
+                        )
+                        Spacer(Modifier.width(4.dp))
+                        Text(
+                            text = stringResource(Res.string.perm_why_dangerous),
+                            style = AppTypography.bodyMdMedium,
+                            color = AppColors.text.accentEmphasis,
+                        )
+                    }
+                }
+            }
+            Spacer(Modifier.width(12.dp))
+            Text(
+                text = when {
+                    granted -> stringResource(Res.string.berilgan)
+                    // Joriy rejimda şart emas — lekin holati yaşirilmaydi
+                    !required && permission.minMode == ChildMode.STRICT -> stringResource(Res.string.qalqon_uchun)
+                    !required && permission.minMode == ChildMode.GUJANAK -> stringResource(Res.string.gujanak_uchun)
+                    else -> stringResource(Res.string.berilmagan)
+                },
+                style = AppTypography.bodyMdMedium,
+                color = when {
+                    granted -> AppColors.text.tertiary
+                    required -> AppColors.text.accentDanger
+                    else -> AppColors.text.accentWarning
+                },
+            )
+            Spacer(Modifier.width(8.dp))
+            Icon(
+                imageVector = if (granted) Icons.Rounded.CheckCircle else Icons.Rounded.Error,
+                contentDescription = null,
+                tint = when {
+                    granted -> AppColors.icon.accentPrimary
+                    required -> AppColors.icon.accentDanger
+                    else -> AppColors.icon.accentWarning
+                },
+                modifier = Modifier.size(22.dp),
+            )
+        }
+        AnimatedVisibility(visible = expanded && !granted) {
+            Text(
+                text = stringResource(permission.whyRes()),
+                style = AppTypography.bodyMdRegular,
+                color = AppColors.text.secondary,
+                modifier = Modifier.padding(top = 8.dp),
+            )
+        }
     }
 }
 

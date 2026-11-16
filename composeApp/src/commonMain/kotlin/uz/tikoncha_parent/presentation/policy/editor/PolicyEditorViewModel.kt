@@ -19,6 +19,7 @@ import uz.tikoncha_parent.domain.model.LimitWindow
 import uz.tikoncha_parent.domain.model.WeekDay
 import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
+import uz.tikoncha_parent.domain.model.app_error.PaidFeature
 import uz.tikoncha_parent.domain.model.app_error.getOrNull
 import uz.tikoncha_parent.domain.model.policy.PolicyAction
 import uz.tikoncha_parent.domain.model.policy.PolicyDraft
@@ -201,8 +202,8 @@ class PolicyEditorViewModel(
             PolicyEditorEvent.DialogDismissed -> _state.update { it.copy(dialog = null) }
             PolicyEditorEvent.SheetDismissed -> _state.update { it.copy(sheet = null) }
 
-            PolicyEditorEvent.AllowLockedClicked -> _state.update { it.copy(payWall = true) }
-            PolicyEditorEvent.PayWallDismissed -> _state.update { it.copy(payWall = false) }
+            PolicyEditorEvent.AllowLockedClicked -> _state.update { it.copy(payWall = PaidFeature.ALLOW_MODE) }
+            PolicyEditorEvent.PayWallDismissed -> _state.update { it.copy(payWall = null) }
 
             PolicyEditorEvent.SaveClicked -> save()
             PolicyEditorEvent.ErrorDismissed -> _state.update { it.copy(error = null) }
@@ -225,7 +226,14 @@ class PolicyEditorViewModel(
     private fun start(childId: String, policyId: String?, defaultTitle: String) {
         if (started) return
         started = true
-        _state.update { it.copy(childId = childId, now = Clock.System.now(), paid = paidStatus(childId)) }
+        _state.update {
+            it.copy(
+                childId = childId,
+                now = Clock.System.now(),
+                paid = paidStatus(childId),
+                freePolicyLimit = paidStatus.freePolicyLimit(childId) ?: it.freePolicyLimit,
+            )
+        }
 
         if (policyId == null) {
             val draft = PolicyDraft(name = defaultTitle, action = PolicyAction.DENY, targets = PolicyTargets())
@@ -275,7 +283,7 @@ class PolicyEditorViewModel(
         }
         screenModelScope.launch {
             val paid = paidStatus.refresh(childId)
-            _state.update { it.copy(paid = paid ?: it.paid) }
+            _state.update { it.copy(paid = paid ?: it.paid, freePolicyLimit = paidStatus.freePolicyLimit(childId) ?: it.freePolicyLimit) }
         }
     }
 
@@ -367,8 +375,19 @@ class PolicyEditorViewModel(
     }
 
     /** Pullik rad — paywall, boshqa xato — dialog. */
-    private fun PolicyEditorState.withFailure(f: Outcome.Failure): PolicyEditorState =
-        if (f.cause is ErrorCause.PremiumRequired) copy(payWall = true) else copy(error = f)
+    private fun PolicyEditorState.withFailure(f: Outcome.Failure): PolicyEditorState {
+        val cause = f.cause as? ErrorCause.PremiumRequired ?: return copy(error = f)
+        // Sabab saqlanadi: ilgari har qanday pullik rad "Faqat tanlanganlar oçiq — Plus" deb körsatilardi,
+        // garçi ota-ona bu rejimni yoqmagan bölsa ham (aslida — jadvallar soni çegarasi).
+        if (cause.feature != PaidFeature.ALLOW_MODE) return copy(payWall = cause.feature)
+        // Server ALLOW rejimini qabul qilmadi — qoralama "yoqilgan" bölib qolmasin: saqlangan holatga qaytadi
+        val allowSaved = saved?.action == PolicyAction.ALLOW
+        return copy(
+            payWall = PaidFeature.ALLOW_MODE,
+            paid = false,
+            draft = draft?.let { if (!allowSaved && it.action == PolicyAction.ALLOW) it.copy(action = PolicyAction.DENY) else it },
+        )
+    }
 
     private companion object {
         const val PENDING_TIMEOUT_MS = 3_000L

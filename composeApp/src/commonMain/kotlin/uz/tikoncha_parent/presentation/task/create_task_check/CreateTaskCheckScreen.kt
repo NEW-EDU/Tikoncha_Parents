@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.task.create_task_check
 
+import uz.tikoncha_parent.presentation.base.SaveIcon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -340,7 +341,8 @@ fun CreateTaskCheckUI(
                 text = stringResource(Res.string.vazifani_saqlash),
                 onClick = {
                     event(CreateTaskEvent.OnConfirmClicked)
-                }
+                },
+                leadingIcon = { SaveIcon() },
             )
         }
     }

@@ -2,3 +2,4 @@
 "CFBundleDisplayName" = "Hoglt Parent";
 "NSLocationWhenInUseUsageDescription" = "Location access lets you see your child's location and your own on the map.";
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Location access lets you see your child's location and your own on the map.";
+"NSCameraUsageDescription" = "The camera is used to scan the QR code on your child's phone when linking them.";

@@ -3,6 +3,8 @@ package uz.tikoncha_parent.presentation.policy.editor
 import uz.tikoncha_parent.domain.model.LimitWindow
 import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.app_error.Outcome
+import uz.tikoncha_parent.domain.model.app_error.PaidFeature
+import uz.tikoncha_parent.domain.use_case.policy.ChildPaidStatusUseCase
 import uz.tikoncha_parent.domain.model.apps.InstalledApp
 import uz.tikoncha_parent.domain.model.policy.PolicyDraft
 import uz.tikoncha_parent.domain.model.policy.TimeCondition
@@ -63,7 +65,10 @@ data class PolicyEditorState(
     val busy: Boolean = false,
     /** Switch so'rovi ketmoqda: yuborilgan qiymat. Kesh yangi holatni olib kelguncha spinner turadi. */
     val pendingEnabled: Boolean? = null,
-    val payWall: Boolean = false,
+    /** Paywall sababi: null — yopiq. Matn sababga qarab (ALLOW rejimi yoki jadvallar soni çegarasi). */
+    val payWall: PaidFeature? = null,
+    /** Bepul tarifdagi faol jadvallar çegarasi — çegara paywall'ida körsatiladi. */
+    val freePolicyLimit: Int = ChildPaidStatusUseCase.DEFAULT_FREE_POLICY_LIMIT,
     val error: Outcome.Failure? = null,
 ) {
     val isDetail: Boolean get() = policyId != null

@@ -23,4 +23,8 @@ data class ChildrenLocationItemDto(
     val lat: Double?,
     val lng: Double?,
     val updated_at: String?,
+    /** Hali serverda yo'q (kelmasa null): nuqta soxta (mock) joylashuv provayderidan olingan. */
+    val is_mock: Boolean? = null,
+    /** Hali serverda yo'q (kelmasa null): nuqta aniqligi, metr — xaritadagi aniqlik doirasi uchun. */
+    val accuracy_m: Double? = null,
 )

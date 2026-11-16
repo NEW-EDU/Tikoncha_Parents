@@ -15,6 +15,8 @@ data class LoginState(
     val loadingProvider: SocialProvider? = null,
     val isPhoneLoading: Boolean = false,          // send-otp loading
     val error: Outcome.Failure? = null,             // Telegram inline xato
+    /** Telegram orqali kirish natija bermadi — "boşqa usul bilan kiring" degan aniq xabar körsatiladi. */
+    val telegramFailed: Boolean = false,
     val dialogError: Outcome.Failure? = null,        // phone send-otp dialog xato
 ) {
     val isPhoneNumberValid get() = DefaultCountry.isComplete(number)

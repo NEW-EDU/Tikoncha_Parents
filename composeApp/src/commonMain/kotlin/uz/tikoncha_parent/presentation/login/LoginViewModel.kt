@@ -4,6 +4,7 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -36,6 +37,9 @@ class LoginViewModel(
 
     private var exchangeJob: Job? = null
     private var sendOtpJob: Job? = null
+    /** Telegram oynasi oçildi, lekin hali natija (muvaffaqiyat / xato / bekor qiliş) kelmadi. */
+    private var telegramPending = false
+    private var returnWatchJob: Job? = null
     private var mascotTaps = 0
     private var lastMascotTap: kotlin.time.TimeMark? = null
 
@@ -75,7 +79,7 @@ class LoginViewModel(
         val s = _state.value
         if (s.loadingProvider != null || s.isTelegramLoading) return
         if (socialAuth.start(provider)) {
-            _state.update { it.copy(loadingProvider = provider, error = null) }
+            _state.update { it.copy(loadingProvider = provider, error = null, telegramFailed = false) }
         } else {
             _state.update { it.copy(loadingProvider = null, error = Outcome.Failure(ErrorCause.Unknown)) }
         }
@@ -123,7 +127,7 @@ class LoginViewModel(
             is LoginEvent.OnSocialClicked -> handleSocialClick(event.provider)
             LoginEvent.OnPhoneContinue -> handlePhoneContinue()
             LoginEvent.OnErrorDismissed ->
-                _state.update { it.copy(error = null) }
+                _state.update { it.copy(error = null, telegramFailed = false) }
 
             LoginEvent.OnDialogErrorDismissed ->
                 _state.update { it.copy(dialogError = null) }
@@ -143,6 +147,18 @@ class LoginViewModel(
                             isTelegramLoading = false
                         )
                     }
+                    // Ilovaga qaytildi, lekin Telegram'dan heç qanday natija kelmadi (masalan iPhone'da havola
+                    // ilovaga qaytmadi) — jim qolmaymiz: biroz kutib, aniq xabar körsatamiz.
+                    if (telegramPending) {
+                        returnWatchJob?.cancel()
+                        returnWatchJob = screenModelScope.launch {
+                            delay(TELEGRAM_RESULT_GRACE_MS)
+                            if (telegramPending && exchangeJob?.isActive != true) {
+                                telegramPending = false
+                                _state.update { it.copy(isTelegramLoading = false, error = null, telegramFailed = true) }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -151,34 +167,41 @@ class LoginViewModel(
     // ---------- Telegram ----------
     private fun handleTelegramClick() {
         if (_state.value.isTelegramLoading) return
+        returnWatchJob?.cancel()
         val started = telegramAuth.startLogin()
+        telegramPending = started
         if (started) {
-            _state.update { it.copy(isTelegramLoading = true, error = null) }
+            _state.update { it.copy(isTelegramLoading = true, error = null, telegramFailed = false) }
         } else {
             _state.update {
                 it.copy(
                     isTelegramLoading = false,
-                    error = Outcome.Failure(ErrorCause.Unknown),
+                    error = null,
+                    telegramFailed = true,
                 )
             }
         }
     }
 
     private fun handleTelegramResult(result: TelegramAuthResult) {
+        telegramPending = false
+        returnWatchJob?.cancel()
         when (result) {
             TelegramAuthResult.Cancelled ->
                 _state.update { it.copy(isTelegramLoading = false) }
 
-            // Xom texnik matn (NSError) foydalanuvchiga ko'rsatilmaydi: tarmoq — "internet yo'q", qolgani — umumiy xato.
-            is TelegramAuthResult.Error ->
+            // Xom texnik matn (NSError) foydalanuvchiga ko'rsatilmaydi: tarmoq — "internet yo'q",
+            // qolgani — "Telegram orqali kirib bölmadi, boşqa usul bilan kiring".
+            is TelegramAuthResult.Error -> {
+                val network = result.message == "network"
                 _state.update {
                     it.copy(
                         isTelegramLoading = false,
-                        error = Outcome.Failure(
-                            if (result.message == "network") ErrorCause.NoInternet else ErrorCause.Unknown
-                        )
+                        error = if (network) Outcome.Failure(ErrorCause.NoInternet) else null,
+                        telegramFailed = !network,
                     )
                 }
+            }
 
             is TelegramAuthResult.Success -> exchange(result.idToken)
         }
@@ -187,7 +210,7 @@ class LoginViewModel(
     private fun exchange(idToken: String) {
         exchangeJob?.cancel()
         exchangeJob = screenModelScope.launch {
-            _state.update { it.copy(isTelegramLoading = true, error = null) }
+            _state.update { it.copy(isTelegramLoading = true, error = null, telegramFailed = false) }
             when (val res = auth.telegramLogin(idToken)) {
                 is Outcome.Failure -> {
                     _state.update {
@@ -240,5 +263,10 @@ class LoginViewModel(
                 }
             }
         }
+    }
+
+    private companion object {
+        /** Ilovaga qaytgandan keyin Telegram natijasini (token almaşinuvi) kutiş vaqti. */
+        const val TELEGRAM_RESULT_GRACE_MS = 5_000L
     }
 }

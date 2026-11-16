@@ -55,8 +55,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.foundation.Image
 import org.jetbrains.compose.resources.DrawableResource
 import tikoncha_parents.composeapp.generated.resources.ob_app_tiktok
-import tikoncha_parents.composeapp.generated.resources.ob_app_brawlstars
-import tikoncha_parents.composeapp.generated.resources.ob_app_youtube
+import tikoncha_parents.composeapp.generated.resources.ic_instagram
+import tikoncha_parents.composeapp.generated.resources.stat_row_hour_min
+import tikoncha_parents.composeapp.generated.resources.ob_shield_hint
+import tikoncha_parents.composeapp.generated.resources.ob_shield_request
 import tikoncha_parents.composeapp.generated.resources.maktab
 import tikoncha_parents.composeapp.generated.resources.ob_chat_child_msg
 import tikoncha_parents.composeapp.generated.resources.ob_day_today
@@ -70,7 +72,6 @@ import tikoncha_parents.composeapp.generated.resources.ob_rule_school
 import tikoncha_parents.composeapp.generated.resources.ob_rule_sleep
 import tikoncha_parents.composeapp.generated.resources.ob_task_sample
 import tikoncha_parents.composeapp.generated.resources.ob_total_fmt
-import tikoncha_parents.composeapp.generated.resources.qalqonni_ochirish_sorovi
 import tikoncha_parents.composeapp.generated.resources.rad_etish
 import tikoncha_parents.composeapp.generated.resources.ruxsat_berish
 import tikoncha_parents.composeapp.generated.resources.tikoncha_logo
@@ -87,7 +88,7 @@ import kotlin.math.sin
 
 @Composable
 internal fun ScreenTimeIllustration(p: Float, modifier: Modifier = Modifier) {
-    val minutes = (192 * easeOut(stage(p, 0.10f, 0.70f))).roundToInt()
+    val minutes = (DayTotalMinutes * easeOut(stage(p, 0.10f, 0.70f))).roundToInt()
     GlassCard(modifier) {
         Column(Modifier.fillMaxWidth()) {
             Text(stringResource(Res.string.ob_day_today), style = labelStyle(13, FontWeight.SemiBold, Night.inkDim))
@@ -97,7 +98,8 @@ internal fun ScreenTimeIllustration(p: Float, modifier: Modifier = Modifier) {
             )
             Spacer(Modifier.height(12.dp))
             // Hafta ustunlari — bugungisi karamel
-            val week = listOf(0.55f, 0.72f, 0.48f, 0.80f, 0.62f, 0.40f, 0.68f)
+            // Hafta: 5 s 30 daq … 8 s 00 daq (eng baland ustun = 8 soat); bugun — 7 s 12 daq = 0.90
+            val week = listOf(0.74f, 0.82f, 0.69f, 0.86f, 0.78f, 1.0f, 0.90f)
             Row(
                 Modifier.fillMaxWidth().height(56.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -115,11 +117,13 @@ internal fun ScreenTimeIllustration(p: Float, modifier: Modifier = Modifier) {
                 }
             }
             Spacer(Modifier.height(14.dp))
-            // Asl ilova belgilari — qo'lda chizilgan glif "qaysi ilova" ekanini aytmasdi.
+            // Og'ir kun namunasi: jami 7 s 12 daq (432), körsatilgan törtta ilova — 407 daq, qolgani boşqa ilovalar.
+            // Belgisi bor ilovalar asl belgisi bilan; qolganlari — bir xil uslubdagi harfli plitka (begona logotip fayllarisiz).
             val apps = listOf(
-                Triple(DayApp("YouTube", Res.drawable.ob_app_youtube), 74, 1.0f),
-                Triple(DayApp("Brawl Stars", Res.drawable.ob_app_brawlstars), 58, 0.78f),
-                Triple(DayApp("TikTok", Res.drawable.ob_app_tiktok), 40, 0.54f),
+                Triple(DayApp("Instagram", glyph = Res.drawable.ic_instagram), 148, 1.0f),
+                Triple(DayApp("PUBG", letter = "P"), 125, 0.84f),
+                Triple(DayApp("TikTok", icon = Res.drawable.ob_app_tiktok), 96, 0.65f),
+                Triple(DayApp("ChatGPT", letter = "C"), 38, 0.26f),
             )
             apps.forEachIndexed { i, (app, mins, share) ->
                 val t = easeOut(stage(p, 0.40f + i * 0.08f, 0.80f + i * 0.06f))
@@ -127,17 +131,17 @@ internal fun ScreenTimeIllustration(p: Float, modifier: Modifier = Modifier) {
                     Modifier.fillMaxWidth().padding(vertical = 5.dp).graphicsLayer { alpha = stage(p, 0.36f + i * 0.08f, 0.5f + i * 0.08f) },
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Image(
-                        painter = painterResource(app.icon),
-                        contentDescription = null,
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier.size(30.dp).clip(RoundedCornerShape(9.dp)),
-                    )
+                    DayAppIcon(app)
                     Spacer(Modifier.width(10.dp))
                     Column(Modifier.weight(1f)) {
                         Row(Modifier.fillMaxWidth()) {
                             Text(app.name, style = labelStyle(13), modifier = Modifier.weight(1f))
-                            Text(stringResource(Res.string.ob_min_fmt, (mins * t).roundToInt()), style = labelStyle(12, FontWeight.Medium, Night.inkDim))
+                            val shown = (mins * t).roundToInt()
+                            Text(
+                                if (shown >= 60) stringResource(Res.string.stat_row_hour_min, shown / 60, shown % 60)
+                                else stringResource(Res.string.ob_min_fmt, shown),
+                                style = labelStyle(12, FontWeight.Medium, Night.inkDim),
+                            )
                         }
                         Spacer(Modifier.height(5.dp))
                         Box(Modifier.fillMaxWidth().height(5.dp).clip(CircleShape).background(Night.track)) {
@@ -150,7 +154,39 @@ internal fun ScreenTimeIllustration(p: Float, modifier: Modifier = Modifier) {
     }
 }
 
-private class DayApp(val name: String, val icon: DrawableResource)
+private const val DayTotalMinutes = 432
+
+/** [icon] — tayyor rangli belgi; [glyph] — bir rangli vektor (plitka ustida tuslanadi); [letter] — belgi yöq bölsa bosh harf. */
+private class DayApp(
+    val name: String,
+    val icon: DrawableResource? = null,
+    val glyph: DrawableResource? = null,
+    val letter: String = "",
+)
+
+@Composable
+private fun DayAppIcon(app: DayApp) {
+    val shape = RoundedCornerShape(9.dp)
+    if (app.icon != null) {
+        Image(
+            painter = painterResource(app.icon),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(30.dp).clip(shape),
+        )
+        return
+    }
+    Box(
+        Modifier.size(30.dp).clip(shape).background(Night.caramel.copy(alpha = 0.20f)),
+        contentAlignment = Alignment.Center,
+    ) {
+        if (app.glyph != null) {
+            Icon(painterResource(app.glyph), contentDescription = null, tint = Night.caramelSoft, modifier = Modifier.size(17.dp))
+        } else {
+            Text(app.letter, style = labelStyle(15, FontWeight.ExtraBold, Night.caramelSoft))
+        }
+    }
+}
 
 // ───────────────────────── 2. Qoidalar ─────────────────────────
 
@@ -345,7 +381,11 @@ internal fun ChatIllustration(p: Float, modifier: Modifier = Modifier) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     ShieldGlyph()
                     Spacer(Modifier.width(10.dp))
-                    Text(stringResource(Res.string.qalqonni_ochirish_sorovi), style = labelStyle(15, FontWeight.Bold), modifier = Modifier.weight(1f))
+                    Column(Modifier.weight(1f)) {
+                        Text(stringResource(Res.string.ob_shield_request), style = labelStyle(15, FontWeight.Bold))
+                        // "Qalqon" sözini birinçi marta körayotgan ota-onaga — bir qatorlik izoh
+                        Text(stringResource(Res.string.ob_shield_hint), style = labelStyle(12, FontWeight.Medium, Night.inkDim))
+                    }
                 }
                 Spacer(Modifier.height(14.dp))
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -483,7 +523,7 @@ private fun CheckCircle(t: Float) {
 internal fun NotificationStack(p: Float, modifier: Modifier = Modifier) {
     val haptic = LocalHapticFeedback.current
     val items = listOf(
-        Res.string.ob_notif_request to Res.string.qalqonni_ochirish_sorovi,
+        Res.string.ob_notif_request to Res.string.ob_shield_request,
         Res.string.ob_notif_message to Res.string.ob_chat_child_msg,
         Res.string.ob_notif_task to Res.string.ob_task_sample,
     )
