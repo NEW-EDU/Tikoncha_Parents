@@ -92,7 +92,7 @@ class TrackingScreenModel(
                 }
 
             TrackingEvent.DismissSubscriptionDialog ->
-                mutableState.update { it.copy(showSubscriptionDialog = false) }
+                mutableState.update { it.copy(showSubscriptionDialog = false, subscriptionDialogChildId = null) }
 
             TrackingEvent.DismissPersonSheet ->
                 mutableState.update {
@@ -268,7 +268,7 @@ class TrackingScreenModel(
             return
         }
         if (!hasPlusSubscription(id)) {
-            mutableState.update { it.copy(showSubscriptionDialog = true) }
+            mutableState.update { it.copy(showSubscriptionDialog = true, subscriptionDialogChildId = id) }
             return
         }
         mutableState.update {
@@ -317,13 +317,45 @@ class TrackingScreenModel(
                 state = PermissionStatusType.LOCATION,
             )) {
                 is Outcome.Success -> mutableState.update {
-                    it.copy(isCheckingPermissionStatus = false, sheetIssues = res.data)
+                    val issue = res.data.toLocationIssue()
+                    it.copy(
+                        isCheckingPermissionStatus = false,
+                        sheetIssues = res.data,
+                        locationIssues = if (issue != null) it.locationIssues + (childUserId to issue) else it.locationIssues - childUserId,
+                    )
                 }
 
                 is Outcome.Failure -> mutableState.update {
                     it.copy(isCheckingPermissionStatus = false, sheetIssues = emptyList())
                 }
             }
+        }
+    }
+
+    /**
+     * Har bir PLUS farzand uchun: GPS o'chiqmi / joylashuv ruxsati yo'qmi (xaritadagi yorliq uchun). Farzandlar va
+     * obuna ro'yxati ikkalasi ham kelgach ishlaydi; xato bo'lsa jim — yorliq shunchaki ko'rinmaydi.
+     */
+    private var locationIssuesJob: Job? = null
+    private fun loadLocationIssues() {
+        val children = state.value.people.filter { !it.isSelf && hasPlusSubscription(it.id) }
+        if (children.isEmpty()) return
+        locationIssuesJob?.cancel()
+        locationIssuesJob = screenModelScope.launch {
+            val found = mutableMapOf<String, LocationIssue>()
+            val checked = mutableSetOf<String>()
+            children.forEach { child ->
+                val res = permissionStatusRepository.permissionStatus(
+                    childId = child.id,
+                    state = PermissionStatusType.LOCATION,
+                )
+                if (res is Outcome.Success) {
+                    checked += child.id
+                    res.data.toLocationIssue()?.let { found[child.id] = it }
+                }
+            }
+            // Tekshirib bo'lmaganlar (tarmoq xatosi) — avvalgi holati qoladi
+            mutableState.update { it.copy(locationIssues = (it.locationIssues - checked) + found) }
         }
     }
 
@@ -338,6 +370,7 @@ class TrackingScreenModel(
             paymentRepository.syncSubscriptionLimits()
             mutableState.update { it.copy(subscriptionLimits = AppSettings.subscriptionLimitList) }
             refreshDangerPlaces()
+            loadLocationIssues()
         }
     }
 
@@ -351,6 +384,7 @@ class TrackingScreenModel(
                     children.freshestChild()?.location?.let { AppSettings.lastChildLocation = it }
                     mutableState.update { it.copy(people = children, isLoading = false, peopleLoaded = true) }
                     refreshDangerPlaces()
+                    loadLocationIssues()
                 }
                 is Outcome.Failure -> {
                     mutableState.update { it.copy(isLoading = false, peopleLoaded = true, error = res) }
@@ -466,6 +500,7 @@ class TrackingScreenModel(
         trackingJob?.cancel()
         dangerJob?.cancel()
         idleStopJob?.cancel()
+        locationIssuesJob?.cancel()
         runCatching { locationTracker.stopTracking() }
         super.onDispose()
     }

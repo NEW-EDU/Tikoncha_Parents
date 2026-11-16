@@ -67,6 +67,7 @@ import org.jetbrains.compose.resources.painterResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.arrow_back
 import uz.tikoncha_parent.domain.model.UserInfo
+import uz.tikoncha_parent.platform.isIos
 import uz.tikoncha_parent.ui.expressiveButtonShapes
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
@@ -84,11 +85,17 @@ val IslandHeight = 64.dp
 /** Orol bilan kontent orasidagi bo'shliq. */
 private val IslandTopGap = 10.dp
 
-/** Orolning ekran pastidan masofasi: tizim navigatsiya zonasining yarmi (iPhone'da indikatorga yaqin, lekin ustida). */
+/** Orolni qo'shimcha ko'tarish: Android'da ko'proq (imo-ishora chizig'i orolga tegib turardi), iOS'da ozgina. */
+private val IslandExtraLift: Dp = if (isIos()) 5.dp else 12.dp
+
+/**
+ * Orolning ekran pastidan masofasi: tizim navigatsiya zonasining yarmi + platformaga xos ko'tarish ([IslandExtraLift]).
+ * Kontent uchun joy ([islandReservedFromBottom]) va farzand ro'yxati shu qiymatdan hisoblanadi — hammasi birga siljiydi.
+ */
 @Composable
 fun islandBottomOffset(): Dp {
     val nav = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    return maxOf(nav * 0.5f, 8.dp)
+    return maxOf(nav * 0.5f, 8.dp) + IslandExtraLift
 }
 
 /** Ekran pastidan orol egallagan butun balandlik (kontent shundan yuqorida tugaydi). */

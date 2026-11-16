@@ -20,6 +20,7 @@ import uz.tikoncha_parent.domain.model.PaymentStatus
 import uz.tikoncha_parent.domain.model.PurchaseResult
 import uz.tikoncha_parent.domain.model.SubscriptionDuration
 import uz.tikoncha_parent.domain.model.app_error.Outcome
+import uz.tikoncha_parent.domain.model.app_error.getOrNull
 import uz.tikoncha_parent.domain.repository.PaymentRepository
 import uz.tikoncha_parent.domain.service.PaymentService
 import uz.tikoncha_parent.domain.use_case.payment.PurchaseIApPremiumUseCase
@@ -39,6 +40,15 @@ class PaymentViewModel(
         // iPhone'da O'zbekistondan tashqarida (server IP bo'yicha): faqat App Store — u oldindan tanlanadi
         applyRegion(region.localPayments.value)
         screenModelScope.launch { applyRegion(region.refresh()) }
+        // Obuna aynan shu farzand uchun olinadi — to'lovdan OLDIN ekranda ko'rsatiladi
+        AppSettings.selectedChild?.let { child ->
+            _state.update {
+                it.copy(
+                    childName = child.name.ifBlank { child.fullName }.ifBlank { null },
+                    childAvatarUrl = child.avatarUrl,
+                )
+            }
+        }
     }
 
     private var forcedAppStore = false
@@ -327,6 +337,13 @@ class PaymentViewModel(
     private fun requestSubscriptionLimit(){
         screenModelScope.launch {
             paymentRepository.syncSubscriptionLimits()
+        }
+        // "Qachongacha" — tasdiq oynasi uchun (kelmasa qator ko'rsatilmaydi)
+        val childId = AppSettings.selectedChild?.userId ?: return
+        screenModelScope.launch {
+            val status = paymentRepository.getSubscriptionStatus(childId).getOrNull() ?: return@launch
+            val until = uz.tikoncha_parent.common.DateTimeUtil.formatLongDate(status.expiresAt).ifBlank { null }
+            if (!status.isExpired) _state.update { it.copy(paidUntil = until) }
         }
     }
     private fun openClickPayment(

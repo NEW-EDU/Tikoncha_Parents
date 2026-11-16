@@ -55,6 +55,8 @@ expect fun YandexMap(
     modifier: Modifier = Modifier,
     /** Berilsa — Yandex logotipi o'ng yuqori burchakda, tepadan shuncha pastda (pastda orol/kartalar bo'lsa). */
     logoTopInset: Dp? = null,
+    /** Sun'iy yo'ldosh surati + ko'cha/joy nomlari (Yandex "gibrid"); false — oddiy vektor sxema. */
+    satellite: Boolean = false,
 )
 
 

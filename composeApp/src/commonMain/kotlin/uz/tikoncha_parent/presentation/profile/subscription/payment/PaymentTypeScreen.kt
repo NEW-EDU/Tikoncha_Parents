@@ -47,7 +47,6 @@ import uz.tikoncha_parent.domain.model.SubscriptionDuration
 import uz.tikoncha_parent.platform.isIos
 import uz.tikoncha_parent.presentation.base.CustomButtonNew
 import uz.tikoncha_parent.presentation.base.CustomDialog
-import uz.tikoncha_parent.presentation.base.CustomPaymentDialog
 import uz.tikoncha_parent.presentation.base.DashedDivider
 import uz.tikoncha_parent.presentation.base.LegalLinksRow
 import uz.tikoncha_parent.presentation.base.LoadingDialog
@@ -176,18 +175,16 @@ fun PaymentTypeScreenUi(
         }
     )
 
-    CustomPaymentDialog(
+    SubscriptionSuccessSheet(
         show = showPaymentCompletedDialog,
-        onDismiss = {
+        childName = state.childName,
+        childAvatarUrl = state.childAvatarUrl,
+        validUntil = state.paidUntil,
+        onDone = {
             showPaymentCompletedDialog = false
             event(PaymentEvent.ResetPaymentResponse)
             navigator?.pop()
         },
-        onButtonClick = {
-            showPaymentCompletedDialog = false
-            event(PaymentEvent.ResetPaymentResponse)
-            navigator?.pop()
-        }
     )
 
 
@@ -310,6 +307,12 @@ fun PaymentTypeScreenUi(
 
 
             val storePrice = state.storePrice.takeIf { state.selectedPaymentType == PaymentType.AppStore }
+            // Click: obuna bitta farzand uchun — kim uchunligi to'lovdan oldin ko'rinib turadi
+            // (App Store'da oilaviy tarif sotiladi — u yerda bu noto'g'ri bo'lardi)
+            if (state.selectedPaymentType == PaymentType.Click) {
+                PerChildNote(childName = state.childName, modifier = Modifier.fillMaxWidth())
+                Spacer(Modifier.height(12.dp))
+            }
             val periodLabel = stringResource(if (state.subscriptionDuration == SubscriptionDuration.MONTHLY) Res.string.oylik else Res.string.yillik)
             val priceText = if (storePrice != null) buildAnnotatedString {
                 // App Store narxi foydalanuvchi valyutasida — UZS emas
@@ -639,6 +642,33 @@ fun PaymentTypeScreenUi(
                 },
             )
             LegalLinksRow()
+        }
+    }
+}
+
+/** "Bu obuna faqat Ali uchun" — sokin, lekin ko'zga tashlanadigan qator (mayda shrift emas). */
+@Composable
+private fun PerChildNote(childName: String?, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier
+            .background(AppColors.bg.surface, RoundedCornerShape(16.dp))
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(Modifier.weight(1f)) {
+            if (childName != null) {
+                Text(
+                    text = stringResource(Res.string.sub_per_child_for, childName),
+                    style = AppTypography.titleSmSemiBold,
+                    color = AppColors.text.primary,
+                )
+                Spacer(Modifier.height(2.dp))
+            }
+            Text(
+                text = stringResource(Res.string.sub_per_child_title),
+                style = if (childName != null) AppTypography.bodyMdMedium else AppTypography.titleSmSemiBold,
+                color = if (childName != null) AppColors.text.secondary else AppColors.text.primary,
+            )
         }
     }
 }

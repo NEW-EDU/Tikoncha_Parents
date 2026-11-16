@@ -35,6 +35,7 @@ import cocoapods.YandexMapsMobile.YMKMapInputListenerProtocol
 import cocoapods.YandexMapsMobile.YMKMapKit
 import cocoapods.YandexMapsMobile.YMKMapObject
 import cocoapods.YandexMapsMobile.YMKMapObjectTapListenerProtocol
+import cocoapods.YandexMapsMobile.YMKMapType
 import cocoapods.YandexMapsMobile.YMKMapView
 import cocoapods.YandexMapsMobile.YMKPlacemarkMapObject
 import cocoapods.YandexMapsMobile.YMKPoint
@@ -297,6 +298,7 @@ actual fun YandexMap(
     isDark: Boolean,
     modifier: Modifier,
     logoTopInset: Dp?,
+    satellite: Boolean,
 ) {
     val density = LocalDensity.current
     val scope = rememberCoroutineScope()
@@ -364,6 +366,8 @@ actual fun YandexMap(
                     )
                 )
             }
+            // Haqiqiyroq ko'rinish: mashhur binolarning batafsil 3D modellari
+            view.mapWindow?.map?.setAwesomeModelsEnabled(true)
             view.mapWindow?.map?.addInputListenerWithInputListener(mapInputListener)
             view.mapWindow?.map?.addCameraListenerWithCameraListener(cameraListener)
             view as UIView
@@ -373,6 +377,8 @@ actual fun YandexMap(
             val map = view.mapWindow?.map ?: return@UIKitView
 
             map.setNightModeEnabled(isDark)
+            val wantedType = if (satellite) YMKMapType.YMKMapTypeHybrid else YMKMapType.YMKMapTypeVectorMap
+            if (map.mapType != wantedType) map.setMapType(wantedType)
 
             // -------- MARKERS --------
             val incoming = markers.associateBy { it.id }

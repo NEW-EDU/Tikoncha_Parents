@@ -106,7 +106,8 @@ fun RowScope.HomeIslandContent(
 
     IslandChildPicker(
         spec = ChildPickerSpec(state.childrenList, state.selectedChild, onChildSelected, onAddChild),
-        modifier = Modifier.widthIn(max = 164.dp),
+        // Farzand yo'q — "+ Farzand qo'shish" to'liq sig'sin (katta matn o'lchamida ham); AI tugmasi qolgan joyni oladi
+        modifier = Modifier.widthIn(max = if (state.childrenList.isEmpty()) 208.dp else 164.dp),
         open = pickerOpen,
     )
 }

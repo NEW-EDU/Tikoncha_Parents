@@ -31,6 +31,7 @@ import com.yandex.mapkit.map.IconStyle
 import com.yandex.mapkit.map.InputListener
 import com.yandex.mapkit.map.Map as YMap
 import com.yandex.mapkit.map.MapObjectTapListener
+import com.yandex.mapkit.map.MapType
 import com.yandex.mapkit.map.PlacemarkMapObject
 import com.yandex.mapkit.map.PolygonMapObject
 import com.yandex.mapkit.geometry.Circle as YCircle
@@ -144,6 +145,7 @@ actual fun YandexMap(
     isDark: Boolean,
     modifier: Modifier,
     logoTopInset: Dp?,
+    satellite: Boolean,
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -215,6 +217,11 @@ actual fun YandexMap(
                     )
                     view.mapWindow.map.logo.setPadding(com.yandex.mapkit.logo.Padding(h, px))
                 }
+                // Haqiqiyroq ko'rinish: mashhur binolarning batafsil 3D modellari (kamera egilganda oddiy binolar ham
+                // hajmli chiziladi — egish va burish imo-ishoralari yoqiq)
+                view.mapWindow.map.isAwesomeModelsEnabled = true
+                view.mapWindow.map.isTiltGesturesEnabled = true
+                view.mapWindow.map.isRotateGesturesEnabled = true
                 view.mapWindow.map.addInputListener(object : InputListener {
                     override fun onMapTap(map: YMap, point: Point) {
                         onMapTapState.value(LatLng(point.latitude, point.longitude))
@@ -227,6 +234,8 @@ actual fun YandexMap(
         update = { view ->
             val map = view.mapWindow.map
             map.isNightModeEnabled = isDark
+            val wantedType = if (satellite) MapType.HYBRID else MapType.VECTOR_MAP
+            if (map.mapType != wantedType) map.mapType = wantedType
 
             // -------- MARKERS --------
             val incoming = markers.associateBy { it.id }
