@@ -6,6 +6,7 @@ import uz.tikoncha_parent.ui.BlobPlace
 import uz.tikoncha_parent.ui.tileBlobColor
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import uz.tikoncha_parent.ui.HomeItemHeight
 import uz.tikoncha_parent.ui.expressiveSegment
 import androidx.compose.ui.text.font.FontWeight
@@ -80,7 +81,7 @@ fun ChildProtectionCard(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .height(HomeItemHeight)
+            .heightIn(min = HomeItemHeight)
             .expressiveSegment(segmentIndex, segmentCount, color = homeTileColor()) { onClick() }
             .tileBlob(tileBlobColor(), BlobPlace.RowProtection)
             .padding(horizontal = CardCornerPadding, vertical = 14.dp),

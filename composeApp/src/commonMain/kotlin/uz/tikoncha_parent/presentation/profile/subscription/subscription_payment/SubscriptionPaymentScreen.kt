@@ -53,6 +53,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -270,6 +271,8 @@ fun SubscriptionPaymentUi(
 
             // ── Kim uchun (2+ farzand bo'lsa almashtiriladi) ──
             val child = state.selectedChild
+            // iPhone + App Store yo'lida oilaviy tarif sotiladi; qolgan hamma yo'lda Plus — bitta farzand uchun
+            val perChild = !(isIos() && state.localPayments != true)
             if (!isInfoMode && child != null) {
                 Row(
                     modifier = Modifier
@@ -283,15 +286,39 @@ fun SubscriptionPaymentUi(
                 ) {
                     ChildAvatar(child.avatarUrl, 30.dp)
                     Spacer(Modifier.width(10.dp))
-                    Text(
-                        text = stringResource(Res.string.ap_for_child, childDisplayName(child)),
-                        style = AppTypography.titleSmSemiBold, color = AppColors.text.inverse,
-                        maxLines = 1, modifier = Modifier.weight(1f),
-                    )
+                    Column(Modifier.weight(1f)) {
+                        Text(
+                            text = stringResource(Res.string.ap_for_child, childDisplayName(child)),
+                            style = AppTypography.titleSmSemiBold, color = AppColors.text.inverse,
+                            maxLines = 1, overflow = TextOverflow.Ellipsis,
+                        )
+                        if (perChild) {
+                            Text(
+                                text = stringResource(Res.string.sub_per_child_title),
+                                style = AppTypography.bodyMdMedium,
+                                color = AppColors.text.inverse.copy(alpha = 0.8f),
+                            )
+                        }
+                    }
                     if (state.children.size > 1) {
                         Text(stringResource(Res.string.ap_change), style = AppTypography.bodyMdSemiBold, color = Color(0xFFFFE7BF))
                     }
                 }
+                Space(20.dp)
+            } else if (!isInfoMode && perChild) {
+                // Farzand hali ulanmagan — qoida baribir to'lovdan oldin aytiladi
+                Text(
+                    text = stringResource(Res.string.sub_per_child_title),
+                    style = AppTypography.titleSmSemiBold,
+                    color = AppColors.text.inverse,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(Color.White.copy(alpha = 0.14f))
+                        .padding(horizontal = 12.dp, vertical = 10.dp),
+                )
                 Space(20.dp)
             }
 

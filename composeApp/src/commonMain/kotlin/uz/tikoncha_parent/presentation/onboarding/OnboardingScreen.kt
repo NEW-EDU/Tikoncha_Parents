@@ -116,10 +116,10 @@ private enum class Scene(
     val designHeight: Dp,
 ) {
     HELLO(Res.drawable.mascot_wave, Res.string.ob_hello_title, Res.string.ob_hello_body, 0.5f, 0.5f, 0.dp, 300.dp),
-    DAY(Res.drawable.mascot_think, Res.string.ob_day_title, Res.string.ob_day_body, 0.80f, 0f, 96.dp, 318.dp),
+    DAY(Res.drawable.mascot_think, Res.string.ob_day_title, Res.string.ob_day_body, 0.80f, 0f, 96.dp, 362.dp),
     RULES(Res.drawable.mascot_timer, Res.string.ob_rules_title, Res.string.ob_rules_body, 0.20f, 0f, 96.dp, 256.dp),
     MAP(Res.drawable.mascot_shield, Res.string.ob_map_title, Res.string.ob_map_body, 0.80f, 0f, 96.dp, 290.dp),
-    CHAT(Res.drawable.mascot_heart, Res.string.ob_chat_title, Res.string.ob_chat_body, 0.80f, 0f, 96.dp, 184.dp),
+    CHAT(Res.drawable.mascot_heart, Res.string.ob_chat_title, Res.string.ob_chat_body, 0.80f, 0f, 96.dp, 216.dp),
     TASKS(Res.drawable.mascot_cheer, Res.string.ob_tasks_title, Res.string.ob_tasks_body, 0.20f, 0f, 96.dp, 132.dp),
 }
 

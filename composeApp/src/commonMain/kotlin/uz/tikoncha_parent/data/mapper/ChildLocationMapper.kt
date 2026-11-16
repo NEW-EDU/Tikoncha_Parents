@@ -13,5 +13,7 @@ fun ChildrenLocationItemDto.toChildLocation(): ChildLocation? {
         latitude = lat,
         longitude = lng,
         updatedAt = updated_at,
+        isMock = is_mock,
+        accuracyMeters = accuracy_m,
     )
 }

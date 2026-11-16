@@ -13,6 +13,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import org.koin.android.ext.android.inject
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.data.remote.telegram.TelegramConfig
+import uz.tikoncha_parent.domain.model.DeepLink
 import uz.tikoncha_parent.data.remote.social.GoogleSignInCoordinator
 import uz.tikoncha_parent.data.remote.telegram.TelegramLoginCoordinator
 import uz.tikoncha_parent.platform.push.AndroidDeepLinkParser
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         // Cold start: UI hali tayyor emas -> enqueue (App() drain qiladi)
         AndroidDeepLinkParser.parse(intent)?.let { coordinator.onTapped(it, uiReady = false) }
+        permissionOffLinkFromExtras(intent)?.let { coordinator.onTapped(it, uiReady = false) }
 
         intent?.data = null
         setIntent(intent)
@@ -68,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         handleTelegramIntent(intent)
         // Warm start: UI tayyor -> darhol ochish
         AndroidDeepLinkParser.parse(intent)?.let { coordinator.onTapped(it, uiReady = true) }
+        permissionOffLinkFromExtras(intent)?.let { coordinator.onTapped(it, uiReady = true) }
     }
 
     @Deprecated("Deprecated in Java")
@@ -80,6 +83,18 @@ class MainActivity : AppCompatActivity() {
         TelegramLoginCoordinator.unbindActivity(this)
         GoogleSignInCoordinator.unbindActivity(this)
         super.onDestroy()
+    }
+
+    /**
+     * PERMISSION_OFF push `notification` bloki bilan keladi: ilova fonda bölsa bannerni tizim özi körsatadi va
+     * bosilganda FCM `data` kalitlari intent extras'ida keladi (deep-link URI yöq). Bir marta işlatiladi.
+     */
+    private fun permissionOffLinkFromExtras(intent: Intent?): DeepLink? {
+        intent ?: return null
+        if (intent.getStringExtra("type") != "PERMISSION_OFF") return null
+        val childId = intent.getStringExtra("child_user_id")?.takeIf { it.isNotBlank() }
+        intent.removeExtra("type")
+        return DeepLink.PermissionOff(childUserId = childId)
     }
 
     private fun handleTelegramIntent(intent: Intent?) {

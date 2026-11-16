@@ -16,8 +16,25 @@ data class Person(
     val isSelf: Boolean,
     val lastSeenEpochMs: Long? = null,
     val lastSeen: String = "",
-    val avatarUrl: String? = null
+    val avatarUrl: String? = null,
+    /** Farzand telefoni soxta (mock) joylashuv yuboryapti — server `is_mock` bersa. */
+    val isMock: Boolean = false,
+    /** Nuqta aniqligi (metr) — server `accuracy_m` bersa; aks holda doira chizilmaydi. */
+    val accuracyMeters: Double? = null,
 )
+
+/** Farzand telefonida joylashuv nega yangilanmayapti (ruxsatlar holatidan — `mode-status`, LOCATION). */
+enum class LocationIssue { GPS_OFF, NO_PERMISSION }
+
+/** Ruxsatlar holatidagi yetishmayotgan ruxsatlardan: GPS o'chiq muhimroq (ruxsat bo'lsa ham nuqta kelmaydi). */
+fun List<PermissionIssue>.toLocationIssue(): LocationIssue? {
+    val missing = flatMap { it.missingPermissions }
+    return when {
+        "GPS_ENABLED" in missing -> LocationIssue.GPS_OFF
+        "LOCATION" in missing || "LOCATION_ALWAYS" in missing -> LocationIssue.NO_PERMISSION
+        else -> null
+    }
+}
 
 /** Joylashuvi eng yangi bo'lgan farzand (xarita shu yerda ochiladi). */
 fun List<Person>.freshestChild(): Person? =
@@ -45,6 +62,10 @@ data class TrackingState(
 
     val sheetIssues: List<PermissionIssue> = emptyList(),
     val isCheckingPermissionStatus: Boolean = false,
+    /** Farzand id → joylashuv muammosi (GPS o'chiq / ruxsat yo'q). Xaritadagi nuqta bunda ESKI — yorliq bilan aytiladi. */
+    val locationIssues: Map<String, LocationIssue> = emptyMap(),
+    /** PLUS oynasi qaysi farzand uchun ochildi (obuna har bir farzand uchun alohida). */
+    val subscriptionDialogChildId: String? = null,
 
     val selfText: String = "",
     val isLocatingSelf: Boolean = false,

@@ -37,13 +37,16 @@ import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomTextField
 import uz.tikoncha_parent.presentation.base.LoadingDialog
 import uz.tikoncha_parent.presentation.base.LogoHeader
-import uz.tikoncha_parent.presentation.base.SegmentedToggle
+import uz.tikoncha_parent.presentation.base.CustomButtonNew
+import uz.tikoncha_parent.presentation.base.PillSegmentedButton
+import uz.tikoncha_parent.presentation.base.PillSegmentedButtonDefaults
+import uz.tikoncha_parent.presentation.base.PillSegmentedItem
+import androidx.compose.ui.platform.LocalFocusManager
 import uz.tikoncha_parent.ui.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import tikoncha_parents.composeapp.generated.resources.*
-import uz.tikoncha_parent.presentation.base.CustomButton
 import uz.tikoncha_parent.presentation.base.LegalLinksRow
 import uz.tikoncha_parent.presentation.new_home.NewHomeScreen
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
@@ -112,6 +115,8 @@ fun Register(
         }
     }
 
+    val focusManager = LocalFocusManager.current
+
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.secondary,
         navigationBarColor = AppColors.bg.secondary
@@ -158,7 +163,7 @@ fun Register(
                     label = stringResource(Res.string.ismingizni_kiriting),
                     keyboardOptions = KeyboardOptions(
                         capitalization = KeyboardCapitalization.Words,
-                        imeAction = ImeAction.Next
+                        imeAction = ImeAction.Done
                     ),
                     leadingIcon = {
                         Image(
@@ -171,33 +176,46 @@ fun Register(
                 )
                 SpaceMedium()
 
-                SegmentedToggle(
-                    selectedIndex = state.genderIndex,
-                    containerColor = AppColors.bg.secondarySurface,
-                    options = listOf(
-                        stringResource(Res.string.ota) to painterResource(Res.drawable.father_icon),
-                        stringResource(Res.string.ona) to painterResource(Res.drawable.mather_icon),
+                Text(
+                    text = stringResource(Res.string.register_role_label),
+                    style = AppTypography.bodyMdMedium,
+                    color = AppColors.text.secondary,
+                    modifier = Modifier.padding(start = 4.dp, bottom = 8.dp),
+                )
+                // Ikki variantli tanlagiç: tanlangani — aksent rang bilan tölgan, bosiş maydoni 56dp
+                PillSegmentedButton(
+                    items = listOf(
+                        PillSegmentedItem(stringResource(Res.string.ota), painterResource(Res.drawable.father_icon)),
+                        PillSegmentedItem(stringResource(Res.string.ona), painterResource(Res.drawable.mather_icon)),
                     ),
-                    onOptionSelected = {
-                        event(RegisterEvent.OnGenderSelected(it))
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(ButtonHeight)
+                    selectedIndex = state.genderIndex,
+                    onSelected = { event(RegisterEvent.OnGenderSelected(it)) },
+                    modifier = Modifier.fillMaxWidth(),
+                    height = 56.dp,
+                    textStyle = AppTypography.titleSmSemiBold,
+                    colors = PillSegmentedButtonDefaults.colors(
+                        trackColor = AppColors.bg.secondarySurface,
+                        indicatorColor = AppColors.button.primary,
+                        selectedTextColor = AppColors.text.inverse,
+                        unselectedTextColor = AppColors.text.primary,
+                        selectedIconColor = AppColors.text.inverse,
+                        unselectedIconColor = AppColors.icon.primary,
+                    ),
                 )
             }
         }
 
-        CustomButton(
+        // Yagona asosiy amal: töliq kenglik, ism kiritilmaguncha öçiq (disabled) körinadi
+        CustomButtonNew(
+            text = stringResource(Res.string.davom_etish),
             onClick = {
+                focusManager.clearFocus()
                 event(RegisterEvent.OnConfirmClicked)
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = ContainerPadding)
-                .height(ButtonHeight),
+                .padding(horizontal = ContainerPadding),
             enabled = state.isFromValid,
-            text = stringResource(Res.string.keyingisi),
         )
         SpaceSmall()
         LegalLinksRow()

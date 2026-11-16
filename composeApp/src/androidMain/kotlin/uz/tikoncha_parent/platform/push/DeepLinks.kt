@@ -11,6 +11,7 @@ object DeepLinks {
         const val CHAT = "chat"
         const val PARENTAL_REQUEST = "parental_request"
         const val STRICT_DISABLE = "strict_disable"
+        const val PERMISSION_OFF = "permission_off"
         const val LIVE = "live"
         const val HOME = "home"
     }
@@ -30,6 +31,9 @@ object DeepLinks {
         }
         DeepLink.ParentalRequest -> build(Host.PARENTAL_REQUEST)
         DeepLink.StrictDisable -> build(Host.STRICT_DISABLE)
+        is DeepLink.PermissionOff -> build(Host.PERMISSION_OFF) {
+            link.childUserId?.let { appendQueryParameter(Param.CHILD_ID, it) }
+        }
         is DeepLink.Live -> build(Host.LIVE) {
             appendQueryParameter(Param.SESSION_ID, link.sessionId)
             appendQueryParameter(Param.CHILD_ID, link.childId)

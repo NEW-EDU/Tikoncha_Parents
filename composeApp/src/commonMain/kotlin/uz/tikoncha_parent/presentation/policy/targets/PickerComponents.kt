@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.targets
 
+import uz.tikoncha_parent.presentation.base.SaveIcon
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearEasing
@@ -603,6 +604,7 @@ fun SiteInputDialog(initial: String, error: SiteError?, onConfirm: (String) -> U
                     onClick = { onConfirm(value) },
                     enabled = value.isNotBlank(),
                     modifier = Modifier.fillMaxWidth(),
+                    leadingIcon = { SaveIcon() },
                 )
             }
         }

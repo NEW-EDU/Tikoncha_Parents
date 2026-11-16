@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.material.icons.rounded.Map
 import androidx.compose.material.icons.rounded.MyLocation
+import androidx.compose.material.icons.rounded.Satellite
 import androidx.compose.material.icons.rounded.ZoomOutMap
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledTonalIconButton
@@ -29,6 +31,7 @@ import tikoncha_parents.composeapp.generated.resources.xarita
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.island.islandReservedFromBottom
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -43,6 +46,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -67,7 +71,7 @@ import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.bekor_qilish
 import tikoncha_parents.composeapp.generated.resources.dialog_info
 import tikoncha_parents.composeapp.generated.resources.dialog_warning
-import tikoncha_parents.composeapp.generated.resources.diqqat
+import tikoncha_parents.composeapp.generated.resources.xatolik
 import tikoncha_parents.composeapp.generated.resources.farzandingizni_qayerda_ekanini_kuzatish
 import tikoncha_parents.composeapp.generated.resources.ok
 import tikoncha_parents.composeapp.generated.resources.plus_obnuna_kerak
@@ -153,7 +157,7 @@ class TrackingScreen : Screen {
             screenModel.effect.collect { eff ->
                 when (eff) {
                     is TrackingEffect.MoveCamera ->
-                        mapController.moveTo(CameraPosition(eff.target, eff.zoom))
+                        mapController.moveTo(CameraPosition(eff.target, eff.zoom, tilt = focusTilt(eff.zoom)))
                     is TrackingEffect.FitBounds ->
                         mapController.fitBounds(eff.points)
                     TrackingEffect.OpenAppSettings -> openAppSettings()
@@ -165,7 +169,7 @@ class TrackingScreen : Screen {
                             delay(500)
                             val selfLoc = screenModel.state.value.self?.location  // ← state.self
                             if (selfLoc != null) {
-                                mapController.moveTo(CameraPosition(selfLoc, 16f), animated = true)
+                                mapController.moveTo(CameraPosition(selfLoc, 16f, tilt = focusTilt(16f)), animated = true)
                                 break
                             }
                         }
@@ -202,6 +206,7 @@ class TrackingScreen : Screen {
                 person.location?.let { loc -> shareLocation(loc.lat, loc.lon, person.name) }
             },
             onLive = { person -> navigator?.push(uz.tikoncha_parent.presentation.live.ParentLiveScreen(person.id)) },
+            onAddChild = { navigator?.push(uz.tikoncha_parent.presentation.add_child.AddChildScreen()) },
         )
 
         // ============== DIALOGLAR ==============
@@ -267,7 +272,7 @@ class TrackingScreen : Screen {
         CustomDialog(
             // Offline — oxirgi joylaşuv körinib turibdi; umumiy "offline" belgisi yetarli
             show = state.error != null && state.error?.cause?.isUnreachable != true,
-            title = stringResource(Res.string.diqqat),
+            title = stringResource(Res.string.xatolik),
             message = state.error?.asText() ?: "",
             painter = painterResource(Res.drawable.dialog_warning),
             buttonText = stringResource(Res.string.ok),
@@ -276,13 +281,20 @@ class TrackingScreen : Screen {
             onButtonClick = { event(TrackingEvent.DismissError)}
         )
 
+        // Qulflangan farzand bosilgan bo'lsa — obuna aynan O'SHA farzand uchun (Plus har bir farzandga alohida)
+        val lockedChildId = state.subscriptionDialogChildId
+        val lockedChild = remember(lockedChildId) {
+            lockedChildId?.let { id -> AppSettings.children.firstOrNull { it.userId == id } }
+        }
         SubscriptionBottomDialog(
             show = state.showSubscriptionDialog,
             title = stringResource(Res.string.plus_obnuna_kerak),
             message = stringResource(Res.string.farzandingizni_qayerda_ekanini_kuzatish),
+            childName = lockedChild?.name?.takeIf { it.isNotBlank() }
+                ?: state.people.firstOrNull { it.id == lockedChildId }?.name,
             onConfirm = {
                 screenModel.onEvent(TrackingEvent.DismissSubscriptionDialog)
-                navigator?.push(SubscriptionPaymentScreen())
+                navigator?.push(SubscriptionPaymentScreen(selectedChild = lockedChild))
             },
             onDismiss = {
                 screenModel.onEvent(TrackingEvent.DismissSubscriptionDialog)
@@ -291,7 +303,12 @@ class TrackingScreen : Screen {
     }
 }
 
-private const val CHILD_ZOOM = 15f
+/** Farzandga yaqinlashish: binolar, uy raqamlari va joy nomlari ko'rinadigan masshtab. */
+private const val CHILD_ZOOM = 16.5f
+
+/** Bitta odamga yaqinlashganda kamera biroz egiladi — binolar hajmli (3D) ko'rinadi. Tekis xarita uchun 0f qiling. */
+private const val FOCUS_TILT = 35f
+private fun focusTilt(zoom: Float): Float = if (zoom >= 16f) FOCUS_TILT else 0f
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class, cafe.adriel.voyager.core.annotation.InternalVoyagerApi::class)
 @Composable
@@ -306,6 +323,7 @@ fun TrackingContent(
     onOpenInMaps: (Person) -> Unit = {},
     onShare: (Person) -> Unit = {},
     onLive: ((Person) -> Unit)? = null,
+    onAddChild: () -> Unit = {},
 ) {
     val isDark = rememberIsDarkTheme()
 
@@ -316,7 +334,7 @@ fun TrackingContent(
     val initialCamera = remember {
         val child = freshestChild ?: rememberedChild
         when {
-            child != null -> CameraPosition(child, zoom = CHILD_ZOOM)
+            child != null -> CameraPosition(child, zoom = CHILD_ZOOM, tilt = FOCUS_TILT)
             state.self?.location != null -> CameraPosition(state.self.location, zoom = 14f)
             else -> regionFallbackCamera()
         }
@@ -327,7 +345,7 @@ fun TrackingContent(
         if (focusedOnChild || freshestChild == null) return@LaunchedEffect
         focusedOnChild = true
         mapController.awaitReady()
-        mapController.moveTo(CameraPosition(freshestChild, zoom = CHILD_ZOOM), animated = true)
+        mapController.moveTo(CameraPosition(freshestChild, zoom = CHILD_ZOOM, tilt = FOCUS_TILT), animated = true)
     }
     // Hech bir farzandning joylashuvi yo'q bo'lsa — o'zimga (bir marta).
     var focusedOnSelf by remember { mutableStateOf(false) }
@@ -352,7 +370,17 @@ fun TrackingContent(
     val dangerGlyphs = rememberDangerGlyphs()
     val dangerCenter = state.dangerAnchor?.location?.takeIf { state.dangerMode }
 
+    // Farzand belgisi rangi: odatda urg'u rangi; joylashuv yangilanmayotgan bo'lsa (GPS o'chiq / ruxsat yo'q) — kulrang
+    // ("bu nuqta eski"); soxta GPS — ogohlantirish rangi
+    val childMarkerColor = AppColors.action.primary.toArgbLong()
+    val staleMarkerColor = AppColors.icon.tertiary.toArgbLong()
+    val mockMarkerColor = AppColors.icon.accentWarning.toArgbLong()
+    val childAccuracyFill = AppColors.action.primary.copy(alpha = 0.12f).toArgbLong()
+    val childAccuracyStroke = AppColors.action.primary.copy(alpha = 0.35f).toArgbLong()
+    var satellite by rememberSaveable { mutableStateOf(false) }
+
     val userAccuracyCircle = remember(
+        state.people, state.subscriptionLimits, childAccuracyFill, childAccuracyStroke,
         state.self?.location,
         accuracyFillColor,
         accuracyStrokeColor,
@@ -361,6 +389,24 @@ fun TrackingContent(
         dangerAreaStroke,
     ) {
         buildList {
+            // Farzand nuqtasining haqiqiy aniqligi (server bersa) — "taxminan shu doira ichida"
+            state.people.forEach { person ->
+                val loc = person.location ?: return@forEach
+                val accuracy = person.accuracyMeters ?: return@forEach
+                val limit = state.subscriptionLimits.firstOrNull { it.childId == person.id }
+                if (limit == null || limit.subscriptionType == SubscriptionType.FREE) return@forEach
+                add(
+                    MapCircle(
+                        id = "accuracy_${person.id}",
+                        center = loc,
+                        radiusMeters = accuracy.coerceIn(10.0, 2000.0),
+                        reverse = false,
+                        fillColor = childAccuracyFill,
+                        strokeColor = childAccuracyStroke,
+                        strokeWidthDp = 1f,
+                    )
+                )
+            }
             state.self?.location?.let { loc ->
                 add(
                     MapCircle(
@@ -395,6 +441,7 @@ fun TrackingContent(
         state.people, state.self, state.selectedPersonId,
         state.subscriptionLimits, placeholderBitmap, selfText,
         state.dangerMode, state.dangerPlaces, state.selectedDangerId, dangerGlyphs, dangerTint,
+        state.locationIssues, childMarkerColor, staleMarkerColor, mockMarkerColor,
     ) {
         buildList {
             state.people
@@ -405,17 +452,24 @@ fun TrackingContent(
                 }
                 .forEach { person ->
                     val isSelected = person.id == state.selectedPersonId
+                    val color = when {
+                        person.isMock -> mockMarkerColor
+                        person.id in state.locationIssues -> staleMarkerColor
+                        else -> childMarkerColor
+                    }
                     val style = if (isSelected) {
                         MarkerStyle.ChildSelected(
                             label = person.name,
                             avatarUrl = person.avatarUrl,
                             placeholderBitmap = placeholderBitmap,
+                            backgroundColor = color,
                         )
                     } else {
                         MarkerStyle.Child(
                             label = person.name,
                             avatarUrl = person.avatarUrl,
                             placeholderBitmap = placeholderBitmap,
+                            backgroundColor = color,
                         )
                     }
                     add(
@@ -473,6 +527,11 @@ fun TrackingContent(
         showBackButton = true,
         onBackClick = onBack,
         trailingIcon = {
+            // Sxema ↔ sun'iy yo'ldosh surati (ko'cha nomlari bilan)
+            MapIslandButton(
+                icon = if (satellite) Icons.Rounded.Map else Icons.Rounded.Satellite,
+                onClick = { satellite = !satellite },
+            )
             if (locatedCount > 1) {
                 MapIslandButton(icon = Icons.Rounded.ZoomOutMap, onClick = { onEvent(TrackingEvent.FitAll) })
             }
@@ -512,6 +571,7 @@ fun TrackingContent(
             modifier = Modifier.fillMaxSize(),
             isDark = isDark,
             logoTopInset = statusTop + 8.dp,
+            satellite = satellite,
         )
 
         // Status bar o'qilsin — tepadan yumshoq parda
@@ -546,6 +606,25 @@ fun TrackingContent(
         val enterFade = MaterialTheme.motionScheme.defaultEffectsSpec<Float>()
         val enterSlide = MaterialTheme.motionScheme.defaultSpatialSpec<IntOffset>()
         val exitFade = MaterialTheme.motionScheme.fastEffectsSpec<Float>()
+        Column(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .padding(bottom = bottomReserved),
+        ) {
+        // Xaritadagi nuqta ESKI yoki ishonchsiz bo'lsa — jim turmaymiz: "GPS o'chiq · oxirgi joylashuv: 2 soat oldin",
+        // "Soxta GPS". Farzand tanlangan bo'lsa faqat o'shaniki (karta ochiq), aks holda — hammasi.
+        val flagged = state.people.filter { p ->
+            !p.isSelf && (p.isMock || p.id in state.locationIssues) && (cardPerson == null || cardPerson.id == p.id)
+        }
+        if (flagged.isNotEmpty() && cardDanger == null) {
+            LocationStatusLabels(
+                people = flagged,
+                issues = state.locationIssues,
+                onClick = { if (cardPerson == null) onEvent(TrackingEvent.PersonClicked(it)) },
+                modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 8.dp),
+            )
+        }
         AnimatedContent(
             targetState = bottomLayer,
             contentKey = { it.key },
@@ -553,10 +632,7 @@ fun TrackingContent(
                 (fadeIn(enterFade) + slideInVertically(enterSlide) { it / 3 }) togetherWith
                     fadeOut(exitFade) using SizeTransform(clip = false)
             },
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .fillMaxWidth()
-                .padding(bottom = bottomReserved),
+            modifier = Modifier.fillMaxWidth(),
             label = "mapBottom",
         ) { layer ->
             if (layer is BottomLayer.DangerCard) {
@@ -579,6 +655,7 @@ fun TrackingContent(
             } else if (state.people.isNotEmpty()) {
                 ChildrenRail(
                     people = state.people,
+                    issues = state.locationIssues,
                     selectedId = state.selectedPersonId,
                     isLocked = { p ->
                         val limit = state.subscriptionLimits.firstOrNull { it.childId == p.id }
@@ -586,9 +663,13 @@ fun TrackingContent(
                     },
                     onClick = { onEvent(TrackingEvent.PersonClicked(it)) },
                 )
+            } else if (state.peopleLoaded && state.error == null) {
+                // Farzand ulanmagan — bo'sh xarita o'rniga nima qilish kerakligi (Bosh sahifadagi oyna bilan bir xil)
+                NoChildMapCard(onAddChild = onAddChild)
             } else {
                 Spacer(Modifier.height(0.dp))
             }
+        }
         }
     }
 }

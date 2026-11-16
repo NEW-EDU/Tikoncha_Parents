@@ -54,7 +54,8 @@ import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.jadval_yaratish
 import tikoncha_parents.composeapp.generated.resources.add
 import tikoncha_parents.composeapp.generated.resources.jadvallar
-import tikoncha_parents.composeapp.generated.resources.policy_paywall_count
+import tikoncha_parents.composeapp.generated.resources.policy_paywall_limits
+import uz.tikoncha_parent.domain.use_case.policy.ChildPaidStatusUseCase
 import tikoncha_parents.composeapp.generated.resources.policy_paywall_protection
 import tikoncha_parents.composeapp.generated.resources.policy_quick_blocks
 import tikoncha_parents.composeapp.generated.resources.stat_quick_paywall_message
@@ -239,8 +240,10 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
 
         // "Jadval yaratish" — orol ustida, chap pastda alohida suzuvchi tugma
         if (state.tab == PolicyTab.MINE || state.tab == PolicyTab.TEMPLATES) {
+            // Bepul tarifda çegara yonida körinadi: "Jadval yaratiş · 1/1"
+            val createText = stringResource(Res.string.jadval_yaratish)
             IslandFab(
-                text = stringResource(Res.string.jadval_yaratish),
+                text = state.policyLimit?.let { "$createText · ${state.policyUsed}/$it" } ?: createText,
                 onClick = { event(PolicyListEvent.CreateClicked) },
                 modifier = Modifier.align(Alignment.BottomStart),
             )
@@ -251,13 +254,15 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
     SubscriptionBottomDialog(
         show = state.payWall != null,
         title = stringResource(Res.string.stat_quick_paywall_title),
-        message = stringResource(
-            when (state.payWall) {
-                PayWallReason.QUICK_BLOCK -> Res.string.stat_quick_paywall_message
-                PayWallReason.PROTECTION -> Res.string.policy_paywall_protection
-                else -> Res.string.policy_paywall_count
-            }
-        ),
+        message = when (state.payWall) {
+            PayWallReason.QUICK_BLOCK -> stringResource(Res.string.stat_quick_paywall_message)
+            PayWallReason.PROTECTION -> stringResource(Res.string.policy_paywall_protection)
+            // Aniq çegara: "Bepul: 1 ta faol jadval · Plus: çeksiz" (son — serverdan, yöq bölsa standart)
+            else -> stringResource(
+                Res.string.policy_paywall_limits,
+                state.policyLimit ?: ChildPaidStatusUseCase.DEFAULT_FREE_POLICY_LIMIT,
+            )
+        },
         onConfirm = {
             event(PolicyListEvent.PayWallDismissed)
             navigator?.push(SubscriptionPaymentScreen())

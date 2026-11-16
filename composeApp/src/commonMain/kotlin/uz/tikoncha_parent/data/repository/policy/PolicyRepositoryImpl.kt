@@ -85,7 +85,7 @@ class PolicyRepositoryImpl(
                 }
 
                 r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.LIST, r.code), r.error)
+                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.LIST, r.code, errorCode = r.errorCode), r.error)
             }
         }
 
@@ -171,7 +171,7 @@ class PolicyRepositoryImpl(
                     val r = api.create(op.create ?: return@apiCall Outcome.Failure(ErrorCause.InvalidResponse), op.key)
                     if (r.success && r.data != null) Outcome.Success(r.data)
                     else if (r.success) Outcome.Failure(ErrorCause.InvalidResponse)
-                    else Outcome.Failure(PolicyErrorMapper.from(call, r.code, draft), r.error)
+                    else Outcome.Failure(PolicyErrorMapper.from(call, r.code, draft, errorCode = r.errorCode), r.error)
                 }
                 ParentOp.Kind.POLICY_PATCH -> {
                     val id = op.policyId?.takeUnless { it.startsWith(LOCAL_POLICY_PREFIX) }
@@ -179,14 +179,14 @@ class PolicyRepositoryImpl(
                     val r = api.patch(id, op.patch ?: return@apiCall Outcome.Failure(ErrorCause.InvalidResponse), op.key)
                     if (r.success && r.data != null) Outcome.Success(r.data)
                     else if (r.success) Outcome.Failure(ErrorCause.InvalidResponse)
-                    else Outcome.Failure(PolicyErrorMapper.from(call, r.code), r.error)
+                    else Outcome.Failure(PolicyErrorMapper.from(call, r.code, errorCode = r.errorCode), r.error)
                 }
                 ParentOp.Kind.POLICY_DELETE -> {
                     val id = op.policyId?.takeUnless { it.startsWith(LOCAL_POLICY_PREFIX) }
                         ?: return@apiCall Outcome.Success(null)
                     val r = api.delete(id, op.key)
                     if (r.success) Outcome.Success(null)
-                    else Outcome.Failure(PolicyErrorMapper.from(call, r.code), r.error)
+                    else Outcome.Failure(PolicyErrorMapper.from(call, r.code, errorCode = r.errorCode), r.error)
                 }
                 ParentOp.Kind.SAFETY -> Outcome.Success(null)
             }
@@ -252,7 +252,7 @@ class PolicyRepositoryImpl(
             when {
                 r.success && dto != null -> Outcome.Success(dto.toDomain())
                 r.success -> Outcome.Failure(ErrorCause.InvalidResponse)
-                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.PATCH, r.code), r.error)
+                else -> Outcome.Failure(PolicyErrorMapper.from(PolicyCall.PATCH, r.code, errorCode = r.errorCode), r.error)
             }
         }
 
@@ -260,7 +260,7 @@ class PolicyRepositoryImpl(
         apiCall(TAG) {
             val r = api.delete(policyId)
             if (r.success) Outcome.Success(Unit)
-            else Outcome.Failure(PolicyErrorMapper.from(PolicyCall.DELETE, r.code), r.error)
+            else Outcome.Failure(PolicyErrorMapper.from(PolicyCall.DELETE, r.code, errorCode = r.errorCode), r.error)
         }
 
     // ── Kesh yordamchilari ────────────────────────────────────

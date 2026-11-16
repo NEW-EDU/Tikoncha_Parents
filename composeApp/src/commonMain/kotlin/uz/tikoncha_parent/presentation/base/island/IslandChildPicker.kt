@@ -121,7 +121,8 @@ fun IslandChildPicker(
     Box(modifier) {
         Row(
             modifier = Modifier
-                .then(if (compact) Modifier else Modifier.fillMaxWidth())
+                // Farzand yo'q: "+ Farzand qo'shish" o'z kengligida (matn kesilmasin, bo'sh joy qolmasin)
+                .then(if (compact || !hasChildren) Modifier else Modifier.fillMaxWidth())
                 .heightIn(min = 48.dp)
                 .expressivePress(source, pressedScale = 0.96f)
                 .clip(CircleShape)
@@ -129,7 +130,7 @@ fun IslandChildPicker(
                 .clickable(interactionSource = source, indication = null) {
                     if (hasChildren) open.targetState = !open.targetState else spec.onAddChild()
                 }
-                .padding(start = 6.dp, end = 10.dp),
+                .padding(start = 6.dp, end = if (hasChildren) 10.dp else 16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             if (hasChildren) {
@@ -262,7 +263,9 @@ private fun ChildDropUp(
             // tugagandagina "sakrab" paydo bölardi (miltillaş). Endi soya uçun joy konteyner içida — u bilan birga söniq.
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = islandBottomOffset() + IslandHeight - 4.dp),
+                // Ichki pastki chekinish (18dp) = soyaning pastga yoyilishi: soya aynan orol chetida tugaydi.
+                // Avval konteyner orolga 4dp kirib turardi — soya orol (AI tugmasi qatori) ustiga tushardi.
+                .padding(bottom = islandBottomOffset() + IslandHeight),
             enter = scaleIn(MaterialTheme.motionScheme.defaultSpatialSpec(), initialScale = 0.85f, transformOrigin = TransformOrigin(0.5f, 1f)) + fadeIn(),
             // Yopilish — prujinasiz (prujina "ortga sakrab" keyin yo'qolardi): tez, bir yo'nalishda pastga cho'kadi
             exit = fadeOut(tween(150)) +

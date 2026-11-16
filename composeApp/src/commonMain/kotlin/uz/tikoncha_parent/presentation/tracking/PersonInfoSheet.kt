@@ -24,9 +24,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.LocationOff
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Map
 import androidx.compose.material.icons.rounded.Videocam
+import androidx.compose.material.icons.rounded.WarningAmber
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material3.Button
@@ -52,6 +54,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
+import tikoncha_parents.composeapp.generated.resources.no_child_body
+import tikoncha_parents.composeapp.generated.resources.no_child_title
+import tikoncha_parents.composeapp.generated.resources.tracking_child_gps_off_since
+import tikoncha_parents.composeapp.generated.resources.tracking_child_no_permission
+import tikoncha_parents.composeapp.generated.resources.tracking_child_no_permission_since
+import tikoncha_parents.composeapp.generated.resources.tracking_fake_gps
+import tikoncha_parents.composeapp.generated.resources.tracking_fake_gps_note
+import tikoncha_parents.composeapp.generated.resources.tracking_gps_off_title
 import tikoncha_parents.composeapp.generated.resources.tracking_checking_settings
 import tikoncha_parents.composeapp.generated.resources.tracking_last_update
 import tikoncha_parents.composeapp.generated.resources.tracking_location_unavailable
@@ -84,6 +95,7 @@ fun ChildrenRail(
     isLocked: (Person) -> Boolean,
     onClick: (String) -> Unit,
     modifier: Modifier = Modifier,
+    issues: Map<String, LocationIssue> = emptyMap(),
 ) {
     LazyRow(
         modifier = modifier.fillMaxWidth(),
@@ -95,6 +107,7 @@ fun ChildrenRail(
                 person = person,
                 selected = person.id == selectedId,
                 locked = isLocked(person),
+                issue = issues[person.id],
                 onClick = { onClick(person.id) },
             )
         }
@@ -102,7 +115,7 @@ fun ChildrenRail(
 }
 
 @Composable
-private fun ChildPill(person: Person, selected: Boolean, locked: Boolean, onClick: () -> Unit) {
+private fun ChildPill(person: Person, selected: Boolean, locked: Boolean, issue: LocationIssue?, onClick: () -> Unit) {
     val source = remember { MutableInteractionSource() }
     Row(
         modifier = Modifier
@@ -130,10 +143,16 @@ private fun ChildPill(person: Person, selected: Boolean, locked: Boolean, onClic
                 overflow = TextOverflow.Ellipsis,
             )
             Text(
-                text = if (person.location != null) formatLastSeen(person.lastSeenEpochMs)
-                else stringResource(Res.string.tracking_location_unavailable),
+                // GPS o'chiq / soxta GPS — vaqt o'rnida (to'liq matn xarita ustidagi yorliqda)
+                text = when {
+                    person.isMock -> stringResource(Res.string.tracking_fake_gps)
+                    issue == LocationIssue.GPS_OFF -> stringResource(Res.string.tracking_gps_off_title)
+                    issue == LocationIssue.NO_PERMISSION -> stringResource(Res.string.tracking_child_no_permission)
+                    person.location != null -> formatLastSeen(person.lastSeenEpochMs)
+                    else -> stringResource(Res.string.tracking_location_unavailable)
+                },
                 style = AppTypography.bodySmMedium,
-                color = AppColors.text.tertiary,
+                color = if (person.isMock || issue != null) AppColors.text.accentWarning else AppColors.text.tertiary,
                 maxLines = 1,
             )
         }
@@ -141,6 +160,92 @@ private fun ChildPill(person: Person, selected: Boolean, locked: Boolean, onClic
             Spacer(Modifier.width(10.dp))
             Icon(Icons.Rounded.Lock, contentDescription = null, tint = AppColors.icon.tertiary, modifier = Modifier.size(16.dp))
         }
+    }
+}
+
+/**
+ * Xarita ustidagi holat yorliqlari: farzandning nuqtasi ESKI (telefonida GPS o'chiq yoki joylashuv ruxsati yo'q —
+ * "GPS o'chiq · oxirgi joylashuv: 2 soat oldin") yoki ISHONCHSIZ ("Soxta GPS"). Bosilsa — o'sha farzand ochiladi.
+ */
+@Composable
+fun LocationStatusLabels(
+    people: List<Person>,
+    issues: Map<String, LocationIssue>,
+    onClick: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        people.take(3).forEach { person ->
+            val since = if (person.location != null) formatLastSeen(person.lastSeenEpochMs) else ""
+            val text = when {
+                person.isMock -> stringResource(Res.string.tracking_fake_gps)
+                issues[person.id] == LocationIssue.GPS_OFF ->
+                    if (since.isNotEmpty()) stringResource(Res.string.tracking_child_gps_off_since, since)
+                    else stringResource(Res.string.tracking_gps_off_title)
+                else ->
+                    if (since.isNotEmpty()) stringResource(Res.string.tracking_child_no_permission_since, since)
+                    else stringResource(Res.string.tracking_child_no_permission)
+            }
+            Row(
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(AppColors.bg.surface)
+                    .border(1.dp, AppColors.border.secondarySubtle, CircleShape)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                    ) { onClick(person.id) }
+                    .padding(start = 12.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    imageVector = if (person.isMock) Icons.Rounded.WarningAmber else Icons.Rounded.LocationOff,
+                    contentDescription = null,
+                    tint = AppColors.icon.accentWarning,
+                    modifier = Modifier.size(18.dp),
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = "${person.name} · $text",
+                    style = AppTypography.bodyMdMedium,
+                    color = AppColors.text.primary,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        }
+    }
+}
+
+/** Farzand ulanmagan: bo'sh xarita ustida — nima qilish kerakligi va to'g'ridan-to'g'ri "Farzand qo'shish". */
+@Composable
+fun NoChildMapCard(onAddChild: () -> Unit, modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .padding(horizontal = 12.dp)
+            .fillMaxWidth()
+            .clip(CardShape)
+            .background(AppColors.bg.surface)
+            .border(1.dp, AppColors.border.secondarySubtle, CardShape)
+            .padding(16.dp),
+    ) {
+        Text(
+            text = stringResource(Res.string.no_child_title),
+            style = AppTypography.titleMdSemiBold,
+            color = AppColors.text.primary,
+        )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = stringResource(Res.string.no_child_body),
+            style = AppTypography.bodyMdMedium,
+            color = AppColors.text.secondary,
+        )
+        Spacer(Modifier.height(14.dp))
+        uz.tikoncha_parent.presentation.base.CustomButtonNew(
+            text = stringResource(Res.string.farzand_qo_shish),
+            onClick = onAddChild,
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
 }
 
@@ -210,6 +315,19 @@ fun PersonLocationCard(
                 ),
             ) {
                 Icon(Icons.Rounded.Close, contentDescription = null, modifier = Modifier.size(20.dp))
+            }
+        }
+
+        if (person.isMock) {
+            Spacer(Modifier.height(12.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Rounded.WarningAmber, contentDescription = null, tint = AppColors.icon.accentWarning, modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = stringResource(Res.string.tracking_fake_gps) + ". " + stringResource(Res.string.tracking_fake_gps_note),
+                    style = AppTypography.bodyMdMedium,
+                    color = AppColors.text.primary,
+                )
             }
         }
 

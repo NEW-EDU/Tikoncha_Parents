@@ -37,6 +37,10 @@ data class PolicyListState(
     val enabledCount: Int = 0,
     /** Bolaning tarifi; null — noma'lum (server hal qiladi). */
     val paid: Boolean? = null,
+    /** Bepul tarif çegarasi (faol jadvallar soni); null — pullik, çeksiz yoki hali noma'lum. */
+    val policyLimit: Int? = null,
+    /** Çegaraga kiradigan faol jadvallar (farzandniki ham) — server sanoği bilan bir xil. */
+    val policyUsed: Int = 0,
 
     /* ----- So'rovlar ----- */
     val loaded: Boolean = false,

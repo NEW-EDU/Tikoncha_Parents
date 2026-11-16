@@ -14,6 +14,9 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <!-- Tebranish: tizim "Teginish tebranishi" o'chiq bo'lsa AppHaptics o'z vibratoridan foydalanadi -->
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- Farzandni ulaş: farzand ilovasidagi QR kodni skanerlaş (faqat skaner oynasi oçiq payt) -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
 
     <queries>
         <intent>

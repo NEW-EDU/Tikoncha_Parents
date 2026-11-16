@@ -232,6 +232,7 @@ fun UserEditUi(
                 .height(ButtonHeight),
             enabled = state.isFormValid,
             text = stringResource(Res.string.saqlash),
+            leadingIcon = { uz.tikoncha_parent.presentation.base.SaveIcon() },
         )
         Space(12.dp)
     }

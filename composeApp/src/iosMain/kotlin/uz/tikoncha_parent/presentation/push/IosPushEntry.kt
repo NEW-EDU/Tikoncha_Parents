@@ -19,6 +19,7 @@ object IosPushEntry : KoinComponent {
 
     fun onTap(payloadRaw: String?) {
         val link = parse(payloadRaw)?.toDeepLink()
-        coordinator.onTapped(link, uiReady = false) // iOS tap'da UI odatda tayyor emas
+        // Sovuq start: UI hali yöq → navbatga (App() oladi). Ilova oçiq/fonda: DeepLinkEffect tinglayapti → darhol.
+        coordinator.onTapped(link, uiReady = DeepLinkBus.hasListener)
     }
 }

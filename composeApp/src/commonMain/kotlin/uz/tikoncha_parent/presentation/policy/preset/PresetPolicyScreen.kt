@@ -260,6 +260,7 @@ fun PresetPolicyUi(
 
         CustomLoadingButton(
             text = stringResource(Res.string.saqlash),
+            leadingIcon = { uz.tikoncha_parent.presentation.base.SaveIcon() },
             modifier = Modifier.fillMaxWidth().padding(horizontal = ContainerPadding, vertical = 12.dp),
             color = AppColors.button.primary,
             enabled = state.hasChanges && !state.saving,
@@ -417,7 +418,8 @@ private fun LimitBlock(state: PresetPolicyState, draft: PolicyDraft, event: (Pre
 private fun TargetsBlock(state: PresetPolicyState, draft: PolicyDraft, onClick: () -> Unit) {
     val t = draft.targets
     val label = stringResource(if (state.kind == PresetKind.LIMIT) Res.string.preset_counted else Res.string.preset_what_closed)
-    val allApps = t.isAllApps
+    // Eski ALLOW şablon — oq röyxat: barça ilovalar yopiq, röyxatdagilar oçiq
+    val allApps = t.isAllApps || draft.action == uz.tikoncha_parent.domain.model.policy.PolicyAction.ALLOW
     val title = stringResource(if (allApps) Res.string.preset_all_apps else Res.string.preset_only_selected)
     val counts = listOfNotNull(
         (t.packages.count { it != PolicyTargets.ALL_APPS } + t.features.size).takeIf { it > 0 && !allApps }

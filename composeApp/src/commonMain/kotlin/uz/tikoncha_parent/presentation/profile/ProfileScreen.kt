@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.profile
 
+import tikoncha_parents.composeapp.generated.resources.text_size_title
+import tikoncha_parents.composeapp.generated.resources.file_text
 import tikoncha_parents.composeapp.generated.resources.pr_section_help
 import tikoncha_parents.composeapp.generated.resources.pr_section_payments
 import tikoncha_parents.composeapp.generated.resources.pr_section_prefs
@@ -378,16 +380,26 @@ fun ProfileUi(
                 Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                     ProfileSectionItem(
                         segmentIndex = 0,
-                        segmentCount = 2,
+                        segmentCount = 3,
                         title = stringResource(Res.string.tema),
                         icon = painterResource(Res.drawable.theme_mode),
                         onItemClick = {
                             navigator?.push(ThemeScreen())
                         }
                     )
+                    // Matn o'lchami — Sozlamalar ekrani hech qayerdan ochilmaydi, shuning uchun shu yerda
                     ProfileSectionItem(
                         segmentIndex = 1,
-                        segmentCount = 2,
+                        segmentCount = 3,
+                        title = stringResource(Res.string.text_size_title),
+                        icon = painterResource(Res.drawable.file_text),
+                        onItemClick = {
+                            navigator?.push(uz.tikoncha_parent.presentation.profile.settings.text_size.TextSizeScreen())
+                        }
+                    )
+                    ProfileSectionItem(
+                        segmentIndex = 2,
+                        segmentCount = 3,
                         title = stringResource(Res.string.til),
                         icon = painterResource(Res.drawable.global),
                         onItemClick = {

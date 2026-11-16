@@ -17,7 +17,14 @@ object AuthEventBus {
     )
     val events: SharedFlow<AuthEvent> = _events.asSharedFlow()
 
+    /**
+     * Foydalanuvçi özi çiqayotganda (logout / akkauntni öçiriş) "Sessiya tugadi" oynasi kerak emas —
+     * ekran özi kiriş sahifasiga ötadi.
+     */
+    var muted: Boolean = false
+
     fun emit(event: AuthEvent) {
+        if (muted) return
         _events.tryEmit(event)
     }
 }

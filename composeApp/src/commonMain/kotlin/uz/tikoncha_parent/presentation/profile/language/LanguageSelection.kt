@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.profile.language
 
+import androidx.compose.runtime.remember
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,8 +34,12 @@ fun LanguageSelection(
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
     ) {
-        LanguageType.entries.forEachIndexed { index, language ->
-            val isLast = index == LanguageType.entries.lastIndex
+        // Ўзбекча (kirill) — birinçi: özbek tili uçun standart. Qolganlari enum tartibida.
+        val languages = remember {
+            listOf(LanguageType.UZ_CYRL) + LanguageType.entries.filter { it != LanguageType.UZ_CYRL }
+        }
+        languages.forEachIndexed { index, language ->
+            val isLast = index == languages.lastIndex
             val isSelected = selectedLanguage == language
 
             Row(
@@ -42,18 +47,18 @@ fun LanguageSelection(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { onLanguageSelected(language) }
-                    .padding(horizontal = 16.dp, vertical = 12.dp)
+                    .padding(horizontal = 16.dp, vertical = 16.dp)
             ) {
                 Box(
                     modifier = Modifier
-                        .size(36.dp)
+                        .size(44.dp)
                         .background(
                             AppColors.bg.surfaceTertiary,
                             RoundedCornerShape(NormalIconButtonPadding)
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    LanguageFlag(language, 24.dp)
+                    LanguageFlag(language, 30.dp)
                 }
 
                 Spacer(Modifier.width(12.dp))
@@ -62,7 +67,7 @@ fun LanguageSelection(
                     Text(
                         text = language.languageName,
                         color = AppColors.text.primary,
-                        style = AppTypography.titleSmMedium
+                        style = AppTypography.titleMdMedium
                     )
                 }
 
@@ -77,7 +82,7 @@ fun LanguageSelection(
             }
 
             if (!isLast) {
-                DividerHorizontal(modifier = Modifier.padding(start = 64.dp))
+                DividerHorizontal(modifier = Modifier.padding(start = 72.dp))
             }
         }
     }

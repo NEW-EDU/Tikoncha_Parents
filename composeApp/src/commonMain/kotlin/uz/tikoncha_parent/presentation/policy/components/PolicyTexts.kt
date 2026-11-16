@@ -49,6 +49,7 @@ import tikoncha_parents.composeapp.generated.resources.policy_weekend
 import tikoncha_parents.composeapp.generated.resources.policy_workdays
 import tikoncha_parents.composeapp.generated.resources.preset_all_apps
 import tikoncha_parents.composeapp.generated.resources.soat
+import tikoncha_parents.composeapp.generated.resources.targets_only_selected_open
 import uz.tikoncha_parent.domain.model.LimitWindow
 import uz.tikoncha_parent.presentation.policy.model.PolicyListInfo
 import uz.tikoncha_parent.presentation.policy.model.PolicySummary
@@ -138,6 +139,8 @@ fun PolicySummary.cardText(): String {
     return when {
         time != null -> listOfNotNull(days, time).joinToString(" · ")
         limit != null -> listOfNotNull(days, limit).joinToString(" · ")
+        // Oq röyxat kartada ham aytiladi — "3 ta ilova" yopilganlar emas, oçiq qoladiganlar
+        allowList -> listOfNotNull(stringResource(Res.string.targets_only_selected_open), targetsText(this)).joinToString(" · ")
         else -> targetsText(this).orEmpty()
     }
 }

@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.policy.editor
 
+import uz.tikoncha_parent.presentation.base.SaveIcon
 import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -74,6 +75,10 @@ import tikoncha_parents.composeapp.generated.resources.editor_open_in_time
 import tikoncha_parents.composeapp.generated.resources.editor_open_in_time_sub
 import tikoncha_parents.composeapp.generated.resources.editor_outside
 import tikoncha_parents.composeapp.generated.resources.editor_paywall_allow
+import tikoncha_parents.composeapp.generated.resources.policy_paywall_app_limit
+import tikoncha_parents.composeapp.generated.resources.policy_paywall_app_limits
+import tikoncha_parents.composeapp.generated.resources.policy_paywall_limits
+import uz.tikoncha_parent.domain.model.app_error.PaidFeature
 import tikoncha_parents.composeapp.generated.resources.editor_rename
 import tikoncha_parents.composeapp.generated.resources.editor_when_hint
 import tikoncha_parents.composeapp.generated.resources.jadval_nomi
@@ -204,9 +209,16 @@ class PolicyEditorScreen(private val childId: String, private val policyId: Stri
         }
 
         SubscriptionBottomDialog(
-            show = state.payWall,
+            show = state.payWall != null,
             title = stringResource(Res.string.stat_quick_paywall_title),
-            message = stringResource(Res.string.editor_paywall_allow),
+            // Sabab böyiça: ALLOW rejimi yoki tarif çegarasi ("Bepul: 1 ta faol jadval · Plus: çeksiz")
+            message = when (state.payWall) {
+                PaidFeature.POLICY_COUNT -> stringResource(Res.string.policy_paywall_limits, state.freePolicyLimit)
+                PaidFeature.POLICY_APP_COUNT -> state.freeAppLimit
+                    ?.let { stringResource(Res.string.policy_paywall_app_limits, it) }
+                    ?: stringResource(Res.string.policy_paywall_app_limit)
+                else -> stringResource(Res.string.editor_paywall_allow)
+            },
             onConfirm = {
                 event(PolicyEditorEvent.PayWallDismissed)
                 navigator.push(SubscriptionPaymentScreen())
@@ -333,6 +345,7 @@ fun PolicyEditorContent(state: PolicyEditorState, event: (PolicyEditorEvent) -> 
         if (editable) {
             CustomLoadingButton(
                 text = stringResource(Res.string.saqlash),
+                leadingIcon = { uz.tikoncha_parent.presentation.base.SaveIcon() },
                 modifier = Modifier.fillMaxWidth().padding(horizontal = ContainerPadding, vertical = 12.dp),
                 color = AppColors.button.primary,
                 enabled = state.canSave,
@@ -579,6 +592,7 @@ private fun TimePage(state: PolicyEditorState, event: (PolicyEditorEvent) -> Uni
             text = stringResource(Res.string.saqlash),
             modifier = Modifier.fillMaxWidth().padding(horizontal = ContainerPadding, vertical = 12.dp),
             onClick = { event(PolicyEditorEvent.PageSaved) },
+            leadingIcon = { SaveIcon() },
         )
     }
 }
@@ -644,6 +658,7 @@ private fun LimitPage(state: PolicyEditorState, event: (PolicyEditorEvent) -> Un
             text = stringResource(Res.string.saqlash),
             modifier = Modifier.fillMaxWidth().padding(horizontal = ContainerPadding, vertical = 12.dp),
             onClick = { event(PolicyEditorEvent.PageSaved) },
+            leadingIcon = { SaveIcon() },
         )
     }
 }

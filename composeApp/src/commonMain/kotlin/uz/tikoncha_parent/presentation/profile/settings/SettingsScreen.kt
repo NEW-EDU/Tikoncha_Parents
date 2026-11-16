@@ -74,6 +74,9 @@ fun SettingsUi(
                         SettingType.THEME -> {
                             navigator?.push(ThemeScreen())
                         }
+                        SettingType.TEXT_SIZE -> {
+                            navigator?.push(uz.tikoncha_parent.presentation.profile.settings.text_size.TextSizeScreen())
+                        }
                         SettingType.HAPTICS -> {
                             navigator?.push(uz.tikoncha_parent.presentation.profile.settings.haptics.HapticsScreen())
                         }

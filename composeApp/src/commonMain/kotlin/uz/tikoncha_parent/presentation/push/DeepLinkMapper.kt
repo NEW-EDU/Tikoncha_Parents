@@ -11,6 +11,9 @@ fun FcmPayload.toDeepLink(): DeepLink? = when (type) {
     }
     PayloadType.PARENTAL_REQUEST -> DeepLink.ParentalRequest
     PayloadType.STRICT_DISABLE -> DeepLink.StrictDisable
+    PayloadType.PERMISSION_OFF -> DeepLink.PermissionOff(
+        childUserId = body?.permissionOff?.childUserId?.takeIf { it.isNotBlank() }
+    )
     PayloadType.LIVE_RING -> body?.live?.let { l ->
         val sid = l.sessionId
         val child = l.childUserId ?: l.from

@@ -19,6 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,8 +32,11 @@ import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.bekor_qilish
 import tikoncha_parents.composeapp.generated.resources.hedgehog_heart
 import tikoncha_parents.composeapp.generated.resources.plus_imkoniyatlarini_ochish
+import tikoncha_parents.composeapp.generated.resources.sub_per_child_for
+import tikoncha_parents.composeapp.generated.resources.sub_per_child_title
 import tikoncha_parents.composeapp.generated.resources.tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring
 import tikoncha_parents.composeapp.generated.resources.to_liq_nazoratni_yoqing
+import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.ui.Space
 import uz.tikoncha_parent.ui.SpaceLarge
 import uz.tikoncha_parent.ui.theme.AppColors
@@ -48,6 +52,8 @@ fun SubscriptionBottomDialog(
     confirmButtonText: String = stringResource(Res.string.plus_imkoniyatlarini_ochish),
     dismissButtonText: String = stringResource(Res.string.bekor_qilish),
     showCancelButton: Boolean = true,
+    /** Obuna kim uchun olinadi (Plus — har bir farzand uchun alohida); null — hozir tanlangan farzand. */
+    childName: String? = null,
     onDismiss: () -> Unit,
     onConfirm: () -> Unit
 ) {
@@ -61,6 +67,8 @@ fun SubscriptionBottomDialog(
         LaunchedEffect(show) {
             if (show) sheetState.expand()
         }
+        // To'lov ekrani ham aynan tanlangan farzand uchun ochiladi
+        val forChild = childName ?: remember { AppSettings.selectedChild?.name?.takeIf { it.isNotBlank() } }
 
         ModalBottomSheet(
             sheetState = sheetState,
@@ -97,7 +105,7 @@ fun SubscriptionBottomDialog(
                         Box(
                             modifier = Modifier
                                 .padding(bottom = 15.dp)
-                                .background(color = Color(0XFF9A9A9A), shape = CircleShape)
+                                .background(color = AppColors.border.secondarySubtle, shape = CircleShape)
                                 .height(3.dp)
                                 .width(36.dp),
                         )
@@ -116,7 +124,8 @@ fun SubscriptionBottomDialog(
                         Text(
                             text = title,
                             color = AppColors.text.primary,
-                            style = AppTypography.titleLgSemiBold
+                            style = AppTypography.titleLgSemiBold,
+                            textAlign = TextAlign.Center,
 
                         )
                         Space(12.dp)
@@ -128,6 +137,20 @@ fun SubscriptionBottomDialog(
                             modifier = Modifier
                                 .fillMaxWidth(),
                             textAlign = TextAlign.Center
+                        )
+                        Space(12.dp)
+
+                        // Plus har bir farzand uchun alohida — to'lovga o'tishdan oldin, ko'zga ko'rinadigan joyda
+                        Text(
+                            text = if (forChild != null) stringResource(Res.string.sub_per_child_for, forChild)
+                            else stringResource(Res.string.sub_per_child_title),
+                            color = AppColors.text.primary,
+                            style = AppTypography.titleSmSemiBold,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(AppColors.bg.surface, RoundedCornerShape(12.dp))
+                                .padding(horizontal = 12.dp, vertical = 10.dp),
                         )
                         Space(16.dp)
 

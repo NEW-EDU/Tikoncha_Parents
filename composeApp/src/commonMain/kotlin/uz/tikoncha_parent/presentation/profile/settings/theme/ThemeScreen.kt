@@ -192,6 +192,7 @@ private fun ThemeContent(
 
         CustomButton(
             text = stringResource(Res.string.saqlash),
+            leadingIcon = { uz.tikoncha_parent.presentation.base.SaveIcon() },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = ContainerPadding, end = ContainerPadding, top = 8.dp, bottom = 16.dp),

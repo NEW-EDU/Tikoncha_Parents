@@ -65,6 +65,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -115,9 +117,9 @@ import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.android
 import tikoncha_parents.composeapp.generated.resources.bugun_sarfladi
 import tikoncha_parents.composeapp.generated.resources.cheklovlar
-import tikoncha_parents.composeapp.generated.resources.diqqat
+import tikoncha_parents.composeapp.generated.resources.no_child_body
+import tikoncha_parents.composeapp.generated.resources.no_child_title
 import tikoncha_parents.composeapp.generated.resources.faol_vazifa
-import tikoncha_parents.composeapp.generated.resources.farzand_malumotlari_keyin_korinadi
 import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
 import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.home_table
@@ -256,10 +258,11 @@ fun NewHomeUi(
 
     CustomDialog(
         show = showChildDialog,
-        title = stringResource(Res.string.diqqat),
+        // "Diqqat!" emas — nima qilish kerakligi aniq aytiladi, tugma to'g'ridan-to'g'ri farzand ulashga olib boradi
+        title = stringResource(Res.string.no_child_title),
         buttonText = stringResource(Res.string.farzand_qo_shish),
         buttonIcon = painterResource(Res.drawable.add),
-        message = stringResource(Res.string.farzand_malumotlari_keyin_korinadi),
+        message = stringResource(Res.string.no_child_body),
         onDismiss = { showChildDialog = false },
         onButtonClick = {
             navigator?.push(AddChildScreen())
@@ -427,16 +430,22 @@ fun NewHomeUi(
                 // Panjara: ekranning qolgan balandligini to'liq egallaydi (bo'sh joy qolmaydi); kichik ekranda — scroll.
                 BoxWithConstraints(Modifier.fillMaxWidth().weight(1f).roundedContentEdges()) {
                     val viewport = maxHeight
+                    // Kichik ekran / katta matn: panjara eng kam balandligidan siqilmaydi — sahifa scroll bo'ladi.
+                    // (weight qolgan joyni qat'iy beradi, shuning uchun eng kam balandlik ustunning o'ziga qo'yiladi:
+                    // panjara + tepa qism + 16dp vertikal chekinish.)
+                    val gridMin = gridMinHeight()
+                    val density = LocalDensity.current
+                    var topHeight by remember { mutableStateOf(0.dp) }
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
                             .verticalScroll(rememberScrollState())
-                            .heightIn(min = viewport)
+                            .heightIn(min = maxOf(viewport, gridMin + topHeight + 16.dp))
                             .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
                     ) {
-                        topSection()
+                        Box(Modifier.onSizeChanged { topHeight = with(density) { it.height.toDp() } }) { topSection() }
                         HomeGridBlocks(
-                        modifier = Modifier.weight(1f).heightIn(min = GridMinHeight),
+                        modifier = Modifier.weight(1f),
                     state = state,
                     taskCount = taskCount,
                     tableCount = tableCount,
@@ -463,7 +472,7 @@ fun NewHomeUi(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(HomeItemHeight)
+                                .heightIn(min = HomeItemHeight)
                                 .expressiveSegment(0, HomeBlockCount, color = homeTileColor()) {
                                     if (state.childrenList.isEmpty()) {
                                         internetCheck.check { showChildDialog = true }
@@ -551,7 +560,7 @@ fun NewHomeUi(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(HomeItemHeight)
+                                .heightIn(min = HomeItemHeight)
                                 .expressiveSegment(4, HomeBlockCount, color = homeTileColor()) {
                                     if (state.childrenList.isEmpty()) {
                                         internetCheck.check { showChildDialog = true }
@@ -591,7 +600,16 @@ fun NewHomeUi(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(HomeItemHeight)
+                                // Ustunlar balandlikka nisbatan chiziladi — balandlik qat'iy, lekin katta matnga moslashadi
+                                .height(
+                                    maxOf(
+                                        HomeItemHeight,
+                                        with(LocalDensity.current) {
+                                            AppTypography.displaySmRegular.lineHeight.toDp() +
+                                                AppTypography.titleSmMedium.lineHeight.toDp() * 2
+                                        } + HomeItemVerticalPadding * 2,
+                                    )
+                                )
                                 .expressiveSegment(5, HomeBlockCount, color = homeTileColor()) {
                                     if (state.childrenList.isEmpty()) {
                                         internetCheck.check { showChildDialog = true }

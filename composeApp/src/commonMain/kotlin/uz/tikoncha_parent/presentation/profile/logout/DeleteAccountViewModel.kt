@@ -6,6 +6,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import uz.tikoncha_parent.data.local.AppSettings
+import uz.tikoncha_parent.data.remote.AuthEventBus
+import uz.tikoncha_parent.domain.model.app_error.ErrorCause
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.domain.repository.DeviceRepository
 import uz.tikoncha_parent.presentation.ui_state.ResponseState
@@ -23,8 +25,22 @@ class DeleteAccountViewModel(
         if (_state.value is ResponseState.Loading) return
         _state.value = ResponseState.Loading
         screenModelScope.launch {
-            when (val res = deviceRepository.deleteAccount()) {
-                is Outcome.Failure -> _state.value = ResponseState.Error(failure = res)
+            AuthEventBus.muted = true
+            val res = try {
+                deviceRepository.deleteAccount()
+            } finally {
+                AuthEventBus.muted = false
+            }
+            when (res) {
+                is Outcome.Failure -> {
+                    if (res.cause == ErrorCause.SessionExpired) {
+                        // Akkaunt allaqaçon öçirilgan (masalan saytdan) — xato emas: lokal sessiyani tozalab çiqamiz.
+                        AppSettings.clearSession()
+                        _state.value = ResponseState.Success(null)
+                    } else {
+                        _state.value = ResponseState.Error(failure = res)
+                    }
+                }
                 is Outcome.Success -> {
                     AppSettings.clearSession()
                     _state.value = ResponseState.Success(res.data?.take(10))

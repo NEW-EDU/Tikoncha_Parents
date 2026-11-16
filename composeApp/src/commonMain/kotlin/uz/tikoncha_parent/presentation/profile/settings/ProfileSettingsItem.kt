@@ -17,7 +17,9 @@ import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.akkauntdan_chiqish
 import tikoncha_parents.composeapp.generated.resources.akkauntni_o_chirish
 import tikoncha_parents.composeapp.generated.resources.delete
+import tikoncha_parents.composeapp.generated.resources.file_text
 import tikoncha_parents.composeapp.generated.resources.haptics_title
+import tikoncha_parents.composeapp.generated.resources.text_size_title
 import tikoncha_parents.composeapp.generated.resources.logout
 import tikoncha_parents.composeapp.generated.resources.star_setting
 import tikoncha_parents.composeapp.generated.resources.tema
@@ -62,6 +64,10 @@ enum class SettingType(
     THEME(
         iconId = Res.drawable.star_setting,
         settingName = Res.string.tema
+    ),
+    TEXT_SIZE(
+        iconId = Res.drawable.file_text,
+        settingName = Res.string.text_size_title
     ),
     HAPTICS(
         iconId = Res.drawable.vibration,

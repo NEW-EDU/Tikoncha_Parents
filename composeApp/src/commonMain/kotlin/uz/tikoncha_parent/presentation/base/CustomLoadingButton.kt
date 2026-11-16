@@ -35,7 +35,9 @@ fun CustomLoadingButton(
     enabled:Boolean = true,
     onClick:()->Unit,
     shape: Shape = RoundedCornerShape(16.dp),
-    loading:Boolean = false
+    loading:Boolean = false,
+    /** Matndan oldingi belgi (masalan saqlaş uçun ✓); yuklanayotganda körsatilmaydi. */
+    leadingIcon: (@Composable () -> Unit)? = null,
 ) {
 
 
@@ -88,6 +90,7 @@ fun CustomLoadingButton(
                 lineLength = 3.dp
             )
         } else {
+            leadingIcon?.invoke()
             Text(
                 color = contentColor,
                 text = text,

@@ -23,7 +23,11 @@ object LanguagePrefs {
         // Til hali tanlanmagan. Avval kirgan foydalanuvchida avvalgidek o'zbek. Yangi o'rnatishda — telefon tili:
         // o'zbek yoki rus, boshqa tillarda ingliz (global brend Hoglt). Bir marta saqlanadi.
         if (AppSettings.hasUserLogin) return default
-        val device = LanguageType.bestMatch(deviceLanguageTags())
+        val matched = LanguageType.bestMatch(deviceLanguageTags())
+        // Özbek tili uçun standart — kirill (Ўзбекча): ota-onalarning köpçiligi uni osonroq öqiydi. Telefonlar özbek
+        // tilini deyarli doim "uz" / "uz-Latn" deb beradi, şuning uçun teg bu yerda hal qilmaydi. Tilni kiriş
+        // ekranidagi tanlagiçdan istalgan payt lotinga almaştiriş mumkin.
+        val device = if (matched == LanguageType.UZ) LanguageType.UZ_CYRL else matched
         save(device)
         return device
     }

@@ -40,7 +40,9 @@ enum class ChildPermission(val minMode: ChildMode) {
     LOCATION(ChildMode.GUJANAK),
     GPS_ENABLED(ChildMode.GUJANAK),
     BATTERY(ChildMode.GUJANAK),
-    AUTO_START(ChildMode.GUJANAK),
+    // Har rejimda zarur: avto-işga tuşiş öçiq bölsa (Xiaomi/Redmi/POCO) telefon qayta yoqilgaç ilova işlamaydi.
+    // Farzand ilovasi buni har rejimda yuboradi (boşqa telefonlarda doim "berilgan").
+    AUTO_START(ChildMode.DEFAULT),
     ACCESSIBILITY(ChildMode.STRICT),
     DEVICE_ADMIN(ChildMode.STRICT);
 

@@ -91,4 +91,6 @@ enum class PaidFeature {
     ALLOW_MODE,
     /** Bepul tarifdagi jadvallar soni limiti. */
     POLICY_COUNT,
+    /** Bitta jadvaldagi ilovalar soni limiti. */
+    POLICY_APP_COUNT,
 }

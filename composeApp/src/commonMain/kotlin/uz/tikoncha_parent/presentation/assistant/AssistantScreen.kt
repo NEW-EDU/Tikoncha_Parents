@@ -133,6 +133,9 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.ai_no_child_body
+import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
+import tikoncha_parents.composeapp.generated.resources.no_child_title
 import tikoncha_parents.composeapp.generated.resources.ai_ago_days
 import tikoncha_parents.composeapp.generated.resources.ai_ago_hours
 import tikoncha_parents.composeapp.generated.resources.ai_ago_minutes
@@ -306,7 +309,8 @@ private fun AssistantUi(state: AssistantState, event: (AssistantEventUi) -> Unit
             onCoins = { navigator?.push(CoinsScreen()) },
         )
 
-        if (conversation) {
+        // Farzand yo'q bo'lsa suhbat tepasida hisobot qatori ham yo'q ("Farzand qo'shish" kartasi faqat boshida)
+        if (conversation && state.child != null) {
             ReportCard(
                 state = state,
                 open = reportOpen,
@@ -593,6 +597,11 @@ private fun ReportCard(
             .background(AppColors.bg.surface)
             .animateContentSize(tween(260))
     ) {
+        if (state.child == null) {
+            // Farzand ulanmagan: bo'sh hisobot (faqat davr tugmalari) o'rniga — nima qilish kerakligi va tugma
+            NoChildCard()
+            return@Column
+        }
         if (!open) {
             ReportCollapsed(state, onToggle)
             return@Column
@@ -644,6 +653,31 @@ private fun ReportCard(
                 }
             }
         }
+    }
+}
+
+/** Farzand hali ulanmagan — Bosh sahifadagi oyna bilan bir xil matn va to'g'ridan-to'g'ri "Farzand qo'shish". */
+@Composable
+private fun NoChildCard() {
+    val navigator = LocalNavigator.current
+    Column(Modifier.fillMaxWidth().padding(16.dp)) {
+        Text(
+            stringResource(Res.string.no_child_title),
+            style = AppTypography.titleMdSemiBold,
+            color = AppColors.text.primary,
+        )
+        Spacer(Modifier.height(6.dp))
+        Text(
+            stringResource(Res.string.ai_no_child_body),
+            style = AppTypography.bodyLgRegular,
+            color = AppColors.text.secondary,
+        )
+        Spacer(Modifier.height(14.dp))
+        uz.tikoncha_parent.presentation.base.CustomButtonNew(
+            text = stringResource(Res.string.farzand_qo_shish),
+            onClick = { navigator?.push(uz.tikoncha_parent.presentation.add_child.AddChildScreen()) },
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
 }
 

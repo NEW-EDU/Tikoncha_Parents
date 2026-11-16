@@ -26,6 +26,8 @@ object ApiErrorMapper {
     fun from(t: Throwable): ErrorCause = when (t) {
         is uz.tikoncha_parent.data.remote.ServerUnavailableException -> ErrorCause.Server(t.status)
 
+        is uz.tikoncha_parent.data.remote.SessionExpiredException -> ErrorCause.SessionExpired
+
         is HttpRequestTimeoutException,
         is SocketTimeoutException,
         is ConnectTimeoutException -> ErrorCause.Timeout

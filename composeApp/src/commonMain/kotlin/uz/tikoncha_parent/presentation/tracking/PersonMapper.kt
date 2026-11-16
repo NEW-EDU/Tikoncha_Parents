@@ -18,5 +18,7 @@ internal fun ChildLocation.toPerson(): Person {
         lastSeen = updatedAt ?: "",
         lastSeenEpochMs = DateTimeUtil.toMillis(updatedAt),
         avatarUrl = avatarUrl,
+        isMock = isMock == true,
+        accuracyMeters = accuracyMeters?.takeIf { it > 0.0 },
     )
 }

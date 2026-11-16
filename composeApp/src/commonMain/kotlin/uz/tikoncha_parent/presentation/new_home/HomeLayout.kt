@@ -6,6 +6,11 @@ import uz.tikoncha_parent.ui.tileBlob
 import uz.tikoncha_parent.ui.BlobPlace
 import uz.tikoncha_parent.ui.tileBlobColor
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.graphicsLayer
@@ -42,7 +47,7 @@ enum class HomeLayout { LIST, GRID }
 
 object HomeLayoutController {
     private val _layout = MutableStateFlow(
-        HomeLayout.entries.firstOrNull { it.name == AppSettings.homeLayoutName } ?: HomeLayout.LIST
+        HomeLayout.entries.firstOrNull { it.name == AppSettings.homeLayoutName } ?: HomeLayout.GRID // standart — panjara; röyxat "Mavzu" sahifasida tanlanadi
     )
     val layout: StateFlow<HomeLayout> = _layout.asStateFlow()
 
@@ -58,6 +63,39 @@ data class GridCell(val row: Int, val col: Int, val rows: Int = 3, val cols: Int
 
 /** Panjaraning eng kichik balandligi (kichik ekranlarda — scroll). Katta ekranda panjara bo'sh joyni to'liq egallaydi. */
 val GridMinHeight = 152.dp * 3 + SegmentGap * 2
+
+/**
+ * [GridMinHeight] ning matn o'lchamini hisobga oladigan ko'rinishi: katakka ikki qator sarlavha + ikki qator izoh
+ * sig'ishi kerak (ilova ichidagi "matn o'lchami" 1.3× gacha, tizim shrifti ham kattalashgan bo'lishi mumkin).
+ */
+@Composable
+fun gridMinHeight(): Dp {
+    val textHeight = with(LocalDensity.current) {
+        (AppTypography.headlineSmSemiBold.lineHeight.toDp() + AppTypography.titleSmMedium.lineHeight.toDp()) * 2
+    }
+    val tile = maxOf(152.dp, 16.dp + textHeight + 2.dp + 14.dp)
+    return tile * 3 + SegmentGap * 2
+}
+
+/**
+ * Katak sarlavhasi: eng uzun so'z bir qatorga sig'maguncha shrift pog'onama-pog'ona kichrayadi — tor ekranda yoki
+ * katta matn o'lchamida so'z o'rtasidan sinmaydi ("Topşiriqla-r", "Ограничени-я").
+ */
+@Composable
+private fun fittedTitleStyle(text: String, maxWidth: Dp, base: TextStyle): TextStyle {
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    return remember(text, maxWidth, base, density) {
+        val maxPx = with(density) { maxWidth.toPx() }
+        val longest = text.split(' ', '\n').maxByOrNull { it.length }.orEmpty()
+        val steps = listOf(1f, 0.9f, 0.8f, 0.7f).map { k ->
+            if (k == 1f) base else base.copy(fontSize = base.fontSize * k, lineHeight = base.lineHeight * k)
+        }
+        steps.firstOrNull { style ->
+            measurer.measure(text = longest, style = style, softWrap = false, maxLines = 1, density = density).size.width <= maxPx
+        } ?: steps.last()
+    }
+}
 
 /** Panjara qatori: ikki katak yonma-yon, orasida [SegmentGap]; balandlikni ota-ona beradi (weight). */
 @Composable
@@ -94,13 +132,19 @@ fun RowScope.HomeGridTile(
     ) {
         art()
         Column(Modifier.fillMaxWidth().padding(start = 16.dp, end = 14.dp, top = 16.dp)) {
-            Text(
-                text = title,
-                style = AppTypography.headlineSmSemiBold.copy(fontWeight = FontWeight.ExtraBold),
-                color = AppColors.text.primary,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis,
-            )
+            BoxWithConstraints(Modifier.fillMaxWidth()) {
+                Text(
+                    text = title,
+                    style = fittedTitleStyle(
+                        text = title,
+                        maxWidth = maxWidth,
+                        base = AppTypography.headlineSmSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+                    ),
+                    color = AppColors.text.primary,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
             subtitle()
         }
     }

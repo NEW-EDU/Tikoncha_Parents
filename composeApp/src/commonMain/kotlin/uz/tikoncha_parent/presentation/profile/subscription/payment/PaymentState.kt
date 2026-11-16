@@ -30,5 +30,11 @@ data class PaymentState(
     val discountSaving: Int = 0,
     val discountPercentage: Int = 0,
 
-    val showSubscribeChildSheet: Boolean = false
+    val showSubscribeChildSheet: Boolean = false,
+
+    /** Click: obuna kim uchun olinayotgani (tanlangan farzand); null — farzand hali ulanmagan (telefon raqami yo'li). */
+    val childName: String? = null,
+    val childAvatarUrl: String? = null,
+    /** To'lovdan keyin serverdan: obuna qachongacha ("16-dekabr 2026"); null — hali noma'lum. */
+    val paidUntil: String? = null,
 )

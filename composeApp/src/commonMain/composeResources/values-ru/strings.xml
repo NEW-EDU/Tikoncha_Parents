@@ -613,8 +613,8 @@
     <string name="farzandlarim">Мои дети</string>
 
     <string name="foydalanilmagan">Не использовано</string>
-    <string name="token_eskirgan">Токен устарел</string>
-    <string name="tokenni_yangilash_uchun">Для обновления токена необходимо снова войти в аккаунт.</string>
+    <string name="token_eskirgan">Сессия завершена</string>
+    <string name="tokenni_yangilash_uchun">Войдите снова, чтобы продолжить.</string>
     <string name="login_qilish">Войти</string>
     <string name="maxfiylik_siyosati">Политика конфиденциальности</string>
     <string name="foydalanish_shartlari">Условия использования</string>
@@ -652,7 +652,7 @@
     <string name="himoya">Защита</string>
 
     <string name="mode_default_title">По умолчанию</string>
-    <string name="mode_gujanak_title">Гужанак</string>
+    <string name="mode_gujanak_title">Ғужанак</string>
     <string name="mode_qalqon_title">Щит</string>
 
     <string name="mode_default_desc">Защита отключена — работает только мониторинг</string>
@@ -707,7 +707,7 @@
     <string name="berilmagan">Не предоставлено</string>
 
     <string name="boshqa_rejimlar_uchun">Для других режимов пока не требуется</string>
-    <string name="gujanak_uchun">Для режима Гужанак</string>
+    <string name="gujanak_uchun">Для режима Ғужанак</string>
     <string name="qalqon_uchun">Для режима Щит</string>
 
     <string name="n_ta_zarur_ruxsat_ochiq">%1$d обязательных разрешений отключено</string>
@@ -916,8 +916,8 @@
     <string name="list_info_paused">Приостановлено расписаний: %1$d — до указанного времени они не действуют.</string>
     <string name="list_info_how">Расписание включается само, когда наступает его время и место.</string>
     <string name="policy_tab_templates">Шаблоны</string>
-    <string name="policy_tab_mine">Мои</string>
-    <string name="policy_tab_child">Ребёнок</string>
+    <string name="policy_tab_mine">От меня</string>
+    <string name="policy_tab_child">Сам ребёнок</string>
     <string name="policy_tab_coparent">Родитель</string>
     <string name="policy_tab_school">Школа</string>
     <string name="policy_enabled_count">Включено: %1$d</string>
@@ -1032,7 +1032,7 @@
     <string name="protection_policies_label">Расписания</string>
     <string name="protection_policies_delivered">Доставлены на телефон</string>
     <string name="protection_policies_pending">Ещё не доставлены</string>
-    <string name="protection_gujanak_limits_note">В режиме «Гужанак» блокируются приложения. Сайты и Shorts/Reels блокируются только в режиме «Щит».</string>
+    <string name="protection_gujanak_limits_note">В режиме «Ғужанак» блокируются приложения. Сайты и Shorts/Reels блокируются только в режиме «Щит».</string>
     <string name="editor_limit_days_follow_time">Как у времени — дни выбираются на странице времени</string>
     <string name="editor_limit_in_window">лимит в это время</string>
     <string name="editor_limit_outside_window">лимит вне этого времени</string>
@@ -1197,8 +1197,8 @@
     <string name="ob_got_it">Понятно</string>
     <string name="ob_hello_title">Привет, я Tikoncha</string>
     <string name="ob_hello_body">Я помогаю ребёнку разумно пользоваться телефоном, а вам — быть в курсе его дня.</string>
-    <string name="ob_day_title">День ребёнка на ладони</string>
-    <string name="ob_day_body">Экранное время и самые используемые приложения — за каждый день.</string>
+    <string name="ob_day_title">День вашего ребёнка</string>
+    <string name="ob_day_body">Сколько времени ребёнок провёл в телефоне и в каких приложениях — за каждый день.</string>
     <string name="ob_day_today">Сегодня</string>
     <string name="ob_total_fmt">%1$d ч %2$d мин</string>
     <string name="ob_day_video">Видео</string>
@@ -1435,4 +1435,44 @@
     <string name="tg_rules_load_failed">Не удалось загрузить правила</string>
     <string name="tg_rules_retry">Повторить</string>
     <string name="live_watch">Смотреть вживую</string>
+    <string name="text_size_title">Размер текста</string>
+    <string name="text_size_small">Мелкий</string>
+    <string name="text_size_standard">Обычный</string>
+    <string name="text_size_large">Крупный</string>
+    <string name="text_size_extra_large">Очень крупный</string>
+    <string name="text_size_preview">Сегодня ваш ребёнок провёл в телефоне 2 часа 15 минут.</string>
+    <string name="text_size_footer">Выбор сразу применяется ко всему приложению. Размер шрифта из настроек телефона тоже учитывается.</string>
+    <string name="ob_shield_request">Запрос: отключить строгую защиту</string>
+    <string name="ob_shield_hint">Щит — режим самой строгой защиты</string>
+    <string name="register_role_label">Кем вы приходитесь ребёнку?</string>
+    <string name="add_child_scan_qr">Сканировать QR-код</string>
+    <string name="add_child_scan_hint">Наведите камеру на QR-код на телефоне ребёнка</string>
+    <string name="add_child_scan_no_code">В этом QR-коде нет кода привязки. Отсканируйте QR-код из приложения ребёнка.</string>
+    <string name="login_telegram_failed">Не удалось войти через Telegram. Попробуйте ещё раз или выберите другой способ входа.</string>
+    <string name="sub_success_body">Все возможности Tikoncha Plus открыты</string>
+    <string name="sub_success_until">Действует до %1$s</string>
+    <string name="sub_per_child_title">Plus оформляется отдельно на каждого ребёнка</string>
+    <string name="sub_per_child_for">Эта подписка — только для %1$s</string>
+    <string name="no_child_title">Сначала подключите ребёнка</string>
+    <string name="no_child_body">Этот раздел откроется, когда вы подключите ребёнка. Это займёт пару минут.</string>
+    <string name="ai_no_child_body">Помощник показывает отчёт о ребёнке и настраивает правила. Чтобы начать, подключите ребёнка.</string>
+    <string name="tracking_child_gps_off_since">GPS выключен · последнее местоположение: %1$s</string>
+    <string name="tracking_child_no_permission">Нет доступа к геолокации</string>
+    <string name="tracking_child_no_permission_since">Нет доступа к геолокации · последнее местоположение: %1$s</string>
+    <string name="tracking_fake_gps">Поддельный GPS</string>
+    <string name="tracking_fake_gps_note">Телефон передаёт поддельное местоположение — не доверяйте этой точке.</string>
+    <string name="policy_paywall_limits">Бесплатно: активных расписаний — %1$d · Plus: без ограничений</string>
+    <string name="perm_why_dangerous">Чем это опасно?</string>
+    <string name="perm_why_notification">На телефоне ребёнка не показываются уведомления Tikoncha: задания, ваши сообщения и напоминания до него не доходят.</string>
+    <string name="perm_why_usage_stats">Приложение не видит, какие приложения открываются: статистика не собирается, лимиты времени и расписания не работают.</string>
+    <string name="perm_why_overlay">Поверх закрытого приложения не появляется экран блокировки — расписания и лимиты не могут его закрыть.</string>
+    <string name="perm_why_overlay_popup">На Xiaomi, Redmi и POCO экран блокировки не открывается из фона — закрытое приложение остаётся доступным.</string>
+    <string name="perm_why_location">Вы не видите, где находится ребёнок; расписания, привязанные к месту, тоже не работают.</string>
+    <string name="perm_why_gps">При выключенном GPS местоположение не обновляется — на карте остаётся старая точка.</string>
+    <string name="perm_why_battery">Телефон экономит батарею и останавливает Tikoncha в фоне: защита и местоположение время от времени пропадают.</string>
+    <string name="perm_why_auto_start">После перезагрузки телефона или закрытия приложения Tikoncha не запускается сам — защита не работает, пока ребёнок не откроет приложение. На Xiaomi, Redmi и POCO включается в настройках телефона: Приложения → Tikoncha → Автозапуск.</string>
+    <string name="perm_why_accessibility">Основа режима «Щит»: без него не закрываются сайты, YouTube Shorts и Instagram Reels и не работает защита от удаления приложения.</string>
+    <string name="perm_why_device_admin">Ребёнок может удалить Tikoncha как обычное приложение, не спрашивая вас.</string>
+    <string name="policy_paywall_app_limits">На бесплатном тарифе в одно расписание можно добавить не больше %1$d приложений. Для большего нужен Plus.</string>
+    <string name="policy_paywall_app_limit">Достигнут лимит приложений в одном расписании для вашего тарифа.</string>
 </resources>

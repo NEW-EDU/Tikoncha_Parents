@@ -41,7 +41,13 @@ suspend inline fun <reified T> HttpClient.safeRequest(
     if (response.status.value >= 500 && !bodyText.trimStart().startsWith("{")) {
         throw ServerUnavailableException(response.status.value)
     }
-    if (bodyText.contains("\"code\":401") || response.status == HttpStatusCode.Unauthorized) {
+    // Kelajakdagi server: `error_code == "session_ended"` — sessiya serverda tugatilgan, tokenni yangilaş befoyda.
+    if (isSessionEnded(bodyText) && AppSettings.accessToken.isNotBlank()) {
+        handleSessionExpired()
+        throw SessionExpiredException()
+    }
+    // Kirilmagan holatda (login, Google/Apple/Telegram tokeni rad etildi) 401 — sessiya tugaşi emas: javob özi qaytadi.
+    if (isUnauthorized(response.status, bodyText) && AppSettings.accessToken.isNotBlank()) {
         when (val r = refreshAccessToken(this)) {
             RefreshResult.Success -> {
                 val retryResponse = this.request {
@@ -50,11 +56,17 @@ suspend inline fun <reified T> HttpClient.safeRequest(
                     contentType(ContentType.Application.Json)
                     block()
                 }
+                // `auth/refresh` foydalanuvçi borligini tekşirmaydi: akkaunt öçirilgan bölsa (masalan saytdan)
+                // yangi token ham 401 "Invalid authentication credentials" oladi — bu sessiya tugagani.
+                if (isUnauthorized(retryResponse.status, retryResponse.bodyAsText())) {
+                    handleSessionExpired()
+                    throw SessionExpiredException()
+                }
                 return retryResponse.body()
             }
             RefreshResult.InvalidToken -> {
                 handleSessionExpired()
-                throw Exception("Session expired, please login again.")
+                throw SessionExpiredException()
             }
             is RefreshResult.Temporary -> throw r.cause ?: IOException("Tokenni yangilab bo'lmadi")
         }
@@ -77,19 +89,28 @@ suspend inline fun <reified T> HttpClient.safeUploadMultipart(
 
     val bodyText = response.bodyAsText()
 
+    if (isSessionEnded(bodyText) && AppSettings.accessToken.isNotBlank()) {
+        handleSessionExpired()
+        throw SessionExpiredException()
+    }
+
     // 🔁 2. Token expired (code == 501)
-    if (bodyText.contains("\"code\":401")) {
+    if (isUnauthorized(response.status, bodyText) && AppSettings.accessToken.isNotBlank()) {
         when (val r = refreshAccessToken(this)) {
             RefreshResult.Success -> {
                 val retryResponse = this.submitFormWithBinaryData(
                     url = url,
                     formData = formData
                 )
+                if (isUnauthorized(retryResponse.status, retryResponse.bodyAsText())) {
+                    handleSessionExpired()
+                    throw SessionExpiredException()
+                }
                 return retryResponse.body()
             }
             RefreshResult.InvalidToken -> {
                 handleSessionExpired()
-                throw Exception("Session expired, please login again.")
+                throw SessionExpiredException()
             }
             is RefreshResult.Temporary -> throw r.cause ?: IOException("Tokenni yangilab bo'lmadi")
         }
@@ -97,6 +118,17 @@ suspend inline fun <reified T> HttpClient.safeUploadMultipart(
 
     return response.body()
 }
+
+/** Server "token yaroqsiz" dedi: HTTP 401 yoki envelope `"code":401` (backend xatolarni HTTP 200 + kod bilan qaytaradi). */
+fun isUnauthorized(status: HttpStatusCode, bodyText: String): Boolean =
+    status == HttpStatusCode.Unauthorized || bodyText.contains("\"code\":401") || bodyText.contains("\"code\": 401")
+
+/**
+ * Xato o'ramida `"error_code": "session_ended"` (backend-contract §6 — hali yöq, kelajak uçun). Hozirgi server bu
+ * kodni yubormaydi, şuning uçun bugungi xatti-harakat özgarmaydi.
+ */
+fun isSessionEnded(bodyText: String): Boolean =
+    bodyText.contains("\"error_code\":\"session_ended\"") || bodyText.contains("\"error_code\": \"session_ended\"")
 
 /** Token yangilash natijasi. */
 sealed interface RefreshResult {
@@ -138,7 +170,7 @@ suspend fun refreshAccessToken(client: HttpClient): RefreshResult {
                     AppSettings.accessToken = newToken
                     RefreshResult.Success
                 }
-                body.code == 401 || body.code == 403 -> RefreshResult.InvalidToken
+                body.code == 401 || body.code == 403 || body.error_code == "session_ended" -> RefreshResult.InvalidToken
                 else -> RefreshResult.Temporary(null)
             }
         } catch (e: CancellationException) {

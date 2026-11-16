@@ -3,6 +3,7 @@ package uz.tikoncha_parent.presentation.policy.list
 import uz.tikoncha_parent.domain.model.policy.PolicyName
 import uz.tikoncha_parent.domain.model.PolicyType
 import uz.tikoncha_parent.domain.model.policy.Policy
+import uz.tikoncha_parent.domain.model.policy.PolicyAction
 import uz.tikoncha_parent.domain.model.policy.PolicyTargets
 import uz.tikoncha_parent.domain.model.policy.ProtectionPackStatus
 import uz.tikoncha_parent.domain.model.policy.QuickBlockEntry
@@ -32,6 +33,8 @@ data class PolicyListInput(
     val now: Instant,
     val lastLat: Double? = null,
     val lastLng: Double? = null,
+    /** Bepul tarifdagi faol jadvallar çegarasi; null — pullik / çeksiz / noma'lum. */
+    val policyLimit: Int? = null,
 )
 
 fun Policy.toSummary(): PolicySummary = PolicySummary(
@@ -45,6 +48,7 @@ fun Policy.toSummary(): PolicySummary = PolicySummary(
     siteCount = targets.sites.size,
     hasLocation = conditions.location != null,
     allApps = targets.isAllApps,
+    allowList = action == PolicyAction.ALLOW && !targets.isEmpty,
 )
 
 private fun Policy.ownership(myUserId: String): Ownership = when (scope) {
@@ -172,7 +176,15 @@ fun PolicyListInput.reduce(previous: PolicyListState): PolicyListState {
         (if (quickBlock.isOn) 1 else 0) +
         mine.count { it.isEnabled }
 
+    // Server `count_standard_active` bilan bir xil sanaladi: farzand va ota-onalar jadvallari, faol, muddati ötmagan
+    val policyUsed = standard.count {
+        (it.scope == PolicyType.STUDENT || it.scope == PolicyType.PARENT_CHILD) &&
+            it.isActive && it.expiresAt?.let { e -> e <= now } != true
+    }
+
     return previous.copy(
+        policyLimit = policyLimit.takeIf { paid == false },
+        policyUsed = policyUsed,
         tab = if (previous.tab in tabs) previous.tab else PolicyTab.TEMPLATES,
         tabs = tabs,
         presets = presets,

@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.location
 
+import uz.tikoncha_parent.presentation.base.SaveIcon
 import uz.tikoncha_parent.data.local.AppSettings
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -274,6 +275,7 @@ fun LocationPicker(
                     modifier = Modifier.fillMaxWidth(),
                     enabled = state.canSave,
                     onClick = onDone,
+                    leadingIcon = { SaveIcon() },
                 )
             }
         }

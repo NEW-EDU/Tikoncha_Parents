@@ -235,6 +235,7 @@ class PolicyListViewModel(
             now = now,
             lastLat = loc?.first,
             lastLng = loc?.second,
+            policyLimit = childPaidStatus.freePolicyLimit(childId),
         )
     }
 

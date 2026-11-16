@@ -68,8 +68,33 @@ class ToggleQuickBlockUseCase(
 class ChildPaidStatusUseCase(
     private val repository: PaymentRepository,
 ) {
+    companion object {
+        /** Server `_get_default_free_limits().policy_count` — çegara hali yuklanmagan bölsa körsatiladi. */
+        const val DEFAULT_FREE_POLICY_LIMIT = 1
+    }
+
     operator fun invoke(childId: String): Boolean? =
         repository.cachedSubscriptionLimit(childId)?.let { it.subscriptionType != SubscriptionType.FREE }
+
+    /**
+     * Bepul tarifdagi faol jadvallar çegarasi (server `Limit.policy_count`, `GET /subscriptions/children-limits`).
+     * `null` — pullik tarif yoki çeksiz. Tarif bepul, lekin son kelmagan bölsa — serverning standart qiymati.
+     */
+    fun freePolicyLimit(childId: String): Int? {
+        val limit = repository.cachedSubscriptionLimit(childId) ?: return null
+        if (limit.subscriptionType != SubscriptionType.FREE) return null
+        return limit.policyCount.takeIf { it != Int.MAX_VALUE }
+    }
+
+    /**
+     * Bepul tarifda bitta jadvaldagi ilovalar çegarasi (server `Limit.app_count`). `null` — pullik tarif,
+     * çeksiz yoki hali ma'lum emas.
+     */
+    fun freeAppLimit(childId: String): Int? {
+        val limit = repository.cachedSubscriptionLimit(childId) ?: return null
+        if (limit.subscriptionType != SubscriptionType.FREE) return null
+        return limit.appCount.takeIf { it != Int.MAX_VALUE }
+    }
 
     /** Serverdan yangilab o'qiydi — ekran qayta ko'ringanda (sotib olgandan keyin darhol ishlasin). */
     suspend fun refresh(childId: String): Boolean? {
