@@ -568,14 +568,7 @@ class AssistantViewModel(
         turnStart = _state.value.items.size
         mascot(MascotState.THINKING)
 
-        // Suhbat konteksti: ota-onaning va yordamchining matnlari (kartalar va xatolar kirmaydi)
-        val turns = _state.value.items.mapNotNull {
-            when (it) {
-                is AssistantItem.Parent -> AssistantTurn(true, it.sent)
-                is AssistantItem.Reply -> AssistantTurn(false, it.text)
-                else -> null
-            }
-        }
+        val turns = historyTurns(_state.value.items)
         askJob?.cancel()
         askJob = screenModelScope.launch {
             ai.ask(turns, _state.value.child?.userId).collect { ev ->
@@ -639,6 +632,40 @@ class AssistantViewModel(
             speak(id)
         } else {
             mascot(if (answered && !stoppedByUser) MascotState.DONE else MascotState.IDLE, holdMs = if (answered) 2_000 else null)
+        }
+    }
+
+    /**
+     * Suhbat konteksti. Kartalar ham kiradi — yordamçi nima qilganini (va ota-ona kartani tasdiqlaganini yoki
+     * bekor qilganini) bilsin: aks holda faqat karta bilan javob berilgan savol "javobsiz" körinib, keyingi
+     * savolda shu vazifa / qoida qaytadan taklif qilinardi (bekor qilingani ham). Yonma-yon kelgan yordamçi
+     * qismlari bitta navbatga qöşiladi.
+     */
+    private fun historyTurns(items: List<AssistantItem>): List<AssistantTurn> {
+        val raw = items.mapNotNull {
+            when (it) {
+                is AssistantItem.Parent -> AssistantTurn(true, it.sent)
+                is AssistantItem.Reply -> AssistantTurn(false, it.text)
+                is AssistantItem.Draft -> {
+                    val what = (listOf(it.draft.title) + it.draft.lines).filter { l -> l.isNotBlank() }.joinToString("; ")
+                    val outcome = when (it.status) {
+                        DraftStatus.PENDING -> "not confirmed yet"
+                        DraftStatus.APPLYING, DraftStatus.APPLIED -> "the parent confirmed it, it is done"
+                        DraftStatus.DISCARDED -> "the parent cancelled it, do not offer it again unless asked"
+                    }
+                    AssistantTurn(false, "(Confirmation card for ${it.draft.childName}: $what — $outcome.)")
+                }
+                is AssistantItem.Location -> AssistantTurn(false, "(Showed ${it.card.childName}'s location on a map card.)")
+                is AssistantItem.Protection -> AssistantTurn(false, "(Showed ${it.card.childName}'s protection status card.)")
+                is AssistantItem.Nav -> AssistantTurn(false, "(Offered a button to open the ${it.target.screen.key} screen.)")
+                is AssistantItem.Problem -> AssistantTurn(false, "(No answer: error ${it.code}.)")
+            }
+        }
+        return raw.fold(mutableListOf()) { acc, t ->
+            val prev = acc.lastOrNull()
+            if (prev != null && !prev.fromParent && !t.fromParent) acc[acc.lastIndex] = prev.copy(text = prev.text + "\n" + t.text)
+            else acc += t
+            acc
         }
     }
 
