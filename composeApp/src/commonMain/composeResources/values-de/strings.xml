@@ -1501,4 +1501,7 @@
     <string name="chat_ai_title">Kluger Helfer</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Sprachhilfe</string>
+    <string name="pr_voice_help_sub">Eine „Anhören“-Taste auf jedem Bildschirm</string>
+    <string name="pr_what_is_hoglt">Was ist Hoglt?</string>
 </resources>

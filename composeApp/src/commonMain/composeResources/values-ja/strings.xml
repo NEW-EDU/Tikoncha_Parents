@@ -1502,4 +1502,7 @@
     <string name="chat_ai_title">かしこいアシスタント</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">音声ヘルプ</string>
+    <string name="pr_voice_help_sub">すべての画面に「聞く」ボタン</string>
+    <string name="pr_what_is_hoglt">Hoglt とは？</string>
 </resources>

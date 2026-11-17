@@ -1518,4 +1518,7 @@
     <string name="chat_ai_title">Акылдуу жардамчы</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Үн менен жардам</string>
+    <string name="pr_voice_help_sub">Ар бир экранда «Угуу» баскычы</string>
+    <string name="pr_what_is_hoglt">Hoglt деген эмне?</string>
 </resources>

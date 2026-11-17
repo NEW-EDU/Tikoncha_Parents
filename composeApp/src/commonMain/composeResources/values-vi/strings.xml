@@ -1518,4 +1518,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="chat_ai_title">Trợ lý thông minh</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Trợ giúp bằng giọng nói</string>
+    <string name="pr_voice_help_sub">Nút “Nghe” trên mọi màn hình</string>
+    <string name="pr_what_is_hoglt">Hoglt là gì?</string>
 </resources>

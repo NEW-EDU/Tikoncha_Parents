@@ -1518,4 +1518,7 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="chat_ai_title">Asisten pintar</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Bantuan suara</string>
+    <string name="pr_voice_help_sub">Tombol “Dengarkan” di setiap layar</string>
+    <string name="pr_what_is_hoglt">Apa itu Hoglt?</string>
 </resources>

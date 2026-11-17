@@ -1,6 +1,13 @@
 package uz.tikoncha_parent.presentation.profile
 
 import tikoncha_parents.composeapp.generated.resources.text_size_title
+import tikoncha_parents.composeapp.generated.resources.pr_voice_help
+import tikoncha_parents.composeapp.generated.resources.pr_voice_help_sub
+import tikoncha_parents.composeapp.generated.resources.pr_what_is_hoglt
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
+import uz.tikoncha_parent.presentation.video_tutorial.TutorialType
+import uz.tikoncha_parent.presentation.video_tutorial.openTutorial
+import uz.tikoncha_parent.presentation.voice_help.VoiceHelpPrefs
 import tikoncha_parents.composeapp.generated.resources.pr_section_help
 import uz.tikoncha_parent.presentation.tutorial_clips.TutorialClipsScreen
 import tikoncha_parents.composeapp.generated.resources.video_qollanma
@@ -487,6 +494,7 @@ private fun ProfileMenuFlat(
     navigator: Navigator?,
     onContactClick: () -> Unit,
 ) {
+    val voiceHelpOn by VoiceHelpPrefs.enabled.collectAsState()
     ProfileSectionLabel(stringResource(Res.string.pr_section_account))
     Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
         ProfileSectionItem(
@@ -512,7 +520,7 @@ private fun ProfileMenuFlat(
     Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
         ProfileSectionItem(
             segmentIndex = 0,
-            segmentCount = 3,
+            segmentCount = 4,
             title = stringResource(Res.string.tema),
             icon = painterResource(Res.drawable.theme_mode),
             onItemClick = {
@@ -522,7 +530,7 @@ private fun ProfileMenuFlat(
         // Matn o'lchami — Sozlamalar ekrani hech qayerdan ochilmaydi, shuning uchun shu yerda
         ProfileSectionItem(
             segmentIndex = 1,
-            segmentCount = 3,
+            segmentCount = 4,
             title = stringResource(Res.string.text_size_title),
             icon = painterResource(Res.drawable.file_text),
             onItemClick = {
@@ -531,12 +539,22 @@ private fun ProfileMenuFlat(
         )
         ProfileSectionItem(
             segmentIndex = 2,
-            segmentCount = 3,
+            segmentCount = 4,
             title = stringResource(Res.string.til),
             icon = painterResource(Res.drawable.global),
             onItemClick = {
                 navigator?.push(LanguageScreen())
             }
+        )
+        // Ovozli yordam: har ekrandagi «Tinglaş» tugmasi (öçirilsa — hamma ekranda yaşirinadi)
+        ProfileSectionItem(
+            segmentIndex = 3,
+            segmentCount = 4,
+            title = stringResource(Res.string.pr_voice_help),
+            subtitle = stringResource(Res.string.pr_voice_help_sub),
+            icon = rememberVectorPainter(Icons.AutoMirrored.Rounded.VolumeUp),
+            checked = voiceHelpOn,
+            onItemClick = { VoiceHelpPrefs.set(!voiceHelpOn) }
         )
     }
     ProfileSectionLabel(stringResource(Res.string.pr_section_payments))
@@ -584,14 +602,22 @@ private fun ProfileMenuFlat(
         // Ilovadagi qo'llanma kliplari (haqiqiy ekranlar, qayerga bosiş körsatilgan)
         ProfileSectionItem(
             segmentIndex = 0,
-            segmentCount = 3,
+            segmentCount = 4,
             title = stringResource(Res.string.video_qollanma),
             icon = painterResource(Res.drawable.media_play),
             onItemClick = { navigator?.push(TutorialClipsScreen()) }
         )
+        // «Hoglt nima?» — tanişuvni qayta oçadi (ilgari Bosh sahifaning tepasidagi ▶ tugma)
         ProfileSectionItem(
             segmentIndex = 1,
-            segmentCount = 3,
+            segmentCount = 4,
+            title = stringResource(Res.string.pr_what_is_hoglt),
+            icon = painterResource(Res.drawable.media_play),
+            onItemClick = { navigator?.openTutorial(TutorialType.TIKONCHA) }
+        )
+        ProfileSectionItem(
+            segmentIndex = 2,
+            segmentCount = 4,
             title = stringResource(Res.string.biz_haqimizda),
             icon = painterResource(Res.drawable.info_profile_us),
             onItemClick = {
@@ -599,8 +625,8 @@ private fun ProfileMenuFlat(
             }
         )
         ProfileSectionItem(
-            segmentIndex = 2,
-            segmentCount = 3,
+            segmentIndex = 3,
+            segmentCount = 4,
             title = stringResource(Res.string.biz_bilan_aloqa),
             icon = painterResource(Res.drawable.call_filled),
             onItemClick = onContactClick
@@ -641,6 +667,7 @@ private fun ProfileMenu3d(
     navigator: Navigator?,
     onContactClick: () -> Unit,
 ) {
+    val voiceHelpOn by VoiceHelpPrefs.enabled.collectAsState()
     ProfileSectionLabel(stringResource(Res.string.pr_section_account))
     ProfileTileGroup(
         listOf(
@@ -676,6 +703,14 @@ private fun ProfileMenu3d(
                 title = stringResource(Res.string.til),
                 icon = painterResource(Res.drawable.ic3d_pr_language),
                 onClick = { navigator?.push(LanguageScreen()) },
+            ),
+            // Ovozli yordam: 3D rasm yöq — rasm örnida switch
+            ProfileTile(
+                title = stringResource(Res.string.pr_voice_help),
+                subtitle = stringResource(Res.string.pr_voice_help_sub),
+                icon = null,
+                checked = voiceHelpOn,
+                onClick = { VoiceHelpPrefs.set(!voiceHelpOn) },
             ),
         )
     )
@@ -713,6 +748,12 @@ private fun ProfileMenu3d(
                 title = stringResource(Res.string.video_qollanma),
                 icon = painterResource(Res.drawable.ic3d_pr_video_help),
                 onClick = { navigator?.push(TutorialClipsScreen()) },
+            ),
+            // «Hoglt nima?» — tanişuvni qayta oçadi (ilgari Bosh sahifaning tepasidagi ▶ tugma)
+            ProfileTile(
+                title = stringResource(Res.string.pr_what_is_hoglt),
+                icon = painterResource(Res.drawable.ic3d_pr_video_help),
+                onClick = { navigator?.openTutorial(TutorialType.TIKONCHA) },
             ),
             ProfileTile(
                 title = stringResource(Res.string.biz_haqimizda),

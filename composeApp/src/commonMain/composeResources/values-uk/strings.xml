@@ -1501,4 +1501,7 @@
     <string name="chat_ai_title">Розумний помічник</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Голосова підказка</string>
+    <string name="pr_voice_help_sub">Кнопка «Послухати» на кожному екрані</string>
+    <string name="pr_what_is_hoglt">Що таке Hoglt?</string>
 </resources>

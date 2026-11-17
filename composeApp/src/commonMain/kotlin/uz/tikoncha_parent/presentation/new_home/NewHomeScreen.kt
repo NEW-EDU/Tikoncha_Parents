@@ -2,9 +2,9 @@
 
 package uz.tikoncha_parent.presentation.new_home
 
-import uz.tikoncha_parent.presentation.voice_help.VoiceHelpButton
-import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import tikoncha_parents.composeapp.generated.resources.profil
+import tikoncha_parents.composeapp.generated.resources.biz_bilan_aloqa
+import uz.tikoncha_parent.ui.expressivePress
 import uz.tikoncha_parent.presentation.base.CustomDialogTextField
 import tikoncha_parents.composeapp.generated.resources.contact_phone_title
 import tikoncha_parents.composeapp.generated.resources.contact_phone_msg
@@ -23,10 +23,7 @@ import uz.tikoncha_parent.presentation.base.island.ChildAvatar
 import uz.tikoncha_parent.ui.homeSubtitleColor
 import uz.tikoncha_parent.ui.homeBarColors
 import uz.tikoncha_parent.ui.homeChipColor
-import uz.tikoncha_parent.ui.homeNameAccent
 import uz.tikoncha_parent.ui.homeTileColor
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.SpanStyle
 import uz.tikoncha_parent.ui.autumnBackground
 import uz.tikoncha_parent.ui.tileBlob
 import uz.tikoncha_parent.ui.BlobPlace
@@ -39,7 +36,6 @@ import uz.tikoncha_parent.common.DateTimeUtil
 import tikoncha_parents.composeapp.generated.resources.sana_sarfladi
 import tikoncha_parents.composeapp.generated.resources.kecha_sarfladi
 import uz.tikoncha_parent.platform.BuildConfig
-import tikoncha_parents.composeapp.generated.resources.home_greeting
 import uz.tikoncha_parent.presentation.base.island.ProvideIsland
 import uz.tikoncha_parent.presentation.base.island.IslandSpec
 import androidx.compose.runtime.rememberUpdatedState
@@ -127,7 +123,6 @@ import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.home_table
 import tikoncha_parents.composeapp.generated.resources.home_task
 import tikoncha_parents.composeapp.generated.resources.rules_on_count
-import tikoncha_parents.composeapp.generated.resources.media_play
 import tikoncha_parents.composeapp.generated.resources.support_icon
 import tikoncha_parents.composeapp.generated.resources.topshiriqlar
 import uz.tikoncha_parent.domain.model.HourMinute
@@ -223,7 +218,7 @@ fun NewHomeUi(
         event(HomeEvent.RefreshParentRequest)
     }
 
-    // "Tikoncha nima?" kartasi körsatilmaydi (u faqat tanişuvni qayta oçardi) — doim tepadagi o'ng burçakdagi tugma.
+    // "Tikoncha nima?" kartasi körsatilmaydi (u faqat tanişuvni qayta oçardi) — Profil → Yordam → «Hoglt nima?».
     val showTikonchaTutorialCard = false
     val taskCount = state.activeTaskCount
     val tableCount = state.parentPolicyCount
@@ -313,87 +308,41 @@ fun NewHomeUi(
                 .autumnBackground()
                 .then(systemBars.modifier)
         ) {
-            val nameAccent = homeNameAccent()
-            // Tepada — faqat salomlashuv (o'qish joyi). Boshqaruv (yordam, farzand, profil) — pastki orolda.
+            // Tepada: çapda — profil (avatar + tişli belgi + ism, AI tugmasi uslubida), öngda — yordam (aloqa).
+            // «Tinglaş» — pastki orolda; «Hoglt nima?» tanişuvi — Profilda (Yordam bölimi).
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 20.dp, end = 16.dp, top = 14.dp, bottom = 6.dp),
-                verticalAlignment = Alignment.CenterVertically
+                    .padding(start = 16.dp, end = 16.dp, top = 14.dp, bottom = 6.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-                Text(
-                    // Ism — urg'u rangida ("Salom, Dilmurod")
-                    text = buildAnnotatedString {
-                        val full = stringResource(Res.string.home_greeting, state.userName)
-                        append(full)
-                        val at = if (state.userName.isNotBlank()) full.lastIndexOf(state.userName) else -1
-                        if (at >= 0) addStyle(SpanStyle(color = nameAccent), at, at + state.userName.length)
-                    },
-                    style = AppTypography.headlineSmSemiBold.copy(fontWeight = FontWeight.ExtraBold),
-                    color = AppColors.text.primary,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier.weight(1f),
+                HomeProfilePill(
+                    imageUrl = state.userImageUrl,
+                    name = state.userName,
+                    onClick = { navigator?.push(ProfileScreen()) },
+                    // Uzun ism — kesiladi, yordam tugmasini itarib çiqarmaydi
+                    modifier = Modifier.weight(1f, fill = false).padding(end = 12.dp),
                 )
-                // Profil — tepada, o'ng burçakda (pastki orolda AI keng tugma)
-                // Kiçkina tişli belgi — rasm profil va sozlamalarga olib borişini bildiradi
-                Box(
-                    modifier = Modifier
-                        .size(46.dp)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = null,
-                        ) { navigator?.push(ProfileScreen()) },
-                ) {
-                    ChildAvatar(
-                        state.userImageUrl,
-                        Modifier.size(42.dp).align(Alignment.Center),
-                        fallback = Res.drawable.parent_avatar_default,
+                FilledTonalIconButton(
+                    interactionSource = rememberHapticSource(),
+                    onClick = { showSupport = true },
+                    modifier = Modifier.size(48.dp),
+                    shapes = IconButtonDefaults.shapes(),
+                    colors = IconButtonDefaults.filledTonalIconButtonColors(
+                        containerColor = homeChipColor(),
+                        contentColor = AppColors.icon.accentPrimary
                     )
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.BottomEnd)
-                            .size(18.dp)
-                            .clip(CircleShape)
-                            .background(homeChipColor())
-                            .padding(2.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Icon(
-                            imageVector = Icons.Rounded.Settings,
-                            contentDescription = stringResource(Res.string.profil),
-                            tint = AppColors.icon.accentPrimary,
-                            modifier = Modifier.size(13.dp),
-                        )
-                    }
+                ) {
+                    Icon(
+                        painter = painterResource(Res.drawable.support_icon),
+                        contentDescription = stringResource(Res.string.biz_bilan_aloqa),
+                        modifier = Modifier.size(22.dp)
+                    )
                 }
-                Spacer(Modifier.width(8.dp))
-                if (!showTikonchaTutorialCard) {
-                    FilledTonalIconButton(
-                        interactionSource = rememberHapticSource(),
-                        onClick = {
-                            navigator?.openTutorial(TutorialType.TIKONCHA)
-                        },
-                        modifier = Modifier.size(44.dp),
-                        shapes = IconButtonDefaults.shapes(),
-                        colors = IconButtonDefaults.filledTonalIconButtonColors(
-                            containerColor = homeChipColor(),
-                            contentColor = AppColors.icon.accentPrimary
-                        )
-                    ) {
-                        Icon(
-                            painter = painterResource(Res.drawable.media_play),
-                            contentDescription = "",
-                            modifier = Modifier.size(NormalIconSize)
-                        )
-                    }
-                }
-                // Ovozli tuşuntiriş: bu ekran nima ekanini eşitib biliş
-                Spacer(Modifier.width(8.dp))
-                VoiceHelpButton(VoiceScreen.HOME)
             }
 
-            // Pastki orol: [profil] [yordam] [farzand ▴] — farzand tanlagich har ekrandagidek o'ng burchakda
+            // Pastki orol: [AI] [Tinglaş] [farzand ▴] — farzand tanlagich har ekrandagidek o'ng burchakda
             val pickerOpen = remember { MutableTransitionState("-hoglt.picker" in BuildConfig.debugLaunchArgs) }
             val latestState by rememberUpdatedState(state)
             val islandSpec = remember {
@@ -401,7 +350,6 @@ fun NewHomeUi(
                     HomeIslandContent(
                         state = latestState,
                         pickerOpen = pickerOpen,
-                        onSupport = { showSupport = true },
                         onAssistant = { navigator?.push(uz.tikoncha_parent.presentation.assistant.AssistantScreen()) },
                         onProfile = { navigator?.push(ProfileScreen()) },
                         onAddChild = { navigator?.push(AddChildScreen()) },
@@ -803,6 +751,65 @@ private fun usageSubtitle(day: kotlinx.datetime.LocalDate?): String {
     val today = kotlin.time.Clock.System.todayIn(kotlinx.datetime.TimeZone.currentSystemDefault())
     return if (day == today.minus(1, kotlinx.datetime.DateTimeUnit.DAY)) stringResource(Res.string.kecha_sarfladi)
     else stringResource(Res.string.sana_sarfladi, DateTimeUtil.formatLongDate(day).substringBeforeLast(' '))
+}
+
+/**
+ * Tepadagi profil "pill" — pastki oroldagi AI tugmasi uslubida (48dp, tonal urg'u foni): avatar (tişli belgi —
+ * profil va sozlamalarga olib borişini bildiradi) va ota-onaning ismi (uzun bölsa kesiladi).
+ */
+@Composable
+private fun HomeProfilePill(
+    imageUrl: String?,
+    name: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val source = remember { MutableInteractionSource() }
+    Row(
+        modifier = modifier
+            .heightIn(min = 48.dp)
+            .expressivePress(source, pressedScale = 0.96f)
+            .clip(CircleShape)
+            .background(AppColors.action.primary.copy(alpha = 0.14f))
+            .clickable(interactionSource = source, indication = null, onClick = onClick)
+            .padding(start = 6.dp, end = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(Modifier.size(38.dp)) {
+            ChildAvatar(
+                imageUrl,
+                Modifier.size(36.dp).align(Alignment.Center),
+                fallback = Res.drawable.parent_avatar_default,
+            )
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .offset(x = 2.dp, y = 2.dp)
+                    .size(16.dp)
+                    .clip(CircleShape)
+                    .background(homeChipColor())
+                    .padding(2.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Settings,
+                    contentDescription = stringResource(Res.string.profil),
+                    tint = AppColors.icon.accentPrimary,
+                    modifier = Modifier.size(12.dp),
+                )
+            }
+        }
+        if (name.isNotBlank()) {
+            Spacer(Modifier.width(10.dp))
+            Text(
+                text = name,
+                style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+                color = AppColors.text.primary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
+    }
 }
 
 /** Bloklar ichidagi vertikal bo'shliq (ixcham). */

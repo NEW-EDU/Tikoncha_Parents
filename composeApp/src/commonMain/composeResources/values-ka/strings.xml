@@ -1518,4 +1518,7 @@
     <string name="chat_ai_title">ჭკვიანი დამხმარე</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">ხმოვანი დახმარება</string>
+    <string name="pr_voice_help_sub">ღილაკი „მოსმენა“ ყველა ეკრანზე</string>
+    <string name="pr_what_is_hoglt">რა არის Hoglt?</string>
 </resources>

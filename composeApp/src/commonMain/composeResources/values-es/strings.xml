@@ -1518,4 +1518,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="chat_ai_title">Asistente inteligente</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Ayuda por voz</string>
+    <string name="pr_voice_help_sub">Un botón «Escuchar» en cada pantalla</string>
+    <string name="pr_what_is_hoglt">¿Qué es Hoglt?</string>
 </resources>

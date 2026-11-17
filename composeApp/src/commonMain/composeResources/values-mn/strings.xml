@@ -1518,4 +1518,7 @@
     <string name="chat_ai_title">Ухаалаг туслах</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Дуут тусламж</string>
+    <string name="pr_voice_help_sub">Дэлгэц бүрт «Сонсох» товч</string>
+    <string name="pr_what_is_hoglt">Hoglt гэж юу вэ?</string>
 </resources>

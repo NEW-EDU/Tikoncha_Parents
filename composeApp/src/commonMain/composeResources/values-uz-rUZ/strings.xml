@@ -1558,4 +1558,7 @@
     <string name="chat_ai_title">Ақлли ёрдамчи</string>
     <string name="profile_variant_a">Профил: A (оддий)</string>
     <string name="profile_variant_b">Профил: B (3D)</string>
+    <string name="pr_voice_help">Овозли ёрдам</string>
+    <string name="pr_voice_help_sub">Ҳар экранда «Тинглаш» тугмаси</string>
+    <string name="pr_what_is_hoglt">Hoglt нима?</string>
 </resources>

@@ -1501,4 +1501,7 @@
     <string name="chat_ai_title">Pembantu pintar</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Bantuan suara</string>
+    <string name="pr_voice_help_sub">Butang “Dengar” pada setiap skrin</string>
+    <string name="pr_what_is_hoglt">Apakah Hoglt?</string>
 </resources>

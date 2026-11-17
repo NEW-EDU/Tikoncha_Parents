@@ -38,6 +38,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -68,13 +69,16 @@ import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.arrow_back
 import uz.tikoncha_parent.domain.model.UserInfo
 import uz.tikoncha_parent.platform.isIos
+import uz.tikoncha_parent.presentation.voice_help.VoiceHelpIconButton
+import uz.tikoncha_parent.presentation.voice_help.VoiceHelpPrefs
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import uz.tikoncha_parent.ui.expressiveButtonShapes
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
 
 /*
  * Pastki "orol" (M3 Expressive floating toolbar) — bir qo'l bilan ishlatish uchun ekranning BUTUN boshqaruvi pastda:
- * [‹ orqaga] [ekran nomi] [farzand tanlagich ▴ / amallar]. Tepada sarlavha yo'q — joy kontentga.
+ * [‹ orqaga] [ekran nomi] [amallar] [Tinglaş] [farzand tanlagich ▴]. Tepada sarlavha yo'q — joy kontentga.
  *
  * Har ekran o'z orolini oladi ([ScreenWithIsland], navigatsiya qatlamida) — swipe-back paytida orol ekran bilan
  * birga suriladi. Ekran uni [CustomHeader] (sarlavha, orqaga, amallar, farzand tanlagich) yoki [ProvideIsland]
@@ -124,6 +128,8 @@ class IslandSpec(
     val picker: (() -> ChildPickerSpec?)? = null,
     val actions: (@Composable RowScope.() -> Unit)? = null,
     val content: (@Composable RowScope.() -> Unit)? = null,
+    /** «Tinglaş» (ovozli tuşuntiriş) — faqat ikonka, amallardan keyin, farzand tanlagichdan oldin. */
+    val voice: VoiceScreen? = null,
     /** Kontent tepasi (status bar ostida) yumaloqlansinmi — ro'yxat [CustomHeader] dan keyin darhol boshlansa. */
     val roundTop: Boolean = true,
 )
@@ -242,6 +248,8 @@ private fun BoxScope.IslandOverlay(state: IslandState) {
     if (state.imeVisible != imeOpen) state.imeVisible = imeOpen
     val spec = state.spec
     val bottom = islandBottomOffset()
+    // Profil → "Ovozli yordam" öçiq bölsa «Tinglaş» yöq — farzand tanlagich yana ismi bilan körinadi
+    val voiceEnabled by VoiceHelpPrefs.enabled.collectAsState()
     AnimatedVisibility(
         visible = spec != null && !imeOpen,
         modifier = Modifier.align(Alignment.BottomCenter),
@@ -280,8 +288,11 @@ private fun BoxScope.IslandOverlay(state: IslandState) {
                 else -> Spacer(Modifier.weight(1f))
             }
             s.actions?.invoke(this)
+            val voice = s.voice?.takeIf { voiceEnabled }
+            if (voice != null) VoiceHelpIconButton(voice)
             s.picker?.invoke()?.let { p ->
-                IslandChildPicker(p, modifier = Modifier.widthIn(max = 164.dp), compact = s.actions != null)
+                // Amal yoki «Tinglaş» bor — tanlagich ixçam (avatar + ▴), sarlavhaga joy qolsin
+                IslandChildPicker(p, modifier = Modifier.widthIn(max = 164.dp), compact = s.actions != null || voice != null)
             }
         }
     }

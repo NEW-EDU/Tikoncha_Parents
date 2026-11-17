@@ -1518,4 +1518,7 @@
     <string name="chat_ai_title">Խելացի օգնական</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Ձայնային օգնություն</string>
+    <string name="pr_voice_help_sub">«Լսել» կոճակ յուրաքանչյուր էկրանին</string>
+    <string name="pr_what_is_hoglt">Ի՞նչ է Hoglt-ը</string>
 </resources>

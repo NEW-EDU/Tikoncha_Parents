@@ -1512,4 +1512,7 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="chat_ai_title">Assistant malin</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Aide vocale</string>
+    <string name="pr_voice_help_sub">Un bouton « Écouter » sur chaque écran</string>
+    <string name="pr_what_is_hoglt">Qu’est-ce que Hoglt ?</string>
 </resources>

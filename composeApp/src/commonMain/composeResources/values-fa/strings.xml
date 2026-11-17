@@ -1502,4 +1502,7 @@
     <string name="chat_ai_title">دستیار هوشمند</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">راهنمای صوتی</string>
+    <string name="pr_voice_help_sub">دکمهٔ «گوش دادن» در هر صفحه</string>
+    <string name="pr_what_is_hoglt">Hoglt چیست؟</string>
 </resources>

@@ -1518,4 +1518,7 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="chat_ai_title">Akıllı yardımcı</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Sesli yardım</string>
+    <string name="pr_voice_help_sub">Her ekranda “Dinle” düğmesi</string>
+    <string name="pr_what_is_hoglt">Hoglt nedir?</string>
 </resources>

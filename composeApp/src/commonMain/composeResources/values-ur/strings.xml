@@ -1518,4 +1518,7 @@
     <string name="chat_ai_title">سمارٹ مددگار</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">آواز میں مدد</string>
+    <string name="pr_voice_help_sub">ہر اسکرین پر “سنیں” کا بٹن</string>
+    <string name="pr_what_is_hoglt">Hoglt کیا ہے؟</string>
 </resources>

@@ -1559,4 +1559,7 @@ This information is used only for these features and is not shared with third pa
     <string name="chat_ai_title">Smart helper</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Voice help</string>
+    <string name="pr_voice_help_sub">A Listen button on every screen</string>
+    <string name="pr_what_is_hoglt">What is Hoglt?</string>
 </resources>

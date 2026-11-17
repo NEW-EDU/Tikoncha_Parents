@@ -50,6 +50,13 @@ import tikoncha_parents.composeapp.generated.resources.ic3d_pr_screen_colour
 import tikoncha_parents.composeapp.generated.resources.ic3d_pr_text_size
 import tikoncha_parents.composeapp.generated.resources.profile
 import uz.tikoncha_parent.presentation.base.singleClick
+import uz.tikoncha_parent.presentation.policy.components.PolicySwitch
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.toggleableState
+import androidx.compose.ui.state.ToggleableState
 import uz.tikoncha_parent.ui.BlobPlace
 import uz.tikoncha_parent.ui.SegmentGap
 import uz.tikoncha_parent.ui.SmallIconSize
@@ -68,6 +75,7 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
  * guruh uslubida chiziq kerak emas (imzo mos kelishi uchun qoldirilgan).
  * Faqat tekis (bir rangli) ikonkalar uchun (Profil — A variant, Tangalar, Qöllanma kliplari, Sozlamalar). 3D rasmlar
  * (`ic3d_*`) kiçik qatorga sig'maydi — ular uçun [ProfileTileGroup] (Profil — B variant, [ProfileVariant]).
+ * [checked] berilsa — strelka örnida switch (qatorni bosiş ham almaştiradi, [onItemClick]); [subtitle] — ostida izoh.
  */
 @Composable
 fun ProfileSectionItem(
@@ -79,11 +87,14 @@ fun ProfileSectionItem(
     iconColor: Color = AppColors.icon.accentPrimary,
     segmentIndex: Int = 0,
     segmentCount: Int = 1,
+    subtitle: String? = null,
+    checked: Boolean? = null,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = 64.dp)
+            .then(if (checked != null) Modifier.switchRowSemantics(checked) else Modifier)
             .expressiveSegment(segmentIndex, segmentCount, color = AppColors.bg.surface) { onItemClick() }
             .padding(horizontal = 14.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -103,19 +114,48 @@ fun ProfileSectionItem(
             )
         }
         Spacer(Modifier.width(14.dp))
-        Text(
-            text = title,
-            color = textColor,
-            style = AppTypography.titleMdSemiBold,
-            modifier = Modifier.weight(1f),
-        )
-        Icon(
-            imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
-            contentDescription = null,
-            tint = AppColors.icon.secondary,
-            modifier = Modifier.size(22.dp),
-        )
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                color = textColor,
+                style = AppTypography.titleMdSemiBold,
+            )
+            if (subtitle != null) {
+                Text(
+                    text = subtitle,
+                    color = AppColors.text.secondary,
+                    style = AppTypography.bodyMdRegular,
+                )
+            }
+        }
+        if (checked != null) {
+            Spacer(Modifier.width(12.dp))
+            ProfileRowSwitch(checked = checked, onToggle = onItemClick)
+        } else {
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
+                contentDescription = null,
+                tint = AppColors.icon.secondary,
+                modifier = Modifier.size(22.dp),
+            )
+        }
     }
+}
+
+/** Switch'li qator ekran öquvçisi uçun bitta "switch" element (ichidagi switch alohida öqilmaydi). */
+private fun Modifier.switchRowSemantics(checked: Boolean): Modifier = semantics {
+    role = Role.Switch
+    toggleableState = if (checked) ToggleableState.On else ToggleableState.Off
+}
+
+/** Profil qatoridagi switch — jadval ekranlaridagi bilan bir xil ([PolicySwitch]); bosilsa qatordagi amal. */
+@Composable
+private fun ProfileRowSwitch(checked: Boolean, onToggle: () -> Unit) {
+    PolicySwitch(
+        checked = checked,
+        onCheckedChange = { onToggle() },
+        modifier = Modifier.clearAndSetSemantics { },
+    )
 }
 
 /** Profil menyusidagi guruh sarlavhasi (kichik, xira — e'tiborni elementlarga qoldiradi). */
@@ -132,10 +172,15 @@ fun ProfileSectionLabel(text: String) {
 /** Profil qatoridagi 3D rasm — bosh sahifa qatorlaridagi kabi joy beriladi (u yerda 76dp). */
 val ProfileTileIconSize = 60.dp
 
-/** Profil bölimidagi bitta qator: sarlavha, 3D rasm (`ic3d_pr_*`) va bosilganda nima bo'lishi. */
+/**
+ * Profil bölimidagi bitta qator: sarlavha, 3D rasm (`ic3d_pr_*`) va bosilganda nima bo'lishi.
+ * [checked] berilsa — rasm örnida switch (qatorni bosiş ham almaştiradi); [subtitle] — sarlavha ostida izoh.
+ */
 class ProfileTile(
     val title: String,
-    val icon: Painter,
+    val icon: Painter?,
+    val subtitle: String? = null,
+    val checked: Boolean? = null,
     val onClick: () -> Unit,
 )
 
@@ -161,22 +206,39 @@ fun ProfileTileGroup(
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(min = 88.dp)
+                    .then(tile.checked?.let { Modifier.switchRowSemantics(it) } ?: Modifier)
                     .expressiveSegment(i, tiles.size, color = tileColor, onClick = tile.onClick)
                     .padding(start = 20.dp, end = 14.dp, top = 10.dp, bottom = 10.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(
-                    text = tile.title,
-                    style = AppTypography.titleLgSemiBold,
-                    color = titleColor,
-                    modifier = Modifier.weight(1f),
-                )
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = tile.title,
+                        style = AppTypography.titleLgSemiBold,
+                        color = titleColor,
+                    )
+                    if (tile.subtitle != null) {
+                        Text(
+                            text = tile.subtitle,
+                            style = AppTypography.bodyMdRegular,
+                            color = AppColors.text.secondary,
+                        )
+                    }
+                }
                 Spacer(Modifier.width(12.dp))
-                Image(
-                    painter = tile.icon,
-                    contentDescription = null,
-                    modifier = Modifier.size(ProfileTileIconSize),
-                )
+                val checked = tile.checked
+                if (checked != null) {
+                    // Rasmlar ustuni bilan bir çiziqda (markazda)
+                    Box(Modifier.width(ProfileTileIconSize), contentAlignment = Alignment.Center) {
+                        ProfileRowSwitch(checked = checked, onToggle = tile.onClick)
+                    }
+                } else if (tile.icon != null) {
+                    Image(
+                        painter = tile.icon,
+                        contentDescription = null,
+                        modifier = Modifier.size(ProfileTileIconSize),
+                    )
+                }
             }
         }
     }

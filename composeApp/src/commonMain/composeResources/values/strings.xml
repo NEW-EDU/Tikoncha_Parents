@@ -1567,4 +1567,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="chat_ai_title">Aqlli yordamçi</string>
     <string name="profile_variant_a">Profil: A (oddiy)</string>
     <string name="profile_variant_b">Profil: B (3D)</string>
+    <string name="pr_voice_help">Ovozli yordam</string>
+    <string name="pr_voice_help_sub">Har ekranda «Tinglaş» tugmasi</string>
+    <string name="pr_what_is_hoglt">Hoglt nima?</string>
 </resources>

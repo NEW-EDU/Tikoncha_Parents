@@ -1502,4 +1502,7 @@
     <string name="chat_ai_title">똑똑한 도우미</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">음성 도움말</string>
+    <string name="pr_voice_help_sub">모든 화면에 ‘듣기’ 버튼</string>
+    <string name="pr_what_is_hoglt">Hoglt란?</string>
 </resources>

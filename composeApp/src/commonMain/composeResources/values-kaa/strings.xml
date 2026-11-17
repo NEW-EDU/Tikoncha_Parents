@@ -1501,4 +1501,7 @@
     <string name="chat_ai_title">Aqıllı járdemshi</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Dawıslı járdem</string>
+    <string name="pr_voice_help_sub">Hár ekranda «Tıńlaw» túymesi</string>
+    <string name="pr_what_is_hoglt">Hoglt degen ne?</string>
 </resources>

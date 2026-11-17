@@ -1502,4 +1502,7 @@
     <string name="chat_ai_title">Ёрдамчии зирак</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">Ёрдами овозӣ</string>
+    <string name="pr_voice_help_sub">Тугмаи «Гӯш кардан» дар ҳар экран</string>
+    <string name="pr_what_is_hoglt">Hoglt чист?</string>
 </resources>

@@ -1566,4 +1566,7 @@
     <string name="chat_ai_title">Умный помощник</string>
     <string name="profile_variant_a">Профиль: A (простой)</string>
     <string name="profile_variant_b">Профиль: B (3D)</string>
+    <string name="pr_voice_help">Голосовая подсказка</string>
+    <string name="pr_voice_help_sub">Кнопка «Послушать» на каждом экране</string>
+    <string name="pr_what_is_hoglt">Что такое Hoglt?</string>
 </resources>

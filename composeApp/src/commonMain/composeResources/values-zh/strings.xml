@@ -1502,4 +1502,7 @@
     <string name="chat_ai_title">智能助手</string>
     <string name="profile_variant_a">Profile: A (simple)</string>
     <string name="profile_variant_b">Profile: B (3D)</string>
+    <string name="pr_voice_help">语音帮助</string>
+    <string name="pr_voice_help_sub">每个页面都有“收听”按钮</string>
+    <string name="pr_what_is_hoglt">Hoglt 是什么？</string>
 </resources>
