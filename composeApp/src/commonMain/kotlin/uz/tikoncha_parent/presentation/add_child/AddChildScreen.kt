@@ -1,4 +1,7 @@
-@file:OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
+@file:OptIn(
+    androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class,
+    cafe.adriel.voyager.core.annotation.InternalVoyagerApi::class,
+)
 
 package uz.tikoncha_parent.presentation.add_child
 
@@ -13,7 +16,6 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -38,6 +40,7 @@ import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.outlined.ContentCopy
+import androidx.compose.material.icons.outlined.Keyboard
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -50,6 +53,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -68,11 +72,12 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import cafe.adriel.voyager.navigator.internal.BackHandler
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.mascot_guide
 import tikoncha_parents.composeapp.generated.resources.ac_step_show_code
 import tikoncha_parents.composeapp.generated.resources.add_child_scan_qr
 import tikoncha_parents.composeapp.generated.resources.scan
@@ -80,8 +85,6 @@ import tikoncha_parents.composeapp.generated.resources.ac_step_phone
 import tikoncha_parents.composeapp.generated.resources.ac_step_install
 import tikoncha_parents.composeapp.generated.resources.ac_step_enter_code
 import tikoncha_parents.composeapp.generated.resources.ac_step_child_enters
-import tikoncha_parents.composeapp.generated.resources.ac_hero_title
-import tikoncha_parents.composeapp.generated.resources.ac_hero_sub
 import tikoncha_parents.composeapp.generated.resources.dialog_success
 import tikoncha_parents.composeapp.generated.resources.dialog_warning
 import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
@@ -243,23 +246,83 @@ private fun AddChildContent(
 ) {
 
     val focusManager = LocalFocusManager.current
-    var showQrScanner by remember { mutableStateOf(false) }
-    if (showQrScanner) {
-        LinkQrScannerDialog(
-            onCode = { code ->
-                showQrScanner = false
-                // Faqat maydonni töldiradi — ulaşni ota-ona özi tasdiqlaydi
-                event(AddChildEvent.LinkCodeChanged(code))
-            },
-            onDismiss = { showQrScanner = false },
-        )
+    // Sahifa kamera bilan oçiladi: QR ni skanerlaş — eng oson yöl. Kod yozish/telefon raqami — zaxira.
+    var scanning by rememberSaveable { mutableStateOf(true) }
+    BackHandler(!scanning) { scanning = true }
+
+    // Skanerlangan kod darhol ulanadi. Rad etilgan kod bir necha soniya e'tiborsiz qoladi,
+    // aks holda kamera hali unga qarab turganda xato oynasi qayta-qayta çiqadi.
+    var submitting by remember { mutableStateOf(false) }
+    var rejectedCode by remember { mutableStateOf<String?>(null) }
+    LaunchedEffect(state.error) {
+        if (state.error != null && submitting) {
+            rejectedCode = state.linkCode
+            submitting = false
+        } else if (state.error == null && rejectedCode != null) {
+            delay(4_000)
+            rejectedCode = null
+        }
     }
+    val onScanned: (String) -> Unit = { code ->
+        val busy = submitting || state.isLoading || state.error != null || state.linkedChild != null
+        if (!busy && code != rejectedCode) {
+            submitting = true
+            event(AddChildEvent.LinkCodeChanged(code))
+            event(AddChildEvent.RedeemCode)
+        }
+    }
+
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.page,
         navigationBarColor = AppColors.bg.page
     )
     // Qo'llanma videosi faqat o'zbekcha — boshqa tillarda sahifaning o'zi qadam-baqadam qo'llanma
     val hasVideo = hasTutorialVideo()
+
+    if (scanning) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .then(systemBars.modifier)
+                .background(AppColors.bg.page)
+        ) {
+            CustomHeader(
+                title = stringResource(Res.string.farzand_qo_shish),
+                onBackClick = onBack,
+                showBackButton = true,
+                trailingIcon = if (hasVideo) {
+                    { TutorialIconButton(onTutorial) }
+                } else null
+            )
+            LinkQrScanner(
+                isLinking = state.isLoading,
+                onCode = onScanned,
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+            )
+            Space(12.dp)
+            // Kamera işlamasa yoki farzand telefonida ilova hali yöq bölsa — kod / telefon raqami / ilova havolasi
+            CustomButtonNew(
+                text = stringResource(Res.string.ulash_usuli_kod),
+                onClick = { scanning = false },
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                containerColor = AppColors.button.secondary,
+                contentColor = AppColors.text.primary,
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Outlined.Keyboard,
+                        contentDescription = null,
+                        tint = AppColors.text.primary,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+            )
+            Space(12.dp)
+        }
+        return
+    }
 
     Column(
         modifier = Modifier
@@ -269,25 +332,11 @@ private fun AddChildContent(
     ) {
         CustomHeader(
             title = stringResource(Res.string.farzand_qo_shish),
-            onBackClick = onBack,
+            onBackClick = { scanning = true },
             showBackButton = true,
             trailingIcon = {
                 if (hasVideo && !state.showBindChildTutorial) {
-                    IconButton(
-                        onClick = onTutorial,
-                        modifier = Modifier.size(44.dp),
-                        colors = IconButtonDefaults.iconButtonColors(
-                            containerColor = AppColors.bg.surfaceTertiary,
-                            contentColor = AppColors.icon.accentPrimary
-                        )
-                    ) {
-                        Icon(
-                            painter = painterResource(Res.drawable.media_play),
-                            contentDescription = "",
-                            modifier = Modifier.size(NormalIconSize)
-                        )
-                    }
-                    SpaceUltraSmall()
+                    TutorialIconButton(onTutorial)
                 }
             }
         )
@@ -310,8 +359,6 @@ private fun AddChildContent(
             }
 
             Space(8.dp)
-            Hero()
-            Space(18.dp)
 
             // Bog'lash usuli: telefonsiz ulanish kodi (standart) yoki telefon raqami
             TaskSegmentedToggle(
@@ -361,7 +408,7 @@ private fun AddChildContent(
                                 onCodeChange = { event(AddChildEvent.LinkCodeChanged(it)) },
                                 onScan = {
                                     focusManager.clearFocus()
-                                    showQrScanner = true
+                                    scanning = true
                                 },
                                 onRedeem = {
                                     focusManager.clearFocus()
@@ -430,30 +477,23 @@ private fun AddChildContent(
     }
 }
 
-/** Sahifa boshi: tipratikon + nima qilishimiz haqida bir jumla. */
 @Composable
-private fun Hero() {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Image(
-            painter = painterResource(Res.drawable.mascot_guide),
-            contentDescription = null,
-            modifier = Modifier.size(84.dp)
+private fun TutorialIconButton(onClick: () -> Unit) {
+    IconButton(
+        onClick = onClick,
+        modifier = Modifier.size(44.dp),
+        colors = IconButtonDefaults.iconButtonColors(
+            containerColor = AppColors.bg.surfaceTertiary,
+            contentColor = AppColors.icon.accentPrimary
         )
-        Spacer(Modifier.width(12.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                text = stringResource(Res.string.ac_hero_title),
-                style = AppTypography.headlineSmSemiBold.copy(fontWeight = FontWeight.ExtraBold),
-                color = AppColors.text.primary
-            )
-            Space(4.dp)
-            Text(
-                text = stringResource(Res.string.ac_hero_sub),
-                style = AppTypography.emphasizedSmMedium,
-                color = AppColors.text.tertiary
-            )
-        }
+    ) {
+        Icon(
+            painter = painterResource(Res.drawable.media_play),
+            contentDescription = "",
+            modifier = Modifier.size(NormalIconSize)
+        )
     }
+    SpaceUltraSmall()
 }
 
 /**
