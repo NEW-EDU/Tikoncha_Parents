@@ -1205,7 +1205,7 @@
     <string name="ac_hero_title">Балаңыздың телефонын байланыстырыңыз</string>
     <string name="ac_hero_sub">Бұл бір минут алады — балаңыздың телефонын жаныңызда ұстаңыз.</string>
     <string name="ac_step_install">Балаңыздың телефонына Hoglt орнатыңыз</string>
-    <string name="ac_step_show_code">Оның телефонында: Профиль → Ата-ананы қосу → Кодымды көрсету</string>
+    <string name="ac_step_show_code">Оның телефонында: Басқа → Ата-ананы қосу</string>
     <string name="ac_step_enter_code">Көрген 8 таңбалы кодты енгізіңіз</string>
     <string name="ac_step_phone">Балаңыздың телефон нөмірін енгізіңіз</string>
     <string name="ac_step_child_enters">Кодты балаңыздың телефонына енгізіңіз</string>

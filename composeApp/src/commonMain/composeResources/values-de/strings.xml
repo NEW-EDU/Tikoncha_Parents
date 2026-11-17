@@ -1205,7 +1205,7 @@
     <string name="ac_hero_title">Verknüpfe das Handy deines Kindes</string>
     <string name="ac_hero_sub">Das dauert eine Minute – halte das Handy deines Kindes bereit.</string>
     <string name="ac_step_install">Installiere Hoglt auf dem Handy deines Kindes</string>
-    <string name="ac_step_show_code">Auf seinem Handy: Profil → Elternteil hinzufügen → Meinen Code anzeigen</string>
+    <string name="ac_step_show_code">Auf seinem Handy: Sonstiges → Elternteil hinzufügen</string>
     <string name="ac_step_enter_code">Gib den angezeigten 8-stelligen Code ein</string>
     <string name="ac_step_phone">Gib die Telefonnummer deines Kindes ein</string>
     <string name="ac_step_child_enters">Gib den Code auf dem Handy deines Kindes ein</string>

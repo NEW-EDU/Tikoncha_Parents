@@ -1216,7 +1216,7 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="ac_hero_title">Liez le téléphone de votre enfant</string>
     <string name="ac_hero_sub">Cela prend une minute : gardez le téléphone de votre enfant à portée de main.</string>
     <string name="ac_step_install">Installez Hoglt sur le téléphone de votre enfant</string>
-    <string name="ac_step_show_code">Sur son téléphone : Profil → Ajouter un parent → Afficher mon code</string>
+    <string name="ac_step_show_code">Sur son téléphone : Autres → Ajouter un parent</string>
     <string name="ac_step_enter_code">Saisissez le code à 8 chiffres affiché</string>
     <string name="ac_step_phone">Saisissez le numéro de téléphone de votre enfant</string>
     <string name="ac_step_child_enters">Saisissez le code affiché sur le téléphone de votre enfant</string>

@@ -1205,7 +1205,7 @@
     <string name="ac_hero_title">Підключіть телефон дитини</string>
     <string name="ac_hero_sub">Це займе хвилину — тримайте телефон дитини поруч.</string>
     <string name="ac_step_install">Установіть Hoglt на телефон дитини</string>
-    <string name="ac_step_show_code">На її телефоні: Профіль → Додати батьків → Показати мій код</string>
+    <string name="ac_step_show_code">На її телефоні: Інше → Додати батьків</string>
     <string name="ac_step_enter_code">Введіть 8-значний код, який ви бачите</string>
     <string name="ac_step_phone">Введіть номер телефону вашої дитини</string>
     <string name="ac_step_child_enters">Введіть код на телефоні вашої дитини</string>

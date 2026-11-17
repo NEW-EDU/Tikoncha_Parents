@@ -1222,7 +1222,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="ac_hero_title">Liên kết điện thoại của con</string>
     <string name="ac_hero_sub">Chỉ mất một phút — hãy để điện thoại của con ở gần.</string>
     <string name="ac_step_install">Cài Hoglt trên điện thoại của con</string>
-    <string name="ac_step_show_code">Trên điện thoại của con: Hồ sơ → Thêm phụ huynh → Hiện mã của tôi</string>
+    <string name="ac_step_show_code">Trên điện thoại của con: Khác → Thêm phụ huynh</string>
     <string name="ac_step_enter_code">Nhập mã 8 chữ số bạn thấy</string>
     <string name="ac_step_phone">Nhập số điện thoại của con</string>
     <string name="ac_step_child_enters">Nhập mã trên điện thoại của con</string>

@@ -1206,7 +1206,7 @@
     <string name="ac_hero_title">お子さまのスマートフォンをリンク</string>
     <string name="ac_hero_sub">1分で終わります。お子さまのスマートフォンを手元にご用意ください。</string>
     <string name="ac_step_install">お子さまのスマートフォンにHogltをインストール</string>
-    <string name="ac_step_show_code">お子さまのスマートフォンで：プロフィール → 保護者を追加 → 自分のコードを表示</string>
+    <string name="ac_step_show_code">お子さまのスマートフォンで：その他 → 保護者を追加</string>
     <string name="ac_step_enter_code">表示された8桁のコードを入力</string>
     <string name="ac_step_phone">お子さまの電話番号を入力</string>
     <string name="ac_step_child_enters">お子さまのスマートフォンでコードを入力</string>

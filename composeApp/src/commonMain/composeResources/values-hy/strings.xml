@@ -1222,7 +1222,7 @@
     <string name="ac_hero_title">Կապեք ձեր երեխայի հեռախոսը</string>
     <string name="ac_hero_sub">Դա կտևի մեկ րոպե՝ պահեք ձեր երեխայի հեռախոսը մոտակայքում։</string>
     <string name="ac_step_install">Տեղադրեք Hoglt-ը ձեր երեխայի հեռախոսում</string>
-    <string name="ac_step_show_code">Նրա հեռախոսում՝ Պրոֆիլ → Ավելացնել ծնող → Ցույց տալ իմ կոդը</string>
+    <string name="ac_step_show_code">Նրա հեռախոսում՝ Այլ → Ավելացնել ծնող</string>
     <string name="ac_step_enter_code">Մուտքագրեք ձեր տեսած 8 նիշանոց կոդը</string>
     <string name="ac_step_phone">Մուտքագրեք ձեր երեխայի հեռախոսահամարը</string>
     <string name="ac_step_child_enters">Մուտքագրեք կոդը ձեր երեխայի հեռախոսում</string>

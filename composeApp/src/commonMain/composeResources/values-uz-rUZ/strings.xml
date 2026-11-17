@@ -1222,7 +1222,7 @@
     <string name="ac_hero_title">Фарзандингиз телефонини уланг</string>
     <string name="ac_hero_sub">Бир дақиқа вақт олади — фарзандингиз телефони ёнингизда бўлсин.</string>
     <string name="ac_step_install">Фарзандингиз телефонига Tikoncha иловасини ўрнатинг</string>
-    <string name="ac_step_show_code">Унинг телефонида: Профил → Ота-она қўшиш → Кодимни кўрсатиш</string>
+    <string name="ac_step_show_code">Унинг телефонида: Бошқа → Ота-она қўшиш</string>
     <string name="ac_step_enter_code">Кўрсатилган 8 хонали кодни киритинг</string>
     <string name="ac_step_phone">Фарзандингиз телефон рақамини киритинг</string>
     <string name="ac_step_child_enters">Кодни фарзандингиз телефонида киритинг</string>

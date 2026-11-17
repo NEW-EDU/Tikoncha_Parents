@@ -1222,7 +1222,7 @@
     <string name="ac_hero_title">Vincule o celular do seu filho</string>
     <string name="ac_hero_sub">Leva um minuto: deixe o celular do seu filho por perto.</string>
     <string name="ac_step_install">Instale o Hoglt no celular do seu filho</string>
-    <string name="ac_step_show_code">No celular dele: Perfil → Adicionar responsável → Mostrar meu código</string>
+    <string name="ac_step_show_code">No celular dele: Outros → Adicionar responsável</string>
     <string name="ac_step_enter_code">Digite o código de 8 dígitos que você vê</string>
     <string name="ac_step_phone">Digite o número de telefone do seu filho</string>
     <string name="ac_step_child_enters">Digite o código no celular do seu filho</string>

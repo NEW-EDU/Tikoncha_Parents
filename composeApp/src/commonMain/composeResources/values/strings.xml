@@ -1232,7 +1232,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ac_hero_title">Farzandingiz telefonini ulang</string>
     <string name="ac_hero_sub">Bir daqiqa vaqt oladi — farzandingiz telefoni yoningizda bölsin.</string>
     <string name="ac_step_install">Farzandingiz telefoniga Tikoncha ilovasini örnating</string>
-    <string name="ac_step_show_code">Uning telefonida: Profil → Ota-ona qöşiş → Kodimni körsatiş</string>
+    <string name="ac_step_show_code">Uning telefonida: Boşqa → Ota-ona qöşiş</string>
     <string name="ac_step_enter_code">Körsatilgan 8 xonali kodni kiriting</string>
     <string name="ac_step_phone">Farzandingiz telefon raqamini kiriting</string>
     <string name="ac_step_child_enters">Kodni farzandingiz telefonida kiriting</string>

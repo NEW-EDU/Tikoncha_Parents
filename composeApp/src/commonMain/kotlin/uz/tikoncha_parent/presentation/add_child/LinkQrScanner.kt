@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.add_child
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,7 +20,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.RoundRect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathFillType
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.stringResource
@@ -66,9 +75,30 @@ internal fun LinkQrScanner(
             },
             imagePickerHandler = {},
             onFailure = { wrongQr = true },
+            // qr-kit'ning öz ötkir burçakli kvadrati yaşiriladi — örniga pastdagi yumaloq ramka
+            overlayColor = Color.Transparent,
+            overlayBorderColor = Color.Transparent,
         )
 
-        // Skanerlaş ramkasini qr-kit özi çizadi.
+        // Yumaloq ramka: atrofi xiralaşgan, örtasi oçiq
+        Canvas(Modifier.matchParentSize()) {
+            val side = 240.dp.toPx()
+            val corner = CornerRadius(32.dp.toPx())
+            val topLeft = Offset((size.width - side) / 2f, (size.height - side) / 2f - 48.dp.toPx())
+            val frame = Path().apply {
+                fillType = PathFillType.EvenOdd
+                addRect(Rect(Offset.Zero, size))
+                addRoundRect(RoundRect(Rect(topLeft, Size(side, side)), corner))
+            }
+            drawPath(frame, Color.Black.copy(alpha = 0.45f))
+            drawRoundRect(
+                color = Color.White,
+                topLeft = topLeft,
+                size = Size(side, side),
+                cornerRadius = corner,
+                style = Stroke(width = 4.dp.toPx()),
+            )
+        }
 
         if (isLinking) {
             Box(
