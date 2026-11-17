@@ -1,5 +1,9 @@
 package uz.tikoncha_parent.presentation.base.island
 
+import androidx.compose.ui.unit.sp
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.foundation.text.TextAutoSize
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material3.LocalRippleConfiguration
 import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.animation.AnimatedVisibility
@@ -316,16 +320,19 @@ fun IslandTitlePill(title: String, onClick: () -> Unit, modifier: Modifier = Mod
                 containerColor = AppColors.action.primary.copy(alpha = 0.14f),
                 contentColor = AppColors.text.primary,
             ),
-            contentPadding = PaddingValues(start = 14.dp, end = 18.dp),
+            contentPadding = PaddingValues(start = 12.dp, end = 14.dp),
             modifier = modifier.height(48.dp),
         ) {
             Icon(painterResource(Res.drawable.arrow_back), contentDescription = null, modifier = Modifier.size(22.dp))
-            Spacer(Modifier.width(10.dp))
-            Text(
+            Spacer(Modifier.width(8.dp))
+            // Orolda tugmalar köp bölsa (Vazifalar: klip, tarix, «Tinglaş», farzand) nom kesilmasin — şrift kiçrayadi
+            val titleStyle = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold, color = LocalContentColor.current)
+            BasicText(
                 text = title,
-                style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+                style = titleStyle,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
+                autoSize = TextAutoSize.StepBased(minFontSize = 11.sp, maxFontSize = titleStyle.fontSize, stepSize = 0.5.sp),
                 modifier = Modifier.weight(1f),
             )
         }
