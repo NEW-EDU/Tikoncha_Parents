@@ -7,7 +7,6 @@ import tikoncha_parents.composeapp.generated.resources.video_qollanma
 import tikoncha_parents.composeapp.generated.resources.pr_section_payments
 import tikoncha_parents.composeapp.generated.resources.pr_section_prefs
 import tikoncha_parents.composeapp.generated.resources.pr_section_account
-import androidx.compose.foundation.layout.Arrangement
 import uz.tikoncha_parent.ui.SegmentGap
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.cards.AutopayCardsScreen
 import tikoncha_parents.composeapp.generated.resources.ap_my_cards
@@ -358,164 +357,113 @@ fun ProfileUi(
                 )
                 Spacer(Modifier.height(12.dp))
 
+                // 3D rasmlar katta plitkalarda (bosh sahifa bloklari kabi): 2 ustun, toq bölimda birinçisi butun kenglikda
                 ProfileSectionLabel(stringResource(Res.string.pr_section_account))
-                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
-                    ProfileSectionItem(
-                        segmentIndex = 0,
-                        segmentCount = 2,
-                        title = stringResource(Res.string.shaxsiy_malumotlar),
-                        icon = painterResource(Res.drawable.ic3d_pr_personal),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(PersonalInformationScreen())
-                        }
+                ProfileTileGroup(
+                    listOf(
+                        ProfileTile(
+                            title = stringResource(Res.string.shaxsiy_malumotlar),
+                            icon = painterResource(Res.drawable.ic3d_pr_personal),
+                            onClick = { navigator?.push(PersonalInformationScreen()) },
+                        ),
+                        ProfileTile(
+                            title = stringResource(Res.string.farzandlarim),
+                            icon = painterResource(Res.drawable.ic3d_pr_children),
+                            onClick = { navigator?.push(ChildrenSelectScreen()) },
+                        ),
                     )
-                    ProfileSectionItem(
-                        segmentIndex = 1,
-                        segmentCount = 2,
-                        title = stringResource(Res.string.farzandlarim),
-                        icon = painterResource(Res.drawable.ic3d_pr_children),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(ChildrenSelectScreen())
-                        }
-                    )
-                }
+                )
                 ProfileSectionLabel(stringResource(Res.string.pr_section_prefs))
-                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
-                    ProfileSectionItem(
-                        segmentIndex = 0,
-                        segmentCount = 3,
-                        title = stringResource(Res.string.tema),
-                        icon = painterResource(Res.drawable.ic3d_pr_screen_colour),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(ThemeScreen())
-                        }
+                ProfileTileGroup(
+                    listOf(
+                        ProfileTile(
+                            title = stringResource(Res.string.tema),
+                            icon = painterResource(Res.drawable.ic3d_pr_screen_colour),
+                            onClick = { navigator?.push(ThemeScreen()) },
+                        ),
+                        // Matn o'lchami — Sozlamalar ekrani hech qayerdan ochilmaydi, shuning uchun shu yerda
+                        ProfileTile(
+                            title = stringResource(Res.string.text_size_title),
+                            icon = painterResource(Res.drawable.ic3d_pr_text_size),
+                            onClick = {
+                                navigator?.push(uz.tikoncha_parent.presentation.profile.settings.text_size.TextSizeScreen())
+                            },
+                        ),
+                        ProfileTile(
+                            title = stringResource(Res.string.til),
+                            icon = painterResource(Res.drawable.ic3d_pr_language),
+                            onClick = { navigator?.push(LanguageScreen()) },
+                        ),
                     )
-                    // Matn o'lchami — Sozlamalar ekrani hech qayerdan ochilmaydi, shuning uchun shu yerda
-                    ProfileSectionItem(
-                        segmentIndex = 1,
-                        segmentCount = 3,
-                        title = stringResource(Res.string.text_size_title),
-                        icon = painterResource(Res.drawable.ic3d_pr_text_size),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(uz.tikoncha_parent.presentation.profile.settings.text_size.TextSizeScreen())
-                        }
-                    )
-                    ProfileSectionItem(
-                        segmentIndex = 2,
-                        segmentCount = 3,
-                        title = stringResource(Res.string.til),
-                        icon = painterResource(Res.drawable.ic3d_pr_language),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(LanguageScreen())
-                        }
-                    )
-                }
+                )
                 ProfileSectionLabel(stringResource(Res.string.pr_section_payments))
-                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
-                    ProfileSectionItem(
-                        segmentIndex = 0,
-                        segmentCount = 4,
-                        title = stringResource(Res.string.obuna),
-                        icon = painterResource(Res.drawable.ic3d_pr_subscription),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(SubscriptionScreen())
-                        }
+                ProfileTileGroup(
+                    listOf(
+                        ProfileTile(
+                            title = stringResource(Res.string.obuna),
+                            icon = painterResource(Res.drawable.ic3d_pr_subscription),
+                            onClick = { navigator?.push(SubscriptionScreen()) },
+                        ),
+                        // Obunasiz ham: saqlangan kartani ko'rish, asosiy qilish, o'chirish
+                        ProfileTile(
+                            title = stringResource(Res.string.ap_my_cards),
+                            icon = painterResource(Res.drawable.ic3d_pr_cards),
+                            onClick = { navigator?.push(AutopayCardsScreen()) },
+                        ),
+                        ProfileTile(
+                            title = stringResource(Res.string.tangachalar),
+                            icon = painterResource(Res.drawable.ic3d_pr_coins),
+                            onClick = { navigator?.push(CoinsScreen()) },
+                        ),
+                        ProfileTile(
+                            title = stringResource(Res.string.tolovlar_tarixi),
+                            icon = painterResource(Res.drawable.ic3d_pr_payments),
+                            onClick = { navigator?.push(PaymentHistoryScreen()) },
+                        ),
                     )
-                    // Obunasiz ham: saqlangan kartani ko'rish, asosiy qilish, o'chirish
-                    ProfileSectionItem(
-                        segmentIndex = 1,
-                        segmentCount = 4,
-                        title = stringResource(Res.string.ap_my_cards),
-                        icon = painterResource(Res.drawable.ic3d_pr_cards),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(AutopayCardsScreen())
-                        }
-                    )
-                    ProfileSectionItem(
-                        segmentIndex = 2,
-                        segmentCount = 4,
-                        title = stringResource(Res.string.tangachalar),
-                        icon = painterResource(Res.drawable.ic3d_pr_coins),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(CoinsScreen())
-                        }
-                    )
-                    ProfileSectionItem(
-                        segmentIndex = 3,
-                        segmentCount = 4,
-                        title = stringResource(Res.string.tolovlar_tarixi),
-                        icon = painterResource(Res.drawable.ic3d_pr_payments),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(PaymentHistoryScreen())
-                        }
-                    )
-                }
+                )
                 ProfileSectionLabel(stringResource(Res.string.pr_section_help))
-                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
-                    // Ilovadagi qo'llanma kliplari (haqiqiy ekranlar, qayerga bosiş körsatilgan)
-                    ProfileSectionItem(
-                        segmentIndex = 0,
-                        segmentCount = 3,
-                        title = stringResource(Res.string.video_qollanma),
-                        icon = painterResource(Res.drawable.ic3d_pr_video_help),
-                        tintIcon = false,
-                        onItemClick = { navigator?.push(TutorialClipsScreen()) }
+                ProfileTileGroup(
+                    listOf(
+                        // Ilovadagi qo'llanma kliplari (haqiqiy ekranlar, qayerga bosiş körsatilgan)
+                        ProfileTile(
+                            title = stringResource(Res.string.video_qollanma),
+                            icon = painterResource(Res.drawable.ic3d_pr_video_help),
+                            onClick = { navigator?.push(TutorialClipsScreen()) },
+                        ),
+                        ProfileTile(
+                            title = stringResource(Res.string.biz_haqimizda),
+                            icon = painterResource(Res.drawable.ic3d_pr_about),
+                            onClick = { navigator?.push(AboutUsScreen()) },
+                        ),
+                        ProfileTile(
+                            title = stringResource(Res.string.biz_bilan_aloqa),
+                            icon = painterResource(Res.drawable.ic3d_pr_contact),
+                            onClick = { showSupport = true },
+                        ),
                     )
-                    ProfileSectionItem(
-                        segmentIndex = 1,
-                        segmentCount = 3,
-                        title = stringResource(Res.string.biz_haqimizda),
-                        icon = painterResource(Res.drawable.ic3d_pr_about),
-                        tintIcon = false,
-                        onItemClick = {
-                            navigator?.push(AboutUsScreen())
-                        }
-                    )
-                    ProfileSectionItem(
-                        segmentIndex = 2,
-                        segmentCount = 3,
-                        title = stringResource(Res.string.biz_bilan_aloqa),
-                        icon = painterResource(Res.drawable.ic3d_pr_contact),
-                        tintIcon = false,
-                        onItemClick = { showSupport = true }
-                    )
-                }
-                Spacer(Modifier.height(20.dp))
-                Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
-                    ProfileSectionItem(
-                        segmentIndex = 0,
-                        segmentCount = 2,
-                        title = stringResource(Res.string.chiqish),
-                        icon = painterResource(Res.drawable.ic3d_pr_logout),
-                        tintIcon = false,
-                        textColor = AppColors.text.accentDanger,
-                        onItemClick = {
-                            navigator?.push(LogoutScreen())
-                        }
-                    )
-                    // Akkauntni öçiriş — App Store talabi (5.1.1(v)): ilova içida topiladigan bölişi şart.
-                    // Ilgari faqat Sozlamalar ekranida edi, u esa hech qayerdan oçilmaydi.
-                    ProfileSectionItem(
-                        segmentIndex = 1,
-                        segmentCount = 2,
-                        title = stringResource(Res.string.akkauntni_o_chirish),
-                        icon = painterResource(Res.drawable.ic3d_pr_delete_account),
-                        tintIcon = false,
-                        textColor = AppColors.text.accentDanger,
-                        onItemClick = {
-                            navigator?.push(uz.tikoncha_parent.presentation.profile.logout.DeleteAccountScreen())
-                        }
-                    )
-                }
+                )
+                Spacer(Modifier.height(28.dp))
+                // Çiqiş va Akkauntni öçiriş — alohida, qizil plitkalar
+                ProfileTileGroup(
+                    listOf(
+                        ProfileTile(
+                            title = stringResource(Res.string.chiqish),
+                            icon = painterResource(Res.drawable.ic3d_pr_logout),
+                            onClick = { navigator?.push(LogoutScreen()) },
+                        ),
+                        // Akkauntni öçiriş — App Store talabi (5.1.1(v)): ilova içida topiladigan bölişi şart.
+                        // Ilgari faqat Sozlamalar ekranida edi, u esa hech qayerdan oçilmaydi.
+                        ProfileTile(
+                            title = stringResource(Res.string.akkauntni_o_chirish),
+                            icon = painterResource(Res.drawable.ic3d_pr_delete_account),
+                            onClick = {
+                                navigator?.push(uz.tikoncha_parent.presentation.profile.logout.DeleteAccountScreen())
+                            },
+                        ),
+                    ),
+                    danger = true,
+                )
 
                 SpaceMedium()
                 val appVersion = if (LocalInspectionMode.current) {

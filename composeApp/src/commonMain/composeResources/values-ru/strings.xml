@@ -734,7 +734,7 @@
 
     <string name="telefon_raqami">Номер телефона</string>
 
-    <string name="kirish_subtitle">Войдите через Telegram. Если аккаунта нет, он создастся сам.</string>
+    <string name="kirish_subtitle">Если аккаунта нет, он создастся сам.</string>
 
     <string name="login_privacy">Продолжая, вы соглашаетесь с Политикой конфиденциальности и Условиями использования</string>
 
@@ -1528,7 +1528,7 @@
     <string name="app_store_unavailable">App Store сейчас недоступен. Попробуйте чуть позже.</string>
     <string name="app_store_failed">Не удалось оплатить через App Store. Попробуйте ещё раз.</string>
     <string name="apple_activation_pending_title">Оплата получена</string>
-    <string name="login_subtitle_social">Выберите удобный способ входа. Если аккаунта нет, он создастся сам.</string>
+    <string name="login_subtitle_social">Если аккаунта нет, он создастся сам.</string>
     <string name="login_telegram_not_opened">Telegram не открылся. Проверьте, что Telegram установлен, или войдите другим способом.</string>
     <string name="ob_notif_enable">Включить уведомления</string>
     <string name="comfort_title">Удобно читать?</string>

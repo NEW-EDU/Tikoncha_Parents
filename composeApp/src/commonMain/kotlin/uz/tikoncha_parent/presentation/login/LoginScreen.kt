@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.login
 
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.ui.text.font.FontWeight
 import uz.tikoncha_parent.ui.expressivePress
 import androidx.compose.material3.ButtonDefaults
@@ -32,6 +33,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -73,7 +75,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.davom_etish
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
-import tikoncha_parents.composeapp.generated.resources.hedgehog_heart
+import tikoncha_parents.composeapp.generated.resources.tikoncha_logo
 import tikoncha_parents.composeapp.generated.resources.kirish_subtitle
 import tikoncha_parents.composeapp.generated.resources.login_privacy
 import tikoncha_parents.composeapp.generated.resources.ok
@@ -252,8 +254,7 @@ fun LoginUi(
                             modifier = Modifier.fillMaxWidth(),
                         )
                     }
-                    Space(12.dp)
-                    PhonePermissionNote()
+                    // Telefon raqami haqidagi izoh olib taşlandi: Telegram buni öz oynasida özi söraydi (egasi: matn köp)
 
                     if (state.showPhone) {
                         Space(30.dp)
@@ -328,25 +329,29 @@ private fun rememberIsKeyboardOpen(): Boolean {
 }
 @Composable
 private fun HeroSection(subtitle: String, modifier: Modifier = Modifier, onMascotTap: () -> Unit = {}) {
-    // Katta şriftda tipratikon kiçrayadi — joy matnga qoladi
-    val fontScale = LocalDensity.current.fontScale.coerceAtLeast(1f)
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Image(
-            painter = painterResource(Res.drawable.hedgehog_heart),
+        // Maskot örnida logotip (egasi: maskot qörqinçli körinadi). uz/ru'da — Tikoncha yozuvi, boşqalarida — Hoglt;
+        // ikkisining nisbati har xil, şuning uçun kenglik nisbatga qarab tanlanadi.
+        val logo = painterResource(Res.drawable.tikoncha_logo)
+        val ratio = logo.intrinsicSize.let { if (it.height > 0f) it.width / it.height else 3f }
+        Icon(
+            painter = logo,
             contentDescription = null,
+            tint = AppColors.action.primary,
             modifier = Modifier
-                .size((100.dp / fontScale).coerceAtLeast(64.dp))
+                .width(if (ratio > 4f) 220.dp else 168.dp)
+                .aspectRatio(ratio)
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = null,
                     onClick = onMascotTap,
                 ),
         )
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(36.dp))
         Text(
             text = stringResource(Res.string.xush_kelibsiz),
             style = AppTypography.headlineMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),

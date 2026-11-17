@@ -619,7 +619,7 @@
     <string name="telegram_orqali_kirish">Telegramでログイン</string>
     <string name="yoki">または</string>
     <string name="telefon_raqami">電話番号</string>
-    <string name="kirish_subtitle">Telegram でログインします。アカウントがない場合は自動で作成されます。</string>
+    <string name="kirish_subtitle">アカウントがない場合は自動で作成されます。</string>
     <string name="login_privacy">続けると、プライバシーポリシーと利用規約に同意したことになります</string>
 
     <string name="telegram_ochilmoqda">Telegramを開いています…</string>
@@ -1464,7 +1464,7 @@
     <string name="app_store_unavailable">App Store が今は利用できません。少したってからもう一度お試しください。</string>
     <string name="app_store_failed">App Store での支払いが完了しませんでした。もう一度お試しください。</string>
     <string name="apple_activation_pending_title">支払いを受け付けました</string>
-    <string name="login_subtitle_social">ログイン方法を選んでください。アカウントがない場合は自動で作成されます。</string>
+    <string name="login_subtitle_social">アカウントがない場合は自動で作成されます。</string>
     <string name="login_telegram_not_opened">Telegram が開きませんでした。Telegram がインストールされているか確認するか、別の方法でログインしてください。</string>
     <string name="ob_notif_enable">通知をオンにする</string>
     <string name="comfort_title">読みやすいですか？</string>

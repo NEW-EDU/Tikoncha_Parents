@@ -4,7 +4,7 @@ import tikoncha_parents.composeapp.generated.resources.preset_by_coparent
 import tikoncha_parents.composeapp.generated.resources.preset_by_child
 import tikoncha_parents.composeapp.generated.resources.policy_content_protection_short
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
@@ -193,14 +193,17 @@ fun PolicyCard(ui: PolicyCardUi, busy: Boolean, onToggle: (Boolean) -> Unit, onC
     }
 }
 
-/** Switch oldida "Plus" belgisi: yoqiş pullik — bosişdan oldin aytiladi. */
+/**
+ * Switch ustida "Plus" belgisi: yoqiş pullik — bosişdan oldin aytiladi. Ustma-ust (yonma-yon emas) —
+ * katta 3D rasmli blokda sarlavhaga joy qolsin.
+ */
 @Composable
-private fun SwitchWithPlus(plus: Boolean, switch: @Composable () -> Unit) {
+fun SwitchWithPlus(plus: Boolean, switch: @Composable () -> Unit) {
     if (!plus) {
         switch()
         return
     }
-    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         PlusBadge()
         switch()
     }

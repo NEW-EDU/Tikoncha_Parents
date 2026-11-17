@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Telegram arqalı kiriw</string>
     <string name="yoki">yamasa</string>
     <string name="telefon_raqami">Telefon nomeri</string>
-    <string name="kirish_subtitle">Telegram arqalı kiriń. Akkauntıńız bolmasa, ózi ashıladı.</string>
+    <string name="kirish_subtitle">Akkauntıńız bolmasa, ózi ashıladı.</string>
     <string name="login_privacy">Dawam etiw arqalı Qupıyalıq siyasatı hám Paydalanıw shártlerine kelisesiz</string>
 
     <string name="telegram_ochilmoqda">Telegram ashılmaqta…</string>
@@ -1463,7 +1463,7 @@
     <string name="app_store_unavailable">App Store házir ashılmadı. Azdan keyin qayta urınıp kóriń.</string>
     <string name="app_store_failed">App Store arqalı tólew múmkin bolmadı. Qayta urınıp kóriń.</string>
     <string name="apple_activation_pending_title">Tólem qabıl etildi</string>
-    <string name="login_subtitle_social">Qolaylı usıldı tańlań. Akkauntıńız bolmasa, ózi ashıladı.</string>
+    <string name="login_subtitle_social">Akkauntıńız bolmasa, ózi ashıladı.</string>
     <string name="login_telegram_not_opened">Telegram ashılmadı. Telegram ornatılǵanın tekseriń yamasa basqa usıl menen kiriń.</string>
     <string name="ob_notif_enable">Bildiriwlerdi qosıw</string>
     <string name="comfort_title">Oqıw qolaylı ma?</string>

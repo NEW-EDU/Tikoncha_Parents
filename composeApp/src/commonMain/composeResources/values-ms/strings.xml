@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Log masuk dengan Telegram</string>
     <string name="yoki">atau</string>
     <string name="telefon_raqami">Nombor telefon</string>
-    <string name="kirish_subtitle">Log masuk dengan Telegram. Belum ada akaun? Akaun akan dicipta secara automatik.</string>
+    <string name="kirish_subtitle">Belum ada akaun? Akaun akan dicipta secara automatik.</string>
     <string name="login_privacy">Dengan meneruskan, anda bersetuju dengan Dasar Privasi dan Syarat Penggunaan</string>
 
     <string name="telegram_ochilmoqda">Membuka Telegram…</string>
@@ -1463,7 +1463,7 @@
     <string name="app_store_unavailable">App Store tidak tersedia sekarang. Cuba lagi sebentar lagi.</string>
     <string name="app_store_failed">Pembayaran App Store tidak berjaya. Cuba lagi.</string>
     <string name="apple_activation_pending_title">Bayaran diterima</string>
-    <string name="login_subtitle_social">Pilih cara log masuk. Belum ada akaun? Akaun akan dicipta secara automatik.</string>
+    <string name="login_subtitle_social">Belum ada akaun? Akaun akan dicipta secara automatik.</string>
     <string name="login_telegram_not_opened">Telegram tidak dibuka. Pastikan Telegram dipasang, atau log masuk dengan cara lain.</string>
     <string name="ob_notif_enable">Hidupkan pemberitahuan</string>
     <string name="comfort_title">Mudah dibaca?</string>

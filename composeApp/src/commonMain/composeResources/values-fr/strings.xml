@@ -629,7 +629,7 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="telegram_orqali_kirish">Se connecter avec Telegram</string>
     <string name="yoki">ou</string>
     <string name="telefon_raqami">Numéro de téléphone</string>
-    <string name="kirish_subtitle">Connectez-vous avec Telegram. Pas encore de compte ? Il est créé pour vous.</string>
+    <string name="kirish_subtitle">Pas encore de compte ? Il est créé pour vous.</string>
     <string name="login_privacy">En continuant, vous acceptez la politique de confidentialité et les conditions d’utilisation</string>
 
     <string name="telegram_ochilmoqda">Ouverture de Telegram…</string>
@@ -1474,7 +1474,7 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="app_store_unavailable">L’App Store n’est pas disponible pour le moment. Réessayez dans un petit moment.</string>
     <string name="app_store_failed">Le paiement via l’App Store n’a pas abouti. Réessayez.</string>
     <string name="apple_activation_pending_title">Paiement reçu</string>
-    <string name="login_subtitle_social">Choisissez comment vous connecter. Pas encore de compte ? Il est créé pour vous.</string>
+    <string name="login_subtitle_social">Pas encore de compte ? Il est créé pour vous.</string>
     <string name="login_telegram_not_opened">Telegram ne s’est pas ouvert. Vérifiez que Telegram est installé, ou connectez-vous autrement.</string>
     <string name="ob_notif_enable">Activer les notifications</string>
     <string name="comfort_title">Facile à lire ?</string>

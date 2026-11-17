@@ -635,7 +635,7 @@
     <string name="telegram_orqali_kirish">تسجيل الدخول عبر Telegram</string>
     <string name="yoki">أو</string>
     <string name="telefon_raqami">رقم الهاتف</string>
-    <string name="kirish_subtitle">سجّل الدخول عبر Telegram. ليس لديك حساب؟ سيُنشأ لك تلقائيًا.</string>
+    <string name="kirish_subtitle">ليس لديك حساب؟ سيُنشأ لك تلقائيًا.</string>
     <string name="login_privacy">بالمتابعة فإنك توافق على سياسة الخصوصية وشروط الاستخدام</string>
 
     <string name="telegram_ochilmoqda">جارٍ فتح Telegram…</string>
@@ -1480,7 +1480,7 @@
     <string name="app_store_unavailable">متجر App Store غير متاح الآن. حاول مرة أخرى بعد قليل.</string>
     <string name="app_store_failed">لم يكتمل الدفع عبر App Store. حاول مرة أخرى.</string>
     <string name="apple_activation_pending_title">تم استلام الدفعة</string>
-    <string name="login_subtitle_social">اختر طريقة تسجيل الدخول. ليس لديك حساب؟ سيُنشأ لك تلقائيًا.</string>
+    <string name="login_subtitle_social">ليس لديك حساب؟ سيُنشأ لك تلقائيًا.</string>
     <string name="login_telegram_not_opened">لم يُفتح Telegram. تأكد من أن Telegram مثبّت، أو سجّل الدخول بطريقة أخرى.</string>
     <string name="ob_notif_enable">تشغيل الإشعارات</string>
     <string name="comfort_title">هل القراءة مريحة؟</string>

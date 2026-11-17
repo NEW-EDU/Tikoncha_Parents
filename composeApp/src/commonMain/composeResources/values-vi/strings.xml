@@ -635,7 +635,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="telegram_orqali_kirish">Đăng nhập bằng Telegram</string>
     <string name="yoki">hoặc</string>
     <string name="telefon_raqami">Số điện thoại</string>
-    <string name="kirish_subtitle">Đăng nhập bằng Telegram. Chưa có tài khoản? Tài khoản sẽ tự được tạo.</string>
+    <string name="kirish_subtitle">Chưa có tài khoản? Tài khoản sẽ tự được tạo.</string>
     <string name="login_privacy">Khi tiếp tục, bạn đồng ý với Chính sách quyền riêng tư và Điều khoản sử dụng</string>
 
     <string name="telegram_ochilmoqda">Đang mở Telegram…</string>
@@ -1480,7 +1480,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="app_store_unavailable">App Store hiện không khả dụng. Vui lòng thử lại sau ít phút.</string>
     <string name="app_store_failed">Thanh toán qua App Store không thành công. Vui lòng thử lại.</string>
     <string name="apple_activation_pending_title">Đã nhận thanh toán</string>
-    <string name="login_subtitle_social">Chọn cách đăng nhập. Chưa có tài khoản? Tài khoản sẽ tự được tạo.</string>
+    <string name="login_subtitle_social">Chưa có tài khoản? Tài khoản sẽ tự được tạo.</string>
     <string name="login_telegram_not_opened">Telegram không mở. Kiểm tra xem đã cài Telegram chưa, hoặc đăng nhập bằng cách khác.</string>
     <string name="ob_notif_enable">Bật thông báo</string>
     <string name="comfort_title">Dễ đọc không?</string>

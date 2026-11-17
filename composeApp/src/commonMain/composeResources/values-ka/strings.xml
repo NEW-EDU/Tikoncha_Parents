@@ -635,7 +635,7 @@
     <string name="telegram_orqali_kirish">შესვლა Telegram-ით</string>
     <string name="yoki">ან</string>
     <string name="telefon_raqami">ტელეფონის ნომერი</string>
-    <string name="kirish_subtitle">შედით Telegram-ით. ანგარიში არ გაქვთ? თავისით შეიქმნება.</string>
+    <string name="kirish_subtitle">ანგარიში არ გაქვთ? თავისით შეიქმნება.</string>
     <string name="login_privacy">გაგრძელებით ეთანხმებით კონფიდენციალურობის პოლიტიკას და გამოყენების პირობებს</string>
 
     <string name="telegram_ochilmoqda">იხსნება Telegram…</string>
@@ -1480,7 +1480,7 @@
     <string name="app_store_unavailable">App Store ახლა მიუწვდომელია. ცოტა ხანში ისევ სცადეთ.</string>
     <string name="app_store_failed">App Store-ით გადახდა ვერ მოხერხდა. ისევ სცადეთ.</string>
     <string name="apple_activation_pending_title">გადახდა მიღებულია</string>
-    <string name="login_subtitle_social">აირჩიეთ შესვლის გზა. ანგარიში არ გაქვთ? თავისით შეიქმნება.</string>
+    <string name="login_subtitle_social">ანგარიში არ გაქვთ? თავისით შეიქმნება.</string>
     <string name="login_telegram_not_opened">Telegram არ გაიხსნა. შეამოწმეთ, დაყენებულია თუ არა Telegram, ან შედით სხვა გზით.</string>
     <string name="ob_notif_enable">შეტყობინებების ჩართვა</string>
     <string name="comfort_title">კითხვა მოსახერხებელია?</string>

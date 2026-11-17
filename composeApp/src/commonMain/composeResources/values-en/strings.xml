@@ -748,7 +748,7 @@ This information is used only for these features and is not shared with third pa
     <string name="telegram_orqali_kirish">Sign in with Telegram</string>
     <string name="yoki">or</string>
     <string name="telefon_raqami">Phone number</string>
-    <string name="kirish_subtitle">Sign in with Telegram. No account yet? One is created for you.</string>
+    <string name="kirish_subtitle">No account yet? One is created for you.</string>
     <string name="login_privacy">By continuing, you agree to the Privacy Policy and Terms of Use</string>
     <string name="telegram_ochilmoqda">Opening Telegram…</string>
     <string name="telegram_phone_note">When signing in with Telegram, your phone number will be requested — you will see this in the Telegram window</string>
@@ -1521,7 +1521,7 @@ This information is used only for these features and is not shared with third pa
     <string name="app_store_unavailable">The App Store isn’t available right now. Please try again in a little while.</string>
     <string name="app_store_failed">The App Store payment didn’t go through. Please try again.</string>
     <string name="apple_activation_pending_title">Payment received</string>
-    <string name="login_subtitle_social">Choose how to sign in. No account yet? One is created for you.</string>
+    <string name="login_subtitle_social">No account yet? One is created for you.</string>
     <string name="login_telegram_not_opened">Telegram didn’t open. Check that Telegram is installed, or sign in another way.</string>
     <string name="ob_notif_enable">Turn on notifications</string>
     <string name="comfort_title">Easy to read?</string>

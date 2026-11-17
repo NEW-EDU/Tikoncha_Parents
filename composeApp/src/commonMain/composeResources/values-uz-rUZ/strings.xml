@@ -635,7 +635,7 @@
     <string name="telegram_orqali_kirish">Telegram орқали кириш</string>
     <string name="yoki">ёки</string>
     <string name="telefon_raqami">Телефон рақами</string>
-    <string name="kirish_subtitle">Telegram орқали киринг. Ҳисобингиз бўлмаса, ўзи очилади.</string>
+    <string name="kirish_subtitle">Ҳисобингиз бўлмаса, ўзи очилади.</string>
     <string name="login_privacy">Давом этиш орқали сиз Махфийлик сиёсати ва Фойдаланиш шартларига розилик билдирасиз</string>
 
     <string name="telegram_ochilmoqda">Telegram очилмоқда…</string>
@@ -1480,7 +1480,7 @@
     <string name="app_store_unavailable">App Store ҳозир очилмади. Бир оздан кейин қайта уриниб кўринг.</string>
     <string name="app_store_failed">App Store орқали тўлаб бўлмади. Қайта уриниб кўринг.</string>
     <string name="apple_activation_pending_title">Тўлов қабул қилинди</string>
-    <string name="login_subtitle_social">Қулай усулни танланг. Ҳисобингиз бўлмаса, ўзи очилади.</string>
+    <string name="login_subtitle_social">Ҳисобингиз бўлмаса, ўзи очилади.</string>
     <string name="login_telegram_not_opened">Telegram очилмади. Telegram ўрнатилганини текширинг ёки бошқа усулда киринг.</string>
     <string name="ob_notif_enable">Билдиришномаларни ёқиш</string>
     <string name="comfort_title">Ўқиш қулайми?</string>

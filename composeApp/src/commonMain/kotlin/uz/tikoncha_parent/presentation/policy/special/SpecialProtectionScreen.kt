@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -59,16 +58,15 @@ import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
 import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.haptics.ErrorHaptic
-import uz.tikoncha_parent.presentation.policy.components.GroupDivider
-import uz.tikoncha_parent.presentation.policy.components.Policy3dIcon
+import uz.tikoncha_parent.presentation.policy.components.IconTone
+import uz.tikoncha_parent.presentation.policy.components.PolicyCardBody
 import uz.tikoncha_parent.presentation.policy.components.PolicyInfoBox
 import uz.tikoncha_parent.presentation.policy.components.PolicySwitch
 import uz.tikoncha_parent.presentation.policy.components.PolicyText
-import uz.tikoncha_parent.presentation.policy.components.SettingGroup
-import uz.tikoncha_parent.presentation.policy.components.SettingRow
+import uz.tikoncha_parent.presentation.policy.components.SwitchWithPlus
 import uz.tikoncha_parent.presentation.base.ToastProvider
-import uz.tikoncha_parent.presentation.policy.components.PlusBadge
 import uz.tikoncha_parent.presentation.policy.components.PolicyLoadFailed
+import uz.tikoncha_parent.ui.SegmentGap
 import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
 import uz.tikoncha_parent.presentation.policy.components.PolicyToastHost
 import uz.tikoncha_parent.presentation.policy.components.TurnOffConfirm
@@ -125,30 +123,33 @@ class SpecialProtectionScreen(private val childId: String) : Screen {
                             stringResource(Res.string.parent_special_info_3),
                         ),
                     )
-                    SettingGroup {
+                    // Har himoya — Bosh sahifadagidek katta blok: 3D rasmga joy kerak (tor qatorda mayda körinardi)
+                    Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                         ROWS.forEachIndexed { i, row ->
                             val title = stringResource(row.title)
                             val on = state.isOn(row.switch)
-                            SettingRow(
+                            PolicyCardBody(
+                                icon = row.icon,
+                                tone = if (on) IconTone.SOLID else IconTone.GRAY,
                                 title = title,
                                 subtitle = stringResource(row.desc),
-                                leading = { Policy3dIcon(icon = row.icon, dimmed = !on) },
-                                trailing = {
-                                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                        // PLUS himoya bepul tarifda — belgi bosişdan oldin körinadi
-                                        if (row.switch.plusOnly && state.paid == false && !on) PlusBadge()
-                                        PolicySwitch(
-                                            checked = on,
-                                            // Öçiriş — avval söraladi
-                                            onCheckedChange = { next ->
-                                                guard.toggle(title, next, Res.string.policy_off_body_safety) { viewModel.toggle(row.switch, it) }
-                                            },
-                                            busy = state.busy == row.switch,
-                                        )
-                                    }
-                                },
-                            )
-                            if (i < ROWS.lastIndex) GroupDivider()
+                                // Avvalgidek: blokning özi bosilmaydi, faqat switch
+                                onClick = null,
+                                segmentIndex = i,
+                                segmentCount = ROWS.size,
+                            ) {
+                                // PLUS himoya bepul tarifda — belgi bosişdan oldin körinadi
+                                SwitchWithPlus(plus = row.switch.plusOnly && state.paid == false && !on) {
+                                    PolicySwitch(
+                                        checked = on,
+                                        // Öçiriş — avval söraladi
+                                        onCheckedChange = { next ->
+                                            guard.toggle(title, next, Res.string.policy_off_body_safety) { viewModel.toggle(row.switch, it) }
+                                        },
+                                        busy = state.busy == row.switch,
+                                    )
+                                }
+                            }
                         }
                     }
                     Text(

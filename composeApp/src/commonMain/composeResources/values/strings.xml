@@ -643,7 +643,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="telegram_orqali_kirish">Telegram orqali kiriş</string>
     <string name="yoki">yoki</string>
     <string name="telefon_raqami">Telefon raqami</string>
-    <string name="kirish_subtitle">Telegram orqali kiring. Hisobingiz bölmasa, özi oçiladi.</string>
+    <string name="kirish_subtitle">Hisobingiz bölmasa, özi oçiladi.</string>
     <string name="login_privacy">Davom etiş orqali siz Maxfiylik siyosati va Foydalaniş şartlariga rozilik bildirasiz</string>
 
     <string name="telegram_ochilmoqda">Telegram oçilmoqda…</string>
@@ -1529,7 +1529,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="app_store_unavailable">App Store hozir oçilmadi. Bir ozdan keyin qayta urinib köring.</string>
     <string name="app_store_failed">App Store orqali tölab bölmadi. Qayta urinib köring.</string>
     <string name="apple_activation_pending_title">Tölov qabul qilindi</string>
-    <string name="login_subtitle_social">Qulay usulni tanlang. Hisobingiz bölmasa, özi oçiladi.</string>
+    <string name="login_subtitle_social">Hisobingiz bölmasa, özi oçiladi.</string>
     <string name="login_telegram_not_opened">Telegram oçilmadi. Telegram örnatilganini tekşiring yoki boşqa usulda kiring.</string>
     <string name="ob_notif_enable">Bildirişnomalarni yoqiş</string>
     <string name="comfort_title">Öqiş qulaymi?</string>

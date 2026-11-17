@@ -619,7 +619,7 @@
     <string name="telegram_orqali_kirish">ورود با Telegram</string>
     <string name="yoki">یا</string>
     <string name="telefon_raqami">شماره تلفن</string>
-    <string name="kirish_subtitle">با Telegram وارد شوید. حساب ندارید؟ خودکار ساخته می‌شود.</string>
+    <string name="kirish_subtitle">حساب ندارید؟ خودکار ساخته می‌شود.</string>
     <string name="login_privacy">با ادامه دادن، سیاست حریم خصوصی و شرایط استفاده را می‌پذیرید</string>
 
     <string name="telegram_ochilmoqda">در حال باز کردن Telegram…</string>
@@ -1464,7 +1464,7 @@
     <string name="app_store_unavailable">App Store الان در دسترس نیست. کمی بعد دوباره امتحان کنید.</string>
     <string name="app_store_failed">پرداخت از طریق App Store انجام نشد. دوباره امتحان کنید.</string>
     <string name="apple_activation_pending_title">پرداخت دریافت شد</string>
-    <string name="login_subtitle_social">روش ورود را انتخاب کنید. حساب ندارید؟ خودکار ساخته می‌شود.</string>
+    <string name="login_subtitle_social">حساب ندارید؟ خودکار ساخته می‌شود.</string>
     <string name="login_telegram_not_opened">Telegram باز نشد. بررسی کنید Telegram نصب باشد، یا از راه دیگری وارد شوید.</string>
     <string name="ob_notif_enable">روشن کردن اعلان‌ها</string>
     <string name="comfort_title">خواندن راحت است؟</string>

@@ -37,11 +37,18 @@ fun PolicyIcon(icon: DrawableResource, tone: IconTone, modifier: Modifier = Modi
 }
 
 /**
- * Qoida qatorining 3D rasmi (2026-11, Himoya ekranidagi `PermissionIcon` kabi): rasm matndan oldin öqiladi.
+ * 3D rasm ölçami (Bosh sahifadagi `HomeIconSize` 76 ga yaqin): rasmda mayda detal köp — kiçik qatorda
+ * (44dp) körinmay qolardi. Rasm fayllari 144px — bundan kattaroq qilinsa, xiralaşadi.
+ */
+val Policy3dIconSize: Dp = 68.dp
+
+/**
+ * Qoida blokining 3D rasmi (2026-11, Himoya ekranidagi `PermissionIcon` kabi): rasm matndan oldin öqiladi.
  * Tint ham, fon ham yöq — rangli rasm buziladi. Öçiq holat ([dimmed]) xiraroq körinadi.
+ * Faqat joyi bor katta blokda ([PolicyCardBody]) işlatiladi — tor qatorga qaytarilmaydi.
  */
 @Composable
-fun Policy3dIcon(icon: DrawableResource, dimmed: Boolean, modifier: Modifier = Modifier, size: Dp = 44.dp) {
+fun Policy3dIcon(icon: DrawableResource, dimmed: Boolean, modifier: Modifier = Modifier, size: Dp = Policy3dIconSize) {
     Image(
         painter = painterResource(icon),
         contentDescription = null,

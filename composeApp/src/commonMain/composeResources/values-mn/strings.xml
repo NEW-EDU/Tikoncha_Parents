@@ -635,7 +635,7 @@
     <string name="telegram_orqali_kirish">Telegram-аар нэвтрэх</string>
     <string name="yoki">эсвэл</string>
     <string name="telefon_raqami">Утасны дугаар</string>
-    <string name="kirish_subtitle">Telegram-аар нэвтэрнэ үү. Бүртгэлгүй бол автоматаар үүснэ.</string>
+    <string name="kirish_subtitle">Бүртгэлгүй бол автоматаар үүснэ.</string>
     <string name="login_privacy">Үргэлжлүүлснээр та Нууцлалын бодлого болон Ашиглалтын нөхцөлийг зөвшөөрнө</string>
 
     <string name="telegram_ochilmoqda">Telegram-ыг нээж байна…</string>
@@ -1480,7 +1480,7 @@
     <string name="app_store_unavailable">App Store одоо ажиллахгүй байна. Түр хүлээгээд дахин оролдоно уу.</string>
     <string name="app_store_failed">App Store-оор төлж чадсангүй. Дахин оролдоно уу.</string>
     <string name="apple_activation_pending_title">Төлбөр хүлээн авлаа</string>
-    <string name="login_subtitle_social">Нэвтрэх аргаа сонгоно уу. Бүртгэлгүй бол автоматаар үүснэ.</string>
+    <string name="login_subtitle_social">Бүртгэлгүй бол автоматаар үүснэ.</string>
     <string name="login_telegram_not_opened">Telegram нээгдсэнгүй. Telegram суулгасан эсэхийг шалгах эсвэл өөр аргаар нэвтэрнэ үү.</string>
     <string name="ob_notif_enable">Мэдэгдэл асаах</string>
     <string name="comfort_title">Уншихад тохиромжтой юу?</string>

@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Telegram से साइन इन करें</string>
     <string name="yoki">या</string>
     <string name="telefon_raqami">फ़ोन नंबर</string>
-    <string name="kirish_subtitle">Telegram से साइन इन करें। खाता नहीं है? अपने आप बन जाएगा।</string>
+    <string name="kirish_subtitle">खाता नहीं है? अपने आप बन जाएगा।</string>
     <string name="login_privacy">जारी रखकर आप प्राइवेसी पॉलिसी और इस्तेमाल की शर्तों से सहमत होते हैं</string>
 
     <string name="telegram_ochilmoqda">Telegram खुल रहा है…</string>
@@ -1463,7 +1463,7 @@
     <string name="app_store_unavailable">App Store अभी उपलब्ध नहीं है। थोड़ी देर बाद फिर कोशिश करें।</string>
     <string name="app_store_failed">App Store से भुगतान नहीं हो पाया। फिर कोशिश करें।</string>
     <string name="apple_activation_pending_title">भुगतान मिल गया</string>
-    <string name="login_subtitle_social">साइन इन का तरीका चुनें। खाता नहीं है? अपने आप बन जाएगा।</string>
+    <string name="login_subtitle_social">खाता नहीं है? अपने आप बन जाएगा।</string>
     <string name="login_telegram_not_opened">Telegram नहीं खुला। देखें कि Telegram इंस्टॉल है, या किसी और तरीके से साइन इन करें।</string>
     <string name="ob_notif_enable">नोटिफ़िकेशन चालू करें</string>
     <string name="comfort_title">पढ़ने में आसान है?</string>

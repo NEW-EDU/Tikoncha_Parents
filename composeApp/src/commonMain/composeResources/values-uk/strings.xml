@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Увійти через Telegram</string>
     <string name="yoki">або</string>
     <string name="telefon_raqami">Номер телефону</string>
-    <string name="kirish_subtitle">Увійдіть через Telegram. Якщо акаунта немає, він створиться сам.</string>
+    <string name="kirish_subtitle">Якщо акаунта немає, він створиться сам.</string>
     <string name="login_privacy">Продовжуючи, ви погоджуєтеся з Політикою конфіденційності та Умовами використання</string>
 
     <string name="telegram_ochilmoqda">Відкриваємо Telegram…</string>
@@ -1463,7 +1463,7 @@
     <string name="app_store_unavailable">App Store зараз недоступний. Спробуйте трохи пізніше.</string>
     <string name="app_store_failed">Не вдалося оплатити через App Store. Спробуйте ще раз.</string>
     <string name="apple_activation_pending_title">Оплату отримано</string>
-    <string name="login_subtitle_social">Виберіть зручний спосіб входу. Якщо акаунта немає, він створиться сам.</string>
+    <string name="login_subtitle_social">Якщо акаунта немає, він створиться сам.</string>
     <string name="login_telegram_not_opened">Telegram не відкрився. Перевірте, чи встановлено Telegram, або увійдіть іншим способом.</string>
     <string name="ob_notif_enable">Увімкнути сповіщення</string>
     <string name="comfort_title">Зручно читати?</string>

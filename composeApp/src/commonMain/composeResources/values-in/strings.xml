@@ -635,7 +635,7 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="telegram_orqali_kirish">Masuk dengan Telegram</string>
     <string name="yoki">atau</string>
     <string name="telefon_raqami">Nomor telepon</string>
-    <string name="kirish_subtitle">Masuk dengan Telegram. Belum punya akun? Akun akan dibuat otomatis.</string>
+    <string name="kirish_subtitle">Belum punya akun? Akun akan dibuat otomatis.</string>
     <string name="login_privacy">Dengan melanjutkan, kamu menyetujui Kebijakan Privasi dan Ketentuan Penggunaan</string>
 
     <string name="telegram_ochilmoqda">Membuka Telegram…</string>
@@ -1480,7 +1480,7 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="app_store_unavailable">App Store sedang tidak tersedia. Coba lagi sebentar lagi.</string>
     <string name="app_store_failed">Pembayaran lewat App Store tidak berhasil. Coba lagi.</string>
     <string name="apple_activation_pending_title">Pembayaran diterima</string>
-    <string name="login_subtitle_social">Pilih cara masuk. Belum punya akun? Akun akan dibuat otomatis.</string>
+    <string name="login_subtitle_social">Belum punya akun? Akun akan dibuat otomatis.</string>
     <string name="login_telegram_not_opened">Telegram tidak terbuka. Pastikan Telegram sudah terpasang, atau masuk dengan cara lain.</string>
     <string name="ob_notif_enable">Nyalakan notifikasi</string>
     <string name="comfort_title">Mudah dibaca?</string>

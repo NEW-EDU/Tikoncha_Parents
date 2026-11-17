@@ -619,7 +619,7 @@
     <string name="telegram_orqali_kirish">Ворид шудан бо Telegram</string>
     <string name="yoki">ё</string>
     <string name="telefon_raqami">Рақами телефон</string>
-    <string name="kirish_subtitle">Тавассути Telegram ворид шавед. Агар ҳисоб надошта бошед, худаш сохта мешавад.</string>
+    <string name="kirish_subtitle">Агар ҳисоб надошта бошед, худаш сохта мешавад.</string>
     <string name="login_privacy">Бо идома додан шумо бо Сиёсати махфият ва Шартҳои истифода розӣ мешавед</string>
 
     <string name="telegram_ochilmoqda">Telegram кушода мешавад…</string>
@@ -1464,7 +1464,7 @@
     <string name="app_store_unavailable">App Store ҳоло дастрас нест. Каме баъдтар боз кӯшиш кунед.</string>
     <string name="app_store_failed">Тавассути App Store пардохт кардан нашуд. Боз кӯшиш кунед.</string>
     <string name="apple_activation_pending_title">Пардохт қабул шуд</string>
-    <string name="login_subtitle_social">Усули қулайро интихоб кунед. Агар ҳисоб надошта бошед, худаш сохта мешавад.</string>
+    <string name="login_subtitle_social">Агар ҳисоб надошта бошед, худаш сохта мешавад.</string>
     <string name="login_telegram_not_opened">Telegram кушода нашуд. Санҷед, ки Telegram насб шудааст ё бо роҳи дигар ворид шавед.</string>
     <string name="ob_notif_enable">Фаъол кардани огоҳиномаҳо</string>
     <string name="comfort_title">Хондан қулай аст?</string>

@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Telegram ilə daxil ol</string>
     <string name="yoki">və ya</string>
     <string name="telefon_raqami">Telefon nömrəsi</string>
-    <string name="kirish_subtitle">Telegram ilə daxil olun. Hesabınız yoxdursa, özü yaradılacaq.</string>
+    <string name="kirish_subtitle">Hesabınız yoxdursa, özü yaradılacaq.</string>
     <string name="login_privacy">Davam etməklə Məxfilik siyasəti və İstifadə şərtləri ilə razılaşırsınız</string>
 
     <string name="telegram_ochilmoqda">Telegram açılır…</string>
@@ -1463,7 +1463,7 @@
     <string name="app_store_unavailable">App Store hazırda açılmır. Bir az sonra yenidən cəhd edin.</string>
     <string name="app_store_failed">App Store vasitəsilə ödəmək alınmadı. Yenidən cəhd edin.</string>
     <string name="apple_activation_pending_title">Ödəniş qəbul edildi</string>
-    <string name="login_subtitle_social">Rahat üsulu seçin. Hesabınız yoxdursa, özü yaradılacaq.</string>
+    <string name="login_subtitle_social">Hesabınız yoxdursa, özü yaradılacaq.</string>
     <string name="login_telegram_not_opened">Telegram açılmadı. Telegram-ın quraşdırıldığını yoxlayın və ya başqa üsulla daxil olun.</string>
     <string name="ob_notif_enable">Bildirişləri açmaq</string>
     <string name="comfort_title">Oxumaq rahatdır?</string>

@@ -635,7 +635,7 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="telegram_orqali_kirish">Telegram ile giriş yap</string>
     <string name="yoki">veya</string>
     <string name="telefon_raqami">Telefon numarası</string>
-    <string name="kirish_subtitle">Telegram ile giriş yap. Hesabın yoksa kendiliğinden oluşturulur.</string>
+    <string name="kirish_subtitle">Hesabın yoksa kendiliğinden oluşturulur.</string>
     <string name="login_privacy">Devam ederek Gizlilik Politikası’nı ve Kullanım Koşulları’nı kabul etmiş olursun</string>
 
     <string name="telegram_ochilmoqda">Telegram açılıyor…</string>
@@ -1480,7 +1480,7 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="app_store_unavailable">App Store şu anda kullanılamıyor. Biraz sonra tekrar dene.</string>
     <string name="app_store_failed">App Store ödemesi tamamlanamadı. Tekrar dene.</string>
     <string name="apple_activation_pending_title">Ödeme alındı</string>
-    <string name="login_subtitle_social">Nasıl giriş yapacağını seç. Hesabın yoksa kendiliğinden oluşturulur.</string>
+    <string name="login_subtitle_social">Hesabın yoksa kendiliğinden oluşturulur.</string>
     <string name="login_telegram_not_opened">Telegram açılmadı. Telegram’ın yüklü olduğunu kontrol et veya başka bir yolla giriş yap.</string>
     <string name="ob_notif_enable">Bildirimleri aç</string>
     <string name="comfort_title">Okuması kolay mı?</string>

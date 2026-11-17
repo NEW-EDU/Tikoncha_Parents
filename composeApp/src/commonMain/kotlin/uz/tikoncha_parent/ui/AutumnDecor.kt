@@ -61,6 +61,17 @@ enum class BlobPlace(val cx: Float, val cy: Float, val r: Float) {
     RowProtection(0.77f, 0.95f, 0.17f),
     RowMap(0.90f, 1.22f, 0.22f),
     RowRestrictions(0.99f, 0.62f, 0.19f),
+
+    // Rasm çapda turgan keng bloklar (Jadvallar, Maxsus himoya) — yuqoridagilarning közgudagi aksi
+    RowLeadTop(0.06f, 0.28f, 0.16f),
+    RowLeadBottom(0.19f, 1.12f, 0.20f),
+    RowLeadEdge(0.00f, 0.60f, 0.19f),
+
+    // Profil plitkalari: 3D rasm QUTISIGA nisbatan (blokka emas) — plitka katta matn bilan ösganda ham doira rasm
+    // ortida qoladi; rasmdan kattaroq, bir tomondan çiqib turadi (blok çetida kesiladi)
+    PictureTopStart(0.38f, 0.40f, 0.62f),
+    PictureBottomEnd(0.64f, 0.62f, 0.58f),
+    PictureTopEnd(0.68f, 0.36f, 0.56f),
 }
 
 /** Blok foni ustida (kesilgan shakl ichida) doira — 3D rasmdan oldin chiziladi. */

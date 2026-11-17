@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Telegram арқылы кіру</string>
     <string name="yoki">немесе</string>
     <string name="telefon_raqami">Телефон нөмірі</string>
-    <string name="kirish_subtitle">Telegram арқылы кіріңіз. Тіркелгіңіз болмаса, өзі ашылады.</string>
+    <string name="kirish_subtitle">Тіркелгіңіз болмаса, өзі ашылады.</string>
     <string name="login_privacy">Жалғастыру арқылы Құпиялылық саясаты мен Пайдалану шарттарына келісесіз</string>
 
     <string name="telegram_ochilmoqda">Telegram ашылуда…</string>
@@ -1463,7 +1463,7 @@
     <string name="app_store_unavailable">App Store қазір ашылмады. Сәлден кейін қайталап көріңіз.</string>
     <string name="app_store_failed">App Store арқылы төлеу мүмкін болмады. Қайталап көріңіз.</string>
     <string name="apple_activation_pending_title">Төлем қабылданды</string>
-    <string name="login_subtitle_social">Ыңғайлы тәсілді таңдаңыз. Тіркелгіңіз болмаса, өзі ашылады.</string>
+    <string name="login_subtitle_social">Тіркелгіңіз болмаса, өзі ашылады.</string>
     <string name="login_telegram_not_opened">Telegram ашылмады. Telegram орнатылғанын тексеріңіз немесе басқа тәсілмен кіріңіз.</string>
     <string name="ob_notif_enable">Хабарландыруларды қосу</string>
     <string name="comfort_title">Оқу ыңғайлы ма?</string>

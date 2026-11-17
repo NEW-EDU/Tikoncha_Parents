@@ -635,7 +635,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="telegram_orqali_kirish">Telegram bilen gir</string>
     <string name="yoki">ýa-da</string>
     <string name="telefon_raqami">Telefon belgisi</string>
-    <string name="kirish_subtitle">Telegram arkaly giriň. Hasabyňyz ýok bolsa, özi açylar.</string>
+    <string name="kirish_subtitle">Hasabyňyz ýok bolsa, özi açylar.</string>
     <string name="login_privacy">Dowam etmek bilen, siz Gizlinlik syýasaty we Ulanyş şertleri bilen ylalaşýarsyňyz</string>
 
     <string name="telegram_ochilmoqda">Telegram açylýar…</string>
@@ -1480,7 +1480,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="app_store_unavailable">App Store häzir açylmady. Biraz soňra gaýtadan synanyşyň.</string>
     <string name="app_store_failed">App Store arkaly töläp bolmady. Gaýtadan synanyşyň.</string>
     <string name="apple_activation_pending_title">Töleg kabul edildi</string>
-    <string name="login_subtitle_social">Amatly usuly saýlaň. Hasabyňyz ýok bolsa, özi açylar.</string>
+    <string name="login_subtitle_social">Hasabyňyz ýok bolsa, özi açylar.</string>
     <string name="login_telegram_not_opened">Telegram açylmady. Telegram-yň gurnalandygyny barlaň ýa-da başga usul bilen giriň.</string>
     <string name="ob_notif_enable">Bildirişleri açmak</string>
     <string name="comfort_title">Okamak amatlymy?</string>

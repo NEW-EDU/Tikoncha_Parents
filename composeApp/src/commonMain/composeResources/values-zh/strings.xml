@@ -619,7 +619,7 @@
     <string name="telegram_orqali_kirish">使用 Telegram 登录</string>
     <string name="yoki">或</string>
     <string name="telefon_raqami">手机号</string>
-    <string name="kirish_subtitle">用 Telegram 登录。还没有账号？会自动为你创建。</string>
+    <string name="kirish_subtitle">还没有账号？会自动为你创建。</string>
     <string name="login_privacy">继续即表示你同意隐私政策和使用条款</string>
 
     <string name="telegram_ochilmoqda">正在打开 Telegram…</string>
@@ -1464,7 +1464,7 @@
     <string name="app_store_unavailable">App Store 现在不可用，请稍后再试。</string>
     <string name="app_store_failed">App Store 付款未成功，请重试。</string>
     <string name="apple_activation_pending_title">已收到付款</string>
-    <string name="login_subtitle_social">选择登录方式。还没有账号？会自动为你创建。</string>
+    <string name="login_subtitle_social">还没有账号？会自动为你创建。</string>
     <string name="login_telegram_not_opened">Telegram 没有打开。请确认已安装 Telegram，或换一种方式登录。</string>
     <string name="ob_notif_enable">开启通知</string>
     <string name="comfort_title">看得清楚吗？</string>

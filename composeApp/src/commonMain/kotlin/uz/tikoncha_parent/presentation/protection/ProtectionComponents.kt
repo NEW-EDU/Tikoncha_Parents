@@ -1,5 +1,13 @@
 package uz.tikoncha_parent.presentation.protection
 
+import androidx.compose.ui.text.style.TextAlign
+import uz.tikoncha_parent.ui.homeSubtitleColor
+import uz.tikoncha_parent.ui.tileBlobColor
+import uz.tikoncha_parent.ui.homeTileColor
+import uz.tikoncha_parent.ui.HomeItemHeight
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.draw.drawBehind
 import uz.tikoncha_parent.ui.rememberHapticSource
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -223,13 +231,18 @@ private fun ValueRow(label: String, value: @Composable RowScope.() -> Unit) {
             modifier = Modifier.weight(1f),
         )
         Spacer(Modifier.width(12.dp))
-        value()
+        // Qiymat uzun bölsa ham nom söz örtasidan bölinmasin: ikkalasi joyni teng bölişadi, qiymat ö'ngga tekislanadi
+        Row(
+            modifier = Modifier.weight(1f, fill = false),
+            horizontalArrangement = Arrangement.End,
+            verticalAlignment = Alignment.CenterVertically,
+        ) { value() }
     }
 }
 
 @Composable
 private fun ValueText(text: String, color: Color = AppColors.text.secondary) {
-    Text(text = text, style = AppTypography.titleMdMedium, color = color)
+    Text(text = text, style = AppTypography.titleMdMedium, color = color, textAlign = TextAlign.End)
 }
 
 /** Farzand ismini urg'u rangi bilan ajratadi. */
@@ -537,10 +550,15 @@ private fun PermissionList(
     explained: String?,
     onToggle: (ChildPermission) -> Unit,
 ) {
+    // Bosh sahifa bloklaridek: katta plitka, 3D rasm ortida yumşoq doira (3D rasmga joy kerak — egasining qoidasi)
+    val tile = homeTileColor()
     Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
         items.forEachIndexed { i, permission ->
-            // Har qator bosiladi: nima uçun kerakligi va qayerda yoqilişi oçiladi
-            Segment(index = i, count = items.size, onClick = { onToggle(permission) }) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .expressiveSegment(i, items.size, color = tile, debounceMs = 250L) { onToggle(permission) },
+            ) {
                 PermissionRow(
                     permission = permission,
                     granted = permission in state.enabledPermissions,
@@ -552,41 +570,66 @@ private fun PermissionList(
     }
 }
 
-/** Sozlama belgisi (3D rasm); hozir kerak bölmagan sozlamalarda xiraroq. */
-@Composable
-private fun PermissionIcon(permission: ChildPermission, dimmed: Boolean) {
-    Image(
-        painter = painterResource(permission.icon3d()),
-        contentDescription = null,
-        modifier = Modifier.size(40.dp).alpha(if (dimmed) 0.45f else 1f),
+/** Rasm ortidagi doira — rasm markazida, plitka balandligiga bog'liq emas (izoh oçilganda ham joyida turadi). */
+private fun Modifier.iconBlob(color: Color, iconSize: Dp, endPad: Dp, topPad: Dp): Modifier = drawBehind {
+    val r = (iconSize * 0.62f).toPx()
+    drawCircle(
+        color = color,
+        radius = r,
+        center = Offset(size.width - (endPad + iconSize / 2).toPx(), (topPad + iconSize / 2).toPx()),
     )
 }
 
+private val TileIcon = 72.dp
+private val TileEndPad = 14.dp
+private val TileTopPad = 16.dp
+
 @Composable
 private fun PermissionRow(permission: ChildPermission, granted: Boolean, required: Boolean, expanded: Boolean) {
+    val dimmed = !granted && !required
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(min = 56.dp)
-            .padding(horizontal = RowPaddingH, vertical = 12.dp),
-        verticalArrangement = Arrangement.Center,
+            .heightIn(min = HomeItemHeight)
+            .iconBlob(tileBlobColor(), TileIcon, TileEndPad, TileTopPad)
+            .padding(start = RowPaddingH, end = TileEndPad, top = TileTopPad, bottom = 16.dp),
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            PermissionIcon(permission, dimmed = !granted && !required)
-            Spacer(Modifier.width(14.dp))
-            Column(modifier = Modifier.weight(1f)) {
+        Row(verticalAlignment = Alignment.Top) {
+            Column(modifier = Modifier.weight(1f).padding(top = 2.dp)) {
                 Text(
                     text = stringResource(permission.title()),
-                    style = AppTypography.titleMdMedium,
+                    style = AppTypography.titleLgSemiBold,
                     color = AppColors.text.primary,
                 )
+                Spacer(Modifier.height(8.dp))
+                // Holat: yoqilgan / öçiq / hozir şart emas
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (granted || required) {
+                        Icon(
+                            imageVector = if (granted) Icons.Rounded.CheckCircle else Icons.Rounded.Error,
+                            contentDescription = null,
+                            tint = if (granted) AppColors.icon.accentPrimary else AppColors.icon.accentDanger,
+                            modifier = Modifier.size(20.dp),
+                        )
+                        Spacer(Modifier.width(6.dp))
+                    }
+                    Text(
+                        text = when {
+                            granted -> stringResource(Res.string.prot_on)
+                            required -> stringResource(Res.string.prot_off)
+                            else -> stringResource(Res.string.prot_not_needed_now)
+                        },
+                        style = AppTypography.titleSmMedium,
+                        color = if (!granted && required) AppColors.text.accentDanger else homeSubtitleColor(),
+                    )
+                }
                 if (!granted && required && !expanded) {
-                    Row(modifier = Modifier.padding(top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Row(modifier = Modifier.padding(top = 6.dp), verticalAlignment = Alignment.CenterVertically) {
                         Icon(
                             imageVector = Icons.Rounded.Info,
                             contentDescription = null,
                             tint = AppColors.icon.accentPrimary,
-                            modifier = Modifier.size(14.dp),
+                            modifier = Modifier.size(16.dp),
                         )
                         Spacer(Modifier.width(4.dp))
                         Text(
@@ -598,35 +641,20 @@ private fun PermissionRow(permission: ChildPermission, granted: Boolean, require
                 }
             }
             Spacer(Modifier.width(12.dp))
-            Text(
-                text = when {
-                    granted -> stringResource(Res.string.prot_on)
-                    required -> stringResource(Res.string.prot_off)
-                    // Joriy himoyada kerak emas — xavf emas, ogohlantirmaymiz
-                    else -> stringResource(Res.string.prot_not_needed_now)
-                },
-                style = AppTypography.bodyMdMedium,
-                color = if (!granted && required) AppColors.text.accentDanger else AppColors.text.tertiary,
+            Image(
+                painter = painterResource(permission.icon3d()),
+                contentDescription = null,
+                modifier = Modifier.size(TileIcon).alpha(if (dimmed) 0.5f else 1f),
             )
-            if (granted || required) {
-                Spacer(Modifier.width(8.dp))
-                Icon(
-                    imageVector = if (granted) Icons.Rounded.CheckCircle else Icons.Rounded.Error,
-                    contentDescription = null,
-                    tint = if (granted) AppColors.icon.accentPrimary else AppColors.icon.accentDanger,
-                    modifier = Modifier.size(22.dp),
-                )
-            }
         }
         AnimatedVisibility(visible = expanded) {
             Column(
-                // Matn sarlavha bilan bir chiziqda (belgi 40dp + 14dp oraliq)
-                modifier = Modifier.padding(top = 8.dp, start = 54.dp),
+                modifier = Modifier.padding(top = 12.dp, end = 6.dp),
                 verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
                 Text(
                     text = stringResource(permission.whyRes()),
-                    style = AppTypography.bodyMdRegular,
+                    style = AppTypography.bodyLgRegular,
                     color = AppColors.text.secondary,
                 )
                 // GPS — telefonning tezkor panelidagi tugma, sozlamalar röyxatida emas

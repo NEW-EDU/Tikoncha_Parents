@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Mit Telegram anmelden</string>
     <string name="yoki">oder</string>
     <string name="telefon_raqami">Telefonnummer</string>
-    <string name="kirish_subtitle">Melde dich mit Telegram an. Noch kein Konto? Es wird automatisch erstellt.</string>
+    <string name="kirish_subtitle">Noch kein Konto? Es wird automatisch erstellt.</string>
     <string name="login_privacy">Mit dem Fortfahren stimmst du der Datenschutzerklärung und den Nutzungsbedingungen zu</string>
 
     <string name="telegram_ochilmoqda">Telegram wird geöffnet …</string>
@@ -1463,7 +1463,7 @@
     <string name="app_store_unavailable">Der App Store ist gerade nicht erreichbar. Bitte versuche es gleich noch einmal.</string>
     <string name="app_store_failed">Die Zahlung im App Store hat nicht geklappt. Bitte versuche es noch einmal.</string>
     <string name="apple_activation_pending_title">Zahlung erhalten</string>
-    <string name="login_subtitle_social">Wähle, wie du dich anmelden möchtest. Noch kein Konto? Es wird automatisch erstellt.</string>
+    <string name="login_subtitle_social">Noch kein Konto? Es wird automatisch erstellt.</string>
     <string name="login_telegram_not_opened">Telegram hat sich nicht geöffnet. Prüfe, ob Telegram installiert ist, oder melde dich anders an.</string>
     <string name="ob_notif_enable">Benachrichtigungen einschalten</string>
     <string name="comfort_title">Gut lesbar?</string>
