@@ -94,7 +94,7 @@
     <string name="maktab">Школа</string>
     <string name="sozlamalar">Налаштування</string>
     <string name="bildirishnomalar">Сповіщення</string>
-    <string name="tema">Тема</string>
+    <string name="tema">Колір екрана</string>
     <string name="tasdiqlash">Підтвердити</string>
     <string name="tolov">Оплата</string>
     <string name="obuna_pro">Підписка Pro</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">ID паспорта</string>
     <string name="reklama">Реклама</string>
     <string name="yorug">Світла</string>
-    <string name="theme_system">Система</string>
+    <string name="theme_system">Як у телефоні</string>
     <string name="xavfli_zona">Небезпечна зона</string>
     <string name="akkauntni_o_chirish">Видалити обліковий запис</string>
     <string name="pochta_orqali">Електронною поштою</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Запитати дозвіл</string>
     <string name="joylashuv_uchun_ruxsat">Дозвіл на геолокацію</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Щоб повноцінно користуватися картою, надайте дозвіл на геолокацію в налаштуваннях!</string>
-    <string name="xatolik">Помилка</string>
-    <string name="ok">Гаразд</string>
+    <string name="xatolik">Не вдалося</string>
+    <string name="ok">Зрозуміло</string>
     <string name="qoshish">Додати</string>
     <string name="ogil_bola">Хлопчик</string>
     <string name="qiz_bola">Дівчинка</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Успішно</string>
     <string name="qisqartirish">Скоротити</string>
     <string name="vazifa_tahrirlandi">Завдання відредаговано</string>
-    <string name="server_connection_error">Помилка з’єднання із сервером!</string>
+    <string name="server_connection_error">Зараз не вдалося під’єднатися. Спробуйте трохи пізніше.</string>
     <string name="faol">Діє</string>
     <string name="faol_emas">Неактивний</string>
     <string name="ohirgi_faollik">Був(ла) в мережі:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Увага!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Ліміт використання не діятиме протягом вибраного вами проміжку часу! Тобто розклад за часом має вищий пріоритет.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">Не встановлено на вашому пристрої застосунків: %1$d</string>
-    <string name="cheklovlar">Обмеження</string>
+    <string name="cheklovlar">Правила</string>
     <string name="ta_ilovaga">Для застосунків: %1$d</string>
     <string name="ta_vebsaytga">Для вебсайтів: %1$d</string>
     <string name="ustuvorligi">Пріоритет</string>
-    <string name="jadval_nomini_kiriting">Введіть назву розкладу</string>
+    <string name="jadval_nomini_kiriting">Введіть назву правила</string>
     <string name="misol_o_quv_markaz">приклад: навчальний центр</string>
     <string name="ochirish">Видалити</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Ви згодні вийти без збереження розкладу?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">ВІТАЄМО!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Тепер ця підписка ваша</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Користуйтеся особливими можливостями та пріоритетною підтримкою!</string>
-    <string name="statistika">Статистика</string>
+    <string name="statistika">Час у телефоні</string>
     <string name="chegirmalar">Знижки</string>
     <string name="chegirma">Знижка</string>
     <string name="topshiriqlar">Завдання</string>
-    <string name="jadvallar">Розклади</string>
+    <string name="jadvallar">Правила</string>
     <string name="ilova_cheklangan">Обмежено застосунків: %1$d</string>
     <string name="faol_vazifa">Активних завдань: %1$d</string>
-    <string name="bugun_sarfladi">Сьогодні витрачено</string>
+    <string name="bugun_sarfladi">Сьогодні в телефоні</string>
     <string name="chiqish">Вийти</string>
     <string name="chiqishni_xohlaysizmi">Ви справді хочете вийти?</string>
     <string name="chiqishni_tasdiqlang">Підтвердьте вихід.</string>
@@ -321,8 +321,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">Ваш профіль і налаштування зберігаються на сервері.</string>
     <string name="qayta_kirsangiz_tiklanadi">Коли ви увійдете знову, усе буде відновлено.</string>
     <string name="farzand_qoshilmagan">Дитину не додано</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Розклади, чати та звіти з’являться після додавання дитини.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Сталася неочікувана помилка. Повторіть спробу.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Правила, чати й час у телефоні з’являться після додавання дитини.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Не вдалося. Спробуйте ще раз трохи пізніше.</string>
     <string name="hozircha_farzand_qoshilmagan">Ви ще не додали дитину.</string>
     <string name="diqqat2">УВАГА!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Виберіть тип застосунку, перш ніж продовжити.</string>
@@ -342,10 +342,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">Виберіть, як ми маємо надіслати \n код підтвердження</string>
     <string name="tasdiqlash_kodini_olish">Отримати код підтвердження</string>
     <string name="telegram_kod_kiritish">Введіть код, надісланий у Telegram, пов’язаний із %1$s</string>
-    <string name="xato_kod_kiritdingiz">Ви ввели неправильний код</string>
+    <string name="xato_kod_kiritdingiz">Код не підійшов. Спробуйте ввести ще раз.</string>
     <string name="kod_olish_usulini_ozgartirish">Змінити спосіб отримання коду</string>
     <string name="versiya">Версія</string>
-    <string name="jadval_yaratish">Створити розклад</string>
+    <string name="jadval_yaratish">Створити правило</string>
     <string name="sizning_cheklovlaringiz">Ваші обмеження</string>
 
     <string name="avtomatik_bloklash_vaqti">Автоматичне блокування у вибрані дні та години</string>
@@ -363,9 +363,9 @@
     <string name="noto_g_ri_url_format">Неправильний формат URL</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Цей сайт уже є в списку</string>
     <string name="to_liq_nazoratni_yoqing">Увімкніть повний контроль</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Керуйте застосунками, часом і використанням через Hoglt. З Plus працюйте без обмежень і вмикайте максимальний захист режимом «Щит».</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Керуйте застосунками й часом у телефоні через Hoglt. З Plus — без обмежень і з суворим захистом.</string>
     <string name="plus_imkoniyatlarini_ochish">Відкрити можливості Plus</string>
-    <string name="jadval_nomi">Назва розкладу</string>
+    <string name="jadval_nomi">Назва правила</string>
     <string name="saytlar">Сайти</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Вкажіть, коли й за яких умов застосунки та вебсайти обмежуються</string>
 
@@ -394,7 +394,7 @@
     <string name="coins_help_close">Закрити</string>
     <string name="qollash">Застосувати</string>
     <string name="promokod">Промокод:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Ви успішно придбали монети.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Монети куплено.</string>
     <string name="narx">Ціна</string>
     <string name="jami">Разом</string>
     <string name="bekor_qilindi">Скасовано!</string>
@@ -411,11 +411,11 @@
     <string name="plus_obnuna_kerak">Потрібна підписка PLUS</string>
     <string name="toliq_nazorat_statistika">Повний контроль і статистика</string>
     <string name="farzand_ilova_kuzatish">Стежте, якими застосунками користується ваша дитина і скільки впродовж дня.</string>
-    <string name="uchtagacha_jadval">До 3 розкладів</string>
+    <string name="uchtagacha_jadval">До 3 правил</string>
     <string name="jadval_cheklovlar">Встановлюйте окремі обмеження на дні, тижні чи особливий час.</string>
     <string name="qattiq_bloklash_qalqon">Суворий захист: блокуються і сайти, і короткі відео</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Ваша дитина не зможе вимкнути чи змінити обмеження.</string>
-    <string name="tez_bloklash_timer">Швидке блокування (таймер)</string>
+    <string name="tez_bloklash_timer">Завжди закриті застосунки</string>
     <string name="vaqtinchalik_bloklash_tezi">Вмикайте тимчасове блокування за лічені секунди, коли потрібно.</string>
     <string name="hisobot_tahlil">Звіти й аналітика</string>
     <string name="farzand_nazorat_tavsifi">Контролюйте використання телефону вашою дитиною. Блокуйте небажані застосунки, встановлюйте час використання та створюйте безпечне середовище.</string>
@@ -493,8 +493,8 @@
     <string name="danger_cat_tobacco">Тютюн і вейпи</string>
     <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радіус</string>
-    <string name="farzandim">Моя дитина</string>
-    <string name="ozim">Я сам(а)</string>
+    <string name="farzandim">Дитина сама</string>
+    <string name="ozim">Від мене</string>
     <string name="faol_vazifa_yo_q">Немає активних завдань</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">У вашої дитини немає завдань</string>
 
@@ -519,7 +519,7 @@
     <string name="weekday_sunday">Неділя</string>
 
     <string name="juda_muhim">Дуже важливо</string>
-    <string name="tekshirildi">Перевірено</string>
+    <string name="tekshirildi">Приймаю</string>
     <string name="ko_rish">Переглянути</string>
     <string name="vazifa_ochirilsinmi">Видалити завдання?</string>
     <string name="vazifa_ochirish_tasdiq">Ви справді хочете видалити це завдання?</string>
@@ -541,7 +541,7 @@
     <string name="tolovlar_tarixi_bos">Історія платежів порожня</string>
     <string name="tolovlar_tarixi_bos_hint">З’явиться тут після покупок</string>
     <string name="boshqa_yozuvlar_yoq">Інших записів немає</string>
-    <string name="xatolik_yuz_berdi">Сталася помилка</string>
+    <string name="xatolik_yuz_berdi">Не вдалося завантажити. Спробуйте ще раз.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -572,7 +572,7 @@
 
     <string name="izoh_ixtiyoriy">Коментар (необов’язково)</string>
     <string name="vazifa_tangalari">Монети, нараховані за виконання завдання</string>
-    <string name="vazifani_tekshirish">Перевірка завдання</string>
+    <string name="vazifani_tekshirish">Усе правильно?</string>
     <string name="izoh">Коментар</string>
     <string name="muhimlilik_darajasi">Рівень важливості</string>
     <string name="ragbatlantirish_tangachalari">Монети-нагорода</string>
@@ -592,7 +592,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Вашій дитині потрібно відкрити застосунок Hoglt і ввести код підтвердження.</string>
     <string name="bola_hali_bajardim_bosmagan">Дитина ще не натиснула кнопку «Готово»</string>
     <string name="foydalanilmagan">Не використано</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Потрібно увійти знову</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Увійти</string>
     <string name="profil_rasmi">Фото профілю</string>
@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Увійти через Telegram</string>
     <string name="yoki">або</string>
     <string name="telefon_raqami">Номер телефону</string>
-    <string name="kirish_subtitle">Увійдіть в обліковий запис, щоб продовжити</string>
+    <string name="kirish_subtitle">Увійдіть через Telegram. Якщо акаунта немає, він створиться сам.</string>
     <string name="login_privacy">Продовжуючи, ви погоджуєтеся з Політикою конфіденційності та Умовами використання</string>
 
     <string name="telegram_ochilmoqda">Відкриваємо Telegram…</string>
@@ -753,9 +753,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Ви схвалили запит — ваша дитина тепер може вийти із застосунку.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Ви схвалили запит — ваша дитина тепер може видалити застосунок.</string>
     <string name="sorov_rad_etildi_desc">Ви відхилили запит.</string>
-    <string name="unlink_child_title">Від’єднати дитину?</string>
-    <string name="unlink_child_message">Після цієї дії спостереження на пристрої %1$s буде припинено!</string>
-    <string name="unlink_child_action">Від’єднати</string>
+    <string name="unlink_child_title">Відв’язати дитину?</string>
+    <string name="unlink_child_message">Захист і правила на телефоні «%1$s» перестануть працювати. Щоб під’єднати знову, відскануйте код ще раз через «Додати дитину».</string>
+    <string name="unlink_child_action">Так, відв’язати</string>
     <string name="child_unlinked_success">Дитину успішно від’єднано</string>
     <string name="operator_kodi_topilmadi">Такого коду оператора не існує</string>
     <string name="kod_amal_qilish_muddati">Код дійсний: %1$s</string>
@@ -769,7 +769,7 @@
     <string name="farzand_tanlanmagan">Дитину не вибрано</string>
     <string name="vazifa_id_topilmadi">Ідентифікатор завдання не знайдено</string>
     <string name="tahrirlangan">змінено</string>
-    <string name="jadval_topilmadi">Розклад не знайдено.</string>
+    <string name="jadval_topilmadi">Не знайдено — можливо, видалено. Поверніться назад і відкрийте знову.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d хвилина</item>
         <item quantity="other">%1$d хвилин</item>
@@ -802,8 +802,8 @@
     <string name="tarix_disabled">Вимкнено</string>
     <string name="tarix_paused">Призупинено</string>
     <string name="tarix_deleted">Видалено</string>
-    <string name="tarix_quick_block_add">Швидке блокування додано</string>
-    <string name="tarix_quick_block_remove">Швидке блокування знято</string>
+    <string name="tarix_quick_block_add">Додано до завжди закритих</string>
+    <string name="tarix_quick_block_remove">Прибрано із завжди закритих</string>
     <string name="tarix_bosh">Змін поки немає</string>
     <string name="tarix_resumed">Відновлено</string>
     <string name="muddat">Тривалість</string>
@@ -827,26 +827,26 @@
     <string name="stat_row_sec">%1$d с</string>
     <string name="stat_hour_only">%1$d год</string>
     <string name="stat_per_day">~%1$s на день</string>
-    <string name="stat_quick_blocked">У швидкому блокуванні</string>
-    <string name="stat_quick_blocked_paused">У швидкому блокуванні · на паузі</string>
-    <string name="stat_quick_blocked_inactive">У швидкому блокуванні · потрібен Plus</string>
+    <string name="stat_quick_blocked">Завжди закрито</string>
+    <string name="stat_quick_blocked_paused">Завжди закрито · на паузі</string>
+    <string name="stat_quick_blocked_inactive">Завжди закрито · потрібен Plus</string>
     <string name="stat_blocked_by_child">Заблокувала сама дитина</string>
     <string name="stat_blocked_by_child_paused">Заблокувала сама дитина · на паузі</string>
     <string name="stat_blocked_by_child_inactive">Заблокувала сама дитина · потрібен Plus</string>
     <string name="stat_blocked_by_coparent">Заблоковано другим із батьків</string>
     <string name="stat_blocked_by_coparent_paused">Заблоковано другим із батьків · на паузі</string>
     <string name="stat_blocked_by_coparent_inactive">Заблоковано другим із батьків · потрібен Plus</string>
-    <string name="stat_lock_hint">Замок додає застосунок до швидкого блокування або прибирає його</string>
-    <string name="stat_quick_add_cd">Додати до швидкого блокування</string>
-    <string name="stat_quick_remove_cd">Прибрати зі швидкого блокування</string>
-    <string name="stat_reenable_title">Швидке блокування увімкнеться</string>
-    <string name="stat_reenable_message">Швидке блокування вимкнено. Блокування цього застосунку вмикає його знову, і інші застосунки зі списку теж буде заблоковано: %1$d.</string>
+    <string name="stat_lock_hint">Замок додає застосунок до завжди закритих або прибирає його</string>
+    <string name="stat_quick_add_cd">Додати до завжди закритих</string>
+    <string name="stat_quick_remove_cd">Прибрати із завжди закритих</string>
+    <string name="stat_reenable_title">Завжди закриті застосунки знову ввімкнуться</string>
+    <string name="stat_reenable_message">«Завжди закриті застосунки» зараз вимкнено. Якщо додати цей застосунок, вони знову ввімкнуться, і закриються ще застосунки зі списку: %1$d.</string>
     <string name="stat_reenable_confirm">Заблокувати</string>
     <string name="stat_quick_paywall_title">Потрібна підписка</string>
     <string name="stat_quick_paywall_message">Блокування застосунку одним дотиком потребує підписки Hoglt Plus.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Швидке блокування</string>
+    <string name="quick_title">Завжди закриті застосунки</string>
     <string name="quick_enabled">Увімкнено</string>
     <string name="quick_pause">Пауза</string>
     <string name="quick_blocked_apps">Заблоковані застосунки</string>
@@ -855,15 +855,15 @@
     <string name="quick_info_always">Застосунки з цього списку завжди заблоковані, незалежно від часу чи місця.</string>
     <string name="quick_info_off">Зараз вимкнено — увімкніть, щоб заблокувати ці застосунки.</string>
     <string name="quick_info_paused">Призупинено до %1$s — до цього часу нічого не блокується.</string>
-    <string name="quick_info_stats">Також можна додавати або прибирати застосунки одним дотиком зі статистики використання.</string>
-    <string name="quick_info_readd">Якщо швидке блокування вимкнено, додавання застосунку вмикає його знову.</string>
+    <string name="quick_info_stats">На сторінці «Час у телефоні» теж можна одним натисканням додати застосунок до цього списку або прибрати з нього.</string>
+    <string name="quick_info_readd">Якщо «Завжди закриті застосунки» вимкнено, додавання застосунку знову їх увімкне.</string>
     <string name="quick_child_blocks">Заблокувала сама дитина</string>
     <string name="quick_coparent_blocks">Заблоковано другим із батьків</string>
     <string name="quick_others_note">Змінювати ці списки може лише їхній власник. За потреби додайте застосунок до власного списку.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Час сну</string>
-    <string name="policy_preset_limit">Ліміт часу</string>
+    <string name="policy_preset_limit">Скільки часу на день</string>
     <string name="policy_preset_school">Години уроків</string>
     <string name="policy_day_mon">Пн</string>
     <string name="policy_day_tue">Вт</string>
@@ -883,30 +883,30 @@
     <string name="policy_location">Геолокація</string>
     <string name="policy_active_now">Зараз діє: %1$s</string>
     <string name="policy_active_until">до %1$s</string>
-    <string name="list_info_none">Зараз жоден розклад не діє</string>
+    <string name="list_info_none">Зараз жодне правило не діє</string>
     <string name="list_info_also">Також діють: %1$s.</string>
-    <string name="list_info_many">Коли діє кілька розкладів одночасно, застосунок блокується, якщо його блокує хоча б один із них.</string>
-    <string name="list_info_child_scope">Власні розклади дитини не можуть скасувати ваші — застосунок, який ви заблокували, залишається заблокованим.</string>
-    <string name="list_info_school_scope">Якщо шкільний розклад закриває застосунок або прямо його дозволяє, ваш розклад цього змінити не може. В іншому разі діє суворіший розклад.</string>
-    <string name="list_info_quick">Швидке блокування ввімкнено — його застосунки завжди заблоковані, незалежно від часу чи місця.</string>
-    <string name="list_info_paused">Призупинені розклади: %1$d — вони нічого не роблять до встановленого часу.</string>
-    <string name="list_info_how">Розклад запускається сам, коли настає його час і місце.</string>
-    <string name="policy_tab_templates">Шаблони</string>
+    <string name="list_info_many">Якщо одночасно діють кілька правил, застосунок закрито, коли його закриває хоча б одне.</string>
+    <string name="list_info_child_scope">Власні правила дитини не скасовують ваше рішення — закритий вами застосунок залишиться закритим.</string>
+    <string name="list_info_school_scope">Якщо правило школи закриває застосунок або прямо дозволяє його, ваше правило цього не змінить. В інших випадках діє суворіше правило.</string>
+    <string name="list_info_quick">«Завжди закриті застосунки» ввімкнено — застосунки з цього списку закриті завжди, незалежно від часу й місця.</string>
+    <string name="list_info_paused">Призупинено правил: %1$d — до вказаного часу вони не діють.</string>
+    <string name="list_info_how">Правило вмикається саме, коли настає його час і місце.</string>
+    <string name="policy_tab_templates">Готові правила</string>
     <string name="policy_tab_mine">Від мене</string>
     <string name="policy_tab_child">Сама дитина</string>
-    <string name="policy_tab_coparent">Батьки</string>
+    <string name="policy_tab_coparent">Другий з батьків</string>
     <string name="policy_tab_school">Школа</string>
     <string name="policy_enabled_count">Увімкнено: %1$d</string>
-    <string name="policy_content_protection">Захист вмісту</string>
+    <string name="policy_content_protection">Захист від поганих сайтів</string>
     <string name="policy_content_protection_others">Увімкнено дитиною або другим із батьків</string>
     <string name="policy_paused">Призупинено</string>
-    <string name="policy_quick_blocks">Швидкі блокування</string>
+    <string name="policy_quick_blocks">Завжди закриті застосунки</string>
     <string name="preset_all_apps">Усі застосунки</string>
-    <string name="policy_paywall_protection">Захист вмісту працює з Hoglt Plus.</string>
+    <string name="policy_paywall_protection">Захист від поганих сайтів працює з Hoglt Plus.</string>
     <string name="policy_paywall_count">Безкоштовний тариф обмежує кількість розкладів. Hoglt Plus дає більше.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Поки нічого не вибрано — цей розклад нічого не блокує.</string>
+    <string name="info_nothing">Нічого не вибрано — це правило нічого не закриває.</string>
     <string name="info_always">Завжди</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s з %2$s до %3$s</string>
@@ -919,12 +919,12 @@
     <string name="info_what_all_apps_sites">усі застосунки й сайти заблоковано</string>
     <string name="info_what_selected">вибране заблоковано (%1$s)</string>
     <string name="info_stays_open">Залишаються відкритими: %1$s.</string>
-    <string name="info_not_counted">Не враховується в ліміті: %1$s.</string>
+    <string name="info_not_counted">Час не рахується: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s можна використовувати разом не більше %3$s. Коли час вичерпано, вони залишаються заблокованими до завтра.</string>
     <string name="info_limit_hourly">%1$s: %2$s можна використовувати не більше %3$s на годину. Коли час вичерпано, вони залишаються заблокованими до наступної години.</string>
     <string name="info_limit_all">усі застосунки</string>
     <string name="info_limit_selected">вибране</string>
-    <string name="info_limit_gate">Ліміт діє лише: %1$s.</string>
+    <string name="info_limit_gate">Час рахується лише: %1$s.</string>
     <string name="info_protected">Дзвінки, SMS та інші необхідні застосунки ніколи не блокуються.</string>
     <string name="info_disabled">Зараз вимкнено — увімкніть, щоб це застосувати.</string>
 
@@ -933,7 +933,7 @@
     <string name="preset_when">Коли</string>
     <string name="preset_starts">Початок</string>
     <string name="preset_ends">Кінець</string>
-    <string name="preset_limit">Ліміт</string>
+    <string name="preset_limit">Скільки часу</string>
     <string name="preset_counted">Що враховується</string>
     <string name="preset_what_closed">Що блокується</string>
     <string name="preset_only_selected">Лише вибрані</string>
@@ -974,13 +974,13 @@
     <string name="targets_covered_by_category">Вибрано через категорію</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Неправильна адреса сайту або ключове слово. Приклад: youtube.com або kino</string>
-    <string name="editor_new_policy">Новий розклад</string>
+    <string name="editor_new_policy">Нове правило</string>
     <string name="editor_not_selected">Не вибрано</string>
     <string name="editor_when_hint">необов’язково · інакше завжди</string>
     <string name="editor_add_condition">Додати умову</string>
     <string name="editor_added">Додано</string>
     <string name="editor_condition_time">Час</string>
-    <string name="editor_condition_limit">Ліміт</string>
+    <string name="editor_condition_limit">Скільки часу</string>
     <string name="editor_in_this_time">У цей час</string>
     <string name="editor_closed_in_time">Буде заблоковано</string>
     <string name="editor_closed_in_time_sub">В інший час відкрито</string>
@@ -991,8 +991,8 @@
     <string name="editor_inside">Усередині зони</string>
     <string name="editor_outside">Поза зоною</string>
     <string name="editor_rename">Перейменувати</string>
-    <string name="editor_delete_title">Видалити цей розклад?</string>
-    <string name="editor_delete_message">«%1$s» буде видалено.</string>
+    <string name="editor_delete_title">Видалити правило?</string>
+    <string name="editor_delete_message">«%1$s» буде видалено. Застосунки, які закривало це правило, знову відкриються.</string>
     <string name="editor_paywall_allow">Режим «Відкриті лише вибрані» доступний із Plus.</string>
     <string name="location_child_here">Де моя дитина</string>
     <string name="protection_section">Що захищається</string>
@@ -1010,24 +1010,24 @@
     <string name="protection_policies_pending">Ще не доставлено</string>
     <string name="protection_gujanak_limits_note">Середній захист закриває лише застосунки. Сайти й короткі відео блокуються лише в суворому захисті: на телефоні дитини Hoglt → «Контроль» → Режим «Щит».</string>
     <string name="editor_limit_days_follow_time">Так само, як і час — дні вибираються на сторінці часу</string>
-    <string name="editor_limit_in_window">ліміт у цей час</string>
-    <string name="editor_limit_outside_window">ліміт поза цим часом</string>
-    <string name="editor_limit_in_time">Ліміт діє в цей час</string>
+    <string name="editor_limit_in_window">час рахується в ці години</string>
+    <string name="editor_limit_outside_window">час рахується поза цими годинами</string>
+    <string name="editor_limit_in_time">Час рахується лише в ці години</string>
     <string name="editor_limit_in_time_sub">В інший час обмежень немає</string>
-    <string name="editor_limit_out_time">Ліміт діє поза цим часом</string>
+    <string name="editor_limit_out_time">Час рахується поза цими годинами</string>
     <string name="editor_limit_out_time_sub">У цей час обмежень немає</string>
     <string name="info_limit_daily_window">%1$s: %2$s можна використовувати разом не більше %3$s. Коли час спливе, закрито до завершення цього часового вікна.</string>
     <string name="targets_only_selected_open_sites_sub">Інші сайти закриваються</string>
     <string name="targets_only_selected_open_both_sub">Інші застосунки й сайти закриваються</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Розкладів поки немає</string>
-    <string name="policy_empty_mine_sub">Увімкніть шаблон або створіть власний</string>
+    <string name="policy_empty_mine_title">Правил поки немає</string>
+    <string name="policy_empty_mine_sub">Увімкніть одне з готових правил або створіть своє</string>
     <string name="empty_search_title">Нічого не знайдено</string>
     <string name="empty_search_sub">Спробуйте інший запит</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Сайти для дорослих та азартні ігри</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Розклад</string>
+    <string name="policy_name_schedule">Правило</string>
     <string name="policy_name_category_block">Блокування за категоріями</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Увімкнула дитина</string>
@@ -1122,7 +1122,7 @@
     <string name="ap_off_confirm">Вимкнути</string>
     <string name="ap_keep_on">Залишити ввімкненим</string>
     <string name="ap_retry_note">Спробуємо ще раз завтра (%1$d/3).</string>
-    <string name="ap_retry_now">Повторити</string>
+    <string name="ap_retry_now">Оплатити зараз</string>
     <string name="ap_other_card">Інша картка</string>
     <string name="ap_cards_empty_title">Немає збережених карток</string>
     <string name="ap_cards_empty_sub">Додайте картку UZCARD або HUMO для автоплатежу</string>
@@ -1168,7 +1168,7 @@
     <string name="ulash_tugma">Зв’язати</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Пропустити</string>
+    <string name="ob_skip">Подивлюся пізніше</string>
     <string name="ob_start">Почнімо</string>
     <string name="ob_got_it">Зрозуміло</string>
     <string name="ob_hello_title">Привіт, я Hoglt</string>
@@ -1182,10 +1182,10 @@
     <string name="ob_day_study">Навчання</string>
     <string name="ob_min_fmt">%1$d хв</string>
     <string name="ob_rules_title">Правила — один раз</string>
-    <string name="ob_rules_body">Час сну, навчання та щоденні ліміти вмикаються самі.</string>
+    <string name="ob_rules_body">Сон, навчання й час на день вмикаються самі.</string>
     <string name="ob_rule_sleep">Час сну</string>
     <string name="ob_rule_school">Навчання</string>
-    <string name="ob_rule_limit">Ліміт на день</string>
+    <string name="ob_rule_limit">Скільки часу на день</string>
     <string name="ob_rule_limit_value">2 год</string>
     <string name="ob_map_title">Знайте, де дитина</string>
     <string name="ob_map_body">Бачте свою дитину на карті та встановлюйте правила для місць, як-от школа.</string>
@@ -1242,8 +1242,8 @@
     <string name="home_layout_list">Список</string>
     <string name="home_layout_grid">Сітка</string>
     <string name="home_greeting">Привіт, %1$s</string>
-    <string name="kecha_sarfladi">Витрачено вчора</string>
-    <string name="sana_sarfladi">Витрачено: %1$s</string>
+    <string name="kecha_sarfladi">Учора в телефоні</string>
+    <string name="sana_sarfladi">%1$s у телефоні</string>
     <string name="stat_no_usage_day">У цей день телефон ще не використовувався</string>
     <string name="kirish_usuli">Спосіб входу</string>
     <string name="google_hisobi">Обліковий запис Google</string>
@@ -1266,7 +1266,7 @@
     <string name="vazifa_muddati">Термін</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Помічник</string>
+    <string name="ai_assistant_title">Розумний помічник</string>
     <string name="ai_assistant_subtitle">Запитайте або задайте правило</string>
     <string name="ai_period_today">Сьогодні</string>
     <string name="ai_period_yesterday">Учора</string>
@@ -1396,20 +1396,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Безкоштовно: активних правил — %1$d · Plus: без обмежень</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Застосунок не бачить, які застосунки відкриваються: час у телефоні не рахується, правила не працюють.</string>
+    <string name="perm_why_overlay">Поверх закритого застосунку не з’являється екран блокування — правила не можуть його закрити.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Ви не бачите, де дитина; правила, прив’язані до місця, теж не працюють.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Без цього сайти, YouTube Shorts та Instagram Reels не блокуються, а застосунок можна легко видалити.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">На безкоштовному тарифі в одне правило можна додати не більше %1$d застосунків. Для більшого потрібен Plus.</string>
+    <string name="policy_paywall_app_limit">Досягнуто ліміту застосунків в одному правилі для вашого тарифу.</string>
     <string name="clip_child_phone">На її телефоні</string>
     <string name="prot_default_note">Зараз ваші правила не закривають жодних застосунків. Щоб закривали, на телефоні дитини відкрийте Hoglt → «Контроль» і ввімкніть захист.</string>
     <string name="prot_strength">Рівень захисту</string>
@@ -1439,4 +1439,64 @@
     <string name="task_empty_done">Завершених завдань поки немає</string>
     <string name="task_empty_overdue">Прострочених завдань немає</string>
     <string name="task_empty_filter_hint">Щоб побачити всі завдання, натисніть на вибраний фільтр ще раз.</string>
+    <string name="voice_listen">Послухати</string>
+    <string name="voice_stop">Зупинити</string>
+    <string name="voice_unavailable">Голосового пояснення поки немає. Спробуйте пізніше.</string>
+    <string name="live_confirm_title">Дивитися наживо</string>
+    <string name="live_confirm_body">%1$s отримає дзвінок. Якщо погодиться, відкриється відео.</string>
+    <string name="live_child_fallback">Ваша дитина</string>
+    <string name="live_call_button">Подзвонити</string>
+    <string name="live_ringing">Дзвонимо: %1$s…</string>
+    <string name="live_connecting">Під’єднання…</string>
+    <string name="live_error_connect">Не вдалося під’єднатися. Спробуйте ще раз трохи пізніше.</string>
+    <string name="live_declined">Дитина відхилила дзвінок</string>
+    <string name="live_no_answer">Немає відповіді</string>
+    <string name="live_end">Завершити</string>
+    <string name="live_show_on_map">Показати на мапі</string>
+    <string name="unlink_child_button">Відв’язати дитину</string>
+    <string name="saqlandi">Збережено</string>
+    <string name="ap_retry_now_amount">Оплатити зараз · %1$s</string>
+    <string name="pay_charge_body">З картки •• %1$s буде списано %2$s.</string>
+    <string name="pay_charge_body_amount">З картки буде списано %1$s.</string>
+    <string name="pay_charge_body_plain">Оплату за підписку буде списано зі збереженої картки.</string>
+    <string name="pay_confirm_pay">Оплатити</string>
+    <string name="app_store_unavailable">App Store зараз недоступний. Спробуйте трохи пізніше.</string>
+    <string name="app_store_failed">Не вдалося оплатити через App Store. Спробуйте ще раз.</string>
+    <string name="apple_activation_pending_title">Оплату отримано</string>
+    <string name="login_subtitle_social">Виберіть зручний спосіб входу. Якщо акаунта немає, він створиться сам.</string>
+    <string name="login_telegram_not_opened">Telegram не відкрився. Перевірте, чи встановлено Telegram, або увійдіть іншим способом.</string>
+    <string name="ob_notif_enable">Увімкнути сповіщення</string>
+    <string name="comfort_title">Зручно читати?</string>
+    <string name="comfort_screen_color">Колір екрана</string>
+    <string name="comfort_light">Світлий</string>
+    <string name="comfort_dark">Темний</string>
+    <string name="comfort_done">Готово</string>
+    <string name="comfort_hint">Це можна змінити й потім.</string>
+    <string name="policy_turned_on">Увімкнено: %1$s</string>
+    <string name="policy_turned_off">Вимкнено: %1$s</string>
+    <string name="policy_off_title">Вимкнути «%1$s»?</string>
+    <string name="policy_off_body">На телефоні дитини це правило одразу перестане діяти, і все, що воно закривало, знову відкриється. Увімкнути знову можна будь-коли.</string>
+    <string name="policy_off_body_safety">На телефоні дитини цей захист одразу вимкнеться. Увімкнути знову можна будь-коли.</string>
+    <string name="policy_off_confirm">Так, вимкнути</string>
+    <string name="policy_off_cancel">Ні, залишити</string>
+    <string name="policy_saved_sent">Збережено — надіслано на телефон дитини</string>
+    <string name="policy_saved_queued">Збережено — надійде на телефон дитини, коли з’явиться інтернет</string>
+    <string name="policy_unsaved_title">Зберегти зміни?</string>
+    <string name="policy_unsaved_body">Якщо не зберегти, на телефоні дитини нічого не зміниться.</string>
+    <string name="policy_unsaved_discard">Вийти без збереження</string>
+    <string name="quick_unblock_title">Знову відкрити %1$s?</string>
+    <string name="quick_unblock_body">Застосунок одразу відкриється на телефоні дитини.</string>
+    <string name="quick_unblock_confirm">Так, відкрити</string>
+    <string name="quick_unblock_action">Відкрити</string>
+    <string name="quick_unblocked">%1$s знову відкрито</string>
+    <string name="policy_exception_remove">Прибрати</string>
+    <string name="policy_load_failed">Не вдалося завантажити</string>
+    <string name="tg_more_settings">Детальні налаштування</string>
+    <string name="rules_on_count">Увімкнено правил: %1$d</string>
+    <string name="task_accepted">Прийнято</string>
+    <string name="task_accepted_coins">%1$s отримує монети: %2$d</string>
+    <string name="task_coins_explain">Коли ви приймете завдання, монети перейдуть дитині. Вона витрачає їх на запитання розумному помічникові.</string>
+    <string name="task_coins_not_enough">Не вистачає монет</string>
+    <string name="chat_support_title">Служба підтримки</string>
+    <string name="chat_ai_title">Розумний помічник</string>
 </resources>

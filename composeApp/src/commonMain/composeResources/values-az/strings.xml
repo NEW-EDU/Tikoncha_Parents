@@ -94,7 +94,7 @@
     <string name="maktab">Məktəb</string>
     <string name="sozlamalar">Ayarlar</string>
     <string name="bildirishnomalar">Bildirişlər</string>
-    <string name="tema">Tema</string>
+    <string name="tema">Ekran rəngi</string>
     <string name="tasdiqlash">Təsdiqlə</string>
     <string name="tolov">Ödəniş</string>
     <string name="obuna_pro">Pro abunəlik</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">Pasport ID</string>
     <string name="reklama">Reklam</string>
     <string name="yorug">Açıq</string>
-    <string name="theme_system">Sistem</string>
+    <string name="theme_system">Telefondakı kimi</string>
     <string name="xavfli_zona">Təhlükəli zona</string>
     <string name="akkauntni_o_chirish">Hesabı sil</string>
     <string name="pochta_orqali">E-poçt ilə</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">İcazə istə</string>
     <string name="joylashuv_uchun_ruxsat">Məkan icazəsi</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Xəritədən tam istifadə etmək üçün ayarlardan Məkan icazəsi verin!</string>
-    <string name="xatolik">Xəta</string>
-    <string name="ok">OK</string>
+    <string name="xatolik">Alınmadı</string>
+    <string name="ok">Aydındır</string>
     <string name="qoshish">Əlavə et</string>
     <string name="ogil_bola">Oğlan</string>
     <string name="qiz_bola">Qız</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Uğurlu</string>
     <string name="qisqartirish">Qısalt</string>
     <string name="vazifa_tahrirlandi">Tapşırıq redaktə edildi</string>
-    <string name="server_connection_error">Serverə qoşulma xətası!</string>
+    <string name="server_connection_error">İndi qoşulmaq alınmadı. Bir az sonra yenidən cəhd edin.</string>
     <string name="faol">Aktiv</string>
     <string name="faol_emas">Qeyri-aktiv</string>
     <string name="ohirgi_faollik">Son aktivlik:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Diqqət!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Seçdiyiniz vaxt aralığında İstifadə limiti işləməyəcək! Yəni vaxt cədvəli daha yüksək prioritetə malikdir.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d tətbiq cihazınızda quraşdırılmayıb</string>
-    <string name="cheklovlar">Məhdudiyyətlər</string>
+    <string name="cheklovlar">Qaydalar</string>
     <string name="ta_ilovaga">%1$d tətbiqə</string>
     <string name="ta_vebsaytga">%1$d veb-sayta</string>
     <string name="ustuvorligi">Prioritet</string>
-    <string name="jadval_nomini_kiriting">Cədvəlin adını daxil edin</string>
+    <string name="jadval_nomini_kiriting">Qayda adını daxil edin</string>
     <string name="misol_o_quv_markaz">məsələn: Tədris mərkəzi</string>
     <string name="ochirish">Sil</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Cədvəli saxlamadan çıxmağa razısınız?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">TƏBRİKLƏR!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Artıq bu abunəliyin sahibisiniz</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Xüsusi funksiyalardan və prioritet dəstəkdən yararlanın!</string>
-    <string name="statistika">Statistika</string>
+    <string name="statistika">Telefon vaxtı</string>
     <string name="chegirmalar">Endirimlər</string>
     <string name="chegirma">Endirim</string>
     <string name="topshiriqlar">Tapşırıqlar</string>
-    <string name="jadvallar">Cədvəllər</string>
+    <string name="jadvallar">Qaydalar</string>
     <string name="ilova_cheklangan">%1$d tətbiq məhdudlaşdırılıb</string>
-    <string name="faol_vazifa">%1$d aktiv tapşırıq</string>
-    <string name="bugun_sarfladi">Bu gün sərf olunub</string>
+    <string name="faol_vazifa">Aktiv tapşırıq: %1$d</string>
+    <string name="bugun_sarfladi">Bu gün telefonda</string>
     <string name="chiqish">Hesabdan çıx</string>
     <string name="chiqishni_xohlaysizmi">Çıxmaq istəyirsiniz?</string>
     <string name="chiqishni_tasdiqlang">Çıxışı təsdiqləyin.</string>
@@ -321,8 +321,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">Profiliniz və ayarlarınız serverdə saxlanılır.</string>
     <string name="qayta_kirsangiz_tiklanadi">Yenidən daxil olduqda hər şey bərpa olunacaq.</string>
     <string name="farzand_qoshilmagan">Uşaq əlavə edilməyib</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Uşaq əlavə edildikdən sonra cədvəllər, çatlar və hesabatlar görünəcək.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Gözlənilməz xəta baş verdi. Zəhmət olmasa, yenidən cəhd edin.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Qaydalar, yazışmalar və telefon vaxtı uşaq əlavə ediləndən sonra görünəcək.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Alınmadı. Bir az sonra yenidən cəhd edin.</string>
     <string name="hozircha_farzand_qoshilmagan">Hələ uşaq əlavə etməmisiniz.</string>
     <string name="diqqat2">DİQQƏT!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Davam etməzdən əvvəl tətbiq növünü seçin.</string>
@@ -342,10 +342,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">Təsdiq kodunu necə göndərməyimizi\nseçin</string>
     <string name="tasdiqlash_kodini_olish">Təsdiq kodunu al</string>
     <string name="telegram_kod_kiritish">%1$s nömrəsinə bağlı Telegram-a göndərilən kodu daxil edin</string>
-    <string name="xato_kod_kiritdingiz">Yanlış kod daxil etdiniz</string>
+    <string name="xato_kod_kiritdingiz">Kod uyğun gəlmədi. Yenidən yazın.</string>
     <string name="kod_olish_usulini_ozgartirish">Kodun göndərilmə üsulunu dəyiş</string>
     <string name="versiya">Versiya</string>
-    <string name="jadval_yaratish">Cədvəl yarat</string>
+    <string name="jadval_yaratish">Qayda yaratmaq</string>
     <string name="sizning_cheklovlaringiz">Məhdudiyyətləriniz</string>
 
     <string name="avtomatik_bloklash_vaqti">Seçilmiş gün və saatlarda avtomatik bloklama</string>
@@ -363,9 +363,9 @@
     <string name="noto_g_ri_url_format">URL formatı yanlışdır</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Bu sayt artıq siyahıdadır</string>
     <string name="to_liq_nazoratni_yoqing">Tam nəzarəti aktiv edin</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Hoglt vasitəsilə tətbiqləri, vaxtı və istifadəni idarə edin. Plus ilə məhdudiyyətsiz işləyin və Qalxan rejimi ilə maksimum qorumanı aktiv edin.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Tətbiqləri və telefon vaxtını Hoglt ilə idarə edin. Plus ilə məhdudiyyət yoxdur və sərt qorumanı aça bilərsiniz.</string>
     <string name="plus_imkoniyatlarini_ochish">Plus imkanlarını aç</string>
-    <string name="jadval_nomi">Cədvəlin adı</string>
+    <string name="jadval_nomi">Qaydanın adı</string>
     <string name="saytlar">Saytlar</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Tətbiq və veb-saytların nə vaxt və hansı şərtlərlə məhdudlaşdırılacağını təyin edin</string>
 
@@ -394,7 +394,7 @@
     <string name="coins_help_close">Bağla</string>
     <string name="qollash">Tətbiq et</string>
     <string name="promokod">Promo kod:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Sikkələri uğurla aldınız.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Sikkələr alındı.</string>
     <string name="narx">Qiymət</string>
     <string name="jami">Cəmi</string>
     <string name="bekor_qilindi">Ləğv edildi!</string>
@@ -411,11 +411,11 @@
     <string name="plus_obnuna_kerak">PLUS abunəliyi tələb olunur</string>
     <string name="toliq_nazorat_statistika">Tam nəzarət və statistika</string>
     <string name="farzand_ilova_kuzatish">Uşağınızın gün ərzində hansı tətbiqlərdən və nə qədər istifadə etdiyini izləyin.</string>
-    <string name="uchtagacha_jadval">3 cədvələ qədər</string>
+    <string name="uchtagacha_jadval">3 qaydaya qədər</string>
     <string name="jadval_cheklovlar">Günlər, həftələr və ya xüsusi vaxtlar üçün ayrıca məhdudiyyətlər təyin edin.</string>
     <string name="qattiq_bloklash_qalqon">Sərt qoruma: saytlar və qısa videolar da bloklanır</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Uşağınız məhdudiyyətləri söndürə və ya dəyişə bilməz.</string>
-    <string name="tez_bloklash_timer">Sürətli bloklama (Taymer)</string>
+    <string name="tez_bloklash_timer">Həmişə bağlı tətbiqlər</string>
     <string name="vaqtinchalik_bloklash_tezi">Lazım olduqda müvəqqəti bloklamanı bir neçə saniyəyə aktiv edin.</string>
     <string name="hisobot_tahlil">Hesabatlar və təhlil</string>
     <string name="farzand_nazorat_tavsifi">Uşağınızın telefon istifadəsinə nəzarət edin. Arzuolunmaz tətbiqləri bloklayın, istifadə vaxtı təyin edin və təhlükəsiz mühit yaradın.</string>
@@ -493,8 +493,8 @@
     <string name="danger_cat_tobacco">Tütün və veyplər</string>
     <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
-    <string name="farzandim">Uşağım</string>
-    <string name="ozim">Özüm</string>
+    <string name="farzandim">Uşağın özü qoyduqları</string>
+    <string name="ozim">Mənim verdiklərim</string>
     <string name="faol_vazifa_yo_q">Aktiv tapşırıq yoxdur</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Uşağınız üçün tapşırıq yoxdur</string>
 
@@ -519,7 +519,7 @@
     <string name="weekday_sunday">Bazar</string>
 
     <string name="juda_muhim">Çox vacib</string>
-    <string name="tekshirildi">Yoxlanıldı</string>
+    <string name="tekshirildi">Qəbul edirəm</string>
     <string name="ko_rish">Bax</string>
     <string name="vazifa_ochirilsinmi">Tapşırıq silinsin?</string>
     <string name="vazifa_ochirish_tasdiq">Doğrudan da bu tapşırığı silmək istəyirsiniz?</string>
@@ -541,7 +541,7 @@
     <string name="tolovlar_tarixi_bos">Ödəniş tarixçəsi boşdur</string>
     <string name="tolovlar_tarixi_bos_hint">Alışlardan sonra burada görünəcək</string>
     <string name="boshqa_yozuvlar_yoq">Başqa qeyd yoxdur</string>
-    <string name="xatolik_yuz_berdi">Xəta baş verdi</string>
+    <string name="xatolik_yuz_berdi">Yüklənmədi. Yenidən cəhd edin.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -572,7 +572,7 @@
 
     <string name="izoh_ixtiyoriy">Şərh (istəyə görə)</string>
     <string name="vazifa_tangalari">Tapşırığı yerinə yetirdiyi üçün verilən sikkələr</string>
-    <string name="vazifani_tekshirish">Tapşırığı yoxla</string>
+    <string name="vazifani_tekshirish">Hər şey düzdür?</string>
     <string name="izoh">Şərh</string>
     <string name="muhimlilik_darajasi">Vaciblik səviyyəsi</string>
     <string name="ragbatlantirish_tangachalari">Mükafat sikkələri</string>
@@ -592,7 +592,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Uşağınız Hoglt tətbiqini açıb təsdiq kodunu daxil etməlidir.</string>
     <string name="bola_hali_bajardim_bosmagan">Uşaq hələ "Hazırdır" düyməsini basmayıb</string>
     <string name="foydalanilmagan">İstifadə olunmayıb</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Yenidən daxil olmaq lazımdır</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Daxil ol</string>
     <string name="profil_rasmi">Profil şəkli</string>
@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Telegram ilə daxil ol</string>
     <string name="yoki">və ya</string>
     <string name="telefon_raqami">Telefon nömrəsi</string>
-    <string name="kirish_subtitle">Davam etmək üçün hesabınıza daxil olun</string>
+    <string name="kirish_subtitle">Telegram ilə daxil olun. Hesabınız yoxdursa, özü yaradılacaq.</string>
     <string name="login_privacy">Davam etməklə Məxfilik siyasəti və İstifadə şərtləri ilə razılaşırsınız</string>
 
     <string name="telegram_ochilmoqda">Telegram açılır…</string>
@@ -753,9 +753,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Sorğunu təsdiqlədiniz — uşağınız indi tətbiqdən çıxa bilər.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Sorğunu təsdiqlədiniz — uşağınız indi tətbiqi silə bilər.</string>
     <string name="sorov_rad_etildi_desc">Sorğunu rədd etdiniz.</string>
-    <string name="unlink_child_title">Uşaqla əlaqə kəsilsin?</string>
-    <string name="unlink_child_message">Bu əməliyyatdan sonra %1$s üçün cihazda monitorinq dayandırılacaq!</string>
-    <string name="unlink_child_action">Əlaqəni kəs</string>
+    <string name="unlink_child_title">Uşaq ayrılsın?</string>
+    <string name="unlink_child_message">%1$s telefonundakı qoruma və qaydalar dayanacaq. Yenidən qoşmaq üçün «Uşaq əlavə et» vasitəsilə kodu yenidən skan edin.</string>
+    <string name="unlink_child_action">Bəli, ayrılsın</string>
     <string name="child_unlinked_success">Uşaqla əlaqə uğurla kəsildi</string>
     <string name="operator_kodi_topilmadi">Belə operator kodu yoxdur</string>
     <string name="kod_amal_qilish_muddati">Kod etibarlıdır: %1$s</string>
@@ -769,7 +769,7 @@
     <string name="farzand_tanlanmagan">Uşaq seçilməyib</string>
     <string name="vazifa_id_topilmadi">Tapşırıq ID-si tapılmadı</string>
     <string name="tahrirlangan">redaktə edilib</string>
-    <string name="jadval_topilmadi">Cədvəl tapılmadı.</string>
+    <string name="jadval_topilmadi">Tapılmadı — bəlkə silinib. Geri qayıdıb yenidən açın.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d dəqiqə</item>
         <item quantity="other">%1$d dəqiqə</item>
@@ -802,8 +802,8 @@
     <string name="tarix_disabled">Söndürüldü</string>
     <string name="tarix_paused">Dayandırılıb</string>
     <string name="tarix_deleted">Silindi</string>
-    <string name="tarix_quick_block_add">Sürətli blok əlavə edildi</string>
-    <string name="tarix_quick_block_remove">Sürətli blok götürüldü</string>
+    <string name="tarix_quick_block_add">Həmişə bağlı tətbiqlərə əlavə edildi</string>
+    <string name="tarix_quick_block_remove">Həmişə bağlı tətbiqlərdən çıxarıldı</string>
     <string name="tarix_bosh">Hələ dəyişiklik yoxdur</string>
     <string name="tarix_resumed">Davam etdirildi</string>
     <string name="muddat">Müddət</string>
@@ -827,26 +827,26 @@
     <string name="stat_row_sec">%1$d san</string>
     <string name="stat_hour_only">%1$d s</string>
     <string name="stat_per_day">Gündə ~%1$s</string>
-    <string name="stat_quick_blocked">Sürətli blokda</string>
-    <string name="stat_quick_blocked_paused">Sürətli blokda · dayandırılıb</string>
-    <string name="stat_quick_blocked_inactive">Sürətli blokda · Plus lazımdır</string>
+    <string name="stat_quick_blocked">Həmişə bağlı</string>
+    <string name="stat_quick_blocked_paused">Həmişə bağlı · dayandırılıb</string>
+    <string name="stat_quick_blocked_inactive">Həmişə bağlı · Plus lazımdır</string>
     <string name="stat_blocked_by_child">Uşaq özü bloklayıb</string>
     <string name="stat_blocked_by_child_paused">Uşaq özü bloklayıb · dayandırılıb</string>
     <string name="stat_blocked_by_child_inactive">Uşaq özü bloklayıb · Plus lazımdır</string>
     <string name="stat_blocked_by_coparent">Digər valideyn bloklayıb</string>
     <string name="stat_blocked_by_coparent_paused">Digər valideyn bloklayıb · dayandırılıb</string>
     <string name="stat_blocked_by_coparent_inactive">Digər valideyn bloklayıb · Plus lazımdır</string>
-    <string name="stat_lock_hint">Kilid tətbiqi sürətli bloka əlavə edir və ya oradan çıxarır</string>
-    <string name="stat_quick_add_cd">Sürətli bloka əlavə et</string>
-    <string name="stat_quick_remove_cd">Sürətli blokdan çıxar</string>
-    <string name="stat_reenable_title">Sürətli blok aktiv olacaq</string>
-    <string name="stat_reenable_message">Sürətli blok deaktivdir. Bu tətbiqi bloklamaq onu yenidən aktiv edəcək və siyahıdakı digər tətbiqlər də bloklanacaq: %1$d.</string>
+    <string name="stat_lock_hint">Qıfıl tətbiqi həmişə bağlı tətbiqlərə əlavə edir və ya çıxarır</string>
+    <string name="stat_quick_add_cd">Həmişə bağlı tətbiqlərə əlavə etmək</string>
+    <string name="stat_quick_remove_cd">Həmişə bağlı tətbiqlərdən çıxarmaq</string>
+    <string name="stat_reenable_title">Həmişə bağlı tətbiqlər yenidən işə düşəcək</string>
+    <string name="stat_reenable_message">«Həmişə bağlı tətbiqlər» hazırda sönülüdür. Bu tətbiqi əlavə etsəniz, yenidən işə düşəcək və siyahıdakı digər tətbiqlər də bağlanacaq: %1$d.</string>
     <string name="stat_reenable_confirm">Blokla</string>
     <string name="stat_quick_paywall_title">Abunəlik tələb olunur</string>
     <string name="stat_quick_paywall_message">Tətbiqi bir toxunuşla bloklamaq üçün Hoglt Plus abunəliyi tələb olunur.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Sürətli blok</string>
+    <string name="quick_title">Həmişə bağlı tətbiqlər</string>
     <string name="quick_enabled">Aktiv</string>
     <string name="quick_pause">Fasilə ver</string>
     <string name="quick_blocked_apps">Bloklanmış tətbiqlər</string>
@@ -855,15 +855,15 @@
     <string name="quick_info_always">Bu siyahıdakı tətbiqlər vaxtdan və yerdən asılı olmayaraq həmişə bloklanır.</string>
     <string name="quick_info_off">Hazırda deaktivdir — bu tətbiqləri bloklamaq üçün aktiv edin.</string>
     <string name="quick_info_paused">%1$s-dək dayandırılıb — o vaxta qədər heç nə bloklanmır.</string>
-    <string name="quick_info_stats">İstifadə statistikasından da tətbiqləri bir toxunuşla əlavə edə və ya silə bilərsiniz.</string>
-    <string name="quick_info_readd">Sürətli blok deaktivdirsə, tətbiq əlavə etmək onu yenidən aktiv edir.</string>
+    <string name="quick_info_stats">«Telefon vaxtı» səhifəsində də tətbiqi bir toxunuşla bu siyahıya əlavə etmək və ya çıxarmaq olar.</string>
+    <string name="quick_info_readd">«Həmişə bağlı tətbiqlər» sönülüdürsə, tətbiq əlavə etmək onu yenidən işə salır.</string>
     <string name="quick_child_blocks">Uşaq özü bloklayıb</string>
     <string name="quick_coparent_blocks">Digər valideyn bloklayıb</string>
     <string name="quick_others_note">Bu siyahıları yalnız sahibləri dəyişə bilər. Lazım olsa, tətbiqi öz siyahınıza əlavə edin.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Yuxu vaxtı</string>
-    <string name="policy_preset_limit">Vaxt limiti</string>
+    <string name="policy_preset_limit">Gündə nə qədər vaxt</string>
     <string name="policy_preset_school">Dərs saatları</string>
     <string name="policy_day_mon">B.e.</string>
     <string name="policy_day_tue">Ç.a.</string>
@@ -883,30 +883,30 @@
     <string name="policy_location">Məkan</string>
     <string name="policy_active_now">İndi aktivdir: %1$s</string>
     <string name="policy_active_until">%1$s-dək</string>
-    <string name="list_info_none">Hazırda heç bir cədvəl aktiv deyil</string>
+    <string name="list_info_none">Hazırda heç bir qayda işləmir</string>
     <string name="list_info_also">Həmçinin aktivdir: %1$s.</string>
-    <string name="list_info_many">Bir neçə cədvəl eyni vaxtda işləyəndə, onlardan hər hansı biri tətbiqi bloklayırsa, tətbiq bloklanır.</string>
-    <string name="list_info_child_scope">Uşağın öz cədvəlləri sizinkini ləğv edə bilməz — blokladığınız tətbiq bloklanmış qalır.</string>
-    <string name="list_info_school_scope">Məktəb cədvəli tətbiqi bağlayırsa və ya ona açıq şəkildə icazə verirsə, sizin cədvəliniz bunu dəyişə bilməz. Əks halda daha sərt cədvəl tətbiq olunur.</string>
-    <string name="list_info_quick">Sürətli blok aktivdir — onun tətbiqləri vaxtdan və yerdən asılı olmayaraq həmişə bloklanır.</string>
-    <string name="list_info_paused">Dayandırılmış cədvəllər: %1$d — təyin olunmuş vaxta qədər heç nə etmir.</string>
-    <string name="list_info_how">Cədvəl vaxtı və yeri gələndə özü başlayır.</string>
-    <string name="policy_tab_templates">Şablonlar</string>
+    <string name="list_info_many">Eyni vaxtda bir neçə qayda işləyirsə, onlardan hər hansı biri tətbiqi bloklasa, tətbiq bloklanır.</string>
+    <string name="list_info_child_scope">Uşağın öz qaydaları sizinkini ləğv edə bilməz — sizin blokladığınız tətbiq bloklu qalır.</string>
+    <string name="list_info_school_scope">Məktəb qaydası tətbiqi bağlayırsa və ya açıq şəkildə icazə verirsə, sizin qaydanız bunu dəyişə bilməz. Digər hallarda daha sərt qayda işləyir.</string>
+    <string name="list_info_quick">«Həmişə bağlı tətbiqlər» açıqdır — bu siyahıdakı tətbiqlər vaxtdan və yerdən asılı olmayaraq bağlı qalır.</string>
+    <string name="list_info_paused">Dayandırılmış qaydalar: %1$d — təyin olunmuş vaxta qədər işləmir.</string>
+    <string name="list_info_how">Qayda vaxtı və yeri gələndə özü işə düşür.</string>
+    <string name="policy_tab_templates">Hazır qaydalar</string>
     <string name="policy_tab_mine">Mən qoymuşam</string>
     <string name="policy_tab_child">Uşaq özü</string>
-    <string name="policy_tab_coparent">Valideyn</string>
+    <string name="policy_tab_coparent">Digər valideyn</string>
     <string name="policy_tab_school">Məktəb</string>
     <string name="policy_enabled_count">%1$d aktiv</string>
-    <string name="policy_content_protection">Məzmun qoruması</string>
+    <string name="policy_content_protection">Pis saytlardan qoruma</string>
     <string name="policy_content_protection_others">Uşaq və ya digər valideyn aktiv edib</string>
     <string name="policy_paused">Dayandırılıb</string>
-    <string name="policy_quick_blocks">Sürətli bloklar</string>
+    <string name="policy_quick_blocks">Həmişə bağlı tətbiqlər</string>
     <string name="preset_all_apps">Bütün tətbiqlər</string>
-    <string name="policy_paywall_protection">Məzmun qoruması Hoglt Plus ilə işləyir.</string>
+    <string name="policy_paywall_protection">Pis saytlardan qoruma Hoglt Plus ilə işləyir.</string>
     <string name="policy_paywall_count">Pulsuz plan cədvəllərin sayını məhdudlaşdırır. Hoglt Plus sizə daha çoxunu verir.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Hələ heç nə seçilməyib — bu cədvəl heç nəyi bloklamır.</string>
+    <string name="info_nothing">Hələ heç nə seçilməyib — bu qayda heç nəyi bloklamır.</string>
     <string name="info_always">Həmişə</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s %2$s – %3$s arası</string>
@@ -919,12 +919,12 @@
     <string name="info_what_all_apps_sites">bütün tətbiqlər və saytlar bloklanır</string>
     <string name="info_what_selected">seçilənlər bloklanır (%1$s)</string>
     <string name="info_stays_open">Açıq qalır: %1$s.</string>
-    <string name="info_not_counted">Limitə hesablanmır: %1$s.</string>
+    <string name="info_not_counted">Vaxt sayılmır: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s cəmi %3$s istifadə oluna bilər. Vaxt bitəndə sabaha qədər bloklanmış qalır.</string>
     <string name="info_limit_hourly">%1$s: %2$s saatda %3$s istifadə oluna bilər. Vaxt bitəndə növbəti saata qədər bloklanmış qalır.</string>
     <string name="info_limit_all">bütün tətbiqlər</string>
     <string name="info_limit_selected">seçilənlər</string>
-    <string name="info_limit_gate">Limit yalnız bu halda tətbiq olunur: %1$s.</string>
+    <string name="info_limit_gate">Vaxt yalnız bu zaman sayılır: %1$s.</string>
     <string name="info_protected">Zənglər, SMS və digər vacib tətbiqlər heç vaxt bloklanmır.</string>
     <string name="info_disabled">Hazırda deaktivdir — bunu tətbiq etmək üçün aktiv edin.</string>
 
@@ -933,7 +933,7 @@
     <string name="preset_when">Nə vaxt</string>
     <string name="preset_starts">Başlayır</string>
     <string name="preset_ends">Bitir</string>
-    <string name="preset_limit">Limit</string>
+    <string name="preset_limit">Nə qədər vaxt</string>
     <string name="preset_counted">Nə hesablanır</string>
     <string name="preset_what_closed">Nə bloklanır</string>
     <string name="preset_only_selected">Yalnız seçilənlər</string>
@@ -974,13 +974,13 @@
     <string name="targets_covered_by_category">Kateqoriya vasitəsilə seçilib</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Sayt ünvanı və ya açar söz yanlışdır. Məsələn: youtube.com və ya kino</string>
-    <string name="editor_new_policy">Yeni cədvəl</string>
+    <string name="editor_new_policy">Yeni qayda</string>
     <string name="editor_not_selected">Seçilməyib</string>
     <string name="editor_when_hint">istəyə görə · əks halda həmişə</string>
     <string name="editor_add_condition">Şərt əlavə et</string>
     <string name="editor_added">Əlavə edildi</string>
     <string name="editor_condition_time">Vaxt</string>
-    <string name="editor_condition_limit">Limit</string>
+    <string name="editor_condition_limit">Nə qədər vaxt</string>
     <string name="editor_in_this_time">Bu vaxt ərzində</string>
     <string name="editor_closed_in_time">Bloklanır</string>
     <string name="editor_closed_in_time_sub">Digər vaxtlarda açıqdır</string>
@@ -991,8 +991,8 @@
     <string name="editor_inside">Ərazinin daxilində</string>
     <string name="editor_outside">Ərazidən kənarda</string>
     <string name="editor_rename">Adını dəyiş</string>
-    <string name="editor_delete_title">Bu cədvəl silinsin?</string>
-    <string name="editor_delete_message">“%1$s” silinəcək.</string>
+    <string name="editor_delete_title">Bu qayda silinsin?</string>
+    <string name="editor_delete_message">«%1$s» silinəcək. Bu qaydanın blokladığı tətbiqlər yenidən açılacaq.</string>
     <string name="editor_paywall_allow">“Yalnız seçilənlər açıq qalır” rejimi Plus ilə əlçatandır.</string>
     <string name="location_child_here">Uşağımın məkanı</string>
     <string name="protection_section">Nə qorunur</string>
@@ -1010,24 +1010,24 @@
     <string name="protection_policies_pending">Hələ çatdırılmayıb</string>
     <string name="protection_gujanak_limits_note">Orta qoruma yalnız tətbiqləri bağlayır. Saytlar və qısa videolar yalnız sərt qorumada bloklanır: uşağınızın telefonunda Hoglt → «Nəzarət» → «Qalxan rejimi».</string>
     <string name="editor_limit_days_follow_time">Vaxtla eyni — günlər vaxt səhifəsində seçilir</string>
-    <string name="editor_limit_in_window">bu vaxt ərzində limit</string>
-    <string name="editor_limit_outside_window">bu vaxtdan kənar limit</string>
-    <string name="editor_limit_in_time">Limit bu vaxt ərzində tətbiq olunur</string>
+    <string name="editor_limit_in_window">vaxt bu saatlarda sayılır</string>
+    <string name="editor_limit_outside_window">vaxt bu saatlardan kənarda sayılır</string>
+    <string name="editor_limit_in_time">Vaxt yalnız bu saatlarda sayılır</string>
     <string name="editor_limit_in_time_sub">Digər vaxtlarda məhdudiyyət yoxdur</string>
-    <string name="editor_limit_out_time">Limit bu vaxtdan kənarda tətbiq olunur</string>
+    <string name="editor_limit_out_time">Vaxt bu saatlardan kənarda sayılır</string>
     <string name="editor_limit_out_time_sub">Bu vaxt ərzində məhdudiyyət yoxdur</string>
     <string name="info_limit_daily_window">%1$s: %2$s cəmi %3$s istifadə oluna bilər. Vaxt bitəndə bu vaxt aralığı bitənə qədər bağlı qalır.</string>
     <string name="targets_only_selected_open_sites_sub">Digər saytlar bağlıdır</string>
     <string name="targets_only_selected_open_both_sub">Digər tətbiqlər və saytlar bağlıdır</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Hələ cədvəl yoxdur</string>
-    <string name="policy_empty_mine_sub">Şablonu aktiv edin və ya özünüzünkünü yaradın</string>
+    <string name="policy_empty_mine_title">Hələ qayda yoxdur</string>
+    <string name="policy_empty_mine_sub">Hazır qaydalardan birini açın və ya özünüz yaradın</string>
     <string name="empty_search_title">Heç nə tapılmadı</string>
     <string name="empty_search_sub">Başqa sorğu ilə axtarın</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Yetkin məzmunlu və qumar saytları</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Cədvəl</string>
+    <string name="policy_name_schedule">Qayda</string>
     <string name="policy_name_category_block">Kateqoriyalar üzrə blokla</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Uşağınız aktiv edib</string>
@@ -1122,7 +1122,7 @@
     <string name="ap_off_confirm">Söndür</string>
     <string name="ap_keep_on">Aktiv saxla</string>
     <string name="ap_retry_note">Sabah yenidən cəhd edəcəyik (%1$d/3).</string>
-    <string name="ap_retry_now">Yenidən cəhd et</string>
+    <string name="ap_retry_now">İndi ödəyin</string>
     <string name="ap_other_card">Başqa kart</string>
     <string name="ap_cards_empty_title">Saxlanılmış kart yoxdur</string>
     <string name="ap_cards_empty_sub">Avtoödəniş üçün UZCARD və ya HUMO kartı əlavə edin</string>
@@ -1168,7 +1168,7 @@
     <string name="ulash_tugma">Bağla</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Keç</string>
+    <string name="ob_skip">Sonra baxaram</string>
     <string name="ob_start">Başlayaq</string>
     <string name="ob_got_it">Aydındır</string>
     <string name="ob_hello_title">Salam, mən Hoglt-am</string>
@@ -1182,10 +1182,10 @@
     <string name="ob_day_study">Dərslər</string>
     <string name="ob_min_fmt">%1$d dəq</string>
     <string name="ob_rules_title">Qaydaları bir dəfə qurun</string>
-    <string name="ob_rules_body">Yuxu vaxtı, dərs vaxtı və gündəlik limitlər özü aktivləşir.</string>
+    <string name="ob_rules_body">Yuxu vaxtı, dərs vaxtı və gündəlik vaxt öz-özünə işə düşür.</string>
     <string name="ob_rule_sleep">Yuxu vaxtı</string>
     <string name="ob_rule_school">Dərs vaxtı</string>
-    <string name="ob_rule_limit">Gündəlik limit</string>
+    <string name="ob_rule_limit">Gündə nə qədər vaxt</string>
     <string name="ob_rule_limit_value">2 s</string>
     <string name="ob_map_title">Harada olduğunu bilin</string>
     <string name="ob_map_body">Uşağınızı xəritədə görün və məktəb kimi yerlər üçün qaydalar təyin edin.</string>
@@ -1242,8 +1242,8 @@
     <string name="home_layout_list">Siyahı</string>
     <string name="home_layout_grid">Şəbəkə</string>
     <string name="home_greeting">Salam, %1$s</string>
-    <string name="kecha_sarfladi">Dünən sərf olunub</string>
-    <string name="sana_sarfladi">%1$s tarixində sərf olunub</string>
+    <string name="kecha_sarfladi">Dünən telefonda</string>
+    <string name="sana_sarfladi">%1$s telefonda</string>
     <string name="stat_no_usage_day">Bu gün hələ telefondan istifadə olunmayıb</string>
     <string name="kirish_usuli">Giriş üsulu</string>
     <string name="google_hisobi">Google hesabı</string>
@@ -1266,7 +1266,7 @@
     <string name="vazifa_muddati">Son müddət</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Köməkçi</string>
+    <string name="ai_assistant_title">Ağıllı köməkçi</string>
     <string name="ai_assistant_subtitle">Soruşun və ya qayda təyin edin</string>
     <string name="ai_period_today">Bu gün</string>
     <string name="ai_period_yesterday">Dünən</string>
@@ -1396,20 +1396,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Pulsuz: %1$d aktiv qayda · Plus: limitsiz</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Tətbiq hansı tətbiqin açıldığını görə bilmir: telefon vaxtı sayılmır, qaydalar işləmir.</string>
+    <string name="perm_why_overlay">Bağlanmış tətbiqin üstündə blok ekranı çıxmır — qaydalar tətbiqi bağlaya bilmir.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Uşağınızın harada olduğunu görə bilmirsiniz; yerə bağlı qaydalar da işləmir.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Bu olmadan saytlar, YouTube Shorts və Instagram Reels bloklanmır, tətbiqi isə asanlıqla silmək olar.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">Pulsuz tarifdə bir qaydaya %1$d tətbiqə qədər əlavə etmək olar. Daha çoxu üçün Plus lazımdır.</string>
+    <string name="policy_paywall_app_limit">Bir qaydadakı tətbiq sayı tarifinizin limitinə çatıb.</string>
     <string name="clip_child_phone">Onun telefonunda</string>
     <string name="prot_default_note">Hazırda qaydalarınız heç bir tətbiqi bağlamır. Bunun üçün uşağınızın telefonunda Hoglt-u açın → «Nəzarət» bölməsində qorumanı yandırın.</string>
     <string name="prot_strength">Qoruma səviyyəsi</string>
@@ -1439,4 +1439,64 @@
     <string name="task_empty_done">Hələ tamamlanan tapşırıq yoxdur</string>
     <string name="task_empty_overdue">Vaxtı keçən tapşırıq yoxdur</string>
     <string name="task_empty_filter_hint">Bütün tapşırıqları görmək üçün seçilmiş filtrə yenidən toxunun.</string>
+    <string name="voice_listen">Dinləmək</string>
+    <string name="voice_stop">Dayandırmaq</string>
+    <string name="voice_unavailable">Səsli izah hələ yoxdur. Sonra yenidən cəhd edin.</string>
+    <string name="live_confirm_title">Canlı baxmaq</string>
+    <string name="live_confirm_body">%1$s zəng alacaq. Razı olsa, video açılacaq.</string>
+    <string name="live_child_fallback">Uşağınız</string>
+    <string name="live_call_button">Zəng etmək</string>
+    <string name="live_ringing">Zəng edilir: %1$s…</string>
+    <string name="live_connecting">Qoşulur…</string>
+    <string name="live_error_connect">Qoşulmaq alınmadı. Bir az sonra yenidən cəhd edin.</string>
+    <string name="live_declined">Uşağınız imtina etdi</string>
+    <string name="live_no_answer">Cavab yoxdur</string>
+    <string name="live_end">Bitirmək</string>
+    <string name="live_show_on_map">Xəritədə göstərmək</string>
+    <string name="unlink_child_button">Uşağı ayırmaq</string>
+    <string name="saqlandi">Saxlanıldı</string>
+    <string name="ap_retry_now_amount">İndi ödəyin · %1$s</string>
+    <string name="pay_charge_body">•• %1$s kartdan %2$s çıxılacaq.</string>
+    <string name="pay_charge_body_amount">Kartdan %1$s çıxılacaq.</string>
+    <string name="pay_charge_body_plain">Abunə haqqı saxlanmış kartdan çıxılacaq.</string>
+    <string name="pay_confirm_pay">Ödəmək</string>
+    <string name="app_store_unavailable">App Store hazırda açılmır. Bir az sonra yenidən cəhd edin.</string>
+    <string name="app_store_failed">App Store vasitəsilə ödəmək alınmadı. Yenidən cəhd edin.</string>
+    <string name="apple_activation_pending_title">Ödəniş qəbul edildi</string>
+    <string name="login_subtitle_social">Rahat üsulu seçin. Hesabınız yoxdursa, özü yaradılacaq.</string>
+    <string name="login_telegram_not_opened">Telegram açılmadı. Telegram-ın quraşdırıldığını yoxlayın və ya başqa üsulla daxil olun.</string>
+    <string name="ob_notif_enable">Bildirişləri açmaq</string>
+    <string name="comfort_title">Oxumaq rahatdır?</string>
+    <string name="comfort_screen_color">Ekran rəngi</string>
+    <string name="comfort_light">Açıq</string>
+    <string name="comfort_dark">Tünd</string>
+    <string name="comfort_done">Hazır</string>
+    <string name="comfort_hint">Bunu sonra da dəyişmək olar.</string>
+    <string name="policy_turned_on">%1$s açıldı</string>
+    <string name="policy_turned_off">%1$s söndürüldü</string>
+    <string name="policy_off_title">%1$s söndürülsün?</string>
+    <string name="policy_off_body">Uşağınızın telefonunda bu qayda dərhal işləməyi dayandıracaq və onun bağladığı hər şey yenidən açılacaq. İstənilən vaxt yenidən aça bilərsiniz.</string>
+    <string name="policy_off_body_safety">Uşağınızın telefonunda bu qoruma dərhal dayanacaq. İstənilən vaxt yenidən aça bilərsiniz.</string>
+    <string name="policy_off_confirm">Bəli, söndürülsün</string>
+    <string name="policy_off_cancel">Xeyr, qalsın</string>
+    <string name="policy_saved_sent">Saxlanıldı — uşağın telefonuna göndərildi</string>
+    <string name="policy_saved_queued">Saxlanıldı — internet qayıdanda uşağın telefonuna göndəriləcək</string>
+    <string name="policy_unsaved_title">Dəyişikliklər saxlanılsın?</string>
+    <string name="policy_unsaved_body">Saxlamasanız, uşağınızın telefonunda heç nə dəyişməyəcək.</string>
+    <string name="policy_unsaved_discard">Saxlamadan çıxmaq</string>
+    <string name="quick_unblock_title">%1$s yenidən açılsın?</string>
+    <string name="quick_unblock_body">Bu tətbiq uşağınızın telefonunda dərhal açılacaq.</string>
+    <string name="quick_unblock_confirm">Bəli, açılsın</string>
+    <string name="quick_unblock_action">Açmaq</string>
+    <string name="quick_unblocked">%1$s açıldı</string>
+    <string name="policy_exception_remove">Çıxarmaq</string>
+    <string name="policy_load_failed">Yüklənmədi</string>
+    <string name="tg_more_settings">Ətraflı ayarlar</string>
+    <string name="rules_on_count">%1$d qayda açıqdır</string>
+    <string name="task_accepted">Qəbul edildi</string>
+    <string name="task_accepted_coins">%1$s %2$d sikkə aldı</string>
+    <string name="task_coins_explain">Tapşırığı qəbul etdikdə sikkələr uşağınıza keçir. O, onları ağıllı köməkçiyə sual vermək üçün xərcləyir.</string>
+    <string name="task_coins_not_enough">Sikkəniz çatmır</string>
+    <string name="chat_support_title">Dəstək xidməti</string>
+    <string name="chat_ai_title">Ağıllı köməkçi</string>
 </resources>

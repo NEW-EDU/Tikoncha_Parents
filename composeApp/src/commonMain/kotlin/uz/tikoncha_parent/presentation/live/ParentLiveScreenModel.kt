@@ -16,6 +16,8 @@ import com.shepeliev.webrtckmp.onDataChannel
 import com.shepeliev.webrtckmp.onIceCandidate
 import com.shepeliev.webrtckmp.onIceConnectionStateChange
 import com.shepeliev.webrtckmp.onTrack
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -50,6 +52,8 @@ class ParentLiveScreenModel(
     private var sessionId: String? = null
     private var peerKeys: List<String> = emptyList()
     private var remoteAudio: AudioStreamTrack? = null
+    /** Ota-ona "Bekor qiliş"/"Tugatiş"ni bosdi — kech kelgan javoblar (ring, xato) e'tiborsiz qoldiriladi. */
+    private var cancelled = false
 
     init { listenSignaling() }
 
@@ -71,7 +75,8 @@ class ParentLiveScreenModel(
      */
     private fun joinSession(sid: String, childId: String) {
         if (childId.isBlank() || sessionId != null) return
-        mutableState.update { it.copy(phase = LivePhase.Connecting, childUserId = childId, error = null) }
+        cancelled = false
+        mutableState.update { it.copy(phase = LivePhase.Connecting, childUserId = childId, error = null, failure = null) }
         screenModelScope.launch {
             if (LiveSigner.isSupported) {
                 LiveSigner.ensure()
@@ -83,6 +88,7 @@ class ParentLiveScreenModel(
 
             val turn = runCatching { api.turnCredentials() }.getOrNull()?.takeIf { it.success }?.data
                 ?: return@launch fail("turn_failed")
+            if (cancelled) return@launch
 
             sessionId = sid
             signaling.connect()
@@ -91,8 +97,10 @@ class ParentLiveScreenModel(
     }
 
     private fun ringChild(childId: String) {
-        if (childId.isBlank() || sessionId != null) return
-        mutableState.update { it.copy(phase = LivePhase.Ringing, childUserId = childId, error = null) }
+        // Faqat tasdiqdan keyin, bir marta (Idle'dan) — qayta jiringlatmaydi
+        if (childId.isBlank() || sessionId != null || state.value.phase != LivePhase.Idle) return
+        cancelled = false
+        mutableState.update { it.copy(phase = LivePhase.Ringing, childUserId = childId, error = null, failure = null) }
         screenModelScope.launch {
             // Identlik: faqat imzolay oladigan platformada o'z kalitimizni ro'yxatdan
             // o'tkazamiz (aks holda bola bizdan haqiqiy imzo kutib, ulanish uzilardi).
@@ -106,14 +114,20 @@ class ParentLiveScreenModel(
 
             val turn = runCatching { api.turnCredentials() }.getOrNull()?.takeIf { it.success }?.data
                 ?: return@launch fail("turn_failed")
+            if (cancelled) return@launch
 
             val ring = runCatching { api.ringChild(childId) }.getOrNull()
             val sess = ring?.data?.session ?: return@launch fail(ring?.error ?: "ring_failed")
+            if (cancelled) {
+                // Javob kelguncha "Bekor qiliş" bosilgan — bola telefoni jiringlab qolmasin
+                runCatching { api.end(sess.id) }
+                return@launch
+            }
             sessionId = sess.id
 
             signaling.connect()
             setupPeer(turn)
-            mutableState.update { it.copy(phase = LivePhase.Connecting) }
+            // Bola rozi bölguncha "jiringlayapti" — Connecting ACCEPTED / birinçi offer kelganda
         }
     }
 
@@ -169,8 +183,19 @@ class ParentLiveScreenModel(
                     "offer" -> onOffer(f)
                     "ice" -> onRemoteIce(f)
                     "ring" -> if (sessionId == null) sessionId = f.session_id
-                    "state" -> when (f.status) {
-                        "ENDED", "DECLINED", "TIMED_OUT", "CANCELLED", "FAILED" -> finish(LivePhase.Ended)
+                    // Natija allaqaçon körsatilgan / ota-ona özi tugatgan bölsa — keyingi holatlar uni almashtirmaydi
+                    "state" -> if (!cancelled && state.value.phase != LivePhase.Error && state.value.phase != LivePhase.Ended) when (f.status) {
+                        "ACCEPTED" -> if (state.value.phase == LivePhase.Ringing) {
+                            mutableState.update { it.copy(phase = LivePhase.Connecting) }
+                        }
+                        // Natija avval körsatiladi (ekran jim yopilmaydi), keyin ota-ona özi yopadi
+                        "DECLINED" -> outcome(LiveFailure.DECLINED, "declined")
+                        "TIMED_OUT" -> outcome(LiveFailure.NO_ANSWER, "timed_out")
+                        "FAILED" -> outcome(LiveFailure.CONNECT, "failed")
+                        "ENDED", "CANCELLED" ->
+                            // Video körinmasdan tugadi — ulanmadi; körib turgan bölsa — oddiy yopiladi
+                            if (state.value.phase == LivePhase.Active || state.value.videoTrack != null) finish(LivePhase.Ended)
+                            else outcome(LiveFailure.CONNECT, "ended_before_video")
                         else -> {}
                     }
                     "error" -> Logger.e(TAG, "signalling error: ${f.error}")
@@ -187,6 +212,8 @@ class ParentLiveScreenModel(
         }
         val sdp = runCatching { json.decodeFromJsonElement<SdpPayload>(payload) }.getOrNull()?.sdp ?: return
         val conn = pc ?: return
+        // Offer keldi — bola rozi bölgan
+        if (state.value.phase == LivePhase.Ringing) mutableState.update { it.copy(phase = LivePhase.Connecting) }
         runCatching {
             conn.setRemoteDescription(SessionDescription(SessionDescriptionType.Offer, sdp))
             val answer = conn.createAnswer(OfferAnswerOptions())
@@ -212,13 +239,12 @@ class ParentLiveScreenModel(
         signaling.send(LiveOutFrame(type = "ice", session_id = sid, payload = payload, signature = sig))
     }
 
+    /** Ota-ona bekor qildi / tugatdi (har qanday bosqichda, jiringlayotganda ham). */
     private fun end() {
+        cancelled = true
         val sid = sessionId
         sessionId = null
-        remoteAudio = null
-        runCatching { LiveAudio.stop() }
-        runCatching { pc?.close() }
-        pc = null
+        releaseMedia()
         screenModelScope.launch {
             if (sid != null) {
                 runCatching { signaling.send(LiveOutFrame(type = "end", session_id = sid)) }
@@ -229,8 +255,26 @@ class ParentLiveScreenModel(
         finish(LivePhase.Ended)
     }
 
+    /** Ulanib bölmadi (TURN / ring xatosi) — texnik sabab faqat logga. */
     private fun fail(reason: String) {
-        mutableState.update { it.copy(phase = LivePhase.Error, error = reason) }
+        if (cancelled) return
+        Logger.e(TAG, "live failed: $reason")
+        outcome(LiveFailure.CONNECT, reason)
+    }
+
+    /** Sessiya serverda tugadi (rad etdi / javob yöq / xato) — media yopiladi, natija ekranda qoladi. */
+    private fun outcome(failure: LiveFailure, reason: String) {
+        sessionId = null
+        releaseMedia()
+        runCatching { signaling.disconnect() }
+        mutableState.update { it.copy(phase = LivePhase.Error, error = reason, failure = failure, videoTrack = null) }
+    }
+
+    private fun releaseMedia() {
+        remoteAudio = null
+        runCatching { LiveAudio.stop() }
+        runCatching { pc?.close() }
+        pc = null
     }
 
     private fun finish(phase: LivePhase) {
@@ -239,6 +283,10 @@ class ParentLiveScreenModel(
 
     override fun onDispose() {
         super.onDispose()
+        // Ekran boşqa yöl bilan yopildi (jiringlab turganda) — bola telefoni jiringlab qolmasin
+        if (!cancelled) sessionId?.let { sid ->
+            CoroutineScope(Dispatchers.Default).launch { runCatching { api.end(sid) } }
+        }
         remoteAudio = null
         runCatching { LiveAudio.stop() }
         runCatching { pc?.close() }

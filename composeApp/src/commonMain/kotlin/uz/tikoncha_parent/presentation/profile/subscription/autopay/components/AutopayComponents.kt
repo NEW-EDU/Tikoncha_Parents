@@ -44,8 +44,22 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.ap_change
+import tikoncha_parents.composeapp.generated.resources.ap_confirm_title
 import tikoncha_parents.composeapp.generated.resources.ap_for_whom
+import tikoncha_parents.composeapp.generated.resources.ap_pay_now
 import tikoncha_parents.composeapp.generated.resources.ap_sum
+import tikoncha_parents.composeapp.generated.resources.bekor_qilish
+import tikoncha_parents.composeapp.generated.resources.pay_charge_body
+import tikoncha_parents.composeapp.generated.resources.pay_charge_body_amount
+import tikoncha_parents.composeapp.generated.resources.pay_charge_body_plain
+import tikoncha_parents.composeapp.generated.resources.pay_confirm_pay
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.rememberModalBottomSheetState
+import uz.tikoncha_parent.presentation.base.CustomButton
 import tikoncha_parents.composeapp.generated.resources.profile_hedgehog_img
 import tikoncha_parents.composeapp.generated.resources.ic_humo
 import tikoncha_parents.composeapp.generated.resources.ic_uzcard
@@ -268,6 +282,56 @@ fun ForWhomRow(name: String, avatarUrl: String?, subtitle: String?, modifier: Mo
                 color = AppColors.action.primary,
                 modifier = Modifier.clip(RoundedCornerShape(8.dp)).selectable(selected = false, onClick = onChange).padding(4.dp),
             )
+        }
+    }
+}
+
+/**
+ * Saqlangan kartadan pul yeçişdan oldin bir marta söraladi: qaysi kartadan, qança. Tugmada summa; "Bekor qiliş" ham
+ * aniq körinadi. (Avto-tölovda "Qayta uriniş" va tangalar bir bosişda pul yeçardi.)
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ChargeConfirmSheet(
+    /** Kartaning oxirgi 4 raqami; noma'lum bölsa — null. */
+    cardLast4: String?,
+    /** So'mda; noma'lum bölsa — null. */
+    amount: Int?,
+    onConfirm: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        containerColor = AppColors.bg.elevated,
+    ) {
+        Column(Modifier.padding(start = 20.dp, end = 20.dp, bottom = 28.dp)) {
+            AccentIconTile()
+            Spacer(Modifier.height(14.dp))
+            Text(stringResource(Res.string.ap_confirm_title), style = AppTypography.titleLgSemiBold, color = AppColors.text.primary)
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = when {
+                    cardLast4 != null && amount != null -> stringResource(Res.string.pay_charge_body, cardLast4, sumText(amount))
+                    amount != null -> stringResource(Res.string.pay_charge_body_amount, sumText(amount))
+                    else -> stringResource(Res.string.pay_charge_body_plain)
+                },
+                style = AppTypography.titleSmMedium, color = AppColors.text.secondary,
+            )
+            Spacer(Modifier.height(20.dp))
+            CustomButton(
+                text = amount?.let { stringResource(Res.string.ap_pay_now, sumText(it)) } ?: stringResource(Res.string.pay_confirm_pay),
+                onClick = onConfirm,
+                modifier = Modifier.fillMaxWidth().height(52.dp),
+            )
+            Spacer(Modifier.height(10.dp))
+            OutlinedButton(
+                onClick = onDismiss,
+                border = BorderStroke(1.dp, AppColors.border.secondary.copy(alpha = 0.4f)),
+                modifier = Modifier.fillMaxWidth().height(48.dp),
+            ) {
+                Text(stringResource(Res.string.bekor_qilish), style = AppTypography.titleSmSemiBold, color = AppColors.text.primary)
+            }
         }
     }
 }

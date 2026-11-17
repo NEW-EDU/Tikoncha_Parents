@@ -33,6 +33,10 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,6 +50,7 @@ import uz.tikoncha_parent.presentation.base.CustomButton
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomSwitch
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.CardMask
+import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.ChargeConfirmSheet
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.RadioMark
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.formatDate
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.components.sumText
@@ -142,6 +147,17 @@ fun AutopaySection(state: SubscriptionState, event: (SubscriptionEvent) -> Unit)
         onDismiss = { event(SubscriptionEvent.AutopayErrorDismissed) },
         onButtonClick = { event(SubscriptionEvent.AutopayErrorDismissed) },
     )
+
+    // Qayta tölov ötdi — jim emas: "Tölandi"
+    CustomDialog(
+        show = state.retryPaid,
+        painter = painterResource(Res.drawable.dialog_success),
+        title = stringResource(Res.string.tolandi),
+        message = stringResource(Res.string.sub_success_body),
+        buttonText = stringResource(Res.string.ok),
+        onDismiss = { event(SubscriptionEvent.RetryPaidDismissed) },
+        onButtonClick = { event(SubscriptionEvent.RetryPaidDismissed) },
+    )
 }
 
 @Composable
@@ -169,21 +185,35 @@ private fun FailureBanner(info: AutopayInfo, busy: Boolean, event: (Subscription
             }
         }
         Spacer(Modifier.height(12.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        // "Qayta uriniş" pul yeçiş ekani bilinmasdi — endi tugmada summa, bosilganda bir marta söraladi
+        var confirmCharge by remember { mutableStateOf(false) }
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CustomButton(
-                text = stringResource(Res.string.ap_retry_now),
+                text = info.amount?.let { stringResource(Res.string.ap_retry_now_amount, sumText(it)) }
+                    ?: stringResource(Res.string.ap_retry_now),
                 enabled = !busy,
-                onClick = { event(SubscriptionEvent.RetryCharge) },
-                modifier = Modifier.weight(1f).height(42.dp),
+                onClick = { confirmCharge = true },
+                modifier = Modifier.fillMaxWidth().height(48.dp),
             )
             OutlinedButton(
                 onClick = { event(SubscriptionEvent.OpenCardPicker) },
                 enabled = !busy,
                 border = BorderStroke(1.dp, AppColors.border.secondary.copy(alpha = 0.4f)),
-                modifier = Modifier.weight(1f).height(42.dp),
+                modifier = Modifier.fillMaxWidth().height(48.dp),
             ) {
                 Text(stringResource(Res.string.ap_other_card), style = AppTypography.titleSmSemiBold, color = AppColors.text.primary)
             }
+        }
+        if (confirmCharge) {
+            ChargeConfirmSheet(
+                cardLast4 = info.card?.last4,
+                amount = info.amount,
+                onConfirm = {
+                    confirmCharge = false
+                    event(SubscriptionEvent.RetryCharge)
+                },
+                onDismiss = { confirmCharge = false },
+            )
         }
     }
 }

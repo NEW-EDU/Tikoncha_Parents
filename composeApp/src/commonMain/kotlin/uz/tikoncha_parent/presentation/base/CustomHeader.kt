@@ -37,6 +37,8 @@ import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.ThemeMode
 import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import uz.tikoncha_parent.ui.theme.extendedColor
+import uz.tikoncha_parent.presentation.voice_help.VoiceHelpButton
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -49,6 +51,8 @@ fun CustomHeader(
     trailingIcon: (@Composable () -> Unit)? = null,
     /** Farzand tanlagich — orolda, Bosh sahifadagi bilan bir xil (ro'yxat yuqoriga ochiladi). */
     childPicker: ChildPickerSpec? = null,
+    /** "Tinglaş" — ekranning ovozli tuşuntirişi; tepada, öng burçakda (orol bandligi uçun u yerga qöyilmaydi). */
+    voice: VoiceScreen? = null,
 ) {
     // Bir qo'l bilan ishlatish: sarlavha, orqaga, amallar va farzand tanlagich — hammasi pastki orolda (BottomIsland).
     // Tepada faqat kichik bo'shliq qoladi — joy kontentga.
@@ -66,7 +70,17 @@ fun CustomHeader(
         )
     }
     ProvideIsland(spec)
-    Spacer(modifier.height(8.dp))
+    if (voice != null) {
+        // Kontentning yumaloq tepa burçagi (islandInset) tugmani kesmasin: öngdan 20dp, tepadan 8dp
+        Row(
+            modifier = modifier.fillMaxWidth().padding(top = 8.dp, end = 20.dp),
+            horizontalArrangement = Arrangement.End,
+        ) {
+            VoiceHelpButton(voice)
+        }
+    } else {
+        Spacer(modifier.height(8.dp))
+    }
 }
 
 @Preview

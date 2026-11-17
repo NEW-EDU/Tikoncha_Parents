@@ -41,5 +41,6 @@ data class ChildEditState(
                 isLastNameValid &&
                 isPatronymicValid &&
                 isDirty &&
-                saveState !is ResponseState.Loading
+                saveState !is ResponseState.Loading &&
+                saveState !is ResponseState.Success // "Saqlandi" körinib turganda qayta yuborilmasin
 }

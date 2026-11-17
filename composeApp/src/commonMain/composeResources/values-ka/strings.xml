@@ -94,7 +94,7 @@
     <string name="maktab">სკოლა</string>
     <string name="sozlamalar">პარამეტრები</string>
     <string name="bildirishnomalar">შეტყობინებები</string>
-    <string name="tema">თემა</string>
+    <string name="tema">ეკრანის ფერი</string>
     <string name="tasdiqlash">დადასტურება</string>
     <string name="tolov">გადახდა</string>
     <string name="obuna_pro">Pro გამოწერა</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">პასპორტის ID</string>
     <string name="reklama">რეკლამა</string>
     <string name="yorug">ღია</string>
-    <string name="theme_system">სისტემური</string>
+    <string name="theme_system">როგორც ტელეფონში</string>
     <string name="xavfli_zona">საშიში ზონა</string>
     <string name="akkauntni_o_chirish">ანგარიშის წაშლა</string>
     <string name="pochta_orqali">ელფოსტით</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">ნებართვის მოთხოვნა</string>
     <string name="joylashuv_uchun_ruxsat">მდებარეობის ნებართვა</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">რუკის სრულად გამოსაყენებლად პარამეტრებიდან მიეცით მდებარეობის ნებართვა!</string>
-    <string name="xatolik">შეცდომა</string>
-    <string name="ok">კარგი</string>
+    <string name="xatolik">ვერ მოხერხდა</string>
+    <string name="ok">გასაგებია</string>
     <string name="qoshish">დამატება</string>
     <string name="ogil_bola">ბიჭი</string>
     <string name="qiz_bola">გოგო</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">წარმატებით</string>
     <string name="qisqartirish">შემოკლება</string>
     <string name="vazifa_tahrirlandi">დავალება დარედაქტირდა</string>
-    <string name="server_connection_error">სერვერთან კავშირის შეცდომა!</string>
+    <string name="server_connection_error">ახლა დაკავშირება ვერ მოხერხდა. ცოტა ხანში ისევ სცადეთ.</string>
     <string name="faol">აქტიური</string>
     <string name="faol_emas">არააქტიური</string>
     <string name="ohirgi_faollik">ბოლოს აქტიური:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >ყურადღება!</string>
     <string name="siz_tanlagan_vaqt_oraligida">გამოყენების ლიმიტი არ იმუშავებს თქვენ მიერ არჩეულ დროის შუალედში! ანუ დროის განრიგს უფრო მაღალი პრიორიტეტი აქვს.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d აპი არ არის დაინსტალირებული თქვენს მოწყობილობაზე</string>
-    <string name="cheklovlar">შეზღუდვები</string>
+    <string name="cheklovlar">წესები</string>
     <string name="ta_ilovaga">%1$d აპზე</string>
     <string name="ta_vebsaytga">%1$d ვებსაიტზე</string>
     <string name="ustuvorligi">პრიორიტეტი</string>
-    <string name="jadval_nomini_kiriting">შეიყვანეთ განრიგის სახელი</string>
+    <string name="jadval_nomini_kiriting">შეიყვანეთ წესის სახელი</string>
     <string name="misol_o_quv_markaz">მაგალითად: სასწავლო ცენტრი</string>
     <string name="ochirish">წაშლა</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">ეთანხმებით განრიგის შენახვის გარეშე გასვლას?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">გილოცავთ!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">ახლა ეს გამოწერა თქვენია</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">ისარგებლეთ სპეციალური ფუნქციებით და პრიორიტეტული მხარდაჭერით!</string>
-    <string name="statistika">სტატისტიკა</string>
+    <string name="statistika">ტელეფონის დრო</string>
     <string name="chegirmalar">ფასდაკლებები</string>
     <string name="chegirma">ფასდაკლება</string>
     <string name="topshiriqlar">დავალებები</string>
-    <string name="jadvallar">განრიგები</string>
+    <string name="jadvallar">წესები</string>
     <string name="ilova_cheklangan">შეზღუდულია %1$d აპი</string>
-    <string name="faol_vazifa">%1$d აქტიური დავალება</string>
-    <string name="bugun_sarfladi">დღეს დახარჯა</string>
+    <string name="faol_vazifa">აქტიური დავალებები: %1$d</string>
+    <string name="bugun_sarfladi">დღეს ტელეფონში</string>
     <string name="chiqish">გასვლა</string>
     <string name="chiqishni_xohlaysizmi">გსურთ გასვლა?</string>
     <string name="chiqishni_tasdiqlang">დაადასტურეთ გასვლა.</string>
@@ -322,8 +322,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">თქვენი პროფილი და პარამეტრები სერვერზე ინახება.</string>
     <string name="qayta_kirsangiz_tiklanadi">ხელახლა შესვლისას ყველაფერი აღდგება.</string>
     <string name="farzand_qoshilmagan">შვილი არ არის დამატებული</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">განრიგები, ჩატები და ანგარიშები შვილის დამატების შემდეგ გამოჩნდება.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">მოხდა მოულოდნელი შეცდომა. გთხოვთ, სცადოთ ხელახლა.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">წესები, ჩატები და ტელეფონის დრო შვილის დამატების შემდეგ გამოჩნდება.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">ვერ მოხერხდა. ცოტა ხანში ისევ სცადეთ.</string>
     <string name="hozircha_farzand_qoshilmagan">შვილი ჯერ არ დაგიმატებიათ.</string>
     <string name="diqqat2">ყურადღება!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">გაგრძელებამდე აირჩიეთ აპის ტიპი.</string>
@@ -343,10 +343,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">აირჩიეთ, როგორ გამოგიგზავნოთ \n დადასტურების კოდი</string>
     <string name="tasdiqlash_kodini_olish">დადასტურების კოდის მიღება</string>
     <string name="telegram_kod_kiritish">შეიყვანეთ კოდი, რომელიც გაიგზავნა %1$s ნომერთან დაკავშირებულ Telegram-ზე</string>
-    <string name="xato_kod_kiritdingiz">თქვენ არასწორი კოდი შეიყვანეთ</string>
+    <string name="xato_kod_kiritdingiz">კოდი არ ემთხვევა. ისევ შეიყვანეთ.</string>
     <string name="kod_olish_usulini_ozgartirish">კოდის მიღების მეთოდის შეცვლა</string>
     <string name="versiya">ვერსია</string>
-    <string name="jadval_yaratish">განრიგის შექმნა</string>
+    <string name="jadval_yaratish">წესის შექმნა</string>
     <string name="sizning_cheklovlaringiz">თქვენი შეზღუდვები</string>
 
     <string name="avtomatik_bloklash_vaqti">ავტომატური დაბლოკვა არჩეულ დღეებსა და საათებში</string>
@@ -364,9 +364,9 @@
     <string name="noto_g_ri_url_format">URL-ის არასწორი ფორმატი</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">ეს ვებსაიტი უკვე სიაშია</string>
     <string name="to_liq_nazoratni_yoqing">ჩართეთ სრული კონტროლი</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">მართეთ აპები, დრო და გამოყენება Hoglt-ით. Plus-ით იმუშავეთ შეზღუდვების გარეშე და ჩართეთ მაქსიმალური დაცვა ფარის რეჟიმით.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">მართეთ აპები და ტელეფონის დრო Hoglt-ით. Plus-ით შეზღუდვები არ არის და შეგიძლიათ მკაცრი დაცვის ჩართვა.</string>
     <string name="plus_imkoniyatlarini_ochish">Plus-ის ფუნქციების გახსნა</string>
-    <string name="jadval_nomi">განრიგის სახელი</string>
+    <string name="jadval_nomi">წესის სახელი</string>
     <string name="saytlar">ვებსაიტები</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">მიუთითეთ, როდის და რა პირობებით შეიზღუდოს აპები და ვებსაიტები</string>
 
@@ -395,7 +395,7 @@
     <string name="coins_help_close">დახურვა</string>
     <string name="qollash">გამოყენება</string>
     <string name="promokod">პრომოკოდი:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">მონეტები წარმატებით შეიძინეთ.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">მონეტები ნაყიდია.</string>
     <string name="narx">ფასი</string>
     <string name="jami">სულ</string>
     <string name="bekor_qilindi">გაუქმდა!</string>
@@ -412,11 +412,11 @@
     <string name="plus_obnuna_kerak">საჭიროა PLUS გამოწერა</string>
     <string name="toliq_nazorat_statistika">სრული კონტროლი და სტატისტიკა</string>
     <string name="farzand_ilova_kuzatish">თვალი ადევნეთ, რომელ აპებს იყენებს თქვენი შვილი და რამდენ ხანს დღის განმავლობაში.</string>
-    <string name="uchtagacha_jadval">3-მდე განრიგი</string>
+    <string name="uchtagacha_jadval">3 წესამდე</string>
     <string name="jadval_cheklovlar">დააწესეთ ცალკე შეზღუდვები დღეებისთვის, კვირებისთვის ან სპეციალური დროისთვის.</string>
     <string name="qattiq_bloklash_qalqon">მკაცრი დაცვა: იბლოკება ვებსაიტები და მოკლე ვიდეოებიც</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">თქვენს შვილს არ შეუძლია შეზღუდვების გამორთვა ან შეცვლა.</string>
-    <string name="tez_bloklash_timer">სწრაფი დაბლოკვა (ტაიმერი)</string>
+    <string name="tez_bloklash_timer">ყოველთვის დახურული აპები</string>
     <string name="vaqtinchalik_bloklash_tezi">საჭიროების შემთხვევაში ჩართეთ დროებითი დაბლოკვა რამდენიმე წამში.</string>
     <string name="hisobot_tahlil">ანგარიშები და ანალიზი</string>
     <string name="farzand_nazorat_tavsifi">აკონტროლეთ შვილის მიერ ტელეფონის გამოყენება. დაბლოკეთ არასასურველი აპები, დააწესეთ გამოყენების დრო და შექმენით უსაფრთხო გარემო.</string>
@@ -510,8 +510,8 @@
     <string name="danger_cat_tobacco">თამბაქო და ვეიპები</string>
     <string name="danger_distance_m">%1$d მ</string>
     <string name="radius">რადიუსი</string>
-    <string name="farzandim">ჩემი შვილი</string>
-    <string name="ozim">მე თავად</string>
+    <string name="farzandim">შვილის საკუთარი</string>
+    <string name="ozim">ჩემგან</string>
     <string name="faol_vazifa_yo_q">აქტიური დავალებები არ არის</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">თქვენი შვილისთვის დავალებები არ არის</string>
 
@@ -536,7 +536,7 @@
     <string name="weekday_sunday">კვირა</string>
 
     <string name="juda_muhim">ძალიან მნიშვნელოვანი</string>
-    <string name="tekshirildi">შემოწმებულია</string>
+    <string name="tekshirildi">ვიღებ</string>
     <string name="ko_rish">ნახვა</string>
     <string name="vazifa_ochirilsinmi">წავშალოთ დავალება?</string>
     <string name="vazifa_ochirish_tasdiq">ნამდვილად გსურთ ამ დავალების წაშლა?</string>
@@ -558,7 +558,7 @@
     <string name="tolovlar_tarixi_bos">გადახდების ისტორია ცარიელია</string>
     <string name="tolovlar_tarixi_bos_hint">აქ გამოჩნდება შენაძენების შემდეგ</string>
     <string name="boshqa_yozuvlar_yoq">მეტი ჩანაწერი არ არის</string>
-    <string name="xatolik_yuz_berdi">მოხდა შეცდომა</string>
+    <string name="xatolik_yuz_berdi">ვერ ჩაიტვირთა. ისევ სცადეთ.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -589,7 +589,7 @@
 
     <string name="izoh_ixtiyoriy">კომენტარი (არასავალდებულო)</string>
     <string name="vazifa_tangalari">დავალების შესრულებისთვის მინიჭებული მონეტები</string>
-    <string name="vazifani_tekshirish">დავალების შემოწმება</string>
+    <string name="vazifani_tekshirish">ყველაფერი სწორია?</string>
     <string name="izoh">კომენტარი</string>
     <string name="muhimlilik_darajasi">მნიშვნელობის დონე</string>
     <string name="ragbatlantirish_tangachalari">ჯილდოს მონეტები</string>
@@ -609,7 +609,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">თქვენმა შვილმა უნდა გახსნას Hoglt აპი და შეიყვანოს დადასტურების კოდი.</string>
     <string name="bola_hali_bajardim_bosmagan">შვილს ჯერ არ დაუჭერია ღილაკისთვის „შესრულებულია“</string>
     <string name="foydalanilmagan">გამოუყენებელი</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">საჭიროა თავიდან შესვლა</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">შესვლა</string>
     <string name="profil_rasmi">პროფილის სურათი</string>
@@ -635,7 +635,7 @@
     <string name="telegram_orqali_kirish">შესვლა Telegram-ით</string>
     <string name="yoki">ან</string>
     <string name="telefon_raqami">ტელეფონის ნომერი</string>
-    <string name="kirish_subtitle">გასაგრძელებლად შედით თქვენს ანგარიშში</string>
+    <string name="kirish_subtitle">შედით Telegram-ით. ანგარიში არ გაქვთ? თავისით შეიქმნება.</string>
     <string name="login_privacy">გაგრძელებით ეთანხმებით კონფიდენციალურობის პოლიტიკას და გამოყენების პირობებს</string>
 
     <string name="telegram_ochilmoqda">იხსნება Telegram…</string>
@@ -770,9 +770,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">თქვენ დაადასტურეთ მოთხოვნა — შვილს ახლა შეუძლია აპიდან გასვლა.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">თქვენ დაადასტურეთ მოთხოვნა — შვილს ახლა შეუძლია აპის წაშლა.</string>
     <string name="sorov_rad_etildi_desc">თქვენ უარყავით მოთხოვნა.</string>
-    <string name="unlink_child_title">გავწყვიტოთ კავშირი შვილთან?</string>
-    <string name="unlink_child_message">ამ მოქმედების შემდეგ %1$s-ის მოწყობილობაზე მონიტორინგი შეწყდება!</string>
-    <string name="unlink_child_action">კავშირის გაწყვეტა</string>
+    <string name="unlink_child_title">გავწყვიტოთ კავშირი ამ შვილთან?</string>
+    <string name="unlink_child_message">%1$s-ის ტელეფონზე დაცვა და წესები შეჩერდება. ხელახლა დასაკავშირებლად კოდი ისევ დაასკანერეთ „შვილის დამატება“-დან.</string>
+    <string name="unlink_child_action">დიახ, გაწყვიტეთ</string>
     <string name="child_unlinked_success">შვილთან კავშირი წარმატებით გაწყდა</string>
     <string name="operator_kodi_topilmadi">ასეთი ოპერატორის კოდი არ არსებობს</string>
     <string name="kod_amal_qilish_muddati">კოდი მოქმედებს: %1$s</string>
@@ -786,7 +786,7 @@
     <string name="farzand_tanlanmagan">შვილი არ არის არჩეული</string>
     <string name="vazifa_id_topilmadi">დავალების ID ვერ მოიძებნა</string>
     <string name="tahrirlangan">რედაქტირებულია</string>
-    <string name="jadval_topilmadi">განრიგი ვერ მოიძებნა.</string>
+    <string name="jadval_topilmadi">ვერ მოიძებნა — შეიძლება წაშლილია. დაბრუნდით და ისევ გახსენით.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d წუთი</item>
         <item quantity="other">%1$d წუთი</item>
@@ -819,8 +819,8 @@
     <string name="tarix_disabled">გამორთულია</string>
     <string name="tarix_paused">დაპაუზებულია</string>
     <string name="tarix_deleted">წაიშალა</string>
-    <string name="tarix_quick_block_add">სწრაფი დაბლოკვა დაემატა</string>
-    <string name="tarix_quick_block_remove">სწრაფი დაბლოკვა მოიხსნა</string>
+    <string name="tarix_quick_block_add">დაემატა ყოველთვის დახურულ აპებს</string>
+    <string name="tarix_quick_block_remove">ამოიშალა ყოველთვის დახურული აპებიდან</string>
     <string name="tarix_bosh">ცვლილებები ჯერ არ არის</string>
     <string name="tarix_resumed">განახლდა</string>
     <string name="muddat">ხანგრძლივობა</string>
@@ -844,26 +844,26 @@
     <string name="stat_row_sec">%1$d წმ</string>
     <string name="stat_hour_only">%1$d სთ</string>
     <string name="stat_per_day">~%1$s დღეში</string>
-    <string name="stat_quick_blocked">სწრაფ დაბლოკვაშია</string>
-    <string name="stat_quick_blocked_paused">სწრაფ დაბლოკვაშია · დაპაუზებულია</string>
-    <string name="stat_quick_blocked_inactive">სწრაფ დაბლოკვაშია · საჭიროა Plus</string>
+    <string name="stat_quick_blocked">ყოველთვის დახურული</string>
+    <string name="stat_quick_blocked_paused">ყოველთვის დახურული · შეჩერებულია</string>
+    <string name="stat_quick_blocked_inactive">ყოველთვის დახურული · საჭიროა Plus</string>
     <string name="stat_blocked_by_child">დაბლოკილია შვილის მიერ</string>
     <string name="stat_blocked_by_child_paused">დაბლოკილია შვილის მიერ · დაპაუზებულია</string>
     <string name="stat_blocked_by_child_inactive">დაბლოკილია შვილის მიერ · საჭიროა Plus</string>
     <string name="stat_blocked_by_coparent">დაბლოკილია მეორე მშობლის მიერ</string>
     <string name="stat_blocked_by_coparent_paused">დაბლოკილია მეორე მშობლის მიერ · დაპაუზებულია</string>
     <string name="stat_blocked_by_coparent_inactive">დაბლოკილია მეორე მშობლის მიერ · საჭიროა Plus</string>
-    <string name="stat_lock_hint">ბოქლომი აპს სწრაფ დაბლოკვაში ამატებს ან იქიდან შლის</string>
-    <string name="stat_quick_add_cd">სწრაფ დაბლოკვაში დამატება</string>
-    <string name="stat_quick_remove_cd">სწრაფი დაბლოკვიდან ამოშლა</string>
-    <string name="stat_reenable_title">სწრაფი დაბლოკვა ჩაირთვება</string>
-    <string name="stat_reenable_message">სწრაფი დაბლოკვა გამორთულია. ამ აპის დაბლოკვა მას ხელახლა ჩართავს და მის სიაში არსებული სხვა აპებიც დაიბლოკება: %1$d.</string>
+    <string name="stat_lock_hint">ბოქლომი აპს ამატებს ყოველთვის დახურულ აპებში ან შლის იქიდან</string>
+    <string name="stat_quick_add_cd">ყოველთვის დახურულ აპებში დამატება</string>
+    <string name="stat_quick_remove_cd">ყოველთვის დახურული აპებიდან ამოშლა</string>
+    <string name="stat_reenable_title">ყოველთვის დახურული აპები ისევ ჩაირთვება</string>
+    <string name="stat_reenable_message">„ყოველთვის დახურული აპები“ ახლა გამორთულია. თუ ამ აპს დაამატებთ, ისევ ჩაირთვება და სიის სხვა აპებიც დაიხურება: %1$d.</string>
     <string name="stat_reenable_confirm">დაბლოკვა</string>
     <string name="stat_quick_paywall_title">საჭიროა გამოწერა</string>
     <string name="stat_quick_paywall_message">აპის ერთი შეხებით დაბლოკვას Hoglt Plus გამოწერა სჭირდება.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">სწრაფი დაბლოკვა</string>
+    <string name="quick_title">ყოველთვის დახურული აპები</string>
     <string name="quick_enabled">ჩართულია</string>
     <string name="quick_pause">პაუზა</string>
     <string name="quick_blocked_apps">დაბლოკილი აპები</string>
@@ -872,15 +872,15 @@
     <string name="quick_info_always">ამ სიის აპები ყოველთვის დაბლოკილია, დროისა და ადგილის მიუხედავად.</string>
     <string name="quick_info_off">ახლა გამორთულია — ჩართეთ ამ აპების დასაბლოკად.</string>
     <string name="quick_info_paused">დაპაუზებულია %1$s-მდე — მანამდე არაფერი იბლოკება.</string>
-    <string name="quick_info_stats">აპების დამატება ან წაშლა ერთი შეხებით გამოყენების სტატისტიკიდანაც შეგიძლიათ.</string>
-    <string name="quick_info_readd">თუ სწრაფი დაბლოკვა გამორთულია, აპის დამატება მას ხელახლა ჩართავს.</string>
+    <string name="quick_info_stats">„ტელეფონის დროის“ გვერდზეც შეგიძლიათ ერთი შეხებით აპის ამ სიაში დამატება ან ამოშლა.</string>
+    <string name="quick_info_readd">თუ „ყოველთვის დახურული აპები“ გამორთულია, აპის დამატება მას ისევ ჩართავს.</string>
     <string name="quick_child_blocks">დაბლოკილია შვილის მიერ</string>
     <string name="quick_coparent_blocks">დაბლოკილია მეორე მშობლის მიერ</string>
     <string name="quick_others_note">ამ სიების შეცვლა მხოლოდ მათ მფლობელს შეუძლია. საჭიროების შემთხვევაში დაამატეთ აპი საკუთარ სიაში.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">ძილის დრო</string>
-    <string name="policy_preset_limit">დროის ლიმიტი</string>
+    <string name="policy_preset_limit">დრო დღეში</string>
     <string name="policy_preset_school">სასკოლო საათები</string>
     <string name="policy_day_mon">ორშ</string>
     <string name="policy_day_tue">სამ</string>
@@ -900,30 +900,30 @@
     <string name="policy_location">მდებარეობა</string>
     <string name="policy_active_now">ახლა მოქმედებს: %1$s</string>
     <string name="policy_active_until">%1$s-მდე</string>
-    <string name="list_info_none">ამჟამად არცერთი განრიგი არ არის აქტიური</string>
+    <string name="list_info_none">ახლა არცერთი წესი არ მოქმედებს</string>
     <string name="list_info_also">ასევე აქტიურია: %1$s.</string>
-    <string name="list_info_many">როცა რამდენიმე განრიგი ერთდროულად მუშაობს, აპი იბლოკება, თუ რომელიმე მათგანი ბლოკავს მას.</string>
-    <string name="list_info_child_scope">შვილის საკუთარი განრიგები ვერ გადაფარავს თქვენსას — თქვენ მიერ დაბლოკილი აპი დაბლოკილი რჩება.</string>
-    <string name="list_info_school_scope">თუ სკოლის განრიგი აპს ხურავს ან პირდაპირ უშვებს, თქვენი განრიგი ამას ვერ შეცვლის. სხვა შემთხვევაში მოქმედებს უფრო მკაცრი განრიგი.</string>
-    <string name="list_info_quick">სწრაფი დაბლოკვა ჩართულია — მისი აპები ყოველთვის დაბლოკილია, დროისა და ადგილის მიუხედავად.</string>
-    <string name="list_info_paused">დაპაუზებული განრიგები: %1$d — ისინი არაფერს აკეთებენ მითითებულ დრომდე.</string>
-    <string name="list_info_how">განრიგი თავისით იწყება, როცა მისი დრო და ადგილი დადგება.</string>
-    <string name="policy_tab_templates">შაბლონები</string>
+    <string name="list_info_many">თუ ერთდროულად რამდენიმე წესი მოქმედებს, აპი იბლოკება, თუ რომელიმე მათგანი ბლოკავს.</string>
+    <string name="list_info_child_scope">შვილის საკუთარი წესები ვერ გააუქმებს თქვენსას — თქვენ მიერ დაბლოკილი აპი დაბლოკილი რჩება.</string>
+    <string name="list_info_school_scope">თუ სკოლის წესი აპს ხურავს ან პირდაპირ უშვებს, თქვენი წესი ამას ვერ შეცვლის. სხვა შემთხვევაში მოქმედებს უფრო მკაცრი წესი.</string>
+    <string name="list_info_quick">„ყოველთვის დახურული აპები“ ჩართულია — ამ სიის აპები დახურული რჩება ნებისმიერ დროს და ადგილას.</string>
+    <string name="list_info_paused">შეჩერებული წესები: %1$d — მითითებულ დრომდე არაფერს აკეთებენ.</string>
+    <string name="list_info_how">წესი თავისით ირთვება, როცა მისი დრო და ადგილი დგება.</string>
+    <string name="policy_tab_templates">მზა წესები</string>
     <string name="policy_tab_mine">ჩემი</string>
     <string name="policy_tab_child">შვილი</string>
-    <string name="policy_tab_coparent">მშობელი</string>
+    <string name="policy_tab_coparent">მეორე მშობელი</string>
     <string name="policy_tab_school">სკოლა</string>
     <string name="policy_enabled_count">ჩართულია: %1$d</string>
-    <string name="policy_content_protection">კონტენტის დაცვა</string>
+    <string name="policy_content_protection">დაცვა ცუდი საიტებისგან</string>
     <string name="policy_content_protection_others">ჩართულია შვილის ან მეორე მშობლის მიერ</string>
     <string name="policy_paused">დაპაუზებულია</string>
-    <string name="policy_quick_blocks">სწრაფი დაბლოკვები</string>
+    <string name="policy_quick_blocks">ყოველთვის დახურული აპები</string>
     <string name="preset_all_apps">ყველა აპი</string>
-    <string name="policy_paywall_protection">კონტენტის დაცვა მუშაობს Hoglt Plus-ით.</string>
+    <string name="policy_paywall_protection">დაცვა ცუდი საიტებისგან მუშაობს Hoglt Plus-ით.</string>
     <string name="policy_paywall_count">უფასო გეგმა ზღუდავს განრიგების რაოდენობას. Hoglt Plus მეტს გაძლევთ.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">ჯერ არაფერია არჩეული — ეს განრიგი არაფერს ბლოკავს.</string>
+    <string name="info_nothing">ჯერ არაფერია არჩეული — ეს წესი არაფერს ბლოკავს.</string>
     <string name="info_always">ყოველთვის</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s %2$s-დან %3$s-მდე</string>
@@ -936,12 +936,12 @@
     <string name="info_what_all_apps_sites">ყველა აპი და ვებსაიტი იბლოკება</string>
     <string name="info_what_selected">არჩეული ელემენტები იბლოკება (%1$s)</string>
     <string name="info_stays_open">ღია რჩება: %1$s.</string>
-    <string name="info_not_counted">ლიმიტში არ ითვლება: %1$s.</string>
+    <string name="info_not_counted">დრო არ ითვლება: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s ხელმისაწვდომია სულ %3$s. დროის ამოწურვის შემდეგ ისინი ხვალამდე დაბლოკილი რჩება.</string>
     <string name="info_limit_hourly">%1$s: %2$s ხელმისაწვდომია %3$s საათში. დროის ამოწურვის შემდეგ ისინი შემდეგ საათამდე დაბლოკილი რჩება.</string>
     <string name="info_limit_all">ყველა აპი</string>
     <string name="info_limit_selected">არჩეული ელემენტები</string>
-    <string name="info_limit_gate">ლიმიტი მოქმედებს მხოლოდ: %1$s.</string>
+    <string name="info_limit_gate">დრო ითვლება მხოლოდ: %1$s.</string>
     <string name="info_protected">ზარები, SMS და სხვა აუცილებელი აპები არასოდეს იბლოკება.</string>
     <string name="info_disabled">ახლა გამორთულია — ჩართეთ, რომ ამოქმედდეს.</string>
 
@@ -950,7 +950,7 @@
     <string name="preset_when">როდის</string>
     <string name="preset_starts">იწყება</string>
     <string name="preset_ends">მთავრდება</string>
-    <string name="preset_limit">ლიმიტი</string>
+    <string name="preset_limit">რამდენი დრო</string>
     <string name="preset_counted">რა ითვლება</string>
     <string name="preset_what_closed">რა იბლოკება</string>
     <string name="preset_only_selected">მხოლოდ არჩეული</string>
@@ -991,13 +991,13 @@
     <string name="targets_covered_by_category">არჩეულია კატეგორიით</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">ვებსაიტის მისამართი ან საკვანძო სიტყვა არასწორია. მაგალითი: youtube.com ან kino</string>
-    <string name="editor_new_policy">ახალი განრიგი</string>
+    <string name="editor_new_policy">ახალი წესი</string>
     <string name="editor_not_selected">არ არის არჩეული</string>
     <string name="editor_when_hint">არასავალდებულო · წინააღმდეგ შემთხვევაში ყოველთვის</string>
     <string name="editor_add_condition">პირობის დამატება</string>
     <string name="editor_added">დამატებულია</string>
     <string name="editor_condition_time">დრო</string>
-    <string name="editor_condition_limit">ლიმიტი</string>
+    <string name="editor_condition_limit">რამდენი დრო</string>
     <string name="editor_in_this_time">ამ დროს</string>
     <string name="editor_closed_in_time">დაბლოკილია</string>
     <string name="editor_closed_in_time_sub">სხვა დროს ღიაა</string>
@@ -1008,8 +1008,8 @@
     <string name="editor_inside">ზონის შიგნით</string>
     <string name="editor_outside">ზონის გარეთ</string>
     <string name="editor_rename">სახელის შეცვლა</string>
-    <string name="editor_delete_title">წავშალოთ ეს განრიგი?</string>
-    <string name="editor_delete_message">„%1$s“ წაიშლება.</string>
+    <string name="editor_delete_title">წავშალოთ ეს წესი?</string>
+    <string name="editor_delete_message">„%1$s“ წაიშლება. აპები, რომლებსაც ეს წესი ბლოკავდა, ისევ გაიხსნება.</string>
     <string name="editor_paywall_allow">რეჟიმი „ღია რჩება მხოლოდ არჩეულები“ ხელმისაწვდომია Plus-ით.</string>
     <string name="location_child_here">ჩემი შვილის მდებარეობა</string>
     <string name="protection_section">რა არის დაცული</string>
@@ -1027,24 +1027,24 @@
     <string name="protection_policies_pending">ჯერ არ არის მიწოდებული</string>
     <string name="protection_gujanak_limits_note">საშუალო დაცვა მხოლოდ აპებს ხურავს. ვებსაიტები და მოკლე ვიდეოები მხოლოდ მკაცრი დაცვით იბლოკება: შვილის ტელეფონზე Hoglt → „კონტროლი“ → „ფარის რეჟიმი“.</string>
     <string name="editor_limit_days_follow_time">დროის მსგავსად — დღეები დროის გვერდზე აირჩევა</string>
-    <string name="editor_limit_in_window">ლიმიტი ამ დროს</string>
-    <string name="editor_limit_outside_window">ლიმიტი ამ დროის გარეთ</string>
-    <string name="editor_limit_in_time">ლიმიტი მოქმედებს ამ დროს</string>
+    <string name="editor_limit_in_window">დრო ითვლება ამ საათებში</string>
+    <string name="editor_limit_outside_window">დრო ითვლება ამ საათების გარეთ</string>
+    <string name="editor_limit_in_time">დრო ითვლება მხოლოდ ამ საათებში</string>
     <string name="editor_limit_in_time_sub">სხვა დროს შეზღუდვა არ არის</string>
-    <string name="editor_limit_out_time">ლიმიტი მოქმედებს ამ დროის გარეთ</string>
+    <string name="editor_limit_out_time">დრო ითვლება ამ საათების გარეთ</string>
     <string name="editor_limit_out_time_sub">ამ დროს შეზღუდვა არ არის</string>
     <string name="info_limit_daily_window">%1$s: %2$s ხელმისაწვდომია სულ %3$s. დროის ამოწურვისას დახურულია ამ დროის შუალედის დასრულებამდე.</string>
     <string name="targets_only_selected_open_sites_sub">სხვა ვებსაიტები დახურულია</string>
     <string name="targets_only_selected_open_both_sub">სხვა აპები და ვებსაიტები დახურულია</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">განრიგები ჯერ არ არის</string>
-    <string name="policy_empty_mine_sub">ჩართეთ შაბლონი ან შექმენით საკუთარი</string>
+    <string name="policy_empty_mine_title">წესები ჯერ არ არის</string>
+    <string name="policy_empty_mine_sub">ჩართეთ მზა წესი ან შექმენით საკუთარი</string>
     <string name="empty_search_title">არაფერი მოიძებნა</string>
     <string name="empty_search_sub">სცადეთ სხვა საძიებო მოთხოვნა</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">ზრდასრულთა და აზარტული ვებსაიტები</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">განრიგი</string>
+    <string name="policy_name_schedule">წესი</string>
     <string name="policy_name_category_block">დაბლოკვა კატეგორიების მიხედვით</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">ჩართულია შვილის მიერ</string>
@@ -1139,7 +1139,7 @@
     <string name="ap_off_confirm">გამორთვა</string>
     <string name="ap_keep_on">ჩართული დარჩეს</string>
     <string name="ap_retry_note">ხვალ ხელახლა ვცდით (%1$d/3).</string>
-    <string name="ap_retry_now">ხელახლა ცდა</string>
+    <string name="ap_retry_now">ახლავე გადახდა</string>
     <string name="ap_other_card">სხვა ბარათი</string>
     <string name="ap_cards_empty_title">შენახული ბარათები არ არის</string>
     <string name="ap_cards_empty_sub">დაამატეთ UZCARD ან HUMO ბარათი ავტოგადახდისთვის</string>
@@ -1185,7 +1185,7 @@
     <string name="ulash_tugma">დაკავშირება</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">გამოტოვება</string>
+    <string name="ob_skip">მოგვიანებით</string>
     <string name="ob_start">დავიწყოთ</string>
     <string name="ob_got_it">გასაგებია</string>
     <string name="ob_hello_title">გამარჯობა, მე Hoglt ვარ</string>
@@ -1199,10 +1199,10 @@
     <string name="ob_day_study">სწავლა</string>
     <string name="ob_min_fmt">%1$d წთ</string>
     <string name="ob_rules_title">დააწესეთ წესები ერთხელ</string>
-    <string name="ob_rules_body">ძილის დრო, სასკოლო დრო და დღიური ლიმიტები თავისით ირთვება.</string>
+    <string name="ob_rules_body">ძილის დრო, სკოლის დრო და დღის დრო თავისით ირთვება.</string>
     <string name="ob_rule_sleep">ძილის დრო</string>
     <string name="ob_rule_school">სასკოლო დრო</string>
-    <string name="ob_rule_limit">დღიური ლიმიტი</string>
+    <string name="ob_rule_limit">დრო დღეში</string>
     <string name="ob_rule_limit_value">2 სთ</string>
     <string name="ob_map_title">იცოდეთ, სად არის</string>
     <string name="ob_map_body">ნახეთ შვილი რუკაზე და დააწესეთ წესები ისეთი ადგილებისთვის, როგორიცაა სკოლა.</string>
@@ -1259,8 +1259,8 @@
     <string name="home_layout_list">სია</string>
     <string name="home_layout_grid">ბადე</string>
     <string name="home_greeting">გამარჯობა, %1$s</string>
-    <string name="kecha_sarfladi">გუშინ დახარჯა</string>
-    <string name="sana_sarfladi">დახარჯა %1$s</string>
+    <string name="kecha_sarfladi">გუშინ ტელეფონში</string>
+    <string name="sana_sarfladi">%1$s ტელეფონში</string>
     <string name="stat_no_usage_day">ამ დღეს ტელეფონი ჯერ არ გამოუყენებია</string>
     <string name="kirish_usuli">შესვლის მეთოდი</string>
     <string name="google_hisobi">Google ანგარიში</string>
@@ -1283,7 +1283,7 @@
     <string name="vazifa_muddati">ვადა</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">ასისტენტი</string>
+    <string name="ai_assistant_title">ჭკვიანი დამხმარე</string>
     <string name="ai_assistant_subtitle">იკითხეთ ან დააწესეთ წესი</string>
     <string name="ai_period_today">დღეს</string>
     <string name="ai_period_yesterday">გუშინ</string>
@@ -1413,20 +1413,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">უფასოდ: %1$d აქტიური წესი · Plus: შეუზღუდავად</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">აპი ვერ ხედავს, რომელი აპები იხსნება: ტელეფონის დრო არ ითვლება და წესები არ მუშაობს.</string>
+    <string name="perm_why_overlay">დაბლოკილ აპზე დაბლოკვის ეკრანი ვერ ჩნდება, ამიტომ წესები ვერ ხურავს მას.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">ვერ ხედავთ, სად არის შვილი, და ადგილზე მიბმული წესები არ მუშაობს.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">ამის გარეშე ვებსაიტები, YouTube Shorts და Instagram Reels არ იბლოკება, აპის წაშლა კი ადვილად შეიძლება.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">უფასო გეგმაში ერთ წესში შეიძლება %1$d-მდე აპის დამატება. Plus-ით მეტი.</string>
+    <string name="policy_paywall_app_limit">ამ წესმა მიაღწია თქვენი გეგმის აპების ლიმიტს.</string>
     <string name="clip_child_phone">მის ტელეფონზე</string>
     <string name="prot_default_note">ახლა თქვენი წესები არცერთ აპს არ ხურავს. ამისთვის შვილის ტელეფონზე გახსენით Hoglt → „კონტროლი“ და ჩართეთ დაცვა.</string>
     <string name="prot_strength">დაცვის დონე</string>
@@ -1456,4 +1456,64 @@
     <string name="task_empty_done">შესრულებული დავალება ჯერ არ არის</string>
     <string name="task_empty_overdue">ვადაგადაცილებული დავალება არ არის</string>
     <string name="task_empty_filter_hint">ყველა დავალების სანახავად კიდევ ერთხელ შეეხეთ არჩეულ ფილტრს.</string>
+    <string name="voice_listen">მოსმენა</string>
+    <string name="voice_stop">შეჩერება</string>
+    <string name="voice_unavailable">ხმოვანი ახსნა ჯერ არ არის ხელმისაწვდომი. მოგვიანებით სცადეთ.</string>
+    <string name="live_confirm_title">პირდაპირ ყურება</string>
+    <string name="live_confirm_body">%1$s მიიღებს ზარს. თუ უპასუხებს, ვიდეო გაიხსნება.</string>
+    <string name="live_child_fallback">თქვენი შვილი</string>
+    <string name="live_call_button">დარეკვა</string>
+    <string name="live_ringing">ვურეკავთ: %1$s…</string>
+    <string name="live_connecting">დაკავშირება…</string>
+    <string name="live_error_connect">დაკავშირება ვერ მოხერხდა. ცოტა ხანში ისევ სცადეთ.</string>
+    <string name="live_declined">შვილმა ზარი უარყო</string>
+    <string name="live_no_answer">პასუხი არ არის</string>
+    <string name="live_end">დასრულება</string>
+    <string name="live_show_on_map">რუკაზე ჩვენება</string>
+    <string name="unlink_child_button">შვილის გათიშვა</string>
+    <string name="saqlandi">შენახულია</string>
+    <string name="ap_retry_now_amount">ახლავე გადახდა · %1$s</string>
+    <string name="pay_charge_body">ბარათიდან •• %1$s ჩამოიჭრება %2$s.</string>
+    <string name="pay_charge_body_amount">ბარათიდან ჩამოიჭრება %1$s.</string>
+    <string name="pay_charge_body_plain">გამოწერის საფასური ჩამოიჭრება შენახული ბარათიდან.</string>
+    <string name="pay_confirm_pay">გადახდა</string>
+    <string name="app_store_unavailable">App Store ახლა მიუწვდომელია. ცოტა ხანში ისევ სცადეთ.</string>
+    <string name="app_store_failed">App Store-ით გადახდა ვერ მოხერხდა. ისევ სცადეთ.</string>
+    <string name="apple_activation_pending_title">გადახდა მიღებულია</string>
+    <string name="login_subtitle_social">აირჩიეთ შესვლის გზა. ანგარიში არ გაქვთ? თავისით შეიქმნება.</string>
+    <string name="login_telegram_not_opened">Telegram არ გაიხსნა. შეამოწმეთ, დაყენებულია თუ არა Telegram, ან შედით სხვა გზით.</string>
+    <string name="ob_notif_enable">შეტყობინებების ჩართვა</string>
+    <string name="comfort_title">კითხვა მოსახერხებელია?</string>
+    <string name="comfort_screen_color">ეკრანის ფერი</string>
+    <string name="comfort_light">ღია</string>
+    <string name="comfort_dark">მუქი</string>
+    <string name="comfort_done">მზადაა</string>
+    <string name="comfort_hint">ამის შეცვლა მოგვიანებითაც შეიძლება.</string>
+    <string name="policy_turned_on">%1$s ჩართულია</string>
+    <string name="policy_turned_off">%1$s გამორთულია</string>
+    <string name="policy_off_title">გამოირთოს „%1$s“?</string>
+    <string name="policy_off_body">ეს წესი შვილის ტელეფონზე მაშინვე შეწყვეტს მოქმედებას და ყველაფერი, რასაც ბლოკავდა, ისევ გაიხსნება. ნებისმიერ დროს შეგიძლიათ ხელახლა ჩართვა.</string>
+    <string name="policy_off_body_safety">ეს დაცვა შვილის ტელეფონზე მაშინვე შეჩერდება. ნებისმიერ დროს შეგიძლიათ ხელახლა ჩართვა.</string>
+    <string name="policy_off_confirm">დიახ, გამორთეთ</string>
+    <string name="policy_off_cancel">არა, დარჩეს ჩართული</string>
+    <string name="policy_saved_sent">შენახულია — გაიგზავნა შვილის ტელეფონზე</string>
+    <string name="policy_saved_queued">შენახულია — შვილის ტელეფონზე მივა, როცა ინტერნეტი დაბრუნდება</string>
+    <string name="policy_unsaved_title">შევინახოთ ცვლილებები?</string>
+    <string name="policy_unsaved_body">თუ არ შეინახავთ, შვილის ტელეფონზე არაფერი შეიცვლება.</string>
+    <string name="policy_unsaved_discard">გასვლა შენახვის გარეშე</string>
+    <string name="quick_unblock_title">გავხსნათ ისევ %1$s?</string>
+    <string name="quick_unblock_body">ეს აპი შვილის ტელეფონზე მაშინვე გაიხსნება.</string>
+    <string name="quick_unblock_confirm">დიახ, გახსენით</string>
+    <string name="quick_unblock_action">გახსნა</string>
+    <string name="quick_unblocked">%1$s ისევ გაიხსნა</string>
+    <string name="policy_exception_remove">ამოშლა</string>
+    <string name="policy_load_failed">ვერ ჩაიტვირთა</string>
+    <string name="tg_more_settings">მეტი პარამეტრი</string>
+    <string name="rules_on_count">ჩართული წესები: %1$d</string>
+    <string name="task_accepted">მიღებულია</string>
+    <string name="task_accepted_coins">%1$s იღებს მონეტებს: %2$d</string>
+    <string name="task_coins_explain">როცა დავალებას მიიღებთ, მონეტები შვილს გადაეცემა. ის მათ ჭკვიანი დამხმარისთვის კითხვების დასმაზე ხარჯავს.</string>
+    <string name="task_coins_not_enough">მონეტები არ ჰყოფნის</string>
+    <string name="chat_support_title">მხარდაჭერის სამსახური</string>
+    <string name="chat_ai_title">ჭკვიანი დამხმარე</string>
 </resources>

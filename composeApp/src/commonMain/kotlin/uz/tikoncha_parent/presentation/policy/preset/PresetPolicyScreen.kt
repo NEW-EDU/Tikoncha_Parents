@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.policy.preset
 
+import androidx.compose.runtime.DisposableEffect
 import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -29,6 +30,18 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToast
+import uz.tikoncha_parent.presentation.policy.components.PolicyToastHost
+import uz.tikoncha_parent.presentation.policy.components.PolicyToasts
+import uz.tikoncha_parent.presentation.policy.components.TurnOffConfirm
+import uz.tikoncha_parent.presentation.policy.components.TurnOffGuard
+import uz.tikoncha_parent.presentation.policy.components.UnsavedChangesSheet
+import uz.tikoncha_parent.presentation.policy.components.rememberTurnOffGuard
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -143,6 +156,8 @@ class PresetPolicyScreen(private val childId: String, private val kind: PresetKi
         val state by viewModel.state.collectAsStateWithLifecycle()
         val haptics = rememberAppHaptics()
         val title = kind.title()
+        /** Orqaga bosildi, saqlanmagan özgarişlar bor — "Özgarişlar saqlansinmi?". */
+        var askUnsaved by remember { mutableStateOf(false) }
 
         LaunchedEffect(Unit) { viewModel.onEvent(PresetPolicyEvent.Init(childId, kind, title)) }
         LaunchedEffect(Unit) {
@@ -150,6 +165,8 @@ class PresetPolicyScreen(private val childId: String, private val kind: PresetKi
                 when (e) {
                     PresetPolicyEffect.Saved -> {
                         haptics.success()
+                        // Ekran yopiladi — "Saqlandi — farzand telefoniga yuborildi" röyxatda körinadi
+                        PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.LIST)
                         navigator.pop()
                     }
                 }
@@ -180,8 +197,32 @@ class PresetPolicyScreen(private val childId: String, private val kind: PresetKi
             )
             return
         }
-        BackHandler(true) { navigator.pop() }
-        PresetPolicyUi(state = state, event = viewModel::onEvent, onBack = { navigator.pop() })
+        // Saqlanmagan tahrir jimgina yöqolmasin: avval söraladi
+        val back: () -> Unit = { if (state.hasChanges) askUnsaved = true else navigator.pop() }
+        BackHandler(true) { back() }
+        // iOS: saqlanmagan özgarişlar bölsa chetdan surib qaytiş öçadi (sörov çiqişi uçun)
+        DisposableEffect(state.hasChanges) {
+            uz.tikoncha_parent.presentation.navigation.SwipeBackGuard.blocked = state.hasChanges
+            onDispose { uz.tikoncha_parent.presentation.navigation.SwipeBackGuard.blocked = false }
+        }
+        ToastProvider {
+            PresetPolicyUi(state = state, event = viewModel::onEvent, onBack = back)
+            PolicyToastHost(PolicyScreenId.PRESET)
+        }
+        if (askUnsaved) {
+            UnsavedChangesSheet(
+                canSave = !state.saving,
+                onSave = {
+                    askUnsaved = false
+                    viewModel.onEvent(PresetPolicyEvent.SaveClicked)
+                },
+                onDiscard = {
+                    askUnsaved = false
+                    navigator.pop()
+                },
+                onDismiss = { askUnsaved = false },
+            )
+        }
     }
 }
 
@@ -193,6 +234,7 @@ fun PresetPolicyUi(
 ) {
     val systemBars = rememberScreenSystemBars(statusBarColor = AppColors.bg.page, navigationBarColor = AppColors.bg.page)
     val draft = state.draft
+    val guard = rememberTurnOffGuard()
 
     Column(modifier = Modifier.fillMaxSize().background(AppColors.bg.page).then(systemBars.modifier)) {
         CustomHeader(
@@ -231,7 +273,7 @@ fun PresetPolicyUi(
                     ),
                 )
             }
-            HeaderGroup(state = state, event = event)
+            HeaderGroup(state = state, event = event, guard = guard)
             PolicyInfoBox(lines = draft.toInfo(enabled = state.isEnabled).sentences())
 
             // O'chiq bo'lsa sozlamalar xira, lekin tahrirlanadi va saqlanadi
@@ -270,6 +312,7 @@ fun PresetPolicyUi(
     }
 
     PresetSheets(state = state, event = event)
+    TurnOffConfirm(guard)
 
     val error = state.error
     if (state.askTakeOver && state.otherBy != null && state.otherSummary != null) {
@@ -300,7 +343,7 @@ private fun Instant.asLocalClock(): String {
 
 /** Yoqilgan switch'i · Vaqtincha to'xtatish · to'xtatilgan banner. */
 @Composable
-private fun HeaderGroup(state: PresetPolicyState, event: (PresetPolicyEvent) -> Unit) {
+private fun HeaderGroup(state: PresetPolicyState, event: (PresetPolicyEvent) -> Unit, guard: TurnOffGuard) {
     SettingGroup {
         val paused = state.pausedUntil
         if (state.isPaused && paused != null) {
@@ -310,10 +353,15 @@ private fun HeaderGroup(state: PresetPolicyState, event: (PresetPolicyEvent) -> 
                 onResume = { event(PresetPolicyEvent.ResumeClicked) },
             )
         }
+        val title = state.kind.title()
         SettingRow(
             title = stringResource(Res.string.preset_enabled),
             trailing = {
-                PolicySwitch(checked = state.isEnabled, busy = state.pendingEnabled != null, onCheckedChange = { event(PresetPolicyEvent.EnabledToggled(it)) })
+                PolicySwitch(
+                    checked = state.isEnabled,
+                    busy = state.pendingEnabled != null,
+                    onCheckedChange = { on -> guard.toggle(title, on) { event(PresetPolicyEvent.EnabledToggled(it)) } },
+                )
             },
         )
         if (state.isEnabled && state.policyId != null) {

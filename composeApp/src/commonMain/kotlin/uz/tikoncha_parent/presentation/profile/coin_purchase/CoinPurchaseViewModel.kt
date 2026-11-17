@@ -48,6 +48,7 @@ class CoinPurchaseViewModel (
                 }
             }
 
+            // Saqlangan kartadan yeçişdan oldin UI tasdiq söraydi (CoinPurchaseScreen → ChargeConfirmSheet)
             CoinPurchaseEvent.StartPayment -> {
                 val s = _state.value
                 when {

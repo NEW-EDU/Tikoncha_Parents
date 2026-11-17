@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.policy.editor
 
+import androidx.compose.runtime.DisposableEffect
 import uz.tikoncha_parent.presentation.base.SaveIcon
 import uz.tikoncha_parent.presentation.base.DelayedLoadingIndicator
 import androidx.compose.material3.LoadingIndicator
@@ -37,6 +38,18 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToast
+import uz.tikoncha_parent.presentation.policy.components.PolicyToastHost
+import uz.tikoncha_parent.presentation.policy.components.PolicyToasts
+import uz.tikoncha_parent.presentation.policy.components.TurnOffConfirm
+import uz.tikoncha_parent.presentation.policy.components.TurnOffGuard
+import uz.tikoncha_parent.presentation.policy.components.UnsavedChangesSheet
+import uz.tikoncha_parent.presentation.policy.components.rememberTurnOffGuard
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -195,12 +208,20 @@ class PolicyEditorScreen(private val childId: String, private val policyId: Stri
         val event = viewModel::onEvent
         val haptics = rememberAppHaptics()
         val defaultTitle = stringResource(Res.string.editor_new_policy)
+        /** Orqaga bosildi, saqlanmagan özgarişlar bor — "Özgarişlar saqlansinmi?". */
+        var askUnsaved by remember { mutableStateOf(false) }
 
         LaunchedEffect(Unit) { event(PolicyEditorEvent.Init(childId, policyId, defaultTitle)) }
         LaunchedEffect(Unit) {
             viewModel.effect.collect { e ->
                 when (e) {
-                    PolicyEditorEffect.Saved, PolicyEditorEffect.Deleted -> {
+                    PolicyEditorEffect.Saved -> {
+                        haptics.success()
+                        // Ekran yopiladi — "Saqlandi — farzand telefoniga yuborildi" röyxatda körinadi
+                        PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.LIST)
+                        navigator.pop()
+                    }
+                    PolicyEditorEffect.Deleted -> {
                         haptics.success()
                         navigator.pop()
                     }
@@ -259,16 +280,41 @@ class PolicyEditorScreen(private val childId: String, private val policyId: Stri
             return
         }
 
-        when (state.page) {
-            EditorPage.TIME -> TimePage(state = state, event = event)
-            EditorPage.LIMIT -> LimitPage(state = state, event = event)
-            EditorPage.MAIN -> {
-                BackHandler(true) { navigator.pop() }
-                PolicyEditorContent(state = state, event = event, onBack = { navigator.pop() })
+        ToastProvider {
+            when (state.page) {
+                EditorPage.TIME -> TimePage(state = state, event = event)
+                EditorPage.LIMIT -> LimitPage(state = state, event = event)
+                EditorPage.MAIN -> {
+                    // Saqlanmagan tahrir jimgina yöqolmasin: avval söraladi
+                    val back: () -> Unit = { if (state.hasUnsavedChanges) askUnsaved = true else navigator.pop() }
+                    BackHandler(true) { back() }
+                    // iOS: saqlanmagan özgarişlar bölsa chetdan surib qaytiş öçadi (sörov çiqişi uçun)
+                    DisposableEffect(state.hasUnsavedChanges) {
+                        uz.tikoncha_parent.presentation.navigation.SwipeBackGuard.blocked = state.hasUnsavedChanges
+                        onDispose { uz.tikoncha_parent.presentation.navigation.SwipeBackGuard.blocked = false }
+                    }
+                    PolicyEditorContent(state = state, event = event, onBack = back)
+                }
             }
+            EditorSheets(state = state, event = event)
+            EditorDialogs(state = state, event = event)
+            PolicyToastHost(PolicyScreenId.EDITOR)
         }
-        EditorSheets(state = state, event = event)
-        EditorDialogs(state = state, event = event)
+        if (askUnsaved) {
+            UnsavedChangesSheet(
+                // Yaratişda nima yopilişi tanlanmagan bölsa saqlab bölmaydi — faqat "çiqiş" / "bekor"
+                canSave = state.canSave,
+                onSave = {
+                    askUnsaved = false
+                    event(PolicyEditorEvent.SaveClicked)
+                },
+                onDiscard = {
+                    askUnsaved = false
+                    navigator.pop()
+                },
+                onDismiss = { askUnsaved = false },
+            )
+        }
     }
 }
 
@@ -281,6 +327,8 @@ fun PolicyEditorContent(state: PolicyEditorState, event: (PolicyEditorEvent) -> 
     val systemBars = rememberScreenSystemBars(statusBarColor = AppColors.bg.page, navigationBarColor = AppColors.bg.page)
     val draft = state.draft
     val editable = !state.readOnly
+    val guard = rememberTurnOffGuard()
+    TurnOffConfirm(guard)
 
     Column(modifier = Modifier.fillMaxSize().background(AppColors.bg.page).then(systemBars.modifier)) {
         CustomHeader(
@@ -329,7 +377,7 @@ fun PolicyEditorContent(state: PolicyEditorState, event: (PolicyEditorEvent) -> 
             verticalArrangement = Arrangement.spacedBy(22.dp),
         ) {
             Spacer(modifier = Modifier.height(2.dp))
-            if (state.isDetail && editable) HeaderGroup(state = state, event = event)
+            if (state.isDetail && editable) HeaderGroup(state = state, event = event, guard = guard)
             PolicyInfoBox(lines = draft.toInfo(enabled = if (state.isDetail) state.isEnabled else null).sentences())
 
             Column(
@@ -358,7 +406,7 @@ fun PolicyEditorContent(state: PolicyEditorState, event: (PolicyEditorEvent) -> 
 
 /** Tahrirlashda: Yoqilgan switch'i · Vaqtincha to'xtatish · to'xtatilgan banner. */
 @Composable
-private fun HeaderGroup(state: PolicyEditorState, event: (PolicyEditorEvent) -> Unit) {
+private fun HeaderGroup(state: PolicyEditorState, event: (PolicyEditorEvent) -> Unit, guard: TurnOffGuard) {
     SettingGroup {
         val paused = state.pausedUntil
         if (state.isPaused && paused != null) {
@@ -368,10 +416,15 @@ private fun HeaderGroup(state: PolicyEditorState, event: (PolicyEditorEvent) -> 
                 onResume = { event(PolicyEditorEvent.ResumeClicked) },
             )
         }
+        val title = state.draft?.let { PolicyName.of(it.name, preset = it.preset).text() }.orEmpty()
         SettingRow(
             title = stringResource(Res.string.preset_enabled),
             trailing = {
-                PolicySwitch(checked = state.isEnabled, busy = state.pendingEnabled != null, onCheckedChange = { event(PolicyEditorEvent.EnabledToggled(it)) })
+                PolicySwitch(
+                    checked = state.isEnabled,
+                    busy = state.pendingEnabled != null,
+                    onCheckedChange = { on -> guard.toggle(title, on) { event(PolicyEditorEvent.EnabledToggled(it)) } },
+                )
             },
         )
         if (state.isEnabled) {

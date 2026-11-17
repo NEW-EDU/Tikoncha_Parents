@@ -94,7 +94,7 @@
     <string name="maktab">Mekdep</string>
     <string name="sozlamalar">Sazlamalar</string>
     <string name="bildirishnomalar">Bildirişler</string>
-    <string name="tema">Tema</string>
+    <string name="tema">Ekran reňki</string>
     <string name="tasdiqlash">Tassykla</string>
     <string name="tolov">Töleg</string>
     <string name="obuna_pro">Pro abuna</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">Pasport ID</string>
     <string name="reklama">Mahabat</string>
     <string name="yorug">Ýagty</string>
-    <string name="theme_system">Ulgam</string>
+    <string name="theme_system">Telefondaky ýaly</string>
     <string name="xavfli_zona">Howply zona</string>
     <string name="akkauntni_o_chirish">Hasaby poz</string>
     <string name="pochta_orqali">E-poçta arkaly</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Rugsat sora</string>
     <string name="joylashuv_uchun_ruxsat">Ýerleşiş rugsady</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Kartany doly ulanmak üçin sazlamalardan Ýerleşiş rugsadyny beriň!</string>
-    <string name="xatolik">Ýalňyşlyk</string>
-    <string name="ok">Bolýar</string>
+    <string name="xatolik">Bolmady</string>
+    <string name="ok">Düşnükli</string>
     <string name="qoshish">Goş</string>
     <string name="ogil_bola">Oglan</string>
     <string name="qiz_bola">Gyz</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Üstünlikli</string>
     <string name="qisqartirish">Gysgalt</string>
     <string name="vazifa_tahrirlandi">Tabşyryk üýtgedildi</string>
-    <string name="server_connection_error">Serwere birikmekde ýalňyşlyk!</string>
+    <string name="server_connection_error">Häzir birigip bolmady. Biraz soňra gaýtadan synanyşyň.</string>
     <string name="faol">Işjeň</string>
     <string name="faol_emas">Işjeň däl</string>
     <string name="ohirgi_faollik">Soňky işjeňlik:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Üns beriň!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Saýlan wagt aralygyňyzda Ulanyş limiti işlemez! Ýagny wagt tertibi ileri tutulýar.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d programma enjamyňyzda gurnalmadyk</string>
-    <string name="cheklovlar">Çäklendirmeler</string>
+    <string name="cheklovlar">Düzgünler</string>
     <string name="ta_ilovaga">%1$d programma</string>
     <string name="ta_vebsaytga">%1$d web sahypa</string>
     <string name="ustuvorligi">Ileri tutulmagy</string>
-    <string name="jadval_nomini_kiriting">Tertibiň adyny giriziň</string>
+    <string name="jadval_nomini_kiriting">Düzgüniň adyny ýazyň</string>
     <string name="misol_o_quv_markaz">meselem: Okuw merkezi</string>
     <string name="ochirish">Poz</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Tertibi ýatda saklaman çykmaga razymysyňyz?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">GUTLAÝARYS!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Siz indi bu abunanyň eýesi</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Aýratyn mümkinçiliklerden we ileri tutulýan goldawdan peýdalanyň!</string>
-    <string name="statistika">Statistika</string>
+    <string name="statistika">Telefon wagty</string>
     <string name="chegirmalar">Arzanladyşlar</string>
     <string name="chegirma">Arzanladyş</string>
     <string name="topshiriqlar">Tabşyryklar</string>
-    <string name="jadvallar">Tertipler</string>
+    <string name="jadvallar">Düzgünler</string>
     <string name="ilova_cheklangan">%1$d programma çäklendirildi</string>
-    <string name="faol_vazifa">%1$d işjeň tabşyryk</string>
-    <string name="bugun_sarfladi">Şu gün sarp edildi</string>
+    <string name="faol_vazifa">Işjeň tabşyryk: %1$d</string>
+    <string name="bugun_sarfladi">Şu gün telefonda</string>
     <string name="chiqish">Hasapdan çyk</string>
     <string name="chiqishni_xohlaysizmi">Çykmak isleýärsiňizmi?</string>
     <string name="chiqishni_tasdiqlang">Çykmagy tassyklaň.</string>
@@ -322,8 +322,8 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="profil_va_sozlamalar_saqlanadi">Profiliňiz we sazlamalaryňyz serwerde saklanýar.</string>
     <string name="qayta_kirsangiz_tiklanadi">Gaýtadan girseňiz, hemme zat dikeldiler.</string>
     <string name="farzand_qoshilmagan">Çaga goşulmady</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Tertipler, çatlar we hasabatlar çaga goşulandan soň peýda bolar.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Garaşylmadyk ýalňyşlyk ýüze çykdy. Gaýtadan synanyşyň.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Düzgünler, çatlar we telefon wagty çaga goşulandan soň görüner.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Bolmady. Biraz soňra gaýtadan synanyşyň.</string>
     <string name="hozircha_farzand_qoshilmagan">Siz entek çaga goşmadyňyz.</string>
     <string name="diqqat2">ÜNS BERIŇ!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Dowam etmezden öň programmanyň görnüşini saýlaň.</string>
@@ -343,10 +343,10 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="tasdiqlash_kodi_usulini_tanlash">Tassyklama kodyny nädip \n ibermelidigini saýlaň</string>
     <string name="tasdiqlash_kodini_olish">Tassyklama kodyny al</string>
     <string name="telegram_kod_kiritish">%1$s belgä baglanan Telegram-a iberilen kody giriziň</string>
-    <string name="xato_kod_kiritdingiz">Siz nädogry kod girizdiňiz</string>
+    <string name="xato_kod_kiritdingiz">Kod gabat gelmedi. Gaýtadan ýazyp görüň.</string>
     <string name="kod_olish_usulini_ozgartirish">Kod almagyň usulyny üýtget</string>
     <string name="versiya">Wersiýa</string>
-    <string name="jadval_yaratish">Tertip döret</string>
+    <string name="jadval_yaratish">Düzgün döretmek</string>
     <string name="sizning_cheklovlaringiz">Çäklendirmeleriňiz</string>
 
     <string name="avtomatik_bloklash_vaqti">Saýlanan günlerde we sagatlarda awtomatik bloklama</string>
@@ -364,9 +364,9 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="noto_g_ri_url_format">URL formaty nädogry</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Bu web sahypa eýýäm sanawda bar</string>
     <string name="to_liq_nazoratni_yoqing">Doly gözegçiligi açyň</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Hoglt arkaly programmalary, wagty we ulanyşy dolandyryň. Plus bilen çäklendirmesiz işläň we Galkan režimi arkaly iň ýokary goragy açyň.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Programmalary we telefon wagtyny Hoglt arkaly dolandyryň. Plus bilen çäksiz işleýärsiňiz we berk goragy açyp bilersiňiz.</string>
     <string name="plus_imkoniyatlarini_ochish">Plus mümkinçiliklerini aç</string>
-    <string name="jadval_nomi">Tertibiň ady</string>
+    <string name="jadval_nomi">Düzgüniň ady</string>
     <string name="saytlar">Web sahypalar</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Programmalaryň we web sahypalaryň haçan we haýsy şertlerde çäklendirilýändigini belläň</string>
 
@@ -395,7 +395,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="coins_help_close">Ýap</string>
     <string name="qollash">Ulan</string>
     <string name="promokod">Promokod:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Teňňeleri üstünlikli satyn aldyňyz.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Teňňeler satyn alyndy.</string>
     <string name="narx">Bahasy</string>
     <string name="jami">Jemi</string>
     <string name="bekor_qilindi">Ýatyryldy!</string>
@@ -412,11 +412,11 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="plus_obnuna_kerak">PLUS abunasy gerek</string>
     <string name="toliq_nazorat_statistika">Doly gözegçilik we statistika</string>
     <string name="farzand_ilova_kuzatish">Çagaňyzyň gün dowamynda haýsy programmalary we näçe ulanýandygyny yzarlaň.</string>
-    <string name="uchtagacha_jadval">3 tertibe çenli</string>
+    <string name="uchtagacha_jadval">3 düzgüne çenli</string>
     <string name="jadval_cheklovlar">Günler, hepdeler ýa-da ýörite wagtlar üçin aýratyn çäklendirmeler belläň.</string>
     <string name="qattiq_bloklash_qalqon">Berk gorag: web sahypalar we gysga wideolar hem bloklanýar</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Çagaňyz çäklendirmeleri öçürip ýa-da üýtgedip bilmeýär.</string>
-    <string name="tez_bloklash_timer">Çalt bloklama (Taýmer)</string>
+    <string name="tez_bloklash_timer">Hemişe ýapyk programmalar</string>
     <string name="vaqtinchalik_bloklash_tezi">Gerek bolanda wagtlaýyn bloklamany birnäçe sekuntda açyň.</string>
     <string name="hisobot_tahlil">Hasabatlar we derňew</string>
     <string name="farzand_nazorat_tavsifi">Çagaňyzyň telefon ulanyşyna gözegçilik ediň. Islenilmeýän programmalary bloklaň, ulanyş wagtyny belläň we howpsuz gurşaw dörediň.</string>
@@ -510,8 +510,8 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="danger_cat_tobacco">Temmäki we weýpler</string>
     <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
-    <string name="farzandim">Meniň çagam</string>
-    <string name="ozim">Özüm</string>
+    <string name="farzandim">Çaganyň özi goýanlar</string>
+    <string name="ozim">Meniň berenlerim</string>
     <string name="faol_vazifa_yo_q">Işjeň tabşyryk ýok</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Çagaňyz üçin tabşyryk ýok</string>
 
@@ -536,7 +536,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="weekday_sunday">Ýekşenbe</string>
 
     <string name="juda_muhim">Örän möhüm</string>
-    <string name="tekshirildi">Barlandy</string>
+    <string name="tekshirildi">Kabul edýärin</string>
     <string name="ko_rish">Gör</string>
     <string name="vazifa_ochirilsinmi">Tabşyryk pozulsynmy?</string>
     <string name="vazifa_ochirish_tasdiq">Bu tabşyrygy hakykatdanam pozmak isleýärsiňizmi?</string>
@@ -558,7 +558,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="tolovlar_tarixi_bos">Tölegleriň taryhy boş</string>
     <string name="tolovlar_tarixi_bos_hint">Satyn alyşlardan soň şu ýerde peýda bolar</string>
     <string name="boshqa_yozuvlar_yoq">Başga ýazgy ýok</string>
-    <string name="xatolik_yuz_berdi">Ýalňyşlyk ýüze çykdy</string>
+    <string name="xatolik_yuz_berdi">Ýüklenmedi. Gaýtadan synanyşyň.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -589,7 +589,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
 
     <string name="izoh_ixtiyoriy">Teswir (islege görä)</string>
     <string name="vazifa_tangalari">Tabşyrygy ýerine ýetirendigi üçin berilýän teňňeler</string>
-    <string name="vazifani_tekshirish">Tabşyrygy barla</string>
+    <string name="vazifani_tekshirish">Hemmesi dogrumy?</string>
     <string name="izoh">Teswir</string>
     <string name="muhimlilik_darajasi">Möhümlik derejesi</string>
     <string name="ragbatlantirish_tangachalari">Sylag teňňeleri</string>
@@ -609,7 +609,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Çagaňyz Hoglt programmasyny açyp, tassyklama kodyny girizmeli.</string>
     <string name="bola_hali_bajardim_bosmagan">Çaga entek “Taýýar” düwmesine basmady</string>
     <string name="foydalanilmagan">Ulanylmadyk</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Gaýtadan girmeli</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Giriş</string>
     <string name="profil_rasmi">Profil suraty</string>
@@ -635,7 +635,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="telegram_orqali_kirish">Telegram bilen gir</string>
     <string name="yoki">ýa-da</string>
     <string name="telefon_raqami">Telefon belgisi</string>
-    <string name="kirish_subtitle">Dowam etmek üçin hasabyňyza giriň</string>
+    <string name="kirish_subtitle">Telegram arkaly giriň. Hasabyňyz ýok bolsa, özi açylar.</string>
     <string name="login_privacy">Dowam etmek bilen, siz Gizlinlik syýasaty we Ulanyş şertleri bilen ylalaşýarsyňyz</string>
 
     <string name="telegram_ochilmoqda">Telegram açylýar…</string>
@@ -770,9 +770,9 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Haýyşy tassykladyňyz — çagaňyz indi programmadan çykyp biler.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Haýyşy tassykladyňyz — çagaňyz indi programmany pozup biler.</string>
     <string name="sorov_rad_etildi_desc">Haýyşy ret etdiňiz.</string>
-    <string name="unlink_child_title">Çaga bilen baglanyşyk kesilsinmi?</string>
-    <string name="unlink_child_message">Bu hereketden soň %1$s enjamyndaky gözegçilik duruzylar!</string>
-    <string name="unlink_child_action">Baglanyşygy kes</string>
+    <string name="unlink_child_title">Çaga aýrylsynmy?</string>
+    <string name="unlink_child_message">%1$s telefonyndaky gorag we düzgünler duruzylar. Gaýtadan birikdirmek üçin «Çaga goş» arkaly kody ýene skanirläň.</string>
+    <string name="unlink_child_action">Hawa, aýrylsyn</string>
     <string name="child_unlinked_success">Çaga bilen baglanyşyk üstünlikli kesildi</string>
     <string name="operator_kodi_topilmadi">Beýle operator kody ýok</string>
     <string name="kod_amal_qilish_muddati">Kod hereket edýär: %1$s</string>
@@ -786,7 +786,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="farzand_tanlanmagan">Çaga saýlanmady</string>
     <string name="vazifa_id_topilmadi">Tabşyrygyň ID-si tapylmady</string>
     <string name="tahrirlangan">üýtgedildi</string>
-    <string name="jadval_topilmadi">Tertip tapylmady.</string>
+    <string name="jadval_topilmadi">Tapylmady — pozulan bolmagy mümkin. Yza gaýdyp, gaýtadan açyň.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d minut</item>
         <item quantity="other">%1$d minut</item>
@@ -819,8 +819,8 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="tarix_disabled">Öçürildi</string>
     <string name="tarix_paused">Duruzyldy</string>
     <string name="tarix_deleted">Pozuldy</string>
-    <string name="tarix_quick_block_add">Çalt bloklama goşuldy</string>
-    <string name="tarix_quick_block_remove">Çalt bloklama aýryldy</string>
+    <string name="tarix_quick_block_add">Hemişe ýapyk programmalara goşuldy</string>
+    <string name="tarix_quick_block_remove">Hemişe ýapyk programmalardan aýryldy</string>
     <string name="tarix_bosh">Entek üýtgeşme ýok</string>
     <string name="tarix_resumed">Dowam etdirildi</string>
     <string name="muddat">Dowamlylygy</string>
@@ -844,26 +844,26 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="stat_row_sec">%1$d sek</string>
     <string name="stat_hour_only">%1$d sag</string>
     <string name="stat_per_day">Günde ~%1$s</string>
-    <string name="stat_quick_blocked">Çalt bloklamada</string>
-    <string name="stat_quick_blocked_paused">Çalt bloklamada · duruzyldy</string>
-    <string name="stat_quick_blocked_inactive">Çalt bloklamada · Plus gerek</string>
+    <string name="stat_quick_blocked">Hemişe ýapyk</string>
+    <string name="stat_quick_blocked_paused">Hemişe ýapyk · saklanan</string>
+    <string name="stat_quick_blocked_inactive">Hemişe ýapyk · Plus gerek</string>
     <string name="stat_blocked_by_child">Çaganyň özi bloklady</string>
     <string name="stat_blocked_by_child_paused">Çaganyň özi bloklady · duruzyldy</string>
     <string name="stat_blocked_by_child_inactive">Çaganyň özi bloklady · Plus gerek</string>
     <string name="stat_blocked_by_coparent">Beýleki ene-ata bloklady</string>
     <string name="stat_blocked_by_coparent_paused">Beýleki ene-ata bloklady · duruzyldy</string>
     <string name="stat_blocked_by_coparent_inactive">Beýleki ene-ata bloklady · Plus gerek</string>
-    <string name="stat_lock_hint">Gulp programmany çalt bloklama goşýar ýa-da ondan aýyrýar</string>
-    <string name="stat_quick_add_cd">Çalt bloklama goş</string>
-    <string name="stat_quick_remove_cd">Çalt bloklamadan aýyr</string>
-    <string name="stat_reenable_title">Çalt bloklama açylar</string>
-    <string name="stat_reenable_message">Çalt bloklama öçük. Bu programmany bloklamak ony täzeden açar we sanawdaky beýleki programmalar hem bloklanar: %1$d.</string>
+    <string name="stat_lock_hint">Gulp programmany hemişe ýapyk programmalara goşýar ýa-da aýyrýar</string>
+    <string name="stat_quick_add_cd">Hemişe ýapyk programmalara goşmak</string>
+    <string name="stat_quick_remove_cd">Hemişe ýapyk programmalardan aýyrmak</string>
+    <string name="stat_reenable_title">Hemişe ýapyk programmalar gaýtadan işlär</string>
+    <string name="stat_reenable_message">«Hemişe ýapyk programmalar» häzir öçük. Bu programmany goşsaňyz, olar gaýtadan işlär we sanawdaky ýene %1$d programma ýapylar.</string>
     <string name="stat_reenable_confirm">Blokla</string>
     <string name="stat_quick_paywall_title">Abuna gerek</string>
     <string name="stat_quick_paywall_message">Programmany bir basyşda bloklamak üçin Hoglt Plus abunasy gerek.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Çalt bloklama</string>
+    <string name="quick_title">Hemişe ýapyk programmalar</string>
     <string name="quick_enabled">Açyk</string>
     <string name="quick_pause">Arakesme</string>
     <string name="quick_blocked_apps">Bloklanan programmalar</string>
@@ -872,15 +872,15 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="quick_info_always">Bu sanawdaky programmalar wagta we ýere garamazdan hemişe bloklanýar.</string>
     <string name="quick_info_off">Häzir öçük — bu programmalary bloklamak üçin ony açyň.</string>
     <string name="quick_info_paused">%1$s çenli duruzyldy — oňa çenli hiç zat bloklanmaýar.</string>
-    <string name="quick_info_stats">Programmalary ulanyş statistikasyndan hem bir basyşda goşup ýa-da aýyryp bilersiňiz.</string>
-    <string name="quick_info_readd">Çalt bloklama öçük bolsa, programma goşmak ony täzeden açar.</string>
+    <string name="quick_info_stats">«Telefon wagty» sahypasyndan hem programmany bir basyşda şu sanawa goşup ýa-da aýryp bolýar.</string>
+    <string name="quick_info_readd">«Hemişe ýapyk programmalar» öçük bolsa, programma goşmak ony gaýtadan işledýär.</string>
     <string name="quick_child_blocks">Çaganyň özi bloklady</string>
     <string name="quick_coparent_blocks">Beýleki ene-ata bloklady</string>
     <string name="quick_others_note">Bu sanawlary diňe olaryň eýesi üýtgedip biler. Gerek bolsa, programmany öz sanawyňyza goşuň.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Ýatmaly wagt</string>
-    <string name="policy_preset_limit">Wagt limiti</string>
+    <string name="policy_preset_limit">Günde näçe wagt</string>
     <string name="policy_preset_school">Sapak wagty</string>
     <string name="policy_day_mon">Duş</string>
     <string name="policy_day_tue">Siş</string>
@@ -900,30 +900,30 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="policy_location">Ýerleşiş</string>
     <string name="policy_active_now">Häzir işjeň: %1$s</string>
     <string name="policy_active_until">%1$s çenli</string>
-    <string name="list_info_none">Häzir hiç bir tertip işjeň däl</string>
+    <string name="list_info_none">Häzir hiç bir düzgün işlänok</string>
     <string name="list_info_also">Şeýle hem işjeň: %1$s.</string>
-    <string name="list_info_many">Birnäçe tertip birwagtda işlände, olaryň islendik biri programmany bloklasa, ol bloklanýar.</string>
-    <string name="list_info_child_scope">Çaganyň öz tertipleri siziňkini üýtgedip bilmeýär — siziň bloklan programmaňyz bloklanan galýar.</string>
-    <string name="list_info_school_scope">Mekdep tertibi programmany ýapsa ýa-da oňa aç-açan rugsat berse, siziň tertibiňiz ony üýtgedip bilmez. Beýle bolmasa, has berk tertip ulanylýar.</string>
-    <string name="list_info_quick">Çalt bloklama açyk — onuň programmalary wagta we ýere garamazdan hemişe bloklanýar.</string>
-    <string name="list_info_paused">Duruzylan tertipler: %1$d — olar bellenen wagta çenli hiç zat etmeýär.</string>
-    <string name="list_info_how">Tertip öz wagty we ýeri gelende özbaşdak başlaýar.</string>
-    <string name="policy_tab_templates">Şablonlar</string>
+    <string name="list_info_many">Birbada birnäçe düzgün işlese, olaryň haýsydyr biri programmany ýapsa — ol ýapylýar.</string>
+    <string name="list_info_child_scope">Çaganyň öz düzgünleri siziň kararyňyzy üýtgedip bilmeýär — siziň ýapan programmaňyz ýapyk galýar.</string>
+    <string name="list_info_school_scope">Mekdep düzgüni programmany ýapsa ýa-da anyk rugsat berse, siziň düzgüniňiz muny üýtgedip bilmeýär. Galan ýagdaýlarda has berk düzgün işleýär.</string>
+    <string name="list_info_quick">«Hemişe ýapyk programmalar» açyk — bu sanawdaky programmalar wagtdan we ýerden garamazdan hemişe ýapyk.</string>
+    <string name="list_info_paused">Saklanan düzgünler: %1$d — bellenen wagta çenli işlemeýär.</string>
+    <string name="list_info_how">Düzgün öz wagty we ýeri gelende özi işe başlaýar.</string>
+    <string name="policy_tab_templates">Taýýar düzgünler</string>
     <string name="policy_tab_mine">Meniňki</string>
     <string name="policy_tab_child">Çaga</string>
-    <string name="policy_tab_coparent">Ene-ata</string>
+    <string name="policy_tab_coparent">Beýleki ene-ata</string>
     <string name="policy_tab_school">Mekdep</string>
     <string name="policy_enabled_count">%1$d sany açyk</string>
-    <string name="policy_content_protection">Mazmun goragy</string>
+    <string name="policy_content_protection">Erbet web sahypalardan gorag</string>
     <string name="policy_content_protection_others">Çaga ýa-da beýleki ene-ata tarapyndan açyldy</string>
     <string name="policy_paused">Duruzyldy</string>
-    <string name="policy_quick_blocks">Çalt bloklamalar</string>
+    <string name="policy_quick_blocks">Hemişe ýapyk programmalar</string>
     <string name="preset_all_apps">Ähli programmalar</string>
-    <string name="policy_paywall_protection">Mazmun goragy Hoglt Plus bilen işleýär.</string>
+    <string name="policy_paywall_protection">Erbet web sahypalardan gorag Hoglt Plus bilen işleýär.</string>
     <string name="policy_paywall_count">Mugt meýilnama tertipleriň sanyny çäklendirýär. Hoglt Plus size has köpüni berýär.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Entek hiç zat saýlanmady — bu tertip hiç zady bloklamaýar.</string>
+    <string name="info_nothing">Entek hiç zat saýlanmady — bu düzgün hiç zady ýapmaýar.</string>
     <string name="info_always">Hemişe</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s %2$s – %3$s aralygynda</string>
@@ -936,12 +936,12 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="info_what_all_apps_sites">ähli programmalar we web sahypalar bloklanýar</string>
     <string name="info_what_selected">saýlananlar bloklanýar (%1$s)</string>
     <string name="info_stays_open">Açyk galýar: %1$s.</string>
-    <string name="info_not_counted">Limite hasaba alynmaýar: %1$s.</string>
+    <string name="info_not_counted">Wagt hasaplanmaýar: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s jemi %3$s ulanyp bolýar. Wagt gutaransoň, olar ertire çenli bloklanan galýar.</string>
     <string name="info_limit_hourly">%1$s: %2$s sagatda %3$s ulanyp bolýar. Wagt gutaransoň, olar indiki sagada çenli bloklanan galýar.</string>
     <string name="info_limit_all">ähli programmalary</string>
     <string name="info_limit_selected">saýlananlary</string>
-    <string name="info_limit_gate">Limit diňe şu ýagdaýda ulanylýar: %1$s.</string>
+    <string name="info_limit_gate">Wagt diňe şu wagt hasaplanýar: %1$s.</string>
     <string name="info_protected">Jaňlar, SMS we beýleki zerur programmalar hiç haçan bloklanmaýar.</string>
     <string name="info_disabled">Häzir öçük — ulanmak üçin ony açyň.</string>
 
@@ -950,7 +950,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="preset_when">Haçan</string>
     <string name="preset_starts">Başlanýar</string>
     <string name="preset_ends">Gutarýar</string>
-    <string name="preset_limit">Limit</string>
+    <string name="preset_limit">Näçe wagt</string>
     <string name="preset_counted">Näme hasaba alynýar</string>
     <string name="preset_what_closed">Näme bloklanýar</string>
     <string name="preset_only_selected">Diňe saýlananlar</string>
@@ -991,13 +991,13 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="targets_covered_by_category">Kategoriýa arkaly saýlandy</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Nädogry web sahypa salgysy ýa-da açar söz. Meselem: youtube.com ýa-da kino</string>
-    <string name="editor_new_policy">Täze tertip</string>
+    <string name="editor_new_policy">Täze düzgün</string>
     <string name="editor_not_selected">Saýlanmadyk</string>
     <string name="editor_when_hint">islege görä · bolmasa hemişe</string>
     <string name="editor_add_condition">Şert goş</string>
     <string name="editor_added">Goşuldy</string>
     <string name="editor_condition_time">Wagt</string>
-    <string name="editor_condition_limit">Limit</string>
+    <string name="editor_condition_limit">Näçe wagt</string>
     <string name="editor_in_this_time">Şu wagtyň dowamynda</string>
     <string name="editor_closed_in_time">Bloklanýar</string>
     <string name="editor_closed_in_time_sub">Beýleki wagtlarda açyk</string>
@@ -1008,8 +1008,8 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="editor_inside">Zonanyň içinde</string>
     <string name="editor_outside">Zonadan daşarda</string>
     <string name="editor_rename">Adyny üýtget</string>
-    <string name="editor_delete_title">Bu tertip pozulsynmy?</string>
-    <string name="editor_delete_message">“%1$s” pozular.</string>
+    <string name="editor_delete_title">Düzgün düýbünden pozulsynmy?</string>
+    <string name="editor_delete_message">«%1$s» pozular. Bu düzgüniň ýapan programmalary ýene açylar.</string>
     <string name="editor_paywall_allow">“Diňe saýlananlar açyk galýar” režimi Plus bilen elýeterli.</string>
     <string name="location_child_here">Çagamyň ýerleşişi</string>
     <string name="protection_section">Näme goralýar</string>
@@ -1027,24 +1027,24 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="protection_policies_pending">Entek ýetirilmedi</string>
     <string name="protection_gujanak_limits_note">Orta gorag diňe programmalary ýapýar. Web sahypalar we gysga wideolar diňe berk goragda bloklanýar: çagaňyzyň telefonynda Hoglt → «Gözegçilik» → «Galkan režimi».</string>
     <string name="editor_limit_days_follow_time">Wagt bilen deň — günler wagt sahypasynda saýlanýar</string>
-    <string name="editor_limit_in_window">şu wagtda limit</string>
-    <string name="editor_limit_outside_window">şu wagtdan daşarda limit</string>
-    <string name="editor_limit_in_time">Limit şu wagtda ulanylýar</string>
+    <string name="editor_limit_in_window">wagt şu sagatlarda hasaplanýar</string>
+    <string name="editor_limit_outside_window">wagt şu sagatlardan daşary hasaplanýar</string>
+    <string name="editor_limit_in_time">Wagt diňe şu sagatlarda hasaplanýar</string>
     <string name="editor_limit_in_time_sub">Beýleki wagtlarda çäklendirme ýok</string>
-    <string name="editor_limit_out_time">Limit şu wagtdan daşarda ulanylýar</string>
+    <string name="editor_limit_out_time">Wagt şu sagatlardan daşary hasaplanýar</string>
     <string name="editor_limit_out_time_sub">Şu wagtda çäklendirme ýok</string>
     <string name="info_limit_daily_window">%1$s: %2$s jemi %3$s ulanyp bolýar. Wagt gutaranda, şu wagt aralygy gutarýança ýapyk bolýar.</string>
     <string name="targets_only_selected_open_sites_sub">Beýleki web sahypalar ýapyk</string>
     <string name="targets_only_selected_open_both_sub">Beýleki programmalar we web sahypalar ýapyk</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Entek tertip ýok</string>
-    <string name="policy_empty_mine_sub">Şablon açyň ýa-da özüňiz dörediň</string>
+    <string name="policy_empty_mine_title">Entek düzgün ýok</string>
+    <string name="policy_empty_mine_sub">Taýýar düzgünleriň birini açyň ýa-da özüňiz dörediň</string>
     <string name="empty_search_title">Hiç zat tapylmady</string>
     <string name="empty_search_sub">Başga gözleg synap görüň</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Ulular we gumar web sahypalary</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Tertip</string>
+    <string name="policy_name_schedule">Düzgün</string>
     <string name="policy_name_category_block">Kategoriýalar boýunça blokla</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Çagaňyz açdy</string>
@@ -1139,7 +1139,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="ap_off_confirm">Öçür</string>
     <string name="ap_keep_on">Açyk galsyn</string>
     <string name="ap_retry_note">Ertir gaýtadan synanyşarys (%1$d/3).</string>
-    <string name="ap_retry_now">Gaýtala</string>
+    <string name="ap_retry_now">Häzir töläň</string>
     <string name="ap_other_card">Başga kart</string>
     <string name="ap_cards_empty_title">Ýatda saklanan kart ýok</string>
     <string name="ap_cards_empty_sub">Awtotöleg üçin UZCARD ýa-da HUMO kartyny goşuň</string>
@@ -1185,7 +1185,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="ulash_tugma">Bagla</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Geç</string>
+    <string name="ob_skip">Soňrak görerin</string>
     <string name="ob_start">Başlalyň</string>
     <string name="ob_got_it">Düşnükli</string>
     <string name="ob_hello_title">Salam, men Hoglt</string>
@@ -1199,10 +1199,10 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="ob_day_study">Okuw</string>
     <string name="ob_min_fmt">%1$d min</string>
     <string name="ob_rules_title">Düzgünleri bir gezek belläň</string>
-    <string name="ob_rules_body">Uky wagty, mekdep wagty we gündelik limitler özbaşdak açylýar.</string>
+    <string name="ob_rules_body">Uky wagty, sapak wagty we gündelik wagt öz wagtynda özi açylýar.</string>
     <string name="ob_rule_sleep">Ýatmaly wagt</string>
     <string name="ob_rule_school">Mekdep wagty</string>
-    <string name="ob_rule_limit">Gündelik limit</string>
+    <string name="ob_rule_limit">Günde näçe wagt</string>
     <string name="ob_rule_limit_value">2 sag</string>
     <string name="ob_map_title">Onuň nirededigini biliň</string>
     <string name="ob_map_body">Çagaňyzy kartada görüň we mekdep ýaly ýerler üçin düzgün belläň.</string>
@@ -1259,8 +1259,8 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="home_layout_list">Sanaw</string>
     <string name="home_layout_grid">Tor</string>
     <string name="home_greeting">Salam, %1$s</string>
-    <string name="kecha_sarfladi">Düýn sarp edildi</string>
-    <string name="sana_sarfladi">%1$s sarp edildi</string>
+    <string name="kecha_sarfladi">Düýn telefonda</string>
+    <string name="sana_sarfladi">%1$s telefonda</string>
     <string name="stat_no_usage_day">Bu günde entek telefon ulanylmady</string>
     <string name="kirish_usuli">Giriş usuly</string>
     <string name="google_hisobi">Google hasaby</string>
@@ -1283,7 +1283,7 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="vazifa_muddati">Möhlet</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Kömekçi</string>
+    <string name="ai_assistant_title">Akylly kömekçi</string>
     <string name="ai_assistant_subtitle">Soraň ýa-da düzgün belläň</string>
     <string name="ai_period_today">Şu gün</string>
     <string name="ai_period_yesterday">Düýn</string>
@@ -1413,20 +1413,20 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Mugt: %1$d işjeň düzgün · Plus: çäksiz</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Programma haýsy programmanyň açylýanyny görüp bilmeýär: telefon wagty hasaplanmaýar, düzgünler işlemeýär.</string>
+    <string name="perm_why_overlay">Ýapylan programmanyň üstünde bloklama ekrany çykmaýar — düzgünler programmany ýapyp bilmeýär.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Çagaňyzyň nirededigini görüp bilmeýärsiňiz; ýere baglanan düzgünler hem işlemeýär.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Munsuz web sahypalar, YouTube Shorts we Instagram Reels bloklanmaýar, programmany hem aňsat pozup bolýar.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">Mugt tarifde bir düzgüne %1$d programma çenli goşup bolýar. Has köp programma üçin Plus gerek.</string>
+    <string name="policy_paywall_app_limit">Bir düzgündäki programmalaryň sany tarifiň çägine ýetdi.</string>
     <string name="clip_child_phone">Onuň telefonynda</string>
     <string name="prot_default_note">Häzir düzgünleriňiz hiç bir programmany ýapmaýar. Ýapar ýaly, çagaňyzyň telefonynda Hoglt-y açyň → «Gözegçilik» bölüminde goragy açyň.</string>
     <string name="prot_strength">Gorag derejesi</string>
@@ -1456,4 +1456,64 @@ Bu maglumatlar diňe şu funksiýalar üçin ulanylýar we üçünji taraplara b
     <string name="task_empty_done">Entek ýerine ýetirilen tabşyryk ýok</string>
     <string name="task_empty_overdue">Möhleti geçen tabşyryk ýok</string>
     <string name="task_empty_filter_hint">Ähli tabşyryklary görmek üçin saýlanan süzgüji ýene bir gezek basyň.</string>
+    <string name="voice_listen">Diňlemek</string>
+    <string name="voice_stop">Saklamak</string>
+    <string name="voice_unavailable">Sesli düşündiriş häzirlikçe ýok. Soňrak gaýtadan synanyşyň.</string>
+    <string name="live_confirm_title">Göni görmek</string>
+    <string name="live_confirm_body">%1$s jaň alar. Razy bolsa, wideo açylar.</string>
+    <string name="live_child_fallback">Çagaňyz</string>
+    <string name="live_call_button">Jaň etmek</string>
+    <string name="live_ringing">Jaň edilýär: %1$s…</string>
+    <string name="live_connecting">Birikýär…</string>
+    <string name="live_error_connect">Birigip bolmady. Biraz soňra gaýtadan synanyşyň.</string>
+    <string name="live_declined">Çagaňyz ret etdi</string>
+    <string name="live_no_answer">Jogap ýok</string>
+    <string name="live_end">Tamamlamak</string>
+    <string name="live_show_on_map">Kartada görmek</string>
+    <string name="unlink_child_button">Çagany aýyrmak</string>
+    <string name="saqlandi">Ýatda saklandy</string>
+    <string name="ap_retry_now_amount">Häzir töläň · %1$s</string>
+    <string name="pay_charge_body">•• %1$s kartdan %2$s alynar.</string>
+    <string name="pay_charge_body_amount">Kartdan %1$s alynar.</string>
+    <string name="pay_charge_body_plain">Ýatda saklanan kartdan abuna tölegi alynar.</string>
+    <string name="pay_confirm_pay">Tölemek</string>
+    <string name="app_store_unavailable">App Store häzir açylmady. Biraz soňra gaýtadan synanyşyň.</string>
+    <string name="app_store_failed">App Store arkaly töläp bolmady. Gaýtadan synanyşyň.</string>
+    <string name="apple_activation_pending_title">Töleg kabul edildi</string>
+    <string name="login_subtitle_social">Amatly usuly saýlaň. Hasabyňyz ýok bolsa, özi açylar.</string>
+    <string name="login_telegram_not_opened">Telegram açylmady. Telegram-yň gurnalandygyny barlaň ýa-da başga usul bilen giriň.</string>
+    <string name="ob_notif_enable">Bildirişleri açmak</string>
+    <string name="comfort_title">Okamak amatlymy?</string>
+    <string name="comfort_screen_color">Ekran reňki</string>
+    <string name="comfort_light">Açyk</string>
+    <string name="comfort_dark">Garaňky</string>
+    <string name="comfort_done">Taýýar</string>
+    <string name="comfort_hint">Muny soňra hem üýtgedip bolýar.</string>
+    <string name="policy_turned_on">%1$s açyldy</string>
+    <string name="policy_turned_off">%1$s öçürildi</string>
+    <string name="policy_off_title">%1$s öçürilsinmi?</string>
+    <string name="policy_off_body">Çagaňyzyň telefonynda bu düzgün derrew işlemesini bes eder we onuň ýapan zatlary ýene açylar. Islän wagtyňyz gaýtadan açyp bilersiňiz.</string>
+    <string name="policy_off_body_safety">Çagaňyzyň telefonynda bu gorag derrew duruzylar. Islän wagtyňyz gaýtadan açyp bilersiňiz.</string>
+    <string name="policy_off_confirm">Hawa, öçürilsin</string>
+    <string name="policy_off_cancel">Ýok, galsyn</string>
+    <string name="policy_saved_sent">Ýatda saklandy — çaganyň telefonyna iberildi</string>
+    <string name="policy_saved_queued">Ýatda saklandy — internet gelende çaganyň telefonyna iberiler</string>
+    <string name="policy_unsaved_title">Üýtgeşmeler ýatda saklansynmy?</string>
+    <string name="policy_unsaved_body">Ýatda saklamasaňyz, çagaňyzyň telefonynda hiç zat üýtgemez.</string>
+    <string name="policy_unsaved_discard">Ýatda saklamazdan çykmak</string>
+    <string name="quick_unblock_title">%1$s ýene açylsynmy?</string>
+    <string name="quick_unblock_body">Bu programma çagaňyzyň telefonynda derrew açylar.</string>
+    <string name="quick_unblock_confirm">Hawa, açylsyn</string>
+    <string name="quick_unblock_action">Açmak</string>
+    <string name="quick_unblocked">%1$s açyldy</string>
+    <string name="policy_exception_remove">Aýyrmak</string>
+    <string name="policy_load_failed">Ýüklenmedi</string>
+    <string name="tg_more_settings">Giňişleýin sazlamalar</string>
+    <string name="rules_on_count">%1$d düzgün açyk</string>
+    <string name="task_accepted">Kabul edildi</string>
+    <string name="task_accepted_coins">%1$s %2$d teňňe aldy</string>
+    <string name="task_coins_explain">Tabşyrygy kabul edeniňizde teňňeler çagaňyza geçýär. Ol olary akylly kömekçä sorag bermek üçin harçlaýar.</string>
+    <string name="task_coins_not_enough">Teňňäňiz ýetenok</string>
+    <string name="chat_support_title">Goldaw gullugy</string>
+    <string name="chat_ai_title">Akylly kömekçi</string>
 </resources>

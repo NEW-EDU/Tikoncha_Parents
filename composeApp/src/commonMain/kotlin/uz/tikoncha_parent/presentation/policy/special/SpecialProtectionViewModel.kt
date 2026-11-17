@@ -11,6 +11,9 @@ import uz.tikoncha_parent.domain.model.safety.SafetySwitch
 import uz.tikoncha_parent.domain.model.safety.SafetySwitches
 import uz.tikoncha_parent.domain.repository.SafetyRepository
 import uz.tikoncha_parent.domain.use_case.policy.ChildPaidStatusUseCase
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToast
+import uz.tikoncha_parent.presentation.policy.components.PolicyToasts
 
 /**
  * Maxsus himoya — ota-ona farzandi uçun yoqadi (`PUT /safety/settings`). Yoqilgani farzand telefonida qulflangan
@@ -23,6 +26,8 @@ data class SpecialProtectionState(
     val busy: SafetySwitch? = null,
     val paid: Boolean? = null,
     val showPayWall: Boolean = false,
+    /** Holatni yuklab bölmadi — switch'lar örniga "Qayta uriniş" (standart holatlar haqiqiydek körinmasin). */
+    val loadError: Outcome.Failure? = null,
     val error: Outcome.Failure? = null,
 ) {
     fun isOn(s: SafetySwitch) = when (s) {
@@ -46,21 +51,29 @@ class SpecialProtectionViewModel(
         if (started) return
         started = true
         _state.update { it.copy(childId = childId, paid = paidStatus(childId)) }
-        screenModelScope.launch {
-            when (val r = repository.switches(childId)) {
-                is Outcome.Success -> _state.update { it.copy(loaded = true, switches = r.data) }
-                is Outcome.Failure -> _state.update { it.copy(loaded = true, error = r) }
-            }
-        }
+        screenModelScope.launch { load() }
         screenModelScope.launch {
             val paid = paidStatus.refresh(childId)
             _state.update { it.copy(paid = paid ?: it.paid) }
         }
     }
 
+    private suspend fun load() {
+        when (val r = repository.switches(_state.value.childId)) {
+            is Outcome.Success -> _state.update { it.copy(loaded = true, loadError = null, switches = r.data) }
+            is Outcome.Failure -> _state.update { it.copy(loaded = true, loadError = r) }
+        }
+    }
+
+    fun retry() {
+        if (!_state.value.loaded) return
+        _state.update { it.copy(loaded = false, loadError = null) }
+        screenModelScope.launch { load() }
+    }
+
     fun toggle(switch: SafetySwitch, on: Boolean) {
         val s = _state.value
-        if (s.busy != null || !s.loaded) return
+        if (s.busy != null || !s.loaded || s.loadError != null) return
         if (on && switch.plusOnly && s.paid == false) {
             _state.update { it.copy(showPayWall = true) }
             return
@@ -68,7 +81,10 @@ class SpecialProtectionViewModel(
         screenModelScope.launch {
             _state.update { it.copy(busy = switch) }
             when (val r = repository.setSwitch(s.childId, switch, on)) {
-                is Outcome.Success -> _state.update { it.copy(busy = null, switches = r.data) }
+                is Outcome.Success -> {
+                    _state.update { it.copy(busy = null, switches = r.data) }
+                    PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.SPECIAL)
+                }
                 is Outcome.Failure -> _state.update { it.copy(busy = null, error = r) }
             }
         }

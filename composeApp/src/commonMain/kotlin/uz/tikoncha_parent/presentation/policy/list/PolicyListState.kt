@@ -53,6 +53,9 @@ data class PolicyListState(
     val error: Outcome.Failure? = null,
 ) {
     fun isBusy(key: String): Boolean = key in busy
+
+    /** Bepul tarif çegarasi tölgan: yana bitta jadvalni yoqiş yoki yaratiş — Plus (server rad etadi). */
+    val atPolicyLimit: Boolean get() = policyLimit?.let { policyUsed >= it } == true
 }
 
 sealed interface PolicyListEvent {

@@ -53,7 +53,7 @@ import tikoncha_parents.composeapp.generated.resources.tugatish_vaqti
 import tikoncha_parents.composeapp.generated.resources.vazifa_nomi
 import tikoncha_parents.composeapp.generated.resources.vazifa_ochirilsinmi
 import tikoncha_parents.composeapp.generated.resources.vazifa_ochirish_tasdiq
-import tikoncha_parents.composeapp.generated.resources.vazifani_tekshirish
+import tikoncha_parents.composeapp.generated.resources.vazifa
 import tikoncha_parents.composeapp.generated.resources.xatolik
 import uz.tikoncha_parent.common.DateTimeUtil.formatTime
 import uz.tikoncha_parent.common.DateTimeUtil.reformattedDayMonthWithWeekdayForTask
@@ -202,8 +202,10 @@ fun TaskDetailUI(
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
+            // Bu ekran — vazifa tafsiloti (tahrirlaş / öçiriş). "Tekşiriş" emas: u söz tasdiqlaş (Qabul qilaman)
+            // va saqlaşdan oldingi "Hammasi töğrimi?" ekrani bilan adaşib ketardi.
             CustomHeader(
-                title = stringResource(Res.string.vazifani_tekshirish),
+                title = stringResource(Res.string.vazifa),
                 showBackButton = true,
                 onBackClick = { navigator?.pop() }
             )

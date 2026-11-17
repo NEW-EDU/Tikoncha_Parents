@@ -94,7 +94,7 @@
     <string name="maktab">Դպրոց</string>
     <string name="sozlamalar">Կարգավորումներ</string>
     <string name="bildirishnomalar">Ծանուցումներ</string>
-    <string name="tema">Թեմա</string>
+    <string name="tema">Էկրանի գույնը</string>
     <string name="tasdiqlash">Հաստատել</string>
     <string name="tolov">Վճարում</string>
     <string name="obuna_pro">Pro բաժանորդագրություն</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">Անձնագրի ID</string>
     <string name="reklama">Գովազդ</string>
     <string name="yorug">Բաց</string>
-    <string name="theme_system">Համակարգային</string>
+    <string name="theme_system">Ինչպես հեռախոսում</string>
     <string name="xavfli_zona">Վտանգավոր գոտի</string>
     <string name="akkauntni_o_chirish">Ջնջել հաշիվը</string>
     <string name="pochta_orqali">Էլ. փոստով</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Խնդրել թույլտվություն</string>
     <string name="joylashuv_uchun_ruxsat">Տեղադրության թույլտվություն</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Քարտեզից լիարժեք օգտվելու համար տրամադրեք տեղադրության թույլտվություն կարգավորումներից!</string>
-    <string name="xatolik">Սխալ</string>
-    <string name="ok">Լավ</string>
+    <string name="xatolik">Չստացվեց</string>
+    <string name="ok">Պարզ է</string>
     <string name="qoshish">Ավելացնել</string>
     <string name="ogil_bola">Տղա</string>
     <string name="qiz_bola">Աղջիկ</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Հաջողվեց</string>
     <string name="qisqartirish">Կրճատել</string>
     <string name="vazifa_tahrirlandi">Առաջադրանքը խմբագրված է</string>
-    <string name="server_connection_error">Սերվերի հետ կապի սխալ!</string>
+    <string name="server_connection_error">Հիմա չհաջողվեց միանալ։ Մի փոքր ուշ նորից փորձեք։</string>
     <string name="faol">Ակտիվ</string>
     <string name="faol_emas">Ոչ ակտիվ</string>
     <string name="ohirgi_faollik">Վերջին ակտիվությունը:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Ուշադրություն!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Օգտագործման սահմանաչափը չի գործի ձեր ընտրած ժամանակահատվածում! Այսինքն՝ ժամանակացույցն ավելի բարձր առաջնահերթություն ունի։</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d հավելված տեղադրված չէ ձեր սարքում</string>
-    <string name="cheklovlar">Սահմանափակումներ</string>
+    <string name="cheklovlar">Կանոններ</string>
     <string name="ta_ilovaga">%1$d հավելվածի</string>
     <string name="ta_vebsaytga">%1$d կայքի</string>
     <string name="ustuvorligi">Առաջնահերթություն</string>
-    <string name="jadval_nomini_kiriting">Մուտքագրեք ժամանակացույցի անվանումը</string>
+    <string name="jadval_nomini_kiriting">Մուտքագրեք կանոնի անունը</string>
     <string name="misol_o_quv_markaz">օրինակ՝ Ուսումնական կենտրոն</string>
     <string name="ochirish">Ջնջել</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Համաձա՞յն եք դուրս գալ առանց ժամանակացույցը պահելու</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">ՇՆՈՐՀԱՎՈՐՈՒՄ ԵՆՔ!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Այժմ դուք ունեք այս բաժանորդագրությունը</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Օգտվեք հատուկ հնարավորություններից և առաջնահերթ աջակցությունից!</string>
-    <string name="statistika">Վիճակագրություն</string>
+    <string name="statistika">Հեռախոսի ժամանակը</string>
     <string name="chegirmalar">Զեղչեր</string>
     <string name="chegirma">Զեղչ</string>
-    <string name="topshiriqlar">Հանձնարարություններ</string>
-    <string name="jadvallar">Ժամանակացույցեր</string>
+    <string name="topshiriqlar">Առաջադրանքներ</string>
+    <string name="jadvallar">Կանոններ</string>
     <string name="ilova_cheklangan">%1$d հավելված սահմանափակված է</string>
-    <string name="faol_vazifa">%1$d ակտիվ առաջադրանք</string>
-    <string name="bugun_sarfladi">Այսօր ծախսվել է</string>
+    <string name="faol_vazifa">Ակտիվ առաջադրանքներ՝ %1$d</string>
+    <string name="bugun_sarfladi">Այսօր հեռախոսում</string>
     <string name="chiqish">Դուրս գալ</string>
     <string name="chiqishni_xohlaysizmi">Ցանկանո՞ւմ եք դուրս գալ</string>
     <string name="chiqishni_tasdiqlang">Հաստատեք դուրս գալը։</string>
@@ -322,8 +322,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">Ձեր պրոֆիլը և կարգավորումները պահպանվում են սերվերում։</string>
     <string name="qayta_kirsangiz_tiklanadi">Երբ նորից մուտք գործեք, ամեն ինչ կվերականգնվի։</string>
     <string name="farzand_qoshilmagan">Երեխա ավելացված չէ</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Ժամանակացույցերը, զրույցները և հաշվետվությունները կհայտնվեն երեխա ավելացնելուց հետո։</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Անսպասելի սխալ առաջացավ։ Նորից փորձեք։</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Կանոնները, զրույցները և հեռախոսի ժամանակը կհայտնվեն երեխային ավելացնելուց հետո։</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Չստացվեց։ Մի փոքր ուշ նորից փորձեք։</string>
     <string name="hozircha_farzand_qoshilmagan">Դուք դեռ երեխա չեք ավելացրել։</string>
     <string name="diqqat2">ՈՒՇԱԴՐՈՒԹՅՈՒՆ!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Շարունակելուց առաջ ընտրեք հավելվածի տեսակը։</string>
@@ -343,10 +343,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">Ընտրեք, թե ինչպես ուղարկենք \n հաստատման կոդը</string>
     <string name="tasdiqlash_kodini_olish">Ստանալ հաստատման կոդը</string>
     <string name="telegram_kod_kiritish">Մուտքագրեք %1$s համարին կապված Telegram-ին ուղարկված կոդը</string>
-    <string name="xato_kod_kiritdingiz">Դուք մուտքագրել եք սխալ կոդ</string>
+    <string name="xato_kod_kiritdingiz">Կոդը չհամընկավ։ Նորից մուտքագրեք։</string>
     <string name="kod_olish_usulini_ozgartirish">Փոխել կոդի ստացման եղանակը</string>
     <string name="versiya">Տարբերակ</string>
-    <string name="jadval_yaratish">Ստեղծել ժամանակացույց</string>
+    <string name="jadval_yaratish">Ստեղծել կանոն</string>
     <string name="sizning_cheklovlaringiz">Ձեր սահմանափակումները</string>
 
     <string name="avtomatik_bloklash_vaqti">Ինքնաշխատ արգելափակում ընտրված օրերին և ժամերին</string>
@@ -364,9 +364,9 @@
     <string name="noto_g_ri_url_format">URL-ի սխալ ձևաչափ</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Այս կայքն արդեն ցուցակում է</string>
     <string name="to_liq_nazoratni_yoqing">Միացրեք լիարժեք վերահսկողությունը</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Կառավարեք հավելվածները, ժամանակը և օգտագործումը Hoglt-ի միջոցով։ Plus-ով աշխատեք առանց սահմանափակումների և միացրեք առավելագույն պաշտպանություն «Վահան» ռեժիմով։</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Կառավարեք հավելվածները և հեռախոսի ժամանակը Hoglt-ով։ Plus-ով սահմանափակումներ չկան, և կարող եք միացնել խիստ պաշտպանությունը։</string>
     <string name="plus_imkoniyatlarini_ochish">Բացել Plus-ի հնարավորությունները</string>
-    <string name="jadval_nomi">Ժամանակացույցի անվանում</string>
+    <string name="jadval_nomi">Կանոնի անունը</string>
     <string name="saytlar">Կայքեր</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Նշեք, թե երբ և ինչ պայմաններում են սահմանափակվում հավելվածներն ու կայքերը</string>
 
@@ -395,7 +395,7 @@
     <string name="coins_help_close">Փակել</string>
     <string name="qollash">Կիրառել</string>
     <string name="promokod">Պրոմոկոդ:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Դուք հաջողությամբ գնել եք մետաղադրամներ։</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Մետաղադրամները գնված են։</string>
     <string name="narx">Գին</string>
     <string name="jami">Ընդամենը</string>
     <string name="bekor_qilindi">Չեղարկված է!</string>
@@ -412,11 +412,11 @@
     <string name="plus_obnuna_kerak">Անհրաժեշտ է PLUS բաժանորդագրություն</string>
     <string name="toliq_nazorat_statistika">Լիարժեք վերահսկողություն և վիճակագրություն</string>
     <string name="farzand_ilova_kuzatish">Հետևեք, թե օրվա ընթացքում ձեր երեխան որ հավելվածներն է օգտագործում և որքան։</string>
-    <string name="uchtagacha_jadval">Մինչև 3 ժամանակացույց</string>
+    <string name="uchtagacha_jadval">Մինչև 3 կանոն</string>
     <string name="jadval_cheklovlar">Սահմանեք առանձին սահմանափակումներ օրերի, շաբաթների կամ հատուկ ժամանակների համար։</string>
     <string name="qattiq_bloklash_qalqon">Խիստ պաշտպանություն՝ արգելափակվում են նաև կայքերը և կարճ տեսանյութերը</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Ձեր երեխան չի կարող անջատել կամ փոխել սահմանափակումները։</string>
-    <string name="tez_bloklash_timer">Արագ արգելափակում (Ժամաչափ)</string>
+    <string name="tez_bloklash_timer">Միշտ փակ հավելվածներ</string>
     <string name="vaqtinchalik_bloklash_tezi">Անհրաժեշտության դեպքում միացրեք ժամանակավոր արգելափակում մի քանի վայրկյանում։</string>
     <string name="hisobot_tahlil">Հաշվետվություններ և վերլուծություն</string>
     <string name="farzand_nazorat_tavsifi">Վերահսկեք ձեր երեխայի հեռախոսի օգտագործումը։ Արգելափակեք անցանկալի հավելվածները, սահմանեք օգտագործման ժամանակը և ստեղծեք անվտանգ միջավայր։</string>
@@ -510,8 +510,8 @@
     <string name="danger_cat_tobacco">Ծխախոտ և վեյփեր</string>
     <string name="danger_distance_m">%1$d մ</string>
     <string name="radius">Շառավիղ</string>
-    <string name="farzandim">Իմ երեխան</string>
-    <string name="ozim">Ես ինքս</string>
+    <string name="farzandim">Երեխայի սեփական</string>
+    <string name="ozim">Ինձնից</string>
     <string name="faol_vazifa_yo_q">Ակտիվ առաջադրանքներ չկան</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Ձեր երեխայի համար առաջադրանքներ չկան</string>
 
@@ -536,7 +536,7 @@
     <string name="weekday_sunday">Կիրակի</string>
 
     <string name="juda_muhim">Շատ կարևոր</string>
-    <string name="tekshirildi">Ստուգված</string>
+    <string name="tekshirildi">Ընդունում եմ</string>
     <string name="ko_rish">Դիտել</string>
     <string name="vazifa_ochirilsinmi">Ջնջե՞լ առաջադրանքը</string>
     <string name="vazifa_ochirish_tasdiq">Իսկապե՞ս ցանկանում եք ջնջել այս առաջադրանքը</string>
@@ -558,7 +558,7 @@
     <string name="tolovlar_tarixi_bos">Վճարումների պատմությունը դատարկ է</string>
     <string name="tolovlar_tarixi_bos_hint">Այն կհայտնվի այստեղ գնումներից հետո</string>
     <string name="boshqa_yozuvlar_yoq">Այլ գրառումներ չկան</string>
-    <string name="xatolik_yuz_berdi">Սխալ առաջացավ</string>
+    <string name="xatolik_yuz_berdi">Չհաջողվեց բեռնել։ Նորից փորձեք։</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -589,7 +589,7 @@
 
     <string name="izoh_ixtiyoriy">Մեկնաբանություն (ըստ ցանկության)</string>
     <string name="vazifa_tangalari">Առաջադրանքը կատարելու համար շնորհված մետաղադրամներ</string>
-    <string name="vazifani_tekshirish">Ստուգել առաջադրանքը</string>
+    <string name="vazifani_tekshirish">Ամեն ինչ ճի՞շտ է</string>
     <string name="izoh">Մեկնաբանություն</string>
     <string name="muhimlilik_darajasi">Կարևորության մակարդակ</string>
     <string name="ragbatlantirish_tangachalari">Խրախուսական մետաղադրամներ</string>
@@ -609,7 +609,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Ձեր երեխան պետք է բացի Hoglt հավելվածը և մուտքագրի հաստատման կոդը։</string>
     <string name="bola_hali_bajardim_bosmagan">Երեխան դեռ չի սեղմել «Կատարված է» կոճակը</string>
     <string name="foydalanilmagan">Չօգտագործված</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Պետք է նորից մուտք գործել</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Մուտք գործել</string>
     <string name="profil_rasmi">Պրոֆիլի նկար</string>
@@ -635,7 +635,7 @@
     <string name="telegram_orqali_kirish">Մուտք գործել Telegram-ով</string>
     <string name="yoki">կամ</string>
     <string name="telefon_raqami">Հեռախոսահամար</string>
-    <string name="kirish_subtitle">Մուտք գործեք ձեր հաշիվ՝ շարունակելու համար</string>
+    <string name="kirish_subtitle">Մուտք գործեք Telegram-ով։ Հաշիվ չունե՞ք։ Այն կստեղծվի ինքնաբերաբար։</string>
     <string name="login_privacy">Շարունակելով՝ դուք համաձայնում եք Գաղտնիության քաղաքականությանը և Օգտագործման պայմաններին</string>
 
     <string name="telegram_ochilmoqda">Telegram-ը բացվում է…</string>
@@ -770,9 +770,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Դուք հաստատեցիք հարցումը՝ ձեր երեխան այժմ կարող է դուրս գալ հավելվածից։</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Դուք հաստատեցիք հարցումը՝ ձեր երեխան այժմ կարող է ապատեղադրել հավելվածը։</string>
     <string name="sorov_rad_etildi_desc">Դուք մերժեցիք հարցումը։</string>
-    <string name="unlink_child_title">Անջատե՞լ երեխային</string>
-    <string name="unlink_child_message">Այս գործողությունից հետո %1$s-ի սարքում դիտարկումը կդադարեցվի!</string>
-    <string name="unlink_child_action">Անջատել</string>
+    <string name="unlink_child_title">Անջատե՞լ այս երեխային</string>
+    <string name="unlink_child_message">%1$s-ի հեռախոսում պաշտպանությունը և կանոնները կդադարեն։ Նորից միացնելու համար կոդը կրկին սկանավորեք «Ավելացնել երեխա»-ի միջոցով։</string>
+    <string name="unlink_child_action">Այո, անջատել</string>
     <string name="child_unlinked_success">Երեխան հաջողությամբ անջատվեց</string>
     <string name="operator_kodi_topilmadi">Նման օպերատորի կոդ չկա</string>
     <string name="kod_amal_qilish_muddati">Կոդը վավեր է՝ %1$s</string>
@@ -786,7 +786,7 @@
     <string name="farzand_tanlanmagan">Երեխա ընտրված չէ</string>
     <string name="vazifa_id_topilmadi">Առաջադրանքի ID-ն չի գտնվել</string>
     <string name="tahrirlangan">խմբագրված</string>
-    <string name="jadval_topilmadi">Ժամանակացույցը չի գտնվել։</string>
+    <string name="jadval_topilmadi">Չի գտնվել․ հնարավոր է՝ ջնջվել է։ Վերադարձեք և նորից բացեք։</string>
     <plurals name="minutes">
         <item quantity="one">%1$d րոպե</item>
         <item quantity="other">%1$d րոպե</item>
@@ -819,8 +819,8 @@
     <string name="tarix_disabled">Անջատված</string>
     <string name="tarix_paused">Դադարեցված</string>
     <string name="tarix_deleted">Ջնջված</string>
-    <string name="tarix_quick_block_add">Արագ արգելափակումն ավելացված է</string>
-    <string name="tarix_quick_block_remove">Արագ արգելափակումը հանված է</string>
+    <string name="tarix_quick_block_add">Ավելացվեց միշտ փակ հավելվածներին</string>
+    <string name="tarix_quick_block_remove">Հեռացվեց միշտ փակ հավելվածներից</string>
     <string name="tarix_bosh">Փոփոխություններ դեռ չկան</string>
     <string name="tarix_resumed">Վերսկսված</string>
     <string name="muddat">Տևողություն</string>
@@ -844,26 +844,26 @@
     <string name="stat_row_sec">%1$d վ</string>
     <string name="stat_hour_only">%1$d ժ</string>
     <string name="stat_per_day">~%1$s օրական</string>
-    <string name="stat_quick_blocked">Արագ արգելափակման մեջ</string>
-    <string name="stat_quick_blocked_paused">Արագ արգելափակման մեջ · դադարեցված</string>
-    <string name="stat_quick_blocked_inactive">Արագ արգելափակման մեջ · անհրաժեշտ է Plus</string>
+    <string name="stat_quick_blocked">Միշտ փակ</string>
+    <string name="stat_quick_blocked_paused">Միշտ փակ · դադարեցված</string>
+    <string name="stat_quick_blocked_inactive">Միշտ փակ · պետք է Plus</string>
     <string name="stat_blocked_by_child">Արգելափակված է երեխայի կողմից</string>
     <string name="stat_blocked_by_child_paused">Արգելափակված է երեխայի կողմից · դադարեցված</string>
     <string name="stat_blocked_by_child_inactive">Արգելափակված է երեխայի կողմից · անհրաժեշտ է Plus</string>
     <string name="stat_blocked_by_coparent">Արգելափակված է մյուս ծնողի կողմից</string>
     <string name="stat_blocked_by_coparent_paused">Արգելափակված է մյուս ծնողի կողմից · դադարեցված</string>
     <string name="stat_blocked_by_coparent_inactive">Արգելափակված է մյուս ծնողի կողմից · անհրաժեշտ է Plus</string>
-    <string name="stat_lock_hint">Կողպեքն ավելացնում է հավելվածն արագ արգելափակմանը կամ հեռացնում այն</string>
-    <string name="stat_quick_add_cd">Ավելացնել արագ արգելափակմանը</string>
-    <string name="stat_quick_remove_cd">Հեռացնել արագ արգելափակումից</string>
-    <string name="stat_reenable_title">Արագ արգելափակումը կմիանա</string>
-    <string name="stat_reenable_message">Արագ արգելափակումն անջատված է։ Այս հավելվածն արգելափակելը կրկին կմիացնի այն, և դրա ցուցակի մյուս հավելվածները նույնպես կարգելափակվեն՝ %1$d։</string>
+    <string name="stat_lock_hint">Կողպեքը հավելվածն ավելացնում է միշտ փակ հավելվածներին կամ հեռացնում</string>
+    <string name="stat_quick_add_cd">Ավելացնել միշտ փակ հավելվածներին</string>
+    <string name="stat_quick_remove_cd">Հեռացնել միշտ փակ հավելվածներից</string>
+    <string name="stat_reenable_title">Միշտ փակ հավելվածները նորից կմիանան</string>
+    <string name="stat_reenable_message">«Միշտ փակ հավելվածները» հիմա անջատված են։ Եթե ավելացնեք այս հավելվածը, դրանք նորից կմիանան, և կփակվեն նաև ցանկի մյուս հավելվածները՝ %1$d։</string>
     <string name="stat_reenable_confirm">Արգելափակել</string>
     <string name="stat_quick_paywall_title">Անհրաժեշտ է բաժանորդագրություն</string>
     <string name="stat_quick_paywall_message">Մեկ հպումով հավելվածն արգելափակելու համար անհրաժեշտ է Hoglt Plus բաժանորդագրություն։</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Արագ արգելափակում</string>
+    <string name="quick_title">Միշտ փակ հավելվածներ</string>
     <string name="quick_enabled">Միացված</string>
     <string name="quick_pause">Դադար</string>
     <string name="quick_blocked_apps">Արգելափակված հավելվածներ</string>
@@ -872,15 +872,15 @@
     <string name="quick_info_always">Այս ցուցակի հավելվածները միշտ արգելափակված են՝ անկախ ժամից կամ վայրից։</string>
     <string name="quick_info_off">Այն հիմա անջատված է՝ միացրեք այն այս հավելվածներն արգելափակելու համար։</string>
     <string name="quick_info_paused">Դադարեցված է մինչև %1$s՝ մինչ այդ ոչինչ չի արգելափակվում։</string>
-    <string name="quick_info_stats">Կարող եք նաև մեկ հպումով ավելացնել կամ հեռացնել հավելվածներ օգտագործման վիճակագրությունից։</string>
-    <string name="quick_info_readd">Եթե արագ արգելափակումն անջատված է, հավելված ավելացնելը կրկին միացնում է այն։</string>
+    <string name="quick_info_stats">«Հեռախոսի ժամանակը» էջում նույնպես կարող եք մեկ հպումով հավելվածն ավելացնել այս ցանկին կամ հեռացնել։</string>
+    <string name="quick_info_readd">Եթե «Միշտ փակ հավելվածները» անջատված են, հավելված ավելացնելը նորից կմիացնի դրանք։</string>
     <string name="quick_child_blocks">Արգելափակված է երեխայի կողմից</string>
     <string name="quick_coparent_blocks">Արգելափակված է մյուս ծնողի կողմից</string>
     <string name="quick_others_note">Միայն դրանց տերը կարող է փոխել այս ցուցակները։ Անհրաժեշտության դեպքում ավելացրեք հավելվածը ձեր սեփական ցուցակում։</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Քնի ժամ</string>
-    <string name="policy_preset_limit">Ժամանակի սահմանաչափ</string>
+    <string name="policy_preset_limit">Ժամանակ օրական</string>
     <string name="policy_preset_school">Դասաժամեր</string>
     <string name="policy_day_mon">Երկ</string>
     <string name="policy_day_tue">Երք</string>
@@ -900,30 +900,30 @@
     <string name="policy_location">Տեղադրություն</string>
     <string name="policy_active_now">Հիմա գործում է՝ %1$s</string>
     <string name="policy_active_until">մինչև %1$s</string>
-    <string name="list_info_none">Հիմա ոչ մի ժամանակացույց ակտիվ չէ</string>
+    <string name="list_info_none">Հիմա ոչ մի կանոն չի գործում</string>
     <string name="list_info_also">Նաև ակտիվ են՝ %1$s։</string>
-    <string name="list_info_many">Երբ մի քանի ժամանակացույց գործում են միաժամանակ, հավելվածն արգելափակվում է, եթե դրանցից որևէ մեկն այն արգելափակում է։</string>
-    <string name="list_info_child_scope">Երեխայի սեփական ժամանակացույցերը չեն կարող չեղարկել ձերը՝ ձեր արգելափակած հավելվածը մնում է արգելափակված։</string>
-    <string name="list_info_school_scope">Եթե դպրոցի ժամանակացույցը փակում է հավելվածը կամ բացահայտ թույլատրում է այն, ձեր ժամանակացույցը չի կարող դա փոխել։ Հակառակ դեպքում կիրառվում է ավելի խիստ ժամանակացույցը։</string>
-    <string name="list_info_quick">Արագ արգելափակումը միացված է. դրա հավելվածները միշտ արգելափակված են՝ անկախ ժամից կամ վայրից։</string>
-    <string name="list_info_paused">Դադարեցված ժամանակացույցեր՝ %1$d։ Դրանք ոչինչ չեն անում մինչև սահմանված ժամը։</string>
-    <string name="list_info_how">Ժամանակացույցն ինքն է սկսվում, երբ գալիս է դրա ժամը և վայրը։</string>
-    <string name="policy_tab_templates">Ձևանմուշներ</string>
+    <string name="list_info_many">Եթե միաժամանակ մի քանի կանոն է գործում, հավելվածն արգելափակվում է, երբ դրանցից որևէ մեկն արգելափակում է այն։</string>
+    <string name="list_info_child_scope">Երեխայի սեփական կանոնները չեն կարող չեղարկել ձերը․ ձեր արգելափակած հավելվածը մնում է արգելափակված։</string>
+    <string name="list_info_school_scope">Եթե դպրոցի կանոնը փակում է հավելվածը կամ հստակ թույլատրում է, ձեր կանոնը չի կարող դա փոխել։ Մյուս դեպքերում գործում է ավելի խիստ կանոնը։</string>
+    <string name="list_info_quick">«Միշտ փակ հավելվածները» միացված են․ այս ցանկի հավելվածները փակ են մնում՝ անկախ ժամից և վայրից։</string>
+    <string name="list_info_paused">Դադարեցված կանոններ՝ %1$d․ մինչև նշված ժամը դրանք ոչինչ չեն անում։</string>
+    <string name="list_info_how">Կանոնն ինքն է միանում, երբ գալիս են դրա ժամը և վայրը։</string>
+    <string name="policy_tab_templates">Պատրաստի կանոններ</string>
     <string name="policy_tab_mine">Իմը</string>
     <string name="policy_tab_child">Երեխա</string>
-    <string name="policy_tab_coparent">Ծնող</string>
+    <string name="policy_tab_coparent">Մյուս ծնողը</string>
     <string name="policy_tab_school">Դպրոց</string>
     <string name="policy_enabled_count">Միացված է՝ %1$d</string>
-    <string name="policy_content_protection">Բովանդակության պաշտպանություն</string>
+    <string name="policy_content_protection">Պաշտպանություն վատ կայքերից</string>
     <string name="policy_content_protection_others">Միացված է երեխայի կամ մյուս ծնողի կողմից</string>
     <string name="policy_paused">Դադարեցված</string>
-    <string name="policy_quick_blocks">Արագ արգելափակումներ</string>
+    <string name="policy_quick_blocks">Միշտ փակ հավելվածներ</string>
     <string name="preset_all_apps">Բոլոր հավելվածները</string>
-    <string name="policy_paywall_protection">Բովանդակության պաշտպանությունն աշխատում է Hoglt Plus-ով։</string>
+    <string name="policy_paywall_protection">Վատ կայքերից պաշտպանությունն աշխատում է Hoglt Plus-ով։</string>
     <string name="policy_paywall_count">Անվճար փաթեթը սահմանափակում է ժամանակացույցերի քանակը։ Hoglt Plus-ը տալիս է ավելին։</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Դեռ ոչինչ ընտրված չէ՝ այս ժամանակացույցը ոչինչ չի արգելափակում։</string>
+    <string name="info_nothing">Դեռ ոչինչ ընտրված չէ․ այս կանոնը ոչինչ չի արգելափակում։</string>
     <string name="info_always">Միշտ</string>
     <string name="info_sentence">%1$s, %2$s։</string>
     <string name="info_when_time">%1$s %2$s-ից մինչև %3$s</string>
@@ -936,12 +936,12 @@
     <string name="info_what_all_apps_sites">բոլոր հավելվածներն ու կայքերն արգելափակված են</string>
     <string name="info_what_selected">ընտրված տարրերն արգելափակված են (%1$s)</string>
     <string name="info_stays_open">Բաց են մնում՝ %1$s։</string>
-    <string name="info_not_counted">Սահմանաչափում չեն հաշվվում՝ %1$s։</string>
+    <string name="info_not_counted">Ժամանակը չի հաշվվում՝ %1$s։</string>
     <string name="info_limit_daily">%1$s: %2$s կարելի է օգտագործել ընդհանուր առմամբ %3$s։ Ժամանակն ավարտվելուց հետո դրանք արգելափակված են մնում մինչև վաղը։</string>
     <string name="info_limit_hourly">%1$s: %2$s կարելի է օգտագործել %3$s ժամում։ Ժամանակն ավարտվելուց հետո դրանք արգելափակված են մնում մինչև հաջորդ ժամը։</string>
     <string name="info_limit_all">բոլոր հավելվածները</string>
     <string name="info_limit_selected">ընտրված տարրերը</string>
-    <string name="info_limit_gate">Սահմանաչափը գործում է միայն՝ %1$s։</string>
+    <string name="info_limit_gate">Ժամանակը հաշվվում է միայն՝ %1$s։</string>
     <string name="info_protected">Զանգերը, SMS-ները և այլ կարևոր հավելվածները երբեք չեն արգելափակվում։</string>
     <string name="info_disabled">Այն հիմա անջատված է՝ միացրեք այն, որպեսզի սա կիրառվի։</string>
 
@@ -950,7 +950,7 @@
     <string name="preset_when">Երբ</string>
     <string name="preset_starts">Սկիզբ</string>
     <string name="preset_ends">Ավարտ</string>
-    <string name="preset_limit">Սահմանաչափ</string>
+    <string name="preset_limit">Որքան ժամանակ</string>
     <string name="preset_counted">Ինչն է հաշվվում</string>
     <string name="preset_what_closed">Ինչն է արգելափակվում</string>
     <string name="preset_only_selected">Միայն ընտրվածները</string>
@@ -991,13 +991,13 @@
     <string name="targets_covered_by_category">Ընտրված է կատեգորիայի միջոցով</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Կայքի սխալ հասցե կամ բանալի բառ։ Օրինակ՝ youtube.com կամ kino</string>
-    <string name="editor_new_policy">Նոր ժամանակացույց</string>
+    <string name="editor_new_policy">Նոր կանոն</string>
     <string name="editor_not_selected">Ընտրված չէ</string>
     <string name="editor_when_hint">ըստ ցանկության · հակառակ դեպքում՝ միշտ</string>
     <string name="editor_add_condition">Ավելացնել պայման</string>
     <string name="editor_added">Ավելացված է</string>
     <string name="editor_condition_time">Ժամանակ</string>
-    <string name="editor_condition_limit">Սահմանաչափ</string>
+    <string name="editor_condition_limit">Որքան ժամանակ</string>
     <string name="editor_in_this_time">Այս ժամանակահատվածում</string>
     <string name="editor_closed_in_time">Արգելափակված</string>
     <string name="editor_closed_in_time_sub">Մնացած ժամանակ՝ բաց</string>
@@ -1008,8 +1008,8 @@
     <string name="editor_inside">Տարածքի ներսում</string>
     <string name="editor_outside">Տարածքից դուրս</string>
     <string name="editor_rename">Վերանվանել</string>
-    <string name="editor_delete_title">Ջնջե՞լ այս ժամանակացույցը</string>
-    <string name="editor_delete_message">«%1$s»-ը կջնջվի։</string>
+    <string name="editor_delete_title">Ջնջե՞լ այս կանոնը</string>
+    <string name="editor_delete_message">«%1$s» կանոնը կջնջվի։ Այն հավելվածները, որոնք արգելափակում էր այս կանոնը, նորից կբացվեն։</string>
     <string name="editor_paywall_allow">«Բաց են մնում միայն ընտրվածները» ռեժիմը հասանելի է Plus-ով։</string>
     <string name="location_child_here">Իմ երեխայի տեղադրությունը</string>
     <string name="protection_section">Ինչն է պաշտպանված</string>
@@ -1027,24 +1027,24 @@
     <string name="protection_policies_pending">Դեռ առաքված չէ</string>
     <string name="protection_gujanak_limits_note">Միջին պաշտպանությունը փակում է միայն հավելվածները։ Կայքերը և կարճ տեսանյութերը արգելափակվում են միայն խիստ պաշտպանությամբ՝ երեխայի հեռախոսում Hoglt → «Վերահսկողություն» → «Վահան» ռեժիմ։</string>
     <string name="editor_limit_days_follow_time">Ինչպես ժամանակը՝ օրերն ընտրվում են ժամանակի էջում</string>
-    <string name="editor_limit_in_window">սահմանաչափ այս ժամանակահատվածում</string>
-    <string name="editor_limit_outside_window">սահմանաչափ այս ժամանակահատվածից դուրս</string>
-    <string name="editor_limit_in_time">Սահմանաչափը գործում է այս ժամանակահատվածում</string>
+    <string name="editor_limit_in_window">ժամանակը հաշվվում է այս ժամերին</string>
+    <string name="editor_limit_outside_window">ժամանակը հաշվվում է այս ժամերից դուրս</string>
+    <string name="editor_limit_in_time">Ժամանակը հաշվվում է միայն այս ժամերին</string>
     <string name="editor_limit_in_time_sub">Մնացած ժամանակ՝ առանց սահմանափակման</string>
-    <string name="editor_limit_out_time">Սահմանաչափը գործում է այս ժամանակահատվածից դուրս</string>
+    <string name="editor_limit_out_time">Ժամանակը հաշվվում է այս ժամերից դուրս</string>
     <string name="editor_limit_out_time_sub">Այս ժամանակահատվածում՝ առանց սահմանափակման</string>
     <string name="info_limit_daily_window">%1$s: %2$s կարելի է օգտագործել ընդհանուր առմամբ %3$s։ Երբ ժամանակն ավարտվի, դրանք փակ կմնան մինչև այս ժամանակահատվածի ավարտը։</string>
     <string name="targets_only_selected_open_sites_sub">Մյուս կայքերը փակ են</string>
     <string name="targets_only_selected_open_both_sub">Մյուս հավելվածներն ու կայքերը փակ են</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Ժամանակացույցեր դեռ չկան</string>
-    <string name="policy_empty_mine_sub">Միացրեք ձևանմուշ կամ ստեղծեք ձերը</string>
+    <string name="policy_empty_mine_title">Կանոններ դեռ չկան</string>
+    <string name="policy_empty_mine_sub">Միացրեք պատրաստի կանոն կամ ստեղծեք ձերը</string>
     <string name="empty_search_title">Ոչինչ չի գտնվել</string>
     <string name="empty_search_sub">Փորձեք այլ որոնում</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Մեծահասակների և խաղամոլության կայքեր</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Ժամանակացույց</string>
+    <string name="policy_name_schedule">Կանոն</string>
     <string name="policy_name_category_block">Արգելափակում ըստ կատեգորիաների</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Միացրել է ձեր երեխան</string>
@@ -1139,7 +1139,7 @@
     <string name="ap_off_confirm">Անջատել</string>
     <string name="ap_keep_on">Թողնել միացված</string>
     <string name="ap_retry_note">Կփորձենք կրկին վաղը (%1$d/3)։</string>
-    <string name="ap_retry_now">Կրկնել</string>
+    <string name="ap_retry_now">Վճարել հիմա</string>
     <string name="ap_other_card">Այլ քարտ</string>
     <string name="ap_cards_empty_title">Պահված քարտեր չկան</string>
     <string name="ap_cards_empty_sub">Ավելացրեք UZCARD կամ HUMO քարտ ավտովճարման համար</string>
@@ -1185,7 +1185,7 @@
     <string name="ulash_tugma">Կապել</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Բաց թողնել</string>
+    <string name="ob_skip">Ավելի ուշ</string>
     <string name="ob_start">Սկսենք</string>
     <string name="ob_got_it">Հասկանալի է</string>
     <string name="ob_hello_title">Բարև, ես Hoglt-ն եմ</string>
@@ -1199,10 +1199,10 @@
     <string name="ob_day_study">Ուսում</string>
     <string name="ob_min_fmt">%1$d ր</string>
     <string name="ob_rules_title">Սահմանեք կանոնները մեկ անգամ</string>
-    <string name="ob_rules_body">Քնի ժամը, դասաժամերը և օրական սահմանաչափերն ինքնուրույն են միանում։</string>
+    <string name="ob_rules_body">Քնի ժամը, դպրոցի ժամը և օրական ժամանակը միանում են ինքնուրույն։</string>
     <string name="ob_rule_sleep">Քնի ժամ</string>
     <string name="ob_rule_school">Դասաժամեր</string>
-    <string name="ob_rule_limit">Օրական սահմանաչափ</string>
+    <string name="ob_rule_limit">Ժամանակ օրական</string>
     <string name="ob_rule_limit_value">2 ժ</string>
     <string name="ob_map_title">Իմացեք, թե որտեղ է նա</string>
     <string name="ob_map_body">Տեսեք ձեր երեխային քարտեզի վրա և սահմանեք կանոններ դպրոցի նման վայրերի համար։</string>
@@ -1259,8 +1259,8 @@
     <string name="home_layout_list">Ցուցակ</string>
     <string name="home_layout_grid">Ցանց</string>
     <string name="home_greeting">Բարև, %1$s</string>
-    <string name="kecha_sarfladi">Երեկ ծախսվել է</string>
-    <string name="sana_sarfladi">Ծախսվել է %1$s-ին</string>
+    <string name="kecha_sarfladi">Երեկ հեռախոսում</string>
+    <string name="sana_sarfladi">%1$s՝ հեռախոսում</string>
     <string name="stat_no_usage_day">Այս օրը դեռ հեռախոսի օգտագործում չկա</string>
     <string name="kirish_usuli">Մուտքի եղանակ</string>
     <string name="google_hisobi">Google հաշիվ</string>
@@ -1283,7 +1283,7 @@
     <string name="vazifa_muddati">Վերջնաժամկետ</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Օգնական</string>
+    <string name="ai_assistant_title">Խելացի օգնական</string>
     <string name="ai_assistant_subtitle">Հարցրեք կամ սահմանեք կանոն</string>
     <string name="ai_period_today">Այսօր</string>
     <string name="ai_period_yesterday">Երեկ</string>
@@ -1413,20 +1413,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Անվճար՝ %1$d ակտիվ կանոն · Plus՝ առանց սահմանափակման</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Հավելվածը չի տեսնում, թե որ հավելվածներն են բացվում․ հեռախոսի ժամանակը չի հաշվվում, և կանոնները չեն աշխատում։</string>
+    <string name="perm_why_overlay">Արգելափակված հավելվածի վրա արգելափակման էկրանը չի կարող հայտնվել, ուստի կանոնները չեն կարող փակել այն։</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Դուք չեք տեսնում, թե որտեղ է երեխան, և վայրին կապված կանոնները չեն աշխատում։</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Առանց սրա կայքերը, YouTube Shorts-ը և Instagram Reels-ը չեն արգելափակվում, իսկ հավելվածը հեշտությամբ կարելի է ջնջել։</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">Անվճար փաթեթում մեկ կանոնում կարելի է ավելացնել մինչև %1$d հավելված։ Plus-ով՝ ավելին։</string>
+    <string name="policy_paywall_app_limit">Այս կանոնը հասել է ձեր փաթեթի հավելվածների սահմանին։</string>
     <string name="clip_child_phone">Նրա հեռախոսում</string>
     <string name="prot_default_note">Հիմա ձեր կանոնները ոչ մի հավելված չեն փակում։ Դրա համար երեխայի հեռախոսում բացեք Hoglt → «Վերահսկողություն» և միացրեք պաշտպանությունը։</string>
     <string name="prot_strength">Պաշտպանության մակարդակ</string>
@@ -1456,4 +1456,64 @@
     <string name="task_empty_done">Կատարված առաջադրանք դեռ չկա</string>
     <string name="task_empty_overdue">Ժամկետանց առաջադրանք չկա</string>
     <string name="task_empty_filter_hint">Բոլոր առաջադրանքները տեսնելու համար կրկին հպեք ընտրված ֆիլտրին։</string>
+    <string name="voice_listen">Լսել</string>
+    <string name="voice_stop">Կանգնեցնել</string>
+    <string name="voice_unavailable">Ձայնային բացատրությունը դեռ հասանելի չէ։ Ավելի ուշ նորից փորձեք։</string>
+    <string name="live_confirm_title">Դիտել ուղիղ</string>
+    <string name="live_confirm_body">Զանգ կգնա երեխային՝ %1$s։ Եթե համաձայնի, տեսանյութը կբացվի։</string>
+    <string name="live_child_fallback">Ձեր երեխան</string>
+    <string name="live_call_button">Զանգել</string>
+    <string name="live_ringing">Զանգում ենք՝ %1$s…</string>
+    <string name="live_connecting">Միացում…</string>
+    <string name="live_error_connect">Չհաջողվեց միանալ։ Մի փոքր ուշ նորից փորձեք։</string>
+    <string name="live_declined">Երեխան մերժեց զանգը</string>
+    <string name="live_no_answer">Պատասխան չկա</string>
+    <string name="live_end">Ավարտել</string>
+    <string name="live_show_on_map">Ցույց տալ քարտեզում</string>
+    <string name="unlink_child_button">Անջատել երեխային</string>
+    <string name="saqlandi">Պահված է</string>
+    <string name="ap_retry_now_amount">Վճարել հիմա · %1$s</string>
+    <string name="pay_charge_body">•• %1$s քարտից կգանձվի %2$s։</string>
+    <string name="pay_charge_body_amount">Քարտից կգանձվի %1$s։</string>
+    <string name="pay_charge_body_plain">Բաժանորդագրության վճարը կգանձվի պահված քարտից։</string>
+    <string name="pay_confirm_pay">Վճարել</string>
+    <string name="app_store_unavailable">App Store-ը հիմա հասանելի չէ։ Մի փոքր ուշ նորից փորձեք։</string>
+    <string name="app_store_failed">App Store-ով վճարումը չստացվեց։ Նորից փորձեք։</string>
+    <string name="apple_activation_pending_title">Վճարումը ստացված է</string>
+    <string name="login_subtitle_social">Ընտրեք մուտքի եղանակը։ Հաշիվ չունե՞ք։ Այն կստեղծվի ինքնաբերաբար։</string>
+    <string name="login_telegram_not_opened">Telegram-ը չբացվեց։ Ստուգեք, որ Telegram-ը տեղադրված է, կամ մուտք գործեք այլ եղանակով։</string>
+    <string name="ob_notif_enable">Միացնել ծանուցումները</string>
+    <string name="comfort_title">Հարմա՞ր է կարդալ</string>
+    <string name="comfort_screen_color">Էկրանի գույնը</string>
+    <string name="comfort_light">Բաց</string>
+    <string name="comfort_dark">Մուգ</string>
+    <string name="comfort_done">Պատրաստ է</string>
+    <string name="comfort_hint">Սա կարող եք փոխել նաև հետո։</string>
+    <string name="policy_turned_on">Միացված է՝ %1$s</string>
+    <string name="policy_turned_off">Անջատված է՝ %1$s</string>
+    <string name="policy_off_title">Անջատե՞լ՝ «%1$s»</string>
+    <string name="policy_off_body">Երեխայի հեռախոսում այս կանոնն անմիջապես կդադարի գործել, և այն ամենը, ինչ արգելափակում էր, նորից կբացվի։ Կարող եք ցանկացած պահի նորից միացնել։</string>
+    <string name="policy_off_body_safety">Երեխայի հեռախոսում այս պաշտպանությունն անմիջապես կդադարի։ Կարող եք ցանկացած պահի նորից միացնել։</string>
+    <string name="policy_off_confirm">Այո, անջատել</string>
+    <string name="policy_off_cancel">Ոչ, թող միացված մնա</string>
+    <string name="policy_saved_sent">Պահված է․ ուղարկվեց երեխայի հեռախոսին</string>
+    <string name="policy_saved_queued">Պահված է․ կհասնի երեխայի հեռախոսին, երբ նորից առցանց լինեք</string>
+    <string name="policy_unsaved_title">Պահե՞լ փոփոխությունները</string>
+    <string name="policy_unsaved_body">Եթե չպահեք, երեխայի հեռախոսում ոչինչ չի փոխվի։</string>
+    <string name="policy_unsaved_discard">Դուրս գալ առանց պահելու</string>
+    <string name="quick_unblock_title">Նորից բացե՞լ՝ %1$s</string>
+    <string name="quick_unblock_body">Այս հավելվածն անմիջապես կբացվի երեխայի հեռախոսում։</string>
+    <string name="quick_unblock_confirm">Այո, բացել</string>
+    <string name="quick_unblock_action">Բացել</string>
+    <string name="quick_unblocked">Նորից բաց է՝ %1$s</string>
+    <string name="policy_exception_remove">Հեռացնել</string>
+    <string name="policy_load_failed">Չհաջողվեց բեռնել</string>
+    <string name="tg_more_settings">Լրացուցիչ կարգավորումներ</string>
+    <string name="rules_on_count">Միացված կանոններ՝ %1$d</string>
+    <string name="task_accepted">Ընդունված է</string>
+    <string name="task_accepted_coins">%1$s — մետաղադրամներ՝ %2$d</string>
+    <string name="task_coins_explain">Երբ ընդունեք առաջադրանքը, մետաղադրամները կանցնեն երեխային։ Նա դրանք ծախսում է խելացի օգնականին հարցեր տալու համար։</string>
+    <string name="task_coins_not_enough">Մետաղադրամները բավարար չեն</string>
+    <string name="chat_support_title">Աջակցության ծառայություն</string>
+    <string name="chat_ai_title">Խելացի օգնական</string>
 </resources>

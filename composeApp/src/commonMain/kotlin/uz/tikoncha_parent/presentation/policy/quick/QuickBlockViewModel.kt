@@ -20,6 +20,9 @@ import uz.tikoncha_parent.domain.use_case.policy.ObserveQuickBlockSnapshotUseCas
 import uz.tikoncha_parent.domain.use_case.policy.RefreshQuickBlocksUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RemoveQuickBlockUseCase
 import uz.tikoncha_parent.domain.use_case.policy.UpdateOwnQuickBlockUseCase
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToast
+import uz.tikoncha_parent.presentation.policy.components.PolicyToasts
 import kotlin.time.Clock
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Instant
@@ -118,6 +121,7 @@ class QuickBlockViewModel(
         screenModelScope.launch {
             val res = updateOwn.setEnabled(s.childId, own, enabled)
             _state.update { it.copy(pendingEnabled = null, error = (res as? Outcome.Failure) ?: it.error) }
+            if (res !is Outcome.Failure) PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.QUICK)
         }
     }
 
@@ -128,6 +132,7 @@ class QuickBlockViewModel(
         screenModelScope.launch {
             val res = updateOwn.pause(s.childId, own, until)
             _state.update { it.copy(pausing = false, error = (res as? Outcome.Failure) ?: it.error) }
+            if (res !is Outcome.Failure) PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.QUICK)
         }
     }
 
@@ -138,6 +143,7 @@ class QuickBlockViewModel(
         _state.update { it.copy(adding = true) }
         screenModelScope.launch {
             val res = addApps(childId, packages)
+            if (res !is Outcome.Failure) PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.QUICK)
             _state.update {
                 when {
                     res !is Outcome.Failure -> it.copy(adding = false)
@@ -154,11 +160,14 @@ class QuickBlockViewModel(
         val childId = _state.value.childId
         if (childId.isBlank() || packageName in _state.value.removing) return
         _state.update { it.copy(removing = it.removing + packageName) }
+        // Nom olib taşlaşdan oldin olinadi — "Instagram oçildi"
+        val label = _state.value.label(packageName)
         screenModelScope.launch {
             val res = removeQuickBlock(childId, QuickBlockTarget.app(packageName))
             _state.update {
                 it.copy(removing = it.removing - packageName, error = (res as? Outcome.Failure) ?: it.error)
             }
+            if (res !is Outcome.Failure) PolicyToasts.post(PolicyToast.Unblocked(label), PolicyScreenId.QUICK)
         }
     }
 

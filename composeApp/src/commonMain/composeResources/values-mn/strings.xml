@@ -94,7 +94,7 @@
     <string name="maktab">Сургууль</string>
     <string name="sozlamalar">Тохиргоо</string>
     <string name="bildirishnomalar">Мэдэгдэл</string>
-    <string name="tema">Загвар</string>
+    <string name="tema">Дэлгэцийн өнгө</string>
     <string name="tasdiqlash">Батлах</string>
     <string name="tolov">Төлбөр</string>
     <string name="obuna_pro">Pro захиалга</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">Паспортын ID</string>
     <string name="reklama">Зар сурталчилгаа</string>
     <string name="yorug">Цайвар</string>
-    <string name="theme_system">Систем</string>
+    <string name="theme_system">Утастай адил</string>
     <string name="xavfli_zona">Аюултай бүс</string>
     <string name="akkauntni_o_chirish">Бүртгэл устгах</string>
     <string name="pochta_orqali">Имэйлээр</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Зөвшөөрөл хүсэх</string>
     <string name="joylashuv_uchun_ruxsat">Байршлын зөвшөөрөл</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Газрын зургийг бүрэн ашиглахын тулд тохиргооноос Байршлын зөвшөөрөл олгоно уу!</string>
-    <string name="xatolik">Алдаа</string>
-    <string name="ok">За</string>
+    <string name="xatolik">Болсонгүй</string>
+    <string name="ok">Ойлголоо</string>
     <string name="qoshish">Нэмэх</string>
     <string name="ogil_bola">Хүү</string>
     <string name="qiz_bola">Охин</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Амжилттай</string>
     <string name="qisqartirish">Богиносгох</string>
     <string name="vazifa_tahrirlandi">Даалгавар засагдлаа</string>
-    <string name="server_connection_error">Сервертэй холбогдоход алдаа гарлаа!</string>
+    <string name="server_connection_error">Одоо холбогдож чадсангүй. Түр хүлээгээд дахин оролдоно уу.</string>
     <string name="faol">Идэвхтэй</string>
     <string name="faol_emas">Идэвхгүй</string>
     <string name="ohirgi_faollik">Сүүлд идэвхтэй:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Анхаар!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Таны сонгосон цагийн интервалд Ашиглалтын хязгаар ажиллахгүй! Өөрөөр хэлбэл цагийн хуваарь давуу эрхтэй.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d апп таны төхөөрөмжид суугаагүй байна</string>
-    <string name="cheklovlar">Хязгаарлалтууд</string>
+    <string name="cheklovlar">Дүрэм</string>
     <string name="ta_ilovaga">%1$d аппад</string>
     <string name="ta_vebsaytga">%1$d вэбсайтад</string>
     <string name="ustuvorligi">Ач холбогдол</string>
-    <string name="jadval_nomini_kiriting">Хуваарийн нэр оруулна уу</string>
+    <string name="jadval_nomini_kiriting">Дүрмийн нэрийг оруулна уу</string>
     <string name="misol_o_quv_markaz">жишээ: Сургалтын төв</string>
     <string name="ochirish">Устгах</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Хуваарийг хадгалалгүй гарахыг зөвшөөрч байна уу?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">БАЯР ХҮРГЭЕ!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Та одоо энэ захиалгыг эзэмшиж байна</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Онцгой боломж, нэн тэргүүний тусламжийг эдлээрэй!</string>
-    <string name="statistika">Статистик</string>
+    <string name="statistika">Утасны цаг</string>
     <string name="chegirmalar">Хөнгөлөлтүүд</string>
     <string name="chegirma">Хөнгөлөлт</string>
-    <string name="topshiriqlar">Даалгаврууд</string>
-    <string name="jadvallar">Хуваариуд</string>
+    <string name="topshiriqlar">Даалгавар</string>
+    <string name="jadvallar">Дүрэм</string>
     <string name="ilova_cheklangan">%1$d апп хязгаарлагдсан</string>
-    <string name="faol_vazifa">%1$d идэвхтэй даалгавар</string>
-    <string name="bugun_sarfladi">Өнөөдөр зарцуулсан</string>
+    <string name="faol_vazifa">Идэвхтэй даалгавар: %1$d</string>
+    <string name="bugun_sarfladi">Өнөөдөр утсанд</string>
     <string name="chiqish">Гарах</string>
     <string name="chiqishni_xohlaysizmi">Гарахыг хүсэж байна уу?</string>
     <string name="chiqishni_tasdiqlang">Гарахыг баталгаажуулна уу.</string>
@@ -322,8 +322,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">Таны профайл болон тохиргоо серверт хадгалагдана.</string>
     <string name="qayta_kirsangiz_tiklanadi">Дахин нэвтрэхэд бүх зүйл сэргээгдэнэ.</string>
     <string name="farzand_qoshilmagan">Хүүхэд нэмээгүй байна</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Хүүхэд нэмсний дараа хуваарь, чат, тайлангууд харагдана.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Гэнэтийн алдаа гарлаа. Дахин оролдоно уу.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Хүүхэд нэмсний дараа дүрэм, чат, утасны цаг харагдана.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Болсонгүй. Түр хүлээгээд дахин оролдоно уу.</string>
     <string name="hozircha_farzand_qoshilmagan">Та хараахан хүүхэд нэмээгүй байна.</string>
     <string name="diqqat2">АНХААР!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Үргэлжлүүлэхээс өмнө аппын төрлийг сонгоно уу.</string>
@@ -343,10 +343,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">Баталгаажуулах кодыг \n хэрхэн илгээхийг сонгоно уу</string>
     <string name="tasdiqlash_kodini_olish">Баталгаажуулах код авах</string>
     <string name="telegram_kod_kiritish">%1$s дугаартай холбоотой Telegram-д илгээсэн кодыг оруулна уу</string>
-    <string name="xato_kod_kiritdingiz">Та буруу код оруулсан байна</string>
+    <string name="xato_kod_kiritdingiz">Код таарсангүй. Дахин бичнэ үү.</string>
     <string name="kod_olish_usulini_ozgartirish">Код хүлээн авах аргыг солих</string>
     <string name="versiya">Хувилбар</string>
-    <string name="jadval_yaratish">Хуваарь үүсгэх</string>
+    <string name="jadval_yaratish">Дүрэм үүсгэх</string>
     <string name="sizning_cheklovlaringiz">Таны хязгаарлалтууд</string>
 
     <string name="avtomatik_bloklash_vaqti">Сонгосон өдөр, цагт автоматаар хаах</string>
@@ -364,9 +364,9 @@
     <string name="noto_g_ri_url_format">URL-ийн формат буруу байна</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Энэ вэбсайт жагсаалтад аль хэдийн байна</string>
     <string name="to_liq_nazoratni_yoqing">Бүрэн хяналтыг асаах</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Hoglt-оор апп, цаг, ашиглалтаа удирдаарай. Plus-тай хязгааргүй ажиллаж, Бамбай горимоор дээд зэргийн хамгаалалтыг асаагаарай.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Аппууд болон утасны цагийг Hoglt-оор удирдаарай. Plus-тай бол хязгааргүй бөгөөд хатуу хамгаалалтыг асааж болно.</string>
     <string name="plus_imkoniyatlarini_ochish">Plus-ийн боломжуудыг нээх</string>
-    <string name="jadval_nomi">Хуваарийн нэр</string>
+    <string name="jadval_nomi">Дүрмийн нэр</string>
     <string name="saytlar">Вэбсайтууд</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Апп, вэбсайтуудыг хэзээ, ямар нөхцөлд хязгаарлахыг тодорхойлно уу</string>
 
@@ -395,7 +395,7 @@
     <string name="coins_help_close">Хаах</string>
     <string name="qollash">Хэрэглэх</string>
     <string name="promokod">Промо код:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Та зоосыг амжилттай худалдаж авлаа.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Зоос худалдаж авлаа.</string>
     <string name="narx">Үнэ</string>
     <string name="jami">Нийт</string>
     <string name="bekor_qilindi">Цуцлагдлаа!</string>
@@ -412,11 +412,11 @@
     <string name="plus_obnuna_kerak">PLUS захиалга шаардлагатай</string>
     <string name="toliq_nazorat_statistika">Бүрэн хяналт ба статистик</string>
     <string name="farzand_ilova_kuzatish">Хүүхэд тань өдрийн турш ямар аппуудыг хэр их ашиглаж байгааг хянаарай.</string>
-    <string name="uchtagacha_jadval">3 хүртэл хуваарь</string>
+    <string name="uchtagacha_jadval">3 хүртэл дүрэм</string>
     <string name="jadval_cheklovlar">Өдөр, долоо хоног эсвэл тусгай цагт тусдаа хязгаарлалт тогтоогоорой.</string>
     <string name="qattiq_bloklash_qalqon">Хатуу хамгаалалт: вэбсайт, богино видео ч хаагдана</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Хүүхэд тань хязгаарлалтыг унтрааж, өөрчилж чадахгүй.</string>
-    <string name="tez_bloklash_timer">Шуурхай хаалт (Таймер)</string>
+    <string name="tez_bloklash_timer">Үргэлж хаалттай аппууд</string>
     <string name="vaqtinchalik_bloklash_tezi">Шаардлагатай үед түр хаалтыг хэдхэн секундэд асаагаарай.</string>
     <string name="hisobot_tahlil">Тайлан ба шинжилгээ</string>
     <string name="farzand_nazorat_tavsifi">Хүүхдийнхээ утас ашиглалтыг хянаарай. Хүсээгүй аппуудыг хааж, ашиглах хугацааг тогтоож, аюулгүй орчин бүрдүүлээрэй.</string>
@@ -510,8 +510,8 @@
     <string name="danger_cat_tobacco">Тамхи, вейп</string>
     <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радиус</string>
-    <string name="farzandim">Миний хүүхэд</string>
-    <string name="ozim">Би өөрөө</string>
+    <string name="farzandim">Хүүхэд өөрөө</string>
+    <string name="ozim">Надаас</string>
     <string name="faol_vazifa_yo_q">Идэвхтэй даалгавар алга</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Хүүхдэд тань даалгавар алга</string>
 
@@ -536,7 +536,7 @@
     <string name="weekday_sunday">Ням</string>
 
     <string name="juda_muhim">Маш чухал</string>
-    <string name="tekshirildi">Шалгасан</string>
+    <string name="tekshirildi">Хүлээн авна</string>
     <string name="ko_rish">Харах</string>
     <string name="vazifa_ochirilsinmi">Даалгаврыг устгах уу?</string>
     <string name="vazifa_ochirish_tasdiq">Энэ даалгаврыг үнэхээр устгах уу?</string>
@@ -558,7 +558,7 @@
     <string name="tolovlar_tarixi_bos">Төлбөрийн түүх хоосон</string>
     <string name="tolovlar_tarixi_bos_hint">Худалдан авалт хийсний дараа энд харагдана</string>
     <string name="boshqa_yozuvlar_yoq">Өөр бичлэг алга</string>
-    <string name="xatolik_yuz_berdi">Алдаа гарлаа</string>
+    <string name="xatolik_yuz_berdi">Ачаалж чадсангүй. Дахин оролдоно уу.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -589,7 +589,7 @@
 
     <string name="izoh_ixtiyoriy">Сэтгэгдэл (заавал биш)</string>
     <string name="vazifa_tangalari">Даалгавар гүйцэтгэсний шагнал зоос</string>
-    <string name="vazifani_tekshirish">Даалгавар шалгах</string>
+    <string name="vazifani_tekshirish">Бүгд зөв үү?</string>
     <string name="izoh">Сэтгэгдэл</string>
     <string name="muhimlilik_darajasi">Ач холбогдлын түвшин</string>
     <string name="ragbatlantirish_tangachalari">Урамшууллын зоос</string>
@@ -609,7 +609,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Хүүхэд тань Hoglt аппыг нээж, баталгаажуулах кодыг оруулах шаардлагатай.</string>
     <string name="bola_hali_bajardim_bosmagan">Хүүхэд “Болсон” товчийг хараахан дараагүй байна</string>
     <string name="foydalanilmagan">Ашиглаагүй</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Дахин нэвтрэх шаардлагатай</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Нэвтрэх</string>
     <string name="profil_rasmi">Профайл зураг</string>
@@ -635,7 +635,7 @@
     <string name="telegram_orqali_kirish">Telegram-аар нэвтрэх</string>
     <string name="yoki">эсвэл</string>
     <string name="telefon_raqami">Утасны дугаар</string>
-    <string name="kirish_subtitle">Үргэлжлүүлэхийн тулд бүртгэлдээ нэвтэрнэ үү</string>
+    <string name="kirish_subtitle">Telegram-аар нэвтэрнэ үү. Бүртгэлгүй бол автоматаар үүснэ.</string>
     <string name="login_privacy">Үргэлжлүүлснээр та Нууцлалын бодлого болон Ашиглалтын нөхцөлийг зөвшөөрнө</string>
 
     <string name="telegram_ochilmoqda">Telegram-ыг нээж байна…</string>
@@ -770,9 +770,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Та хүсэлтийг зөвшөөрлөө — хүүхэд тань одоо аппаас гарах боломжтой.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Та хүсэлтийг зөвшөөрлөө — хүүхэд тань одоо аппыг устгах боломжтой.</string>
     <string name="sorov_rad_etildi_desc">Та хүсэлтээс татгалзлаа.</string>
-    <string name="unlink_child_title">Хүүхдийг салгах уу?</string>
-    <string name="unlink_child_message">Энэ үйлдлийн дараа %1$s-ийн төхөөрөмж дээрх хяналт зогсоно!</string>
-    <string name="unlink_child_action">Салгах</string>
+    <string name="unlink_child_title">Энэ хүүхдийг салгах уу?</string>
+    <string name="unlink_child_message">%1$s-ийн утсан дээрх хамгаалалт ба дүрэм зогсоно. Дахин холбохын тулд «Хүүхэд нэмэх»-ээр кодыг дахин уншуулна уу.</string>
+    <string name="unlink_child_action">Тийм, салгах</string>
     <string name="child_unlinked_success">Хүүхдийг амжилттай салгалаа</string>
     <string name="operator_kodi_topilmadi">Ийм операторын код байхгүй</string>
     <string name="kod_amal_qilish_muddati">Код хүчинтэй: %1$s</string>
@@ -786,7 +786,7 @@
     <string name="farzand_tanlanmagan">Хүүхэд сонгоогүй байна</string>
     <string name="vazifa_id_topilmadi">Даалгаврын ID олдсонгүй</string>
     <string name="tahrirlangan">засварласан</string>
-    <string name="jadval_topilmadi">Хуваарь олдсонгүй.</string>
+    <string name="jadval_topilmadi">Олдсонгүй — устгагдсан байж магадгүй. Буцаж очоод дахин нээнэ үү.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d минут</item>
         <item quantity="other">%1$d минут</item>
@@ -819,8 +819,8 @@
     <string name="tarix_disabled">Унтраасан</string>
     <string name="tarix_paused">Түр зогссон</string>
     <string name="tarix_deleted">Устгасан</string>
-    <string name="tarix_quick_block_add">Шуурхай хаалт нэмэгдсэн</string>
-    <string name="tarix_quick_block_remove">Шуурхай хаалт хасагдсан</string>
+    <string name="tarix_quick_block_add">Үргэлж хаалттай аппуудад нэмэгдлээ</string>
+    <string name="tarix_quick_block_remove">Үргэлж хаалттай аппуудаас хасагдлаа</string>
     <string name="tarix_bosh">Өөрчлөлт алга</string>
     <string name="tarix_resumed">Үргэлжилсэн</string>
     <string name="muddat">Үргэлжлэх хугацаа</string>
@@ -844,26 +844,26 @@
     <string name="stat_row_sec">%1$d сек</string>
     <string name="stat_hour_only">%1$d ц</string>
     <string name="stat_per_day">Өдөрт ~%1$s</string>
-    <string name="stat_quick_blocked">Шуурхай хаалтад</string>
-    <string name="stat_quick_blocked_paused">Шуурхай хаалтад · түр зогссон</string>
-    <string name="stat_quick_blocked_inactive">Шуурхай хаалтад · Plus хэрэгтэй</string>
+    <string name="stat_quick_blocked">Үргэлж хаалттай</string>
+    <string name="stat_quick_blocked_paused">Үргэлж хаалттай · түр зогссон</string>
+    <string name="stat_quick_blocked_inactive">Үргэлж хаалттай · Plus хэрэгтэй</string>
     <string name="stat_blocked_by_child">Хүүхэд өөрөө хаасан</string>
     <string name="stat_blocked_by_child_paused">Хүүхэд өөрөө хаасан · түр зогссон</string>
     <string name="stat_blocked_by_child_inactive">Хүүхэд өөрөө хаасан · Plus хэрэгтэй</string>
     <string name="stat_blocked_by_coparent">Нөгөө эцэг эх хаасан</string>
     <string name="stat_blocked_by_coparent_paused">Нөгөө эцэг эх хаасан · түр зогссон</string>
     <string name="stat_blocked_by_coparent_inactive">Нөгөө эцэг эх хаасан · Plus хэрэгтэй</string>
-    <string name="stat_lock_hint">Цоож аппыг шуурхай хаалтад нэмж эсвэл хасна</string>
-    <string name="stat_quick_add_cd">Шуурхай хаалтад нэмэх</string>
-    <string name="stat_quick_remove_cd">Шуурхай хаалтаас хасах</string>
-    <string name="stat_reenable_title">Шуурхай хаалт асна</string>
-    <string name="stat_reenable_message">Шуурхай хаалт унтраалттай байна. Энэ аппыг хаавал дахин асах бөгөөд жагсаалт дахь бусад аппууд мөн хаагдана: %1$d.</string>
+    <string name="stat_lock_hint">Цоож аппыг үргэлж хаалттай аппуудад нэмнэ эсвэл хасна</string>
+    <string name="stat_quick_add_cd">Үргэлж хаалттай аппуудад нэмэх</string>
+    <string name="stat_quick_remove_cd">Үргэлж хаалттай аппуудаас хасах</string>
+    <string name="stat_reenable_title">Үргэлж хаалттай аппууд дахин асна</string>
+    <string name="stat_reenable_message">«Үргэлж хаалттай аппууд» одоо унтраалттай байна. Энэ аппыг нэмбэл дахин асч, жагсаалтын бусад апп ч хаагдана: %1$d.</string>
     <string name="stat_reenable_confirm">Хаах</string>
     <string name="stat_quick_paywall_title">Захиалга шаардлагатай</string>
     <string name="stat_quick_paywall_message">Аппыг нэг товшилтоор хаахад Hoglt Plus захиалга шаардлагатай.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Шуурхай хаалт</string>
+    <string name="quick_title">Үргэлж хаалттай аппууд</string>
     <string name="quick_enabled">Асаалттай</string>
     <string name="quick_pause">Түр зогсоох</string>
     <string name="quick_blocked_apps">Хаасан аппууд</string>
@@ -872,15 +872,15 @@
     <string name="quick_info_always">Энэ жагсаалтын аппууд цаг, газраас үл хамааран үргэлж хаалттай.</string>
     <string name="quick_info_off">Одоогоор унтраалттай — эдгээр аппыг хаахын тулд асаана уу.</string>
     <string name="quick_info_paused">%1$s хүртэл түр зогссон — тэр хүртэл юу ч хаагдахгүй.</string>
-    <string name="quick_info_stats">Мөн ашиглалтын статистикаас аппыг нэг товшилтоор нэмж, хасаж болно.</string>
-    <string name="quick_info_readd">Шуурхай хаалт унтраалттай үед апп нэмбэл дахин асна.</string>
+    <string name="quick_info_stats">«Утасны цаг» хуудаснаас ч аппыг нэг даралтаар энэ жагсаалтад нэмж эсвэл хасаж болно.</string>
+    <string name="quick_info_readd">«Үргэлж хаалттай аппууд» унтраалттай бол апп нэмэхэд дахин асна.</string>
     <string name="quick_child_blocks">Хүүхэд өөрөө хаасан</string>
     <string name="quick_coparent_blocks">Нөгөө эцэг эх хаасан</string>
     <string name="quick_others_note">Эдгээр жагсаалтыг зөвхөн эзэн нь өөрчилж чадна. Шаардлагатай бол аппыг өөрийн жагсаалтдаа нэмнэ үү.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Унтах цаг</string>
-    <string name="policy_preset_limit">Цагийн хязгаар</string>
+    <string name="policy_preset_limit">Өдөрт хэдий хэр цаг</string>
     <string name="policy_preset_school">Хичээлийн цаг</string>
     <string name="policy_day_mon">Да</string>
     <string name="policy_day_tue">Мя</string>
@@ -900,30 +900,30 @@
     <string name="policy_location">Байршил</string>
     <string name="policy_active_now">Одоо идэвхтэй: %1$s</string>
     <string name="policy_active_until">%1$s хүртэл</string>
-    <string name="list_info_none">Одоогоор идэвхтэй хуваарь алга</string>
+    <string name="list_info_none">Одоо ямар ч дүрэм ажиллахгүй байна</string>
     <string name="list_info_also">Мөн идэвхтэй: %1$s.</string>
-    <string name="list_info_many">Хэд хэдэн хуваарь зэрэг ажиллаж байхад аль нэг нь аппыг хаавал апп хаагдана.</string>
-    <string name="list_info_child_scope">Хүүхдийн өөрийн хуваарь таныхыг хүчингүй болгож чадахгүй — таны хаасан апп хаалттай хэвээр байна.</string>
-    <string name="list_info_school_scope">Хэрэв сургуулийн хуваарь аппыг хаасан эсвэл тодорхой зөвшөөрсөн бол таны хуваарь үүнийг өөрчилж чадахгүй. Бусад тохиолдолд илүү хатуу хуваарь үйлчилнэ.</string>
-    <string name="list_info_quick">Шуурхай хаалт асаалттай — түүний аппууд цаг, газраас үл хамааран үргэлж хаалттай.</string>
-    <string name="list_info_paused">Түр зогссон хуваарь: %1$d — тогтоосон цаг хүртэл юу ч хийхгүй.</string>
-    <string name="list_info_how">Хуваарь цаг, газар нь болоход өөрөө эхэлнэ.</string>
-    <string name="policy_tab_templates">Загварууд</string>
+    <string name="list_info_many">Хэд хэдэн дүрэм зэрэг ажиллаж байхад аль нэг нь аппыг хаавал апп хаагдана.</string>
+    <string name="list_info_child_scope">Хүүхдийн өөрийн дүрэм таны шийдвэрийг өөрчилж чадахгүй — таны хаасан апп хаалттай хэвээр үлдэнэ.</string>
+    <string name="list_info_school_scope">Сургуулийн дүрэм аппыг хаах эсвэл тодорхой зөвшөөрсөн бол таны дүрэм үүнийг өөрчилж чадахгүй. Бусад тохиолдолд илүү хатуу дүрэм үйлчилнэ.</string>
+    <string name="list_info_quick">«Үргэлж хаалттай аппууд» асаалттай — энэ жагсаалтын аппууд цаг, газраас үл хамааран хаалттай байна.</string>
+    <string name="list_info_paused">Түр зогссон дүрэм: %1$d — заасан цаг хүртэл ажиллахгүй.</string>
+    <string name="list_info_how">Дүрэм өөрийн цаг, газар нь болоход өөрөө асна.</string>
+    <string name="policy_tab_templates">Бэлэн дүрэм</string>
     <string name="policy_tab_mine">Минийх</string>
     <string name="policy_tab_child">Хүүхэд</string>
-    <string name="policy_tab_coparent">Эцэг эх</string>
+    <string name="policy_tab_coparent">Нөгөө эцэг эх</string>
     <string name="policy_tab_school">Сургууль</string>
     <string name="policy_enabled_count">%1$d асаалттай</string>
-    <string name="policy_content_protection">Контентын хамгаалалт</string>
+    <string name="policy_content_protection">Муу сайтаас хамгаалах</string>
     <string name="policy_content_protection_others">Хүүхэд эсвэл нөгөө эцэг эх асаасан</string>
     <string name="policy_paused">Түр зогссон</string>
-    <string name="policy_quick_blocks">Шуурхай хаалт</string>
+    <string name="policy_quick_blocks">Үргэлж хаалттай аппууд</string>
     <string name="preset_all_apps">Бүх апп</string>
-    <string name="policy_paywall_protection">Контентын хамгаалалт Hoglt Plus-тай ажиллана.</string>
+    <string name="policy_paywall_protection">Муу сайтаас хамгаалах нь Hoglt Plus-тай ажиллана.</string>
     <string name="policy_paywall_count">Үнэгүй багц хуваарийн тоог хязгаарладаг. Hoglt Plus илүү олныг олгоно.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Юу ч сонгоогүй байна — энэ хуваарь юуг ч хаахгүй.</string>
+    <string name="info_nothing">Одоохондоо юу ч сонгоогүй — энэ дүрэм юуг ч хаахгүй.</string>
     <string name="info_always">Үргэлж</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s %2$s–%3$s хооронд</string>
@@ -936,12 +936,12 @@
     <string name="info_what_all_apps_sites">бүх апп, вэбсайт хаагдана</string>
     <string name="info_what_selected">сонгосон зүйлс хаагдана (%1$s)</string>
     <string name="info_stays_open">Нээлттэй үлдэнэ: %1$s.</string>
-    <string name="info_not_counted">Хязгаарт тооцогдохгүй: %1$s.</string>
+    <string name="info_not_counted">Цаг тооцохгүй: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s нийт %3$s ашиглагдах боломжтой. Хугацаа дуусмагц маргааш хүртэл хаалттай байна.</string>
     <string name="info_limit_hourly">%1$s: %2$s цагт %3$s ашиглагдах боломжтой. Хугацаа дуусмагц дараагийн цаг хүртэл хаалттай байна.</string>
     <string name="info_limit_all">бүх апп</string>
     <string name="info_limit_selected">сонгосон зүйлс</string>
-    <string name="info_limit_gate">Хязгаар зөвхөн дараах үед үйлчилнэ: %1$s.</string>
+    <string name="info_limit_gate">Цаг зөвхөн тооцогдоно: %1$s.</string>
     <string name="info_protected">Дуудлага, SMS болон бусад зайлшгүй аппууд хэзээ ч хаагдахгүй.</string>
     <string name="info_disabled">Одоогоор унтраалттай — үүнийг хэрэгжүүлэхийн тулд асаана уу.</string>
 
@@ -950,7 +950,7 @@
     <string name="preset_when">Хэзээ</string>
     <string name="preset_starts">Эхлэх</string>
     <string name="preset_ends">Дуусах</string>
-    <string name="preset_limit">Хязгаар</string>
+    <string name="preset_limit">Хэдий хэр цаг</string>
     <string name="preset_counted">Юу тооцогдох вэ</string>
     <string name="preset_what_closed">Юу хаагдах вэ</string>
     <string name="preset_only_selected">Зөвхөн сонгосон</string>
@@ -991,13 +991,13 @@
     <string name="targets_covered_by_category">Ангиллаар сонгосон</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Вэбсайтын хаяг эсвэл түлхүүр үг буруу байна. Жишээ: youtube.com эсвэл kino</string>
-    <string name="editor_new_policy">Шинэ хуваарь</string>
+    <string name="editor_new_policy">Шинэ дүрэм</string>
     <string name="editor_not_selected">Сонгоогүй</string>
     <string name="editor_when_hint">заавал биш · эс бөгөөс үргэлж</string>
     <string name="editor_add_condition">Нөхцөл нэмэх</string>
     <string name="editor_added">Нэмсэн</string>
     <string name="editor_condition_time">Цаг</string>
-    <string name="editor_condition_limit">Хязгаар</string>
+    <string name="editor_condition_limit">Хэдий хэр цаг</string>
     <string name="editor_in_this_time">Энэ хугацаанд</string>
     <string name="editor_closed_in_time">Хаагдана</string>
     <string name="editor_closed_in_time_sub">Бусад үед нээлттэй</string>
@@ -1008,8 +1008,8 @@
     <string name="editor_inside">Бүс дотор</string>
     <string name="editor_outside">Бүсээс гадна</string>
     <string name="editor_rename">Нэр солих</string>
-    <string name="editor_delete_title">Энэ хуваарийг устгах уу?</string>
-    <string name="editor_delete_message">“%1$s” устгагдана.</string>
+    <string name="editor_delete_title">Энэ дүрмийг устгах уу?</string>
+    <string name="editor_delete_message">«%1$s» устгагдана. Энэ дүрмийн хаасан аппууд дахин нээгдэнэ.</string>
     <string name="editor_paywall_allow">“Зөвхөн сонгосон нь нээлттэй” горим Plus-тай боломжтой.</string>
     <string name="location_child_here">Миний хүүхдийн байршил</string>
     <string name="protection_section">Юу хамгаалагдах вэ</string>
@@ -1027,24 +1027,24 @@
     <string name="protection_policies_pending">Хараахан хүрээгүй</string>
     <string name="protection_gujanak_limits_note">Дунд хамгаалалт зөвхөн аппуудыг хаана. Вэбсайт, богино видео зөвхөн хатуу хамгаалалтаар хаагдана: хүүхдийн тань утсан дээр Hoglt → «Хяналт» → «Бамбай горим».</string>
     <string name="editor_limit_days_follow_time">Цагтай адил — өдрүүдийг цагийн хуудсанд сонгоно</string>
-    <string name="editor_limit_in_window">энэ хугацаанд хязгаар</string>
-    <string name="editor_limit_outside_window">энэ хугацаанаас гадуур хязгаар</string>
-    <string name="editor_limit_in_time">Хязгаар энэ хугацаанд үйлчилнэ</string>
+    <string name="editor_limit_in_window">цаг энэ цагуудад тооцогдоно</string>
+    <string name="editor_limit_outside_window">цаг энэ цагуудаас гадуур тооцогдоно</string>
+    <string name="editor_limit_in_time">Цаг зөвхөн энэ цагуудад тооцогдоно</string>
     <string name="editor_limit_in_time_sub">Бусад үед хязгаарлалтгүй</string>
-    <string name="editor_limit_out_time">Хязгаар энэ хугацаанаас гадуур үйлчилнэ</string>
+    <string name="editor_limit_out_time">Цаг энэ цагуудаас гадуур тооцогдоно</string>
     <string name="editor_limit_out_time_sub">Энэ хугацаанд хязгаарлалтгүй</string>
     <string name="info_limit_daily_window">%1$s: %2$s нийт %3$s ашиглагдах боломжтой. Хугацаа дуусахад энэ цагийн хүрээ дуустал хаалттай байна.</string>
     <string name="targets_only_selected_open_sites_sub">Бусад вэбсайтууд хаалттай</string>
     <string name="targets_only_selected_open_both_sub">Бусад апп, вэбсайтууд хаалттай</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Хуваарь алга</string>
-    <string name="policy_empty_mine_sub">Загвар асаах эсвэл өөрөө үүсгээрэй</string>
+    <string name="policy_empty_mine_title">Одоохондоо дүрэм алга</string>
+    <string name="policy_empty_mine_sub">Бэлэн дүрмийн нэгийг асаах эсвэл өөрөө үүсгээрэй</string>
     <string name="empty_search_title">Юу ч олдсонгүй</string>
     <string name="empty_search_sub">Өөр үгээр хайж үзээрэй</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Насанд хүрэгчдийн болон мөрийтэй тоглоомын сайтууд</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Хуваарь</string>
+    <string name="policy_name_schedule">Дүрэм</string>
     <string name="policy_name_category_block">Ангиллаар хаах</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Хүүхэд тань асаасан</string>
@@ -1139,7 +1139,7 @@
     <string name="ap_off_confirm">Унтраах</string>
     <string name="ap_keep_on">Асаалттай үлдээх</string>
     <string name="ap_retry_note">Маргааш дахин оролдоно (%1$d/3).</string>
-    <string name="ap_retry_now">Дахин оролдох</string>
+    <string name="ap_retry_now">Одоо төлөх</string>
     <string name="ap_other_card">Өөр карт</string>
     <string name="ap_cards_empty_title">Хадгалсан карт алга</string>
     <string name="ap_cards_empty_sub">Автомат төлбөрт UZCARD эсвэл HUMO карт нэмнэ үү</string>
@@ -1185,7 +1185,7 @@
     <string name="ulash_tugma">Холбох</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Алгасах</string>
+    <string name="ob_skip">Дараа үзье</string>
     <string name="ob_start">Эхэлцгээе</string>
     <string name="ob_got_it">Ойлголоо</string>
     <string name="ob_hello_title">Сайн уу, би Hoglt</string>
@@ -1199,10 +1199,10 @@
     <string name="ob_day_study">Хичээл</string>
     <string name="ob_min_fmt">%1$d мин</string>
     <string name="ob_rules_title">Дүрмээ нэг удаа тогтоо</string>
-    <string name="ob_rules_body">Унтах цаг, хичээлийн цаг болон өдрийн хязгаар өөрөө асна.</string>
+    <string name="ob_rules_body">Унтах цаг, хичээлийн цаг, өдрийн цаг өөрөө асна.</string>
     <string name="ob_rule_sleep">Унтах цаг</string>
     <string name="ob_rule_school">Хичээлийн цаг</string>
-    <string name="ob_rule_limit">Өдрийн хязгаар</string>
+    <string name="ob_rule_limit">Өдөрт хэдий хэр цаг</string>
     <string name="ob_rule_limit_value">2 ц</string>
     <string name="ob_map_title">Хаана байгааг нь мэдээрэй</string>
     <string name="ob_map_body">Хүүхдээ газрын зураг дээр харж, сургууль зэрэг газарт дүрэм тогтоогоорой.</string>
@@ -1259,8 +1259,8 @@
     <string name="home_layout_list">Жагсаалт</string>
     <string name="home_layout_grid">Хүснэгт</string>
     <string name="home_greeting">Сайн уу, %1$s</string>
-    <string name="kecha_sarfladi">Өчигдөр зарцуулсан</string>
-    <string name="sana_sarfladi">%1$s-д зарцуулсан</string>
+    <string name="kecha_sarfladi">Өчигдөр утсанд</string>
+    <string name="sana_sarfladi">%1$s утсанд</string>
     <string name="stat_no_usage_day">Энэ өдөр утас ашиглаагүй байна</string>
     <string name="kirish_usuli">Нэвтрэх арга</string>
     <string name="google_hisobi">Google бүртгэл</string>
@@ -1283,7 +1283,7 @@
     <string name="vazifa_muddati">Хугацаа</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Туслах</string>
+    <string name="ai_assistant_title">Ухаалаг туслах</string>
     <string name="ai_assistant_subtitle">Асуух эсвэл дүрэм тогтоох</string>
     <string name="ai_period_today">Өнөөдөр</string>
     <string name="ai_period_yesterday">Өчигдөр</string>
@@ -1413,20 +1413,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Үнэгүй: %1$d идэвхтэй дүрэм · Plus: хязгааргүй</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Апп аль апп нээгдэж байгааг харж чадахгүй: утасны цаг тооцогдохгүй, дүрэм ажиллахгүй.</string>
+    <string name="perm_why_overlay">Хаагдсан аппын дээр хаалтын дэлгэц гарч чадахгүй тул дүрэм түүнийг хааж чадахгүй.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Хүүхэд тань хаана байгааг харах боломжгүй, байршилд холбогдсон дүрэм ч ажиллахгүй.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Үүнгүйгээр вэбсайт, YouTube Shorts, Instagram Reels хаагдахгүй, аппыг ч амархан устгаж болно.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">Үнэгүй багцад нэг дүрэмд %1$d хүртэл апп нэмж болно. Plus-тай бол илүү.</string>
+    <string name="policy_paywall_app_limit">Энэ дүрэм таны багцын аппын хязгаарт хүрлээ.</string>
     <string name="clip_child_phone">Түүний утсан дээр</string>
     <string name="prot_default_note">Одоогоор таны дүрэм ямар ч аппыг хаахгүй байна. Хаадаг болгохын тулд хүүхдийн тань утсан дээр Hoglt-г нээгээд → «Хяналт» хэсэгт хамгаалалтыг асаана уу.</string>
     <string name="prot_strength">Хамгаалалтын түвшин</string>
@@ -1456,4 +1456,64 @@
     <string name="task_empty_done">Гүйцэтгэсэн даалгавар одоогоор алга</string>
     <string name="task_empty_overdue">Хугацаа хэтэрсэн даалгавар алга</string>
     <string name="task_empty_filter_hint">Бүх даалгаврыг харахын тулд сонгосон шүүлтүүрийг дахин дарна уу.</string>
+    <string name="voice_listen">Сонсох</string>
+    <string name="voice_stop">Зогсоох</string>
+    <string name="voice_unavailable">Дуут тайлбар одоохондоо алга. Дараа дахин оролдоно уу.</string>
+    <string name="live_confirm_title">Шууд үзэх</string>
+    <string name="live_confirm_body">%1$s дуудлага хүлээн авна. Зөвшөөрвөл видео нээгдэнэ.</string>
+    <string name="live_child_fallback">Таны хүүхэд</string>
+    <string name="live_call_button">Залгах</string>
+    <string name="live_ringing">Залгаж байна: %1$s…</string>
+    <string name="live_connecting">Холбогдож байна…</string>
+    <string name="live_error_connect">Холбогдож чадсангүй. Түр хүлээгээд дахин оролдоно уу.</string>
+    <string name="live_declined">Хүүхэд тань татгалзлаа</string>
+    <string name="live_no_answer">Хариу алга</string>
+    <string name="live_end">Дуусгах</string>
+    <string name="live_show_on_map">Газрын зураг дээр харах</string>
+    <string name="unlink_child_button">Хүүхдийг салгах</string>
+    <string name="saqlandi">Хадгаллаа</string>
+    <string name="ap_retry_now_amount">Одоо төлөх · %1$s</string>
+    <string name="pay_charge_body">•• %1$s картаас %2$s суутгагдана.</string>
+    <string name="pay_charge_body_amount">Картаас %1$s суутгагдана.</string>
+    <string name="pay_charge_body_plain">Захиалгын төлбөр хадгалсан картаас суутгагдана.</string>
+    <string name="pay_confirm_pay">Төлөх</string>
+    <string name="app_store_unavailable">App Store одоо ажиллахгүй байна. Түр хүлээгээд дахин оролдоно уу.</string>
+    <string name="app_store_failed">App Store-оор төлж чадсангүй. Дахин оролдоно уу.</string>
+    <string name="apple_activation_pending_title">Төлбөр хүлээн авлаа</string>
+    <string name="login_subtitle_social">Нэвтрэх аргаа сонгоно уу. Бүртгэлгүй бол автоматаар үүснэ.</string>
+    <string name="login_telegram_not_opened">Telegram нээгдсэнгүй. Telegram суулгасан эсэхийг шалгах эсвэл өөр аргаар нэвтэрнэ үү.</string>
+    <string name="ob_notif_enable">Мэдэгдэл асаах</string>
+    <string name="comfort_title">Уншихад тохиромжтой юу?</string>
+    <string name="comfort_screen_color">Дэлгэцийн өнгө</string>
+    <string name="comfort_light">Цайвар</string>
+    <string name="comfort_dark">Бараан</string>
+    <string name="comfort_done">Болсон</string>
+    <string name="comfort_hint">Үүнийг дараа ч өөрчилж болно.</string>
+    <string name="policy_turned_on">%1$s асаалаа</string>
+    <string name="policy_turned_off">%1$s унтраалаа</string>
+    <string name="policy_off_title">«%1$s»-г унтраах уу?</string>
+    <string name="policy_off_body">Хүүхдийн тань утсан дээр энэ дүрэм шууд ажиллахаа больж, хаасан бүхэн нь дахин нээгдэнэ. Хүссэн үедээ дахин асааж болно.</string>
+    <string name="policy_off_body_safety">Хүүхдийн тань утсан дээр энэ хамгаалалт шууд зогсоно. Хүссэн үедээ дахин асааж болно.</string>
+    <string name="policy_off_confirm">Тийм, унтраах</string>
+    <string name="policy_off_cancel">Үгүй, асаалттай үлдээх</string>
+    <string name="policy_saved_sent">Хадгаллаа — хүүхдийн утас руу илгээлээ</string>
+    <string name="policy_saved_queued">Хадгаллаа — интернэт орж ирэхэд хүүхдийн утас руу очно</string>
+    <string name="policy_unsaved_title">Өөрчлөлтийг хадгалах уу?</string>
+    <string name="policy_unsaved_body">Хадгалахгүй бол хүүхдийн тань утсан дээр юу ч өөрчлөгдөхгүй.</string>
+    <string name="policy_unsaved_discard">Хадгалахгүй гарах</string>
+    <string name="quick_unblock_title">%1$s-г дахин нээх үү?</string>
+    <string name="quick_unblock_body">Энэ апп хүүхдийн тань утсан дээр шууд нээгдэнэ.</string>
+    <string name="quick_unblock_confirm">Тийм, нээх</string>
+    <string name="quick_unblock_action">Нээх</string>
+    <string name="quick_unblocked">%1$s дахин нээгдлээ</string>
+    <string name="policy_exception_remove">Хасах</string>
+    <string name="policy_load_failed">Ачаалж чадсангүй</string>
+    <string name="tg_more_settings">Дэлгэрэнгүй тохиргоо</string>
+    <string name="rules_on_count">Асаалттай дүрэм: %1$d</string>
+    <string name="task_accepted">Хүлээн авсан</string>
+    <string name="task_accepted_coins">%1$s зоос авлаа: %2$d</string>
+    <string name="task_coins_explain">Даалгаврыг хүлээн авахад зоос хүүхдэд тань шилжинэ. Тэр үүгээр ухаалаг туслахаас асуулт асууна.</string>
+    <string name="task_coins_not_enough">Зоос хүрэлцэхгүй байна</string>
+    <string name="chat_support_title">Тусламжийн төв</string>
+    <string name="chat_ai_title">Ухаалаг туслах</string>
 </resources>

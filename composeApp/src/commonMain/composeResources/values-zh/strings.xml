@@ -94,7 +94,7 @@
     <string name="maktab">学校</string>
     <string name="sozlamalar">设置</string>
     <string name="bildirishnomalar">通知</string>
-    <string name="tema">主题</string>
+    <string name="tema">屏幕颜色</string>
     <string name="tasdiqlash">确认</string>
     <string name="tolov">付款</string>
     <string name="obuna_pro">Pro 订阅</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">护照号</string>
     <string name="reklama">广告</string>
     <string name="yorug">浅色</string>
-    <string name="theme_system">系统</string>
+    <string name="theme_system">跟随手机</string>
     <string name="xavfli_zona">危险区域</string>
     <string name="akkauntni_o_chirish">删除账号</string>
     <string name="pochta_orqali">通过邮箱</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">请求权限</string>
     <string name="joylashuv_uchun_ruxsat">位置权限</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">要充分使用地图，请在设置中授予位置权限！</string>
-    <string name="xatolik">错误</string>
-    <string name="ok">好</string>
+    <string name="xatolik">没有成功</string>
+    <string name="ok">好的，知道了</string>
     <string name="qoshish">添加</string>
     <string name="ogil_bola">男孩</string>
     <string name="qiz_bola">女孩</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">成功</string>
     <string name="qisqartirish">缩短</string>
     <string name="vazifa_tahrirlandi">任务已编辑</string>
-    <string name="server_connection_error">服务器连接错误！</string>
+    <string name="server_connection_error">现在无法连接，请稍后再试。</string>
     <string name="faol">生效中</string>
     <string name="faol_emas">不活跃</string>
     <string name="ohirgi_faollik">最后活跃：</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >注意！</string>
     <string name="siz_tanlagan_vaqt_oraligida">在你选择的时间段内，使用限额不会生效！也就是说，时间日程的优先级更高。</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">你的设备上有 %1$d 个应用未安装</string>
-    <string name="cheklovlar">限制</string>
+    <string name="cheklovlar">规则</string>
     <string name="ta_ilovaga">适用于 %1$d 个应用</string>
     <string name="ta_vebsaytga">适用于 %1$d 个网站</string>
     <string name="ustuvorligi">优先级</string>
-    <string name="jadval_nomini_kiriting">输入日程名称</string>
+    <string name="jadval_nomini_kiriting">输入规则名称</string>
     <string name="misol_o_quv_markaz">示例：培训中心</string>
     <string name="ochirish">删除</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">不保存日程就退出，可以吗？</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">恭喜！</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">你现在拥有此订阅</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">尽享专属功能和优先支持！</string>
-    <string name="statistika">统计</string>
+    <string name="statistika">手机时间</string>
     <string name="chegirmalar">优惠</string>
     <string name="chegirma">折扣</string>
     <string name="topshiriqlar">任务</string>
-    <string name="jadvallar">日程</string>
+    <string name="jadvallar">规则</string>
     <string name="ilova_cheklangan">已限制 %1$d 个应用</string>
-    <string name="faol_vazifa">%1$d 个进行中的任务</string>
-    <string name="bugun_sarfladi">今天已用</string>
+    <string name="faol_vazifa">进行中的任务：%1$d</string>
+    <string name="bugun_sarfladi">今天在手机上</string>
     <string name="chiqish">退出登录</string>
     <string name="chiqishni_xohlaysizmi">要退出登录吗？</string>
     <string name="chiqishni_tasdiqlang">请确认退出登录。</string>
@@ -322,8 +322,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">你的个人资料和设置保存在服务器上。</string>
     <string name="qayta_kirsangiz_tiklanadi">再次登录时，一切都会恢复。</string>
     <string name="farzand_qoshilmagan">尚未添加孩子</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">添加孩子后，将显示日程、聊天和报告。</string>
-    <string name="kutilmagan_xatolik_qayta_urining">发生意外错误。请重试。</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">添加孩子后，会显示规则、聊天和手机时间。</string>
+    <string name="kutilmagan_xatolik_qayta_urining">没有成功，请稍后再试。</string>
     <string name="hozircha_farzand_qoshilmagan">你还没有添加孩子。</string>
     <string name="diqqat2">注意！</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">继续之前，请选择应用类型。</string>
@@ -343,10 +343,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">选择我们发送验证码\n的方式</string>
     <string name="tasdiqlash_kodini_olish">获取验证码</string>
     <string name="telegram_kod_kiritish">输入发送到与 %1$s 关联的 Telegram 的验证码</string>
-    <string name="xato_kod_kiritdingiz">你输入的验证码不正确</string>
+    <string name="xato_kod_kiritdingiz">验证码不对，请重新输入。</string>
     <string name="kod_olish_usulini_ozgartirish">更改验证码接收方式</string>
     <string name="versiya">版本</string>
-    <string name="jadval_yaratish">创建日程</string>
+    <string name="jadval_yaratish">创建规则</string>
     <string name="sizning_cheklovlaringiz">你的限制</string>
 
     <string name="avtomatik_bloklash_vaqti">在所选日期和时段自动屏蔽</string>
@@ -364,9 +364,9 @@
     <string name="noto_g_ri_url_format">URL 格式无效</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">该网站已在列表中</string>
     <string name="to_liq_nazoratni_yoqing">开启完全掌控</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">用 Hoglt 管理应用、时间和使用情况。有了 Plus，可以无限制地使用，并通过护盾模式开启最强保护。</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">用 Hoglt 管理应用和手机时间。开通 Plus 后不受限制，还能开启严格保护。</string>
     <string name="plus_imkoniyatlarini_ochish">解锁 Plus 功能</string>
-    <string name="jadval_nomi">日程名称</string>
+    <string name="jadval_nomi">规则名称</string>
     <string name="saytlar">网站</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">指定在什么时间、什么情况下限制应用和网站</string>
 
@@ -395,7 +395,7 @@
     <string name="coins_help_close">关闭</string>
     <string name="qollash">应用</string>
     <string name="promokod">优惠码：</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">你已成功购买金币。</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">金币已购买。</string>
     <string name="narx">价格</string>
     <string name="jami">总计</string>
     <string name="bekor_qilindi">已取消！</string>
@@ -412,11 +412,11 @@
     <string name="plus_obnuna_kerak">需要 PLUS 订阅</string>
     <string name="toliq_nazorat_statistika">全面管控与统计</string>
     <string name="farzand_ilova_kuzatish">了解你的孩子使用了哪些应用，以及一天用了多久。</string>
-    <string name="uchtagacha_jadval">最多 3 个日程</string>
+    <string name="uchtagacha_jadval">最多 3 条规则</string>
     <string name="jadval_cheklovlar">为不同的日子、周或特殊时段分别设置限制。</string>
     <string name="qattiq_bloklash_qalqon">严格保护：网站和短视频也会被屏蔽</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">你的孩子无法关闭或更改限制。</string>
-    <string name="tez_bloklash_timer">快速屏蔽（计时器）</string>
+    <string name="tez_bloklash_timer">始终关闭的应用</string>
     <string name="vaqtinchalik_bloklash_tezi">需要时，几秒钟即可开启临时屏蔽。</string>
     <string name="hisobot_tahlil">报告与分析</string>
     <string name="farzand_nazorat_tavsifi">管理孩子的手机使用。屏蔽不想要的应用，设置使用时间，营造安全的环境。</string>
@@ -494,8 +494,8 @@
     <string name="danger_cat_tobacco">烟草和电子烟</string>
     <string name="danger_distance_m">%1$d 米</string>
     <string name="radius">半径</string>
-    <string name="farzandim">我的孩子</string>
-    <string name="ozim">我自己</string>
+    <string name="farzandim">孩子自己的</string>
+    <string name="ozim">我布置的</string>
     <string name="faol_vazifa_yo_q">没有进行中的任务</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">你的孩子没有任务</string>
 
@@ -520,7 +520,7 @@
     <string name="weekday_sunday">星期日</string>
 
     <string name="juda_muhim">非常重要</string>
-    <string name="tekshirildi">已检查</string>
+    <string name="tekshirildi">接受</string>
     <string name="ko_rish">查看</string>
     <string name="vazifa_ochirilsinmi">删除任务？</string>
     <string name="vazifa_ochirish_tasdiq">确定要删除这个任务吗？</string>
@@ -542,7 +542,7 @@
     <string name="tolovlar_tarixi_bos">付款记录为空</string>
     <string name="tolovlar_tarixi_bos_hint">购买后会显示在这里</string>
     <string name="boshqa_yozuvlar_yoq">没有更多记录了</string>
-    <string name="xatolik_yuz_berdi">发生错误</string>
+    <string name="xatolik_yuz_berdi">加载失败，请重试。</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -573,7 +573,7 @@
 
     <string name="izoh_ixtiyoriy">备注（可选）</string>
     <string name="vazifa_tangalari">完成任务可获得的金币</string>
-    <string name="vazifani_tekshirish">检查任务</string>
+    <string name="vazifani_tekshirish">都对吗？</string>
     <string name="izoh">备注</string>
     <string name="muhimlilik_darajasi">重要程度</string>
     <string name="ragbatlantirish_tangachalari">奖励金币</string>
@@ -593,7 +593,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">你的孩子需要打开 Hoglt 应用并输入验证码。</string>
     <string name="bola_hali_bajardim_bosmagan">孩子还没有点击“完成”按钮</string>
     <string name="foydalanilmagan">未使用</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">请重新登录</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">登录</string>
     <string name="profil_rasmi">头像</string>
@@ -619,7 +619,7 @@
     <string name="telegram_orqali_kirish">使用 Telegram 登录</string>
     <string name="yoki">或</string>
     <string name="telefon_raqami">手机号</string>
-    <string name="kirish_subtitle">登录账号以继续</string>
+    <string name="kirish_subtitle">用 Telegram 登录。还没有账号？会自动为你创建。</string>
     <string name="login_privacy">继续即表示你同意隐私政策和使用条款</string>
 
     <string name="telegram_ochilmoqda">正在打开 Telegram…</string>
@@ -754,9 +754,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">你已批准请求，你的孩子现在可以退出应用登录。</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">你已批准请求，你的孩子现在可以卸载应用。</string>
     <string name="sorov_rad_etildi_desc">你已拒绝请求。</string>
-    <string name="unlink_child_title">解除与孩子的关联？</string>
-    <string name="unlink_child_message">此操作之后，将停止对 %1$s 设备的监督！</string>
-    <string name="unlink_child_action">解除关联</string>
+    <string name="unlink_child_title">解除与这个孩子的绑定？</string>
+    <string name="unlink_child_message">%1$s 手机上的保护和规则将停止。如需重新连接，请通过“添加孩子”再次扫码。</string>
+    <string name="unlink_child_action">是，解除绑定</string>
     <string name="child_unlinked_success">已成功解除与孩子的关联</string>
     <string name="operator_kodi_topilmadi">没有这个运营商代码</string>
     <string name="kod_amal_qilish_muddati">验证码有效期：%1$s</string>
@@ -770,7 +770,7 @@
     <string name="farzand_tanlanmagan">未选择孩子</string>
     <string name="vazifa_id_topilmadi">未找到任务 ID</string>
     <string name="tahrirlangan">已编辑</string>
-    <string name="jadval_topilmadi">未找到日程。</string>
+    <string name="jadval_topilmadi">未找到——可能已被删除。请返回后重新打开。</string>
     <plurals name="minutes">
         <item quantity="one">%1$d 分钟</item>
         <item quantity="other">%1$d 分钟</item>
@@ -803,8 +803,8 @@
     <string name="tarix_disabled">已关闭</string>
     <string name="tarix_paused">已暂停</string>
     <string name="tarix_deleted">已删除</string>
-    <string name="tarix_quick_block_add">已添加快速屏蔽</string>
-    <string name="tarix_quick_block_remove">已移除快速屏蔽</string>
+    <string name="tarix_quick_block_add">已加入始终关闭的应用</string>
+    <string name="tarix_quick_block_remove">已从始终关闭的应用中移除</string>
     <string name="tarix_bosh">暂无更改</string>
     <string name="tarix_resumed">已恢复</string>
     <string name="muddat">时长</string>
@@ -828,26 +828,26 @@
     <string name="stat_row_sec">%1$d 秒</string>
     <string name="stat_hour_only">%1$d 小时</string>
     <string name="stat_per_day">约每天 %1$s</string>
-    <string name="stat_quick_blocked">在快速屏蔽中</string>
-    <string name="stat_quick_blocked_paused">在快速屏蔽中 · 已暂停</string>
-    <string name="stat_quick_blocked_inactive">在快速屏蔽中 · 需要 Plus</string>
+    <string name="stat_quick_blocked">始终关闭</string>
+    <string name="stat_quick_blocked_paused">始终关闭 · 已暂停</string>
+    <string name="stat_quick_blocked_inactive">始终关闭 · 需要 Plus</string>
     <string name="stat_blocked_by_child">被孩子自己屏蔽</string>
     <string name="stat_blocked_by_child_paused">被孩子自己屏蔽 · 已暂停</string>
     <string name="stat_blocked_by_child_inactive">被孩子自己屏蔽 · 需要 Plus</string>
     <string name="stat_blocked_by_coparent">被另一位家长屏蔽</string>
     <string name="stat_blocked_by_coparent_paused">被另一位家长屏蔽 · 已暂停</string>
     <string name="stat_blocked_by_coparent_inactive">被另一位家长屏蔽 · 需要 Plus</string>
-    <string name="stat_lock_hint">锁形图标可将应用加入或移出快速屏蔽</string>
-    <string name="stat_quick_add_cd">加入快速屏蔽</string>
-    <string name="stat_quick_remove_cd">移出快速屏蔽</string>
-    <string name="stat_reenable_title">快速屏蔽将开启</string>
-    <string name="stat_reenable_message">快速屏蔽已关闭。屏蔽此应用会将其重新开启，列表中的其他 %1$d 个应用也会被屏蔽。</string>
+    <string name="stat_lock_hint">点锁可将应用加入或移出始终关闭的应用</string>
+    <string name="stat_quick_add_cd">加入始终关闭的应用</string>
+    <string name="stat_quick_remove_cd">从始终关闭的应用中移除</string>
+    <string name="stat_reenable_title">始终关闭的应用将重新开启</string>
+    <string name="stat_reenable_message">“始终关闭的应用”目前已关闭。添加此应用后会重新开启，列表中的其他应用也会被关闭：%1$d 个。</string>
     <string name="stat_reenable_confirm">屏蔽</string>
     <string name="stat_quick_paywall_title">需要订阅</string>
     <string name="stat_quick_paywall_message">一键屏蔽应用需要 Hoglt Plus 订阅。</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">快速屏蔽</string>
+    <string name="quick_title">始终关闭的应用</string>
     <string name="quick_enabled">已开启</string>
     <string name="quick_pause">暂停</string>
     <string name="quick_blocked_apps">被屏蔽的应用</string>
@@ -856,15 +856,15 @@
     <string name="quick_info_always">此列表中的应用无论何时何地都会被屏蔽。</string>
     <string name="quick_info_off">目前已关闭，开启后才会屏蔽这些应用。</string>
     <string name="quick_info_paused">已暂停至 %1$s，在此之前不会屏蔽任何内容。</string>
-    <string name="quick_info_stats">你也可以在使用统计中一键添加或移除应用。</string>
-    <string name="quick_info_readd">如果快速屏蔽已关闭，添加应用会将其重新开启。</string>
+    <string name="quick_info_stats">在“手机时间”页面，也可以一键把应用加入或移出此列表。</string>
+    <string name="quick_info_readd">如果“始终关闭的应用”已关闭，添加应用会让它重新开启。</string>
     <string name="quick_child_blocks">被孩子自己屏蔽</string>
     <string name="quick_coparent_blocks">被另一位家长屏蔽</string>
     <string name="quick_others_note">这些列表只有其所有者才能更改。如有需要，请把应用添加到你自己的列表。</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">睡眠时间</string>
-    <string name="policy_preset_limit">时间限额</string>
+    <string name="policy_preset_limit">每天多长时间</string>
     <string name="policy_preset_school">上课时间</string>
     <string name="policy_day_mon">周一</string>
     <string name="policy_day_tue">周二</string>
@@ -884,30 +884,30 @@
     <string name="policy_location">位置</string>
     <string name="policy_active_now">当前生效：%1$s</string>
     <string name="policy_active_until">至 %1$s</string>
-    <string name="list_info_none">目前没有生效的日程</string>
+    <string name="list_info_none">目前没有生效的规则</string>
     <string name="list_info_also">同时生效：%1$s。</string>
-    <string name="list_info_many">多个日程同时运行时，只要其中任何一个屏蔽某个应用，该应用就会被屏蔽。</string>
-    <string name="list_info_child_scope">孩子自己的日程无法覆盖你的日程，你屏蔽的应用会一直保持屏蔽。</string>
-    <string name="list_info_school_scope">如果学校日程关闭了某个应用或明确允许它，你的日程无法更改这一点。否则以更严格的日程为准。</string>
-    <string name="list_info_quick">快速屏蔽已开启，其中的应用无论何时何地都会被屏蔽。</string>
-    <string name="list_info_paused">已暂停的日程：%1$d 个，到设定时间前不会生效。</string>
-    <string name="list_info_how">日程会在设定的时间和地点到来时自动启动。</string>
-    <string name="policy_tab_templates">模板</string>
+    <string name="list_info_many">多条规则同时生效时，只要有一条屏蔽某个应用，该应用就会被屏蔽。</string>
+    <string name="list_info_child_scope">孩子自己的规则不能推翻你的规则——你屏蔽的应用会一直被屏蔽。</string>
+    <string name="list_info_school_scope">如果学校规则关闭某个应用或明确允许它，你的规则无法改变。其他情况下以更严格的规则为准。</string>
+    <string name="list_info_quick">“始终关闭的应用”已开启——此列表中的应用无论何时何地都保持关闭。</string>
+    <string name="list_info_paused">已暂停的规则：%1$d 条——在设定时间前不起作用。</string>
+    <string name="list_info_how">到了设定的时间和地点，规则会自动开始。</string>
+    <string name="policy_tab_templates">现成规则</string>
     <string name="policy_tab_mine">我设置的</string>
     <string name="policy_tab_child">孩子设置的</string>
-    <string name="policy_tab_coparent">家长</string>
+    <string name="policy_tab_coparent">另一位家长</string>
     <string name="policy_tab_school">学校</string>
     <string name="policy_enabled_count">已开启 %1$d 个</string>
-    <string name="policy_content_protection">内容防护</string>
+    <string name="policy_content_protection">防范不良网站</string>
     <string name="policy_content_protection_others">由孩子或另一位家长开启</string>
     <string name="policy_paused">已暂停</string>
-    <string name="policy_quick_blocks">快速屏蔽</string>
+    <string name="policy_quick_blocks">始终关闭的应用</string>
     <string name="preset_all_apps">所有应用</string>
-    <string name="policy_paywall_protection">内容防护需配合 Hoglt Plus 使用。</string>
+    <string name="policy_paywall_protection">防范不良网站功能需要 Hoglt Plus。</string>
     <string name="policy_paywall_count">免费方案限制日程数量。Hoglt Plus 可让你创建更多。</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">尚未选择任何内容，此日程不会屏蔽任何东西。</string>
+    <string name="info_nothing">还没有选择任何内容——此规则不会屏蔽任何东西。</string>
     <string name="info_always">始终</string>
     <string name="info_sentence">%1$s，%2$s。</string>
     <string name="info_when_time">%1$s %2$s 至 %3$s</string>
@@ -920,12 +920,12 @@
     <string name="info_what_all_apps_sites">所有应用和网站均被屏蔽</string>
     <string name="info_what_selected">所选项目被屏蔽（%1$s）</string>
     <string name="info_stays_open">保持开放：%1$s。</string>
-    <string name="info_not_counted">不计入限额：%1$s。</string>
+    <string name="info_not_counted">不计时间：%1$s。</string>
     <string name="info_limit_daily">%1$s：%2$s 总共可使用 %3$s。时间用完后，将保持屏蔽到明天。</string>
     <string name="info_limit_hourly">%1$s：%2$s 每小时可使用 %3$s。时间用完后，将保持屏蔽到下一个小时。</string>
     <string name="info_limit_all">所有应用</string>
     <string name="info_limit_selected">所选项目</string>
-    <string name="info_limit_gate">限额仅适用于：%1$s。</string>
+    <string name="info_limit_gate">只在以下时间计时：%1$s。</string>
     <string name="info_protected">通话、短信和其他必要应用永远不会被屏蔽。</string>
     <string name="info_disabled">目前已关闭，开启后才会生效。</string>
 
@@ -934,7 +934,7 @@
     <string name="preset_when">何时</string>
     <string name="preset_starts">开始</string>
     <string name="preset_ends">结束</string>
-    <string name="preset_limit">限额</string>
+    <string name="preset_limit">多长时间</string>
     <string name="preset_counted">计入哪些</string>
     <string name="preset_what_closed">屏蔽哪些</string>
     <string name="preset_only_selected">仅所选</string>
@@ -975,13 +975,13 @@
     <string name="targets_covered_by_category">通过分类选中</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">网站地址或关键词无效。示例：youtube.com 或 kino</string>
-    <string name="editor_new_policy">新日程</string>
+    <string name="editor_new_policy">新规则</string>
     <string name="editor_not_selected">未选择</string>
     <string name="editor_when_hint">可选 · 否则始终生效</string>
     <string name="editor_add_condition">添加条件</string>
     <string name="editor_added">已添加</string>
     <string name="editor_condition_time">时间</string>
-    <string name="editor_condition_limit">限额</string>
+    <string name="editor_condition_limit">多长时间</string>
     <string name="editor_in_this_time">在此时间内</string>
     <string name="editor_closed_in_time">屏蔽</string>
     <string name="editor_closed_in_time_sub">其他时间开放</string>
@@ -992,8 +992,8 @@
     <string name="editor_inside">区域内</string>
     <string name="editor_outside">区域外</string>
     <string name="editor_rename">重命名</string>
-    <string name="editor_delete_title">删除这个日程？</string>
-    <string name="editor_delete_message">“%1$s”将被删除。</string>
+    <string name="editor_delete_title">删除这条规则？</string>
+    <string name="editor_delete_message">“%1$s”将被删除。此规则屏蔽的应用会重新打开。</string>
     <string name="editor_paywall_allow">“仅所选保持开放”模式需要 Plus。</string>
     <string name="location_child_here">我的孩子在哪里</string>
     <string name="protection_section">保护内容</string>
@@ -1011,24 +1011,24 @@
     <string name="protection_policies_pending">尚未送达</string>
     <string name="protection_gujanak_limits_note">中等保护只会关闭应用。网站和短视频只有在严格保护下才会被屏蔽：在孩子的手机上打开 Hoglt →“管控”→“护盾模式”。</string>
     <string name="editor_limit_days_follow_time">与时间相同，日期在时间页面中选择</string>
-    <string name="editor_limit_in_window">此时间内的限额</string>
-    <string name="editor_limit_outside_window">此时间外的限额</string>
-    <string name="editor_limit_in_time">限额在此时间内生效</string>
+    <string name="editor_limit_in_window">在这些时段内计时</string>
+    <string name="editor_limit_outside_window">在这些时段外计时</string>
+    <string name="editor_limit_in_time">只在这些时段内计时</string>
     <string name="editor_limit_in_time_sub">其他时间不受限制</string>
-    <string name="editor_limit_out_time">限额在此时间之外生效</string>
+    <string name="editor_limit_out_time">在这些时段外计时</string>
     <string name="editor_limit_out_time_sub">此时间内不受限制</string>
     <string name="info_limit_daily_window">%1$s：%2$s 总共可使用 %3$s。时间用完后，将保持关闭，直到此时间段结束。</string>
     <string name="targets_only_selected_open_sites_sub">其他网站被关闭</string>
     <string name="targets_only_selected_open_both_sub">其他应用和网站被关闭</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">暂无日程</string>
-    <string name="policy_empty_mine_sub">开启一个模板，或创建你自己的</string>
+    <string name="policy_empty_mine_title">还没有规则</string>
+    <string name="policy_empty_mine_sub">开启一条现成规则，或自己创建</string>
     <string name="empty_search_title">未找到结果</string>
     <string name="empty_search_sub">换个关键词试试</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">成人和赌博网站</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">日程</string>
+    <string name="policy_name_schedule">规则</string>
     <string name="policy_name_category_block">按分类屏蔽</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">由孩子开启</string>
@@ -1123,7 +1123,7 @@
     <string name="ap_off_confirm">关闭</string>
     <string name="ap_keep_on">保持开启</string>
     <string name="ap_retry_note">我们明天会再试一次（%1$d/3）。</string>
-    <string name="ap_retry_now">重试</string>
+    <string name="ap_retry_now">立即支付</string>
     <string name="ap_other_card">其他银行卡</string>
     <string name="ap_cards_empty_title">没有已保存的银行卡</string>
     <string name="ap_cards_empty_sub">添加 UZCARD 或 HUMO 卡用于自动扣款</string>
@@ -1169,7 +1169,7 @@
     <string name="ulash_tugma">关联</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">跳过</string>
+    <string name="ob_skip">以后再看</string>
     <string name="ob_start">开始吧</string>
     <string name="ob_got_it">知道了</string>
     <string name="ob_hello_title">你好，我是 Hoglt</string>
@@ -1183,10 +1183,10 @@
     <string name="ob_day_study">学习</string>
     <string name="ob_min_fmt">%1$d 分钟</string>
     <string name="ob_rules_title">规则只需设置一次</string>
-    <string name="ob_rules_body">睡觉时间、上学时间和每日限额会自动开启。</string>
+    <string name="ob_rules_body">睡觉时间、上学时间和每日时间会自动开启。</string>
     <string name="ob_rule_sleep">睡眠时间</string>
     <string name="ob_rule_school">上学时间</string>
-    <string name="ob_rule_limit">每日限额</string>
+    <string name="ob_rule_limit">每天多长时间</string>
     <string name="ob_rule_limit_value">2 小时</string>
     <string name="ob_map_title">知道他们在哪里</string>
     <string name="ob_map_body">在地图上看到你的孩子，并为学校等地点设置规则。</string>
@@ -1243,8 +1243,8 @@
     <string name="home_layout_list">列表</string>
     <string name="home_layout_grid">网格</string>
     <string name="home_greeting">你好，%1$s</string>
-    <string name="kecha_sarfladi">昨天已用</string>
-    <string name="sana_sarfladi">%1$s 已用</string>
+    <string name="kecha_sarfladi">昨天在手机上</string>
+    <string name="sana_sarfladi">%1$s 在手机上</string>
     <string name="stat_no_usage_day">这一天还没有使用手机</string>
     <string name="kirish_usuli">登录方式</string>
     <string name="google_hisobi">Google 账号</string>
@@ -1267,7 +1267,7 @@
     <string name="vazifa_muddati">截止时间</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">助手</string>
+    <string name="ai_assistant_title">智能助手</string>
     <string name="ai_assistant_subtitle">提问或设置规则</string>
     <string name="ai_period_today">今天</string>
     <string name="ai_period_yesterday">昨天</string>
@@ -1397,20 +1397,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">免费：%1$d 条生效规则 · Plus：不限</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">应用无法看到打开了哪些应用：手机时间不会被统计，规则也不起作用。</string>
+    <string name="perm_why_overlay">被屏蔽的应用上无法显示屏蔽画面，因此规则无法关闭它。</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">你看不到孩子在哪里，基于位置的规则也不起作用。</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">没有它，网站、YouTube Shorts 和 Instagram Reels 不会被屏蔽，应用也能被随意卸载。</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">免费方案每条规则最多可添加 %1$d 个应用。Plus 可添加更多。</string>
+    <string name="policy_paywall_app_limit">此规则已达到你方案的应用数量上限。</string>
     <string name="clip_child_phone">在他们的手机上</string>
     <string name="prot_default_note">目前你的规则不会关闭任何应用。如需关闭，请在孩子的手机上打开 Hoglt →“管控”，然后开启保护。</string>
     <string name="prot_strength">保护强度</string>
@@ -1440,4 +1440,64 @@
     <string name="task_empty_done">还没有已完成的任务</string>
     <string name="task_empty_overdue">没有已逾期的任务</string>
     <string name="task_empty_filter_hint">再点一下已选的筛选项，即可查看全部任务。</string>
+    <string name="voice_listen">收听</string>
+    <string name="voice_stop">停止</string>
+    <string name="voice_unavailable">语音讲解暂不可用，请稍后再试。</string>
+    <string name="live_confirm_title">实时观看</string>
+    <string name="live_confirm_body">%1$s 会接到来电。对方接听后，视频就会打开。</string>
+    <string name="live_child_fallback">你的孩子</string>
+    <string name="live_call_button">拨打</string>
+    <string name="live_ringing">正在呼叫 %1$s…</string>
+    <string name="live_connecting">正在连接…</string>
+    <string name="live_error_connect">无法连接，请稍后再试。</string>
+    <string name="live_declined">孩子拒绝了</string>
+    <string name="live_no_answer">无人接听</string>
+    <string name="live_end">结束</string>
+    <string name="live_show_on_map">在地图上查看</string>
+    <string name="unlink_child_button">解除孩子绑定</string>
+    <string name="saqlandi">已保存</string>
+    <string name="ap_retry_now_amount">立即支付 · %1$s</string>
+    <string name="pay_charge_body">将从尾号 •• %1$s 的卡中扣款 %2$s。</string>
+    <string name="pay_charge_body_amount">将从你的卡中扣款 %1$s。</string>
+    <string name="pay_charge_body_plain">订阅费用将从你保存的卡中扣除。</string>
+    <string name="pay_confirm_pay">支付</string>
+    <string name="app_store_unavailable">App Store 现在不可用，请稍后再试。</string>
+    <string name="app_store_failed">App Store 付款未成功，请重试。</string>
+    <string name="apple_activation_pending_title">已收到付款</string>
+    <string name="login_subtitle_social">选择登录方式。还没有账号？会自动为你创建。</string>
+    <string name="login_telegram_not_opened">Telegram 没有打开。请确认已安装 Telegram，或换一种方式登录。</string>
+    <string name="ob_notif_enable">开启通知</string>
+    <string name="comfort_title">看得清楚吗？</string>
+    <string name="comfort_screen_color">屏幕颜色</string>
+    <string name="comfort_light">浅色</string>
+    <string name="comfort_dark">深色</string>
+    <string name="comfort_done">完成</string>
+    <string name="comfort_hint">以后也可以更改。</string>
+    <string name="policy_turned_on">已开启：%1$s</string>
+    <string name="policy_turned_off">已关闭：%1$s</string>
+    <string name="policy_off_title">要关闭“%1$s”吗？</string>
+    <string name="policy_off_body">此规则会立即在孩子手机上停止生效，被它屏蔽的内容都会重新打开。你随时可以重新开启。</string>
+    <string name="policy_off_body_safety">此保护会立即在孩子手机上停止。你随时可以重新开启。</string>
+    <string name="policy_off_confirm">是，关闭</string>
+    <string name="policy_off_cancel">不，保持开启</string>
+    <string name="policy_saved_sent">已保存——已发送到孩子的手机</string>
+    <string name="policy_saved_queued">已保存——你重新联网后会发送到孩子的手机</string>
+    <string name="policy_unsaved_title">保存更改？</string>
+    <string name="policy_unsaved_body">如果不保存，孩子手机上不会有任何变化。</string>
+    <string name="policy_unsaved_discard">不保存并退出</string>
+    <string name="quick_unblock_title">要解除屏蔽 %1$s 吗？</string>
+    <string name="quick_unblock_body">此应用会立即在孩子手机上打开。</string>
+    <string name="quick_unblock_confirm">是，解除屏蔽</string>
+    <string name="quick_unblock_action">解除屏蔽</string>
+    <string name="quick_unblocked">已解除屏蔽：%1$s</string>
+    <string name="policy_exception_remove">移除</string>
+    <string name="policy_load_failed">加载失败</string>
+    <string name="tg_more_settings">更多设置</string>
+    <string name="rules_on_count">已开启的规则：%1$d</string>
+    <string name="task_accepted">已接受</string>
+    <string name="task_accepted_coins">%1$s 获得金币：%2$d</string>
+    <string name="task_coins_explain">你接受任务后，金币会转给孩子，孩子可以用它向智能助手提问。</string>
+    <string name="task_coins_not_enough">金币不足</string>
+    <string name="chat_support_title">客服中心</string>
+    <string name="chat_ai_title">智能助手</string>
 </resources>

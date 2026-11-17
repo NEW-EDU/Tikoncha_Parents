@@ -15,10 +15,13 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import uz.tikoncha_parent.presentation.base.LocalToastHost
+import uz.tikoncha_parent.presentation.base.ToastData
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import uz.tikoncha_parent.presentation.base.ToastType
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -67,16 +70,25 @@ class ChildEditScreen(
 
         val navigator = LocalNavigator.current
 
-        LaunchedEffect(state.value.saveState){
-            if (state.value.saveState is ResponseState.Success)
-                navigator?.pop()
-        }
+        ToastProvider {
+            val toast = LocalToastHost.current
+            val savedText = stringResource(Res.string.saqlandi)
 
-        ChildEditUi(
-            navigator = navigator,
-            state = state.value,
-            event = event
-        )
+            // Saqlandi — avval "Saqlandi" körinadi, keyin orqaga qaytiladi (jim yopilmaydi)
+            LaunchedEffect(state.value.saveState) {
+                if (state.value.saveState is ResponseState.Success) {
+                    launch { toast.show(ToastData(type = ToastType.Success, title = savedText), durationMs = 1500) }
+                    delay(1200)
+                    navigator?.pop()
+                }
+            }
+
+            ChildEditUi(
+                navigator = navigator,
+                state = state.value,
+                event = event
+            )
+        }
     }
 }
 
@@ -93,16 +105,19 @@ fun ChildEditUi(
 
     val loading = state.saveState is ResponseState.Loading
     val error = state.saveState.errorText()
-    val showDialog by remember { mutableStateOf(false) }
+    // Xato bölsa — oyna körinadi (avval bayroq heç qaçon true bölmasdi: saqlanmagani bilinmasdi)
+    val showDialog = error.isNotBlank()
 
     LoadingDialog(loading)
 
     CustomDialog(
+        painter = painterResource(Res.drawable.dialog_failed),
         message = error,
         show = showDialog,
         title = stringResource(Res.string.xatolik),
+        buttonText = stringResource(Res.string.ok),
         onDismiss = { event(ChildEditEvent.ClearError) },
-        onButtonClick = { !showDialog }
+        onButtonClick = { event(ChildEditEvent.ClearError) }
     )
 
     val systemBars = rememberScreenSystemBars(

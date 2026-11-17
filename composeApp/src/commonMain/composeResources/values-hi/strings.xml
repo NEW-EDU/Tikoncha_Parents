@@ -94,7 +94,7 @@
     <string name="maktab">स्कूल</string>
     <string name="sozlamalar">सेटिंग्स</string>
     <string name="bildirishnomalar">नोटिफ़िकेशन</string>
-    <string name="tema">थीम</string>
+    <string name="tema">स्क्रीन का रंग</string>
     <string name="tasdiqlash">पुष्टि करें</string>
     <string name="tolov">भुगतान</string>
     <string name="obuna_pro">Pro सब्सक्रिप्शन</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">पासपोर्ट ID</string>
     <string name="reklama">विज्ञापन</string>
     <string name="yorug">लाइट</string>
-    <string name="theme_system">सिस्टम</string>
+    <string name="theme_system">फ़ोन जैसा</string>
     <string name="xavfli_zona">खतरे वाला इलाका</string>
     <string name="akkauntni_o_chirish">अकाउंट डिलीट करें</string>
     <string name="pochta_orqali">ईमेल से</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">अनुमति माँगें</string>
     <string name="joylashuv_uchun_ruxsat">लोकेशन की अनुमति</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">मैप का पूरा इस्तेमाल करने के लिए सेटिंग्स से लोकेशन की अनुमति दें!</string>
-    <string name="xatolik">त्रुटि</string>
-    <string name="ok">ठीक है</string>
+    <string name="xatolik">यह नहीं हो पाया</string>
+    <string name="ok">ठीक है, समझ आ गया</string>
     <string name="qoshish">जोड़ें</string>
     <string name="ogil_bola">लड़का</string>
     <string name="qiz_bola">लड़की</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">सफल</string>
     <string name="qisqartirish">छोटा करें</string>
     <string name="vazifa_tahrirlandi">टास्क बदला गया</string>
-    <string name="server_connection_error">सर्वर कनेक्शन में त्रुटि!</string>
+    <string name="server_connection_error">अभी कनेक्ट नहीं हो पाया। थोड़ी देर बाद फिर कोशिश करें।</string>
     <string name="faol">चालू</string>
     <string name="faol_emas">निष्क्रिय</string>
     <string name="ohirgi_faollik">आख़िरी बार एक्टिव:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >ध्यान दें!</string>
     <string name="siz_tanlagan_vaqt_oraligida">आपके चुने हुए समय-अंतराल में इस्तेमाल की लिमिट काम नहीं करेगी! यानी समय वाले शेड्यूल की प्राथमिकता ज़्यादा है।</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d ऐप्स आपके डिवाइस में इंस्टॉल नहीं हैं</string>
-    <string name="cheklovlar">पाबंदियाँ</string>
+    <string name="cheklovlar">नियम</string>
     <string name="ta_ilovaga">%1$d ऐप्स पर</string>
     <string name="ta_vebsaytga">%1$d वेबसाइट पर</string>
     <string name="ustuvorligi">प्राथमिकता</string>
-    <string name="jadval_nomini_kiriting">शेड्यूल का नाम डालें</string>
+    <string name="jadval_nomini_kiriting">नियम का नाम लिखें</string>
     <string name="misol_o_quv_markaz">उदाहरण: ट्रेनिंग सेंटर</string>
     <string name="ochirish">डिलीट करें</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">क्या आप शेड्यूल सेव किए बिना बाहर निकलने के लिए तैयार हैं?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">बधाई हो!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">अब यह सब्सक्रिप्शन आपके पास है</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">खास फ़ीचर्स और प्रायोरिटी सपोर्ट का आनंद लें!</string>
-    <string name="statistika">आँकड़े</string>
+    <string name="statistika">फ़ोन का समय</string>
     <string name="chegirmalar">छूट</string>
     <string name="chegirma">छूट</string>
-    <string name="topshiriqlar">असाइनमेंट</string>
-    <string name="jadvallar">शेड्यूल</string>
+    <string name="topshiriqlar">टास्क</string>
+    <string name="jadvallar">नियम</string>
     <string name="ilova_cheklangan">%1$d ऐप्स पर पाबंदी</string>
-    <string name="faol_vazifa">%1$d एक्टिव टास्क</string>
-    <string name="bugun_sarfladi">आज खर्च किया</string>
+    <string name="faol_vazifa">चालू टास्क: %1$d</string>
+    <string name="bugun_sarfladi">आज फ़ोन पर</string>
     <string name="chiqish">लॉग आउट करें</string>
     <string name="chiqishni_xohlaysizmi">क्या आप लॉग आउट करना चाहते हैं?</string>
     <string name="chiqishni_tasdiqlang">लॉग आउट की पुष्टि करें।</string>
@@ -321,8 +321,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">आपकी प्रोफ़ाइल और सेटिंग्स सर्वर पर सेव रहती हैं।</string>
     <string name="qayta_kirsangiz_tiklanadi">दोबारा लॉग इन करने पर सब कुछ वापस आ जाएगा।</string>
     <string name="farzand_qoshilmagan">कोई बच्चा जोड़ा नहीं गया</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">बच्चा जोड़ने के बाद शेड्यूल, चैट और रिपोर्ट यहाँ दिखेंगे।</string>
-    <string name="kutilmagan_xatolik_qayta_urining">कोई अनजानी त्रुटि हुई। कृपया फिर से कोशिश करें।</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">बच्चा जोड़ने के बाद नियम, चैट और फ़ोन का समय दिखेंगे।</string>
+    <string name="kutilmagan_xatolik_qayta_urining">यह नहीं हो पाया। थोड़ी देर बाद फिर कोशिश करें।</string>
     <string name="hozircha_farzand_qoshilmagan">आपने अभी तक कोई बच्चा नहीं जोड़ा है।</string>
     <string name="diqqat2">ध्यान दें!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">आगे बढ़ने से पहले ऐप का प्रकार चुनें।</string>
@@ -342,10 +342,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">चुनें कि हम वेरिफ़िकेशन कोड \n कैसे भेजें</string>
     <string name="tasdiqlash_kodini_olish">वेरिफ़िकेशन कोड पाएँ</string>
     <string name="telegram_kod_kiritish">%1$s से जुड़े Telegram पर भेजा गया कोड डालें</string>
-    <string name="xato_kod_kiritdingiz">आपने गलत कोड डाला है</string>
+    <string name="xato_kod_kiritdingiz">कोड मेल नहीं खाया। फिर से लिखें।</string>
     <string name="kod_olish_usulini_ozgartirish">कोड पाने का तरीका बदलें</string>
     <string name="versiya">वर्ज़न</string>
-    <string name="jadval_yaratish">शेड्यूल बनाएँ</string>
+    <string name="jadval_yaratish">नियम बनाएँ</string>
     <string name="sizning_cheklovlaringiz">आपकी पाबंदियाँ</string>
 
     <string name="avtomatik_bloklash_vaqti">चुने हुए दिनों और घंटों पर अपने आप ब्लॉकिंग</string>
@@ -363,9 +363,9 @@
     <string name="noto_g_ri_url_format">URL का फ़ॉर्मैट गलत है</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">यह साइट पहले से सूची में है</string>
     <string name="to_liq_nazoratni_yoqing">पूरा कंट्रोल चालू करें</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Hoglt से ऐप्स, समय और इस्तेमाल को मैनेज करें। Plus के साथ बिना पाबंदी काम करें और शील्ड मोड से अधिकतम सुरक्षा चालू करें।</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Hoglt से ऐप्स और फ़ोन के समय को संभालें। Plus के साथ कोई सीमा नहीं और आप सख़्त सुरक्षा चालू कर सकते हैं।</string>
     <string name="plus_imkoniyatlarini_ochish">Plus के फ़ीचर्स अनलॉक करें</string>
-    <string name="jadval_nomi">शेड्यूल का नाम</string>
+    <string name="jadval_nomi">नियम का नाम</string>
     <string name="saytlar">साइट्स</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">बताएँ कि ऐप्स और वेबसाइट पर पाबंदी कब और किन हालात में लगे</string>
 
@@ -394,7 +394,7 @@
     <string name="coins_help_close">बंद करें</string>
     <string name="qollash">लागू करें</string>
     <string name="promokod">प्रोमो कोड:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">आपने कॉइन सफलतापूर्वक खरीद लिए हैं।</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">कॉइन ख़रीद लिए गए।</string>
     <string name="narx">कीमत</string>
     <string name="jami">कुल</string>
     <string name="bekor_qilindi">रद्द हो गया!</string>
@@ -411,11 +411,11 @@
     <string name="plus_obnuna_kerak">PLUS सब्सक्रिप्शन ज़रूरी है</string>
     <string name="toliq_nazorat_statistika">पूरा कंट्रोल और आँकड़े</string>
     <string name="farzand_ilova_kuzatish">देखें कि आपका बच्चा कौन-से ऐप्स और दिन में कितना इस्तेमाल करता है।</string>
-    <string name="uchtagacha_jadval">3 शेड्यूल तक</string>
+    <string name="uchtagacha_jadval">3 नियम तक</string>
     <string name="jadval_cheklovlar">दिनों, हफ़्तों या खास समय के लिए अलग-अलग पाबंदियाँ तय करें।</string>
     <string name="qattiq_bloklash_qalqon">सख़्त सुरक्षा: वेबसाइटें और छोटे वीडियो भी ब्लॉक होते हैं</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">आपका बच्चा पाबंदियाँ बंद या बदल नहीं सकता।</string>
-    <string name="tez_bloklash_timer">फ़टाफ़ट ब्लॉक (टाइमर)</string>
+    <string name="tez_bloklash_timer">हमेशा बंद ऐप्स</string>
     <string name="vaqtinchalik_bloklash_tezi">ज़रूरत पड़ने पर कुछ ही सेकंड में अस्थायी ब्लॉकिंग चालू करें।</string>
     <string name="hisobot_tahlil">रिपोर्ट और विश्लेषण</string>
     <string name="farzand_nazorat_tavsifi">अपने बच्चे के फ़ोन के इस्तेमाल पर कंट्रोल रखें। अनचाहे ऐप्स ब्लॉक करें, इस्तेमाल का समय तय करें और सुरक्षित माहौल बनाएँ।</string>
@@ -493,8 +493,8 @@
     <string name="danger_cat_tobacco">तंबाकू और वेप</string>
     <string name="danger_distance_m">%1$d मी</string>
     <string name="radius">रेडियस</string>
-    <string name="farzandim">मेरा बच्चा</string>
-    <string name="ozim">मैं खुद</string>
+    <string name="farzandim">बच्चे के अपने</string>
+    <string name="ozim">मेरी ओर से</string>
     <string name="faol_vazifa_yo_q">कोई एक्टिव टास्क नहीं</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">आपके बच्चे के लिए कोई टास्क नहीं है</string>
 
@@ -519,7 +519,7 @@
     <string name="weekday_sunday">रविवार</string>
 
     <string name="juda_muhim">बहुत ज़रूरी</string>
-    <string name="tekshirildi">जाँचा गया</string>
+    <string name="tekshirildi">मंज़ूर है</string>
     <string name="ko_rish">देखें</string>
     <string name="vazifa_ochirilsinmi">टास्क डिलीट करें?</string>
     <string name="vazifa_ochirish_tasdiq">क्या आप सच में यह टास्क डिलीट करना चाहते हैं?</string>
@@ -541,7 +541,7 @@
     <string name="tolovlar_tarixi_bos">भुगतान का इतिहास खाली है</string>
     <string name="tolovlar_tarixi_bos_hint">खरीदारी के बाद यह यहाँ दिखेगा</string>
     <string name="boshqa_yozuvlar_yoq">और रिकॉर्ड नहीं हैं</string>
-    <string name="xatolik_yuz_berdi">कोई त्रुटि हुई</string>
+    <string name="xatolik_yuz_berdi">लोड नहीं हो पाया। फिर कोशिश करें।</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -572,7 +572,7 @@
 
     <string name="izoh_ixtiyoriy">टिप्पणी (वैकल्पिक)</string>
     <string name="vazifa_tangalari">टास्क पूरा करने पर मिलने वाले कॉइन</string>
-    <string name="vazifani_tekshirish">टास्क जाँचें</string>
+    <string name="vazifani_tekshirish">सब ठीक है?</string>
     <string name="izoh">टिप्पणी</string>
     <string name="muhimlilik_darajasi">अहमियत का स्तर</string>
     <string name="ragbatlantirish_tangachalari">इनाम के कॉइन</string>
@@ -592,7 +592,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">आपके बच्चे को Hoglt ऐप खोलकर वेरिफ़िकेशन कोड डालना होगा।</string>
     <string name="bola_hali_bajardim_bosmagan">बच्चे ने अभी तक “हो गया” बटन नहीं दबाया है</string>
     <string name="foydalanilmagan">इस्तेमाल नहीं हुआ</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">फिर से साइन इन करें</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">लॉग इन करें</string>
     <string name="profil_rasmi">प्रोफ़ाइल फ़ोटो</string>
@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Telegram से साइन इन करें</string>
     <string name="yoki">या</string>
     <string name="telefon_raqami">फ़ोन नंबर</string>
-    <string name="kirish_subtitle">आगे बढ़ने के लिए अपने अकाउंट में साइन इन करें</string>
+    <string name="kirish_subtitle">Telegram से साइन इन करें। खाता नहीं है? अपने आप बन जाएगा।</string>
     <string name="login_privacy">जारी रखकर आप प्राइवेसी पॉलिसी और इस्तेमाल की शर्तों से सहमत होते हैं</string>
 
     <string name="telegram_ochilmoqda">Telegram खुल रहा है…</string>
@@ -753,9 +753,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">आपने रिक्वेस्ट मंज़ूर कर दी, अब आपका बच्चा ऐप से साइन आउट कर सकता है।</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">आपने रिक्वेस्ट मंज़ूर कर दी, अब आपका बच्चा ऐप अनइंस्टॉल कर सकता है।</string>
     <string name="sorov_rad_etildi_desc">आपने रिक्वेस्ट नामंज़ूर कर दी।</string>
-    <string name="unlink_child_title">बच्चे का कनेक्शन हटाएँ?</string>
-    <string name="unlink_child_message">इसके बाद %1$s के डिवाइस की निगरानी बंद हो जाएगी!</string>
-    <string name="unlink_child_action">कनेक्शन हटाएँ</string>
+    <string name="unlink_child_title">इस बच्चे को अलग करें?</string>
+    <string name="unlink_child_message">%1$s के फ़ोन पर सुरक्षा और नियम रुक जाएँगे। फिर से जोड़ने के लिए “बच्चा जोड़ें” से कोड दोबारा स्कैन करें।</string>
+    <string name="unlink_child_action">हाँ, अलग करें</string>
     <string name="child_unlinked_success">बच्चे का कनेक्शन हटा दिया गया</string>
     <string name="operator_kodi_topilmadi">ऐसा कोई ऑपरेटर कोड नहीं है</string>
     <string name="kod_amal_qilish_muddati">कोड मान्य है: %1$s</string>
@@ -769,7 +769,7 @@
     <string name="farzand_tanlanmagan">कोई बच्चा नहीं चुना गया</string>
     <string name="vazifa_id_topilmadi">टास्क ID नहीं मिली</string>
     <string name="tahrirlangan">बदला गया</string>
-    <string name="jadval_topilmadi">शेड्यूल नहीं मिला।</string>
+    <string name="jadval_topilmadi">नहीं मिला — शायद हटा दिया गया है। वापस जाकर फिर से खोलें।</string>
     <plurals name="minutes">
         <item quantity="one">%1$d मिनट</item>
         <item quantity="other">%1$d मिनट</item>
@@ -802,8 +802,8 @@
     <string name="tarix_disabled">बंद किया गया</string>
     <string name="tarix_paused">रुका हुआ</string>
     <string name="tarix_deleted">डिलीट किया गया</string>
-    <string name="tarix_quick_block_add">फ़टाफ़ट ब्लॉक जोड़ा गया</string>
-    <string name="tarix_quick_block_remove">फ़टाफ़ट ब्लॉक हटाया गया</string>
+    <string name="tarix_quick_block_add">हमेशा बंद ऐप्स में जोड़ा गया</string>
+    <string name="tarix_quick_block_remove">हमेशा बंद ऐप्स से हटाया गया</string>
     <string name="tarix_bosh">अभी कोई बदलाव नहीं</string>
     <string name="tarix_resumed">फिर से शुरू किया गया</string>
     <string name="muddat">अवधि</string>
@@ -827,26 +827,26 @@
     <string name="stat_row_sec">%1$d सेकंड</string>
     <string name="stat_hour_only">%1$d घं</string>
     <string name="stat_per_day">~%1$s रोज़</string>
-    <string name="stat_quick_blocked">फ़टाफ़ट ब्लॉक में</string>
-    <string name="stat_quick_blocked_paused">फ़टाफ़ट ब्लॉक में · रुका हुआ</string>
-    <string name="stat_quick_blocked_inactive">फ़टाफ़ट ब्लॉक में · Plus चाहिए</string>
+    <string name="stat_quick_blocked">हमेशा बंद</string>
+    <string name="stat_quick_blocked_paused">हमेशा बंद · रुका हुआ</string>
+    <string name="stat_quick_blocked_inactive">हमेशा बंद · Plus चाहिए</string>
     <string name="stat_blocked_by_child">बच्चे ने खुद ब्लॉक किया</string>
     <string name="stat_blocked_by_child_paused">बच्चे ने खुद ब्लॉक किया · रुका हुआ</string>
     <string name="stat_blocked_by_child_inactive">बच्चे ने खुद ब्लॉक किया · Plus चाहिए</string>
     <string name="stat_blocked_by_coparent">दूसरे पैरेंट ने ब्लॉक किया</string>
     <string name="stat_blocked_by_coparent_paused">दूसरे पैरेंट ने ब्लॉक किया · रुका हुआ</string>
     <string name="stat_blocked_by_coparent_inactive">दूसरे पैरेंट ने ब्लॉक किया · Plus चाहिए</string>
-    <string name="stat_lock_hint">लॉक किसी ऐप को फ़टाफ़ट ब्लॉक में जोड़ता या हटाता है</string>
-    <string name="stat_quick_add_cd">फ़टाफ़ट ब्लॉक में जोड़ें</string>
-    <string name="stat_quick_remove_cd">फ़टाफ़ट ब्लॉक से हटाएँ</string>
-    <string name="stat_reenable_title">फ़टाफ़ट ब्लॉक चालू हो जाएगा</string>
-    <string name="stat_reenable_message">फ़टाफ़ट ब्लॉक बंद है। इस ऐप को ब्लॉक करने पर वह फिर चालू हो जाएगा और उसकी सूची के बाकी ऐप्स भी ब्लॉक हो जाएँगे: %1$d।</string>
+    <string name="stat_lock_hint">ताला ऐप को हमेशा बंद ऐप्स में जोड़ता है या हटाता है</string>
+    <string name="stat_quick_add_cd">हमेशा बंद ऐप्स में जोड़ें</string>
+    <string name="stat_quick_remove_cd">हमेशा बंद ऐप्स से हटाएँ</string>
+    <string name="stat_reenable_title">हमेशा बंद ऐप्स फिर से चालू हो जाएँगे</string>
+    <string name="stat_reenable_message">“हमेशा बंद ऐप्स” अभी बंद हैं। यह ऐप जोड़ने पर ये फिर से चालू हो जाएँगे और सूची के बाकी ऐप्स भी बंद हो जाएँगे: %1$d।</string>
     <string name="stat_reenable_confirm">ब्लॉक करें</string>
     <string name="stat_quick_paywall_title">सब्सक्रिप्शन ज़रूरी है</string>
     <string name="stat_quick_paywall_message">एक टैप में ऐप ब्लॉक करने के लिए Hoglt Plus सब्सक्रिप्शन चाहिए।</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">फ़टाफ़ट ब्लॉक</string>
+    <string name="quick_title">हमेशा बंद ऐप्स</string>
     <string name="quick_enabled">चालू</string>
     <string name="quick_pause">रोकें</string>
     <string name="quick_blocked_apps">ब्लॉक किए गए ऐप्स</string>
@@ -855,15 +855,15 @@
     <string name="quick_info_always">इस सूची के ऐप्स समय या जगह चाहे जो हो, हमेशा ब्लॉक रहते हैं।</string>
     <string name="quick_info_off">यह अभी बंद है, इन ऐप्स को ब्लॉक करने के लिए इसे चालू करें।</string>
     <string name="quick_info_paused">%1$s तक रुका हुआ, तब तक कुछ भी ब्लॉक नहीं होगा।</string>
-    <string name="quick_info_stats">आप इस्तेमाल के आँकड़ों से भी एक टैप में ऐप जोड़ या हटा सकते हैं।</string>
-    <string name="quick_info_readd">अगर फ़टाफ़ट ब्लॉक बंद है, तो कोई ऐप जोड़ने पर वह फिर चालू हो जाता है।</string>
+    <string name="quick_info_stats">“फ़ोन का समय” पेज पर भी आप एक टैप में ऐप को इस सूची में जोड़ या हटा सकते हैं।</string>
+    <string name="quick_info_readd">अगर “हमेशा बंद ऐप्स” बंद हैं, तो ऐप जोड़ने से ये फिर से चालू हो जाते हैं।</string>
     <string name="quick_child_blocks">बच्चे ने खुद ब्लॉक किया</string>
     <string name="quick_coparent_blocks">दूसरे पैरेंट ने ब्लॉक किया</string>
     <string name="quick_others_note">इन सूचियों को सिर्फ़ इनका मालिक बदल सकता है। ज़रूरत हो तो ऐप को अपनी सूची में जोड़ें।</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">सोने का समय</string>
-    <string name="policy_preset_limit">समय सीमा</string>
+    <string name="policy_preset_limit">रोज़ कितना समय</string>
     <string name="policy_preset_school">स्कूल के घंटे</string>
     <string name="policy_day_mon">सोम</string>
     <string name="policy_day_tue">मंगल</string>
@@ -883,30 +883,30 @@
     <string name="policy_location">लोकेशन</string>
     <string name="policy_active_now">अभी चालू: %1$s</string>
     <string name="policy_active_until">%1$s तक</string>
-    <string name="list_info_none">अभी कोई शेड्यूल चालू नहीं है</string>
+    <string name="list_info_none">अभी कोई नियम चालू नहीं है</string>
     <string name="list_info_also">ये भी चालू हैं: %1$s।</string>
-    <string name="list_info_many">जब कई शेड्यूल एक साथ चलते हैं, तो उनमें से कोई भी ऐप को ब्लॉक करे तो वह ब्लॉक रहता है।</string>
-    <string name="list_info_child_scope">बच्चे के अपने शेड्यूल आपके शेड्यूल को नहीं बदल सकते, जो ऐप आप ब्लॉक करते हैं वह ब्लॉक ही रहता है।</string>
-    <string name="list_info_school_scope">अगर स्कूल का शेड्यूल किसी ऐप को बंद करता है या साफ़ तौर पर इजाज़त देता है, तो आपका शेड्यूल उसे नहीं बदल सकता। वरना ज़्यादा सख़्त शेड्यूल लागू होता है।</string>
-    <string name="list_info_quick">फ़टाफ़ट ब्लॉक चालू है, इसके ऐप्स समय या जगह चाहे जो हो, हमेशा ब्लॉक रहते हैं।</string>
-    <string name="list_info_paused">रुके हुए शेड्यूल: %1$d, वे तय समय तक कुछ नहीं करेंगे।</string>
-    <string name="list_info_how">शेड्यूल का समय और जगह आने पर वह अपने आप शुरू हो जाता है।</string>
-    <string name="policy_tab_templates">टेम्पलेट</string>
+    <string name="list_info_many">जब कई नियम एक साथ चलते हैं, तो कोई भी एक नियम ऐप को ब्लॉक करे तो ऐप ब्लॉक हो जाता है।</string>
+    <string name="list_info_child_scope">बच्चे के अपने नियम आपके नियमों को नहीं बदल सकते — आपका ब्लॉक किया ऐप ब्लॉक ही रहता है।</string>
+    <string name="list_info_school_scope">अगर स्कूल का नियम किसी ऐप को बंद करता है या साफ़ तौर पर इजाज़त देता है, तो आपका नियम इसे नहीं बदल सकता। बाकी मामलों में ज़्यादा सख़्त नियम लागू होता है।</string>
+    <string name="list_info_quick">“हमेशा बंद ऐप्स” चालू हैं — इस सूची के ऐप्स समय या जगह कुछ भी हो, बंद रहते हैं।</string>
+    <string name="list_info_paused">रोके गए नियम: %1$d — तय समय तक ये कुछ नहीं करते।</string>
+    <string name="list_info_how">नियम अपना समय और जगह आने पर अपने आप शुरू हो जाता है।</string>
+    <string name="policy_tab_templates">तैयार नियम</string>
     <string name="policy_tab_mine">मेरे</string>
     <string name="policy_tab_child">बच्चा</string>
-    <string name="policy_tab_coparent">पैरेंट</string>
+    <string name="policy_tab_coparent">दूसरे अभिभावक</string>
     <string name="policy_tab_school">स्कूल</string>
     <string name="policy_enabled_count">%1$d चालू</string>
-    <string name="policy_content_protection">कंटेंट सुरक्षा</string>
+    <string name="policy_content_protection">बुरी वेबसाइटों से सुरक्षा</string>
     <string name="policy_content_protection_others">बच्चे या दूसरे पैरेंट ने चालू किया</string>
     <string name="policy_paused">रुका हुआ</string>
-    <string name="policy_quick_blocks">फ़टाफ़ट ब्लॉक</string>
+    <string name="policy_quick_blocks">हमेशा बंद ऐप्स</string>
     <string name="preset_all_apps">सभी ऐप्स</string>
-    <string name="policy_paywall_protection">कंटेंट सुरक्षा Hoglt Plus के साथ काम करती है।</string>
+    <string name="policy_paywall_protection">बुरी वेबसाइटों से सुरक्षा Hoglt Plus के साथ काम करती है।</string>
     <string name="policy_paywall_count">फ़्री प्लान में शेड्यूल की संख्या सीमित है। Hoglt Plus में आपको और मिलते हैं।</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">अभी कुछ चुना नहीं गया, यह शेड्यूल कुछ भी ब्लॉक नहीं करता।</string>
+    <string name="info_nothing">अभी कुछ नहीं चुना गया — यह नियम कुछ भी ब्लॉक नहीं करता।</string>
     <string name="info_always">हमेशा</string>
     <string name="info_sentence">%1$s, %2$s।</string>
     <string name="info_when_time">%1$s, %2$s से %3$s तक</string>
@@ -919,12 +919,12 @@
     <string name="info_what_all_apps_sites">सभी ऐप्स और साइट्स ब्लॉक हैं</string>
     <string name="info_what_selected">चुनी हुई चीज़ें ब्लॉक हैं (%1$s)</string>
     <string name="info_stays_open">खुले रहेंगे: %1$s।</string>
-    <string name="info_not_counted">लिमिट में नहीं गिना जाता: %1$s।</string>
+    <string name="info_not_counted">समय नहीं गिना जाता: %1$s।</string>
     <string name="info_limit_daily">%1$s: %2$s को कुल मिलाकर %3$s इस्तेमाल किया जा सकता है। समय खत्म होने पर ये कल तक ब्लॉक रहेंगे।</string>
     <string name="info_limit_hourly">%1$s: %2$s को हर घंटे %3$s इस्तेमाल किया जा सकता है। समय खत्म होने पर ये अगले घंटे तक ब्लॉक रहेंगे।</string>
     <string name="info_limit_all">सभी ऐप्स</string>
     <string name="info_limit_selected">चुनी हुई चीज़ें</string>
-    <string name="info_limit_gate">लिमिट सिर्फ़ यहाँ लागू होती है: %1$s।</string>
+    <string name="info_limit_gate">समय सिर्फ़ गिना जाता है: %1$s।</string>
     <string name="info_protected">कॉल, SMS और दूसरे ज़रूरी ऐप्स कभी ब्लॉक नहीं होते।</string>
     <string name="info_disabled">यह अभी बंद है, इसे लागू करने के लिए चालू करें।</string>
 
@@ -933,7 +933,7 @@
     <string name="preset_when">कब</string>
     <string name="preset_starts">शुरू</string>
     <string name="preset_ends">खत्म</string>
-    <string name="preset_limit">लिमिट</string>
+    <string name="preset_limit">कितना समय</string>
     <string name="preset_counted">क्या गिना जाएगा</string>
     <string name="preset_what_closed">क्या ब्लॉक होगा</string>
     <string name="preset_only_selected">सिर्फ़ चुने हुए</string>
@@ -974,13 +974,13 @@
     <string name="targets_covered_by_category">कैटेगरी से चुना गया</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">वेबसाइट का पता या कीवर्ड गलत है। उदाहरण: youtube.com या kino</string>
-    <string name="editor_new_policy">नया शेड्यूल</string>
+    <string name="editor_new_policy">नया नियम</string>
     <string name="editor_not_selected">चुना नहीं गया</string>
     <string name="editor_when_hint">वैकल्पिक · वरना हमेशा</string>
     <string name="editor_add_condition">शर्त जोड़ें</string>
     <string name="editor_added">जोड़ा गया</string>
     <string name="editor_condition_time">समय</string>
-    <string name="editor_condition_limit">लिमिट</string>
+    <string name="editor_condition_limit">कितना समय</string>
     <string name="editor_in_this_time">इस समय</string>
     <string name="editor_closed_in_time">ब्लॉक</string>
     <string name="editor_closed_in_time_sub">बाकी समय खुला</string>
@@ -991,8 +991,8 @@
     <string name="editor_inside">इलाके के अंदर</string>
     <string name="editor_outside">इलाके के बाहर</string>
     <string name="editor_rename">नाम बदलें</string>
-    <string name="editor_delete_title">यह शेड्यूल डिलीट करें?</string>
-    <string name="editor_delete_message">“%1$s” डिलीट कर दिया जाएगा।</string>
+    <string name="editor_delete_title">यह नियम हटाएँ?</string>
+    <string name="editor_delete_message">“%1$s” हटा दिया जाएगा। जिन ऐप्स को यह नियम ब्लॉक करता था, वे फिर से खुल जाएँगे।</string>
     <string name="editor_paywall_allow">“सिर्फ़ चुने हुए खुले रहें” मोड Plus के साथ उपलब्ध है।</string>
     <string name="location_child_here">मेरे बच्चे की लोकेशन</string>
     <string name="protection_section">क्या सुरक्षित है</string>
@@ -1010,24 +1010,24 @@
     <string name="protection_policies_pending">अभी पहुँचे नहीं</string>
     <string name="protection_gujanak_limits_note">मध्यम सुरक्षा सिर्फ़ ऐप्स बंद करती है। वेबसाइटें और छोटे वीडियो सिर्फ़ सख़्त सुरक्षा में ब्लॉक होते हैं: बच्चे के फ़ोन पर Hoglt → “कंट्रोल” → “शील्ड मोड”।</string>
     <string name="editor_limit_days_follow_time">समय जैसा ही, दिन समय वाले पेज पर चुने जाते हैं</string>
-    <string name="editor_limit_in_window">इस समय में लिमिट</string>
-    <string name="editor_limit_outside_window">इस समय के बाहर लिमिट</string>
-    <string name="editor_limit_in_time">लिमिट इस समय में लागू होती है</string>
+    <string name="editor_limit_in_window">इन घंटों में समय गिना जाता है</string>
+    <string name="editor_limit_outside_window">इन घंटों के बाहर समय गिना जाता है</string>
+    <string name="editor_limit_in_time">समय सिर्फ़ इन घंटों में गिना जाता है</string>
     <string name="editor_limit_in_time_sub">बाकी समय कोई पाबंदी नहीं</string>
-    <string name="editor_limit_out_time">लिमिट इस समय के बाहर लागू होती है</string>
+    <string name="editor_limit_out_time">समय इन घंटों के बाहर गिना जाता है</string>
     <string name="editor_limit_out_time_sub">इस समय में कोई पाबंदी नहीं</string>
     <string name="info_limit_daily_window">%1$s: %2$s को कुल मिलाकर %3$s इस्तेमाल किया जा सकता है। समय खत्म होने पर यह इस समय-सीमा के खत्म होने तक बंद रहते हैं।</string>
     <string name="targets_only_selected_open_sites_sub">बाकी साइट्स बंद रहती हैं</string>
     <string name="targets_only_selected_open_both_sub">बाकी ऐप्स और साइट्स बंद रहते हैं</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">अभी कोई शेड्यूल नहीं</string>
-    <string name="policy_empty_mine_sub">कोई टेम्पलेट चालू करें या अपना बनाएँ</string>
+    <string name="policy_empty_mine_title">अभी कोई नियम नहीं</string>
+    <string name="policy_empty_mine_sub">कोई तैयार नियम चालू करें या अपना बनाएँ</string>
     <string name="empty_search_title">कुछ नहीं मिला</string>
     <string name="empty_search_sub">कुछ और खोजकर देखें</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">एडल्ट और जुए की साइट्स</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">शेड्यूल</string>
+    <string name="policy_name_schedule">नियम</string>
     <string name="policy_name_category_block">कैटेगरी के हिसाब से ब्लॉक</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">आपके बच्चे ने चालू किया</string>
@@ -1122,7 +1122,7 @@
     <string name="ap_off_confirm">बंद करें</string>
     <string name="ap_keep_on">चालू रखें</string>
     <string name="ap_retry_note">हम कल फिर कोशिश करेंगे (%1$d/3)।</string>
-    <string name="ap_retry_now">फिर कोशिश करें</string>
+    <string name="ap_retry_now">अभी भुगतान करें</string>
     <string name="ap_other_card">दूसरा कार्ड</string>
     <string name="ap_cards_empty_title">कोई सेव किया कार्ड नहीं</string>
     <string name="ap_cards_empty_sub">ऑटो-पे के लिए UZCARD या HUMO कार्ड जोड़ें</string>
@@ -1168,7 +1168,7 @@
     <string name="ulash_tugma">लिंक करें</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">छोड़ें</string>
+    <string name="ob_skip">शायद बाद में</string>
     <string name="ob_start">चलिए शुरू करें</string>
     <string name="ob_got_it">समझ गया</string>
     <string name="ob_hello_title">नमस्ते, मैं Hoglt हूँ</string>
@@ -1182,10 +1182,10 @@
     <string name="ob_day_study">पढ़ाई</string>
     <string name="ob_min_fmt">%1$d मि</string>
     <string name="ob_rules_title">नियम एक बार तय करें</string>
-    <string name="ob_rules_body">सोने का समय, स्कूल का समय और रोज़ की लिमिट अपने आप चालू हो जाती हैं।</string>
+    <string name="ob_rules_body">सोने का समय, स्कूल का समय और रोज़ का समय अपने आप चालू हो जाते हैं।</string>
     <string name="ob_rule_sleep">सोने का समय</string>
     <string name="ob_rule_school">स्कूल का समय</string>
-    <string name="ob_rule_limit">रोज़ की लिमिट</string>
+    <string name="ob_rule_limit">रोज़ कितना समय</string>
     <string name="ob_rule_limit_value">2 घं</string>
     <string name="ob_map_title">जानें वह कहाँ है</string>
     <string name="ob_map_body">मैप पर अपने बच्चे को देखें और स्कूल जैसी जगहों के लिए नियम बनाएँ।</string>
@@ -1242,8 +1242,8 @@
     <string name="home_layout_list">सूची</string>
     <string name="home_layout_grid">ग्रिड</string>
     <string name="home_greeting">नमस्ते, %1$s</string>
-    <string name="kecha_sarfladi">कल खर्च किया</string>
-    <string name="sana_sarfladi">%1$s को खर्च किया</string>
+    <string name="kecha_sarfladi">कल फ़ोन पर</string>
+    <string name="sana_sarfladi">%1$s को फ़ोन पर</string>
     <string name="stat_no_usage_day">इस दिन अभी फ़ोन का इस्तेमाल नहीं हुआ</string>
     <string name="kirish_usuli">साइन-इन का तरीका</string>
     <string name="google_hisobi">Google अकाउंट</string>
@@ -1266,7 +1266,7 @@
     <string name="vazifa_muddati">आख़िरी तारीख़</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">असिस्टेंट</string>
+    <string name="ai_assistant_title">स्मार्ट सहायक</string>
     <string name="ai_assistant_subtitle">पूछें या नियम बनाएँ</string>
     <string name="ai_period_today">आज</string>
     <string name="ai_period_yesterday">कल</string>
@@ -1396,20 +1396,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">मुफ़्त: %1$d चालू नियम · Plus: असीमित</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">ऐप यह नहीं देख पाता कि कौन-से ऐप्स खुल रहे हैं: फ़ोन का समय नहीं गिना जाता और नियम काम नहीं करते।</string>
+    <string name="perm_why_overlay">ब्लॉक किए गए ऐप के ऊपर ब्लॉक स्क्रीन नहीं आ पाती, इसलिए नियम उसे बंद नहीं कर पाते।</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">आप नहीं देख पाते कि आपका बच्चा कहाँ है, और जगह से जुड़े नियम काम नहीं करते।</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">इसके बिना वेबसाइटें, YouTube Shorts और Instagram Reels ब्लॉक नहीं होते, और ऐप आसानी से हटाया जा सकता है।</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">मुफ़्त प्लान में एक नियम में %1$d ऐप्स तक जोड़े जा सकते हैं। Plus में ज़्यादा।</string>
+    <string name="policy_paywall_app_limit">यह नियम आपके प्लान की ऐप सीमा तक पहुँच गया है।</string>
     <string name="clip_child_phone">उसके फ़ोन पर</string>
     <string name="prot_default_note">अभी आपके नियम कोई ऐप बंद नहीं करते। इसके लिए बच्चे के फ़ोन पर Hoglt खोलें → “कंट्रोल” में सुरक्षा चालू करें।</string>
     <string name="prot_strength">सुरक्षा का स्तर</string>
@@ -1439,4 +1439,64 @@
     <string name="task_empty_done">अभी तक कोई टास्क पूरा नहीं हुआ</string>
     <string name="task_empty_overdue">ऐसा कोई टास्क नहीं जिसका समय बीत चुका हो</string>
     <string name="task_empty_filter_hint">सभी टास्क देखने के लिए चुने गए फ़िल्टर पर दोबारा टैप करें।</string>
+    <string name="voice_listen">सुनें</string>
+    <string name="voice_stop">रोकें</string>
+    <string name="voice_unavailable">आवाज़ में समझाने की सुविधा अभी उपलब्ध नहीं है। बाद में फिर कोशिश करें।</string>
+    <string name="live_confirm_title">लाइव देखें</string>
+    <string name="live_confirm_body">%1$s को कॉल जाएगी। मंज़ूर करने पर वीडियो खुल जाएगा।</string>
+    <string name="live_child_fallback">आपका बच्चा</string>
+    <string name="live_call_button">कॉल करें</string>
+    <string name="live_ringing">%1$s को कॉल हो रही है…</string>
+    <string name="live_connecting">कनेक्ट हो रहा है…</string>
+    <string name="live_error_connect">कनेक्ट नहीं हो पाया। थोड़ी देर बाद फिर कोशिश करें।</string>
+    <string name="live_declined">बच्चे ने कॉल मना कर दी</string>
+    <string name="live_no_answer">कोई जवाब नहीं</string>
+    <string name="live_end">ख़त्म करें</string>
+    <string name="live_show_on_map">नक्शे पर दिखाएँ</string>
+    <string name="unlink_child_button">बच्चे को अलग करें</string>
+    <string name="saqlandi">सेव हो गया</string>
+    <string name="ap_retry_now_amount">अभी भुगतान करें · %1$s</string>
+    <string name="pay_charge_body">कार्ड •• %1$s से %2$s कटेंगे।</string>
+    <string name="pay_charge_body_amount">आपके कार्ड से %1$s कटेंगे।</string>
+    <string name="pay_charge_body_plain">सब्सक्रिप्शन की फ़ीस आपके सेव किए गए कार्ड से कटेगी।</string>
+    <string name="pay_confirm_pay">भुगतान करें</string>
+    <string name="app_store_unavailable">App Store अभी उपलब्ध नहीं है। थोड़ी देर बाद फिर कोशिश करें।</string>
+    <string name="app_store_failed">App Store से भुगतान नहीं हो पाया। फिर कोशिश करें।</string>
+    <string name="apple_activation_pending_title">भुगतान मिल गया</string>
+    <string name="login_subtitle_social">साइन इन का तरीका चुनें। खाता नहीं है? अपने आप बन जाएगा।</string>
+    <string name="login_telegram_not_opened">Telegram नहीं खुला। देखें कि Telegram इंस्टॉल है, या किसी और तरीके से साइन इन करें।</string>
+    <string name="ob_notif_enable">नोटिफ़िकेशन चालू करें</string>
+    <string name="comfort_title">पढ़ने में आसान है?</string>
+    <string name="comfort_screen_color">स्क्रीन का रंग</string>
+    <string name="comfort_light">हल्का</string>
+    <string name="comfort_dark">गहरा</string>
+    <string name="comfort_done">हो गया</string>
+    <string name="comfort_hint">आप इसे बाद में भी बदल सकते हैं।</string>
+    <string name="policy_turned_on">%1$s चालू है</string>
+    <string name="policy_turned_off">%1$s बंद है</string>
+    <string name="policy_off_title">“%1$s” बंद करें?</string>
+    <string name="policy_off_body">यह नियम आपके बच्चे के फ़ोन पर तुरंत काम करना बंद कर देगा, और इसने जो कुछ ब्लॉक किया था वह फिर से खुल जाएगा। आप इसे कभी भी फिर से चालू कर सकते हैं।</string>
+    <string name="policy_off_body_safety">यह सुरक्षा आपके बच्चे के फ़ोन पर तुरंत रुक जाएगी। आप इसे कभी भी फिर से चालू कर सकते हैं।</string>
+    <string name="policy_off_confirm">हाँ, बंद करें</string>
+    <string name="policy_off_cancel">नहीं, चालू रहने दें</string>
+    <string name="policy_saved_sent">सेव हो गया — बच्चे के फ़ोन पर भेज दिया गया</string>
+    <string name="policy_saved_queued">सेव हो गया — इंटरनेट वापस आने पर बच्चे के फ़ोन तक पहुँच जाएगा</string>
+    <string name="policy_unsaved_title">बदलाव सेव करें?</string>
+    <string name="policy_unsaved_body">सेव न करने पर बच्चे के फ़ोन पर कुछ नहीं बदलेगा।</string>
+    <string name="policy_unsaved_discard">सेव किए बिना निकलें</string>
+    <string name="quick_unblock_title">%1$s को अनब्लॉक करें?</string>
+    <string name="quick_unblock_body">यह ऐप आपके बच्चे के फ़ोन पर तुरंत खुल जाएगा।</string>
+    <string name="quick_unblock_confirm">हाँ, अनब्लॉक करें</string>
+    <string name="quick_unblock_action">अनब्लॉक करें</string>
+    <string name="quick_unblocked">%1$s अनब्लॉक हो गया</string>
+    <string name="policy_exception_remove">हटाएँ</string>
+    <string name="policy_load_failed">लोड नहीं हो पाया</string>
+    <string name="tg_more_settings">और सेटिंग्स</string>
+    <string name="rules_on_count">चालू नियम: %1$d</string>
+    <string name="task_accepted">मंज़ूर</string>
+    <string name="task_accepted_coins">%1$s को कॉइन मिले: %2$d</string>
+    <string name="task_coins_explain">जब आप टास्क मंज़ूर करते हैं, तो कॉइन आपके बच्चे को मिल जाते हैं, जिन्हें वह स्मार्ट सहायक से सवाल पूछने में ख़र्च करता है।</string>
+    <string name="task_coins_not_enough">कॉइन काफ़ी नहीं हैं</string>
+    <string name="chat_support_title">सहायता केंद्र</string>
+    <string name="chat_ai_title">स्मार्ट सहायक</string>
 </resources>

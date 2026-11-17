@@ -2,6 +2,8 @@
 
 package uz.tikoncha_parent.presentation.new_home
 
+import uz.tikoncha_parent.presentation.voice_help.VoiceHelpButton
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import tikoncha_parents.composeapp.generated.resources.profil
 import uz.tikoncha_parent.presentation.base.CustomDialogTextField
 import tikoncha_parents.composeapp.generated.resources.contact_phone_title
@@ -47,6 +49,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.runtime.collectAsState
@@ -110,7 +113,6 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.pluralStringResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import tikoncha_parents.composeapp.generated.resources.Res
@@ -124,7 +126,7 @@ import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
 import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.home_table
 import tikoncha_parents.composeapp.generated.resources.home_task
-import tikoncha_parents.composeapp.generated.resources.apps_restricted
+import tikoncha_parents.composeapp.generated.resources.rules_on_count
 import tikoncha_parents.composeapp.generated.resources.media_play
 import tikoncha_parents.composeapp.generated.resources.support_icon
 import tikoncha_parents.composeapp.generated.resources.topshiriqlar
@@ -386,6 +388,9 @@ fun NewHomeUi(
                         )
                     }
                 }
+                // Ovozli tuşuntiriş: bu ekran nima ekanini eşitib biliş
+                Spacer(Modifier.width(8.dp))
+                VoiceHelpButton(VoiceScreen.HOME)
             }
 
             // Pastki orol: [profil] [yordam] [farzand ▴] — farzand tanlagich har ekrandagidek o'ng burchakda
@@ -579,7 +584,7 @@ fun NewHomeUi(
                                     style = AppTypography.displaySmRegular.copy(fontWeight = FontWeight.Bold)
                                 )
                                 Text(
-                                    text = pluralStringResource(Res.plurals.apps_restricted, tableCount, tableCount),
+                                    text = stringResource(Res.string.rules_on_count, tableCount),
                                     color = homeSubtitleColor(),
                                     style = AppTypography.titleSmMedium,
                                 )
@@ -600,16 +605,10 @@ fun NewHomeUi(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                // Ustunlar balandlikka nisbatan chiziladi — balandlik qat'iy, lekin katta matnga moslashadi
-                                .height(
-                                    maxOf(
-                                        HomeItemHeight,
-                                        with(LocalDensity.current) {
-                                            AppTypography.displaySmRegular.lineHeight.toDp() +
-                                                AppTypography.titleSmMedium.lineHeight.toDp() * 2
-                                        } + HomeItemVerticalPadding * 2,
-                                    )
-                                )
+                                // Ustunlar balandlikka nisbatan chiziladi — balandlik matnga qarab aniqlanadi:
+                                // "2 soat 42 daqiqa" (to'liq so'zlar) ikki qatorga tuşsa ham kesilmaydi.
+                                .heightIn(min = HomeItemHeight)
+                                .height(IntrinsicSize.Min)
                                 .expressiveSegment(5, HomeBlockCount, color = homeTileColor()) {
                                     if (state.childrenList.isEmpty()) {
                                         internetCheck.check { showChildDialog = true }
@@ -750,7 +749,7 @@ private fun HomeGridBlocks(
                 cell = GridCell(2, 1),
                 title = stringResource(Res.string.cheklovlar),
                 onClick = { guard(onRestrictions) },
-                subtitle = { HomeGridSubtitle(pluralStringResource(Res.plurals.apps_restricted, tableCount, tableCount)) },
+                subtitle = { HomeGridSubtitle(stringResource(Res.string.rules_on_count, tableCount)) },
                 blobbed = true,
                 blob = BlobPlace.GridRestrictions,
                 art = { TileArt(painterResource(Res.drawable.home_table), rotation = 8f) },

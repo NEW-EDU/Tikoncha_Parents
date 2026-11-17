@@ -1,6 +1,17 @@
 package uz.tikoncha_parent.presentation.policy.tikonchagram
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material3.Icon
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.draw.rotate
+import tikoncha_parents.composeapp.generated.resources.tg_more_settings
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -116,6 +127,8 @@ fun TikonchagramRulesUi(
     val systemBars = rememberScreenSystemBars(statusBarColor = AppColors.bg.page, navigationBarColor = AppColors.bg.page)
     val r = state.rules
     val set: (TgRules) -> Unit = { event(TikonchagramRulesEvent.Changed(it)) }
+    /** "Batafsil sozlaş" — boşida yopiq: ekranda faqat asosiy switch va 3 ta rejim. */
+    var showMore by rememberSaveable { mutableStateOf(false) }
 
     Column(modifier = Modifier.fillMaxSize().background(AppColors.bg.page).then(systemBars.modifier)) {
         CustomHeader(title = stringResource(Res.string.tg_rules_title), showBackButton = true, onBackClick = onBack)
@@ -184,79 +197,100 @@ fun TikonchagramRulesUi(
                     preset?.let { Hint(stringResource(it.description())) }
                 }
 
-                // ── Chat turlari ──
-                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    SectionLabel(stringResource(Res.string.tg_section_chats))
-                    SettingGroup {
-                        Toggle(Res.string.tg_show_channels, !r.hideChannels, r.enabled) { set(r.copy(hideChannels = !it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_show_groups, !r.hideGroups, r.enabled) { set(r.copy(hideGroups = !it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_show_bots, !r.hideBots, r.enabled) { set(r.copy(hideBots = !it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_contacts_only, r.contactsOnly, r.enabled, Res.string.tg_contacts_only_sub) { set(r.copy(contactsOnly = it)) }
-                    }
+                // ── Batafsil sozlaş: qolgan ~20 boşqaruv yopiq turadi (rejim tanlaş yetarli) ──
+                SettingGroup {
+                    val rotation by animateFloatAsState(if (showMore) 180f else 0f, label = "tgMoreChevron")
+                    SettingRow(
+                        title = stringResource(Res.string.tg_more_settings),
+                        onClick = { showMore = !showMore },
+                        trailing = {
+                            Icon(
+                                imageVector = Icons.Default.KeyboardArrowDown,
+                                contentDescription = null,
+                                modifier = Modifier.size(24.dp).rotate(rotation),
+                                tint = AppColors.icon.secondary,
+                            )
+                        },
+                    )
                 }
 
-                // ── Kontent ──
-                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    SectionLabel(stringResource(Res.string.tg_section_content))
-                    SettingGroup {
-                        Toggle(Res.string.tg_allow_photos, r.allowPhotos, r.enabled) { set(r.copy(allowPhotos = it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_allow_voice, r.allowVoice, r.enabled) { set(r.copy(allowVoice = it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_allow_videos, r.allowVideos, r.enabled) { set(r.copy(allowVideos = it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_allow_video_notes, r.allowVideoNotes, r.enabled) { set(r.copy(allowVideoNotes = it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_allow_stickers, r.allowStickers, r.enabled) { set(r.copy(allowStickers = it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_allow_gifs, r.allowGifs, r.enabled) { set(r.copy(allowGifs = it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_allow_documents, r.allowDocuments, r.enabled) { set(r.copy(allowDocuments = it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_allow_links, r.allowLinks, r.enabled) { set(r.copy(allowLinks = it)) }
-                        GroupDivider()
-                        Toggle(Res.string.tg_allow_forwards, r.allowForwards, r.enabled) { set(r.copy(allowForwards = it)) }
-                    }
-                    SettingGroup {
-                        Toggle(Res.string.tg_placeholder, r.showBlockedPlaceholder, r.enabled, Res.string.tg_placeholder_sub) {
-                            set(r.copy(showBlockedPlaceholder = it))
+                AnimatedVisibility(visible = showMore) {
+                    Column(verticalArrangement = Arrangement.spacedBy(22.dp)) {
+                        // ── Chat turlari ──
+                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            SectionLabel(stringResource(Res.string.tg_section_chats))
+                            SettingGroup {
+                                Toggle(Res.string.tg_show_channels, !r.hideChannels, r.enabled) { set(r.copy(hideChannels = !it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_show_groups, !r.hideGroups, r.enabled) { set(r.copy(hideGroups = !it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_show_bots, !r.hideBots, r.enabled) { set(r.copy(hideBots = !it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_contacts_only, r.contactsOnly, r.enabled, Res.string.tg_contacts_only_sub) { set(r.copy(contactsOnly = it)) }
+                            }
+                        }
+
+                        // ── Kontent ──
+                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            SectionLabel(stringResource(Res.string.tg_section_content))
+                            SettingGroup {
+                                Toggle(Res.string.tg_allow_photos, r.allowPhotos, r.enabled) { set(r.copy(allowPhotos = it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_allow_voice, r.allowVoice, r.enabled) { set(r.copy(allowVoice = it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_allow_videos, r.allowVideos, r.enabled) { set(r.copy(allowVideos = it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_allow_video_notes, r.allowVideoNotes, r.enabled) { set(r.copy(allowVideoNotes = it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_allow_stickers, r.allowStickers, r.enabled) { set(r.copy(allowStickers = it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_allow_gifs, r.allowGifs, r.enabled) { set(r.copy(allowGifs = it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_allow_documents, r.allowDocuments, r.enabled) { set(r.copy(allowDocuments = it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_allow_links, r.allowLinks, r.enabled) { set(r.copy(allowLinks = it)) }
+                                GroupDivider()
+                                Toggle(Res.string.tg_allow_forwards, r.allowForwards, r.enabled) { set(r.copy(allowForwards = it)) }
+                            }
+                            SettingGroup {
+                                Toggle(Res.string.tg_placeholder, r.showBlockedPlaceholder, r.enabled, Res.string.tg_placeholder_sub) {
+                                    set(r.copy(showBlockedPlaceholder = it))
+                                }
+                            }
+                        }
+
+                        // ── Kunlik vaqt ──
+                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            SectionLabel(stringResource(Res.string.tg_section_daily))
+                            val daily = TgRules.DAILY_CHOICES
+                            // null — farzand 10 daqiqagacha tanlaydi (eng kattasi bilan bir xil)
+                            val dailyIndex = daily.indexOf(r.dailyMaxMinutes ?: daily.last())
+                            SettingGroup {
+                                Spacer(modifier = Modifier.height(16.dp))
+                                QuickChips(
+                                    labels = daily.map { stringResource(Res.string.tg_daily_minutes, it) },
+                                    selectedIndex = dailyIndex,
+                                    onSelect = { if (r.enabled) set(r.copy(dailyMaxMinutes = daily[it])) },
+                                )
+                            }
+                            Hint(stringResource(Res.string.tg_daily_note))
+                        }
+
+                        // ── Chatlar soni ──
+                        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            SectionLabel(stringResource(Res.string.tg_section_max_chats))
+                            val counts = TgRules.MAX_CHAT_CHOICES
+                            SettingGroup {
+                                Spacer(modifier = Modifier.height(16.dp))
+                                QuickChips(
+                                    labels = counts.map { if (it == 0) stringResource(Res.string.tg_max_chats_all) else it.toString() },
+                                    selectedIndex = counts.indexOf(r.maxChats),
+                                    onSelect = { if (r.enabled) set(r.copy(maxChats = counts[it])) },
+                                )
+                            }
+                            Hint(stringResource(Res.string.tg_max_chats_note))
                         }
                     }
-                }
-
-                // ── Kunlik vaqt ──
-                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    SectionLabel(stringResource(Res.string.tg_section_daily))
-                    val daily = TgRules.DAILY_CHOICES
-                    // null — farzand 10 daqiqagacha tanlaydi (eng kattasi bilan bir xil)
-                    val dailyIndex = daily.indexOf(r.dailyMaxMinutes ?: daily.last())
-                    SettingGroup {
-                        Spacer(modifier = Modifier.height(16.dp))
-                        QuickChips(
-                            labels = daily.map { stringResource(Res.string.tg_daily_minutes, it) },
-                            selectedIndex = dailyIndex,
-                            onSelect = { if (r.enabled) set(r.copy(dailyMaxMinutes = daily[it])) },
-                        )
-                    }
-                    Hint(stringResource(Res.string.tg_daily_note))
-                }
-
-                // ── Chatlar soni ──
-                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    SectionLabel(stringResource(Res.string.tg_section_max_chats))
-                    val counts = TgRules.MAX_CHAT_CHOICES
-                    SettingGroup {
-                        Spacer(modifier = Modifier.height(16.dp))
-                        QuickChips(
-                            labels = counts.map { if (it == 0) stringResource(Res.string.tg_max_chats_all) else it.toString() },
-                            selectedIndex = counts.indexOf(r.maxChats),
-                            onSelect = { if (r.enabled) set(r.copy(maxChats = counts[it])) },
-                        )
-                    }
-                    Hint(stringResource(Res.string.tg_max_chats_note))
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))

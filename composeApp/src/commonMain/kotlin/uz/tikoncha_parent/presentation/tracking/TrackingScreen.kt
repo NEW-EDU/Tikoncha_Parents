@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.tracking
 
+import uz.tikoncha_parent.presentation.voice_help.VoiceHelpButton
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import uz.tikoncha_parent.ui.rememberHapticSource
 import uz.tikoncha_parent.data.local.AppSettings
 import androidx.compose.foundation.background
@@ -589,6 +591,11 @@ fun TrackingContent(
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .padding(top = statusTop + 12.dp, start = 12.dp, end = 72.dp),
+        )
+        // Ovozli tuşuntiriş — xarita ustida, Yandex logotipi ostida (logotip doim körinişi şart)
+        VoiceHelpButton(
+            VoiceScreen.MAP,
+            Modifier.align(Alignment.TopEnd).padding(top = statusTop + 36.dp, end = 12.dp),
         )
 
         if (state.isLoading) {

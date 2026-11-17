@@ -25,4 +25,6 @@ data class SubscriptionState(
     val autopayError: Outcome.Failure? = null,
     /** Qayta urinish o'tmadi — server tilida tayyor matn. */
     val retryDeclinedText: String? = null,
+    /** Qayta urinish (ota-ona tasdiqlagan) to'landi — "Tölandi" ko'rsatiladi. */
+    val retryPaid: Boolean = false,
 )

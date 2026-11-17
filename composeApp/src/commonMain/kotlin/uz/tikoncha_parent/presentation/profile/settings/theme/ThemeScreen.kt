@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -118,8 +120,8 @@ fun ThemeUi(navigator: Navigator?) {
 }
 
 /*
- * "Mavzu" — ikki ixcham guruh (M3 Expressive, yonma-yon segmentlar):
- *  • Rang: Tizim / Yorug' / Qorong'i — bitta qatorda, kichik maketlar bilan (avval ikki qator katta kartalar edi);
+ * "Ekran rangi" (avval "Mavzu" — "topic" deb öqilardi) — ikki ixcham guruh (M3 Expressive, yonma-yon segmentlar):
+ *  • Rang: Telefondagidek / Yorug' / Qorong'i — bitta qatorda, kichik maketlar bilan (avval ikki qator katta kartalar edi);
  *  • Bosh sahifa ko'rinishi: Ro'yxat (katta bloklar) / Panjara (2×3) — maketi kod bilan chiziladi.
  * Tanlangan katak tonal rangga kiradi va barcha burchaklari yumaloqlanadi.
  */
@@ -152,7 +154,8 @@ private fun ThemeContent(
             contentPadding = PaddingValues(start = ContainerPadding, end = ContainerPadding, bottom = 8.dp),
         ) {
             ProfileSectionLabel(stringResource(Res.string.theme_section_colors))
-            Row(horizontalArrangement = Arrangement.spacedBy(SegmentGap)) {
+            // Nomi ikki qatorga tuşgan katak boşqalaridan baland bölib qolmasin — hammasi bir xil balandlikda
+            Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(SegmentGap)) {
                 val modes = ThemeMode.entries
                 modes.forEachIndexed { index, mode ->
                     OptionTile(
@@ -226,18 +229,20 @@ private fun RowScope.OptionTile(
     Box(
         modifier = Modifier
             .weight(1f)
+            .fillMaxHeight()
             .expressiveSegment(index, count, color = container, horizontal = true, selected = selected, onClick = onClick)
             .padding(top = 14.dp, bottom = 12.dp, start = 8.dp, end = 8.dp),
     ) {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             preview()
             Spacer(Modifier.height(10.dp))
+            // "Telefondagidek" / "Как в телефоне" — tor katakda ikki qatorga tuşadi, kesilmaydi
             Text(
                 text = label,
                 style = AppTypography.titleSmMedium,
                 color = AppColors.text.primary,
                 textAlign = TextAlign.Center,
-                maxLines = 1,
+                maxLines = 2,
             )
         }
         Box(

@@ -156,6 +156,20 @@ fun CoinPurchaseUi(
     )
     if (showSupport) uz.tikoncha_parent.presentation.support.SupportSheet(onDismiss = { showSupport = false })
 
+    var confirmCardCharge by remember { mutableStateOf(false) }
+    val chargeCard = state.card
+    if (confirmCardCharge && chargeCard != null) {
+        uz.tikoncha_parent.presentation.profile.subscription.autopay.components.ChargeConfirmSheet(
+            cardLast4 = chargeCard.last4,
+            amount = state.finalPrice,
+            onConfirm = {
+                confirmCardCharge = false
+                event(CoinPurchaseEvent.StartPayment)
+            },
+            onDismiss = { confirmCardCharge = false },
+        )
+    }
+
     val uriHandler = LocalUriHandler.current
     LaunchedEffect(Unit) {
         effect.collect { eff ->
@@ -487,7 +501,12 @@ fun CoinPurchaseUi(
                 stringResource(Res.string.ap_add_card_title)
             else "${state.finalPrice.toCurrency()} UZS - ${stringResource(Res.string.sotib_olish)}",
             onClick = {
-                if (localPayments == false) showAbroad = true else event(CoinPurchaseEvent.StartPayment)
+                when {
+                    localPayments == false -> showAbroad = true
+                    // Saqlangan kartadan bir bosişda yeçilmasin — avval qaysi kartadan, qança ekani söraladi
+                    state.method == CoinPayMethod.CARD && state.cardAvailable && state.card != null -> confirmCardCharge = true
+                    else -> event(CoinPurchaseEvent.StartPayment)
+                }
             },
             modifier = Modifier.padding(ContainerPadding)
                 .fillMaxWidth()

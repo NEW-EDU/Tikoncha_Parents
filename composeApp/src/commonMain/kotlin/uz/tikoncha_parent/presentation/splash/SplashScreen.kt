@@ -30,6 +30,7 @@ import kotlinx.coroutines.delay
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.presentation.login.LoginScreen
 import uz.tikoncha_parent.presentation.onboarding.OnboardingScreen
+import uz.tikoncha_parent.presentation.onboarding.ComfortSetupScreen
 import uz.tikoncha_parent.presentation.onboarding.NotificationPermissionScreen
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
 import uz.tikoncha_parent.platform.BuildConfig
@@ -63,6 +64,7 @@ class SplashScreen : Screen {
             when {
                 "-hoglt.onboarding" in debugArgs -> { navigator?.replaceAll(OnboardingScreen()); return@LaunchedEffect }
                 "-hoglt.notif" in debugArgs -> { navigator?.replaceAll(NotificationPermissionScreen()); return@LaunchedEffect }
+                "-hoglt.comfort" in debugArgs -> { navigator?.replaceAll(ComfortSetupScreen()); return@LaunchedEffect }
                 "-hoglt.addchild" in debugArgs -> { navigator?.replaceAll(AddChildScreen()); return@LaunchedEffect }
                 "-hoglt.profile" in debugArgs -> { navigator?.replaceAll(listOf(NewHomeScreen(), ProfileScreen())); return@LaunchedEffect }
                 "-hoglt.screen" in debugArgs -> {
@@ -114,8 +116,8 @@ class SplashScreen : Screen {
                 Logger.d("SplashScreen", "hasUserLogin")
                 navigator?.replaceAll(NewHomeScreen())
             } else if (!AppSettings.onboardingDone) {
-                // Birinchi ishga tushirish: tanishtiruv → bildirishnoma ruxsati → kirish
-                navigator?.replaceAll(OnboardingScreen())
+                // Birinchi ishga tushirish: til + "Öqiş qulaymi?" (matn ölçami, rang) → tanishtiruv → bildirishnoma ruxsati → kirish
+                navigator?.replaceAll(ComfortSetupScreen())
             } else {
                 navigator?.replaceAll(LoginScreen())
             }

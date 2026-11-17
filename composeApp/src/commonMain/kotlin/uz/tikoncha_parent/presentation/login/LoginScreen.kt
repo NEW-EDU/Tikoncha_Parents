@@ -41,10 +41,17 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.zIndex
@@ -74,6 +81,8 @@ import tikoncha_parents.composeapp.generated.resources.operator_kodi_topilmadi
 import tikoncha_parents.composeapp.generated.resources.telefon_raqami
 import tikoncha_parents.composeapp.generated.resources.telegram
 import tikoncha_parents.composeapp.generated.resources.login_telegram_failed
+import tikoncha_parents.composeapp.generated.resources.login_telegram_not_opened
+import tikoncha_parents.composeapp.generated.resources.login_subtitle_social
 import tikoncha_parents.composeapp.generated.resources.telegram_ochilmoqda
 import tikoncha_parents.composeapp.generated.resources.telegram_orqali_kirish
 import tikoncha_parents.composeapp.generated.resources.telegram_phone_note
@@ -140,8 +149,11 @@ fun LoginUi(
     val scrollState = rememberScrollState()
     val scope = rememberCoroutineScope()
 
-    val errorText: String? =
-        if (state.telegramFailed) stringResource(Res.string.login_telegram_failed) else state.error?.asText()
+    val errorText: String? = when {
+        state.telegramNotOpened -> stringResource(Res.string.login_telegram_not_opened)
+        state.telegramFailed -> stringResource(Res.string.login_telegram_failed)
+        else -> state.error?.asText()
+    }
 
     val dialogError: String? = state.dialogError?.asText()
     LoadingDialog(show = state.isPhoneLoading)
@@ -161,46 +173,63 @@ fun LoginUi(
         onReturned = { event(LoginEvent.OnTelegramReturned)}
     )
 
+    // Telegram bosilgandan keyin ilova fonga ketdi — demak nimadir oçildi (aks holda VM "Telegram oçilmadi" deydi)
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner, state.isTelegramLoading) {
+        if (!state.isTelegramLoading) return@DisposableEffect onDispose {}
+        val observer = LifecycleEventObserver { _, e ->
+            if (e == Lifecycle.Event.ON_PAUSE || e == Lifecycle.Event.ON_STOP) event(LoginEvent.OnTelegramLeftApp)
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
             .then(systemBars.modifier)
             .background(AppColors.bg.page),
     ) {
-        // Terms uchun pastda joy qoldirib, qolganini ikki teng yarmga bo'lamiz
-        val termsReserve = 64.dp
-        val halfHeight = (maxHeight - termsReserve) / 2f
+        val viewport = maxHeight
+        val density = LocalDensity.current
+        // Til tanlagiçi balandligi (katta şriftda östadi) — kontent uning ostidan boşlanadi
+        var pillHeight by remember { mutableStateOf(44.dp) }
         // Til tanlagiç — çap yuqori burçakda, kirişgaça har ekranda
         uz.tikoncha_parent.presentation.base.LanguagePill(
-            Modifier.align(Alignment.TopStart).padding(start = 16.dp, top = 12.dp).zIndex(1f),
+            Modifier
+                .align(Alignment.TopStart)
+                .padding(start = 16.dp, top = 12.dp)
+                .zIndex(1f)
+                .onSizeChanged { pillHeight = with(density) { it.height.toDp() } },
         )
 
+        // Joy yetsa: hero yuqorida, tugmalar örtada, rozilik matni eng pastda (avvalgi ikki yarim kabi). Katta şriftda
+        // böş joylar yöqoladi va ekran aylantiriladi — heç bir matn (rozilik qatori ham) kesilib qolmaydi.
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .imePadding()
                 .verticalScroll(scrollState)
+                .heightIn(min = viewport)
                 .padding(horizontal = 20.dp),
+            verticalArrangement = Arrangement.SpaceBetween,
         ) {
-            // YUQORI YARM — hero markazda
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = halfHeight),
-                contentAlignment = Alignment.Center,
-            ) {
-                HeroSection(modifier = Modifier.fillMaxWidth(), onMascotTap = { event(LoginEvent.OnMascotTapped) })
-            }
+            Spacer(Modifier.height(12.dp + pillHeight + 8.dp))
 
-            // PASTKI YARM — telegram + telefon/button markazda
+            HeroSection(
+                modifier = Modifier.fillMaxWidth(),
+                subtitle = stringResource(if (state.socialFirst) Res.string.login_subtitle_social else Res.string.kirish_subtitle),
+                onMascotTap = { event(LoginEvent.OnMascotTapped) },
+            )
+
+            // Telegram + boşqa usullar (+ App Review uçun telefon)
             Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = halfHeight),
+                modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp),
                 contentAlignment = Alignment.Center,
             ) {
                 Column(modifier = Modifier.fillMaxWidth()) {
-                    // Global (uz/ru bo'lmagan) foydalanuvchiga Apple/Google birinchi
+                    // Telegram birinçi (özbek/rus/qöşni tillar, iPhone'da ham). Faqat boşqa tillarda Apple/Google birinçi.
+                    // Ölçamlar bir xil (Apple HIG: Apple tugmasi boşqalaridan kiçik bölmasin) — Telegram örni va rangi bilan ajralib turadi.
                     if (state.socialFirst) {
                         SocialButtons(state, event)
                         Space(12.dp)
@@ -281,9 +310,11 @@ fun LoginUi(
                 }
             }
 
-            // TERMS — pastda
-            TermsText(modifier = Modifier.padding(horizontal = 16.dp))
-            Space(16.dp)
+            // TERMS — pastda (bitta guruh: SpaceBetween uni ekran tagiga qöyadi)
+            Column(Modifier.fillMaxWidth()) {
+                TermsText(modifier = Modifier.padding(horizontal = 16.dp))
+                Space(16.dp)
+            }
         }
     }
 }
@@ -296,7 +327,9 @@ private fun rememberIsKeyboardOpen(): Boolean {
     return isOpen
 }
 @Composable
-private fun HeroSection(modifier: Modifier = Modifier, onMascotTap: () -> Unit = {}) {
+private fun HeroSection(subtitle: String, modifier: Modifier = Modifier, onMascotTap: () -> Unit = {}) {
+    // Katta şriftda tipratikon kiçrayadi — joy matnga qoladi
+    val fontScale = LocalDensity.current.fontScale.coerceAtLeast(1f)
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -306,7 +339,7 @@ private fun HeroSection(modifier: Modifier = Modifier, onMascotTap: () -> Unit =
             painter = painterResource(Res.drawable.hedgehog_heart),
             contentDescription = null,
             modifier = Modifier
-                .size(100.dp)
+                .size((100.dp / fontScale).coerceAtLeast(64.dp))
                 .clickable(
                     interactionSource = remember { MutableInteractionSource() },
                     indication = null,
@@ -322,7 +355,7 @@ private fun HeroSection(modifier: Modifier = Modifier, onMascotTap: () -> Unit =
         )
         Spacer(Modifier.height(8.dp))
         Text(
-            text = stringResource(Res.string.kirish_subtitle),
+            text = subtitle,
             style = AppTypography.emphasizedMdMedium,
             color = AppColors.text.secondary,
             textAlign = TextAlign.Center,
@@ -381,6 +414,7 @@ private fun TelegramLoginButton(
                         text = stringResource(Res.string.telegram_orqali_kirish),
                         style = AppTypography.titleMdSemiBold,
                         color = AppColors.text.onPrimary,
+                        textAlign = TextAlign.Center,
                     )
                 }
             }
@@ -447,7 +481,7 @@ private fun ProviderButton(
                 CircularProgressIndicator(modifier = Modifier.size(22.dp), color = content, strokeWidth = 2.5.dp)
             } else {
                 icon(content)
-                Text(text = text, style = AppTypography.titleMdSemiBold, color = content)
+                Text(text = text, style = AppTypography.titleMdSemiBold, color = content, textAlign = TextAlign.Center)
             }
         }
     }

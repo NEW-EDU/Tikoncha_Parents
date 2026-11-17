@@ -3,6 +3,14 @@ package uz.tikoncha_parent.presentation.onboarding
 import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.width
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -88,8 +96,9 @@ import kotlin.math.roundToInt
 import kotlin.math.sin
 
 /**
- * Ota-ona ilovasining tanishtiruvi. Birinchi ishga tushirishda: sahnalar → [NotificationPermissionScreen] → kirish.
- * [tourOnly] = true — "Hoglt nima?" (o'zbek tilidan boshqa tillarda video o'rniga): faqat sahnalar, oxirida yopiladi.
+ * Ota-ona ilovasining tanishtiruvi. Birinchi ishga tushirishda: [ComfortSetupScreen] → salom + 3 va'da (ekran vaqti,
+ * qoidalar, xarita) → [NotificationPermissionScreen] → kirish.
+ * [tourOnly] = true — "Hoglt nima?" (o'zbek tilidan boshqa tillarda video o'rniga): barça sahnalar, oxirida yopiladi.
  */
 class OnboardingScreen(private val tourOnly: Boolean = false) : Screen {
 
@@ -129,10 +138,23 @@ private val BottomHeight = 132.dp
 private val ActorBand = 84.dp
 /** Oyoqlari kartaga qancha kirib turadi. */
 private val ActorSink = 14.dp
+/** Sarlavha va izoh ustunining yon çekinişi. */
+private val TextSide = 28.dp
+/** Sarlavha ustidagi (8) + sarlavha bilan izoh orasidagi (10) + izoh ostidagi (16) böşliqlar. */
+private val TextGaps = 34.dp
+/** Katta şriftda avval rasm kiçrayadi — lekin bundan kiçik emas; matn baribir sığmasa sahifa aylantiriladi. */
+private const val MinArtFit = 0.42f
+private val MinHelloStage = 150.dp
+
+/**
+ * Birinchi ishga tushirish: salom + 3 ta va'da (yangi g'oyalar köp bölsa keksa ota-onaga og'ir). Söhbat/sörovlar va
+ * vazifa/tangalar sahnalari faqat "Hoglt nima?" sayohatida ([OnboardingScreen.tourOnly]) qoladi.
+ */
+private val FirstRunScenes = listOf(Scene.HELLO, Scene.DAY, Scene.RULES, Scene.MAP)
 
 @Composable
 internal fun OnboardingUi(tourOnly: Boolean, onFinish: () -> Unit, onClose: () -> Unit) {
-    val scenes = Scene.entries
+    val scenes: List<Scene> = if (tourOnly) Scene.entries else FirstRunScenes
     // Faqat debug: `-hoglt.page N` — ekran rasmlari uchun N-sahnadan boshlash
     val startPage = remember {
         BuildConfig.debugLaunchArgs.let { a -> a.indexOf("-hoglt.page").takeIf { it >= 0 }?.let { a.getOrNull(it + 1)?.toIntOrNull() } } ?: 0
@@ -142,6 +164,10 @@ internal fun OnboardingUi(tourOnly: Boolean, onFinish: () -> Unit, onClose: () -
     val haptic = LocalHapticFeedback.current
     val pos = pager.currentPage + pager.currentPageOffsetFraction
     val last = scenes.lastIndex
+    // Har sahifaning öz aylantiriş holati (katta şriftda) — tipratikon ham kontent bilan birga siljiydi
+    val scrolls = remember(scenes.size) { List(scenes.size) { ScrollState(0) } }
+    val titles = scenes.map { stringResource(it.title) }
+    val bodies = scenes.map { stringResource(it.body) }
 
     ForceLightSystemIcons()
 
@@ -152,29 +178,38 @@ internal fun OnboardingUi(tourOnly: Boolean, onFinish: () -> Unit, onClose: () -
     }
 
     NightBackdrop(glowX = 0.5f + 0.2f * sin(pos * 1.4f)) {
-        BoxWithConstraints(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-            val width = maxWidth
-            val pagerHeight = maxHeight - TopBarHeight - BottomHeight
-            val stageHeight = pagerHeight * 0.66f
-            val helloMascot = min(stageHeight * 0.66f, 250.dp)
+        Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+            TopBar(
+                tourOnly = tourOnly,
+                langAlpha = (1f - pos).coerceIn(0f, 1f),
+                skipAlpha = (last - pos).coerceIn(0f, 1f),
+                onSkip = onFinish,
+                onClose = onClose,
+            )
+            // Sahifalar maydoni: yuqori va pastki panellar katta şriftda balandlaşsa, şu maydon kiçrayadi
+            BoxWithConstraints(Modifier.fillMaxWidth().weight(1f)) {
+                val width = maxWidth
+                val pagerHeight = maxHeight
+                val stageMax = pagerHeight * 0.66f
+                // Katta şriftda matn köp joy oladi: avval rasm kiçrayadi, sığmasa sahifa aylantiriladi — matn heç qaçon kesilmaydi
+                val textHeights = rememberTextHeights(titles, bodies, width - TextSide * 2)
+                val stages = scenes.mapIndexed { i, s ->
+                    val floor = if (s == Scene.HELLO) MinHelloStage else ActorBand + s.designHeight * MinArtFit + 8.dp
+                    (pagerHeight - textHeights[i]).coerceIn(min(floor, stageMax), stageMax)
+                }
+                fun bandOf(i: Int) = if (scenes[i] == Scene.HELLO) 0.dp else ActorBand
+                fun fitOf(i: Int) = ((stages[i] - bandOf(i) - 8.dp) / scenes[i].designHeight).coerceIn(0f, 1f)
 
-            Column(Modifier.fillMaxSize()) {
-                TopBar(
-                    tourOnly = tourOnly,
-                    langAlpha = (1f - pos).coerceIn(0f, 1f),
-                    skipAlpha = (last - pos).coerceIn(0f, 1f),
-                    onSkip = onFinish,
-                    onClose = onClose,
-                )
-                HorizontalPager(state = pager, modifier = Modifier.fillMaxWidth().height(pagerHeight)) { page ->
+                HorizontalPager(state = pager, modifier = Modifier.fillMaxSize()) { page ->
                     val scene = scenes[page]
                     val play = rememberScenePlay(active = pager.settledPage == page, durationMs = if (scene == Scene.HELLO) 1400 else 2200)
-                    Column(Modifier.fillMaxSize()) {
-                        val band = if (scene == Scene.HELLO) 0.dp else ActorBand
-                        val fit = ((stageHeight - band - 8.dp) / scene.designHeight).coerceAtMost(1f)
-                        // Ixcham sahnalarda matn kartaga yaqin turadi (bo'sh joy pastga, tugma tomonga o'tadi)
-                        val sceneHeight = if (scene == Scene.HELLO) stageHeight
-                            else min(stageHeight, band + scene.designHeight * fit + 28.dp)
+                    val stageHeight = stages[page]
+                    val band = bandOf(page)
+                    val fit = fitOf(page)
+                    // Ixcham sahnalarda matn kartaga yaqin turadi (bo'sh joy pastga, tugma tomonga o'tadi)
+                    val sceneHeight = if (scene == Scene.HELLO) stageHeight
+                        else min(stageHeight, band + scene.designHeight * fit + 28.dp)
+                    Column(Modifier.fillMaxSize().verticalScroll(scrolls[page])) {
                         Box(Modifier.fillMaxWidth().height(sceneHeight)) {
                             Box(
                                 Modifier
@@ -192,19 +227,19 @@ internal fun OnboardingUi(tourOnly: Boolean, onFinish: () -> Unit, onClose: () -
                                         },
                                     contentAlignment = if (scene == Scene.HELLO) Alignment.Center else Alignment.TopCenter,
                                 ) {
-                                    SceneArt(scene, play)
+                                    ArtFontScale { SceneArt(scene, play) }
                                 }
                             }
                         }
                         Column(
-                            Modifier.fillMaxWidth().padding(horizontal = 28.dp),
+                            Modifier.fillMaxWidth().padding(horizontal = TextSide),
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ) {
                             Spacer(Modifier.height(8.dp))
-                            KineticTitle(stringResource(scene.title), play)
+                            KineticTitle(titles[page], play)
                             Spacer(Modifier.height(10.dp))
                             Text(
-                                stringResource(scene.body),
+                                bodies[page],
                                 style = bodyStyle(),
                                 modifier = Modifier.graphicsLayer {
                                     val t = easeOut(stage(play, 0.22f, 0.55f))
@@ -212,53 +247,82 @@ internal fun OnboardingUi(tourOnly: Boolean, onFinish: () -> Unit, onClose: () -
                                     translationY = (1f - t) * 10.dp.toPx()
                                 },
                             )
+                            Spacer(Modifier.height(16.dp))
                         }
                     }
                 }
-                Column(
-                    Modifier.fillMaxWidth().height(BottomHeight).padding(horizontal = 24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                ) {
-                    PageDots(scenes.size, pos)
-                    Spacer(Modifier.height(22.dp))
-                    val isLast = pager.currentPage == last
-                    CtaButton(
-                        text = stringResource(
-                            when {
-                                !isLast -> Res.string.davom_etish
-                                tourOnly -> Res.string.ob_got_it
-                                else -> Res.string.ob_start
-                            }
-                        ),
-                        onClick = {
-                            Haptics.success()
-                            if (isLast) onFinish()
-                            else scope.launch { pager.animateScrollToPage(pager.currentPage + 1, animationSpec = tween(560, easing = FastOutSlowInEasing)) }
-                        },
-                    )
-                }
-            }
 
-            // Tipratikon — sahifalar bilan birga sirpanmaydi, sahnadan sahnaga "yurib" o'tadi
-            val from = scenes[pos.toInt().coerceIn(0, last)]
-            val to = scenes[(pos.toInt() + 1).coerceIn(0, last)]
-            val f = pos - pos.toInt()
-            fun sizeOf(s: Scene) = if (s == Scene.HELLO) helloMascot else s.mascot
-            val size = sizeOf(from) + (sizeOf(to) - sizeOf(from)) * f
-            val ax = from.ax + (to.ax - from.ax) * f
-            fun centerYOf(s: Scene) = if (s == Scene.HELLO) stageHeight * s.ay else ActorBand + ActorSink - s.mascot / 2
-            val centerY = centerYOf(from) + (centerYOf(to) - centerYOf(from)) * f
-            // O'tish paytida biroz sakraydi
-            val hop = sin(f * kotlin.math.PI).toFloat() * 26f
-            MascotActor(
-                pose = scenes[pos.roundToInt().coerceIn(0, last)].pose,
-                size = size,
-                modifier = Modifier.offset(
-                    x = width * ax - size / 2,
-                    y = TopBarHeight + centerY - size / 2 - hop.dp,
-                ),
-            )
+                // Tipratikon — sahifalar bilan birga sirpanmaydi, sahnadan sahnaga "yurib" o'tadi
+                val fromI = pos.toInt().coerceIn(0, last)
+                val toI = (pos.toInt() + 1).coerceIn(0, last)
+                val f = pos - pos.toInt()
+                fun sizeOf(i: Int) = if (scenes[i] == Scene.HELLO) min(stages[i] * 0.66f, 250.dp) else scenes[i].mascot
+                fun centerYOf(i: Int) = if (scenes[i] == Scene.HELLO) stages[i] * scenes[i].ay else ActorBand + ActorSink - scenes[i].mascot / 2
+                val size = sizeOf(fromI) + (sizeOf(toI) - sizeOf(fromI)) * f
+                val ax = scenes[fromI].ax + (scenes[toI].ax - scenes[fromI].ax) * f
+                val centerY = centerYOf(fromI) + (centerYOf(toI) - centerYOf(fromI)) * f
+                // Sahifa aylantirilsa tipratikon kontent bilan birga yuqoriga ketadi va asta yöqoladi (matnni yopmaydi)
+                val scrolled = with(LocalDensity.current) {
+                    (scrolls[fromI].value + (scrolls[toI].value - scrolls[fromI].value) * f).toDp()
+                }
+                // O'tish paytida biroz sakraydi
+                val hop = sin(f * kotlin.math.PI).toFloat() * 26f
+                MascotActor(
+                    pose = scenes[pos.roundToInt().coerceIn(0, last)].pose,
+                    size = size,
+                    modifier = Modifier
+                        .offset(
+                            x = width * ax - size / 2,
+                            y = centerY - size / 2 - hop.dp - scrolled,
+                        )
+                        .graphicsLayer { alpha = (1f - scrolled / size).coerceIn(0f, 1f) },
+                )
+            }
+            Column(
+                // Katta şriftda tugma balandlaşadi — panel ham u bilan östadi
+                Modifier.fillMaxWidth().heightIn(min = BottomHeight).padding(horizontal = 24.dp, vertical = 12.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                    PageDots(scenes.size, pos)
+                Spacer(Modifier.height(22.dp))
+                val isLast = pager.currentPage == last
+                CtaButton(
+                    text = stringResource(
+                        when {
+                            !isLast -> Res.string.davom_etish
+                            tourOnly -> Res.string.ob_got_it
+                            else -> Res.string.ob_start
+                        }
+                    ),
+                    onClick = {
+                        Haptics.success()
+                        if (isLast) onFinish()
+                        else scope.launch { pager.animateScrollToPage(pager.currentPage + 1, animationSpec = tween(560, easing = FastOutSlowInEasing)) }
+                    },
+                )
+            }
+        }
+    }
+}
+
+/**
+ * Har sahnaning sarlavha + izohi joriy şrift ölçamida qança balandlik olişi. Rasm şunga qarab kiçraytiriladi:
+ * telefonda "katta matn" yoqilgan bölsa ham tuşuntiriş kesilib qolmaydi.
+ */
+@Composable
+private fun rememberTextHeights(titles: List<String>, bodies: List<String>, textWidth: Dp): List<Dp> {
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    val title = titleStyle()
+    val body = bodyStyle()
+    val widthPx = with(density) { textWidth.roundToPx() }.coerceAtLeast(1)
+    return remember(titles, bodies, widthPx, density) {
+        val c = Constraints(maxWidth = widthPx)
+        titles.indices.map { i ->
+            val h = measurer.measure(titles[i], title, constraints = c).size.height +
+                measurer.measure(bodies[i], body, constraints = c).size.height
+            with(density) { h.toDp() } + TextGaps
         }
     }
 }
@@ -278,8 +342,9 @@ private fun SceneArt(scene: Scene, play: Float) {
 
 @Composable
 private fun TopBar(tourOnly: Boolean, langAlpha: Float, skipAlpha: Float, onSkip: () -> Unit, onClose: () -> Unit) {
+    // Balandlik — kamida 56dp; katta şriftda til tugmasi va "Keyinroq köraman" sığişi uçun östadi (kesilmaydi)
     Row(
-        Modifier.fillMaxWidth().height(TopBarHeight).padding(horizontal = 16.dp),
+        Modifier.fillMaxWidth().heightIn(min = TopBarHeight).padding(horizontal = 16.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         if (tourOnly) {
@@ -292,20 +357,26 @@ private fun TopBar(tourOnly: Boolean, langAlpha: Float, skipAlpha: Float, onSkip
             // Til tanlagiç — butun tanişuv davomida (keyingi sahnalarda ham almaştirsa böladi)
             uz.tikoncha_parent.presentation.base.LanguagePill(container = Night.card, content = Night.ink, subtle = Night.inkDim)
         }
-        Spacer(Modifier.weight(1f))
-        if (skipAlpha > 0.01f) {
-            Surface(
-                onClick = onSkip,
-                enabled = skipAlpha > 0.5f,
-                shape = CircleShape,
-                color = Color.Transparent,
-                modifier = Modifier.graphicsLayer { alpha = skipAlpha },
-            ) {
-                Text(
-                    stringResource(Res.string.ob_skip),
-                    style = labelStyle(15, FontWeight.Bold, Night.inkDim),
-                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
-                )
+        Spacer(Modifier.width(12.dp))
+        // Qolgan kenglik — "Keyinroq köraman" uçun: sığmasa ikkinçi qatorga ötadi
+        Box(Modifier.weight(1f), contentAlignment = Alignment.CenterEnd) {
+            if (skipAlpha > 0.01f) {
+                Surface(
+                    onClick = onSkip,
+                    enabled = skipAlpha > 0.5f,
+                    shape = CircleShape,
+                    color = Color.Transparent,
+                    modifier = Modifier.heightIn(min = 48.dp).graphicsLayer { alpha = skipAlpha },
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Text(
+                            stringResource(Res.string.ob_skip),
+                            style = labelStyle(15, FontWeight.Bold, Night.inkDim),
+                            textAlign = TextAlign.End,
+                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                        )
+                    }
+                }
             }
         }
     }

@@ -2,6 +2,7 @@ package uz.tikoncha_parent.presentation.task
 
 import uz.tikoncha_parent.ui.Haptics
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.role
@@ -92,10 +93,12 @@ fun TaskSegmentedToggle(
                 ),
                 contentPadding = PaddingValues(horizontal = 12.dp),
             ) {
+                // "Farzand özi qöyganlar" — katta matnda ikki qatorga tuşadi, kesilmaydi
                 Text(
                     text = label,
                     style = if (checked) style.copy(fontWeight = FontWeight.Bold) else style,
-                    maxLines = 1,
+                    textAlign = TextAlign.Center,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                 )
             }

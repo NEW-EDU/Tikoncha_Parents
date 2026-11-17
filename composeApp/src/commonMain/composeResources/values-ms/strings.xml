@@ -94,7 +94,7 @@
     <string name="maktab">Sekolah</string>
     <string name="sozlamalar">Tetapan</string>
     <string name="bildirishnomalar">Pemberitahuan</string>
-    <string name="tema">Tema</string>
+    <string name="tema">Warna skrin</string>
     <string name="tasdiqlash">Sahkan</string>
     <string name="tolov">Pembayaran</string>
     <string name="obuna_pro">Langganan Pro</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">ID pasport</string>
     <string name="reklama">Iklan</string>
     <string name="yorug">Cerah</string>
-    <string name="theme_system">Sistem</string>
+    <string name="theme_system">Sama seperti telefon</string>
     <string name="xavfli_zona">Zon bahaya</string>
     <string name="akkauntni_o_chirish">Padam akaun</string>
     <string name="pochta_orqali">Melalui e-mel</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Minta kebenaran</string>
     <string name="joylashuv_uchun_ruxsat">Kebenaran lokasi</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Untuk menggunakan peta sepenuhnya, berikan kebenaran Lokasi daripada tetapan!</string>
-    <string name="xatolik">Ralat</string>
-    <string name="ok">OK</string>
+    <string name="xatolik">Tidak berjaya</string>
+    <string name="ok">Baik, faham</string>
     <string name="qoshish">Tambah</string>
     <string name="ogil_bola">Lelaki</string>
     <string name="qiz_bola">Perempuan</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Berjaya</string>
     <string name="qisqartirish">Pendekkan</string>
     <string name="vazifa_tahrirlandi">Tugasan disunting</string>
-    <string name="server_connection_error">Ralat sambungan pelayan!</string>
+    <string name="server_connection_error">Tidak dapat bersambung sekarang. Cuba lagi sebentar lagi.</string>
     <string name="faol">Aktif</string>
     <string name="faol_emas">Tidak aktif</string>
     <string name="ohirgi_faollik">Aktif terakhir:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Perhatian!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Had Penggunaan tidak akan berfungsi semasa selang masa yang anda pilih! Maksudnya, jadual masa mempunyai keutamaan lebih tinggi.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d apl tidak dipasang pada peranti anda</string>
-    <string name="cheklovlar">Sekatan</string>
+    <string name="cheklovlar">Peraturan</string>
     <string name="ta_ilovaga">untuk %1$d apl</string>
     <string name="ta_vebsaytga">untuk %1$d laman web</string>
     <string name="ustuvorligi">Keutamaan</string>
-    <string name="jadval_nomini_kiriting">Masukkan nama jadual</string>
+    <string name="jadval_nomini_kiriting">Masukkan nama peraturan</string>
     <string name="misol_o_quv_markaz">contoh: Pusat latihan</string>
     <string name="ochirish">Padam</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Adakah anda bersetuju untuk keluar tanpa menyimpan jadual?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">TAHNIAH!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Anda kini memiliki langganan ini</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Nikmati ciri istimewa dan sokongan keutamaan!</string>
-    <string name="statistika">Statistik</string>
+    <string name="statistika">Masa di telefon</string>
     <string name="chegirmalar">Diskaun</string>
     <string name="chegirma">Diskaun</string>
     <string name="topshiriqlar">Tugasan</string>
-    <string name="jadvallar">Jadual</string>
+    <string name="jadvallar">Peraturan</string>
     <string name="ilova_cheklangan">%1$d apl dihadkan</string>
-    <string name="faol_vazifa">%1$d tugasan aktif</string>
-    <string name="bugun_sarfladi">Dibelanjakan hari ini</string>
+    <string name="faol_vazifa">Tugasan aktif: %1$d</string>
+    <string name="bugun_sarfladi">Di telefon hari ini</string>
     <string name="chiqish">Log keluar</string>
     <string name="chiqishni_xohlaysizmi">Adakah anda mahu log keluar?</string>
     <string name="chiqishni_tasdiqlang">Sahkan proses log keluar.</string>
@@ -321,8 +321,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">Profil dan tetapan anda disimpan di pelayan.</string>
     <string name="qayta_kirsangiz_tiklanadi">Apabila anda log masuk semula, semuanya akan dipulihkan.</string>
     <string name="farzand_qoshilmagan">Tiada anak ditambah</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Jadual, sembang dan laporan akan muncul selepas anak ditambah.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Ralat tidak dijangka berlaku. Sila cuba lagi.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Peraturan, sembang dan masa di telefon akan muncul selepas anak ditambah.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Tidak berjaya. Cuba lagi sebentar lagi.</string>
     <string name="hozircha_farzand_qoshilmagan">Anda belum menambah anak.</string>
     <string name="diqqat2">PERHATIAN!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Pilih jenis apl sebelum meneruskan.</string>
@@ -342,10 +342,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">Pilih cara kami patut menghantar \n kod pengesahan</string>
     <string name="tasdiqlash_kodini_olish">Dapatkan kod pengesahan</string>
     <string name="telegram_kod_kiritish">Masukkan kod yang dihantar ke Telegram yang dipautkan kepada %1$s</string>
-    <string name="xato_kod_kiritdingiz">Kod yang anda masukkan salah</string>
+    <string name="xato_kod_kiritdingiz">Kod tidak sepadan. Taip sekali lagi.</string>
     <string name="kod_olish_usulini_ozgartirish">Tukar kaedah penghantaran kod</string>
     <string name="versiya">Versi</string>
-    <string name="jadval_yaratish">Cipta jadual</string>
+    <string name="jadval_yaratish">Cipta peraturan</string>
     <string name="sizning_cheklovlaringiz">Sekatan anda</string>
 
     <string name="avtomatik_bloklash_vaqti">Sekatan automatik pada hari dan jam terpilih</string>
@@ -363,9 +363,9 @@
     <string name="noto_g_ri_url_format">Format URL tidak sah</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Laman ini sudah ada dalam senarai</string>
     <string name="to_liq_nazoratni_yoqing">Aktifkan kawalan penuh</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Urus apl, masa dan penggunaan melalui Hoglt. Dengan Plus, bekerja tanpa sekatan dan aktifkan perlindungan maksimum melalui mod Perisai.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Urus apl dan masa di telefon dengan Hoglt. Dengan Plus tiada had dan anda boleh menghidupkan perlindungan ketat.</string>
     <string name="plus_imkoniyatlarini_ochish">Buka ciri Plus</string>
-    <string name="jadval_nomi">Nama jadual</string>
+    <string name="jadval_nomi">Nama peraturan</string>
     <string name="saytlar">Laman</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Tentukan bila dan dalam keadaan apa apl dan laman web dihadkan</string>
 
@@ -394,7 +394,7 @@
     <string name="coins_help_close">Tutup</string>
     <string name="qollash">Guna</string>
     <string name="promokod">Kod promosi:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Anda berjaya membeli syiling.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Syiling telah dibeli.</string>
     <string name="narx">Harga</string>
     <string name="jami">Jumlah</string>
     <string name="bekor_qilindi">Dibatalkan!</string>
@@ -411,11 +411,11 @@
     <string name="plus_obnuna_kerak">Langganan PLUS diperlukan</string>
     <string name="toliq_nazorat_statistika">Kawalan penuh dan statistik</string>
     <string name="farzand_ilova_kuzatish">Jejaki apl yang digunakan anak anda dan berapa lama sepanjang hari.</string>
-    <string name="uchtagacha_jadval">Sehingga 3 jadual</string>
+    <string name="uchtagacha_jadval">Sehingga 3 peraturan</string>
     <string name="jadval_cheklovlar">Tetapkan sekatan berasingan untuk hari, minggu atau waktu khas.</string>
     <string name="qattiq_bloklash_qalqon">Perlindungan ketat: laman web dan video pendek turut disekat</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Anak anda tidak boleh mematikan atau mengubah sekatan.</string>
-    <string name="tez_bloklash_timer">Sekatan pantas (Pemasa)</string>
+    <string name="tez_bloklash_timer">Apl yang sentiasa ditutup</string>
     <string name="vaqtinchalik_bloklash_tezi">Hidupkan sekatan sementara dalam beberapa saat apabila perlu.</string>
     <string name="hisobot_tahlil">Laporan dan analisis</string>
     <string name="farzand_nazorat_tavsifi">Kawal penggunaan telefon anak anda. Sekat apl yang tidak diingini, tetapkan masa penggunaan dan cipta persekitaran yang selamat.</string>
@@ -493,8 +493,8 @@
     <string name="danger_cat_tobacco">Tembakau dan vape</string>
     <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
-    <string name="farzandim">Anak saya</string>
-    <string name="ozim">Saya sendiri</string>
+    <string name="farzandim">Daripada anak sendiri</string>
+    <string name="ozim">Daripada saya</string>
     <string name="faol_vazifa_yo_q">Tiada tugasan aktif</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Tiada tugasan untuk anak anda</string>
 
@@ -519,7 +519,7 @@
     <string name="weekday_sunday">Ahad</string>
 
     <string name="juda_muhim">Sangat penting</string>
-    <string name="tekshirildi">Disemak</string>
+    <string name="tekshirildi">Terima</string>
     <string name="ko_rish">Lihat</string>
     <string name="vazifa_ochirilsinmi">Padam tugasan?</string>
     <string name="vazifa_ochirish_tasdiq">Adakah anda benar-benar mahu memadam tugasan ini?</string>
@@ -541,7 +541,7 @@
     <string name="tolovlar_tarixi_bos">Sejarah pembayaran kosong</string>
     <string name="tolovlar_tarixi_bos_hint">Ia akan muncul di sini selepas pembelian</string>
     <string name="boshqa_yozuvlar_yoq">Tiada rekod lagi</string>
-    <string name="xatolik_yuz_berdi">Ralat berlaku</string>
+    <string name="xatolik_yuz_berdi">Tidak dapat dimuatkan. Cuba lagi.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -572,7 +572,7 @@
 
     <string name="izoh_ixtiyoriy">Komen (pilihan)</string>
     <string name="vazifa_tangalari">Syiling diberikan kerana menyiapkan tugasan</string>
-    <string name="vazifani_tekshirish">Semak tugasan</string>
+    <string name="vazifani_tekshirish">Semuanya betul?</string>
     <string name="izoh">Komen</string>
     <string name="muhimlilik_darajasi">Tahap kepentingan</string>
     <string name="ragbatlantirish_tangachalari">Syiling ganjaran</string>
@@ -592,7 +592,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Anak anda perlu membuka apl Hoglt dan memasukkan kod pengesahan.</string>
     <string name="bola_hali_bajardim_bosmagan">Anak belum menekan butang “Selesai”</string>
     <string name="foydalanilmagan">Belum digunakan</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Sila log masuk semula</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Log masuk</string>
     <string name="profil_rasmi">Gambar profil</string>
@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Log masuk dengan Telegram</string>
     <string name="yoki">atau</string>
     <string name="telefon_raqami">Nombor telefon</string>
-    <string name="kirish_subtitle">Log masuk ke akaun anda untuk meneruskan</string>
+    <string name="kirish_subtitle">Log masuk dengan Telegram. Belum ada akaun? Akaun akan dicipta secara automatik.</string>
     <string name="login_privacy">Dengan meneruskan, anda bersetuju dengan Dasar Privasi dan Syarat Penggunaan</string>
 
     <string name="telegram_ochilmoqda">Membuka Telegram…</string>
@@ -753,9 +753,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Anda meluluskan permintaan — anak anda kini boleh log keluar daripada apl.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Anda meluluskan permintaan — anak anda kini boleh menyahpasang apl.</string>
     <string name="sorov_rad_etildi_desc">Anda menolak permintaan.</string>
-    <string name="unlink_child_title">Putuskan sambungan anak?</string>
-    <string name="unlink_child_message">Selepas tindakan ini, pemantauan pada peranti %1$s akan dihentikan!</string>
-    <string name="unlink_child_action">Putuskan sambungan</string>
+    <string name="unlink_child_title">Putuskan anak ini?</string>
+    <string name="unlink_child_message">Perlindungan dan peraturan pada telefon %1$s akan berhenti. Untuk menyambung semula, imbas kod sekali lagi melalui “Tambah anak”.</string>
+    <string name="unlink_child_action">Ya, putuskan</string>
     <string name="child_unlinked_success">Anak berjaya diputuskan sambungannya</string>
     <string name="operator_kodi_topilmadi">Kod pengendali sedemikian tiada</string>
     <string name="kod_amal_qilish_muddati">Kod sah selama: %1$s</string>
@@ -769,7 +769,7 @@
     <string name="farzand_tanlanmagan">Tiada anak dipilih</string>
     <string name="vazifa_id_topilmadi">ID tugasan tidak ditemui</string>
     <string name="tahrirlangan">disunting</string>
-    <string name="jadval_topilmadi">Jadual tidak ditemui.</string>
+    <string name="jadval_topilmadi">Tidak ditemui — mungkin telah dipadam. Kembali dan buka semula.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d minit</item>
         <item quantity="other">%1$d minit</item>
@@ -802,8 +802,8 @@
     <string name="tarix_disabled">Dimatikan</string>
     <string name="tarix_paused">Dijeda</string>
     <string name="tarix_deleted">Dipadam</string>
-    <string name="tarix_quick_block_add">Sekatan pantas ditambah</string>
-    <string name="tarix_quick_block_remove">Sekatan pantas dialih keluar</string>
+    <string name="tarix_quick_block_add">Ditambah ke apl yang sentiasa ditutup</string>
+    <string name="tarix_quick_block_remove">Dibuang daripada apl yang sentiasa ditutup</string>
     <string name="tarix_bosh">Belum ada perubahan</string>
     <string name="tarix_resumed">Disambung semula</string>
     <string name="muddat">Tempoh</string>
@@ -827,26 +827,26 @@
     <string name="stat_row_sec">%1$d saat</string>
     <string name="stat_hour_only">%1$d j</string>
     <string name="stat_per_day">~%1$s sehari</string>
-    <string name="stat_quick_blocked">Dalam sekatan pantas</string>
-    <string name="stat_quick_blocked_paused">Dalam sekatan pantas · dijeda</string>
-    <string name="stat_quick_blocked_inactive">Dalam sekatan pantas · perlu Plus</string>
+    <string name="stat_quick_blocked">Sentiasa ditutup</string>
+    <string name="stat_quick_blocked_paused">Sentiasa ditutup · dijeda</string>
+    <string name="stat_quick_blocked_inactive">Sentiasa ditutup · perlu Plus</string>
     <string name="stat_blocked_by_child">Disekat oleh anak</string>
     <string name="stat_blocked_by_child_paused">Disekat oleh anak · dijeda</string>
     <string name="stat_blocked_by_child_inactive">Disekat oleh anak · perlu Plus</string>
     <string name="stat_blocked_by_coparent">Disekat oleh ibu bapa lain</string>
     <string name="stat_blocked_by_coparent_paused">Disekat oleh ibu bapa lain · dijeda</string>
     <string name="stat_blocked_by_coparent_inactive">Disekat oleh ibu bapa lain · perlu Plus</string>
-    <string name="stat_lock_hint">Kunci menambah apl ke sekatan pantas atau mengalih keluarnya</string>
-    <string name="stat_quick_add_cd">Tambah ke sekatan pantas</string>
-    <string name="stat_quick_remove_cd">Alih keluar daripada sekatan pantas</string>
-    <string name="stat_reenable_title">Sekatan pantas akan dihidupkan</string>
-    <string name="stat_reenable_message">Sekatan pantas dimatikan. Menyekat apl ini akan menghidupkannya semula, dan apl lain dalam senaraiya juga akan disekat: %1$d.</string>
+    <string name="stat_lock_hint">Mangga menambah apl ke senarai apl yang sentiasa ditutup atau membuangnya</string>
+    <string name="stat_quick_add_cd">Tambah ke apl yang sentiasa ditutup</string>
+    <string name="stat_quick_remove_cd">Buang daripada apl yang sentiasa ditutup</string>
+    <string name="stat_reenable_title">Apl yang sentiasa ditutup akan dihidupkan semula</string>
+    <string name="stat_reenable_message">“Apl yang sentiasa ditutup” sedang dimatikan. Jika anda menambah apl ini, ciri ini hidup semula dan apl lain dalam senarai juga akan ditutup: %1$d.</string>
     <string name="stat_reenable_confirm">Sekat</string>
     <string name="stat_quick_paywall_title">Langganan diperlukan</string>
     <string name="stat_quick_paywall_message">Menyekat apl dengan satu ketikan memerlukan langganan Hoglt Plus.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Sekatan pantas</string>
+    <string name="quick_title">Apl yang sentiasa ditutup</string>
     <string name="quick_enabled">Hidup</string>
     <string name="quick_pause">Jeda</string>
     <string name="quick_blocked_apps">Apl disekat</string>
@@ -855,15 +855,15 @@
     <string name="quick_info_always">Apl dalam senarai ini sentiasa disekat, tanpa mengira masa atau tempat.</string>
     <string name="quick_info_off">Ia dimatikan sekarang — hidupkannya untuk menyekat apl ini.</string>
     <string name="quick_info_paused">Dijeda sehingga %1$s — tiada apa-apa disekat sehingga itu.</string>
-    <string name="quick_info_stats">Anda juga boleh menambah atau mengalih keluar apl dengan satu ketikan daripada statistik penggunaan.</string>
-    <string name="quick_info_readd">Jika sekatan pantas dimatikan, menambah apl akan menghidupkannya semula.</string>
+    <string name="quick_info_stats">Di halaman “Masa di telefon” anda juga boleh menambah apl ke senarai ini atau membuangnya dengan satu ketikan.</string>
+    <string name="quick_info_readd">Jika “Apl yang sentiasa ditutup” dimatikan, menambah apl akan menghidupkannya semula.</string>
     <string name="quick_child_blocks">Disekat oleh anak</string>
     <string name="quick_coparent_blocks">Disekat oleh ibu bapa lain</string>
     <string name="quick_others_note">Hanya pemiliknya boleh mengubah senarai ini. Tambah apl ke senarai anda sendiri jika perlu.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Waktu tidur</string>
-    <string name="policy_preset_limit">Had masa</string>
+    <string name="policy_preset_limit">Masa sehari</string>
     <string name="policy_preset_school">Waktu sekolah</string>
     <string name="policy_day_mon">Isn</string>
     <string name="policy_day_tue">Sel</string>
@@ -883,30 +883,30 @@
     <string name="policy_location">Lokasi</string>
     <string name="policy_active_now">Aktif sekarang: %1$s</string>
     <string name="policy_active_until">sehingga %1$s</string>
-    <string name="list_info_none">Tiada jadual aktif sekarang</string>
+    <string name="list_info_none">Tiada peraturan yang aktif sekarang</string>
     <string name="list_info_also">Turut aktif: %1$s.</string>
-    <string name="list_info_many">Apabila beberapa jadual berjalan serentak, apl disekat jika mana-mana daripadanya menyekatnya.</string>
-    <string name="list_info_child_scope">Jadual anak sendiri tidak boleh mengatasi jadual anda — apl yang anda sekat kekal disekat.</string>
-    <string name="list_info_school_scope">Jika jadual sekolah menutup apl atau membenarkannya secara jelas, jadual anda tidak boleh mengubahnya. Jika tidak, jadual yang lebih ketat dikenakan.</string>
-    <string name="list_info_quick">Sekatan pantas dihidupkan — apl di dalamnya sentiasa disekat, tanpa mengira masa atau tempat.</string>
-    <string name="list_info_paused">Jadual dijeda: %1$d — ia tidak berbuat apa-apa sehingga masa yang ditetapkan.</string>
-    <string name="list_info_how">Jadual bermula sendiri apabila tiba masa dan tempatnya.</string>
-    <string name="policy_tab_templates">Templat</string>
+    <string name="list_info_many">Apabila beberapa peraturan berjalan serentak, apl disekat jika mana-mana satu daripadanya menyekatnya.</string>
+    <string name="list_info_child_scope">Peraturan anak sendiri tidak boleh mengatasi peraturan anda — apl yang anda sekat kekal disekat.</string>
+    <string name="list_info_school_scope">Jika peraturan sekolah menutup apl atau membenarkannya dengan jelas, peraturan anda tidak boleh mengubahnya. Selain itu, peraturan yang lebih ketat digunakan.</string>
+    <string name="list_info_quick">“Apl yang sentiasa ditutup” dihidupkan — apl dalam senarai ini kekal ditutup tidak kira masa atau tempat.</string>
+    <string name="list_info_paused">Peraturan dijeda: %1$d — tidak berbuat apa-apa sehingga masa yang ditetapkan.</string>
+    <string name="list_info_how">Peraturan bermula sendiri apabila tiba masa dan tempatnya.</string>
+    <string name="policy_tab_templates">Peraturan sedia guna</string>
     <string name="policy_tab_mine">Oleh saya</string>
     <string name="policy_tab_child">Oleh anak</string>
-    <string name="policy_tab_coparent">Ibu bapa</string>
+    <string name="policy_tab_coparent">Ibu bapa lain</string>
     <string name="policy_tab_school">Sekolah</string>
     <string name="policy_enabled_count">%1$d dihidupkan</string>
-    <string name="policy_content_protection">Perlindungan kandungan</string>
+    <string name="policy_content_protection">Perlindungan daripada laman web buruk</string>
     <string name="policy_content_protection_others">Dihidupkan oleh anak atau ibu bapa lain</string>
     <string name="policy_paused">Dijeda</string>
-    <string name="policy_quick_blocks">Sekatan pantas</string>
+    <string name="policy_quick_blocks">Apl yang sentiasa ditutup</string>
     <string name="preset_all_apps">Semua apl</string>
-    <string name="policy_paywall_protection">Perlindungan kandungan berfungsi dengan Hoglt Plus.</string>
+    <string name="policy_paywall_protection">Perlindungan daripada laman web buruk berfungsi dengan Hoglt Plus.</string>
     <string name="policy_paywall_count">Pelan percuma mengehadkan bilangan jadual. Hoglt Plus memberi anda lebih banyak.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Belum ada yang dipilih — jadual ini tidak menyekat apa-apa.</string>
+    <string name="info_nothing">Belum ada yang dipilih — peraturan ini tidak menyekat apa-apa.</string>
     <string name="info_always">Sepanjang masa</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s dari %2$s hingga %3$s</string>
@@ -919,12 +919,12 @@
     <string name="info_what_all_apps_sites">semua apl dan laman web disekat</string>
     <string name="info_what_selected">item terpilih disekat (%1$s)</string>
     <string name="info_stays_open">Kekal terbuka: %1$s.</string>
-    <string name="info_not_counted">Tidak dikira dalam had: %1$s.</string>
+    <string name="info_not_counted">Masa tidak dikira: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s boleh digunakan selama %3$s secara keseluruhan. Setelah masa habis, ia kekal disekat hingga esok.</string>
     <string name="info_limit_hourly">%1$s: %2$s boleh digunakan selama %3$s sejam. Setelah masa habis, ia kekal disekat hingga jam seterusnya.</string>
     <string name="info_limit_all">semua apl</string>
     <string name="info_limit_selected">item terpilih</string>
-    <string name="info_limit_gate">Had hanya terpakai: %1$s.</string>
+    <string name="info_limit_gate">Masa hanya dikira: %1$s.</string>
     <string name="info_protected">Panggilan, SMS dan apl penting lain tidak pernah disekat.</string>
     <string name="info_disabled">Ia dimatikan sekarang — hidupkannya untuk menggunakan ini.</string>
 
@@ -933,7 +933,7 @@
     <string name="preset_when">Bila</string>
     <string name="preset_starts">Mula</string>
     <string name="preset_ends">Tamat</string>
-    <string name="preset_limit">Had</string>
+    <string name="preset_limit">Berapa lama</string>
     <string name="preset_counted">Apa yang dikira</string>
     <string name="preset_what_closed">Apa yang disekat</string>
     <string name="preset_only_selected">Terpilih sahaja</string>
@@ -974,13 +974,13 @@
     <string name="targets_covered_by_category">Dipilih melalui kategori</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Alamat laman web atau kata kunci tidak sah. Contoh: youtube.com atau kino</string>
-    <string name="editor_new_policy">Jadual baharu</string>
+    <string name="editor_new_policy">Peraturan baharu</string>
     <string name="editor_not_selected">Tidak dipilih</string>
     <string name="editor_when_hint">pilihan · jika tidak, sentiasa</string>
     <string name="editor_add_condition">Tambah syarat</string>
     <string name="editor_added">Ditambah</string>
     <string name="editor_condition_time">Masa</string>
-    <string name="editor_condition_limit">Had</string>
+    <string name="editor_condition_limit">Berapa lama</string>
     <string name="editor_in_this_time">Pada masa ini</string>
     <string name="editor_closed_in_time">Disekat</string>
     <string name="editor_closed_in_time_sub">Terbuka pada masa lain</string>
@@ -991,8 +991,8 @@
     <string name="editor_inside">Di dalam kawasan</string>
     <string name="editor_outside">Di luar kawasan</string>
     <string name="editor_rename">Namakan semula</string>
-    <string name="editor_delete_title">Padam jadual ini?</string>
-    <string name="editor_delete_message">“%1$s” akan dipadam.</string>
+    <string name="editor_delete_title">Padam peraturan ini?</string>
+    <string name="editor_delete_message">“%1$s” akan dipadam. Apl yang disekat oleh peraturan ini akan dibuka semula.</string>
     <string name="editor_paywall_allow">Mod “Hanya yang dipilih kekal terbuka” tersedia dengan Plus.</string>
     <string name="location_child_here">Lokasi anak saya</string>
     <string name="protection_section">Apa yang dilindungi</string>
@@ -1010,24 +1010,24 @@
     <string name="protection_policies_pending">Belum dihantar</string>
     <string name="protection_gujanak_limits_note">Perlindungan sederhana hanya menutup apl. Laman web dan video pendek hanya disekat dengan perlindungan ketat: pada telefon anak anda, Hoglt → “Kawalan” → “Mod Perisai”.</string>
     <string name="editor_limit_days_follow_time">Sama seperti masa — hari dipilih pada halaman masa</string>
-    <string name="editor_limit_in_window">had pada masa ini</string>
-    <string name="editor_limit_outside_window">had di luar masa ini</string>
-    <string name="editor_limit_in_time">Had terpakai pada masa ini</string>
+    <string name="editor_limit_in_window">masa dikira dalam waktu ini</string>
+    <string name="editor_limit_outside_window">masa dikira di luar waktu ini</string>
+    <string name="editor_limit_in_time">Masa hanya dikira dalam waktu ini</string>
     <string name="editor_limit_in_time_sub">Tiada sekatan pada masa lain</string>
-    <string name="editor_limit_out_time">Had terpakai di luar masa ini</string>
+    <string name="editor_limit_out_time">Masa dikira di luar waktu ini</string>
     <string name="editor_limit_out_time_sub">Tiada sekatan pada masa ini</string>
     <string name="info_limit_daily_window">%1$s: %2$s boleh digunakan selama %3$s secara keseluruhan. Apabila masa habis, ditutup sehingga tetingkap masa ini tamat.</string>
     <string name="targets_only_selected_open_sites_sub">Laman web lain ditutup</string>
     <string name="targets_only_selected_open_both_sub">Apl dan laman web lain ditutup</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Belum ada jadual</string>
-    <string name="policy_empty_mine_sub">Hidupkan templat atau cipta sendiri</string>
+    <string name="policy_empty_mine_title">Belum ada peraturan</string>
+    <string name="policy_empty_mine_sub">Hidupkan peraturan sedia guna atau cipta sendiri</string>
     <string name="empty_search_title">Tiada apa-apa ditemui</string>
     <string name="empty_search_sub">Cuba carian lain</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Laman web dewasa dan perjudian</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Jadual</string>
+    <string name="policy_name_schedule">Peraturan</string>
     <string name="policy_name_category_block">Sekat mengikut kategori</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Dihidupkan oleh anak anda</string>
@@ -1122,7 +1122,7 @@
     <string name="ap_off_confirm">Matikan</string>
     <string name="ap_keep_on">Biarkan hidup</string>
     <string name="ap_retry_note">Kami akan mencuba lagi esok (%1$d/3).</string>
-    <string name="ap_retry_now">Cuba semula</string>
+    <string name="ap_retry_now">Bayar sekarang</string>
     <string name="ap_other_card">Kad lain</string>
     <string name="ap_cards_empty_title">Tiada kad disimpan</string>
     <string name="ap_cards_empty_sub">Tambah kad UZCARD atau HUMO untuk bayaran auto</string>
@@ -1168,7 +1168,7 @@
     <string name="ulash_tugma">Pautkan</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Langkau</string>
+    <string name="ob_skip">Mungkin nanti</string>
     <string name="ob_start">Mari mulakan</string>
     <string name="ob_got_it">Faham</string>
     <string name="ob_hello_title">Hai, saya Hoglt</string>
@@ -1182,10 +1182,10 @@
     <string name="ob_day_study">Belajar</string>
     <string name="ob_min_fmt">%1$d min</string>
     <string name="ob_rules_title">Tetapkan peraturan sekali sahaja</string>
-    <string name="ob_rules_body">Waktu tidur, waktu sekolah dan had harian hidup dengan sendirinya.</string>
+    <string name="ob_rules_body">Waktu tidur, waktu sekolah dan masa harian dihidupkan sendiri.</string>
     <string name="ob_rule_sleep">Waktu tidur</string>
     <string name="ob_rule_school">Waktu sekolah</string>
-    <string name="ob_rule_limit">Had harian</string>
+    <string name="ob_rule_limit">Masa sehari</string>
     <string name="ob_rule_limit_value">2 j</string>
     <string name="ob_map_title">Ketahui di mana mereka berada</string>
     <string name="ob_map_body">Lihat anak anda pada peta dan tetapkan peraturan untuk tempat seperti sekolah.</string>
@@ -1242,8 +1242,8 @@
     <string name="home_layout_list">Senarai</string>
     <string name="home_layout_grid">Grid</string>
     <string name="home_greeting">Hai, %1$s</string>
-    <string name="kecha_sarfladi">Dibelanjakan semalam</string>
-    <string name="sana_sarfladi">Dibelanjakan pada %1$s</string>
+    <string name="kecha_sarfladi">Di telefon semalam</string>
+    <string name="sana_sarfladi">Di telefon pada %1$s</string>
     <string name="stat_no_usage_day">Belum ada penggunaan telefon pada hari ini</string>
     <string name="kirish_usuli">Kaedah log masuk</string>
     <string name="google_hisobi">Akaun Google</string>
@@ -1266,7 +1266,7 @@
     <string name="vazifa_muddati">Tarikh akhir</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Pembantu</string>
+    <string name="ai_assistant_title">Pembantu pintar</string>
     <string name="ai_assistant_subtitle">Tanya atau tetapkan peraturan</string>
     <string name="ai_period_today">Hari ini</string>
     <string name="ai_period_yesterday">Semalam</string>
@@ -1396,20 +1396,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Percuma: %1$d peraturan aktif · Plus: tanpa had</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Apl tidak dapat melihat apl mana yang dibuka: masa di telefon tidak dikira dan peraturan tidak berfungsi.</string>
+    <string name="perm_why_overlay">Skrin sekatan tidak dapat muncul di atas apl yang disekat, jadi peraturan tidak dapat menutupnya.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Anda tidak dapat melihat di mana anak anda berada, dan peraturan berdasarkan lokasi tidak berfungsi.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Tanpanya, laman web, YouTube Shorts dan Instagram Reels tidak disekat, dan apl boleh dinyahpasang dengan mudah.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">Pelan percuma membenarkan sehingga %1$d apl dalam satu peraturan. Plus memberi lebih banyak.</string>
+    <string name="policy_paywall_app_limit">Peraturan ini telah mencapai had apl pelan anda.</string>
     <string name="clip_child_phone">Pada telefonnya</string>
     <string name="prot_default_note">Buat masa ini peraturan anda tidak menutup sebarang apl. Untuk mengubahnya, pada telefon anak anda buka Hoglt → “Kawalan” dan hidupkan perlindungan.</string>
     <string name="prot_strength">Tahap perlindungan</string>
@@ -1439,4 +1439,64 @@
     <string name="task_empty_done">Belum ada tugasan yang telah selesai</string>
     <string name="task_empty_overdue">Tiada tugasan yang tertunggak</string>
     <string name="task_empty_filter_hint">Ketik penapis yang dipilih sekali lagi untuk melihat semua tugasan.</string>
+    <string name="voice_listen">Dengar</string>
+    <string name="voice_stop">Henti</string>
+    <string name="voice_unavailable">Penerangan suara belum tersedia. Cuba lagi nanti.</string>
+    <string name="live_confirm_title">Tonton secara langsung</string>
+    <string name="live_confirm_body">%1$s akan menerima panggilan. Jika diterima, video akan dibuka.</string>
+    <string name="live_child_fallback">Anak anda</string>
+    <string name="live_call_button">Panggil</string>
+    <string name="live_ringing">Memanggil %1$s…</string>
+    <string name="live_connecting">Menyambung…</string>
+    <string name="live_error_connect">Tidak dapat bersambung. Cuba lagi sebentar lagi.</string>
+    <string name="live_declined">Anak anda menolak</string>
+    <string name="live_no_answer">Tiada jawapan</string>
+    <string name="live_end">Tamat</string>
+    <string name="live_show_on_map">Tunjuk pada peta</string>
+    <string name="unlink_child_button">Putuskan anak</string>
+    <string name="saqlandi">Disimpan</string>
+    <string name="ap_retry_now_amount">Bayar sekarang · %1$s</string>
+    <string name="pay_charge_body">%2$s akan dicaj pada kad •• %1$s.</string>
+    <string name="pay_charge_body_amount">%1$s akan dicaj pada kad anda.</string>
+    <string name="pay_charge_body_plain">Yuran langganan akan dicaj pada kad anda yang disimpan.</string>
+    <string name="pay_confirm_pay">Bayar</string>
+    <string name="app_store_unavailable">App Store tidak tersedia sekarang. Cuba lagi sebentar lagi.</string>
+    <string name="app_store_failed">Pembayaran App Store tidak berjaya. Cuba lagi.</string>
+    <string name="apple_activation_pending_title">Bayaran diterima</string>
+    <string name="login_subtitle_social">Pilih cara log masuk. Belum ada akaun? Akaun akan dicipta secara automatik.</string>
+    <string name="login_telegram_not_opened">Telegram tidak dibuka. Pastikan Telegram dipasang, atau log masuk dengan cara lain.</string>
+    <string name="ob_notif_enable">Hidupkan pemberitahuan</string>
+    <string name="comfort_title">Mudah dibaca?</string>
+    <string name="comfort_screen_color">Warna skrin</string>
+    <string name="comfort_light">Cerah</string>
+    <string name="comfort_dark">Gelap</string>
+    <string name="comfort_done">Selesai</string>
+    <string name="comfort_hint">Anda juga boleh menukarnya nanti.</string>
+    <string name="policy_turned_on">%1$s dihidupkan</string>
+    <string name="policy_turned_off">%1$s dimatikan</string>
+    <string name="policy_off_title">Matikan “%1$s”?</string>
+    <string name="policy_off_body">Peraturan ini terus berhenti pada telefon anak anda, dan semua yang disekatnya dibuka semula. Anda boleh menghidupkannya semula bila-bila masa.</string>
+    <string name="policy_off_body_safety">Perlindungan ini terus berhenti pada telefon anak anda. Anda boleh menghidupkannya semula bila-bila masa.</string>
+    <string name="policy_off_confirm">Ya, matikan</string>
+    <string name="policy_off_cancel">Tidak, biarkan hidup</string>
+    <string name="policy_saved_sent">Disimpan — dihantar ke telefon anak anda</string>
+    <string name="policy_saved_queued">Disimpan — akan sampai ke telefon anak anda apabila anda kembali dalam talian</string>
+    <string name="policy_unsaved_title">Simpan perubahan?</string>
+    <string name="policy_unsaved_body">Jika tidak disimpan, tiada apa-apa berubah pada telefon anak anda.</string>
+    <string name="policy_unsaved_discard">Keluar tanpa menyimpan</string>
+    <string name="quick_unblock_title">Nyahsekat %1$s?</string>
+    <string name="quick_unblock_body">Apl ini terus dibuka pada telefon anak anda.</string>
+    <string name="quick_unblock_confirm">Ya, nyahsekat</string>
+    <string name="quick_unblock_action">Nyahsekat</string>
+    <string name="quick_unblocked">%1$s dinyahsekat</string>
+    <string name="policy_exception_remove">Buang</string>
+    <string name="policy_load_failed">Tidak dapat dimuatkan</string>
+    <string name="tg_more_settings">Tetapan lain</string>
+    <string name="rules_on_count">Peraturan hidup: %1$d</string>
+    <string name="task_accepted">Diterima</string>
+    <string name="task_accepted_coins">%1$s mendapat syiling: %2$d</string>
+    <string name="task_coins_explain">Apabila anda menerima tugasan, syiling akan diberikan kepada anak anda, yang menggunakannya untuk bertanya kepada pembantu pintar.</string>
+    <string name="task_coins_not_enough">Syiling tidak mencukupi</string>
+    <string name="chat_support_title">Khidmat bantuan</string>
+    <string name="chat_ai_title">Pembantu pintar</string>
 </resources>

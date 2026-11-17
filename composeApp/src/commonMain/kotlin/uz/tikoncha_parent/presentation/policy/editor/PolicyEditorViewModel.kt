@@ -37,6 +37,9 @@ import uz.tikoncha_parent.domain.use_case.policy.PausePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.SavePolicyDraftUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.toDraft
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToast
+import uz.tikoncha_parent.presentation.policy.components.PolicyToasts
 import uz.tikoncha_parent.presentation.policy.location.LocationPickerState
 import uz.tikoncha_parent.presentation.policy.location.reduce as reduceLocation
 import uz.tikoncha_parent.presentation.policy.location.toPin
@@ -238,7 +241,7 @@ class PolicyEditorViewModel(
 
         if (policyId == null) {
             val draft = PolicyDraft(name = defaultTitle, action = PolicyAction.DENY, targets = PolicyTargets())
-            _state.update { it.copy(draft = draft) }
+            _state.update { it.copy(draft = draft, initial = draft) }
         } else {
             screenModelScope.launch {
                 observePolicies(childId).collect { list ->
@@ -328,6 +331,8 @@ class PolicyEditorViewModel(
             when (val r = togglePolicy(id, enabled)) {
                 is Outcome.Failure -> _state.update { it.withFailure(r).copy(pendingEnabled = null) }
                 is Outcome.Success -> {
+                    // Switch darhol ketadi — "Saqlandi — farzand telefoniga yuborildi"
+                    PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.EDITOR)
                     _state.update { if (it.isEnabled == enabled) it.copy(pendingEnabled = null) else it }
                     delay(PENDING_TIMEOUT_MS)      // kesh kelmay qolsa spinner osilib qolmasin
                     _state.update { it.copy(pendingEnabled = null) }
@@ -344,6 +349,7 @@ class PolicyEditorViewModel(
             _state.update { it.copy(busy = true) }
             val r = pausePolicy(id, until)
             _state.update { s -> (if (r is Outcome.Failure) s.withFailure(r) else s).copy(busy = false, now = Clock.System.now()) }
+            if (r !is Outcome.Failure) PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.EDITOR)
         }
     }
 

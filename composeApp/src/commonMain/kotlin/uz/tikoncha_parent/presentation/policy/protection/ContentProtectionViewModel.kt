@@ -13,6 +13,9 @@ import uz.tikoncha_parent.domain.use_case.policy.ChildPaidStatusUseCase
 import uz.tikoncha_parent.domain.use_case.policy.GetProtectionPackStatusesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.RefreshPoliciesUseCase
 import uz.tikoncha_parent.domain.use_case.policy.ToggleContentProtectionUseCase
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToast
+import uz.tikoncha_parent.presentation.policy.components.PolicyToasts
 import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 
 /**
@@ -95,6 +98,7 @@ class ContentProtectionViewModel(
             }
             load(refresh = false)                 // create/patch keshni yangiladi
             _state.update { it.copy(busy = false) }
+            PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.PROTECTION)
         }
     }
 }

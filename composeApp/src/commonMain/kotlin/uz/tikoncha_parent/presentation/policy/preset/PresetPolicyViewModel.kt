@@ -34,6 +34,9 @@ import uz.tikoncha_parent.domain.use_case.policy.PausePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.SavePolicyDraftUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.toDraft
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToast
+import uz.tikoncha_parent.presentation.policy.components.PolicyToasts
 import uz.tikoncha_parent.presentation.policy.location.LocationPickerState
 import uz.tikoncha_parent.presentation.policy.location.reduce as reduceLocation
 import uz.tikoncha_parent.presentation.policy.location.toPin
@@ -230,6 +233,8 @@ class PresetPolicyViewModel(
             _state.update { it.copy(pendingEnabled = null, error = result) }
             return
         }
+        // Switch darhol ketadi — "Saqlandi — farzand telefoniga yuborildi"
+        PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.PRESET)
         _state.update { if (it.isEnabled == enabled) it.copy(pendingEnabled = null) else it }
         delay(PENDING_TIMEOUT_MS)        // kesh kelmay qolsa spinner osilib qolmasin
         _state.update { it.copy(pendingEnabled = null) }
@@ -243,6 +248,7 @@ class PresetPolicyViewModel(
             _state.update { it.copy(busy = true) }
             val r = pausePolicy(id, until)
             _state.update { it.copy(busy = false, error = r as? Outcome.Failure ?: it.error, now = Clock.System.now()) }
+            if (r !is Outcome.Failure) PolicyToasts.post(PolicyToast.Saved, PolicyScreenId.PRESET)
         }
     }
 

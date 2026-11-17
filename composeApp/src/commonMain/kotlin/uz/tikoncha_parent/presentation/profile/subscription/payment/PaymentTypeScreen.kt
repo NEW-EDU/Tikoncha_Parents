@@ -147,11 +147,36 @@ fun PaymentTypeScreenUi(
         showPaymentCompletedDialog = state.paymentStatus == PaymentStatus.COMPLETED
     }
 
-    LaunchedEffect(applePaymentSuccess) {
-        if (applePaymentSuccess && state.appStoreOnly) {
+    // App Store: PLUS yoqildi — jim yopilmaydi, Click'dagi bilan bir xil tasdiq.
+    // Oilaviy tarif (farzand nomi körsatilmaydi), muddat serverdan keyin keladi.
+    SubscriptionSuccessSheet(
+        show = applePaymentSuccess,
+        childName = null,
+        childAvatarUrl = null,
+        validUntil = null,
+        onDone = {
+            event(PaymentEvent.ResetPaymentResponse)
+            navigator?.pop()
+        },
+    )
+
+    // Pul yeçildi, PLUS bir necha daqiqada yoqiladi — xato emas: sokin oyna, qizil "Bajarilmadi" emas
+    CustomDialog(
+        painter = painterResource(Res.drawable.dialog_info),
+        show = state.appleActivationPending,
+        title = stringResource(Res.string.apple_activation_pending_title),
+        message = stringResource(Res.string.apple_activation_pending),
+        buttonText = stringResource(Res.string.ok),
+        showCloseButton = false,
+        onDismiss = {
+            event(PaymentEvent.ResetPaymentResponse)
+            navigator?.pop()
+        },
+        onButtonClick = {
+            event(PaymentEvent.ResetPaymentResponse)
             navigator?.pop()
         }
-    }
+    )
 
     SubscribeChildBottomSheet(
         show = state.showSubscribeChildSheet,

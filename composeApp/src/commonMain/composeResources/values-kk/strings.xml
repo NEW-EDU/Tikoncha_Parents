@@ -94,7 +94,7 @@
     <string name="maktab">Мектеп</string>
     <string name="sozlamalar">Баптаулар</string>
     <string name="bildirishnomalar">Хабарландырулар</string>
-    <string name="tema">Тақырып</string>
+    <string name="tema">Экран түсі</string>
     <string name="tasdiqlash">Растау</string>
     <string name="tolov">Төлем</string>
     <string name="obuna_pro">Pro жазылымы</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">Паспорт ID</string>
     <string name="reklama">Жарнама</string>
     <string name="yorug">Ашық</string>
-    <string name="theme_system">Жүйелік</string>
+    <string name="theme_system">Телефондағыдай</string>
     <string name="xavfli_zona">Қауіпті аймақ</string>
     <string name="akkauntni_o_chirish">Аккаунтты жою</string>
     <string name="pochta_orqali">Электрондық пошта арқылы</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Рұқсат сұрау</string>
     <string name="joylashuv_uchun_ruxsat">Геолокацияға рұқсат</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Картаны толық пайдалану үшін баптаулардан геолокацияға рұқсат беріңіз!</string>
-    <string name="xatolik">Қате</string>
-    <string name="ok">Жарайды</string>
+    <string name="xatolik">Болмады</string>
+    <string name="ok">Түсінікті</string>
     <string name="qoshish">Қосу</string>
     <string name="ogil_bola">Ұл бала</string>
     <string name="qiz_bola">Қыз бала</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Сәтті</string>
     <string name="qisqartirish">Қысқарту</string>
     <string name="vazifa_tahrirlandi">Тапсырма өңделді</string>
-    <string name="server_connection_error">Серверге қосылу қатесі!</string>
+    <string name="server_connection_error">Қазір қосылу мүмкін болмады. Сәлден кейін қайталап көріңіз.</string>
     <string name="faol">Әрекетте</string>
     <string name="faol_emas">Белсенді емес</string>
     <string name="ohirgi_faollik">Соңғы белсенділік:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Назар аударыңыз!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Сіз таңдаған уақыт аралығында пайдалану лимиті жұмыс істемейді! Яғни уақыт кестесінің басымдығы жоғары.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d қолданба құрылғыңызда орнатылмаған</string>
-    <string name="cheklovlar">Шектеулер</string>
+    <string name="cheklovlar">Ережелер</string>
     <string name="ta_ilovaga">%1$d қолданбаға</string>
     <string name="ta_vebsaytga">%1$d веб-сайтқа</string>
     <string name="ustuvorligi">Басымдық</string>
-    <string name="jadval_nomini_kiriting">Кесте атауын енгізіңіз</string>
+    <string name="jadval_nomini_kiriting">Ереже атауын енгізіңіз</string>
     <string name="misol_o_quv_markaz">мысалы: Оқу орталығы</string>
     <string name="ochirish">Жою</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Кестені сақтамай шығуға келісесіз бе?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">ҚҰТТЫҚТАЙМЫЗ!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Енді бұл жазылым сіздікі</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Арнайы мүмкіндіктер мен басым қолдауды пайдаланыңыз!</string>
-    <string name="statistika">Статистика</string>
+    <string name="statistika">Телефон уақыты</string>
     <string name="chegirmalar">Жеңілдіктер</string>
     <string name="chegirma">Жеңілдік</string>
     <string name="topshiriqlar">Тапсырмалар</string>
-    <string name="jadvallar">Кестелер</string>
+    <string name="jadvallar">Ережелер</string>
     <string name="ilova_cheklangan">%1$d қолданба шектелген</string>
-    <string name="faol_vazifa">%1$d белсенді тапсырма</string>
-    <string name="bugun_sarfladi">Бүгін жұмсалды</string>
+    <string name="faol_vazifa">Белсенді тапсырма: %1$d</string>
+    <string name="bugun_sarfladi">Бүгін телефонда</string>
     <string name="chiqish">Шығу</string>
     <string name="chiqishni_xohlaysizmi">Шыққыңыз келе ме?</string>
     <string name="chiqishni_tasdiqlang">Шығуды растаңыз.</string>
@@ -321,8 +321,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">Профиліңіз бен баптауларыңыз серверде сақталады.</string>
     <string name="qayta_kirsangiz_tiklanadi">Қайта кіргенде бәрі қалпына келеді.</string>
     <string name="farzand_qoshilmagan">Бала қосылмаған</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Кестелер, чаттар мен есептер бала қосылғаннан кейін пайда болады.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Күтпеген қате орын алды. Қайталап көріңіз.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Ережелер, чаттар және телефон уақыты бала қосылғаннан кейін көрінеді.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Болмады. Сәлден кейін қайталап көріңіз.</string>
     <string name="hozircha_farzand_qoshilmagan">Сіз әлі бала қоспадыңыз.</string>
     <string name="diqqat2">НАЗАР АУДАРЫҢЫЗ!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Жалғастырмас бұрын қолданба түрін таңдаңыз.</string>
@@ -342,10 +342,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">Растау кодын қалай жіберуіміз \n керектігін таңдаңыз</string>
     <string name="tasdiqlash_kodini_olish">Растау кодын алу</string>
     <string name="telegram_kod_kiritish">%1$s нөміріне байланыстырылған Telegram-ға жіберілген кодты енгізіңіз</string>
-    <string name="xato_kod_kiritdingiz">Қате код енгіздіңіз</string>
+    <string name="xato_kod_kiritdingiz">Код сәйкес келмеді. Қайта жазып көріңіз.</string>
     <string name="kod_olish_usulini_ozgartirish">Код алу тәсілін өзгерту</string>
     <string name="versiya">Нұсқа</string>
-    <string name="jadval_yaratish">Кесте құру</string>
+    <string name="jadval_yaratish">Ереже жасау</string>
     <string name="sizning_cheklovlaringiz">Шектеулеріңіз</string>
 
     <string name="avtomatik_bloklash_vaqti">Таңдалған күндер мен сағаттарда автоматты бұғаттау</string>
@@ -363,9 +363,9 @@
     <string name="noto_g_ri_url_format">URL пішімі қате</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Бұл сайт тізімде бар</string>
     <string name="to_liq_nazoratni_yoqing">Толық бақылауды қосыңыз</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Hoglt арқылы қолданбаларды, уақытты және пайдалануды басқарыңыз. Plus арқылы шектеусіз жұмыс істеп, «Қалқан» режимімен барынша қорғанысты қосыңыз.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Қолданбалар мен телефон уақытын Hoglt арқылы басқарыңыз. Plus-пен шектеусіз жұмыс істейсіз және қатаң қорғанысты қоса аласыз.</string>
     <string name="plus_imkoniyatlarini_ochish">Plus мүмкіндіктерін ашу</string>
-    <string name="jadval_nomi">Кесте атауы</string>
+    <string name="jadval_nomi">Ереже атауы</string>
     <string name="saytlar">Сайттар</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Қолданбалар мен веб-сайттар қашан және қандай жағдайда шектелетінін көрсетіңіз</string>
 
@@ -394,7 +394,7 @@
     <string name="coins_help_close">Жабу</string>
     <string name="qollash">Қолдану</string>
     <string name="promokod">Промокод:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Монеталарды сәтті сатып алдыңыз.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Монеталар сатып алынды.</string>
     <string name="narx">Бағасы</string>
     <string name="jami">Барлығы</string>
     <string name="bekor_qilindi">Бас тартылды!</string>
@@ -411,11 +411,11 @@
     <string name="plus_obnuna_kerak">PLUS жазылымы қажет</string>
     <string name="toliq_nazorat_statistika">Толық бақылау және статистика</string>
     <string name="farzand_ilova_kuzatish">Балаңыздың күн бойы қай қолданбаларды қанша пайдаланатынын бақылаңыз.</string>
-    <string name="uchtagacha_jadval">3 кестеге дейін</string>
+    <string name="uchtagacha_jadval">3 ережеге дейін</string>
     <string name="jadval_cheklovlar">Күндерге, апталарға немесе арнайы уақыттарға бөлек шектеулер қойыңыз.</string>
     <string name="qattiq_bloklash_qalqon">Қатаң қорғаныс: сайттар мен қысқа бейнелер де бұғатталады</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Балаңыз шектеулерді өшіре немесе өзгерте алмайды.</string>
-    <string name="tez_bloklash_timer">Жылдам бұғаттау (Таймер)</string>
+    <string name="tez_bloklash_timer">Әрдайым жабық қолданбалар</string>
     <string name="vaqtinchalik_bloklash_tezi">Қажет кезде уақытша бұғаттауды бірнеше секундта қосыңыз.</string>
     <string name="hisobot_tahlil">Есептер және талдау</string>
     <string name="farzand_nazorat_tavsifi">Балаңыздың телефонды пайдалануын бақылаңыз. Қажетсіз қолданбаларды бұғаттап, пайдалану уақытын белгілеп, қауіпсіз орта жасаңыз.</string>
@@ -493,8 +493,8 @@
     <string name="danger_cat_tobacco">Темекі және вейптер</string>
     <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радиус</string>
-    <string name="farzandim">Менің балам</string>
-    <string name="ozim">Өзім</string>
+    <string name="farzandim">Баланың өзі қойғандар</string>
+    <string name="ozim">Мен бергендер</string>
     <string name="faol_vazifa_yo_q">Белсенді тапсырмалар жоқ</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Балаңызға арналған тапсырмалар жоқ</string>
 
@@ -519,7 +519,7 @@
     <string name="weekday_sunday">Жексенбі</string>
 
     <string name="juda_muhim">Өте маңызды</string>
-    <string name="tekshirildi">Тексерілді</string>
+    <string name="tekshirildi">Қабылдаймын</string>
     <string name="ko_rish">Көру</string>
     <string name="vazifa_ochirilsinmi">Тапсырма жойылсын ба?</string>
     <string name="vazifa_ochirish_tasdiq">Бұл тапсырманы шынымен жойғыңыз келе ме?</string>
@@ -541,7 +541,7 @@
     <string name="tolovlar_tarixi_bos">Төлемдер тарихы бос</string>
     <string name="tolovlar_tarixi_bos_hint">Сатып алулардан кейін осында пайда болады</string>
     <string name="boshqa_yozuvlar_yoq">Басқа жазбалар жоқ</string>
-    <string name="xatolik_yuz_berdi">Қате орын алды</string>
+    <string name="xatolik_yuz_berdi">Жүктелмеді. Қайталап көріңіз.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -572,7 +572,7 @@
 
     <string name="izoh_ixtiyoriy">Пікір (міндетті емес)</string>
     <string name="vazifa_tangalari">Тапсырманы орындағаны үшін берілген монеталар</string>
-    <string name="vazifani_tekshirish">Тапсырманы тексеру</string>
+    <string name="vazifani_tekshirish">Бәрі дұрыс па?</string>
     <string name="izoh">Пікір</string>
     <string name="muhimlilik_darajasi">Маңыздылық деңгейі</string>
     <string name="ragbatlantirish_tangachalari">Сыйақы монеталары</string>
@@ -592,7 +592,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Балаңыз Hoglt қолданбасын ашып, растау кодын енгізуі керек.</string>
     <string name="bola_hali_bajardim_bosmagan">Бала әлі «Орындадым» батырмасын баспады</string>
     <string name="foydalanilmagan">Пайдаланылмаған</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Қайта кіру керек</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Кіру</string>
     <string name="profil_rasmi">Профиль суреті</string>
@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Telegram арқылы кіру</string>
     <string name="yoki">немесе</string>
     <string name="telefon_raqami">Телефон нөмірі</string>
-    <string name="kirish_subtitle">Жалғастыру үшін аккаунтыңызға кіріңіз</string>
+    <string name="kirish_subtitle">Telegram арқылы кіріңіз. Тіркелгіңіз болмаса, өзі ашылады.</string>
     <string name="login_privacy">Жалғастыру арқылы Құпиялылық саясаты мен Пайдалану шарттарына келісесіз</string>
 
     <string name="telegram_ochilmoqda">Telegram ашылуда…</string>
@@ -753,9 +753,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Сұрауды мақұлдадыңыз — балаңыз енді қолданбадан шыға алады.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Сұрауды мақұлдадыңыз — балаңыз енді қолданбаны жоя алады.</string>
     <string name="sorov_rad_etildi_desc">Сұрауды қабылдамадыңыз.</string>
-    <string name="unlink_child_title">Баланы ажырату керек пе?</string>
-    <string name="unlink_child_message">Бұл әрекеттен кейін %1$s құрылғысындағы бақылау тоқтатылады!</string>
-    <string name="unlink_child_action">Ажырату</string>
+    <string name="unlink_child_title">Бала ажыратылсын ба?</string>
+    <string name="unlink_child_message">%1$s телефонындағы қорғаныс пен ережелер тоқтайды. Қайта қосу үшін «Бала қосу» арқылы кодты қайта сканерлеңіз.</string>
+    <string name="unlink_child_action">Иә, ажыратылсын</string>
     <string name="child_unlinked_success">Бала сәтті ажыратылды</string>
     <string name="operator_kodi_topilmadi">Мұндай оператор коды жоқ</string>
     <string name="kod_amal_qilish_muddati">Код жарамды: %1$s</string>
@@ -769,7 +769,7 @@
     <string name="farzand_tanlanmagan">Бала таңдалмаған</string>
     <string name="vazifa_id_topilmadi">Тапсырма ID табылмады</string>
     <string name="tahrirlangan">өңделді</string>
-    <string name="jadval_topilmadi">Кесте табылмады.</string>
+    <string name="jadval_topilmadi">Табылмады — мүмкін, өшірілген. Артқа қайтып, қайта ашыңыз.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d минут</item>
         <item quantity="other">%1$d минут</item>
@@ -802,8 +802,8 @@
     <string name="tarix_disabled">Өшірілді</string>
     <string name="tarix_paused">Кідіртілген</string>
     <string name="tarix_deleted">Жойылды</string>
-    <string name="tarix_quick_block_add">Жылдам бұғаттау қосылды</string>
-    <string name="tarix_quick_block_remove">Жылдам бұғаттау алынды</string>
+    <string name="tarix_quick_block_add">Әрдайым жабық қолданбаларға қосылды</string>
+    <string name="tarix_quick_block_remove">Әрдайым жабық қолданбалардан алынды</string>
     <string name="tarix_bosh">Әзірге өзгерістер жоқ</string>
     <string name="tarix_resumed">Жалғастырылды</string>
     <string name="muddat">Ұзақтығы</string>
@@ -827,26 +827,26 @@
     <string name="stat_row_sec">%1$d сек</string>
     <string name="stat_hour_only">%1$d сағ</string>
     <string name="stat_per_day">Күніне ~%1$s</string>
-    <string name="stat_quick_blocked">Жылдам бұғаттауда</string>
-    <string name="stat_quick_blocked_paused">Жылдам бұғаттауда · кідіртілген</string>
-    <string name="stat_quick_blocked_inactive">Жылдам бұғаттауда · Plus қажет</string>
+    <string name="stat_quick_blocked">Әрдайым жабық</string>
+    <string name="stat_quick_blocked_paused">Әрдайым жабық · тоқтатылған</string>
+    <string name="stat_quick_blocked_inactive">Әрдайым жабық · Plus керек</string>
     <string name="stat_blocked_by_child">Баланың өзі бұғаттаған</string>
     <string name="stat_blocked_by_child_paused">Баланың өзі бұғаттаған · кідіртілген</string>
     <string name="stat_blocked_by_child_inactive">Баланың өзі бұғаттаған · Plus қажет</string>
     <string name="stat_blocked_by_coparent">Екінші ата-ана бұғаттаған</string>
     <string name="stat_blocked_by_coparent_paused">Екінші ата-ана бұғаттаған · кідіртілген</string>
     <string name="stat_blocked_by_coparent_inactive">Екінші ата-ана бұғаттаған · Plus қажет</string>
-    <string name="stat_lock_hint">Құлып белгісі қолданбаны жылдам бұғаттауға қосады немесе алып тастайды</string>
-    <string name="stat_quick_add_cd">Жылдам бұғаттауға қосу</string>
-    <string name="stat_quick_remove_cd">Жылдам бұғаттаудан алып тастау</string>
-    <string name="stat_reenable_title">Жылдам бұғаттау қосылады</string>
-    <string name="stat_reenable_message">Жылдам бұғаттау өшірулі. Бұл қолданбаны бұғаттау оны қайта қосады және тізімдегі басқа қолданбалар да бұғатталады: %1$d.</string>
+    <string name="stat_lock_hint">Құлып қолданбаны әрдайым жабық қолданбаларға қосады немесе алып тастайды</string>
+    <string name="stat_quick_add_cd">Әрдайым жабық қолданбаларға қосу</string>
+    <string name="stat_quick_remove_cd">Әрдайым жабық қолданбалардан алып тастау</string>
+    <string name="stat_reenable_title">Әрдайым жабық қолданбалар қайта қосылады</string>
+    <string name="stat_reenable_message">«Әрдайым жабық қолданбалар» қазір өшірулі. Бұл қолданбаны қоссаңыз, ол қайта қосылады және тізімдегі тағы %1$d қолданба жабылады.</string>
     <string name="stat_reenable_confirm">Бұғаттау</string>
     <string name="stat_quick_paywall_title">Жазылым қажет</string>
     <string name="stat_quick_paywall_message">Қолданбаны бір түртумен бұғаттау үшін Hoglt Plus жазылымы қажет.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Жылдам бұғаттау</string>
+    <string name="quick_title">Әрдайым жабық қолданбалар</string>
     <string name="quick_enabled">Қосулы</string>
     <string name="quick_pause">Кідірту</string>
     <string name="quick_blocked_apps">Бұғатталған қолданбалар</string>
@@ -855,15 +855,15 @@
     <string name="quick_info_always">Бұл тізімдегі қолданбалар уақыт пен орынға қарамастан әрқашан бұғатталады.</string>
     <string name="quick_info_off">Қазір өшірулі — бұл қолданбаларды бұғаттау үшін қосыңыз.</string>
     <string name="quick_info_paused">%1$s дейін кідіртілген — оған дейін ештеңе бұғатталмайды.</string>
-    <string name="quick_info_stats">Қолданбаларды пайдалану статистикасынан да бір түртумен қосуға немесе алып тастауға болады.</string>
-    <string name="quick_info_readd">Жылдам бұғаттау өшірулі болса, қолданба қосу оны қайта қосады.</string>
+    <string name="quick_info_stats">«Телефон уақыты» бетінен де қолданбаны бір басумен осы тізімге қосуға немесе алып тастауға болады.</string>
+    <string name="quick_info_readd">«Әрдайым жабық қолданбалар» өшірулі болса, қолданба қосу оны қайта қосады.</string>
     <string name="quick_child_blocks">Баланың өзі бұғаттаған</string>
     <string name="quick_coparent_blocks">Екінші ата-ана бұғаттаған</string>
     <string name="quick_others_note">Бұл тізімдерді тек иесі өзгерте алады. Қажет болса, қолданбаны өз тізіміңізге қосыңыз.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Ұйқы уақыты</string>
-    <string name="policy_preset_limit">Уақыт лимиті</string>
+    <string name="policy_preset_limit">Күніне қанша уақыт</string>
     <string name="policy_preset_school">Сабақ уақыты</string>
     <string name="policy_day_mon">Дс</string>
     <string name="policy_day_tue">Сс</string>
@@ -883,30 +883,30 @@
     <string name="policy_location">Геолокация</string>
     <string name="policy_active_now">Қазір әрекетте: %1$s</string>
     <string name="policy_active_until">%1$s дейін</string>
-    <string name="list_info_none">Қазір ешбір кесте әрекетте емес</string>
+    <string name="list_info_none">Қазір ешбір ереже жұмыс істеп тұрған жоқ</string>
     <string name="list_info_also">Сондай-ақ әрекетте: %1$s.</string>
-    <string name="list_info_many">Бірнеше кесте қатар жұмыс істегенде, олардың кез келгені бұғаттаса, қолданба бұғатталады.</string>
-    <string name="list_info_child_scope">Баланың өз кестелері сіздікін өзгерте алмайды — сіз бұғаттаған қолданба бұғатталған күйде қалады.</string>
-    <string name="list_info_school_scope">Мектеп кестесі қолданбаны жапса немесе оған анық рұқсат берсе, сіздің кестеңіз оны өзгерте алмайды. Әйтпесе қатаңырақ кесте қолданылады.</string>
-    <string name="list_info_quick">Жылдам бұғаттау қосулы — оның қолданбалары уақыт пен орынға қарамастан әрқашан бұғатталады.</string>
-    <string name="list_info_paused">Кідіртілген кестелер: %1$d — олар белгіленген уақытқа дейін ештеңе істемейді.</string>
-    <string name="list_info_how">Кесте өз уақыты мен орны келгенде өздігінен іске қосылады.</string>
-    <string name="policy_tab_templates">Үлгілер</string>
+    <string name="list_info_many">Бір уақытта бірнеше ереже жұмыс істесе, олардың біреуі қолданбаны жапса — ол жабылады.</string>
+    <string name="list_info_child_scope">Баланың өз ережелері сіздің шешіміңізді өзгерте алмайды — сіз жапқан қолданба жабық күйінде қалады.</string>
+    <string name="list_info_school_scope">Мектеп ережесі қолданбаны жапса немесе нақты рұқсат етсе, сіздің ережеңіз оны өзгерте алмайды. Қалған жағдайларда қатаңырақ ереже жұмыс істейді.</string>
+    <string name="list_info_quick">«Әрдайым жабық қолданбалар» қосулы — бұл тізімдегі қолданбалар уақыт пен орынға қарамастан әрдайым жабық.</string>
+    <string name="list_info_paused">Тоқтатылған ережелер: %1$d — белгіленген уақытқа дейін жұмыс істемейді.</string>
+    <string name="list_info_how">Ереже өз уақыты мен орны келгенде өзі іске қосылады.</string>
+    <string name="policy_tab_templates">Дайын ережелер</string>
     <string name="policy_tab_mine">Мен қойған</string>
     <string name="policy_tab_child">Бала өзі</string>
-    <string name="policy_tab_coparent">Ата-ана</string>
+    <string name="policy_tab_coparent">Екінші ата-ана</string>
     <string name="policy_tab_school">Мектеп</string>
     <string name="policy_enabled_count">%1$d қосулы</string>
-    <string name="policy_content_protection">Контенттен қорғау</string>
+    <string name="policy_content_protection">Жаман сайттардан қорғаныс</string>
     <string name="policy_content_protection_others">Бала немесе екінші ата-ана қосқан</string>
     <string name="policy_paused">Кідіртілген</string>
-    <string name="policy_quick_blocks">Жылдам бұғаттаулар</string>
+    <string name="policy_quick_blocks">Әрдайым жабық қолданбалар</string>
     <string name="preset_all_apps">Барлық қолданбалар</string>
-    <string name="policy_paywall_protection">Контенттен қорғау Hoglt Plus арқылы жұмыс істейді.</string>
+    <string name="policy_paywall_protection">Жаман сайттардан қорғаныс Hoglt Plus-пен жұмыс істейді.</string>
     <string name="policy_paywall_count">Тегін жоспарда кестелер саны шектеулі. Hoglt Plus көбірек мүмкіндік береді.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Әзірге ештеңе таңдалмаған — бұл кесте ештеңені бұғаттамайды.</string>
+    <string name="info_nothing">Әзірге ештеңе таңдалмаған — бұл ереже ештеңені жаппайды.</string>
     <string name="info_always">Әрқашан</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s, %2$s – %3$s аралығында</string>
@@ -919,12 +919,12 @@
     <string name="info_what_all_apps_sites">барлық қолданбалар мен сайттар бұғатталады</string>
     <string name="info_what_selected">таңдалғандар бұғатталады (%1$s)</string>
     <string name="info_stays_open">Ашық қалады: %1$s.</string>
-    <string name="info_not_counted">Лимитке есептелмейді: %1$s.</string>
+    <string name="info_not_counted">Уақыт есептелмейді: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s — барлығы %3$s пайдалануға болады. Уақыт біткенде ертеңге дейін бұғатталып тұрады.</string>
     <string name="info_limit_hourly">%1$s: %2$s — сағатына %3$s пайдалануға болады. Уақыт біткенде келесі сағатқа дейін бұғатталып тұрады.</string>
     <string name="info_limit_all">барлық қолданбалар</string>
     <string name="info_limit_selected">таңдалғандар</string>
-    <string name="info_limit_gate">Лимит тек мына жағдайда қолданылады: %1$s.</string>
+    <string name="info_limit_gate">Уақыт тек мына кезде есептеледі: %1$s.</string>
     <string name="info_protected">Қоңыраулар, SMS және басқа маңызды қолданбалар ешқашан бұғатталмайды.</string>
     <string name="info_disabled">Қазір өшірулі — мұны қолдану үшін қосыңыз.</string>
 
@@ -933,7 +933,7 @@
     <string name="preset_when">Қашан</string>
     <string name="preset_starts">Басталуы</string>
     <string name="preset_ends">Аяқталуы</string>
-    <string name="preset_limit">Лимит</string>
+    <string name="preset_limit">Қанша уақыт</string>
     <string name="preset_counted">Не есептеледі</string>
     <string name="preset_what_closed">Не бұғатталады</string>
     <string name="preset_only_selected">Тек таңдалғандар</string>
@@ -974,13 +974,13 @@
     <string name="targets_covered_by_category">Санат арқылы таңдалған</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Сайт мекенжайы немесе кілтсөз қате. Мысалы: youtube.com немесе kino</string>
-    <string name="editor_new_policy">Жаңа кесте</string>
+    <string name="editor_new_policy">Жаңа ереже</string>
     <string name="editor_not_selected">Таңдалмаған</string>
     <string name="editor_when_hint">міндетті емес · әйтпесе әрқашан</string>
     <string name="editor_add_condition">Шарт қосу</string>
     <string name="editor_added">Қосылды</string>
     <string name="editor_condition_time">Уақыт</string>
-    <string name="editor_condition_limit">Лимит</string>
+    <string name="editor_condition_limit">Қанша уақыт</string>
     <string name="editor_in_this_time">Осы уақытта</string>
     <string name="editor_closed_in_time">Бұғатталады</string>
     <string name="editor_closed_in_time_sub">Басқа уақытта ашық</string>
@@ -991,8 +991,8 @@
     <string name="editor_inside">Аймақ ішінде</string>
     <string name="editor_outside">Аймақтан тыс</string>
     <string name="editor_rename">Атын өзгерту</string>
-    <string name="editor_delete_title">Бұл кесте жойылсын ба?</string>
-    <string name="editor_delete_message">«%1$s» жойылады.</string>
+    <string name="editor_delete_title">Ереже біржола өшірілсін бе?</string>
+    <string name="editor_delete_message">«%1$s» өшіріледі. Бұл ереже жапқан қолданбалар қайта ашылады.</string>
     <string name="editor_paywall_allow">«Тек таңдалғандар ашық» режимі Plus арқылы қолжетімді.</string>
     <string name="location_child_here">Балам қай жерде</string>
     <string name="protection_section">Не қорғалады</string>
@@ -1010,24 +1010,24 @@
     <string name="protection_policies_pending">Әлі жеткізілмеді</string>
     <string name="protection_gujanak_limits_note">Орташа қорғаныс тек қолданбаларды жабады. Сайттар мен қысқа бейнелер тек қатаң қорғаныста бұғатталады: балаңыздың телефонында Hoglt → «Бақылау» → «Қалқан» режимі.</string>
     <string name="editor_limit_days_follow_time">Уақытпен бірдей — күндер уақыт бетінде таңдалады</string>
-    <string name="editor_limit_in_window">осы уақытта лимит</string>
-    <string name="editor_limit_outside_window">осы уақыттан тыс лимит</string>
-    <string name="editor_limit_in_time">Лимит осы уақытта қолданылады</string>
+    <string name="editor_limit_in_window">уақыт осы сағаттарда есептеледі</string>
+    <string name="editor_limit_outside_window">уақыт осы сағаттардан тыс есептеледі</string>
+    <string name="editor_limit_in_time">Уақыт тек осы сағаттарда есептеледі</string>
     <string name="editor_limit_in_time_sub">Басқа уақытта шектеу жоқ</string>
-    <string name="editor_limit_out_time">Лимит осы уақыттан тыс қолданылады</string>
+    <string name="editor_limit_out_time">Уақыт осы сағаттардан тыс есептеледі</string>
     <string name="editor_limit_out_time_sub">Осы уақытта шектеу жоқ</string>
     <string name="info_limit_daily_window">%1$s: %2$s — барлығы %3$s пайдалануға болады. Уақыт біткенде осы уақыт аралығы аяқталғанша жабық болады.</string>
     <string name="targets_only_selected_open_sites_sub">Басқа сайттар жабық</string>
     <string name="targets_only_selected_open_both_sub">Басқа қолданбалар мен сайттар жабық</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Әзірге кесте жоқ</string>
-    <string name="policy_empty_mine_sub">Үлгіні қосыңыз немесе өзіңіз құрыңыз</string>
+    <string name="policy_empty_mine_title">Әзірге ереже жоқ</string>
+    <string name="policy_empty_mine_sub">Дайын ережелердің бірін қосыңыз немесе өзіңіз жасаңыз</string>
     <string name="empty_search_title">Ештеңе табылмады</string>
     <string name="empty_search_sub">Басқаша іздеп көріңіз</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Ересектерге арналған және құмар ойын сайттары</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Кесте</string>
+    <string name="policy_name_schedule">Ереже</string>
     <string name="policy_name_category_block">Санаттар бойынша бұғаттау</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Балаңыз қосқан</string>
@@ -1122,7 +1122,7 @@
     <string name="ap_off_confirm">Өшіру</string>
     <string name="ap_keep_on">Қосулы қалдыру</string>
     <string name="ap_retry_note">Ертең қайталап көреміз (%1$d/3).</string>
-    <string name="ap_retry_now">Қайталау</string>
+    <string name="ap_retry_now">Қазір төлеу</string>
     <string name="ap_other_card">Басқа карта</string>
     <string name="ap_cards_empty_title">Сақталған карталар жоқ</string>
     <string name="ap_cards_empty_sub">Автотөлем үшін UZCARD немесе HUMO картасын қосыңыз</string>
@@ -1168,7 +1168,7 @@
     <string name="ulash_tugma">Байланыстыру</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Өткізіп жіберу</string>
+    <string name="ob_skip">Кейінірек көремін</string>
     <string name="ob_start">Бастайық</string>
     <string name="ob_got_it">Түсінікті</string>
     <string name="ob_hello_title">Сәлем, мен — Hoglt</string>
@@ -1182,10 +1182,10 @@
     <string name="ob_day_study">Оқу</string>
     <string name="ob_min_fmt">%1$d мин</string>
     <string name="ob_rules_title">Ережелерді бір рет қойыңыз</string>
-    <string name="ob_rules_body">Ұйқы уақыты, сабақ уақыты және күнделікті лимиттер өздігінен қосылады.</string>
+    <string name="ob_rules_body">Ұйқы уақыты, сабақ уақыты және күндік уақыт өз уақытында өзі қосылады.</string>
     <string name="ob_rule_sleep">Ұйқы уақыты</string>
     <string name="ob_rule_school">Сабақ уақыты</string>
-    <string name="ob_rule_limit">Күнделікті лимит</string>
+    <string name="ob_rule_limit">Күніне қанша уақыт</string>
     <string name="ob_rule_limit_value">2 сағ</string>
     <string name="ob_map_title">Қай жерде екенін біліңіз</string>
     <string name="ob_map_body">Балаңызды картадан көріп, мектеп сияқты орындарға ережелер қойыңыз.</string>
@@ -1242,8 +1242,8 @@
     <string name="home_layout_list">Тізім</string>
     <string name="home_layout_grid">Тор</string>
     <string name="home_greeting">Сәлем, %1$s</string>
-    <string name="kecha_sarfladi">Кеше жұмсалды</string>
-    <string name="sana_sarfladi">%1$s күні жұмсалды</string>
+    <string name="kecha_sarfladi">Кеше телефонда</string>
+    <string name="sana_sarfladi">%1$s телефонда</string>
     <string name="stat_no_usage_day">Бұл күні телефон әлі пайдаланылмаған</string>
     <string name="kirish_usuli">Кіру тәсілі</string>
     <string name="google_hisobi">Google аккаунты</string>
@@ -1266,7 +1266,7 @@
     <string name="vazifa_muddati">Мерзімі</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Көмекші</string>
+    <string name="ai_assistant_title">Ақылды көмекші</string>
     <string name="ai_assistant_subtitle">Сұраңыз немесе ереже қойыңыз</string>
     <string name="ai_period_today">Бүгін</string>
     <string name="ai_period_yesterday">Кеше</string>
@@ -1396,20 +1396,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Тегін: %1$d белсенді ереже · Plus: шексіз</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Қолданба қай қолданба ашылғанын көре алмайды: телефон уақыты есептелмейді, ережелер жұмыс істемейді.</string>
+    <string name="perm_why_overlay">Жабылған қолданбаның үстінен бұғаттау терезесі шықпайды — ережелер қолданбаны жаба алмайды.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Балаңыздың қайда екенін көре алмайсыз; орынға байланған ережелер де жұмыс істемейді.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Онсыз сайттар, YouTube Shorts және Instagram Reels бұғатталмайды, ал қолданбаны оңай жоюға болады.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">Тегін тарифте бір ережеге %1$d қолданбаға дейін қосуға болады. Көбірек қолданба үшін Plus керек.</string>
+    <string name="policy_paywall_app_limit">Бір ережедегі қолданбалар саны тариф шегіне жетті.</string>
     <string name="clip_child_phone">Оның телефонында</string>
     <string name="prot_default_note">Қазір ережелеріңіз ешбір қолданбаны жаппайды. Жабуы үшін балаңыздың телефонында Hoglt-ты ашыңыз → «Бақылау» бөлімінде қорғанысты қосыңыз.</string>
     <string name="prot_strength">Қорғаныс деңгейі</string>
@@ -1439,4 +1439,64 @@
     <string name="task_empty_done">Орындалған тапсырма әзірге жоқ</string>
     <string name="task_empty_overdue">Мерзімі өткен тапсырма жоқ</string>
     <string name="task_empty_filter_hint">Барлық тапсырманы көру үшін таңдалған сүзгіні қайта басыңыз.</string>
+    <string name="voice_listen">Тыңдау</string>
+    <string name="voice_stop">Тоқтату</string>
+    <string name="voice_unavailable">Дауыстық түсіндірме әзірге жоқ. Кейінірек қайталап көріңіз.</string>
+    <string name="live_confirm_title">Тікелей көру</string>
+    <string name="live_confirm_body">%1$s қоңырау алады. Келіссе, бейне ашылады.</string>
+    <string name="live_child_fallback">Балаңыз</string>
+    <string name="live_call_button">Қоңырау шалу</string>
+    <string name="live_ringing">Қоңырау шалынуда: %1$s…</string>
+    <string name="live_connecting">Қосылуда…</string>
+    <string name="live_error_connect">Қосылу мүмкін болмады. Сәлден кейін қайталап көріңіз.</string>
+    <string name="live_declined">Балаңыз бас тартты</string>
+    <string name="live_no_answer">Жауап жоқ</string>
+    <string name="live_end">Аяқтау</string>
+    <string name="live_show_on_map">Картадан көру</string>
+    <string name="unlink_child_button">Баланы ажырату</string>
+    <string name="saqlandi">Сақталды</string>
+    <string name="ap_retry_now_amount">Қазір төлеу · %1$s</string>
+    <string name="pay_charge_body">•• %1$s картасынан %2$s алынады.</string>
+    <string name="pay_charge_body_amount">Картадан %1$s алынады.</string>
+    <string name="pay_charge_body_plain">Сақталған картадан жазылым ақысы алынады.</string>
+    <string name="pay_confirm_pay">Төлеу</string>
+    <string name="app_store_unavailable">App Store қазір ашылмады. Сәлден кейін қайталап көріңіз.</string>
+    <string name="app_store_failed">App Store арқылы төлеу мүмкін болмады. Қайталап көріңіз.</string>
+    <string name="apple_activation_pending_title">Төлем қабылданды</string>
+    <string name="login_subtitle_social">Ыңғайлы тәсілді таңдаңыз. Тіркелгіңіз болмаса, өзі ашылады.</string>
+    <string name="login_telegram_not_opened">Telegram ашылмады. Telegram орнатылғанын тексеріңіз немесе басқа тәсілмен кіріңіз.</string>
+    <string name="ob_notif_enable">Хабарландыруларды қосу</string>
+    <string name="comfort_title">Оқу ыңғайлы ма?</string>
+    <string name="comfort_screen_color">Экран түсі</string>
+    <string name="comfort_light">Ашық</string>
+    <string name="comfort_dark">Күңгірт</string>
+    <string name="comfort_done">Дайын</string>
+    <string name="comfort_hint">Мұны кейін де өзгертуге болады.</string>
+    <string name="policy_turned_on">%1$s қосылды</string>
+    <string name="policy_turned_off">%1$s өшірілді</string>
+    <string name="policy_off_title">%1$s өшірілсін бе?</string>
+    <string name="policy_off_body">Балаңыздың телефонында бұл ереже бірден жұмысын тоқтатады және ол жапқан нәрселер қайта ашылады. Кез келген уақытта қайта қосуға болады.</string>
+    <string name="policy_off_body_safety">Балаңыздың телефонында бұл қорғаныс бірден тоқтайды. Кез келген уақытта қайта қосуға болады.</string>
+    <string name="policy_off_confirm">Иә, өшірілсін</string>
+    <string name="policy_off_cancel">Жоқ, қалсын</string>
+    <string name="policy_saved_sent">Сақталды — бала телефонына жіберілді</string>
+    <string name="policy_saved_queued">Сақталды — интернет қайтқанда бала телефонына жіберіледі</string>
+    <string name="policy_unsaved_title">Өзгерістер сақталсын ба?</string>
+    <string name="policy_unsaved_body">Сақтамасаңыз, балаңыздың телефонында ештеңе өзгермейді.</string>
+    <string name="policy_unsaved_discard">Сақтамай шығу</string>
+    <string name="quick_unblock_title">%1$s қайта ашылсын ба?</string>
+    <string name="quick_unblock_body">Бұл қолданба балаңыздың телефонында бірден ашылады.</string>
+    <string name="quick_unblock_confirm">Иә, ашылсын</string>
+    <string name="quick_unblock_action">Ашу</string>
+    <string name="quick_unblocked">%1$s ашылды</string>
+    <string name="policy_exception_remove">Алып тастау</string>
+    <string name="policy_load_failed">Жүктелмеді</string>
+    <string name="tg_more_settings">Толық баптау</string>
+    <string name="rules_on_count">%1$d ереже қосулы</string>
+    <string name="task_accepted">Қабылданды</string>
+    <string name="task_accepted_coins">%1$s %2$d монета алды</string>
+    <string name="task_coins_explain">Тапсырманы қабылдағанда монеталар балаңызға өтеді. Ол оларды ақылды көмекшіге сұрақ қоюға жұмсайды.</string>
+    <string name="task_coins_not_enough">Монетаңыз жетпейді</string>
+    <string name="chat_support_title">Қолдау қызметі</string>
+    <string name="chat_ai_title">Ақылды көмекші</string>
 </resources>

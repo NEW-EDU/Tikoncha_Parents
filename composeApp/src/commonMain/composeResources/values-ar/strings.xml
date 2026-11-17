@@ -94,7 +94,7 @@
     <string name="maktab">المدرسة</string>
     <string name="sozlamalar">الإعدادات</string>
     <string name="bildirishnomalar">الإشعارات</string>
-    <string name="tema">المظهر</string>
+    <string name="tema">لون الشاشة</string>
     <string name="tasdiqlash">تأكيد</string>
     <string name="tolov">الدفع</string>
     <string name="obuna_pro">اشتراك Pro</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">رقم هوية جواز السفر</string>
     <string name="reklama">إعلان</string>
     <string name="yorug">فاتح</string>
-    <string name="theme_system">النظام</string>
+    <string name="theme_system">مثل الهاتف</string>
     <string name="xavfli_zona">منطقة خطرة</string>
     <string name="akkauntni_o_chirish">حذف الحساب</string>
     <string name="pochta_orqali">عبر البريد الإلكتروني</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">طلب الإذن</string>
     <string name="joylashuv_uchun_ruxsat">إذن الموقع</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">للاستفادة من الخريطة بالكامل، امنح إذن الموقع من الإعدادات!</string>
-    <string name="xatolik">خطأ</string>
-    <string name="ok">حسنًا</string>
+    <string name="xatolik">لم ينجح ذلك</string>
+    <string name="ok">حسنًا، فهمت</string>
     <string name="qoshish">إضافة</string>
     <string name="ogil_bola">ولد</string>
     <string name="qiz_bola">بنت</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">تم بنجاح</string>
     <string name="qisqartirish">تقصير</string>
     <string name="vazifa_tahrirlandi">تم تعديل المهمة</string>
-    <string name="server_connection_error">خطأ في الاتصال بالخادم!</string>
+    <string name="server_connection_error">تعذّر الاتصال الآن. حاول مرة أخرى بعد قليل.</string>
     <string name="faol">نشط</string>
     <string name="faol_emas">غير نشط</string>
     <string name="ohirgi_faollik">آخر نشاط:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >تنبيه!</string>
     <string name="siz_tanlagan_vaqt_oraligida">لن يعمل حد الاستخدام خلال الفترة الزمنية التي اخترتها! أي أن للجدول الزمني أولوية أعلى.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d تطبيقات غير مثبّتة على جهازك</string>
-    <string name="cheklovlar">القيود</string>
+    <string name="cheklovlar">القواعد</string>
     <string name="ta_ilovaga">لـ %1$d تطبيقات</string>
     <string name="ta_vebsaytga">لـ %1$d مواقع ويب</string>
     <string name="ustuvorligi">الأولوية</string>
-    <string name="jadval_nomini_kiriting">أدخل اسم الجدول</string>
+    <string name="jadval_nomini_kiriting">أدخل اسم القاعدة</string>
     <string name="misol_o_quv_markaz">مثال: مركز التدريب</string>
     <string name="ochirish">حذف</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">هل توافق على الخروج دون حفظ الجدول؟</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">تهانينا!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">أصبح لديك هذا الاشتراك الآن</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">استمتع بميزات خاصة ودعم ذي أولوية!</string>
-    <string name="statistika">الإحصاءات</string>
+    <string name="statistika">وقت الهاتف</string>
     <string name="chegirmalar">الخصومات</string>
     <string name="chegirma">خصم</string>
     <string name="topshiriqlar">المهام</string>
-    <string name="jadvallar">الجداول</string>
+    <string name="jadvallar">القواعد</string>
     <string name="ilova_cheklangan">%1$d تطبيقات مقيّدة</string>
-    <string name="faol_vazifa">%1$d مهام نشطة</string>
-    <string name="bugun_sarfladi">المستخدم اليوم</string>
+    <string name="faol_vazifa">المهام النشطة: %1$d</string>
+    <string name="bugun_sarfladi">على الهاتف اليوم</string>
     <string name="chiqish">تسجيل الخروج</string>
     <string name="chiqishni_xohlaysizmi">هل تريد تسجيل الخروج؟</string>
     <string name="chiqishni_tasdiqlang">أكّد عملية تسجيل الخروج.</string>
@@ -322,8 +322,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">يُحفظ ملفك الشخصي وإعداداتك على الخادم.</string>
     <string name="qayta_kirsangiz_tiklanadi">عند تسجيل الدخول مرة أخرى سيُستعاد كل شيء.</string>
     <string name="farzand_qoshilmagan">لم تتم إضافة طفل</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">ستظهر الجداول والدردشات والتقارير بعد إضافة طفل.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">ستظهر القواعد والمحادثات ووقت الهاتف بعد إضافة طفل.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">لم ينجح ذلك. حاول مرة أخرى بعد قليل.</string>
     <string name="hozircha_farzand_qoshilmagan">لم تضف طفلًا بعد.</string>
     <string name="diqqat2">تنبيه!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">اختر نوع التطبيق قبل المتابعة.</string>
@@ -343,10 +343,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">اختر كيف نرسل \n رمز التحقق</string>
     <string name="tasdiqlash_kodini_olish">الحصول على رمز التحقق</string>
     <string name="telegram_kod_kiritish">أدخل الرمز المرسل إلى Telegram المرتبط بالرقم %1$s</string>
-    <string name="xato_kod_kiritdingiz">أدخلت رمزًا غير صحيح</string>
+    <string name="xato_kod_kiritdingiz">الرمز غير صحيح. اكتبه مرة أخرى.</string>
     <string name="kod_olish_usulini_ozgartirish">تغيير طريقة استلام الرمز</string>
     <string name="versiya">الإصدار</string>
-    <string name="jadval_yaratish">إنشاء جدول</string>
+    <string name="jadval_yaratish">إنشاء قاعدة</string>
     <string name="sizning_cheklovlaringiz">قيودك</string>
 
     <string name="avtomatik_bloklash_vaqti">حظر تلقائي في أيام وساعات محددة</string>
@@ -364,9 +364,9 @@
     <string name="noto_g_ri_url_format">صيغة عنوان URL غير صالحة</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">هذا الموقع موجود بالفعل في القائمة</string>
     <string name="to_liq_nazoratni_yoqing">فعّل التحكم الكامل</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">أدر التطبيقات والوقت والاستخدام عبر Hoglt. مع Plus اعمل دون قيود وفعّل أقصى حماية بوضع الدرع.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">تحكّم في التطبيقات ووقت الهاتف مع Hoglt. مع Plus لا توجد حدود ويمكنك تشغيل الحماية الصارمة.</string>
     <string name="plus_imkoniyatlarini_ochish">افتح ميزات Plus</string>
-    <string name="jadval_nomi">اسم الجدول</string>
+    <string name="jadval_nomi">اسم القاعدة</string>
     <string name="saytlar">المواقع</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">حدد متى وفي أي ظروف تُقيَّد التطبيقات والمواقع</string>
 
@@ -395,7 +395,7 @@
     <string name="coins_help_close">إغلاق</string>
     <string name="qollash">تطبيق</string>
     <string name="promokod">رمز الخصم:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">لقد اشتريت العملات بنجاح.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">تم شراء العملات.</string>
     <string name="narx">السعر</string>
     <string name="jami">الإجمالي</string>
     <string name="bekor_qilindi">تم الإلغاء!</string>
@@ -412,11 +412,11 @@
     <string name="plus_obnuna_kerak">يلزم اشتراك PLUS</string>
     <string name="toliq_nazorat_statistika">تحكم كامل وإحصاءات</string>
     <string name="farzand_ilova_kuzatish">تابع التطبيقات التي يستخدمها طفلك وكم من الوقت خلال اليوم.</string>
-    <string name="uchtagacha_jadval">حتى 3 جداول</string>
+    <string name="uchtagacha_jadval">حتى 3 قواعد</string>
     <string name="jadval_cheklovlar">حدّد قيودًا منفصلة للأيام أو الأسابيع أو الأوقات الخاصة.</string>
     <string name="qattiq_bloklash_qalqon">الحماية الصارمة: تُحظر المواقع والفيديوهات القصيرة أيضًا</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">لا يستطيع طفلك إيقاف القيود أو تغييرها.</string>
-    <string name="tez_bloklash_timer">حظر سريع (مؤقت)</string>
+    <string name="tez_bloklash_timer">تطبيقات مغلقة دائمًا</string>
     <string name="vaqtinchalik_bloklash_tezi">فعّل الحظر المؤقت في ثوانٍ قليلة عند الحاجة.</string>
     <string name="hisobot_tahlil">التقارير والتحليلات</string>
     <string name="farzand_nazorat_tavsifi">تحكّم في استخدام طفلك للهاتف. احظر التطبيقات غير المرغوبة وحدّد وقت الاستخدام وأنشئ بيئة آمنة.</string>
@@ -510,8 +510,8 @@
     <string name="danger_cat_tobacco">التبغ والسجائر الإلكترونية</string>
     <string name="danger_distance_m">%1$d م</string>
     <string name="radius">نصف القطر</string>
-    <string name="farzandim">طفلي</string>
-    <string name="ozim">أنا</string>
+    <string name="farzandim">من الطفل نفسه</string>
+    <string name="ozim">مني</string>
     <string name="faol_vazifa_yo_q">لا توجد مهام نشطة</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">لا توجد مهام لطفلك</string>
 
@@ -536,7 +536,7 @@
     <string name="weekday_sunday">الأحد</string>
 
     <string name="juda_muhim">مهمة جدًا</string>
-    <string name="tekshirildi">تمت المراجعة</string>
+    <string name="tekshirildi">أقبل</string>
     <string name="ko_rish">عرض</string>
     <string name="vazifa_ochirilsinmi">حذف المهمة؟</string>
     <string name="vazifa_ochirish_tasdiq">هل تريد حقًا حذف هذه المهمة؟</string>
@@ -558,7 +558,7 @@
     <string name="tolovlar_tarixi_bos">سجل المدفوعات فارغ</string>
     <string name="tolovlar_tarixi_bos_hint">سيظهر هنا بعد إجراء مشتريات</string>
     <string name="boshqa_yozuvlar_yoq">لا توجد سجلات أخرى</string>
-    <string name="xatolik_yuz_berdi">حدث خطأ</string>
+    <string name="xatolik_yuz_berdi">تعذّر التحميل. حاول مرة أخرى.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -589,7 +589,7 @@
 
     <string name="izoh_ixtiyoriy">تعليق (اختياري)</string>
     <string name="vazifa_tangalari">العملات الممنوحة عند إنجاز المهمة</string>
-    <string name="vazifani_tekshirish">مراجعة المهمة</string>
+    <string name="vazifani_tekshirish">هل كل شيء صحيح؟</string>
     <string name="izoh">تعليق</string>
     <string name="muhimlilik_darajasi">مستوى الأهمية</string>
     <string name="ragbatlantirish_tangachalari">عملات المكافأة</string>
@@ -609,7 +609,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">على طفلك فتح تطبيق Hoglt وإدخال رمز التحقق.</string>
     <string name="bola_hali_bajardim_bosmagan">لم يضغط الطفل زر «تم» بعد</string>
     <string name="foydalanilmagan">غير مستخدم</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">يُرجى تسجيل الدخول من جديد</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">تسجيل الدخول</string>
     <string name="profil_rasmi">صورة الملف الشخصي</string>
@@ -635,7 +635,7 @@
     <string name="telegram_orqali_kirish">تسجيل الدخول عبر Telegram</string>
     <string name="yoki">أو</string>
     <string name="telefon_raqami">رقم الهاتف</string>
-    <string name="kirish_subtitle">سجّل الدخول إلى حسابك للمتابعة</string>
+    <string name="kirish_subtitle">سجّل الدخول عبر Telegram. ليس لديك حساب؟ سيُنشأ لك تلقائيًا.</string>
     <string name="login_privacy">بالمتابعة فإنك توافق على سياسة الخصوصية وشروط الاستخدام</string>
 
     <string name="telegram_ochilmoqda">جارٍ فتح Telegram…</string>
@@ -770,9 +770,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">وافقت على الطلب، ويمكن لطفلك الآن تسجيل الخروج من التطبيق.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">وافقت على الطلب، ويمكن لطفلك الآن إزالة التطبيق.</string>
     <string name="sorov_rad_etildi_desc">رفضت الطلب.</string>
-    <string name="unlink_child_title">فصل الطفل؟</string>
-    <string name="unlink_child_message">بعد هذا الإجراء ستتوقف المراقبة على جهاز %1$s!</string>
-    <string name="unlink_child_action">فصل</string>
+    <string name="unlink_child_title">فصل هذا الطفل؟</string>
+    <string name="unlink_child_message">ستتوقف الحماية والقواعد على هاتف %1$s. لإعادة الربط، امسح الرمز مرة أخرى من «إضافة طفل».</string>
+    <string name="unlink_child_action">نعم، افصله</string>
     <string name="child_unlinked_success">تم فصل الطفل بنجاح</string>
     <string name="operator_kodi_topilmadi">لا يوجد رمز مشغّل كهذا</string>
     <string name="kod_amal_qilish_muddati">الرمز صالح لمدة: %1$s</string>
@@ -786,7 +786,7 @@
     <string name="farzand_tanlanmagan">لم يتم اختيار طفل</string>
     <string name="vazifa_id_topilmadi">لم يتم العثور على معرّف المهمة</string>
     <string name="tahrirlangan">معدّل</string>
-    <string name="jadval_topilmadi">لم يتم العثور على الجدول.</string>
+    <string name="jadval_topilmadi">غير موجود — ربما حُذف. ارجع وافتحه مرة أخرى.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d دقيقة</item>
         <item quantity="other">%1$d دقيقة</item>
@@ -819,8 +819,8 @@
     <string name="tarix_disabled">متوقف</string>
     <string name="tarix_paused">موقوف مؤقتًا</string>
     <string name="tarix_deleted">محذوف</string>
-    <string name="tarix_quick_block_add">أُضيف الحظر السريع</string>
-    <string name="tarix_quick_block_remove">أُزيل الحظر السريع</string>
+    <string name="tarix_quick_block_add">أُضيف إلى التطبيقات المغلقة دائمًا</string>
+    <string name="tarix_quick_block_remove">أُزيل من التطبيقات المغلقة دائمًا</string>
     <string name="tarix_bosh">لا توجد تغييرات بعد</string>
     <string name="tarix_resumed">تم الاستئناف</string>
     <string name="muddat">المدة</string>
@@ -844,26 +844,26 @@
     <string name="stat_row_sec">%1$d ث</string>
     <string name="stat_hour_only">%1$d س</string>
     <string name="stat_per_day">~%1$s في اليوم</string>
-    <string name="stat_quick_blocked">في الحظر السريع</string>
-    <string name="stat_quick_blocked_paused">في الحظر السريع · موقوف مؤقتًا</string>
-    <string name="stat_quick_blocked_inactive">في الحظر السريع · يتطلب Plus</string>
+    <string name="stat_quick_blocked">مغلق دائمًا</string>
+    <string name="stat_quick_blocked_paused">مغلق دائمًا · متوقف مؤقتًا</string>
+    <string name="stat_quick_blocked_inactive">مغلق دائمًا · يحتاج Plus</string>
     <string name="stat_blocked_by_child">محظور من الطفل</string>
     <string name="stat_blocked_by_child_paused">محظور من الطفل · موقوف مؤقتًا</string>
     <string name="stat_blocked_by_child_inactive">محظور من الطفل · يتطلب Plus</string>
     <string name="stat_blocked_by_coparent">محظور من ولي الأمر الآخر</string>
     <string name="stat_blocked_by_coparent_paused">محظور من ولي الأمر الآخر · موقوف مؤقتًا</string>
     <string name="stat_blocked_by_coparent_inactive">محظور من ولي الأمر الآخر · يتطلب Plus</string>
-    <string name="stat_lock_hint">يضيف القفل التطبيق إلى الحظر السريع أو يزيله منه</string>
-    <string name="stat_quick_add_cd">إضافة إلى الحظر السريع</string>
-    <string name="stat_quick_remove_cd">إزالة من الحظر السريع</string>
-    <string name="stat_reenable_title">سيتم تفعيل الحظر السريع</string>
-    <string name="stat_reenable_message">الحظر السريع متوقف. حظر هذا التطبيق يعيد تفعيله، وستُحظر أيضًا التطبيقات الأخرى في قائمته: %1$d.</string>
+    <string name="stat_lock_hint">القفل يضيف التطبيق إلى التطبيقات المغلقة دائمًا أو يزيله منها</string>
+    <string name="stat_quick_add_cd">إضافة إلى التطبيقات المغلقة دائمًا</string>
+    <string name="stat_quick_remove_cd">إزالة من التطبيقات المغلقة دائمًا</string>
+    <string name="stat_reenable_title">ستعمل التطبيقات المغلقة دائمًا من جديد</string>
+    <string name="stat_reenable_message">«التطبيقات المغلقة دائمًا» متوقفة الآن. إذا أضفت هذا التطبيق، ستعمل من جديد وستُغلق أيضًا التطبيقات الأخرى في القائمة: %1$d.</string>
     <string name="stat_reenable_confirm">حظر</string>
     <string name="stat_quick_paywall_title">الاشتراك مطلوب</string>
     <string name="stat_quick_paywall_message">يتطلب حظر تطبيق بنقرة واحدة اشتراك Hoglt Plus.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">حظر سريع</string>
+    <string name="quick_title">تطبيقات مغلقة دائمًا</string>
     <string name="quick_enabled">مفعّل</string>
     <string name="quick_pause">إيقاف مؤقت</string>
     <string name="quick_blocked_apps">التطبيقات المحظورة</string>
@@ -872,15 +872,15 @@
     <string name="quick_info_always">التطبيقات في هذه القائمة محظورة دائمًا مهما كان الوقت أو المكان.</string>
     <string name="quick_info_off">هو متوقف الآن، فعّله لحظر هذه التطبيقات.</string>
     <string name="quick_info_paused">موقوف مؤقتًا حتى %1$s، ولا يُحظر شيء حتى ذلك الحين.</string>
-    <string name="quick_info_stats">يمكنك أيضًا إضافة التطبيقات أو إزالتها بنقرة واحدة من إحصاءات الاستخدام.</string>
-    <string name="quick_info_readd">إذا كان الحظر السريع متوقفًا، فإن إضافة تطبيق تعيد تشغيله.</string>
+    <string name="quick_info_stats">يمكنك أيضًا من صفحة «وقت الهاتف» إضافة تطبيق إلى هذه القائمة أو إزالته بلمسة واحدة.</string>
+    <string name="quick_info_readd">إذا كانت «التطبيقات المغلقة دائمًا» متوقفة، فإن إضافة تطبيق تشغّلها من جديد.</string>
     <string name="quick_child_blocks">محظور من الطفل</string>
     <string name="quick_coparent_blocks">محظور من ولي الأمر الآخر</string>
     <string name="quick_others_note">يمكن لأصحابها فقط تغيير هذه القوائم. أضف التطبيق إلى قائمتك الخاصة عند الحاجة.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">وقت النوم</string>
-    <string name="policy_preset_limit">حد الوقت</string>
+    <string name="policy_preset_limit">الوقت في اليوم</string>
     <string name="policy_preset_school">ساعات الدراسة</string>
     <string name="policy_day_mon">الإثنين</string>
     <string name="policy_day_tue">الثلاثاء</string>
@@ -900,30 +900,30 @@
     <string name="policy_location">الموقع</string>
     <string name="policy_active_now">نشط الآن: %1$s</string>
     <string name="policy_active_until">حتى %1$s</string>
-    <string name="list_info_none">لا يوجد جدول نشط الآن</string>
+    <string name="list_info_none">لا توجد قاعدة تعمل الآن</string>
     <string name="list_info_also">نشط أيضًا: %1$s.</string>
-    <string name="list_info_many">عند عمل عدة جداول معًا، يُحظر التطبيق إذا حظره أي منها.</string>
-    <string name="list_info_child_scope">لا يمكن لجداول الطفل الخاصة أن تتجاوز جداولك، فالتطبيق الذي تحظره يبقى محظورًا.</string>
-    <string name="list_info_school_scope">إذا أغلق جدول المدرسة تطبيقًا أو سمح به صراحةً، فلا يمكن لجدولك تغيير ذلك. وإلا يُطبَّق الجدول الأكثر صرامة.</string>
-    <string name="list_info_quick">الحظر السريع مفعّل، وتطبيقاته محظورة دائمًا مهما كان الوقت أو المكان.</string>
-    <string name="list_info_paused">الجداول الموقوفة مؤقتًا: %1$d، لا تعمل حتى الوقت المحدد.</string>
-    <string name="list_info_how">يبدأ الجدول من تلقاء نفسه عندما يحين وقته ومكانه.</string>
-    <string name="policy_tab_templates">قوالب</string>
+    <string name="list_info_many">عندما تعمل عدة قواعد في الوقت نفسه، يُحظر التطبيق إذا حظرته أي واحدة منها.</string>
+    <string name="list_info_child_scope">قواعد الطفل الخاصة لا تلغي قواعدك — التطبيق الذي تحظره يبقى محظورًا.</string>
+    <string name="list_info_school_scope">إذا كانت قاعدة المدرسة تغلق تطبيقًا أو تسمح به صراحةً، فلا تستطيع قاعدتك تغيير ذلك. وفي غير ذلك تُطبَّق القاعدة الأشد.</string>
+    <string name="list_info_quick">«التطبيقات المغلقة دائمًا» تعمل — تطبيقات هذه القائمة تبقى مغلقة مهما كان الوقت أو المكان.</string>
+    <string name="list_info_paused">قواعد متوقفة مؤقتًا: %1$d — لا تفعل شيئًا حتى الوقت المحدد.</string>
+    <string name="list_info_how">تبدأ القاعدة من تلقاء نفسها عندما يحين وقتها ومكانها.</string>
+    <string name="policy_tab_templates">قواعد جاهزة</string>
     <string name="policy_tab_mine">خاصتي</string>
     <string name="policy_tab_child">الطفل</string>
-    <string name="policy_tab_coparent">ولي الأمر</string>
+    <string name="policy_tab_coparent">الوالد الآخر</string>
     <string name="policy_tab_school">المدرسة</string>
     <string name="policy_enabled_count">مفعّل: %1$d</string>
-    <string name="policy_content_protection">حماية المحتوى</string>
+    <string name="policy_content_protection">الحماية من المواقع السيئة</string>
     <string name="policy_content_protection_others">مفعّل من الطفل أو ولي الأمر الآخر</string>
     <string name="policy_paused">موقوف مؤقتًا</string>
-    <string name="policy_quick_blocks">حظر سريع</string>
+    <string name="policy_quick_blocks">تطبيقات مغلقة دائمًا</string>
     <string name="preset_all_apps">كل التطبيقات</string>
-    <string name="policy_paywall_protection">تعمل حماية المحتوى مع Hoglt Plus.</string>
+    <string name="policy_paywall_protection">الحماية من المواقع السيئة تعمل مع Hoglt Plus.</string>
     <string name="policy_paywall_count">الخطة المجانية تحدّ من عدد الجداول. يمنحك Hoglt Plus المزيد.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">لم يتم تحديد شيء بعد، لذلك لا يحظر هذا الجدول شيئًا.</string>
+    <string name="info_nothing">لم يُختر شيء بعد — هذه القاعدة لا تحظر شيئًا.</string>
     <string name="info_always">دائمًا</string>
     <string name="info_sentence">%1$s، %2$s.</string>
     <string name="info_when_time">%1$s من %2$s إلى %3$s</string>
@@ -936,12 +936,12 @@
     <string name="info_what_all_apps_sites">جميع التطبيقات والمواقع محظورة</string>
     <string name="info_what_selected">العناصر المحددة محظورة (%1$s)</string>
     <string name="info_stays_open">تبقى مفتوحة: %1$s.</string>
-    <string name="info_not_counted">لا تُحتسب ضمن الحد: %1$s.</string>
+    <string name="info_not_counted">وقت لا يُحتسب: %1$s.</string>
     <string name="info_limit_daily">%1$s: يمكن استخدام %2$s لمدة %3$s في المجموع. عند انتهاء الوقت تبقى محظورة حتى الغد.</string>
     <string name="info_limit_hourly">%1$s: يمكن استخدام %2$s لمدة %3$s في الساعة. عند انتهاء الوقت تبقى محظورة حتى الساعة التالية.</string>
     <string name="info_limit_all">جميع التطبيقات</string>
     <string name="info_limit_selected">العناصر المحددة</string>
-    <string name="info_limit_gate">يسري الحد فقط: %1$s.</string>
+    <string name="info_limit_gate">يُحتسب الوقت فقط: %1$s.</string>
     <string name="info_protected">المكالمات وSMS والتطبيقات الأساسية الأخرى لا تُحظر أبدًا.</string>
     <string name="info_disabled">هو متوقف الآن، فعّله لتطبيق ذلك.</string>
 
@@ -950,7 +950,7 @@
     <string name="preset_when">متى</string>
     <string name="preset_starts">يبدأ</string>
     <string name="preset_ends">ينتهي</string>
-    <string name="preset_limit">الحد</string>
+    <string name="preset_limit">كم من الوقت</string>
     <string name="preset_counted">ما الذي يُحتسب</string>
     <string name="preset_what_closed">ما الذي يُحظر</string>
     <string name="preset_only_selected">المحدد فقط</string>
@@ -991,13 +991,13 @@
     <string name="targets_covered_by_category">محدد عبر فئة</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">عنوان موقع أو كلمة مفتاحية غير صالحة. مثال: youtube.com أو kino</string>
-    <string name="editor_new_policy">جدول جديد</string>
+    <string name="editor_new_policy">قاعدة جديدة</string>
     <string name="editor_not_selected">غير محدد</string>
     <string name="editor_when_hint">اختياري · وإلا فدائمًا</string>
     <string name="editor_add_condition">إضافة شرط</string>
     <string name="editor_added">تمت الإضافة</string>
     <string name="editor_condition_time">الوقت</string>
-    <string name="editor_condition_limit">الحد</string>
+    <string name="editor_condition_limit">كم من الوقت</string>
     <string name="editor_in_this_time">في هذا الوقت</string>
     <string name="editor_closed_in_time">محظور</string>
     <string name="editor_closed_in_time_sub">مفتوح في الأوقات الأخرى</string>
@@ -1008,8 +1008,8 @@
     <string name="editor_inside">داخل المنطقة</string>
     <string name="editor_outside">خارج المنطقة</string>
     <string name="editor_rename">إعادة تسمية</string>
-    <string name="editor_delete_title">حذف هذا الجدول؟</string>
-    <string name="editor_delete_message">سيتم حذف «%1$s».</string>
+    <string name="editor_delete_title">حذف هذه القاعدة؟</string>
+    <string name="editor_delete_message">سيُحذف «%1$s». ستُفتح من جديد التطبيقات التي كانت هذه القاعدة تحظرها.</string>
     <string name="editor_paywall_allow">وضع «المحدد فقط يبقى مفتوحًا» متاح مع Plus.</string>
     <string name="location_child_here">موقع طفلي</string>
     <string name="protection_section">ما الذي يتم حمايته</string>
@@ -1027,24 +1027,24 @@
     <string name="protection_policies_pending">لم تُسلَّم بعد</string>
     <string name="protection_gujanak_limits_note">الحماية المتوسطة تغلق التطبيقات فقط. لا تُحظر المواقع والفيديوهات القصيرة إلا مع الحماية الصارمة: على هاتف طفلك Hoglt ← «التحكم» ← «وضع الدرع».</string>
     <string name="editor_limit_days_follow_time">مثل الوقت، تُختار الأيام في صفحة الوقت</string>
-    <string name="editor_limit_in_window">الحد في هذا الوقت</string>
-    <string name="editor_limit_outside_window">الحد خارج هذا الوقت</string>
-    <string name="editor_limit_in_time">يسري الحد في هذا الوقت</string>
+    <string name="editor_limit_in_window">يُحتسب الوقت في هذه الساعات</string>
+    <string name="editor_limit_outside_window">يُحتسب الوقت خارج هذه الساعات</string>
+    <string name="editor_limit_in_time">يُحتسب الوقت فقط في هذه الساعات</string>
     <string name="editor_limit_in_time_sub">لا قيود في الأوقات الأخرى</string>
-    <string name="editor_limit_out_time">يسري الحد خارج هذا الوقت</string>
+    <string name="editor_limit_out_time">يُحتسب الوقت خارج هذه الساعات</string>
     <string name="editor_limit_out_time_sub">لا قيود خلال هذا الوقت</string>
     <string name="info_limit_daily_window">%1$s: يمكن استخدام %2$s لمدة %3$s في المجموع. عند انتهاء الوقت تبقى مغلقة حتى تنتهي هذه النافذة الزمنية.</string>
     <string name="targets_only_selected_open_sites_sub">المواقع الأخرى تُغلق</string>
     <string name="targets_only_selected_open_both_sub">التطبيقات والمواقع الأخرى تُغلق</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">لا توجد جداول بعد</string>
-    <string name="policy_empty_mine_sub">فعّل قالبًا أو أنشئ جدولك الخاص</string>
+    <string name="policy_empty_mine_title">لا توجد قواعد بعد</string>
+    <string name="policy_empty_mine_sub">شغّل قاعدة جاهزة أو أنشئ قاعدتك</string>
     <string name="empty_search_title">لم يتم العثور على شيء</string>
     <string name="empty_search_sub">جرّب بحثًا مختلفًا</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">مواقع البالغين والقمار</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">الجدول</string>
+    <string name="policy_name_schedule">قاعدة</string>
     <string name="policy_name_category_block">الحظر حسب الفئات</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">فعّله الطفل</string>
@@ -1139,7 +1139,7 @@
     <string name="ap_off_confirm">إيقاف</string>
     <string name="ap_keep_on">إبقاؤه مفعّلًا</string>
     <string name="ap_retry_note">سنحاول مرة أخرى غدًا (%1$d/3).</string>
-    <string name="ap_retry_now">إعادة المحاولة</string>
+    <string name="ap_retry_now">ادفع الآن</string>
     <string name="ap_other_card">بطاقة أخرى</string>
     <string name="ap_cards_empty_title">لا توجد بطاقات محفوظة</string>
     <string name="ap_cards_empty_sub">أضف بطاقة UZCARD أو HUMO للدفع التلقائي</string>
@@ -1185,7 +1185,7 @@
     <string name="ulash_tugma">ربط</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">تخطي</string>
+    <string name="ob_skip">ربما لاحقًا</string>
     <string name="ob_start">لنبدأ</string>
     <string name="ob_got_it">فهمت</string>
     <string name="ob_hello_title">مرحبًا، أنا Hoglt</string>
@@ -1199,10 +1199,10 @@
     <string name="ob_day_study">الدراسة</string>
     <string name="ob_min_fmt">%1$d د</string>
     <string name="ob_rules_title">حدّد القواعد مرة واحدة</string>
-    <string name="ob_rules_body">وقت النوم ووقت المدرسة والحدود اليومية تعمل من تلقاء نفسها.</string>
+    <string name="ob_rules_body">وقت النوم ووقت المدرسة والوقت اليومي تعمل من تلقاء نفسها.</string>
     <string name="ob_rule_sleep">وقت النوم</string>
     <string name="ob_rule_school">وقت المدرسة</string>
-    <string name="ob_rule_limit">الحد اليومي</string>
+    <string name="ob_rule_limit">الوقت في اليوم</string>
     <string name="ob_rule_limit_value">2 س</string>
     <string name="ob_map_title">اعرف أين هو</string>
     <string name="ob_map_body">شاهد طفلك على الخريطة وضع قواعد لأماكن مثل المدرسة.</string>
@@ -1259,8 +1259,8 @@
     <string name="home_layout_list">قائمة</string>
     <string name="home_layout_grid">شبكة</string>
     <string name="home_greeting">مرحبًا، %1$s</string>
-    <string name="kecha_sarfladi">المستخدم أمس</string>
-    <string name="sana_sarfladi">المستخدم في %1$s</string>
+    <string name="kecha_sarfladi">على الهاتف أمس</string>
+    <string name="sana_sarfladi">على الهاتف في %1$s</string>
     <string name="stat_no_usage_day">لم يُستخدم الهاتف في هذا اليوم بعد</string>
     <string name="kirish_usuli">طريقة تسجيل الدخول</string>
     <string name="google_hisobi">حساب Google</string>
@@ -1283,7 +1283,7 @@
     <string name="vazifa_muddati">الموعد النهائي</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">المساعد</string>
+    <string name="ai_assistant_title">المساعد الذكي</string>
     <string name="ai_assistant_subtitle">اسأل أو حدّد قاعدة</string>
     <string name="ai_period_today">اليوم</string>
     <string name="ai_period_yesterday">أمس</string>
@@ -1413,20 +1413,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">مجانًا: %1$d قاعدة نشطة · Plus: بلا حدود</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">لا يستطيع التطبيق رؤية التطبيقات التي تُفتح: لا يُحتسب وقت الهاتف ولا تعمل القواعد.</string>
+    <string name="perm_why_overlay">لا يمكن أن تظهر شاشة الحظر فوق تطبيق محظور، لذا لا تستطيع القواعد إغلاقه.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">لا يمكنك رؤية مكان طفلك، ولا تعمل القواعد المرتبطة بالمكان.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">بدون هذا الإعداد لا تُحظر المواقع وYouTube Shorts وInstagram Reels، ويمكن حذف التطبيق بسهولة.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">تسمح الخطة المجانية بما يصل إلى %1$d تطبيقات في القاعدة الواحدة. ومع Plus أكثر.</string>
+    <string name="policy_paywall_app_limit">وصلت هذه القاعدة إلى حد التطبيقات في خطتك.</string>
     <string name="clip_child_phone">على هاتفه</string>
     <string name="prot_default_note">حاليًا لا تغلق قواعدك أي تطبيق. لتغيير ذلك، افتح Hoglt على هاتف طفلك ← «التحكم» وفعّل الحماية.</string>
     <string name="prot_strength">مستوى الحماية</string>
@@ -1456,4 +1456,64 @@
     <string name="task_empty_done">لا توجد مهام مكتملة بعد</string>
     <string name="task_empty_overdue">لا توجد مهام متأخرة</string>
     <string name="task_empty_filter_hint">اضغط على الفلتر المحدد مرة أخرى لرؤية كل المهام.</string>
+    <string name="voice_listen">استمع</string>
+    <string name="voice_stop">إيقاف</string>
+    <string name="voice_unavailable">الشرح الصوتي غير متاح بعد. حاول مرة أخرى لاحقًا.</string>
+    <string name="live_confirm_title">المشاهدة المباشرة</string>
+    <string name="live_confirm_body">سيتلقى %1$s مكالمة. إذا قبلها، سيُفتح الفيديو.</string>
+    <string name="live_child_fallback">طفلك</string>
+    <string name="live_call_button">اتصال</string>
+    <string name="live_ringing">جارٍ الاتصال بـ %1$s…</string>
+    <string name="live_connecting">جارٍ الربط…</string>
+    <string name="live_error_connect">تعذّر الاتصال. حاول مرة أخرى بعد قليل.</string>
+    <string name="live_declined">رفض طفلك المكالمة</string>
+    <string name="live_no_answer">لا يوجد رد</string>
+    <string name="live_end">إنهاء</string>
+    <string name="live_show_on_map">عرض على الخريطة</string>
+    <string name="unlink_child_button">فصل الطفل</string>
+    <string name="saqlandi">تم الحفظ</string>
+    <string name="ap_retry_now_amount">ادفع الآن · %1$s</string>
+    <string name="pay_charge_body">سيُخصم %2$s من البطاقة •• %1$s.</string>
+    <string name="pay_charge_body_amount">سيُخصم %1$s من بطاقتك.</string>
+    <string name="pay_charge_body_plain">سيُخصم رسم الاشتراك من بطاقتك المحفوظة.</string>
+    <string name="pay_confirm_pay">ادفع</string>
+    <string name="app_store_unavailable">متجر App Store غير متاح الآن. حاول مرة أخرى بعد قليل.</string>
+    <string name="app_store_failed">لم يكتمل الدفع عبر App Store. حاول مرة أخرى.</string>
+    <string name="apple_activation_pending_title">تم استلام الدفعة</string>
+    <string name="login_subtitle_social">اختر طريقة تسجيل الدخول. ليس لديك حساب؟ سيُنشأ لك تلقائيًا.</string>
+    <string name="login_telegram_not_opened">لم يُفتح Telegram. تأكد من أن Telegram مثبّت، أو سجّل الدخول بطريقة أخرى.</string>
+    <string name="ob_notif_enable">تشغيل الإشعارات</string>
+    <string name="comfort_title">هل القراءة مريحة؟</string>
+    <string name="comfort_screen_color">لون الشاشة</string>
+    <string name="comfort_light">فاتح</string>
+    <string name="comfort_dark">داكن</string>
+    <string name="comfort_done">تم</string>
+    <string name="comfort_hint">يمكنك تغيير ذلك لاحقًا أيضًا.</string>
+    <string name="policy_turned_on">تم تشغيل %1$s</string>
+    <string name="policy_turned_off">تم إيقاف %1$s</string>
+    <string name="policy_off_title">إيقاف «%1$s»؟</string>
+    <string name="policy_off_body">تتوقف هذه القاعدة فورًا على هاتف طفلك، ويُفتح من جديد كل ما كانت تحظره. يمكنك تشغيلها من جديد في أي وقت.</string>
+    <string name="policy_off_body_safety">تتوقف هذه الحماية فورًا على هاتف طفلك. يمكنك تشغيلها من جديد في أي وقت.</string>
+    <string name="policy_off_confirm">نعم، أوقفها</string>
+    <string name="policy_off_cancel">لا، أبقها تعمل</string>
+    <string name="policy_saved_sent">تم الحفظ — أُرسل إلى هاتف طفلك</string>
+    <string name="policy_saved_queued">تم الحفظ — سيصل إلى هاتف طفلك عندما تعود إلى الإنترنت</string>
+    <string name="policy_unsaved_title">حفظ التغييرات؟</string>
+    <string name="policy_unsaved_body">إذا لم تحفظ، فلن يتغير شيء على هاتف طفلك.</string>
+    <string name="policy_unsaved_discard">الخروج دون حفظ</string>
+    <string name="quick_unblock_title">إلغاء حظر %1$s؟</string>
+    <string name="quick_unblock_body">يُفتح هذا التطبيق فورًا على هاتف طفلك.</string>
+    <string name="quick_unblock_confirm">نعم، ألغِ الحظر</string>
+    <string name="quick_unblock_action">إلغاء الحظر</string>
+    <string name="quick_unblocked">تم إلغاء حظر %1$s</string>
+    <string name="policy_exception_remove">إزالة</string>
+    <string name="policy_load_failed">تعذّر التحميل</string>
+    <string name="tg_more_settings">مزيد من الإعدادات</string>
+    <string name="rules_on_count">القواعد المفعّلة: %1$d</string>
+    <string name="task_accepted">تم القبول</string>
+    <string name="task_accepted_coins">يحصل %1$s على عملات: %2$d</string>
+    <string name="task_coins_explain">عندما تقبل المهمة، تذهب العملات إلى طفلك، فيستخدمها لطرح أسئلة على المساعد الذكي.</string>
+    <string name="task_coins_not_enough">العملات غير كافية</string>
+    <string name="chat_support_title">خدمة الدعم</string>
+    <string name="chat_ai_title">المساعد الذكي</string>
 </resources>

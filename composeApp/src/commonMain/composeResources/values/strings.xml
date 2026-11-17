@@ -84,7 +84,7 @@
     <string name="bolaning_ilovasini_sozligini_korish">Bolaning ilovasini sozligini köriş</string>
     <string name="farzandingiz_bilan_suhbat">Farzandingiz bilan suhbat</string>
     <string name="xabar_yuborish">Xabar yuboriş</string>
-    <string name="tangachalar">Tangaçalar</string>
+    <string name="tangachalar">Tangalar</string>
     <string name="tangachalar_orqali">Tangaçalar orqali farzandingiz Suniy intellekt imkoniyatlaridan foydalanişi mumkin</string>
     <string name="bitta_tanga">Bitta tanga 100 söm</string>
     <string name="hammasi">Hammasi</string>
@@ -94,7 +94,7 @@
     <string name="maktab">Maktab</string>
     <string name="sozlamalar">Sozlamalar</string>
     <string name="bildirishnomalar">Bildirişnomalar</string>
-    <string name="tema">Mavzu</string>
+    <string name="tema">Ekran rangi</string>
     <string name="tasdiqlash">Tasdiqlaş</string>
     <string name="tolov">Tölov</string>
     <string name="obuna_pro">Obuna Pro</string>
@@ -126,13 +126,13 @@
     <string name="pasport_id">Pasport ID</string>
     <string name="reklama">Reklama</string>
     <string name="yorug">Yoruğ</string>
-    <string name="theme_system">Tizim</string>
+    <string name="theme_system">Telefondagidek</string>
     <string name="xavfli_zona">Xavfli zona</string>
     <string name="akkauntni_o_chirish">Akkauntni öçiriş</string>
     <string name="pochta_orqali">Poçta orqali</string>
     <string name="sms_orqali">Sms orqali</string>
     <string name="qora">Qora</string>
-    <string name="qorong_u">Qoronğu</string>
+    <string name="qorong_u">Qoronği</string>
     <string name="standart">Standart</string>
     <string name="pro">PRO</string>
     <string name="ta">ta</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Ruxsat söraş</string>
     <string name="joylashuv_uchun_ruxsat">Joylaşuv uçun ruxsat</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Xaritadan töliq foydalaniş uçun Joylaşuvga sozlamalardan turib ruxsat bering!</string>
-    <string name="xatolik">Xatolik</string>
-    <string name="ok">Ok</string>
+    <string name="xatolik">Bajarilmadi</string>
+    <string name="ok">Tuşunarli</string>
     <string name="qoshish">Qöşiş</string>
     <string name="ogil_bola">Öğil bola</string>
     <string name="qiz_bola">Qiz bola</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Muvaffaqiyatli</string>
     <string name="qisqartirish">Qisqartiriş</string>
     <string name="vazifa_tahrirlandi">Vazifa tahrirlandi</string>
-    <string name="server_connection_error">Server bilan boğlanişda xatolik!</string>
+    <string name="server_connection_error">Hozir ulanib bölmadi. Bir ozdan keyin qayta urinib köring.</string>
     <string name="faol">Faol</string>
     <string name="faol_emas">Faol emas</string>
     <string name="ohirgi_faollik">Oxirgi faollik:</string>
@@ -182,7 +182,7 @@
     <string name="ekranni_kuzatish">Ekranni kuzatiş</string>
     <string name="internetdagi_tarix">Internetdagi tarix</string>
     <string name="notification">Bildirişnomalar</string>
-    <string name="sizda_mavjud_tangachalar">Sizda mavjud tangaçalar</string>
+    <string name="sizda_mavjud_tangachalar">Sizdagi tangalar</string>
     <string name="tangachalar_sovg_a_qiling">Vazifani bajargani uçun farzandingizga tangaçalar sovğa qiling.</string>
     <string name="jadval">Jadval</string>
     <string name="ilovalar">Ilovalar</string>
@@ -206,7 +206,7 @@
     <string name="shartlar">Şartlar</string>
     <string name="budilnik">Budilnik</string>
     <string name="har_kuni_bloklashni_rejalashtiring">Har kuni bloklaşni rejalaştiring vaqt, joy va boşqa parametrlar böyiça</string>
-    <string name="tangachalaringiz">Tangaçalaringiz</string>
+    <string name="tangachalaringiz">Tangalaringiz</string>
     <string name="soatbay">Soatbay</string>
     <string name="limit">Limit</string>
     <string name="shartlar_kiritish">Şartlar kiritiş</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Diqqat!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Siz tanlagan Vaqt oraliğida Işlatiş Limiti iş bermaydi! Ya’ni vaqt jadvalining ustuvorligi yuqori.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d ta ilova sizda örnatilmagan</string>
-    <string name="cheklovlar">Çeklovlar</string>
+    <string name="cheklovlar">Qoidalar</string>
     <string name="ta_ilovaga">%1$d ta ilovaga</string>
     <string name="ta_vebsaytga">%1$d ta vebsaytga</string>
     <string name="ustuvorligi">Ustuvorligi</string>
-    <string name="jadval_nomini_kiriting">Jadval nomini kiriting</string>
+    <string name="jadval_nomini_kiriting">Qoida nomini kiriting</string>
     <string name="misol_o_quv_markaz">misol: Öquv markaz</string>
     <string name="ochirish">Öçiriş</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Jadvalni saqlamasdan çiqişga rozimisiz?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">TABRIKLAYMIZ!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Endi siz uşbu obunaga egasiz</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Maxsus imkoniyatlar va birinçi navbatdagi qöllab-quvvatlaşdan foydalaning!</string>
-    <string name="statistika">Statistika</string>
+    <string name="statistika">Telefon vaqti</string>
     <string name="chegirmalar">Çegirmalar</string>
     <string name="chegirma">Çegirma</string>
-    <string name="topshiriqlar">Topşiriqlar</string>
-    <string name="jadvallar">Jadvallar</string>
+    <string name="topshiriqlar">Vazifalar</string>
+    <string name="jadvallar">Qoidalar</string>
     <string name="ilova_cheklangan">%1$d ta ilova çeklangan</string>
     <string name="faol_vazifa">%1$d ta faol vazifa</string>
-    <string name="bugun_sarfladi">Bugun sarfladi</string>
+    <string name="bugun_sarfladi">Bugun telefonda</string>
     <string name="chiqish">Çiqiş</string>
     <string name="chiqishni_xohlaysizmi">Çiqişni xohlaysizmi?</string>
     <string name="chiqishni_tasdiqlang">Hisobdan çiqiş jarayonini tasdiqlang.</string>
@@ -328,8 +328,8 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="profil_va_sozlamalar_saqlanadi">Profil va sozlamalaringiz serverda saqlanadi.</string>
     <string name="qayta_kirsangiz_tiklanadi">Keyin qayta kirsangiz hamma narsa tiklanadi.</string>
     <string name="farzand_qoshilmagan">Farzand qöşilmagan</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Jadval, çatlar va hisobotlar farzand qöşilgandan keyin körinadi.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Kutilmagan xatolik yuz berdi. Iltimos, qayta urinib köring.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Qoidalar, suhbatlar va telefon vaqti farzand qöşilgandan keyin körinadi.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Bajarilmadi. Bir ozdan keyin qayta urinib köring.</string>
     <string name="hozircha_farzand_qoshilmagan">Sizda hozirça farzand qöşilmagan.</string>
     <string name="diqqat2">DIQQAT!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Davom etişdan oldin ilova turini tanlang.</string>
@@ -349,10 +349,10 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="tasdiqlash_kodi_usulini_tanlash">Tasdiqlaş kodini qaysi usul orqali \n yuborişimizni tanlang</string>
     <string name="tasdiqlash_kodini_olish">Tasdiqlaş kodini oliş</string>
     <string name="telegram_kod_kiritish">%1$s raqamiga ulangan Telegramga yuborilgan kodni kiriting</string>
-    <string name="xato_kod_kiritdingiz">Xato kod kirdingiz</string>
+    <string name="xato_kod_kiritdingiz">Kod mos kelmadi. Qayta yozib köring.</string>
     <string name="kod_olish_usulini_ozgartirish">Kod oliş usulini özgartiriş</string>
     <string name="versiya">Versiya</string>
-    <string name="jadval_yaratish">Jadval yaratiş</string>
+    <string name="jadval_yaratish">Qoida yaratiş</string>
     <string name="sizning_cheklovlaringiz">Sizning çeklovlaringiz</string>
 
     <string name="avtomatik_bloklash_vaqti">Tanlangan kun va soatlarda avtomatik bloklaş</string>
@@ -370,9 +370,9 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="noto_g_ri_url_format">Notöğri URL format</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Bu sayt allaqaçon röyxatda</string>
     <string name="to_liq_nazoratni_yoqing">Töliq nazoratni yoqing</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Tikoncha orqali ilovalar, vaqt va foydalanişni boşqaring. Plus bilan çeklovlarsiz işlang va Qalqon rejimi orqali maksimal himoyani yoqing.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Tikoncha orqali ilovalar va telefon vaqtini boşqaring. Plus bilan çeklovsiz işlaysiz va qattiq himoyani yoqa olasiz.</string>
     <string name="plus_imkoniyatlarini_ochish">Plus imkoniyatlarini oçiş</string>
-    <string name="jadval_nomi">Jadval nomi</string>
+    <string name="jadval_nomi">Qoida nomi</string>
     <string name="saytlar">Saytlar</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Qaçon va qanday holatlarda ilovalar va vebsaytlarni çeklaşni belgilang</string>
 
@@ -381,10 +381,10 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ozingiz_qoshing">Özingiz qöşing</string>
     <string name="tavsiya_etilgan_paketlar">Tavsiya etilgan paketlar</string>
     <string name="tanga_s">%1$s tanga</string>
-    <string name="coins_help_use_title">Bilimdon AI tangaçalari</string>
-    <string name="coins_help_earn_title">Tangaçalarni qanday jamğariş mumkin?</string>
-    <string name="coins_help_use_intro">Bilimdon AI tangaçalari — bu Tikoncha içida Bilimdon AI bilan muloqot qiliş uçun işlatiladigan raqamli birliklar.</string>
-    <string name="coins_help_earn_intro">Bilimdon AI tangaçalarini bir neça yöl bilan jamğarişingiz mumkin:</string>
+    <string name="coins_help_use_title">Bilimdon AI tangalari</string>
+    <string name="coins_help_earn_title">Tangalarni qanday jamğariş mumkin?</string>
+    <string name="coins_help_use_intro">Bilimdon AI tangalari — bu Tikoncha içida Bilimdon AI bilan muloqot qiliş uçun işlatiladigan raqamli birliklar.</string>
+    <string name="coins_help_earn_intro">Bilimdon AI tangalarini bir neça yöl bilan jamğarişingiz mumkin:</string>
     <string-array name="coins_help_use_bullets">
         <item>Bilimdon AI’dan savol söraş</item>
         <item>Kitoblar, mavzular yoki topşiriqlar böyiça qisqa va tuşunarli tuşuntirişlar oliş</item>
@@ -396,12 +396,12 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
         <item>Maxsus vazifalar yoki rağbatlantiruvçi faoliyatlarda iştirok etiş orqali</item>
         <item>Ota-ona tomonidan beriladigan qöşimça imkoniyatlar orqali</item>
     </string-array>
-    <string name="coins_help_use_note">Har bir savol yoki sörov uçun ma’lum miqdorda tangaça sarflanadi. Miqdor savol murakkabligi va javob hajmiga boğliq bölişi mumkin.</string>
-    <string name="coins_help_earn_note">Tangaçalar bosqiçma-bosqiç yiğiladi va keyin istalgan vaqtda Bilimdon AI xizmatlaridan foydalaniş uçun sarflanişi mumkin.</string>
+    <string name="coins_help_use_note">Har bir savol yoki sörov uçun ma’lum miqdorda tanga sarflanadi. Miqdor savol murakkabligi va javob hajmiga boğliq bölişi mumkin.</string>
+    <string name="coins_help_earn_note">Tangalar bosqiçma-bosqiç yiğiladi va keyin istalgan vaqtda Bilimdon AI xizmatlaridan foydalaniş uçun sarflanişi mumkin.</string>
     <string name="coins_help_close">Yopiş</string>
     <string name="qollash">Qöllaş</string>
     <string name="promokod">Promokod:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Siz tangaçalarni muvaqqiyatli sotib oldingiz.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Tangalar sotib olindi.</string>
     <string name="narx">Narx</string>
     <string name="jami">Jami</string>
     <string name="bekor_qilindi">Bekor qilindi!</string>
@@ -418,11 +418,11 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="plus_obnuna_kerak">PLUS obuna kerak</string>
     <string name="toliq_nazorat_statistika">Töliq nazorat va statistika</string>
     <string name="farzand_ilova_kuzatish">Farzandingiz kun davomida qaysi ilovalardan qança foydalanganini kuzating.</string>
-    <string name="uchtagacha_jadval">3 tagaça jadval yaratiş</string>
+    <string name="uchtagacha_jadval">3 tagaça qoida yaratiş</string>
     <string name="jadval_cheklovlar">Kun, hafta yoki maxsus vaqtlar uçun alohida çeklovlar belgilang.</string>
     <string name="qattiq_bloklash_qalqon">Qattiq himoya: saytlar va qisqa videolar ham yopiladi</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Farzandingiz çeklovlarni öçirib yoki özgartira olmaydi.</string>
-    <string name="tez_bloklash_timer">Tez bloklaş (Timer)</string>
+    <string name="tez_bloklash_timer">Doim yopiq ilovalar</string>
     <string name="vaqtinchalik_bloklash_tezi">Kerak bölganda bir neça soniyada vaqtinçalik bloklaşni yoqing.</string>
     <string name="hisobot_tahlil">Hisobot va tahlil</string>
     <string name="farzand_nazorat_tavsifi">Farzandingiz telefonidan foydalanişini nazorat qiling. Keraksiz ilovalarni bloklang, foydalaniş vaqtini belgilang va xavfsiz muhit yarating.</string>
@@ -518,8 +518,8 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="danger_cat_tobacco">Tamaki va vape</string>
     <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
-    <string name="farzandim">Farzandim</string>
-    <string name="ozim">Özim</string>
+    <string name="farzandim">Farzand özi qöyganlar</string>
+    <string name="ozim">Men berganlar</string>
     <string name="faol_vazifa_yo_q">Faol vazifa yöq</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Farzandiningiz uçun vazifa yöq</string>
 
@@ -544,7 +544,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="weekday_sunday">Yakşanba</string>
 
     <string name="juda_muhim">Juda muhim</string>
-    <string name="tekshirildi">Tekşirildi</string>
+    <string name="tekshirildi">Qabul qilaman</string>
     <string name="ko_rish">Köriş</string>
     <string name="vazifa_ochirilsinmi">Vazifa öçirilsinmi?</string>
     <string name="vazifa_ochirish_tasdiq">Siz rostdan ham uşbu vazifani öçirmoqçimisiz?</string>
@@ -566,7 +566,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="tolovlar_tarixi_bos">Tölovlar tarixi böş</string>
     <string name="tolovlar_tarixi_bos_hint">Sotib olişlardan keyin şu yerda körinadi</string>
     <string name="boshqa_yozuvlar_yoq">Boşqa yozuvlar yöq</string>
-    <string name="xatolik_yuz_berdi">Xatolik yuz berdi</string>
+    <string name="xatolik_yuz_berdi">Yuklab bölmadi. Qayta urinib köring.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Tikoncha %1$s</string>
@@ -597,10 +597,10 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
 
     <string name="izoh_ixtiyoriy">Izoh (ixtiyoriy)</string>
     <string name="vazifa_tangalari">Vazifani bajarganda beriladigan tangalar</string>
-    <string name="vazifani_tekshirish">Vazifani tekşiriş</string>
+    <string name="vazifani_tekshirish">Hammasi töğrimi?</string>
     <string name="izoh">Izoh</string>
     <string name="muhimlilik_darajasi">Muhimlilik darajasi</string>
-    <string name="ragbatlantirish_tangachalari">Rağbatlantiriş tangaçalari</string>
+    <string name="ragbatlantirish_tangachalari">Mukofot tangalar</string>
     <string name="tugatish_vaqti">Tugatiş vaqti</string>
     <string name="vazifani_saqlash">Vazifani saqlaş</string>
     <string name="vazifa_yuborildi">Vazifa yuborildi</string>
@@ -617,7 +617,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Farzandingiz Tikoncha ilovasidan kirib tasdiqlaş kodini kiritişi kerak.</string>
     <string name="bola_hali_bajardim_bosmagan">Bola hali “Bajardim” tugmasini bosmagan</string>
     <string name="foydalanilmagan">Foydalanilmagan</string>
-    <string name="token_eskirgan">Sessiya tugadi</string>
+    <string name="token_eskirgan">Qaytadan kiriş kerak</string>
     <string name="tokenni_yangilash_uchun">Davom etiş uçun qaytadan kiring.</string>
     <string name="login_qilish">Login qiliş</string>
     <string name="profil_rasmi">Profil rasmi</string>
@@ -643,7 +643,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="telegram_orqali_kirish">Telegram orqali kiriş</string>
     <string name="yoki">yoki</string>
     <string name="telefon_raqami">Telefon raqami</string>
-    <string name="kirish_subtitle">Davom etiş uçun hisobingizga kiring</string>
+    <string name="kirish_subtitle">Telegram orqali kiring. Hisobingiz bölmasa, özi oçiladi.</string>
     <string name="login_privacy">Davom etiş orqali siz Maxfiylik siyosati va Foydalaniş şartlariga rozilik bildirasiz</string>
 
     <string name="telegram_ochilmoqda">Telegram oçilmoqda…</string>
@@ -778,9 +778,9 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Siz ruxsat berdingiz — farzandingiz ilovadan çiqişi mumkin.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Siz ruxsat berdingiz — farzandingiz ilovani öçirişi mumkin.</string>
     <string name="sorov_rad_etildi_desc">Siz sörovni rad etdingiz.</string>
-    <string name="unlink_child_title">Boğlanişni uzmoqçimisiz?</string>
-    <string name="unlink_child_message">Uşbu amal bajarilgandan söng “%1$s” qurilmasidagi nazorat töxtatiladi!</string>
-    <string name="unlink_child_action">Boğlanişni uziş</string>
+    <string name="unlink_child_title">Farzand uzilsinmi?</string>
+    <string name="unlink_child_message">%1$s telefonidagi himoya va qoidalar töxtaydi. Qayta ulaş uçun «Farzand qöşiş» orqali kodni yana skanerlang.</string>
+    <string name="unlink_child_action">Ha, uzilsin</string>
     <string name="child_unlinked_success">Farzand muvaffaqiyatli uzildi</string>
     <string name="operator_kodi_topilmadi">Bunday operator kodi mavjud emas</string>
     <string name="kod_amal_qilish_muddati">Kod amal qiladi: %1$s</string>
@@ -794,7 +794,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="farzand_tanlanmagan">Farzand tanlanmagan</string>
     <string name="vazifa_id_topilmadi">Vazifa identifikatori topilmadi</string>
     <string name="tahrirlangan">tahrirlangan</string>
-    <string name="jadval_topilmadi">Jadval topilmadi.</string>
+    <string name="jadval_topilmadi">Topilmadi — balki öçirilgan. Orqaga qaytib, qayta oçing.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d daqiqa</item>
         <item quantity="other">%1$d daqiqa</item>
@@ -827,8 +827,8 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="tarix_disabled">Öçirib qöyildi</string>
     <string name="tarix_paused">Töxtatildi</string>
     <string name="tarix_deleted">Öçirib taşlandi</string>
-    <string name="tarix_quick_block_add">Tezkor blok qöşildi</string>
-    <string name="tarix_quick_block_remove">Tezkor blok olib taşlandi</string>
+    <string name="tarix_quick_block_add">Doim yopiq ilovalarga qöşildi</string>
+    <string name="tarix_quick_block_remove">Doim yopiq ilovalardan olib taşlandi</string>
     <string name="tarix_bosh">Hozirça özgarişlar yöq</string>
     <string name="tarix_resumed">Davom ettirildi</string>
     <string name="muddat">Muddat</string>
@@ -852,26 +852,26 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="stat_row_sec">%1$d soniya</string>
     <string name="stat_hour_only">%1$d soat</string>
     <string name="stat_per_day">kuniga ~%1$s</string>
-    <string name="stat_quick_blocked">Tezkor blokda</string>
-    <string name="stat_quick_blocked_paused">Tezkor blokda · töxtatilgan</string>
-    <string name="stat_quick_blocked_inactive">Tezkor blokda · Plus kerak</string>
+    <string name="stat_quick_blocked">Doim yopiq</string>
+    <string name="stat_quick_blocked_paused">Doim yopiq · töxtatilgan</string>
+    <string name="stat_quick_blocked_inactive">Doim yopiq · Plus kerak</string>
     <string name="stat_blocked_by_child">Farzand özi bloklagan</string>
     <string name="stat_blocked_by_child_paused">Farzand özi bloklagan · töxtatilgan</string>
     <string name="stat_blocked_by_child_inactive">Farzand özi bloklagan · Plus kerak</string>
     <string name="stat_blocked_by_coparent">Boşqa ota-ona bloklagan</string>
     <string name="stat_blocked_by_coparent_paused">Boşqa ota-ona bloklagan · töxtatilgan</string>
     <string name="stat_blocked_by_coparent_inactive">Boşqa ota-ona bloklagan · Plus kerak</string>
-    <string name="stat_lock_hint">Qulf ilovani tezkor blokka qöşadi yoki çiqaradi</string>
-    <string name="stat_quick_add_cd">Tezkor blokka qöşiş</string>
-    <string name="stat_quick_remove_cd">Tezkor blokdan çiqariş</string>
-    <string name="stat_reenable_title">Tezkor blok yoqiladi</string>
-    <string name="stat_reenable_message">Tezkor blok hozir öçiq. Bu ilovani bloklasangiz, u qayta yoqiladi va röyxatdagi yana %1$d ta ilova ham yopiladi.</string>
+    <string name="stat_lock_hint">Qulf ilovani doim yopiq ilovalarga qöşadi yoki çiqaradi</string>
+    <string name="stat_quick_add_cd">Doim yopiq ilovalarga qöşiş</string>
+    <string name="stat_quick_remove_cd">Doim yopiq ilovalardan çiqariş</string>
+    <string name="stat_reenable_title">Doim yopiq ilovalar qayta yoqiladi</string>
+    <string name="stat_reenable_message">«Doim yopiq ilovalar» hozir öçiq. Bu ilovani qöşsangiz, u qayta yoqiladi va röyxatdagi yana %1$d ta ilova ham yopiladi.</string>
     <string name="stat_reenable_confirm">Bloklaş</string>
     <string name="stat_quick_paywall_title">Obuna kerak</string>
     <string name="stat_quick_paywall_message">Ilovani bir bosişda yopiş Tikoncha Plus obunasi bilan işlaydi.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Tezkor blok</string>
+    <string name="quick_title">Doim yopiq ilovalar</string>
     <string name="quick_enabled">Yoqilgan</string>
     <string name="quick_pause">Töxtatiş</string>
     <string name="quick_blocked_apps">Yopiladigan ilovalar</string>
@@ -880,15 +880,15 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="quick_info_always">Röyxatdagi ilovalar doim yopiq turadi — vaqt va joydan qat’i nazar.</string>
     <string name="quick_info_off">Hozir öçiq — yoqsangiz, şu ilovalar yopiladi.</string>
     <string name="quick_info_paused">%1$s gaça töxtatilgan — şu vaqtgaça heç narsa yopilmaydi.</string>
-    <string name="quick_info_stats">Ilovalar statistikasidan ham ilovani bir bosişda şu röyxatga qöşiş yoki olib taşlaş mumkin.</string>
-    <string name="quick_info_readd">Tezkor blok öçiq bölsa, ilova qöşiş uni qayta yoqadi.</string>
+    <string name="quick_info_stats">«Telefon vaqti» sahifasidan ham ilovani bir bosişda şu röyxatga qöşiş yoki olib taşlaş mumkin.</string>
+    <string name="quick_info_readd">«Doim yopiq ilovalar» öçiq bölsa, ilova qöşiş uni qayta yoqadi.</string>
     <string name="quick_child_blocks">Farzand özi yopgan</string>
     <string name="quick_coparent_blocks">Boşqa ota-ona yopgan</string>
     <string name="quick_others_note">Bu röyxatlarni faqat ularning egasi özgartira oladi. Kerak bölsa, ilovani öz röyxatingizga qöşing.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Uyqu vaqti</string>
-    <string name="policy_preset_limit">Vaqt limiti</string>
+    <string name="policy_preset_limit">Kuniga qança vaqt</string>
     <string name="policy_preset_school">Dars vaqti</string>
     <string name="policy_day_mon">Du</string>
     <string name="policy_day_tue">Se</string>
@@ -908,30 +908,30 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="policy_location">Joylaşuv</string>
     <string name="policy_active_now">Hozir amalda: %1$s</string>
     <string name="policy_active_until">%1$s gaça</string>
-    <string name="list_info_none">Hozir heç qaysi jadval işlamayapti</string>
+    <string name="list_info_none">Hozir heç qaysi qoida işlamayapti</string>
     <string name="list_info_also">Yana işlayapti: %1$s.</string>
-    <string name="list_info_many">Bir vaqtda bir neçta jadval işlasa, ilovani ulardan birortasi yopsa — u yopiladi.</string>
-    <string name="list_info_child_scope">Farzandning öz jadvallari sizning qaroringizni özgartira olmaydi — siz yopgan ilova yopiqligiça qoladi.</string>
-    <string name="list_info_school_scope">Maktab jadvali ilovani yopsa yoki aniq ruxsat bersa, sizning jadvalingiz buni özgartira olmaydi. Qolgan hollarda qattiqroq jadval işlaydi.</string>
-    <string name="list_info_quick">Tezkor blok yoqiq — undagi ilovalar vaqt va joydan qat’i nazar doim yopiq.</string>
-    <string name="list_info_paused">Töxtatilgan jadvallar: %1$d — belgilangan vaqtgaça işlamaydi.</string>
-    <string name="list_info_how">Jadval öz vaqti va joyi kelganda özi işga tuşadi.</string>
-    <string name="policy_tab_templates">Şablonlar</string>
+    <string name="list_info_many">Bir vaqtda bir neçta qoida işlasa, ilovani ulardan birortasi yopsa — u yopiladi.</string>
+    <string name="list_info_child_scope">Farzandning öz qoidalari sizning qaroringizni özgartira olmaydi — siz yopgan ilova yopiqligiça qoladi.</string>
+    <string name="list_info_school_scope">Maktab qoidasi ilovani yopsa yoki aniq ruxsat bersa, sizning qoidangiz buni özgartira olmaydi. Qolgan hollarda qattiqroq qoida işlaydi.</string>
+    <string name="list_info_quick">«Doim yopiq ilovalar» yoqiq — bu röyxatdagi ilovalar vaqt va joydan qat’i nazar doim yopiq.</string>
+    <string name="list_info_paused">Töxtatilgan qoidalar: %1$d — belgilangan vaqtgaça işlamaydi.</string>
+    <string name="list_info_how">Qoida öz vaqti va joyi kelganda özi işga tuşadi.</string>
+    <string name="policy_tab_templates">Tayyor qoidalar</string>
     <string name="policy_tab_mine">Men qöygan</string>
     <string name="policy_tab_child">Farzand özi</string>
-    <string name="policy_tab_coparent">Ota-ona</string>
+    <string name="policy_tab_coparent">Ikkinçi ota-ona</string>
     <string name="policy_tab_school">Maktab</string>
     <string name="policy_enabled_count">%1$d ta yoqiq</string>
-    <string name="policy_content_protection">Kontent himoya</string>
+    <string name="policy_content_protection">Yomon saytlardan himoya</string>
     <string name="policy_content_protection_others">Farzand yoki ikkinçi ota-ona yoqqan</string>
     <string name="policy_paused">Vaqtinça töxtatilgan</string>
-    <string name="policy_quick_blocks">Tezkor bloklar</string>
+    <string name="policy_quick_blocks">Doim yopiq ilovalar</string>
     <string name="preset_all_apps">Barça ilovalar</string>
-    <string name="policy_paywall_protection">Kontent himoya Tikoncha Plus bilan işlaydi.</string>
+    <string name="policy_paywall_protection">Yomon saytlardan himoya Tikoncha Plus bilan işlaydi.</string>
     <string name="policy_paywall_count">Bepul tarifda jadvallar soni çeklangan. Köproq jadval uçun Tikoncha Plus kerak.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Hali heç narsa tanlanmagan — bu jadval heç narsani yopmaydi.</string>
+    <string name="info_nothing">Hali heç narsa tanlanmagan — bu qoida heç narsani yopmaydi.</string>
     <string name="info_always">Doim</string>
     <string name="info_sentence">%1$s %2$s.</string>
     <string name="info_when_time">%1$s %2$s dan %3$s gaça</string>
@@ -944,12 +944,12 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="info_what_all_apps_sites">barça ilova va saytlar yopiladi</string>
     <string name="info_what_selected">tanlanganlar yopiladi (%1$s)</string>
     <string name="info_stays_open">Oçiq qoladi: %1$s.</string>
-    <string name="info_not_counted">Limitga hisoblanmaydi: %1$s.</string>
+    <string name="info_not_counted">Vaqti sanalmaydi: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s jami %3$s işlatiş mumkin. Vaqt tugagaç, ertaga qadar yopiladi.</string>
     <string name="info_limit_hourly">%1$s: %2$s har soatda jami %3$s işlatiş mumkin. Vaqt tugagaç, soat oxirigaça yopiladi.</string>
     <string name="info_limit_all">barça ilovalarni</string>
     <string name="info_limit_selected">tanlanganlarni</string>
-    <string name="info_limit_gate">Limit faqat şu paytda işlaydi: %1$s.</string>
+    <string name="info_limit_gate">Vaqt faqat şu paytda sanaladi: %1$s.</string>
     <string name="info_protected">Qönğiroq va SMS kabi zarur ilovalar heç qaçon yopilmaydi.</string>
     <string name="info_disabled">Hozir öçiq — yoqsangiz, şunday işlaydi.</string>
 
@@ -958,7 +958,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="preset_when">Qaçon</string>
     <string name="preset_starts">Boşlanadi</string>
     <string name="preset_ends">Tugaydi</string>
-    <string name="preset_limit">Limit</string>
+    <string name="preset_limit">Qança vaqt</string>
     <string name="preset_counted">Hisoblanadi</string>
     <string name="preset_what_closed">Nimalar yopiladi</string>
     <string name="preset_only_selected">Faqat tanlanganlar</string>
@@ -999,13 +999,13 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="targets_covered_by_category">Kategoriya orqali tanlangan</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Sayt manzili yoki kalit söz notöğri. Masalan: youtube.com yoki kino</string>
-    <string name="editor_new_policy">Yangi jadval</string>
+    <string name="editor_new_policy">Yangi qoida</string>
     <string name="editor_not_selected">Tanlanmagan</string>
     <string name="editor_when_hint">ixtiyoriy · bölmasa doim</string>
     <string name="editor_add_condition">Şart qöşiş</string>
     <string name="editor_added">Qöşilgan</string>
     <string name="editor_condition_time">Vaqt</string>
-    <string name="editor_condition_limit">Limit</string>
+    <string name="editor_condition_limit">Qança vaqt</string>
     <string name="editor_in_this_time">Bu vaqtda</string>
     <string name="editor_closed_in_time">Yopiq böladi</string>
     <string name="editor_closed_in_time_sub">Boşqa vaqtda oçiq</string>
@@ -1016,8 +1016,8 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="editor_inside">Hudud içida</string>
     <string name="editor_outside">Hudud taşqarisida</string>
     <string name="editor_rename">Nomini özgartiriş</string>
-    <string name="editor_delete_title">Jadval öçirilsinmi?</string>
-    <string name="editor_delete_message">“%1$s” öçiriladi.</string>
+    <string name="editor_delete_title">Qoida butunlay öçirilsinmi?</string>
+    <string name="editor_delete_message">“%1$s” öçiriladi. Bu qoida yopgan ilovalar yana oçiladi.</string>
     <string name="editor_paywall_allow">“Faqat tanlanganlar oçiq” rejimi Plus obunada işlaydi.</string>
     <string name="location_child_here">Farzandim joylaşuvi</string>
     <string name="protection_section">Nimalar himoya qilinadi</string>
@@ -1035,24 +1035,24 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="protection_policies_pending">Hali yetib bormadi</string>
     <string name="protection_gujanak_limits_note">Örta himoyada faqat ilovalar yopiladi. Saytlar va qisqa videolar faqat qattiq himoyada yopiladi: farzandingiz telefonida Hoglt → «Nazorat» → «Qalqon».</string>
     <string name="editor_limit_days_follow_time">Vaqt bilan bir xil — kunlar vaqt sahifasida tanlanadi</string>
-    <string name="editor_limit_in_window">limit şu vaqtda</string>
-    <string name="editor_limit_outside_window">limit şu vaqtdan taşqarida</string>
-    <string name="editor_limit_in_time">Limit şu vaqtda işlaydi</string>
+    <string name="editor_limit_in_window">vaqt şu paytda sanaladi</string>
+    <string name="editor_limit_outside_window">vaqt şu paytdan taşqarida sanaladi</string>
+    <string name="editor_limit_in_time">Vaqt faqat şu paytda sanaladi</string>
     <string name="editor_limit_in_time_sub">Boşqa vaqtda çeklov yöq</string>
-    <string name="editor_limit_out_time">Limit şu vaqtdan taşqarida işlaydi</string>
+    <string name="editor_limit_out_time">Vaqt şu paytdan taşqarida sanaladi</string>
     <string name="editor_limit_out_time_sub">Şu vaqtda çeklov yöq</string>
     <string name="info_limit_daily_window">%1$s: %2$s jami %3$s işlatiş mumkin. Vaqt tugagaç, şu vaqt oraliği tugagunça yopiladi.</string>
     <string name="targets_only_selected_open_sites_sub">Qolgan saytlar yopiladi</string>
     <string name="targets_only_selected_open_both_sub">Qolgan ilova va saytlar yopiladi</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Hali jadval yöq</string>
-    <string name="policy_empty_mine_sub">Şablonlardan birini yoqing yoki özingiz yarating</string>
+    <string name="policy_empty_mine_title">Hali qoida yöq</string>
+    <string name="policy_empty_mine_sub">Tayyor qoidalardan birini yoqing yoki özingiz yarating</string>
     <string name="empty_search_title">Heç narsa topilmadi</string>
     <string name="empty_search_sub">Boşqa söz bilan qidirib köring</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Behayo va qimor saytlari</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Jadval</string>
+    <string name="policy_name_schedule">Qoida</string>
     <string name="policy_name_category_block">Toifalar böyiça bloklaş</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Farzandingiz yoqqan</string>
@@ -1147,7 +1147,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ap_off_confirm">Öçiriş</string>
     <string name="ap_keep_on">Yoqilgan qolsin</string>
     <string name="ap_retry_note">Ertaga yana urinib köramiz (%1$d/3).</string>
-    <string name="ap_retry_now">Qayta uriniş</string>
+    <string name="ap_retry_now">Hozir tölaş</string>
     <string name="ap_other_card">Boşqa karta</string>
     <string name="ap_cards_empty_title">Saqlangan karta yöq</string>
     <string name="ap_cards_empty_sub">Avto-tölov uçun UZCARD yoki HUMO kartasini qöşing</string>
@@ -1193,7 +1193,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ulash_tugma">Ulaş</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Ötkazib yuboriş</string>
+    <string name="ob_skip">Keyinroq köraman</string>
     <string name="ob_start">Boşladik</string>
     <string name="ob_got_it">Tuşunarli</string>
     <string name="ob_hello_title">Salom, men Tikonchaman</string>
@@ -1207,10 +1207,10 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ob_day_study">Öqiş</string>
     <string name="ob_min_fmt">%1$d daq</string>
     <string name="ob_rules_title">Qoidalarni bir marta qöying</string>
-    <string name="ob_rules_body">Uyqu vaqti, dars vaqti va kunlik limitlar öz vaqtida özi yoqiladi.</string>
+    <string name="ob_rules_body">Uyqu vaqti, dars vaqti va kunlik vaqt öz vaqtida özi yoqiladi.</string>
     <string name="ob_rule_sleep">Uyqu vaqti</string>
     <string name="ob_rule_school">Dars vaqti</string>
-    <string name="ob_rule_limit">Kunlik limit</string>
+    <string name="ob_rule_limit">Kuniga qança vaqt</string>
     <string name="ob_rule_limit_value">2 soat</string>
     <string name="ob_map_title">Qayerdaligini biling</string>
     <string name="ob_map_body">Farzandingizni xaritada köring va maktab kabi joylar uçun qoidalar qöying.</string>
@@ -1267,8 +1267,8 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="home_layout_list">Röyxat</string>
     <string name="home_layout_grid">Panjara</string>
     <string name="home_greeting">Salom, %1$s</string>
-    <string name="kecha_sarfladi">Keça sarfladi</string>
-    <string name="sana_sarfladi">%1$s sarfladi</string>
+    <string name="kecha_sarfladi">Keça telefonda</string>
+    <string name="sana_sarfladi">%1$s telefonda</string>
     <string name="stat_no_usage_day">Bu kunda telefon hali işlatilmagan</string>
     <string name="kirish_usuli">Kiriş usuli</string>
     <string name="google_hisobi">Google hisobi</string>
@@ -1291,7 +1291,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="vazifa_muddati">Muddati</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Yordamçi</string>
+    <string name="ai_assistant_title">Aqlli yordamçi</string>
     <string name="ai_assistant_subtitle">Söreng yoki qoida ayting</string>
     <string name="ai_period_today">Bugun</string>
     <string name="ai_period_yesterday">Keça</string>
@@ -1313,7 +1313,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ai_thinking">Öylamoqda…</string>
     <string name="ai_error_network">Internet bilan muammo. Qayta urinib köring.</string>
     <string name="ai_error_generic">Yordamçi hozir javob bera olmadi. Qayta urinib köring.</string>
-    <string name="ai_buy_coins">Tangaçalar</string>
+    <string name="ai_buy_coins">Tangalar</string>
     <string name="ai_coins_left">%1$d ta tangaça</string>
     <string name="ai_cost_hint">Har bir javob — 1 tangaça</string>
     <string name="ai_input_hint">Savol bering yoki qoida ayting</string>
@@ -1323,7 +1323,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ai_summary_label">Xulosa</string>
     <string name="ai_suggest_permissions">Ruxsatlar hammasi joyidami?</string>
     <string name="ai_suggest_where">Hozir qayerda?</string>
-    <string name="ai_suggest_task">Kitob öqiş uçun topşiriq ber</string>
+    <string name="ai_suggest_task">Kitob öqiş uçun vazifa ber</string>
     <string name="ai_draft_do_confirm">Tasdiqlaş</string>
     <string name="ai_draft_do_delete">Öçiriş</string>
     <string name="ai_draft_do_approve">Ruxsat beriş</string>
@@ -1367,9 +1367,9 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="parent_special_zones_desc">Suv, qurilish yoki klub yonida uzoq qolsa, xabar boradi</string>
     <string name="parent_special_footer">Farzandingiz bu himoyalarni özi uçun ham yoqişi mumkin — unda ogohlantiriş faqat unga boradi.</string>
     <string name="parent_special_paywall">Xavfli yozişmalar va yaşirin rejim — PLUS obunasi bilan.</string>
-    <string name="pay_abroad_title">Bu mamlakatda to'lov hozircha yöq</string>
-    <string name="pay_abroad_body">Android ilovada PLUS'ni hozircha faqat O'zbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
-    <string name="pay_abroad_coins_body">Tangalarni hozircha faqat O'zbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
+    <string name="pay_abroad_title">Bu mamlakatda tölov hozirça yöq</string>
+    <string name="pay_abroad_body">Android ilovada PLUS’ni hozirça faqat Özbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
+    <string name="pay_abroad_coins_body">Tangalarni hozirça faqat Özbekiston kartasi bilan oliş mumkin. Bizga yozing — yordam beramiz.</string>
     <string name="apple_activation_pending">Tölov qabul qilindi — PLUS bir necha daqiqada yoqiladi. Yoqilmasa, bizga yozing.</string>
     <string name="sub_child_app_note">Bitta farzand uçunmi? Farzandingizning Tikoncha ilovasida PLUS arzonroq — u faqat şu farzand uçun amal qiladi.</string>
     <string name="sub_family_caption">Oilaviy tarif · 3 tagaça farzand</string>
@@ -1397,24 +1397,24 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="contact_phone_save">Saqlaş</string>
     <!-- Tikonchagram qoidalari -->
     <string name="tg_rules_title">Tikonchagram</string>
-    <string name="tg_rules_card_sub">Telegram: chatlar va kontent qoidalari</string>
-    <string name="tg_rules_enabled_sub">O'chirilsa, farzand ilovasida Telegram bo'limi yopiladi</string>
-    <string name="tg_rules_info_privacy">Xabarlar bizning serverimizga yuborilmaydi — qoidalar farzand telefonida qo'llanadi.</string>
-    <string name="tg_rules_info_sync">O'zgarishlar farzand ilovasi internetga ulanganda qo'llanadi.</string>
+    <string name="tg_rules_card_sub">Telegram: çatlar va kontent qoidalari</string>
+    <string name="tg_rules_enabled_sub">Öçirilsa, farzand ilovasida Telegram bölimi yopiladi</string>
+    <string name="tg_rules_info_privacy">Xabarlar bizning serverimizga yuborilmaydi — qoidalar farzand telefonida qöllanadi.</string>
+    <string name="tg_rules_info_sync">Özgarişlar farzand ilovasi internetga ulanganda qöllanadi.</string>
     <string name="tg_rules_mode">Rejim</string>
-    <string name="tg_preset_strict">Qat'iy</string>
+    <string name="tg_preset_strict">Qat\'iy</string>
     <string name="tg_preset_balanced">Muvozanatli</string>
     <string name="tg_preset_open">Erkin</string>
     <string name="tg_preset_custom">Maxsus sozlangan</string>
-    <string name="tg_preset_strict_desc">Faqat shaxsiy chatlar: matn va rasm. Kanal, guruh va botlar yashirin.</string>
-    <string name="tg_preset_balanced_desc">Guruhlar, ovozli xabar, fayl va uzatilgan xabarlar ham mumkin. Stiker, GIF, video va havolalar yo'q.</string>
-    <string name="tg_preset_open_desc">Hammasi ochiq, kanallar ham.</string>
-    <string name="tg_section_chats">Ko'rinadigan chatlar</string>
+    <string name="tg_preset_strict_desc">Faqat şaxsiy çatlar: matn va rasm. Kanal, guruh va botlar yaşirin.</string>
+    <string name="tg_preset_balanced_desc">Guruhlar, ovozli xabar, fayl va uzatilgan xabarlar ham mumkin. Stiker, GIF, video va havolalar yöq.</string>
+    <string name="tg_preset_open_desc">Hammasi oçiq, kanallar ham.</string>
+    <string name="tg_section_chats">Körinadigan çatlar</string>
     <string name="tg_show_channels">Kanallar</string>
     <string name="tg_show_groups">Guruhlar</string>
     <string name="tg_show_bots">Botlar</string>
     <string name="tg_contacts_only">Faqat kontaktlar</string>
-    <string name="tg_contacts_only_sub">Faqat telefon kitobidagi odamlar bilan chatlar</string>
+    <string name="tg_contacts_only_sub">Faqat telefon kitobidagi odamlar bilan çatlar</string>
     <string name="tg_section_content">Ruxsat etilgan</string>
     <string name="tg_allow_photos">Rasmlar</string>
     <string name="tg_allow_videos">Videolar</string>
@@ -1425,16 +1425,16 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="tg_allow_documents">Fayllar</string>
     <string name="tg_allow_links">Havolalar</string>
     <string name="tg_allow_forwards">Uzatilgan xabarlar</string>
-    <string name="tg_placeholder">Yashirilgan xabar o'rnida belgi</string>
-    <string name="tg_placeholder_sub">O'chirilsa, bunday xabarlar umuman ko'rinmaydi</string>
+    <string name="tg_placeholder">Yaşirilgan xabar örnida belgi</string>
+    <string name="tg_placeholder_sub">Öçirilsa, bunday xabarlar umuman körinmaydi</string>
     <string name="tg_section_daily">Kunlik vaqt</string>
     <string name="tg_daily_minutes">%1$d daq</string>
-    <string name="tg_daily_note">Farzand har kuni shu chegaradan oshmaydigan vaqtni tanlaydi. Tugasa, sizdan yana 5 daqiqa so'rashi mumkin.</string>
-    <string name="tg_section_max_chats">Chatlar soni</string>
+    <string name="tg_daily_note">Farzand har kuni şu çegaradan oşmaydigan vaqtni tanlaydi. Tugasa, sizdan yana 5 daqiqa söraşi mumkin.</string>
+    <string name="tg_section_max_chats">Çatlar soni</string>
     <string name="tg_max_chats_all">Hammasi</string>
-    <string name="tg_max_chats_note">Eng so'nggi chatlar ko'rsatiladi</string>
-    <string name="tg_rules_load_failed">Qoidalarni yuklab bo'lmadi</string>
-    <string name="tg_rules_retry">Qayta urinish</string>
+    <string name="tg_max_chats_note">Eng sönggi çatlar körsatiladi</string>
+    <string name="tg_rules_load_failed">Qoidalarni yuklab bölmadi</string>
+    <string name="tg_rules_retry">Qayta uriniş</string>
     <string name="live_watch">Jonli köriş</string>
     <string name="text_size_title">Matn ölçami</string>
     <string name="text_size_small">Kiçik</string>
@@ -1462,20 +1462,20 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="tracking_child_no_permission_since">Joylaşuv ruxsati yöq · oxirgi joylaşuv: %1$s</string>
     <string name="tracking_fake_gps">Soxta GPS</string>
     <string name="tracking_fake_gps_note">Telefon soxta joylaşuv yuboryapti — bu nuqtaga işonmang.</string>
-    <string name="policy_paywall_limits">Bepul: %1$d ta faol jadval · Plus: çeksiz</string>
+    <string name="policy_paywall_limits">Bepul: %1$d ta faol qoida · Plus: çeksiz</string>
     <string name="perm_why_dangerous">Nega xavfli?</string>
-    <string name="perm_why_notification">Farzand telefonida Tikoncha bildirişnomalari körinmaydi: topşiriqlar, xabarlaringiz va eslatmalar unga yetib bormaydi.</string>
-    <string name="perm_why_usage_stats">Ilova qaysi ilova oçilganini köra olmaydi: statistika yiğilmaydi, vaqt limitlari va jadvallar işlamaydi.</string>
-    <string name="perm_why_overlay">Yopilgan ilova ustiga blok oynasi çiqmaydi — jadval va limitlar ilovani yopa olmaydi.</string>
+    <string name="perm_why_notification">Farzand telefonida Tikoncha bildirişnomalari körinmaydi: vazifalar, xabarlaringiz va eslatmalar unga yetib bormaydi.</string>
+    <string name="perm_why_usage_stats">Ilova qaysi ilova oçilganini köra olmaydi: telefon vaqti sanalmaydi, qoidalar işlamaydi.</string>
+    <string name="perm_why_overlay">Yopilgan ilova ustiga blok oynasi çiqmaydi — qoidalar ilovani yopa olmaydi.</string>
     <string name="perm_why_overlay_popup">Xiaomi, Redmi va POCO telefonlarda blok oynasi orqa fondan oçilmaydi — yopilgan ilova oçiq qolib ketadi.</string>
-    <string name="perm_why_location">Farzandingiz qayerdaligini köra olmaysiz; joyga bağlangan jadvallar ham işlamaydi.</string>
+    <string name="perm_why_location">Farzandingiz qayerdaligini köra olmaysiz; joyga bağlangan qoidalar ham işlamaydi.</string>
     <string name="perm_why_gps">GPS öçiq bölsa joylaşuv yangilanmaydi — xaritada eski joy körinadi.</string>
     <string name="perm_why_battery">Telefon batareyani tejab, Tikoncha’ni fonda töxtatib qöyadi: himoya va joylaşuv vaqti-vaqti bilan uzilib qoladi.</string>
     <string name="perm_why_auto_start">Telefon öçib yoqilgaç yoki ilova yopilgaç Tikoncha özi işga tuşmaydi — farzand ilovani oçmaguniça himoya işlamaydi. Xiaomi, Redmi va POCO’da telefon sozlamalarida yoqiladi: Ilovalar → Tikoncha → Avto-işga tuşiş.</string>
     <string name="perm_why_accessibility">Usiz saytlar, YouTube Shorts va Instagram Reels yopilmaydi, ilovani öçirib taşlaşdan himoya ham işlamaydi.</string>
     <string name="perm_why_device_admin">Farzand Tikoncha’ni oddiy ilova kabi, sizdan söramasdan öçirib taşlay oladi.</string>
-    <string name="policy_paywall_app_limits">Bepul tarifda bitta jadvalga %1$d tagaça ilova qöşiş mumkin. Köproq ilova uçun Plus kerak.</string>
-    <string name="policy_paywall_app_limit">Bitta jadvaldagi ilovalar soni tarif çegarasiga yetdi.</string>
+    <string name="policy_paywall_app_limits">Bepul tarifda bitta qoidaga %1$d tagaça ilova qöşiş mumkin. Köproq ilova uçun Plus kerak.</string>
+    <string name="policy_paywall_app_limit">Bitta qoidadagi ilovalar soni tarif çegarasiga yetdi.</string>
     <string name="clip_child_phone">Uning telefonida</string>
     <string name="prot_default_note">Qoidalaringiz hozir heç bir ilovani yopmaydi. Yopişi uçun farzandingiz telefonida Hoglt’ni oçing → «Nazorat» bölimida himoyani yoqing.</string>
     <string name="prot_strength">Himoya kuçi</string>
@@ -1504,5 +1504,65 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="task_empty_in_progress">Hozir bajarilayotgan vazifa yöq</string>
     <string name="task_empty_done">Bajarilgan vazifa hali yöq</string>
     <string name="task_empty_overdue">Muddati ötgan vazifa yöq</string>
-    <string name="task_empty_filter_hint">Barça vazifalarni körish uçun tanlangan belgini qayta bosing.</string>
+    <string name="task_empty_filter_hint">Barça vazifalarni köriş uçun tanlangan belgini qayta bosing.</string>
+    <string name="voice_listen">Tinglaş</string>
+    <string name="voice_stop">Töxtatiş</string>
+    <string name="voice_unavailable">Ovozli tuşuntiriş hozir yöq. Keyinroq urinib köring.</string>
+    <string name="live_confirm_title">Jonli köriş</string>
+    <string name="live_confirm_body">%1$sga qönğiroq ketadi. Rozi bölsa, video oçiladi.</string>
+    <string name="live_child_fallback">Farzandingiz</string>
+    <string name="live_call_button">Qönğiroq qiliş</string>
+    <string name="live_ringing">%1$sga qönğiroq ketyapti…</string>
+    <string name="live_connecting">Ulanmoqda…</string>
+    <string name="live_error_connect">Ulanib bölmadi. Bir ozdan keyin qayta urinib köring.</string>
+    <string name="live_declined">Farzandingiz rad etdi</string>
+    <string name="live_no_answer">Javob bölmadi</string>
+    <string name="live_end">Tugatiş</string>
+    <string name="live_show_on_map">Xaritada köriş</string>
+    <string name="unlink_child_button">Farzandni uziş</string>
+    <string name="saqlandi">Saqlandi</string>
+    <string name="ap_retry_now_amount">Hozir tölaş · %1$s</string>
+    <string name="pay_charge_body">•• %1$s kartadan %2$s yeçiladi.</string>
+    <string name="pay_charge_body_amount">Kartadan %1$s yeçiladi.</string>
+    <string name="pay_charge_body_plain">Saqlangan kartadan obuna puli yeçiladi.</string>
+    <string name="pay_confirm_pay">Tölaş</string>
+    <string name="app_store_unavailable">App Store hozir oçilmadi. Bir ozdan keyin qayta urinib köring.</string>
+    <string name="app_store_failed">App Store orqali tölab bölmadi. Qayta urinib köring.</string>
+    <string name="apple_activation_pending_title">Tölov qabul qilindi</string>
+    <string name="login_subtitle_social">Qulay usulni tanlang. Hisobingiz bölmasa, özi oçiladi.</string>
+    <string name="login_telegram_not_opened">Telegram oçilmadi. Telegram örnatilganini tekşiring yoki boşqa usulda kiring.</string>
+    <string name="ob_notif_enable">Bildirişnomalarni yoqiş</string>
+    <string name="comfort_title">Öqiş qulaymi?</string>
+    <string name="comfort_screen_color">Ekran rangi</string>
+    <string name="comfort_light">Yoruğ</string>
+    <string name="comfort_dark">Qoronği</string>
+    <string name="comfort_done">Tayyor</string>
+    <string name="comfort_hint">Buni keyin ham özgartiriş mumkin.</string>
+    <string name="policy_turned_on">%1$s yoqildi</string>
+    <string name="policy_turned_off">%1$s öçirildi</string>
+    <string name="policy_off_title">%1$s öçirilsinmi?</string>
+    <string name="policy_off_body">Farzandingiz telefonida bu qoida darhol işlamay qoladi va u yopgan narsalar yana oçiladi. Keyin istalgan payt qayta yoqiş mumkin.</string>
+    <string name="policy_off_body_safety">Farzandingiz telefonida bu himoya darhol töxtaydi. Keyin istalgan payt qayta yoqiş mumkin.</string>
+    <string name="policy_off_confirm">Ha, öçirilsin</string>
+    <string name="policy_off_cancel">Yöq, qolsin</string>
+    <string name="policy_saved_sent">Saqlandi — farzand telefoniga yuborildi</string>
+    <string name="policy_saved_queued">Saqlandi — internet qaytganda farzand telefoniga yuboriladi</string>
+    <string name="policy_unsaved_title">Özgarişlar saqlansinmi?</string>
+    <string name="policy_unsaved_body">Saqlamasangiz, farzandingiz telefonida heç narsa özgarmaydi.</string>
+    <string name="policy_unsaved_discard">Saqlamasdan çiqiş</string>
+    <string name="quick_unblock_title">%1$s yana oçilsinmi?</string>
+    <string name="quick_unblock_body">Bu ilova farzandingiz telefonida darhol oçiladi.</string>
+    <string name="quick_unblock_confirm">Ha, oçilsin</string>
+    <string name="quick_unblock_action">Oçiş</string>
+    <string name="quick_unblocked">%1$s oçildi</string>
+    <string name="policy_exception_remove">Olib taşlaş</string>
+    <string name="policy_load_failed">Yuklab bölmadi</string>
+    <string name="tg_more_settings">Batafsil sozlaş</string>
+    <string name="rules_on_count">%1$d ta qoida yoqilgan</string>
+    <string name="task_accepted">Qabul qilindi</string>
+    <string name="task_accepted_coins">%1$s %2$d ta tanga oldi</string>
+    <string name="task_coins_explain">Vazifani qabul qilganingizda tangalar farzandingizga ötadi. U ularni aqlli yordamçiga savol beriş uçun sarflaydi.</string>
+    <string name="task_coins_not_enough">Tangangiz yetmaydi</string>
+    <string name="chat_support_title">Yordam xizmati</string>
+    <string name="chat_ai_title">Aqlli yordamçi</string>
 </resources>

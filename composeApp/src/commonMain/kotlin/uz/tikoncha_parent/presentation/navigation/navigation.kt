@@ -51,6 +51,15 @@ import kotlin.math.roundToInt
 
 expect val isSwipeBackEnabled: Boolean
 
+/**
+ * Saqlanmagan özgarişlari bor ekran (qoida tahrirlari) iOS'da chetdan surib qaytişni vaqtinça öçiradi —
+ * aks holda "Özgarişlar saqlansinmi?" sörovi çiqmasdan ekran yopilib, ota-ona qilgan işi yöqoladi.
+ * Orqaga tugmasi va tizim "orqaga"si sörovni körsatadi.
+ */
+object SwipeBackGuard {
+    var blocked: Boolean = false
+}
+
 // M3 "emphasized" harakat: tez boshlanib, yumshoq to'xtaydi (sahifa "qo'yiladi", sakramaydi).
 private const val PUSH_DURATION = 450
 private const val POP_DURATION = 400
@@ -172,6 +181,7 @@ fun SwipeBackContent(navigator: Navigator) {
 
                         val edgeZone = maxOf(screenWidth * 0.15f, 50.dp.toPx())
                         if (startX > edgeZone) return@awaitEachGesture
+                        if (SwipeBackGuard.blocked) return@awaitEachGesture
 
                         gestureStarted = true
                         var totalDragX = 0f

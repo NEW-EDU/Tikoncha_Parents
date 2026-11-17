@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -33,6 +34,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import org.jetbrains.compose.resources.stringResource
+import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.policy_exception_remove
 import uz.tikoncha_parent.presentation.base.ChildAppIcon
 import uz.tikoncha_parent.presentation.base.haptics.rememberAppHaptics
 import uz.tikoncha_parent.presentation.base.singleClick
@@ -216,32 +220,50 @@ fun UsageBar(headline: String, trailing: String, usedMinutes: Int, limitMinutes:
     }
 }
 
-/** Ro'yxatdagi ilova: ikonka · nom · − tugma (so'rov paytida aylanuvchi). */
+/**
+ * Ro'yxatdagi ilova: ikonka · nom · "− Olib taşlaş" (so'rov paytida aylanuvchi).
+ * Tugma yozuvli va kamida 48dp — titroq barmoq ham tegadi, nima bölişi söz bilan aytiladi.
+ */
 @Composable
-fun ExceptionRow(label: String, iconUrl: String?, onRemove: () -> Unit, busy: Boolean = false) {
+fun ExceptionRow(
+    label: String,
+    iconUrl: String?,
+    onRemove: () -> Unit,
+    busy: Boolean = false,
+    removeText: String = stringResource(Res.string.policy_exception_remove),
+) {
     SettingRow(
         title = label,
         leading = { ChildAppIcon(iconUrl = iconUrl) },
         trailing = {
-            Box(modifier = Modifier.size(32.dp), contentAlignment = Alignment.Center) {
+            Row(
+                modifier = Modifier
+                    .heightIn(min = 48.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(AppColors.bg.tertiary)
+                    .clickable(enabled = !busy, onClick = onRemove)
+                    .padding(start = 10.dp, end = 14.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
                 if (busy) {
                     CircularProgressIndicator(modifier = Modifier.size(18.dp), color = AppColors.action.primary, strokeWidth = 2.dp)
                 } else {
-                    IconButton(onClick = onRemove, modifier = Modifier.size(32.dp)) {
-                        Icon(imageVector = RemoveIcon, contentDescription = null, modifier = Modifier.size(18.dp), tint = AppColors.icon.accentDanger)
-                    }
+                    Icon(imageVector = RemoveIcon, contentDescription = null, modifier = Modifier.size(18.dp), tint = AppColors.icon.accentDanger)
                 }
+                Text(text = removeText, style = PolicyText.action, color = AppColors.text.accentDanger, maxLines = 1)
             }
         },
     )
 }
 
-/** "+ Ilova qo'shish". [busy] — tanlanganlar serverga ketmoqda. */
+/** "+ Ilova qo'shish". [busy] — tanlanganlar serverga ketmoqda. [plus] — pullik: bosişdan oldin "Plus" belgisi. */
 @Composable
-fun AddRow(text: String, onClick: () -> Unit, busy: Boolean = false) {
+fun AddRow(text: String, onClick: () -> Unit, busy: Boolean = false, plus: Boolean = false) {
     SettingRow(
         title = text,
         onClick = if (busy) null else onClick,
+        trailing = if (plus) ({ PlusBadge() }) else null,
         titleColor = AppColors.text.accentEmphasis,
         leading = {
             Box(

@@ -363,10 +363,13 @@ class HomeViewModel(
         observedPolicyChildId = childId
         policyObserveJob = screenModelScope.launch {
             observePoliciesUseCase(childId).collect { policies ->
-                val count = policies
-                    .filter { it.scope == PolicyType.PARENT_CHILD && it.isStandard }
-                    .flatMap { it.targets.packages }
-                    .toSet().size
+                // Ota-onalar qo'ygan, yoqilgan qoidalar soni ("3 ta qoida yoqilgan"). Avval paketlar sanalardi va
+                // "N ta ilova çeklangan" deyilardi — "*" (barça ilovalar), toifa va iOS tanlovi noto'g'ri son berardi.
+                val now = Clock.System.now()
+                val count = policies.count {
+                    it.scope == PolicyType.PARENT_CHILD && it.isStandard && it.deletedAt == null &&
+                        it.isActive && it.expiresAt?.let { e -> e <= now } != true
+                }
 
                 _state.update { it.copy(parentPolicyCount = count) }
             }

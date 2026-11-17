@@ -5,6 +5,7 @@
 
 package uz.tikoncha_parent.presentation.add_child
 
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.material3.MaterialTheme
@@ -290,6 +291,7 @@ private fun AddChildContent(
                 .background(AppColors.bg.page)
         ) {
             CustomHeader(
+                voice = VoiceScreen.ADD_CHILD,
                 title = stringResource(Res.string.farzand_qo_shish),
                 onBackClick = onBack,
                 showBackButton = true,
@@ -334,6 +336,7 @@ private fun AddChildContent(
             .background(AppColors.bg.page)
     ) {
         CustomHeader(
+            voice = VoiceScreen.ADD_CHILD,
             title = stringResource(Res.string.farzand_qo_shish),
             onBackClick = { scanning = true },
             showBackButton = true,

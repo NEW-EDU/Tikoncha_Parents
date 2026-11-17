@@ -26,6 +26,7 @@ fun ChatDto.toChatUi(): ChatUi {
         "PARENT_CHILD" -> ChatType.PARENT_CHILD
         "CLASS" -> ChatType.CLASS
         "SIBLINGS" -> ChatType.SIBLINGS
+        "SUPPORT" -> ChatType.SUPPORT   // "Feedback" — ekranda "Yordam xizmati" (ChatUtil.displayTitle)
         else -> ChatType.NONE
     }
 

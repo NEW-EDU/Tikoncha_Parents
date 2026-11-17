@@ -2,6 +2,7 @@
 
 package uz.tikoncha_parent.presentation.statistic
 
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import androidx.compose.ui.draw.clip
 import tikoncha_parents.composeapp.generated.resources.stat_no_usage_day
 import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
@@ -236,6 +237,7 @@ fun StatisticUi(
                 .background(AppColors.bg.secondary)
         ) {
             CustomHeader(
+                voice = VoiceScreen.STATS,
                 title = stringResource(Res.string.statistika),
                 showBackButton = true,
                 onBackClick = { navigator?.pop() },

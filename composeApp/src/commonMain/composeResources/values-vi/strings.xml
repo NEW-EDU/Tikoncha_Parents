@@ -94,7 +94,7 @@
     <string name="maktab">Trường</string>
     <string name="sozlamalar">Cài đặt</string>
     <string name="bildirishnomalar">Thông báo</string>
-    <string name="tema">Giao diện</string>
+    <string name="tema">Màu màn hình</string>
     <string name="tasdiqlash">Xác nhận</string>
     <string name="tolov">Thanh toán</string>
     <string name="obuna_pro">Gói Pro</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">Số hộ chiếu</string>
     <string name="reklama">Quảng cáo</string>
     <string name="yorug">Sáng</string>
-    <string name="theme_system">Hệ thống</string>
+    <string name="theme_system">Giống điện thoại</string>
     <string name="xavfli_zona">Vùng nguy hiểm</string>
     <string name="akkauntni_o_chirish">Xóa tài khoản</string>
     <string name="pochta_orqali">Qua email</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Xin quyền</string>
     <string name="joylashuv_uchun_ruxsat">Quyền vị trí</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Để dùng bản đồ đầy đủ, hãy cấp quyền Vị trí trong cài đặt!</string>
-    <string name="xatolik">Lỗi</string>
-    <string name="ok">OK</string>
+    <string name="xatolik">Không thành công</string>
+    <string name="ok">Đã hiểu</string>
     <string name="qoshish">Thêm</string>
     <string name="ogil_bola">Bé trai</string>
     <string name="qiz_bola">Bé gái</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Thành công</string>
     <string name="qisqartirish">Rút ngắn</string>
     <string name="vazifa_tahrirlandi">Đã sửa nhiệm vụ</string>
-    <string name="server_connection_error">Lỗi kết nối máy chủ!</string>
+    <string name="server_connection_error">Hiện không kết nối được. Vui lòng thử lại sau ít phút.</string>
     <string name="faol">Đang hoạt động</string>
     <string name="faol_emas">Không hoạt động</string>
     <string name="ohirgi_faollik">Hoạt động lần cuối:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Chú ý!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Giới hạn sử dụng sẽ không hoạt động trong khoảng thời gian bạn đã chọn! Nghĩa là lịch theo thời gian có mức ưu tiên cao hơn.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d ứng dụng chưa được cài trên thiết bị của bạn</string>
-    <string name="cheklovlar">Hạn chế</string>
+    <string name="cheklovlar">Quy tắc</string>
     <string name="ta_ilovaga">cho %1$d ứng dụng</string>
     <string name="ta_vebsaytga">cho %1$d trang web</string>
     <string name="ustuvorligi">Mức ưu tiên</string>
-    <string name="jadval_nomini_kiriting">Nhập tên lịch</string>
+    <string name="jadval_nomini_kiriting">Nhập tên quy tắc</string>
     <string name="misol_o_quv_markaz">ví dụ: Trung tâm đào tạo</string>
     <string name="ochirish">Xóa</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Bạn có đồng ý thoát mà không lưu lịch không?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">CHÚC MỪNG!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Bây giờ bạn đã sở hữu gói đăng ký này</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Tận hưởng các tính năng đặc biệt và hỗ trợ ưu tiên!</string>
-    <string name="statistika">Thống kê</string>
+    <string name="statistika">Thời gian dùng điện thoại</string>
     <string name="chegirmalar">Ưu đãi</string>
     <string name="chegirma">Giảm giá</string>
     <string name="topshiriqlar">Nhiệm vụ</string>
-    <string name="jadvallar">Lịch</string>
+    <string name="jadvallar">Quy tắc</string>
     <string name="ilova_cheklangan">%1$d ứng dụng bị hạn chế</string>
-    <string name="faol_vazifa">%1$d nhiệm vụ đang hoạt động</string>
-    <string name="bugun_sarfladi">Đã dùng hôm nay</string>
+    <string name="faol_vazifa">Nhiệm vụ đang làm: %1$d</string>
+    <string name="bugun_sarfladi">Hôm nay trên điện thoại</string>
     <string name="chiqish">Đăng xuất</string>
     <string name="chiqishni_xohlaysizmi">Bạn có muốn đăng xuất không?</string>
     <string name="chiqishni_tasdiqlang">Xác nhận việc đăng xuất.</string>
@@ -322,8 +322,8 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="profil_va_sozlamalar_saqlanadi">Hồ sơ và cài đặt của bạn được lưu trên máy chủ.</string>
     <string name="qayta_kirsangiz_tiklanadi">Khi đăng nhập lại, mọi thứ sẽ được khôi phục.</string>
     <string name="farzand_qoshilmagan">Chưa thêm con</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Lịch, trò chuyện và báo cáo sẽ xuất hiện sau khi thêm con.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Quy tắc, trò chuyện và thời gian dùng điện thoại sẽ hiện sau khi thêm con.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Không thành công. Vui lòng thử lại sau ít phút.</string>
     <string name="hozircha_farzand_qoshilmagan">Bạn chưa thêm con nào.</string>
     <string name="diqqat2">CHÚ Ý!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Hãy chọn loại ứng dụng trước khi tiếp tục.</string>
@@ -343,10 +343,10 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="tasdiqlash_kodi_usulini_tanlash">Chọn cách chúng tôi gửi \n mã xác minh</string>
     <string name="tasdiqlash_kodini_olish">Nhận mã xác minh</string>
     <string name="telegram_kod_kiritish">Nhập mã đã gửi đến Telegram liên kết với %1$s</string>
-    <string name="xato_kod_kiritdingiz">Bạn đã nhập sai mã</string>
+    <string name="xato_kod_kiritdingiz">Mã không khớp. Vui lòng nhập lại.</string>
     <string name="kod_olish_usulini_ozgartirish">Đổi cách nhận mã</string>
     <string name="versiya">Phiên bản</string>
-    <string name="jadval_yaratish">Tạo lịch</string>
+    <string name="jadval_yaratish">Tạo quy tắc</string>
     <string name="sizning_cheklovlaringiz">Các hạn chế của bạn</string>
 
     <string name="avtomatik_bloklash_vaqti">Tự động chặn vào các ngày và giờ đã chọn</string>
@@ -364,9 +364,9 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="noto_g_ri_url_format">Định dạng URL không hợp lệ</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Trang web này đã có trong danh sách</string>
     <string name="to_liq_nazoratni_yoqing">Bật toàn quyền kiểm soát</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Quản lý ứng dụng, thời gian và mức sử dụng với Hoglt. Với Plus, làm việc không giới hạn và bật bảo vệ tối đa qua chế độ Khiên.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Quản lý ứng dụng và thời gian dùng điện thoại bằng Hoglt. Với Plus, không giới hạn và bạn có thể bật bảo vệ nghiêm ngặt.</string>
     <string name="plus_imkoniyatlarini_ochish">Mở khóa tính năng Plus</string>
-    <string name="jadval_nomi">Tên lịch</string>
+    <string name="jadval_nomi">Tên quy tắc</string>
     <string name="saytlar">Trang web</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Chỉ định khi nào và trong điều kiện nào ứng dụng và trang web bị hạn chế</string>
 
@@ -395,7 +395,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="coins_help_close">Đóng</string>
     <string name="qollash">Áp dụng</string>
     <string name="promokod">Mã khuyến mãi:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Bạn đã mua xu thành công.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Đã mua xu.</string>
     <string name="narx">Giá</string>
     <string name="jami">Tổng</string>
     <string name="bekor_qilindi">Đã hủy!</string>
@@ -412,11 +412,11 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="plus_obnuna_kerak">Cần có gói PLUS</string>
     <string name="toliq_nazorat_statistika">Kiểm soát toàn diện và thống kê</string>
     <string name="farzand_ilova_kuzatish">Theo dõi con bạn dùng những ứng dụng nào và dùng bao lâu trong ngày.</string>
-    <string name="uchtagacha_jadval">Tối đa 3 lịch</string>
+    <string name="uchtagacha_jadval">Tối đa 3 quy tắc</string>
     <string name="jadval_cheklovlar">Đặt hạn chế riêng cho từng ngày, tuần hoặc thời điểm đặc biệt.</string>
     <string name="qattiq_bloklash_qalqon">Bảo vệ nghiêm ngặt: chặn cả trang web và video ngắn</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Con bạn không thể tắt hoặc thay đổi các hạn chế.</string>
-    <string name="tez_bloklash_timer">Chặn nhanh (Hẹn giờ)</string>
+    <string name="tez_bloklash_timer">Ứng dụng luôn bị đóng</string>
     <string name="vaqtinchalik_bloklash_tezi">Bật chặn tạm thời chỉ trong vài giây khi cần.</string>
     <string name="hisobot_tahlil">Báo cáo và phân tích</string>
     <string name="farzand_nazorat_tavsifi">Kiểm soát việc dùng điện thoại của con. Chặn các ứng dụng không mong muốn, đặt thời gian sử dụng và tạo môi trường an toàn.</string>
@@ -510,8 +510,8 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="danger_cat_tobacco">Thuốc lá và vape</string>
     <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Bán kính</string>
-    <string name="farzandim">Con của tôi</string>
-    <string name="ozim">Bản thân tôi</string>
+    <string name="farzandim">Con tự đặt</string>
+    <string name="ozim">Của tôi</string>
     <string name="faol_vazifa_yo_q">Không có nhiệm vụ đang hoạt động</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Con bạn chưa có nhiệm vụ nào</string>
 
@@ -536,7 +536,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="weekday_sunday">Chủ Nhật</string>
 
     <string name="juda_muhim">Rất quan trọng</string>
-    <string name="tekshirildi">Đã kiểm tra</string>
+    <string name="tekshirildi">Chấp nhận</string>
     <string name="ko_rish">Xem</string>
     <string name="vazifa_ochirilsinmi">Xóa nhiệm vụ?</string>
     <string name="vazifa_ochirish_tasdiq">Bạn có thật sự muốn xóa nhiệm vụ này không?</string>
@@ -558,7 +558,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="tolovlar_tarixi_bos">Lịch sử thanh toán trống</string>
     <string name="tolovlar_tarixi_bos_hint">Sẽ hiển thị ở đây sau khi mua hàng</string>
     <string name="boshqa_yozuvlar_yoq">Không còn bản ghi nào</string>
-    <string name="xatolik_yuz_berdi">Đã xảy ra lỗi</string>
+    <string name="xatolik_yuz_berdi">Không tải được. Vui lòng thử lại.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -589,7 +589,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
 
     <string name="izoh_ixtiyoriy">Bình luận (không bắt buộc)</string>
     <string name="vazifa_tangalari">Xu được thưởng khi hoàn thành nhiệm vụ</string>
-    <string name="vazifani_tekshirish">Kiểm tra nhiệm vụ</string>
+    <string name="vazifani_tekshirish">Mọi thứ đã đúng chưa?</string>
     <string name="izoh">Bình luận</string>
     <string name="muhimlilik_darajasi">Mức độ quan trọng</string>
     <string name="ragbatlantirish_tangachalari">Xu thưởng</string>
@@ -609,7 +609,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Con bạn cần mở ứng dụng Hoglt và nhập mã xác minh.</string>
     <string name="bola_hali_bajardim_bosmagan">Con chưa nhấn nút "Xong"</string>
     <string name="foydalanilmagan">Chưa dùng</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Vui lòng đăng nhập lại</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Đăng nhập</string>
     <string name="profil_rasmi">Ảnh đại diện</string>
@@ -635,7 +635,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="telegram_orqali_kirish">Đăng nhập bằng Telegram</string>
     <string name="yoki">hoặc</string>
     <string name="telefon_raqami">Số điện thoại</string>
-    <string name="kirish_subtitle">Đăng nhập vào tài khoản của bạn để tiếp tục</string>
+    <string name="kirish_subtitle">Đăng nhập bằng Telegram. Chưa có tài khoản? Tài khoản sẽ tự được tạo.</string>
     <string name="login_privacy">Khi tiếp tục, bạn đồng ý với Chính sách quyền riêng tư và Điều khoản sử dụng</string>
 
     <string name="telegram_ochilmoqda">Đang mở Telegram…</string>
@@ -770,9 +770,9 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Bạn đã chấp thuận yêu cầu — con bạn giờ có thể đăng xuất khỏi ứng dụng.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Bạn đã chấp thuận yêu cầu — con bạn giờ có thể gỡ cài đặt ứng dụng.</string>
     <string name="sorov_rad_etildi_desc">Bạn đã từ chối yêu cầu.</string>
-    <string name="unlink_child_title">Ngắt kết nối với con?</string>
-    <string name="unlink_child_message">Sau thao tác này, việc giám sát trên thiết bị của %1$s sẽ bị dừng!</string>
-    <string name="unlink_child_action">Ngắt kết nối</string>
+    <string name="unlink_child_title">Hủy liên kết với con này?</string>
+    <string name="unlink_child_message">Bảo vệ và quy tắc trên điện thoại của %1$s sẽ dừng. Để kết nối lại, hãy quét mã lần nữa qua “Thêm con”.</string>
+    <string name="unlink_child_action">Có, hủy liên kết</string>
     <string name="child_unlinked_success">Đã ngắt kết nối với con thành công</string>
     <string name="operator_kodi_topilmadi">Không có mã nhà mạng này</string>
     <string name="kod_amal_qilish_muddati">Mã còn hiệu lực: %1$s</string>
@@ -786,7 +786,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="farzand_tanlanmagan">Chưa chọn con</string>
     <string name="vazifa_id_topilmadi">Không tìm thấy ID nhiệm vụ</string>
     <string name="tahrirlangan">đã sửa</string>
-    <string name="jadval_topilmadi">Không tìm thấy lịch.</string>
+    <string name="jadval_topilmadi">Không tìm thấy — có thể đã bị xóa. Hãy quay lại và mở lại.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d phút</item>
         <item quantity="other">%1$d phút</item>
@@ -819,8 +819,8 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="tarix_disabled">Đã tắt</string>
     <string name="tarix_paused">Đã tạm dừng</string>
     <string name="tarix_deleted">Đã xóa</string>
-    <string name="tarix_quick_block_add">Đã thêm vào chặn nhanh</string>
-    <string name="tarix_quick_block_remove">Đã gỡ chặn nhanh</string>
+    <string name="tarix_quick_block_add">Đã thêm vào ứng dụng luôn bị đóng</string>
+    <string name="tarix_quick_block_remove">Đã gỡ khỏi ứng dụng luôn bị đóng</string>
     <string name="tarix_bosh">Chưa có thay đổi nào</string>
     <string name="tarix_resumed">Đã tiếp tục</string>
     <string name="muddat">Thời lượng</string>
@@ -844,26 +844,26 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="stat_row_sec">%1$d giây</string>
     <string name="stat_hour_only">%1$d giờ</string>
     <string name="stat_per_day">~%1$s mỗi ngày</string>
-    <string name="stat_quick_blocked">Trong chặn nhanh</string>
-    <string name="stat_quick_blocked_paused">Trong chặn nhanh · đã tạm dừng</string>
-    <string name="stat_quick_blocked_inactive">Trong chặn nhanh · cần Plus</string>
+    <string name="stat_quick_blocked">Luôn bị đóng</string>
+    <string name="stat_quick_blocked_paused">Luôn bị đóng · tạm dừng</string>
+    <string name="stat_quick_blocked_inactive">Luôn bị đóng · cần Plus</string>
     <string name="stat_blocked_by_child">Do con tự chặn</string>
     <string name="stat_blocked_by_child_paused">Do con tự chặn · đã tạm dừng</string>
     <string name="stat_blocked_by_child_inactive">Do con tự chặn · cần Plus</string>
     <string name="stat_blocked_by_coparent">Do phụ huynh còn lại chặn</string>
     <string name="stat_blocked_by_coparent_paused">Do phụ huynh còn lại chặn · đã tạm dừng</string>
     <string name="stat_blocked_by_coparent_inactive">Do phụ huynh còn lại chặn · cần Plus</string>
-    <string name="stat_lock_hint">Ổ khóa thêm ứng dụng vào chặn nhanh hoặc gỡ ra khỏi đó</string>
-    <string name="stat_quick_add_cd">Thêm vào chặn nhanh</string>
-    <string name="stat_quick_remove_cd">Gỡ khỏi chặn nhanh</string>
-    <string name="stat_reenable_title">Chặn nhanh sẽ được bật</string>
-    <string name="stat_reenable_message">Chặn nhanh đang tắt. Chặn ứng dụng này sẽ bật lại nó, và các ứng dụng khác trong danh sách cũng sẽ bị chặn: %1$d.</string>
+    <string name="stat_lock_hint">Ổ khóa thêm ứng dụng vào danh sách luôn bị đóng hoặc gỡ ra</string>
+    <string name="stat_quick_add_cd">Thêm vào ứng dụng luôn bị đóng</string>
+    <string name="stat_quick_remove_cd">Gỡ khỏi ứng dụng luôn bị đóng</string>
+    <string name="stat_reenable_title">Ứng dụng luôn bị đóng sẽ bật lại</string>
+    <string name="stat_reenable_message">“Ứng dụng luôn bị đóng” đang tắt. Nếu thêm ứng dụng này, tính năng sẽ bật lại và các ứng dụng khác trong danh sách cũng bị đóng: %1$d.</string>
     <string name="stat_reenable_confirm">Chặn</string>
     <string name="stat_quick_paywall_title">Cần có gói đăng ký</string>
     <string name="stat_quick_paywall_message">Chặn một ứng dụng chỉ bằng một chạm cần gói đăng ký Hoglt Plus.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Chặn nhanh</string>
+    <string name="quick_title">Ứng dụng luôn bị đóng</string>
     <string name="quick_enabled">Bật</string>
     <string name="quick_pause">Tạm dừng</string>
     <string name="quick_blocked_apps">Ứng dụng bị chặn</string>
@@ -872,15 +872,15 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="quick_info_always">Các ứng dụng trong danh sách này luôn bị chặn, bất kể thời gian hay địa điểm.</string>
     <string name="quick_info_off">Hiện đang tắt — hãy bật để chặn các ứng dụng này.</string>
     <string name="quick_info_paused">Đã tạm dừng đến %1$s — không có gì bị chặn cho đến lúc đó.</string>
-    <string name="quick_info_stats">Bạn cũng có thể thêm hoặc bớt ứng dụng chỉ bằng một chạm từ thống kê sử dụng.</string>
-    <string name="quick_info_readd">Nếu chặn nhanh đang tắt, thêm một ứng dụng sẽ bật lại nó.</string>
+    <string name="quick_info_stats">Ở trang “Thời gian dùng điện thoại”, bạn cũng có thể thêm hoặc gỡ ứng dụng khỏi danh sách này chỉ với một lần chạm.</string>
+    <string name="quick_info_readd">Nếu “Ứng dụng luôn bị đóng” đang tắt, thêm một ứng dụng sẽ bật lại tính năng này.</string>
     <string name="quick_child_blocks">Do con tự chặn</string>
     <string name="quick_coparent_blocks">Do phụ huynh còn lại chặn</string>
     <string name="quick_others_note">Chỉ chủ sở hữu mới có thể thay đổi các danh sách này. Nếu cần, hãy thêm ứng dụng vào danh sách riêng của bạn.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Giờ đi ngủ</string>
-    <string name="policy_preset_limit">Giới hạn thời gian</string>
+    <string name="policy_preset_limit">Thời gian mỗi ngày</string>
     <string name="policy_preset_school">Giờ học</string>
     <string name="policy_day_mon">T2</string>
     <string name="policy_day_tue">T3</string>
@@ -900,30 +900,30 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="policy_location">Vị trí</string>
     <string name="policy_active_now">Đang hoạt động: %1$s</string>
     <string name="policy_active_until">đến %1$s</string>
-    <string name="list_info_none">Hiện không có lịch nào đang hoạt động</string>
+    <string name="list_info_none">Hiện không có quy tắc nào đang chạy</string>
     <string name="list_info_also">Cũng đang hoạt động: %1$s.</string>
-    <string name="list_info_many">Khi nhiều lịch chạy cùng lúc, một ứng dụng sẽ bị chặn nếu bất kỳ lịch nào chặn nó.</string>
-    <string name="list_info_child_scope">Lịch riêng của con không thể ghi đè lịch của bạn — ứng dụng bạn chặn sẽ vẫn bị chặn.</string>
-    <string name="list_info_school_scope">Nếu lịch của nhà trường đóng một ứng dụng hoặc cho phép rõ ràng, lịch của bạn không thể thay đổi điều đó. Nếu không, lịch nghiêm ngặt hơn sẽ được áp dụng.</string>
-    <string name="list_info_quick">Chặn nhanh đang bật — các ứng dụng trong đó luôn bị chặn, bất kể thời gian hay địa điểm.</string>
-    <string name="list_info_paused">Lịch đã tạm dừng: %1$d — chúng không làm gì cho đến thời điểm đã đặt.</string>
-    <string name="list_info_how">Lịch tự bắt đầu khi đến thời gian và địa điểm của nó.</string>
-    <string name="policy_tab_templates">Mẫu</string>
+    <string name="list_info_many">Khi nhiều quy tắc chạy cùng lúc, ứng dụng bị chặn nếu bất kỳ quy tắc nào chặn nó.</string>
+    <string name="list_info_child_scope">Quy tắc riêng của con không thể thay đổi quy tắc của bạn — ứng dụng bạn đã chặn vẫn bị chặn.</string>
+    <string name="list_info_school_scope">Nếu quy tắc của trường đóng một ứng dụng hoặc cho phép rõ ràng, quy tắc của bạn không thể thay đổi điều đó. Các trường hợp khác áp dụng quy tắc nghiêm hơn.</string>
+    <string name="list_info_quick">“Ứng dụng luôn bị đóng” đang bật — ứng dụng trong danh sách này luôn bị đóng, bất kể giờ nào hay ở đâu.</string>
+    <string name="list_info_paused">Quy tắc tạm dừng: %1$d — không có tác dụng cho đến giờ đã đặt.</string>
+    <string name="list_info_how">Quy tắc tự bắt đầu khi đến đúng giờ và đúng nơi.</string>
+    <string name="policy_tab_templates">Quy tắc có sẵn</string>
     <string name="policy_tab_mine">Tôi đặt</string>
     <string name="policy_tab_child">Con tự đặt</string>
-    <string name="policy_tab_coparent">Phụ huynh</string>
+    <string name="policy_tab_coparent">Phụ huynh còn lại</string>
     <string name="policy_tab_school">Trường</string>
     <string name="policy_enabled_count">Đã bật %1$d</string>
-    <string name="policy_content_protection">Bảo vệ nội dung</string>
+    <string name="policy_content_protection">Bảo vệ khỏi trang web xấu</string>
     <string name="policy_content_protection_others">Do con hoặc phụ huynh còn lại bật</string>
     <string name="policy_paused">Đã tạm dừng</string>
-    <string name="policy_quick_blocks">Chặn nhanh</string>
+    <string name="policy_quick_blocks">Ứng dụng luôn bị đóng</string>
     <string name="preset_all_apps">Tất cả ứng dụng</string>
-    <string name="policy_paywall_protection">Bảo vệ nội dung hoạt động với Hoglt Plus.</string>
+    <string name="policy_paywall_protection">Bảo vệ khỏi trang web xấu hoạt động với Hoglt Plus.</string>
     <string name="policy_paywall_count">Gói miễn phí giới hạn số lịch. Hoglt Plus cho bạn nhiều hơn.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Chưa chọn gì — lịch này không chặn gì cả.</string>
+    <string name="info_nothing">Chưa chọn gì — quy tắc này không chặn gì cả.</string>
     <string name="info_always">Mọi lúc</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s từ %2$s đến %3$s</string>
@@ -936,12 +936,12 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="info_what_all_apps_sites">tất cả ứng dụng và trang web bị chặn</string>
     <string name="info_what_selected">các mục đã chọn bị chặn (%1$s)</string>
     <string name="info_stays_open">Vẫn mở: %1$s.</string>
-    <string name="info_not_counted">Không tính vào giới hạn: %1$s.</string>
+    <string name="info_not_counted">Thời gian không được tính: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s có thể dùng tổng cộng %3$s. Khi hết giờ, chúng vẫn bị chặn đến ngày mai.</string>
     <string name="info_limit_hourly">%1$s: %2$s có thể dùng %3$s mỗi giờ. Khi hết giờ, chúng vẫn bị chặn đến giờ tiếp theo.</string>
     <string name="info_limit_all">tất cả ứng dụng</string>
     <string name="info_limit_selected">các mục đã chọn</string>
-    <string name="info_limit_gate">Giới hạn chỉ áp dụng: %1$s.</string>
+    <string name="info_limit_gate">Thời gian chỉ được tính: %1$s.</string>
     <string name="info_protected">Cuộc gọi, SMS và các ứng dụng thiết yếu khác không bao giờ bị chặn.</string>
     <string name="info_disabled">Hiện đang tắt — hãy bật để áp dụng.</string>
 
@@ -950,7 +950,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="preset_when">Khi nào</string>
     <string name="preset_starts">Bắt đầu</string>
     <string name="preset_ends">Kết thúc</string>
-    <string name="preset_limit">Giới hạn</string>
+    <string name="preset_limit">Bao nhiêu thời gian</string>
     <string name="preset_counted">Những gì được tính</string>
     <string name="preset_what_closed">Những gì bị chặn</string>
     <string name="preset_only_selected">Chỉ mục đã chọn</string>
@@ -991,13 +991,13 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="targets_covered_by_category">Được chọn qua danh mục</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Địa chỉ trang web hoặc từ khóa không hợp lệ. Ví dụ: youtube.com hoặc kino</string>
-    <string name="editor_new_policy">Lịch mới</string>
+    <string name="editor_new_policy">Quy tắc mới</string>
     <string name="editor_not_selected">Chưa chọn</string>
     <string name="editor_when_hint">tùy chọn · nếu không thì luôn luôn</string>
     <string name="editor_add_condition">Thêm điều kiện</string>
     <string name="editor_added">Đã thêm</string>
     <string name="editor_condition_time">Thời gian</string>
-    <string name="editor_condition_limit">Giới hạn</string>
+    <string name="editor_condition_limit">Bao nhiêu thời gian</string>
     <string name="editor_in_this_time">Trong thời gian này</string>
     <string name="editor_closed_in_time">Bị chặn</string>
     <string name="editor_closed_in_time_sub">Mở vào các thời điểm khác</string>
@@ -1008,8 +1008,8 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="editor_inside">Trong khu vực</string>
     <string name="editor_outside">Ngoài khu vực</string>
     <string name="editor_rename">Đổi tên</string>
-    <string name="editor_delete_title">Xóa lịch này?</string>
-    <string name="editor_delete_message">“%1$s” sẽ bị xóa.</string>
+    <string name="editor_delete_title">Xóa quy tắc này?</string>
+    <string name="editor_delete_message">“%1$s” sẽ bị xóa. Các ứng dụng mà quy tắc này chặn sẽ mở lại.</string>
     <string name="editor_paywall_allow">Chế độ “Chỉ mục đã chọn được mở” có trong Plus.</string>
     <string name="location_child_here">Vị trí của con tôi</string>
     <string name="protection_section">Những gì được bảo vệ</string>
@@ -1027,24 +1027,24 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="protection_policies_pending">Chưa được gửi</string>
     <string name="protection_gujanak_limits_note">Bảo vệ trung bình chỉ đóng ứng dụng. Trang web và video ngắn chỉ bị chặn khi bật bảo vệ nghiêm ngặt: trên điện thoại của con, Hoglt → “Kiểm soát” → “Chế độ Khiên”.</string>
     <string name="editor_limit_days_follow_time">Giống như thời gian — các ngày được chọn ở trang thời gian</string>
-    <string name="editor_limit_in_window">giới hạn trong thời gian này</string>
-    <string name="editor_limit_outside_window">giới hạn ngoài thời gian này</string>
-    <string name="editor_limit_in_time">Giới hạn áp dụng trong thời gian này</string>
+    <string name="editor_limit_in_window">thời gian được tính trong những giờ này</string>
+    <string name="editor_limit_outside_window">thời gian được tính ngoài những giờ này</string>
+    <string name="editor_limit_in_time">Thời gian chỉ được tính trong những giờ này</string>
     <string name="editor_limit_in_time_sub">Không hạn chế vào các thời điểm khác</string>
-    <string name="editor_limit_out_time">Giới hạn áp dụng ngoài thời gian này</string>
+    <string name="editor_limit_out_time">Thời gian được tính ngoài những giờ này</string>
     <string name="editor_limit_out_time_sub">Không hạn chế trong thời gian này</string>
     <string name="info_limit_daily_window">%1$s: %2$s có thể dùng tổng cộng %3$s. Khi hết giờ, sẽ bị đóng đến khi khung thời gian này kết thúc.</string>
     <string name="targets_only_selected_open_sites_sub">Các trang web khác bị đóng</string>
     <string name="targets_only_selected_open_both_sub">Các ứng dụng và trang web khác bị đóng</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Chưa có lịch nào</string>
-    <string name="policy_empty_mine_sub">Hãy bật một mẫu hoặc tự tạo</string>
+    <string name="policy_empty_mine_title">Chưa có quy tắc nào</string>
+    <string name="policy_empty_mine_sub">Bật một quy tắc có sẵn hoặc tự tạo quy tắc</string>
     <string name="empty_search_title">Không tìm thấy gì</string>
     <string name="empty_search_sub">Hãy thử tìm kiếm khác</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Trang web người lớn và cờ bạc</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Lịch</string>
+    <string name="policy_name_schedule">Quy tắc</string>
     <string name="policy_name_category_block">Chặn theo danh mục</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Do con bạn bật</string>
@@ -1139,7 +1139,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="ap_off_confirm">Tắt</string>
     <string name="ap_keep_on">Giữ bật</string>
     <string name="ap_retry_note">Chúng tôi sẽ thử lại vào ngày mai (%1$d/3).</string>
-    <string name="ap_retry_now">Thử lại</string>
+    <string name="ap_retry_now">Thanh toán ngay</string>
     <string name="ap_other_card">Thẻ khác</string>
     <string name="ap_cards_empty_title">Chưa có thẻ đã lưu</string>
     <string name="ap_cards_empty_sub">Thêm thẻ UZCARD hoặc HUMO để tự động thanh toán</string>
@@ -1185,7 +1185,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="ulash_tugma">Liên kết</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Bỏ qua</string>
+    <string name="ob_skip">Để sau</string>
     <string name="ob_start">Bắt đầu nào</string>
     <string name="ob_got_it">Đã hiểu</string>
     <string name="ob_hello_title">Xin chào, tôi là Hoglt</string>
@@ -1199,10 +1199,10 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="ob_day_study">Học tập</string>
     <string name="ob_min_fmt">%1$d phút</string>
     <string name="ob_rules_title">Đặt quy tắc một lần</string>
-    <string name="ob_rules_body">Giờ đi ngủ, giờ học và giới hạn hằng ngày tự động bật.</string>
+    <string name="ob_rules_body">Giờ ngủ, giờ học và thời gian mỗi ngày tự bật.</string>
     <string name="ob_rule_sleep">Giờ đi ngủ</string>
     <string name="ob_rule_school">Giờ học</string>
-    <string name="ob_rule_limit">Giới hạn hằng ngày</string>
+    <string name="ob_rule_limit">Thời gian mỗi ngày</string>
     <string name="ob_rule_limit_value">2 giờ</string>
     <string name="ob_map_title">Biết con đang ở đâu</string>
     <string name="ob_map_body">Xem con trên bản đồ và đặt quy tắc cho những nơi như trường học.</string>
@@ -1259,8 +1259,8 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="home_layout_list">Danh sách</string>
     <string name="home_layout_grid">Lưới</string>
     <string name="home_greeting">Xin chào, %1$s</string>
-    <string name="kecha_sarfladi">Đã dùng hôm qua</string>
-    <string name="sana_sarfladi">Đã dùng vào %1$s</string>
+    <string name="kecha_sarfladi">Hôm qua trên điện thoại</string>
+    <string name="sana_sarfladi">Trên điện thoại ngày %1$s</string>
     <string name="stat_no_usage_day">Ngày này chưa dùng điện thoại</string>
     <string name="kirish_usuli">Cách đăng nhập</string>
     <string name="google_hisobi">Tài khoản Google</string>
@@ -1283,7 +1283,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="vazifa_muddati">Hạn chót</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Trợ lý</string>
+    <string name="ai_assistant_title">Trợ lý thông minh</string>
     <string name="ai_assistant_subtitle">Hỏi hoặc đặt quy tắc</string>
     <string name="ai_period_today">Hôm nay</string>
     <string name="ai_period_yesterday">Hôm qua</string>
@@ -1413,20 +1413,20 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Miễn phí: %1$d quy tắc đang bật · Plus: không giới hạn</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Ứng dụng không thấy được ứng dụng nào đang mở: thời gian dùng điện thoại không được tính và quy tắc không hoạt động.</string>
+    <string name="perm_why_overlay">Màn hình chặn không thể hiện trên ứng dụng bị chặn, nên quy tắc không thể đóng nó.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Bạn không thấy được con đang ở đâu, và các quy tắc theo vị trí không hoạt động.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Thiếu mục này, trang web, YouTube Shorts và Instagram Reels sẽ không bị chặn, và ứng dụng có thể bị gỡ dễ dàng.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">Gói miễn phí cho phép tối đa %1$d ứng dụng trong một quy tắc. Plus cho nhiều hơn.</string>
+    <string name="policy_paywall_app_limit">Quy tắc này đã đạt giới hạn ứng dụng của gói bạn dùng.</string>
     <string name="clip_child_phone">Trên điện thoại của con</string>
     <string name="prot_default_note">Hiện quy tắc của bạn chưa đóng ứng dụng nào. Để đóng được, trên điện thoại của con hãy mở Hoglt → “Kiểm soát” và bật bảo vệ.</string>
     <string name="prot_strength">Mức bảo vệ</string>
@@ -1456,4 +1456,64 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="task_empty_done">Chưa có nhiệm vụ nào đã hoàn thành</string>
     <string name="task_empty_overdue">Không có nhiệm vụ nào quá hạn</string>
     <string name="task_empty_filter_hint">Chạm lại vào bộ lọc đang chọn để xem tất cả nhiệm vụ.</string>
+    <string name="voice_listen">Nghe</string>
+    <string name="voice_stop">Dừng</string>
+    <string name="voice_unavailable">Chưa có giải thích bằng giọng nói. Vui lòng thử lại sau.</string>
+    <string name="live_confirm_title">Xem trực tiếp</string>
+    <string name="live_confirm_body">%1$s sẽ nhận một cuộc gọi. Nếu con đồng ý, video sẽ mở.</string>
+    <string name="live_child_fallback">Con bạn</string>
+    <string name="live_call_button">Gọi</string>
+    <string name="live_ringing">Đang gọi %1$s…</string>
+    <string name="live_connecting">Đang kết nối…</string>
+    <string name="live_error_connect">Không kết nối được. Vui lòng thử lại sau ít phút.</string>
+    <string name="live_declined">Con đã từ chối</string>
+    <string name="live_no_answer">Không có ai trả lời</string>
+    <string name="live_end">Kết thúc</string>
+    <string name="live_show_on_map">Xem trên bản đồ</string>
+    <string name="unlink_child_button">Hủy liên kết với con</string>
+    <string name="saqlandi">Đã lưu</string>
+    <string name="ap_retry_now_amount">Thanh toán ngay · %1$s</string>
+    <string name="pay_charge_body">Thẻ •• %1$s sẽ bị trừ %2$s.</string>
+    <string name="pay_charge_body_amount">Thẻ của bạn sẽ bị trừ %1$s.</string>
+    <string name="pay_charge_body_plain">Phí đăng ký sẽ được trừ vào thẻ đã lưu.</string>
+    <string name="pay_confirm_pay">Thanh toán</string>
+    <string name="app_store_unavailable">App Store hiện không khả dụng. Vui lòng thử lại sau ít phút.</string>
+    <string name="app_store_failed">Thanh toán qua App Store không thành công. Vui lòng thử lại.</string>
+    <string name="apple_activation_pending_title">Đã nhận thanh toán</string>
+    <string name="login_subtitle_social">Chọn cách đăng nhập. Chưa có tài khoản? Tài khoản sẽ tự được tạo.</string>
+    <string name="login_telegram_not_opened">Telegram không mở. Kiểm tra xem đã cài Telegram chưa, hoặc đăng nhập bằng cách khác.</string>
+    <string name="ob_notif_enable">Bật thông báo</string>
+    <string name="comfort_title">Dễ đọc không?</string>
+    <string name="comfort_screen_color">Màu màn hình</string>
+    <string name="comfort_light">Sáng</string>
+    <string name="comfort_dark">Tối</string>
+    <string name="comfort_done">Xong</string>
+    <string name="comfort_hint">Bạn cũng có thể đổi sau.</string>
+    <string name="policy_turned_on">Đã bật %1$s</string>
+    <string name="policy_turned_off">Đã tắt %1$s</string>
+    <string name="policy_off_title">Tắt “%1$s”?</string>
+    <string name="policy_off_body">Quy tắc này ngừng tác dụng ngay trên điện thoại của con, và mọi thứ nó chặn sẽ mở lại. Bạn có thể bật lại bất cứ lúc nào.</string>
+    <string name="policy_off_body_safety">Bảo vệ này dừng ngay trên điện thoại của con. Bạn có thể bật lại bất cứ lúc nào.</string>
+    <string name="policy_off_confirm">Có, tắt</string>
+    <string name="policy_off_cancel">Không, vẫn bật</string>
+    <string name="policy_saved_sent">Đã lưu — đã gửi đến điện thoại của con</string>
+    <string name="policy_saved_queued">Đã lưu — sẽ đến điện thoại của con khi bạn có mạng trở lại</string>
+    <string name="policy_unsaved_title">Lưu thay đổi?</string>
+    <string name="policy_unsaved_body">Nếu không lưu, điện thoại của con sẽ không có gì thay đổi.</string>
+    <string name="policy_unsaved_discard">Thoát không lưu</string>
+    <string name="quick_unblock_title">Bỏ chặn %1$s?</string>
+    <string name="quick_unblock_body">Ứng dụng này sẽ mở ngay trên điện thoại của con.</string>
+    <string name="quick_unblock_confirm">Có, bỏ chặn</string>
+    <string name="quick_unblock_action">Bỏ chặn</string>
+    <string name="quick_unblocked">Đã bỏ chặn %1$s</string>
+    <string name="policy_exception_remove">Gỡ</string>
+    <string name="policy_load_failed">Không tải được</string>
+    <string name="tg_more_settings">Cài đặt thêm</string>
+    <string name="rules_on_count">Quy tắc đang bật: %1$d</string>
+    <string name="task_accepted">Đã chấp nhận</string>
+    <string name="task_accepted_coins">%1$s nhận xu: %2$d</string>
+    <string name="task_coins_explain">Khi bạn chấp nhận nhiệm vụ, xu sẽ chuyển cho con. Con dùng xu để hỏi trợ lý thông minh.</string>
+    <string name="task_coins_not_enough">Không đủ xu</string>
+    <string name="chat_support_title">Trung tâm hỗ trợ</string>
+    <string name="chat_ai_title">Trợ lý thông minh</string>
 </resources>

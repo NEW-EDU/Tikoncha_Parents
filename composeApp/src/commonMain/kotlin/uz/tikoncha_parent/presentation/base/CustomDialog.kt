@@ -48,7 +48,8 @@ fun CustomDialog(
     message: String,
     show: Boolean = true,
     onDismiss: () -> Unit,
-    buttonText: String = "Ok",
+    // Tarjima qilingan "Tuşunarli" — 18 ta ekran shu standartga tayanadi
+    buttonText: String = stringResource(Res.string.ok),
     onButtonClick: () -> Unit,
     showCloseButton: Boolean = false,
     painter: Painter = painterResource(Res.drawable.dialog_info),

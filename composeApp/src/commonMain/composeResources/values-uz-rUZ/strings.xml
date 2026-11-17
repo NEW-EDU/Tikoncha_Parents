@@ -16,9 +16,9 @@
     <string name="ro_yxatdan_o_tish_uchun_quyidagilarni_to_ldiring">Рўйхатдан ўтиш учун қуйидагиларни тўлдиринг</string>
     <string name="ota">Ота</string>
     <string name="ona">Она</string>
-    <string name="ro_yxatdan_o_tish_parol_yaratish">Рўйхатдан ўтиш парол яратиш</string>
-    <string name="parol_kiriting">Парол киритинг</string>
-    <string name="parolni_qayta_kiriting">Паролни қайта киритинг</string>
+    <string name="ro_yxatdan_o_tish_parol_yaratish">Рўйхатдан ўтиш ва пароль яратиш</string>
+    <string name="parol_kiriting">Пароль киритинг</string>
+    <string name="parolni_qayta_kiriting">Парольни қайта киритинг</string>
     <string name="farzandlaringiz">Фарзандларингиз</string>
     <string name="farzandingiz_telefon_raqamini_kiriting">Фарзандингиз телефон рақамини киритинг</string>
     <string name="farzand_qo_shish">Фарзанд қўшиш</string>
@@ -26,7 +26,7 @@
     <string name="asosiy">Асосий</string>
     <string name="vazifa">Вазифа</string>
     <string name="suhbat">Суҳбат</string>
-    <string name="profil">Профил</string>
+    <string name="profil">Профиль</string>
     <string name="bajarilgan">Бажарилган</string>
     <string name="bajarilgan_vazifalar">Бажарилган вазифалар</string>
     <string name="bajarildi">Бажарилди</string>
@@ -42,7 +42,7 @@
     <string name="yangi_vazifa_qo_shish">Янги вазифа қўшиш</string>
     <string name="vazifa_nomi">Вазифа номи</string>
     <string name="vazifa_malumotlari">Вазифа маълумотлари</string>
-    <string name="app_namee">Tikoncha Парентс</string>
+    <string name="app_namee">Tikoncha Parents</string>
     <string name="vazifa_haqida_qisqacha_ma_lumot">Вазифа ҳақида қисқача маълумот</string>
     <string name="tugatish_sanasi">Тугатиш санаси</string>
     <string name="muhim">Муҳим</string>
@@ -84,7 +84,7 @@
     <string name="bolaning_ilovasini_sozligini_korish">Боланинг иловасини созлигини кўриш</string>
     <string name="farzandingiz_bilan_suhbat">Фарзандингиз билан суҳбат</string>
     <string name="xabar_yuborish">Хабар юбориш</string>
-    <string name="tangachalar">Тангачалар</string>
+    <string name="tangachalar">Тангалар</string>
     <string name="tangachalar_orqali">Тангачалар орқали фарзандингиз Суний интеллект имкониятларидан фойдаланиши мумкин</string>
     <string name="bitta_tanga">Битта танга 100 сўм</string>
     <string name="hammasi">Ҳаммаси</string>
@@ -94,7 +94,7 @@
     <string name="maktab">Мактаб</string>
     <string name="sozlamalar">Созламалар</string>
     <string name="bildirishnomalar">Билдиришномалар</string>
-    <string name="tema">Мавзу</string>
+    <string name="tema">Экран ранги</string>
     <string name="tasdiqlash">Тасдиқлаш</string>
     <string name="tolov">Тўлов</string>
     <string name="obuna_pro">Обуна Про</string>
@@ -103,7 +103,7 @@
     <string name="ta_tanga">та танга</string>
     <string name="obuna">Обуна</string>
     <string name="xozir_sizning_obunangiz">Хозир сизнинг обунангиз</string>
-    <string name="ilovaning_barcha_funksiyalaridan">Илованинг барча функсияларидан фойдаланиш учун Про версиясини юклаб олинг</string>
+    <string name="ilovaning_barcha_funksiyalaridan">Илованинг барча функцияларидан фойдаланиш учун Pro версиясини юклаб олинг</string>
     <string name="premium_obuna_bilan">Премиум обуна билан кўпроқ эркинлик ва эксклюзив хусусиятлар</string>
     <string name="farzandlaringiz_tangalari">Фарзандларингиз тангалари</string>
     <string name="farzandingiz_bajarilmagan_vazifalari">Фарзандингиз бажарилмаган вазифалари</string>
@@ -126,13 +126,13 @@
     <string name="pasport_id">Паспорт ID</string>
     <string name="reklama">Реклама</string>
     <string name="yorug">Ёруғ</string>
-    <string name="theme_system">Тизим</string>
+    <string name="theme_system">Телефондагидек</string>
     <string name="xavfli_zona">Хавфли зона</string>
     <string name="akkauntni_o_chirish">Аккаунтни ўчириш</string>
     <string name="pochta_orqali">Почта орқали</string>
-    <string name="sms_orqali">Sms орқали</string>
+    <string name="sms_orqali">SMS орқали</string>
     <string name="qora">Қора</string>
-    <string name="qorong_u">Қоронғу</string>
+    <string name="qorong_u">Қоронғи</string>
     <string name="standart">Стандарт</string>
     <string name="pro">PRO</string>
     <string name="ta">та</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Рухсат сўраш</string>
     <string name="joylashuv_uchun_ruxsat">Жойлашув учун рухсат</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Харитадан тўлиқ фойдаланиш учун Жойлашувга созламалардан туриб рухсат беринг!</string>
-    <string name="xatolik">Хатолик</string>
-    <string name="ok">Ok</string>
+    <string name="xatolik">Бажарилмади</string>
+    <string name="ok">Тушунарли</string>
     <string name="qoshish">Қўшиш</string>
     <string name="ogil_bola">Ўғил бола</string>
     <string name="qiz_bola">Қиз бола</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Муваффақиятли</string>
     <string name="qisqartirish">Қисқартириш</string>
     <string name="vazifa_tahrirlandi">Вазифа таҳрирланди</string>
-    <string name="server_connection_error">Сервер билан боғланишда хатолик!</string>
+    <string name="server_connection_error">Ҳозир уланиб бўлмади. Бир оздан кейин қайта уриниб кўринг.</string>
     <string name="faol">Фаол</string>
     <string name="faol_emas">Фаол эмас</string>
     <string name="ohirgi_faollik">Охирги фаоллик:</string>
@@ -182,7 +182,7 @@
     <string name="ekranni_kuzatish">Экранни кузатиш</string>
     <string name="internetdagi_tarix">Интернетдаги тарих</string>
     <string name="notification">Билдиришномалар</string>
-    <string name="sizda_mavjud_tangachalar">Сизда мавжуд тангачалар</string>
+    <string name="sizda_mavjud_tangachalar">Сиздаги тангалар</string>
     <string name="tangachalar_sovg_a_qiling">Вазифани бажаргани учун фарзандингизга тангачалар совға қилинг.</string>
     <string name="jadval">Жадвал</string>
     <string name="ilovalar">Иловалар</string>
@@ -206,7 +206,7 @@
     <string name="shartlar">Шартлар</string>
     <string name="budilnik">Будилник</string>
     <string name="har_kuni_bloklashni_rejalashtiring">Ҳар куни блоклашни режалаштиринг вақт, жой ва бошқа параметрлар бўйича</string>
-    <string name="tangachalaringiz">Тангачаларингиз</string>
+    <string name="tangachalaringiz">Тангаларингиз</string>
     <string name="soatbay">Соатбай</string>
     <string name="limit">Лимит</string>
     <string name="shartlar_kiritish">Шартлар киритиш</string>
@@ -214,13 +214,13 @@
     <string name="tashqarida">Ташқарида</string>
     <string name="barcha_farzandlar">Барча фарзандлар</string>
     <string name="diqqat" >Диққат!</string>
-    <string name="siz_tanlagan_vaqt_oraligida">Сиз танлаган Вақт оралиғида Ишлатиш Лимити иш бермайди! Яъни вақт жадвалининг устуворлиги юқори.</string>
+    <string name="siz_tanlagan_vaqt_oraligida">Сиз танлаган вақт оралиғида ишлатиш лимити иш бермайди! Яъни вақт жадвалининг устуворлиги юқори.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d та илова сизда ўрнатилмаган</string>
-    <string name="cheklovlar">Чекловлар</string>
+    <string name="cheklovlar">Қоидалар</string>
     <string name="ta_ilovaga">%1$d та иловага</string>
     <string name="ta_vebsaytga">%1$d та вебсайтга</string>
     <string name="ustuvorligi">Устуворлиги</string>
-    <string name="jadval_nomini_kiriting">Жадвал номини киритинг</string>
+    <string name="jadval_nomini_kiriting">Қоида номини киритинг</string>
     <string name="misol_o_quv_markaz">мисол: Ўқув марказ</string>
     <string name="ochirish">Ўчириш</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Жадвални сақламасдан чиқишга розимисиз?</string>
@@ -231,12 +231,12 @@
     <string name="tolandi">Тўланди</string>
     <string name="tolov_kutilmoqda">Тўлов кутилмоқда</string>
     <string name="tolanmagan">Тўланмаган</string>
-    <string name="tolov_click_platformasi_orqali_amalga_oshiriladi">Тўлов click платформаси орқали амалга оширилади</string>
+    <string name="tolov_click_platformasi_orqali_amalga_oshiriladi">Тўлов Click платформаси орқали амалга оширилади</string>
     <string name="tolov_summasi">Тўлов суммаси:</string>
     <string name="tanga">%1$d Танга</string>
     <string name="xozr_sizning_obunangiz">Ҳозир сизнинг обунангиз</string>
-    <string name="ilovaning_barcha_funksiyalaridan_foydalanish_uchun_pro_versiyasini_sotib_oling">Илованинг барча функсияларидан фойдаланиш учун Про ёки Plus версиясини сотиб олишингизни маслаҳат берамиз</string>
-    <string name="baxtli_foydalanuvchimisiz">Бахтли фойдаланувчиларимиз сафига қўшилинг ва Тикончани барча функсиялари билан тўлиқ фойдаланинг.</string>
+    <string name="ilovaning_barcha_funksiyalaridan_foydalanish_uchun_pro_versiyasini_sotib_oling">Илованинг барча функцияларидан фойдаланиш учун Pro ёки Plus версиясини сотиб олишингизни маслаҳат берамиз</string>
+    <string name="baxtli_foydalanuvchimisiz">Бахтли фойдаланувчиларимиз сафига қўшилинг ва Tikoncha’нинг барча функцияларидан тўлиқ фойдаланинг.</string>
     <string name="som">сўм</string>
     <string name="foyda">Фойда</string>
     <string name="imkoniyatlar">Имкониятлар</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">ТАБРИКЛАЙМИЗ!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Энди сиз ушбу обунага эгасиз</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Махсус имкониятлар ва биринчи навбатдаги қўллаб-қувватлашдан фойдаланинг!</string>
-    <string name="statistika">Статистика</string>
+    <string name="statistika">Телефон вақти</string>
     <string name="chegirmalar">Чегирмалар</string>
     <string name="chegirma">Чегирма</string>
-    <string name="topshiriqlar">Топшириқлар</string>
-    <string name="jadvallar">Жадваллар</string>
+    <string name="topshiriqlar">Вазифалар</string>
+    <string name="jadvallar">Қоидалар</string>
     <string name="ilova_cheklangan">%1$d та илова чекланган</string>
     <string name="faol_vazifa">%1$d та фаол вазифа</string>
-    <string name="bugun_sarfladi">Бугун сарфлади</string>
+    <string name="bugun_sarfladi">Бугун телефонда</string>
     <string name="chiqish">Чиқиш</string>
     <string name="chiqishni_xohlaysizmi">Чиқишни хоҳлайсизми?</string>
     <string name="chiqishni_tasdiqlang">Ҳисобдан чиқиш жараёнини тасдиқланг.</string>
@@ -278,7 +278,7 @@
     <string name="ha">Ҳа</string>
     <string name="yoq">Йўқ</string>
     <string name="ilovani_ochirish_uchun_sorov_kerak">Иловани ўчириш учун сўров юбориш керак</string>
-    <string name="obuna_dialog_message">Ушбу функсиядан фойдаланиш учун PLUS обунани сотиб олинг!</string>
+    <string name="obuna_dialog_message">Ушбу функциядан фойдаланиш учун PLUS обунани сотиб олинг!</string>
     <string name="obuna_bolish">Обуна бўлиш</string>
     <string name="app_limit_exceeded">Сиз %1$d тадан кўп иловани танлай олмайсиз. Кўпроқ иловаларни қўшиш учун Plus обунани сотиб олинг.</string>
     <string name="sizda_vaqt_oraligi_qoshish">Сизда вақт оралиғини қўшиш учун лимит тугади. Кўпроқ вақт оралиғларни яратиш учун PLUS обунани сотиб олинг.</string>
@@ -291,7 +291,7 @@
     <string name="s">с</string>
     <string name="d">д</string>
     <string name="location_permission_request_message">Жойлашув маълумоти харитада ҳозир қаерда эканингизни кўрсатиш ва фарзандингиз учун керакли ҳудудни белгилаш учун ишлатилади.
-Бу маълумот фақат ушбу функсиялар учун қўлланилади ва учинчи шахсларга узатилмайди.</string>
+Бу маълумот фақат ушбу функциялар учун қўлланилади ва учинчи шахсларга узатилмайди.</string>
 
     <string name="ruxsat_berish">Рухсат бериш</string>
     <string name="iltimos_internetga_ulang">Илтимос, телефонингизни интернетга уланг!</string>
@@ -313,17 +313,17 @@
     <string name="promokodni_kiriting">Промокодни киритинг</string>
     <string name="tolov_turini_tanlang">Тўлов турини танланг</string>
     <string name="malumotlarni_tahrirlash">Маълумотларни таҳрирлаш</string>
-    <string name="veb_sayt_tez_kunda_izoh">Веб-сайтларни бошқариш функсияси яқин вақт ичида қўшилади</string>
+    <string name="veb_sayt_tez_kunda_izoh">Веб-сайтларни бошқариш функцияси яқин вақт ичида қўшилади</string>
     <string name="standart_obuna_jadval_cheklovi">Стандарт обуна орқали сиз битта жадвал яратишингиз мумкин. Кўпроқ имкониятлардан фойдаланиш учун Plus обунани фаоллаштиринг.</string>
     <string name="akkauntdan_chiqish">Аккаунтдан чиқиш</string>
     <string name="akkauntdan_chiqmoqchimisiz">Аккаунтдан чиқмоқчимисиз?</string>
     <string name="qayta_kirish_telefon_tasdiq">Чиқсангиз, қайта кириш учун телефон рақам билан тасдиқлашингиз керак бўлади.</string>
     <string name="nimalar_saqlanib_qoladi">Нималар сақланиб қолади?</string>
-    <string name="profil_va_sozlamalar_saqlanadi">Профил ва созламаларингиз серверда сақланади.</string>
+    <string name="profil_va_sozlamalar_saqlanadi">Профиль ва созламаларингиз серверда сақланади.</string>
     <string name="qayta_kirsangiz_tiklanadi">Кейин қайта кирсангиз ҳамма нарса тикланади.</string>
     <string name="farzand_qoshilmagan">Фарзанд қўшилмаган</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Жадвал, чатлар ва ҳисоботлар фарзанд қўшилгандан кейин кўринади.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Кутилмаган хатолик юз берди. Илтимос, қайта уриниб кўринг.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Қоидалар, суҳбатлар ва телефон вақти фарзанд қўшилгандан кейин кўринади.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Бажарилмади. Бир оздан кейин қайта уриниб кўринг.</string>
     <string name="hozircha_farzand_qoshilmagan">Сизда ҳозирча фарзанд қўшилмаган.</string>
     <string name="diqqat2">ДИҚҚАТ!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Давом этишдан олдин илова турини танланг.</string>
@@ -336,17 +336,17 @@
     <string name="xabarni_o_chirish">Хабарни ўчириш</string>
     <string name="haqiqatan_ham_bu_xabarni_o_chirmoqchimisiz">Ҳақиқатан ҳам бу хабарни ўчирмоқчимисиз?</string>
     <string name="raqamda_telegram_mavjud_emas">Бу рақамда Telegram мавжуд эмас</string>
-    <string name="kod_telegramga_yuboriladi">Код Телеграмга юборилади</string>
+    <string name="kod_telegramga_yuboriladi">Код Telegram’га юборилади</string>
     <string name="tasdiqlash_kodi_telegram">Тасдиқлаш коди Telegram орқали юборилади. Кодни олиш учун Telegram иловасига ўтинг.</string>
-    <string name="telegramga_otish">Телеграмга ўтиш</string>
+    <string name="telegramga_otish">Telegram’га ўтиш</string>
     <string name="boshqa_raqamga_ozgartish">Бошқа рақамга ўзгартиш</string>
     <string name="tasdiqlash_kodi_usulini_tanlash">Тасдиқлаш кодини қайси усул орқали \n юборишимизни танланг</string>
     <string name="tasdiqlash_kodini_olish">Тасдиқлаш кодини олиш</string>
-    <string name="telegram_kod_kiritish">%1$s рақамига уланган Телеграмга юборилган кодни киритинг</string>
-    <string name="xato_kod_kiritdingiz">Хато код кирдингиз</string>
+    <string name="telegram_kod_kiritish">%1$s рақамига уланган Telegram’га юборилган кодни киритинг</string>
+    <string name="xato_kod_kiritdingiz">Код мос келмади. Қайта ёзиб кўринг.</string>
     <string name="kod_olish_usulini_ozgartirish">Код олиш усулини ўзгартириш</string>
     <string name="versiya">Версия</string>
-    <string name="jadval_yaratish">Жадвал яратиш</string>
+    <string name="jadval_yaratish">Қоида яратиш</string>
     <string name="sizning_cheklovlaringiz">Сизнинг чекловларингиз</string>
 
     <string name="avtomatik_bloklash_vaqti">Танланган кун ва соатларда автоматик блоклаш</string>
@@ -364,9 +364,9 @@
     <string name="noto_g_ri_url_format">Нотўғри URL формат</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Бу сайт аллақачон рўйхатда</string>
     <string name="to_liq_nazoratni_yoqing">Тўлиқ назоратни ёқинг</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Tikoncha орқали иловалар, вақт ва фойдаланишни бошқаринг. Plus билан чекловларсиз ишланг ва Қалқон режими орқали максимал ҳимояни ёқинг.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Tikoncha орқали иловалар ва телефон вақтини бошқаринг. Plus билан чекловсиз ишлайсиз ва қаттиқ ҳимояни ёқа оласиз.</string>
     <string name="plus_imkoniyatlarini_ochish">Plus имкониятларини очиш</string>
-    <string name="jadval_nomi">Жадвал номи</string>
+    <string name="jadval_nomi">Қоида номи</string>
     <string name="saytlar">Сайтлар</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Қачон ва қандай ҳолатларда иловалар ва вебсайтларни чеклашни белгиланг</string>
 
@@ -375,12 +375,12 @@
     <string name="ozingiz_qoshing">Ўзингиз қўшинг</string>
     <string name="tavsiya_etilgan_paketlar">Тавсия этилган пакетлар</string>
     <string name="tanga_s">%1$s танга</string>
-    <string name="coins_help_use_title">Билимдон AI тангачалари</string>
-    <string name="coins_help_earn_title">Тангачаларни қандай жамғариш мумкин?</string>
-    <string name="coins_help_use_intro">Билимдон AI тангачалари — бу Tikoncha ичида Билимдон AI билан мулоқот қилиш учун ишлатиладиган рақамли бирликлар.</string>
-    <string name="coins_help_earn_intro">Билимдон AI тангачаларини бир неча йўл билан жамғаришингиз мумкин:</string>
+    <string name="coins_help_use_title">Билимдон AI тангалари</string>
+    <string name="coins_help_earn_title">Тангаларни қандай жамғариш мумкин?</string>
+    <string name="coins_help_use_intro">Билимдон AI тангалари — бу Tikoncha ичида Билимдон AI билан мулоқот қилиш учун ишлатиладиган рақамли бирликлар.</string>
+    <string name="coins_help_earn_intro">Билимдон AI тангаларини бир неча йўл билан жамғаришингиз мумкин:</string>
     <string-array name="coins_help_use_bullets">
-        <item>Билимдон АИъдан савол сўраш</item>
+        <item>Билимдон AI’дан савол сўраш</item>
         <item>Китоблар, мавзулар ёки топшириқлар бўйича қисқа ва тушунарли тушунтиришлар олиш</item>
         <item>Билимни мустаҳкамлаш ва ўрганишни тезлаштириш</item>
     </string-array>
@@ -390,12 +390,12 @@
         <item>Махсус вазифалар ёки рағбатлантирувчи фаолиятларда иштирок этиш орқали</item>
         <item>Ота-она томонидан бериладиган қўшимча имкониятлар орқали</item>
     </string-array>
-    <string name="coins_help_use_note">Ҳар бир савол ёки сўров учун маълум миқдорда тангача сарфланади. Миқдор савол мураккаблиги ва жавоб ҳажмига боғлиқ бўлиши мумкин.</string>
-    <string name="coins_help_earn_note">Тангачалар босқичма-босқич йиғилади ва кейин исталган вақтда Билимдон AI хизматларидан фойдаланиш учун сарфланиши мумкин.</string>
+    <string name="coins_help_use_note">Ҳар бир савол ёки сўров учун маълум миқдорда танга сарфланади. Миқдор савол мураккаблиги ва жавоб ҳажмига боғлиқ бўлиши мумкин.</string>
+    <string name="coins_help_earn_note">Тангалар босқичма-босқич йиғилади ва кейин исталган вақтда Билимдон AI хизматларидан фойдаланиш учун сарфланиши мумкин.</string>
     <string name="coins_help_close">Ёпиш</string>
     <string name="qollash">Қўллаш</string>
     <string name="promokod">Промокод:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Сиз тангачаларни муваққиятли сотиб олдингиз.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Тангалар сотиб олинди.</string>
     <string name="narx">Нарх</string>
     <string name="jami">Жами</string>
     <string name="bekor_qilindi">Бекор қилинди!</string>
@@ -412,27 +412,27 @@
     <string name="plus_obnuna_kerak">PLUS обуна керак</string>
     <string name="toliq_nazorat_statistika">Тўлиқ назорат ва статистика</string>
     <string name="farzand_ilova_kuzatish">Фарзандингиз кун давомида қайси иловалардан қанча фойдаланганини кузатинг.</string>
-    <string name="uchtagacha_jadval">3 тагача жадвал яратиш</string>
+    <string name="uchtagacha_jadval">3 тагача қоида яратиш</string>
     <string name="jadval_cheklovlar">Кун, ҳафта ёки махсус вақтлар учун алоҳида чекловлар белгиланг.</string>
     <string name="qattiq_bloklash_qalqon">Қаттиқ ҳимоя: сайтлар ва қисқа видеолар ҳам ёпилади</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Фарзандингиз чекловларни ўчириб ёки ўзгартира олмайди.</string>
-    <string name="tez_bloklash_timer">Тез блоклаш (Тимер)</string>
+    <string name="tez_bloklash_timer">Доим ёпиқ иловалар</string>
     <string name="vaqtinchalik_bloklash_tezi">Керак бўлганда бир неча сонияда вақтинчалик блоклашни ёқинг.</string>
     <string name="hisobot_tahlil">Ҳисобот ва таҳлил</string>
     <string name="farzand_nazorat_tavsifi">Фарзандингиз телефонидан фойдаланишини назорат қилинг. Кераксиз иловаларни блокланг, фойдаланиш вақтини белгиланг ва хавфсиз муҳит яратинг.</string>
     <string name="foydalanish_tahlil">Фойдаланиш одатларини таҳлил қилинг ва яхшилашга ёрдам беринг.</string>
     <string name="istalgan_vaqtda_bekor">Исталган вақтда бекор қилиш мумкин</string>
     <string name="eng_foydali_tanlov">Энг фойдали танлов</string>
-    <string name="price_uzs">%1$s UZS</string>
-    <string name="price_uzs_per_month">%1$s UZS / ой</string>
+    <string name="price_uzs">%1$s сўм</string>
+    <string name="price_uzs_per_month">%1$s сўм / ой</string>
     <string name="obuna_uchun_farzand_qoshilmagan">Обуна фарзандингиз учун расмийлаштирилади. Давом этиш учун фарзанд қўшинг.</string>
     <string name="suhbatlar_yoq">Суҳбатлар мавжуд эмас</string>
     <string name="hozircha_suhbat_yoq">Ҳозирча ҳеч қандай суҳбат бошланмаган</string>
     <string name="tanlangan_obuna">Танланган обуна</string>
-    <string name="uzs_yillik">UZS/йиллик</string>
-    <string name="uzs_oylik">UZS/ойлик</string>
+    <string name="uzs_yillik">сўм / йил</string>
+    <string name="uzs_oylik">сўм / ой</string>
     <string name="tolov_tafsilotlari">Тўлов тафсилотлари</string>
-    <string name="uzs">UZS</string>
+    <string name="uzs">сўм</string>
     <string name="about_text_html"><![CDATA[
         <strong>Tikoncha</strong> — болалар ва ўсмирлар учун хавфсиз рақамли муҳит яратишга қаратилган замонавий технологик платформа.<br/><br/>
 
@@ -483,23 +483,23 @@
     <string name="tracking_location_unavailable">Жойлашув мавжуд эмас</string>
     <string name="tracking_retry">Қайта уриниб кўриш</string>
 
-    <string name="month_january">Январ</string>
-    <string name="month_february">Феврал</string>
+    <string name="month_january">Январь</string>
+    <string name="month_february">Февраль</string>
     <string name="month_march">Март</string>
-    <string name="month_april">Апрел</string>
+    <string name="month_april">Апрель</string>
     <string name="month_may">Май</string>
-    <string name="month_june">Июн</string>
-    <string name="month_july">Июл</string>
+    <string name="month_june">Июнь</string>
+    <string name="month_july">Июль</string>
     <string name="month_august">Август</string>
-    <string name="month_september">Сентабр</string>
-    <string name="month_october">Октабр</string>
-    <string name="month_november">Ноябр</string>
-    <string name="month_december">Декабр</string>
+    <string name="month_september">Сентябрь</string>
+    <string name="month_october">Октябрь</string>
+    <string name="month_november">Ноябрь</string>
+    <string name="month_december">Декабрь</string>
 
     <string name="tracking_checking_settings">Фарзанд созламалари текширилмоқда...</string>
     <string name="tracking_watch_video">Видео кўриш</string>
     <string name="danger_places">Хавфли жойлар</string>
-    <string name="danger_places_help">Фарзандингиз атрофидаги 1,5 км ичида: тунги клуб, бар, қалёнхона, казино, букмекер, спиртли ичимлик ва тамаки дўконлари. Маълумот OpenStreetMap’dan олинади — баъзи жойлар бўлмаслиги мумкин.</string>
+    <string name="danger_places_help">Фарзандингиз атрофидаги 1,5 км ичида: тунги клуб, бар, кальянхона, казино, букмекер, спиртли ичимлик ва тамаки дўконлари. Маълумот OpenStreetMap’дан олинади — баъзи жойлар бўлмаслиги мумкин.</string>
     <string name="danger_places_radius">1,5 км ичида</string>
     <string name="danger_places_none">Хавфли жой топилмади</string>
     <string name="danger_places_failed">Юклаб бўлмади</string>
@@ -507,11 +507,11 @@
     <string name="danger_cat_gambling">Қимор ва тикиш</string>
     <string name="danger_cat_adult">Катталар учун</string>
     <string name="danger_cat_alcohol">Спиртли ичимликлар</string>
-    <string name="danger_cat_tobacco">Тамаки ва вапе</string>
+    <string name="danger_cat_tobacco">Тамаки ва вейп</string>
     <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радиус</string>
-    <string name="farzandim">Фарзандим</string>
-    <string name="ozim">Ўзим</string>
+    <string name="farzandim">Фарзанд ўзи қўйганлар</string>
+    <string name="ozim">Мен берганлар</string>
     <string name="faol_vazifa_yo_q">Фаол вазифа йўқ</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Фарзандинингиз учун вазифа йўқ</string>
 
@@ -536,7 +536,7 @@
     <string name="weekday_sunday">Якшанба</string>
 
     <string name="juda_muhim">Жуда муҳим</string>
-    <string name="tekshirildi">Текширилди</string>
+    <string name="tekshirildi">Қабул қиламан</string>
     <string name="ko_rish">Кўриш</string>
     <string name="vazifa_ochirilsinmi">Вазифа ўчирилсинми?</string>
     <string name="vazifa_ochirish_tasdiq">Сиз ростдан ҳам ушбу вазифани ўчирмоқчимисиз?</string>
@@ -558,7 +558,7 @@
     <string name="tolovlar_tarixi_bos">Тўловлар тарихи бўш</string>
     <string name="tolovlar_tarixi_bos_hint">Сотиб олишлардан кейин шу ерда кўринади</string>
     <string name="boshqa_yozuvlar_yoq">Бошқа ёзувлар йўқ</string>
-    <string name="xatolik_yuz_berdi">Хатолик юз берди</string>
+    <string name="xatolik_yuz_berdi">Юклаб бўлмади. Қайта уриниб кўринг.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Tikoncha %1$s</string>
@@ -584,15 +584,15 @@
     <string name="status_bekor_qilindi">Бекор қилинди</string>
     <string name="status_muvaffaqiyatsiz">Муваффақиятсиз</string>
     <string name="status_nomalum">Номаълум</string>
-    <string name="youtube_ochilmoqda">Видео қўлланмани Youtube дан кўришингиз мумкин. \nYoutube очилмоқда...</string>
+    <string name="youtube_ochilmoqda">Видео қўлланмани YouTube’да кўришингиз мумкин. \nYouTube очилмоқда...</string>
 
 
     <string name="izoh_ixtiyoriy">Изоҳ (ихтиёрий)</string>
     <string name="vazifa_tangalari">Вазифани бажарганда бериладиган тангалар</string>
-    <string name="vazifani_tekshirish">Вазифани текшириш</string>
+    <string name="vazifani_tekshirish">Ҳаммаси тўғрими?</string>
     <string name="izoh">Изоҳ</string>
     <string name="muhimlilik_darajasi">Муҳимлилик даражаси</string>
-    <string name="ragbatlantirish_tangachalari">Рағбатлантириш тангачалари</string>
+    <string name="ragbatlantirish_tangachalari">Мукофот тангалар</string>
     <string name="tugatish_vaqti">Тугатиш вақти</string>
     <string name="vazifani_saqlash">Вазифани сақлаш</string>
     <string name="vazifa_yuborildi">Вазифа юборилди</string>
@@ -609,13 +609,13 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Фарзандингиз Tikoncha иловасидан кириб тасдиқлаш кодини киритиши керак.</string>
     <string name="bola_hali_bajardim_bosmagan">Бола ҳали “Бажардим” тугмасини босмаган</string>
     <string name="foydalanilmagan">Фойдаланилмаган</string>
-    <string name="token_eskirgan">Сессия тугади</string>
+    <string name="token_eskirgan">Қайтадан кириш керак</string>
     <string name="tokenni_yangilash_uchun">Давом этиш учун қайтадан киринг.</string>
     <string name="login_qilish">Логин қилиш</string>
-    <string name="profil_rasmi">Профил расми</string>
+    <string name="profil_rasmi">Профиль расми</string>
     <string name="rasmni_ozgartirish">Расмни ўзгартириш</string>
     <string name="rasmni_ochirish">Расмни ўчириш</string>
-    <string name="profil_rasmi_olib_tashlanadi">Профил расмингиз олиб ташланади. Бу амални қайтариб бўлмайди.</string>
+    <string name="profil_rasmi_olib_tashlanadi">Профиль расмингиз олиб ташланади. Бу амални қайтариб бўлмайди.</string>
     <string name="keyingi_tolov">Кейинги тўлов</string>
     <string name="obuna_turi">Обуна тури:</string>
     <string name="obuna_boshlangan_sana">Обуна бошланган сана:</string>
@@ -635,7 +635,7 @@
     <string name="telegram_orqali_kirish">Telegram орқали кириш</string>
     <string name="yoki">ёки</string>
     <string name="telefon_raqami">Телефон рақами</string>
-    <string name="kirish_subtitle">Давом этиш учун ҳисобингизга киринг</string>
+    <string name="kirish_subtitle">Telegram орқали киринг. Ҳисобингиз бўлмаса, ўзи очилади.</string>
     <string name="login_privacy">Давом этиш орқали сиз Махфийлик сиёсати ва Фойдаланиш шартларига розилик билдирасиз</string>
 
     <string name="telegram_ochilmoqda">Telegram очилмоқда…</string>
@@ -658,8 +658,8 @@
     <string name="country_tm">Туркманистон</string>
     <string name="country_tr">Туркия</string>
     <string name="country_af">Афғонистон</string>
-    <string name="country_ae">BAA</string>
-    <string name="country_us">AQŞ</string>
+    <string name="country_ae">БАА</string>
+    <string name="country_us">АҚШ</string>
     <string name="country_gb">Буюк Британия</string>
     <string name="country_de">Германия</string>
     <string name="country_kr">Жанубий Корея</string>
@@ -770,9 +770,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Сиз рухсат бердингиз — фарзандингиз иловадан чиқиши мумкин.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Сиз рухсат бердингиз — фарзандингиз иловани ўчириши мумкин.</string>
     <string name="sorov_rad_etildi_desc">Сиз сўровни рад этдингиз.</string>
-    <string name="unlink_child_title">Боғланишни узмоқчимисиз?</string>
-    <string name="unlink_child_message">Ушбу амал бажарилгандан сўнг “%1$s” қурилмасидаги назорат тўхтатилади!</string>
-    <string name="unlink_child_action">Боғланишни узиш</string>
+    <string name="unlink_child_title">Фарзанд узилсинми?</string>
+    <string name="unlink_child_message">%1$s телефонидаги ҳимоя ва қоидалар тўхтайди. Қайта улаш учун «Фарзанд қўшиш» орқали кодни яна сканерланг.</string>
+    <string name="unlink_child_action">Ҳа, узилсин</string>
     <string name="child_unlinked_success">Фарзанд муваффақиятли узилди</string>
     <string name="operator_kodi_topilmadi">Бундай оператор коди мавжуд эмас</string>
     <string name="kod_amal_qilish_muddati">Код амал қилади: %1$s</string>
@@ -786,7 +786,7 @@
     <string name="farzand_tanlanmagan">Фарзанд танланмаган</string>
     <string name="vazifa_id_topilmadi">Вазифа идентификатори топилмади</string>
     <string name="tahrirlangan">таҳрирланган</string>
-    <string name="jadval_topilmadi">Жадвал топилмади.</string>
+    <string name="jadval_topilmadi">Топилмади — балки ўчирилган. Орқага қайтиб, қайта очинг.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d дақиқа</item>
         <item quantity="other">%1$d дақиқа</item>
@@ -819,8 +819,8 @@
     <string name="tarix_disabled">Ўчириб қўйилди</string>
     <string name="tarix_paused">Тўхтатилди</string>
     <string name="tarix_deleted">Ўчириб ташланди</string>
-    <string name="tarix_quick_block_add">Тезкор блок қўшилди</string>
-    <string name="tarix_quick_block_remove">Тезкор блок олиб ташланди</string>
+    <string name="tarix_quick_block_add">Доим ёпиқ иловаларга қўшилди</string>
+    <string name="tarix_quick_block_remove">Доим ёпиқ иловалардан олиб ташланди</string>
     <string name="tarix_bosh">Ҳозирча ўзгаришлар йўқ</string>
     <string name="tarix_resumed">Давом эттирилди</string>
     <string name="muddat">Муддат</string>
@@ -844,26 +844,26 @@
     <string name="stat_row_sec">%1$d сония</string>
     <string name="stat_hour_only">%1$d соат</string>
     <string name="stat_per_day">кунига ~%1$s</string>
-    <string name="stat_quick_blocked">Тезкор блокда</string>
-    <string name="stat_quick_blocked_paused">Тезкор блокда · тўхтатилган</string>
-    <string name="stat_quick_blocked_inactive">Тезкор блокда · Plus керак</string>
+    <string name="stat_quick_blocked">Доим ёпиқ</string>
+    <string name="stat_quick_blocked_paused">Доим ёпиқ · тўхтатилган</string>
+    <string name="stat_quick_blocked_inactive">Доим ёпиқ · Plus керак</string>
     <string name="stat_blocked_by_child">Фарзанд ўзи блоклаган</string>
     <string name="stat_blocked_by_child_paused">Фарзанд ўзи блоклаган · тўхтатилган</string>
     <string name="stat_blocked_by_child_inactive">Фарзанд ўзи блоклаган · Plus керак</string>
     <string name="stat_blocked_by_coparent">Бошқа ота-она блоклаган</string>
     <string name="stat_blocked_by_coparent_paused">Бошқа ота-она блоклаган · тўхтатилган</string>
     <string name="stat_blocked_by_coparent_inactive">Бошқа ота-она блоклаган · Plus керак</string>
-    <string name="stat_lock_hint">Қулф иловани тезкор блокка қўшади ёки чиқаради</string>
-    <string name="stat_quick_add_cd">Тезкор блокка қўшиш</string>
-    <string name="stat_quick_remove_cd">Тезкор блокдан чиқариш</string>
-    <string name="stat_reenable_title">Тезкор блок ёқилади</string>
-    <string name="stat_reenable_message">Тезкор блок ҳозир ўчиқ. Бу иловани блокласангиз, у қайта ёқилади ва рўйхатдаги яна %1$d та илова ҳам ёпилади.</string>
+    <string name="stat_lock_hint">Қулф иловани доим ёпиқ иловаларга қўшади ёки чиқаради</string>
+    <string name="stat_quick_add_cd">Доим ёпиқ иловаларга қўшиш</string>
+    <string name="stat_quick_remove_cd">Доим ёпиқ иловалардан чиқариш</string>
+    <string name="stat_reenable_title">Доим ёпиқ иловалар қайта ёқилади</string>
+    <string name="stat_reenable_message">«Доим ёпиқ иловалар» ҳозир ўчиқ. Бу иловани қўшсангиз, у қайта ёқилади ва рўйхатдаги яна %1$d та илова ҳам ёпилади.</string>
     <string name="stat_reenable_confirm">Блоклаш</string>
     <string name="stat_quick_paywall_title">Обуна керак</string>
     <string name="stat_quick_paywall_message">Иловани бир босишда ёпиш Tikoncha Plus обунаси билан ишлайди.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Тезкор блок</string>
+    <string name="quick_title">Доим ёпиқ иловалар</string>
     <string name="quick_enabled">Ёқилган</string>
     <string name="quick_pause">Тўхтатиш</string>
     <string name="quick_blocked_apps">Ёпиладиган иловалар</string>
@@ -872,22 +872,22 @@
     <string name="quick_info_always">Рўйхатдаги иловалар доим ёпиқ туради — вақт ва жойдан қатъи назар.</string>
     <string name="quick_info_off">Ҳозир ўчиқ — ёқсангиз, шу иловалар ёпилади.</string>
     <string name="quick_info_paused">%1$s гача тўхтатилган — шу вақтгача ҳеч нарса ёпилмайди.</string>
-    <string name="quick_info_stats">Иловалар статистикасидан ҳам иловани бир босишда шу рўйхатга қўшиш ёки олиб ташлаш мумкин.</string>
-    <string name="quick_info_readd">Тезкор блок ўчиқ бўлса, илова қўшиш уни қайта ёқади.</string>
+    <string name="quick_info_stats">«Телефон вақти» саҳифасидан ҳам иловани бир босишда шу рўйхатга қўшиш ёки олиб ташлаш мумкин.</string>
+    <string name="quick_info_readd">«Доим ёпиқ иловалар» ўчиқ бўлса, илова қўшиш уни қайта ёқади.</string>
     <string name="quick_child_blocks">Фарзанд ўзи ёпган</string>
     <string name="quick_coparent_blocks">Бошқа ота-она ёпган</string>
     <string name="quick_others_note">Бу рўйхатларни фақат уларнинг эгаси ўзгартира олади. Керак бўлса, иловани ўз рўйхатингизга қўшинг.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Уйқу вақти</string>
-    <string name="policy_preset_limit">Вақт лимити</string>
+    <string name="policy_preset_limit">Кунига қанча вақт</string>
     <string name="policy_preset_school">Дарс вақти</string>
     <string name="policy_day_mon">Ду</string>
     <string name="policy_day_tue">Се</string>
-    <string name="policy_day_wed">Ç</string>
+    <string name="policy_day_wed">Ч</string>
     <string name="policy_day_thu">Па</string>
     <string name="policy_day_fri">Жу</string>
-    <string name="policy_day_sat">Ş</string>
+    <string name="policy_day_sat">Ш</string>
     <string name="policy_day_sun">Я</string>
     <string name="policy_every_day">Ҳар куни</string>
     <string name="policy_workdays">Иш кунлари</string>
@@ -900,30 +900,30 @@
     <string name="policy_location">Жойлашув</string>
     <string name="policy_active_now">Ҳозир амалда: %1$s</string>
     <string name="policy_active_until">%1$s гача</string>
-    <string name="list_info_none">Ҳозир ҳеч қайси жадвал ишламаяпти</string>
+    <string name="list_info_none">Ҳозир ҳеч қайси қоида ишламаяпти</string>
     <string name="list_info_also">Яна ишлаяпти: %1$s.</string>
-    <string name="list_info_many">Бир вақтда бир нечта жадвал ишласа, иловани улардан бирортаси ёпса — у ёпилади.</string>
-    <string name="list_info_child_scope">Фарзанднинг ўз жадваллари сизнинг қарорингизни ўзгартира олмайди — сиз ёпган илова ёпиқлигича қолади.</string>
-    <string name="list_info_school_scope">Мактаб жадвали иловани ёпса ёки аниқ рухсат берса, сизнинг жадвалингиз буни ўзгартира олмайди. Қолган ҳолларда қаттиқроқ жадвал ишлайди.</string>
-    <string name="list_info_quick">Тезкор блок ёқиқ — ундаги иловалар вақт ва жойдан қатъи назар доим ёпиқ.</string>
-    <string name="list_info_paused">Тўхтатилган жадваллар: %1$d — белгиланган вақтгача ишламайди.</string>
-    <string name="list_info_how">Жадвал ўз вақти ва жойи келганда ўзи ишга тушади.</string>
-    <string name="policy_tab_templates">Шаблонлар</string>
+    <string name="list_info_many">Бир вақтда бир нечта қоида ишласа, иловани улардан бирортаси ёпса — у ёпилади.</string>
+    <string name="list_info_child_scope">Фарзанднинг ўз қоидалари сизнинг қарорингизни ўзгартира олмайди — сиз ёпган илова ёпиқлигича қолади.</string>
+    <string name="list_info_school_scope">Мактаб қоидаси иловани ёпса ёки аниқ рухсат берса, сизнинг қоидангиз буни ўзгартира олмайди. Қолган ҳолларда қаттиқроқ қоида ишлайди.</string>
+    <string name="list_info_quick">«Доим ёпиқ иловалар» ёқиқ — бу рўйхатдаги иловалар вақт ва жойдан қатъи назар доим ёпиқ.</string>
+    <string name="list_info_paused">Тўхтатилган қоидалар: %1$d — белгиланган вақтгача ишламайди.</string>
+    <string name="list_info_how">Қоида ўз вақти ва жойи келганда ўзи ишга тушади.</string>
+    <string name="policy_tab_templates">Тайёр қоидалар</string>
     <string name="policy_tab_mine">Мен қўйган</string>
     <string name="policy_tab_child">Фарзанд ўзи</string>
-    <string name="policy_tab_coparent">Ота-она</string>
+    <string name="policy_tab_coparent">Иккинчи ота-она</string>
     <string name="policy_tab_school">Мактаб</string>
     <string name="policy_enabled_count">%1$d та ёқиқ</string>
-    <string name="policy_content_protection">Контент ҳимоя</string>
+    <string name="policy_content_protection">Ёмон сайтлардан ҳимоя</string>
     <string name="policy_content_protection_others">Фарзанд ёки иккинчи ота-она ёққан</string>
     <string name="policy_paused">Вақтинча тўхтатилган</string>
-    <string name="policy_quick_blocks">Тезкор блоклар</string>
+    <string name="policy_quick_blocks">Доим ёпиқ иловалар</string>
     <string name="preset_all_apps">Барча иловалар</string>
-    <string name="policy_paywall_protection">Контент ҳимоя Tikoncha Plus билан ишлайди.</string>
+    <string name="policy_paywall_protection">Ёмон сайтлардан ҳимоя Tikoncha Plus билан ишлайди.</string>
     <string name="policy_paywall_count">Бепул тарифда жадваллар сони чекланган. Кўпроқ жадвал учун Tikoncha Plus керак.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Ҳали ҳеч нарса танланмаган — бу жадвал ҳеч нарсани ёпмайди.</string>
+    <string name="info_nothing">Ҳали ҳеч нарса танланмаган — бу қоида ҳеч нарсани ёпмайди.</string>
     <string name="info_always">Доим</string>
     <string name="info_sentence">%1$s %2$s.</string>
     <string name="info_when_time">%1$s %2$s дан %3$s гача</string>
@@ -936,12 +936,12 @@
     <string name="info_what_all_apps_sites">барча илова ва сайтлар ёпилади</string>
     <string name="info_what_selected">танланганлар ёпилади (%1$s)</string>
     <string name="info_stays_open">Очиқ қолади: %1$s.</string>
-    <string name="info_not_counted">Лимитга ҳисобланмайди: %1$s.</string>
+    <string name="info_not_counted">Вақти саналмайди: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s жами %3$s ишлатиш мумкин. Вақт тугагач, эртага қадар ёпилади.</string>
     <string name="info_limit_hourly">%1$s: %2$s ҳар соатда жами %3$s ишлатиш мумкин. Вақт тугагач, соат охиригача ёпилади.</string>
     <string name="info_limit_all">барча иловаларни</string>
     <string name="info_limit_selected">танланганларни</string>
-    <string name="info_limit_gate">Лимит фақат шу пайтда ишлайди: %1$s.</string>
+    <string name="info_limit_gate">Вақт фақат шу пайтда саналади: %1$s.</string>
     <string name="info_protected">Қўнғироқ ва SMS каби зарур иловалар ҳеч қачон ёпилмайди.</string>
     <string name="info_disabled">Ҳозир ўчиқ — ёқсангиз, шундай ишлайди.</string>
 
@@ -950,7 +950,7 @@
     <string name="preset_when">Қачон</string>
     <string name="preset_starts">Бошланади</string>
     <string name="preset_ends">Тугайди</string>
-    <string name="preset_limit">Лимит</string>
+    <string name="preset_limit">Қанча вақт</string>
     <string name="preset_counted">Ҳисобланади</string>
     <string name="preset_what_closed">Нималар ёпилади</string>
     <string name="preset_only_selected">Фақат танланганлар</string>
@@ -990,14 +990,14 @@
     <string name="targets_only_selected_open_sub">Қолган иловалар ёпилади</string>
     <string name="targets_covered_by_category">Категория орқали танланган</string>
     <string name="targets_plus">Plus</string>
-    <string name="sayt_manzili_notogri">Сайт манзили ёки калит сўз нотўғри. Масалан: youtube.сом ёки кино</string>
-    <string name="editor_new_policy">Янги жадвал</string>
+    <string name="sayt_manzili_notogri">Сайт манзили ёки калит сўз нотўғри. Масалан: youtube.com ёки kino</string>
+    <string name="editor_new_policy">Янги қоида</string>
     <string name="editor_not_selected">Танланмаган</string>
     <string name="editor_when_hint">ихтиёрий · бўлмаса доим</string>
     <string name="editor_add_condition">Шарт қўшиш</string>
     <string name="editor_added">Қўшилган</string>
     <string name="editor_condition_time">Вақт</string>
-    <string name="editor_condition_limit">Лимит</string>
+    <string name="editor_condition_limit">Қанча вақт</string>
     <string name="editor_in_this_time">Бу вақтда</string>
     <string name="editor_closed_in_time">Ёпиқ бўлади</string>
     <string name="editor_closed_in_time_sub">Бошқа вақтда очиқ</string>
@@ -1008,8 +1008,8 @@
     <string name="editor_inside">Ҳудуд ичида</string>
     <string name="editor_outside">Ҳудуд ташқарисида</string>
     <string name="editor_rename">Номини ўзгартириш</string>
-    <string name="editor_delete_title">Жадвал ўчирилсинми?</string>
-    <string name="editor_delete_message">“%1$s” ўчирилади.</string>
+    <string name="editor_delete_title">Қоида бутунлай ўчирилсинми?</string>
+    <string name="editor_delete_message">“%1$s” ўчирилади. Бу қоида ёпган иловалар яна очилади.</string>
     <string name="editor_paywall_allow">“Фақат танланганлар очиқ” режими Plus обунада ишлайди.</string>
     <string name="location_child_here">Фарзандим жойлашуви</string>
     <string name="protection_section">Нималар ҳимоя қилинади</string>
@@ -1027,24 +1027,24 @@
     <string name="protection_policies_pending">Ҳали етиб бормади</string>
     <string name="protection_gujanak_limits_note">Ўрта ҳимояда фақат иловалар ёпилади. Сайтлар ва қисқа видеолар фақат қаттиқ ҳимояда ёпилади: фарзандингиз телефонида Hoglt → «Назорат» → «Қалқон».</string>
     <string name="editor_limit_days_follow_time">Вақт билан бир хил — кунлар вақт саҳифасида танланади</string>
-    <string name="editor_limit_in_window">лимит шу вақтда</string>
-    <string name="editor_limit_outside_window">лимит шу вақтдан ташқарида</string>
-    <string name="editor_limit_in_time">Лимит шу вақтда ишлайди</string>
+    <string name="editor_limit_in_window">вақт шу пайтда саналади</string>
+    <string name="editor_limit_outside_window">вақт шу пайтдан ташқарида саналади</string>
+    <string name="editor_limit_in_time">Вақт фақат шу пайтда саналади</string>
     <string name="editor_limit_in_time_sub">Бошқа вақтда чеклов йўқ</string>
-    <string name="editor_limit_out_time">Лимит шу вақтдан ташқарида ишлайди</string>
+    <string name="editor_limit_out_time">Вақт шу пайтдан ташқарида саналади</string>
     <string name="editor_limit_out_time_sub">Шу вақтда чеклов йўқ</string>
     <string name="info_limit_daily_window">%1$s: %2$s жами %3$s ишлатиш мумкин. Вақт тугагач, шу вақт оралиғи тугагунча ёпилади.</string>
     <string name="targets_only_selected_open_sites_sub">Қолган сайтлар ёпилади</string>
     <string name="targets_only_selected_open_both_sub">Қолган илова ва сайтлар ёпилади</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Ҳали жадвал йўқ</string>
-    <string name="policy_empty_mine_sub">Шаблонлардан бирини ёқинг ёки ўзингиз яратинг</string>
+    <string name="policy_empty_mine_title">Ҳали қоида йўқ</string>
+    <string name="policy_empty_mine_sub">Тайёр қоидалардан бирини ёқинг ёки ўзингиз яратинг</string>
     <string name="empty_search_title">Ҳеч нарса топилмади</string>
     <string name="empty_search_sub">Бошқа сўз билан қидириб кўринг</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Беҳаё ва қимор сайтлари</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Жадвал</string>
+    <string name="policy_name_schedule">Қоида</string>
     <string name="policy_name_category_block">Тоифалар бўйича блоклаш</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Фарзандингиз ёққан</string>
@@ -1069,7 +1069,7 @@
     <string name="ap_paywall_year_sub">Ойига ~%1$s сўм · карта орқали</string>
     <string name="ap_paywall_month_sub">Карта орқали авто-тўлов</string>
     <string name="ap_paywall_note">Нархлар карта орқали авто-тўлов учун. Click билан бир марталик: %1$s / %2$s сўм</string>
-    <string name="ap_soon_row">Google Пай</string>
+    <string name="ap_soon_row">Google Pay</string>
     <string name="ap_soon_chip">Тез кунда</string>
     <string name="ap_note_card">Авто-тўловни исталган вақтда ўчирасиз</string>
     <string name="ap_note_click">Муддат тугаганда қайта тўлайсиз</string>
@@ -1079,11 +1079,11 @@
     <string name="ap_card_number">Карта рақами</string>
     <string name="ap_card_number_invalid">Карта рақами нотўғри. Текшириб қайта киритинг.</string>
     <string name="ap_card_expire">Амал муддати</string>
-    <string name="ap_expire_hint">MM / YY</string>
-    <string name="ap_expire_caps">AMAL МУДДАТИ</string>
+    <string name="ap_expire_hint">ой / йил</string>
+    <string name="ap_expire_caps">АМАЛ МУДДАТИ</string>
     <string name="ap_expire_invalid">Муддат нотўғри ёки ўтиб кетган.</string>
-    <string name="ap_only_local_cards">Ҳозирча фақат УЗСАРД ва HUMO карталари уланади.</string>
-    <string name="ap_card_security_note">Карта рақами Тикончаъда сақланмайди — у Paylov тўлов тизимида ҳимояланган. Ҳозирча УЗСАРД ва HUMO.</string>
+    <string name="ap_only_local_cards">Ҳозирча фақат UZCARD ва HUMO карталари уланади.</string>
+    <string name="ap_card_security_note">Карта рақами Tikoncha’да сақланмайди — у Paylov тўлов тизимида ҳимояланган. Ҳозирча UZCARD ва HUMO.</string>
     <string name="ap_get_sms">SMS код олиш</string>
     <string name="ap_otp_title">SMS кодни киритинг</string>
     <string name="ap_otp_sent_to">Код %1$s рақамига юборилди</string>
@@ -1139,10 +1139,10 @@
     <string name="ap_off_confirm">Ўчириш</string>
     <string name="ap_keep_on">Ёқилган қолсин</string>
     <string name="ap_retry_note">Эртага яна уриниб кўрамиз (%1$d/3).</string>
-    <string name="ap_retry_now">Қайта уриниш</string>
+    <string name="ap_retry_now">Ҳозир тўлаш</string>
     <string name="ap_other_card">Бошқа карта</string>
     <string name="ap_cards_empty_title">Сақланган карта йўқ</string>
-    <string name="ap_cards_empty_sub">Авто-тўлов учун УЗСАРД ёки HUMO картасини қўшинг</string>
+    <string name="ap_cards_empty_sub">Авто-тўлов учун UZCARD ёки HUMO картасини қўшинг</string>
     <string name="ap_card_remove">Картани ўчириш</string>
     <string name="ap_card_remove_title">Картани ўчирасизми?</string>
     <string name="ap_card_remove_body">%1$s картаси рўйхатдан ўчирилади.</string>
@@ -1154,7 +1154,7 @@
     <string name="ap_make_primary">Асосий қилиш</string>
     <string name="ap_make_primary_sub">Авто-тўлов кейинги сафар шу картадан ечилади. Ҳозир пул ечилмайди.</string>
     <string name="ap_for_whom">Ким учун</string>
-    <string name="ap_soon_row_ios">Apple Пай</string>
+    <string name="ap_soon_row_ios">Apple Pay</string>
     <string name="ap_child_no_plus">PLUS йўқ</string>
     <string name="ap_child_plus_until">PLUS · %1$s гача</string>
     <string name="ap_consent_year_child">%1$s учун ҳар йили картамдан автоматик ечилишига розиман.</string>
@@ -1185,10 +1185,10 @@
     <string name="ulash_tugma">Улаш</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Ўтказиб юбориш</string>
+    <string name="ob_skip">Кейинроқ кўраман</string>
     <string name="ob_start">Бошладик</string>
     <string name="ob_got_it">Тушунарли</string>
-    <string name="ob_hello_title">Салом, мен Тикончаман</string>
+    <string name="ob_hello_title">Салом, мен — Tikoncha</string>
     <string name="ob_hello_body">Фарзандингизга телефондан оқилона фойдаланишни ўргатаман, сизни эса унинг кунидан хабардор қилиб тураман.</string>
     <string name="ob_day_title">Фарзандингиз куни</string>
     <string name="ob_day_body">Телефонда қанча вақт ўтказгани ва қайси иловаларда — ҳар куни кўрасиз.</string>
@@ -1199,10 +1199,10 @@
     <string name="ob_day_study">Ўқиш</string>
     <string name="ob_min_fmt">%1$d дақ</string>
     <string name="ob_rules_title">Қоидаларни бир марта қўйинг</string>
-    <string name="ob_rules_body">Уйқу вақти, дарс вақти ва кунлик лимитлар ўз вақтида ўзи ёқилади.</string>
+    <string name="ob_rules_body">Уйқу вақти, дарс вақти ва кунлик вақт ўз вақтида ўзи ёқилади.</string>
     <string name="ob_rule_sleep">Уйқу вақти</string>
     <string name="ob_rule_school">Дарс вақти</string>
-    <string name="ob_rule_limit">Кунлик лимит</string>
+    <string name="ob_rule_limit">Кунига қанча вақт</string>
     <string name="ob_rule_limit_value">2 соат</string>
     <string name="ob_map_title">Қаердалигини билинг</string>
     <string name="ob_map_body">Фарзандингизни харитада кўринг ва мактаб каби жойлар учун қоидалар қўйинг.</string>
@@ -1226,11 +1226,11 @@
     <string name="ac_step_enter_code">Кўрсатилган 8 хонали кодни киритинг</string>
     <string name="ac_step_phone">Фарзандингиз телефон рақамини киритинг</string>
     <string name="ac_step_child_enters">Кодни фарзандингиз телефонида киритинг</string>
-    <string name="country_fr">Франсия</string>
+    <string name="country_fr">Франция</string>
     <string name="country_it">Италия</string>
     <string name="country_es">Испания</string>
     <string name="country_nl">Нидерландия</string>
-    <string name="country_pl">Полша</string>
+    <string name="country_pl">Польша</string>
     <string name="country_ua">Украина</string>
     <string name="country_az">Озарбайжон</string>
     <string name="country_in">Ҳиндистон</string>
@@ -1259,15 +1259,15 @@
     <string name="home_layout_list">Рўйхат</string>
     <string name="home_layout_grid">Панжара</string>
     <string name="home_greeting">Салом, %1$s</string>
-    <string name="kecha_sarfladi">Кеча сарфлади</string>
-    <string name="sana_sarfladi">%1$s сарфлади</string>
+    <string name="kecha_sarfladi">Кеча телефонда</string>
+    <string name="sana_sarfladi">%1$s телефонда</string>
     <string name="stat_no_usage_day">Бу кунда телефон ҳали ишлатилмаган</string>
     <string name="kirish_usuli">Кириш усули</string>
     <string name="google_hisobi">Google ҳисоби</string>
     <string name="apple_id">Apple ID</string>
-    <string name="email_label">Эмаил</string>
+    <string name="email_label">Электрон почта</string>
     <string name="email_yashirilgan_apple">Яширилган (Apple)</string>
-    <string name="apple_email_hidden_line">Apple ID · эмаил яширилган</string>
+    <string name="apple_email_hidden_line">Apple ID · электрон почта яширилган</string>
     <string name="haptics_title">Тебраниш</string>
     <string name="haptics_section">Тебраниш кучи</string>
     <string name="haptics_off">Ўчиқ</string>
@@ -1283,7 +1283,7 @@
     <string name="vazifa_muddati">Муддати</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Ёрдамчи</string>
+    <string name="ai_assistant_title">Ақлли ёрдамчи</string>
     <string name="ai_assistant_subtitle">Сўренг ёки қоида айтинг</string>
     <string name="ai_period_today">Бугун</string>
     <string name="ai_period_yesterday">Кеча</string>
@@ -1305,7 +1305,7 @@
     <string name="ai_thinking">Ўйламоқда…</string>
     <string name="ai_error_network">Интернет билан муаммо. Қайта уриниб кўринг.</string>
     <string name="ai_error_generic">Ёрдамчи ҳозир жавоб бера олмади. Қайта уриниб кўринг.</string>
-    <string name="ai_buy_coins">Тангачалар</string>
+    <string name="ai_buy_coins">Тангалар</string>
     <string name="ai_coins_left">%1$d та тангача</string>
     <string name="ai_cost_hint">Ҳар бир жавоб — 1 тангача</string>
     <string name="ai_input_hint">Савол беринг ёки қоида айтинг</string>
@@ -1315,7 +1315,7 @@
     <string name="ai_summary_label">Хулоса</string>
     <string name="ai_suggest_permissions">Рухсатлар ҳаммаси жойидами?</string>
     <string name="ai_suggest_where">Ҳозир қаерда?</string>
-    <string name="ai_suggest_task">Китоб ўқиш учун топшириқ бер</string>
+    <string name="ai_suggest_task">Китоб ўқиш учун вазифа бер</string>
     <string name="ai_draft_do_confirm">Тасдиқлаш</string>
     <string name="ai_draft_do_delete">Ўчириш</string>
     <string name="ai_draft_do_approve">Рухсат бериш</string>
@@ -1346,7 +1346,7 @@
     <string name="parent_special_title">Махсус ҳимоя</string>
     <string name="parent_special_card">Расм, ёзишма, яширин режим, хавфли жойлар</string>
     <string name="parent_special_info_title">Фарзанд телефонида ишлайди</string>
-    <string name="parent_special_info_1">Сиз ёққан ҳимояни фарзандингиз ўчира олмайди. U буни иловада кўради.</string>
+    <string name="parent_special_info_1">Сиз ёққан ҳимояни фарзандингиз ўчира олмайди. У буни иловада кўради.</string>
     <string name="parent_special_info_2">Хавф бўлса, сизга фақат тоифа ва илова номи келади — ёзишма матни ёки расм эмас.</string>
     <string name="parent_special_info_3">Android’да қаттиқ ҳимоя керак. iPhone’да: 18+ сайтлар ва Tikonchagram ёзишмалари.</string>
     <string name="parent_special_nsfw_title">Номақбул расмлар</string>
@@ -1360,7 +1360,7 @@
     <string name="parent_special_footer">Фарзандингиз бу ҳимояларни ўзи учун ҳам ёқиши мумкин — унда огоҳлантириш фақат унга боради.</string>
     <string name="parent_special_paywall">Хавфли ёзишмалар ва яширин режим — PLUS обунаси билан.</string>
     <string name="pay_abroad_title">Бу мамлакатда тўлов ҳозирча йўқ</string>
-    <string name="pay_abroad_body">Android иловада ПЛУСъни ҳозирча фақат Ўзбекистон картаси билан олиш мумкин. Бизга ёзинг — ёрдам берамиз.</string>
+    <string name="pay_abroad_body">Android иловада PLUS’ни ҳозирча фақат Ўзбекистон картаси билан олиш мумкин. Бизга ёзинг — ёрдам берамиз.</string>
     <string name="pay_abroad_coins_body">Тангаларни ҳозирча фақат Ўзбекистон картаси билан олиш мумкин. Бизга ёзинг — ёрдам берамиз.</string>
     <string name="apple_activation_pending">Тўлов қабул қилинди — PLUS бир неча дақиқада ёқилади. Ёқилмаса, бизга ёзинг.</string>
     <string name="sub_child_app_note">Битта фарзанд учунми? Фарзандингизнинг Tikoncha иловасида PLUS арзонроқ — у фақат шу фарзанд учун амал қилади.</string>
@@ -1413,20 +1413,20 @@
     <string name="tracking_child_no_permission_since">Жойлашув рухсати йўқ · охирги жойлашув: %1$s</string>
     <string name="tracking_fake_gps">Сохта GPS</string>
     <string name="tracking_fake_gps_note">Телефон сохта жойлашув юборяпти — бу нуқтага ишонманг.</string>
-    <string name="policy_paywall_limits">Бепул: %1$d та фаол жадвал · Plus: чексиз</string>
+    <string name="policy_paywall_limits">Бепул: %1$d та фаол қоида · Plus: чексиз</string>
     <string name="perm_why_dangerous">Нега хавфли?</string>
-    <string name="perm_why_notification">Фарзанд телефонида Tikoncha билдиришномалари кўринмайди: топшириқлар, хабарларингиз ва эслатмалар унга етиб бормайди.</string>
-    <string name="perm_why_usage_stats">Илова қайси илова очилганини кўра олмайди: статистика йиғилмайди, вақт лимитлари ва жадваллар ишламайди.</string>
-    <string name="perm_why_overlay">Ёпилган илова устига блок ойнаси чиқмайди — жадвал ва лимитлар иловани ёпа олмайди.</string>
+    <string name="perm_why_notification">Фарзанд телефонида Tikoncha билдиришномалари кўринмайди: вазифалар, хабарларингиз ва эслатмалар унга етиб бормайди.</string>
+    <string name="perm_why_usage_stats">Илова қайси илова очилганини кўра олмайди: телефон вақти саналмайди, қоидалар ишламайди.</string>
+    <string name="perm_why_overlay">Ёпилган илова устига блок ойнаси чиқмайди — қоидалар иловани ёпа олмайди.</string>
     <string name="perm_why_overlay_popup">Xiaomi, Redmi ва POCO телефонларда блок ойнаси орқа фондан очилмайди — ёпилган илова очиқ қолиб кетади.</string>
-    <string name="perm_why_location">Фарзандингиз қаердалигини кўра олмайсиз; жойга боғланган жадваллар ҳам ишламайди.</string>
+    <string name="perm_why_location">Фарзандингиз қаердалигини кўра олмайсиз; жойга боғланган қоидалар ҳам ишламайди.</string>
     <string name="perm_why_gps">GPS ўчиқ бўлса жойлашув янгиланмайди — харитада эски жой кўринади.</string>
     <string name="perm_why_battery">Телефон батареяни тежаб, Tikoncha’ни фонда тўхтатиб қўяди: ҳимоя ва жойлашув вақти-вақти билан узилиб қолади.</string>
     <string name="perm_why_auto_start">Телефон ўчиб ёқилгач ёки илова ёпилгач Tikoncha ўзи ишга тушмайди — фарзанд иловани очмагунича ҳимоя ишламайди. Xiaomi, Redmi ва POCO’да телефон созламаларида ёқилади: Иловалар → Tikoncha → Авто-ишга тушиш.</string>
     <string name="perm_why_accessibility">Усиз сайтлар, YouTube Shorts ва Instagram Reels ёпилмайди, иловани ўчириб ташлашдан ҳимоя ҳам ишламайди.</string>
     <string name="perm_why_device_admin">Фарзанд Tikoncha’ни оддий илова каби, сиздан сўрамасдан ўчириб ташлай олади.</string>
-    <string name="policy_paywall_app_limits">Бепул тарифда битта жадвалга %1$d тагача илова қўшиш мумкин. Кўпроқ илова учун Plus керак.</string>
-    <string name="policy_paywall_app_limit">Битта жадвалдаги иловалар сони тариф чегарасига етди.</string>
+    <string name="policy_paywall_app_limits">Бепул тарифда битта қоидага %1$d тагача илова қўшиш мумкин. Кўпроқ илова учун Plus керак.</string>
+    <string name="policy_paywall_app_limit">Битта қоидадаги иловалар сони тариф чегарасига етди.</string>
     <string name="clip_child_phone">Унинг телефонида</string>
     <string name="prot_default_note">Қоидаларингиз ҳозир ҳеч бир иловани ёпмайди. Ёпиши учун фарзандингиз телефонида Hoglt’ни очинг → «Назорат» бўлимида ҳимояни ёқинг.</string>
     <string name="prot_strength">Ҳимоя кучи</string>
@@ -1456,4 +1456,104 @@
     <string name="task_empty_done">Бажарилган вазифа ҳали йўқ</string>
     <string name="task_empty_overdue">Муддати ўтган вазифа йўқ</string>
     <string name="task_empty_filter_hint">Барча вазифаларни кўриш учун танланган белгини қайта босинг.</string>
+    <string name="voice_listen">Тинглаш</string>
+    <string name="voice_stop">Тўхтатиш</string>
+    <string name="voice_unavailable">Овозли тушунтириш ҳозир йўқ. Кейинроқ уриниб кўринг.</string>
+    <string name="live_confirm_title">Жонли кўриш</string>
+    <string name="live_confirm_body">%1$sга қўнғироқ кетади. Рози бўлса, видео очилади.</string>
+    <string name="live_child_fallback">Фарзандингиз</string>
+    <string name="live_call_button">Қўнғироқ қилиш</string>
+    <string name="live_ringing">%1$sга қўнғироқ кетяпти…</string>
+    <string name="live_connecting">Уланмоқда…</string>
+    <string name="live_error_connect">Уланиб бўлмади. Бир оздан кейин қайта уриниб кўринг.</string>
+    <string name="live_declined">Фарзандингиз рад этди</string>
+    <string name="live_no_answer">Жавоб бўлмади</string>
+    <string name="live_end">Тугатиш</string>
+    <string name="live_show_on_map">Харитада кўриш</string>
+    <string name="unlink_child_button">Фарзандни узиш</string>
+    <string name="saqlandi">Сақланди</string>
+    <string name="ap_retry_now_amount">Ҳозир тўлаш · %1$s</string>
+    <string name="pay_charge_body">•• %1$s картадан %2$s ечилади.</string>
+    <string name="pay_charge_body_amount">Картадан %1$s ечилади.</string>
+    <string name="pay_charge_body_plain">Сақланган картадан обуна пули ечилади.</string>
+    <string name="pay_confirm_pay">Тўлаш</string>
+    <string name="app_store_unavailable">App Store ҳозир очилмади. Бир оздан кейин қайта уриниб кўринг.</string>
+    <string name="app_store_failed">App Store орқали тўлаб бўлмади. Қайта уриниб кўринг.</string>
+    <string name="apple_activation_pending_title">Тўлов қабул қилинди</string>
+    <string name="login_subtitle_social">Қулай усулни танланг. Ҳисобингиз бўлмаса, ўзи очилади.</string>
+    <string name="login_telegram_not_opened">Telegram очилмади. Telegram ўрнатилганини текширинг ёки бошқа усулда киринг.</string>
+    <string name="ob_notif_enable">Билдиришномаларни ёқиш</string>
+    <string name="comfort_title">Ўқиш қулайми?</string>
+    <string name="comfort_screen_color">Экран ранги</string>
+    <string name="comfort_light">Ёруғ</string>
+    <string name="comfort_dark">Қоронғи</string>
+    <string name="comfort_done">Тайёр</string>
+    <string name="comfort_hint">Буни кейин ҳам ўзгартириш мумкин.</string>
+    <string name="policy_turned_on">%1$s ёқилди</string>
+    <string name="policy_turned_off">%1$s ўчирилди</string>
+    <string name="policy_off_title">%1$s ўчирилсинми?</string>
+    <string name="policy_off_body">Фарзандингиз телефонида бу қоида дарҳол ишламай қолади ва у ёпган нарсалар яна очилади. Кейин исталган пайт қайта ёқиш мумкин.</string>
+    <string name="policy_off_body_safety">Фарзандингиз телефонида бу ҳимоя дарҳол тўхтайди. Кейин исталган пайт қайта ёқиш мумкин.</string>
+    <string name="policy_off_confirm">Ҳа, ўчирилсин</string>
+    <string name="policy_off_cancel">Йўқ, қолсин</string>
+    <string name="policy_saved_sent">Сақланди — фарзанд телефонига юборилди</string>
+    <string name="policy_saved_queued">Сақланди — интернет қайтганда фарзанд телефонига юборилади</string>
+    <string name="policy_unsaved_title">Ўзгаришлар сақлансинми?</string>
+    <string name="policy_unsaved_body">Сақламасангиз, фарзандингиз телефонида ҳеч нарса ўзгармайди.</string>
+    <string name="policy_unsaved_discard">Сақламасдан чиқиш</string>
+    <string name="quick_unblock_title">%1$s яна очилсинми?</string>
+    <string name="quick_unblock_body">Бу илова фарзандингиз телефонида дарҳол очилади.</string>
+    <string name="quick_unblock_confirm">Ҳа, очилсин</string>
+    <string name="quick_unblock_action">Очиш</string>
+    <string name="quick_unblocked">%1$s очилди</string>
+    <string name="policy_exception_remove">Олиб ташлаш</string>
+    <string name="policy_load_failed">Юклаб бўлмади</string>
+    <string name="tg_more_settings">Батафсил созлаш</string>
+    <string name="live_watch">Жонли кўриш</string>
+    <string name="tg_allow_documents">Файллар</string>
+    <string name="tg_allow_forwards">Узатилган хабарлар</string>
+    <string name="tg_allow_gifs">GIF</string>
+    <string name="tg_allow_links">Ҳаволалар</string>
+    <string name="tg_allow_photos">Расмлар</string>
+    <string name="tg_allow_stickers">Стикерлар</string>
+    <string name="tg_allow_video_notes">Видео хабарлар</string>
+    <string name="tg_allow_videos">Видеолар</string>
+    <string name="tg_allow_voice">Овозли хабарлар</string>
+    <string name="tg_contacts_only">Фақат контактлар</string>
+    <string name="tg_contacts_only_sub">Фақат телефон китобидаги одамлар билан чатлар</string>
+    <string name="tg_daily_minutes">%1$d дақ</string>
+    <string name="tg_daily_note">Фарзанд ҳар куни шу чегарадан ошмайдиган вақтни танлайди. Тугаса, сиздан яна 5 дақиқа сўраши мумкин.</string>
+    <string name="tg_max_chats_all">Ҳаммаси</string>
+    <string name="tg_max_chats_note">Энг сўнгги чатлар кўрсатилади</string>
+    <string name="tg_placeholder">Яширилган хабар ўрнида белги</string>
+    <string name="tg_placeholder_sub">Ўчирилса, бундай хабарлар умуман кўринмайди</string>
+    <string name="tg_preset_balanced">Мувозанатли</string>
+    <string name="tg_preset_balanced_desc">Гуруҳлар, овозли хабар, файл ва узатилган хабарлар ҳам мумкин. Стикер, GIF, видео ва ҳаволалар йўқ.</string>
+    <string name="tg_preset_custom">Махсус созланган</string>
+    <string name="tg_preset_open">Эркин</string>
+    <string name="tg_preset_open_desc">Ҳаммаси очиқ, каналлар ҳам.</string>
+    <string name="tg_preset_strict">Қатъий</string>
+    <string name="tg_preset_strict_desc">Фақат шахсий чатлар: матн ва расм. Канал, гуруҳ ва ботлар яширин.</string>
+    <string name="tg_rules_card_sub">Telegram: чатлар ва контент қоидалари</string>
+    <string name="tg_rules_enabled_sub">Ўчирилса, фарзанд иловасида Telegram бўлими ёпилади</string>
+    <string name="tg_rules_info_privacy">Хабарлар бизнинг серверимизга юборилмайди — қоидалар фарзанд телефонида қўлланади.</string>
+    <string name="tg_rules_info_sync">Ўзгаришлар фарзанд иловаси интернетга уланганда қўлланади.</string>
+    <string name="tg_rules_load_failed">Қоидаларни юклаб бўлмади</string>
+    <string name="tg_rules_mode">Режим</string>
+    <string name="tg_rules_retry">Қайта уриниш</string>
+    <string name="tg_rules_title">Tikonchagram</string>
+    <string name="tg_section_chats">Кўринадиган чатлар</string>
+    <string name="tg_section_content">Рухсат этилган</string>
+    <string name="tg_section_daily">Кунлик вақт</string>
+    <string name="tg_section_max_chats">Чатлар сони</string>
+    <string name="tg_show_bots">Ботлар</string>
+    <string name="tg_show_channels">Каналлар</string>
+    <string name="tg_show_groups">Гуруҳлар</string>
+    <string name="rules_on_count">%1$d та қоида ёқилган</string>
+    <string name="task_accepted">Қабул қилинди</string>
+    <string name="task_accepted_coins">%1$s %2$d та танга олди</string>
+    <string name="task_coins_explain">Вазифани қабул қилганингизда тангалар фарзандингизга ўтади. У уларни ақлли ёрдамчига савол бериш учун сарфлайди.</string>
+    <string name="task_coins_not_enough">Тангангиз етмайди</string>
+    <string name="chat_support_title">Ёрдам хизмати</string>
+    <string name="chat_ai_title">Ақлли ёрдамчи</string>
 </resources>

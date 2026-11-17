@@ -16,6 +16,7 @@ data class HomeState(
     val showTikonchaTutorialCard: Boolean = false,
 
     val activeTaskCount: Int = 0,
+    /** Ota-onalar qo'ygan, hozir yoqilgan qoidalar soni (bosh sahifadagi "Qoidalar" katagi). */
     val parentPolicyCount: Int = 0,
 
     /* ----- HomeScreen card uchun bugungi usage ----- */

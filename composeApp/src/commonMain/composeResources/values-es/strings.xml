@@ -94,7 +94,7 @@
     <string name="maktab">Escuela</string>
     <string name="sozlamalar">Ajustes</string>
     <string name="bildirishnomalar">Notificaciones</string>
-    <string name="tema">Tema</string>
+    <string name="tema">Color de pantalla</string>
     <string name="tasdiqlash">Confirmar</string>
     <string name="tolov">Pago</string>
     <string name="obuna_pro">Suscripción Pro</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">ID de pasaporte</string>
     <string name="reklama">Publicidad</string>
     <string name="yorug">Claro</string>
-    <string name="theme_system">Sistema</string>
+    <string name="theme_system">Igual que el teléfono</string>
     <string name="xavfli_zona">Zona de peligro</string>
     <string name="akkauntni_o_chirish">Eliminar cuenta</string>
     <string name="pochta_orqali">Por correo electrónico</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Solicitar permiso</string>
     <string name="joylashuv_uchun_ruxsat">Permiso de ubicación</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Para usar el mapa al completo, ¡concede el permiso de ubicación desde los ajustes!</string>
-    <string name="xatolik">Error</string>
-    <string name="ok">Aceptar</string>
+    <string name="xatolik">No funcionó</string>
+    <string name="ok">Entendido</string>
     <string name="qoshish">Añadir</string>
     <string name="ogil_bola">Niño</string>
     <string name="qiz_bola">Niña</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Correcto</string>
     <string name="qisqartirish">Acortar</string>
     <string name="vazifa_tahrirlandi">Tarea editada</string>
-    <string name="server_connection_error">¡Error de conexión con el servidor!</string>
+    <string name="server_connection_error">No se pudo conectar ahora. Inténtalo de nuevo en un rato.</string>
     <string name="faol">Activo</string>
     <string name="faol_emas">Inactivo</string>
     <string name="ohirgi_faollik">Última actividad:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >¡Atención!</string>
     <string name="siz_tanlagan_vaqt_oraligida">¡El límite de uso no funcionará durante el intervalo de tiempo que elegiste! Es decir, el horario tiene más prioridad.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d apps no están instaladas en tu dispositivo</string>
-    <string name="cheklovlar">Restricciones</string>
+    <string name="cheklovlar">Reglas</string>
     <string name="ta_ilovaga">a %1$d apps</string>
     <string name="ta_vebsaytga">a %1$d sitios web</string>
     <string name="ustuvorligi">Prioridad</string>
-    <string name="jadval_nomini_kiriting">Introduce el nombre del horario</string>
+    <string name="jadval_nomini_kiriting">Escribe el nombre de la regla</string>
     <string name="misol_o_quv_markaz">ejemplo: Centro de formación</string>
     <string name="ochirish">Eliminar</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">¿Aceptas salir sin guardar el horario?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">¡ENHORABUENA!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Ya tienes esta suscripción</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">¡Disfruta de funciones especiales y soporte prioritario!</string>
-    <string name="statistika">Estadísticas</string>
+    <string name="statistika">Tiempo en el teléfono</string>
     <string name="chegirmalar">Descuentos</string>
     <string name="chegirma">Descuento</string>
     <string name="topshiriqlar">Tareas</string>
-    <string name="jadvallar">Horarios</string>
+    <string name="jadvallar">Reglas</string>
     <string name="ilova_cheklangan">%1$d apps restringidas</string>
-    <string name="faol_vazifa">%1$d tareas activas</string>
-    <string name="bugun_sarfladi">Hoy ha usado</string>
+    <string name="faol_vazifa">Tareas activas: %1$d</string>
+    <string name="bugun_sarfladi">Hoy en el teléfono</string>
     <string name="chiqish">Cerrar sesión</string>
     <string name="chiqishni_xohlaysizmi">¿Quieres cerrar sesión?</string>
     <string name="chiqishni_tasdiqlang">Confirma el cierre de sesión.</string>
@@ -322,8 +322,8 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="profil_va_sozlamalar_saqlanadi">Tu perfil y tus ajustes se guardan en el servidor.</string>
     <string name="qayta_kirsangiz_tiklanadi">Cuando vuelvas a iniciar sesión, todo se restaurará.</string>
     <string name="farzand_qoshilmagan">No hay ningún hijo añadido</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Los horarios, chats e informes aparecerán después de añadir un hijo.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Se produjo un error inesperado. Inténtalo de nuevo.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Las reglas, los chats y el tiempo en el teléfono aparecerán después de añadir a un hijo.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">No funcionó. Inténtalo de nuevo en un rato.</string>
     <string name="hozircha_farzand_qoshilmagan">Aún no has añadido ningún hijo.</string>
     <string name="diqqat2">¡ATENCIÓN!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Elige el tipo de app antes de continuar.</string>
@@ -343,10 +343,10 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="tasdiqlash_kodi_usulini_tanlash">Elige cómo debemos enviar \n el código de verificación</string>
     <string name="tasdiqlash_kodini_olish">Obtener código de verificación</string>
     <string name="telegram_kod_kiritish">Introduce el código enviado al Telegram vinculado a %1$s</string>
-    <string name="xato_kod_kiritdingiz">El código que has introducido es incorrecto</string>
+    <string name="xato_kod_kiritdingiz">Ese código no coincide. Escríbelo de nuevo.</string>
     <string name="kod_olish_usulini_ozgartirish">Cambiar método de envío del código</string>
     <string name="versiya">Versión</string>
-    <string name="jadval_yaratish">Crear horario</string>
+    <string name="jadval_yaratish">Crear una regla</string>
     <string name="sizning_cheklovlaringiz">Tus restricciones</string>
 
     <string name="avtomatik_bloklash_vaqti">Bloqueo automático en los días y horas elegidos</string>
@@ -364,9 +364,9 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="noto_g_ri_url_format">Formato de URL no válido</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Este sitio ya está en la lista</string>
     <string name="to_liq_nazoratni_yoqing">Activa el control total</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Gestiona apps, tiempo y uso con Hoglt. Con Plus, trabaja sin restricciones y activa la máxima protección con el modo Escudo.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Gestiona las apps y el tiempo en el teléfono con Hoglt. Con Plus no hay límites y puedes activar la protección estricta.</string>
     <string name="plus_imkoniyatlarini_ochish">Desbloquea las funciones Plus</string>
-    <string name="jadval_nomi">Nombre del horario</string>
+    <string name="jadval_nomi">Nombre de la regla</string>
     <string name="saytlar">Sitios</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Indica cuándo y en qué condiciones se restringen las apps y los sitios web</string>
 
@@ -395,7 +395,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="coins_help_close">Cerrar</string>
     <string name="qollash">Aplicar</string>
     <string name="promokod">Código promocional:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Has comprado monedas correctamente.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Monedas compradas.</string>
     <string name="narx">Precio</string>
     <string name="jami">Total</string>
     <string name="bekor_qilindi">¡Cancelado!</string>
@@ -412,11 +412,11 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="plus_obnuna_kerak">Se requiere la suscripción PLUS</string>
     <string name="toliq_nazorat_statistika">Control total y estadísticas</string>
     <string name="farzand_ilova_kuzatish">Consulta qué apps usa tu hijo y cuánto durante el día.</string>
-    <string name="uchtagacha_jadval">Hasta 3 horarios</string>
+    <string name="uchtagacha_jadval">Hasta 3 reglas</string>
     <string name="jadval_cheklovlar">Establece restricciones distintas para días, semanas u horas especiales.</string>
     <string name="qattiq_bloklash_qalqon">Protección estricta: también se bloquean sitios web y videos cortos</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Tu hijo no puede desactivar ni cambiar las restricciones.</string>
-    <string name="tez_bloklash_timer">Bloqueo rápido (temporizador)</string>
+    <string name="tez_bloklash_timer">Apps siempre cerradas</string>
     <string name="vaqtinchalik_bloklash_tezi">Activa un bloqueo temporal en pocos segundos cuando lo necesites.</string>
     <string name="hisobot_tahlil">Informes y análisis</string>
     <string name="farzand_nazorat_tavsifi">Controla el uso del teléfono de tu hijo. Bloquea las apps no deseadas, define el tiempo de uso y crea un entorno seguro.</string>
@@ -510,8 +510,8 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="danger_cat_tobacco">Tabaco y vapeadores</string>
     <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radio</string>
-    <string name="farzandim">Mi hijo</string>
-    <string name="ozim">Yo mismo</string>
+    <string name="farzandim">Del hijo</string>
+    <string name="ozim">Mías</string>
     <string name="faol_vazifa_yo_q">No hay tareas activas</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">No hay tareas para tu hijo</string>
 
@@ -536,7 +536,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="weekday_sunday">Domingo</string>
 
     <string name="juda_muhim">Muy importante</string>
-    <string name="tekshirildi">Revisada</string>
+    <string name="tekshirildi">Aceptar</string>
     <string name="ko_rish">Ver</string>
     <string name="vazifa_ochirilsinmi">¿Eliminar tarea?</string>
     <string name="vazifa_ochirish_tasdiq">¿Seguro que quieres eliminar esta tarea?</string>
@@ -558,7 +558,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="tolovlar_tarixi_bos">El historial de pagos está vacío</string>
     <string name="tolovlar_tarixi_bos_hint">Aparecerá aquí tras las compras</string>
     <string name="boshqa_yozuvlar_yoq">No hay más registros</string>
-    <string name="xatolik_yuz_berdi">Se produjo un error</string>
+    <string name="xatolik_yuz_berdi">No se pudo cargar. Inténtalo de nuevo.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -589,7 +589,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
 
     <string name="izoh_ixtiyoriy">Comentario (opcional)</string>
     <string name="vazifa_tangalari">Monedas otorgadas por completar la tarea</string>
-    <string name="vazifani_tekshirish">Revisar tarea</string>
+    <string name="vazifani_tekshirish">¿Está todo bien?</string>
     <string name="izoh">Comentario</string>
     <string name="muhimlilik_darajasi">Nivel de importancia</string>
     <string name="ragbatlantirish_tangachalari">Monedas de recompensa</string>
@@ -609,7 +609,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Tu hijo debe abrir la app Hoglt e introducir el código de verificación.</string>
     <string name="bola_hali_bajardim_bosmagan">El niño aún no ha pulsado el botón “Hecho”</string>
     <string name="foydalanilmagan">Sin usar</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Vuelve a iniciar sesión</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Iniciar sesión</string>
     <string name="profil_rasmi">Foto de perfil</string>
@@ -635,7 +635,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="telegram_orqali_kirish">Iniciar sesión con Telegram</string>
     <string name="yoki">o</string>
     <string name="telefon_raqami">Número de teléfono</string>
-    <string name="kirish_subtitle">Inicia sesión en tu cuenta para continuar</string>
+    <string name="kirish_subtitle">Inicia sesión con Telegram. ¿Aún no tienes cuenta? Se crea automáticamente.</string>
     <string name="login_privacy">Al continuar, aceptas la Política de privacidad y los Términos de uso</string>
 
     <string name="telegram_ochilmoqda">Abriendo Telegram…</string>
@@ -770,9 +770,9 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Aprobaste la solicitud: tu hijo ya puede cerrar sesión en la app.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Aprobaste la solicitud: tu hijo ya puede desinstalar la app.</string>
     <string name="sorov_rad_etildi_desc">Rechazaste la solicitud.</string>
-    <string name="unlink_child_title">¿Desvincular al niño?</string>
-    <string name="unlink_child_message">Tras esta acción, ¡se detendrá la supervisión en el dispositivo de %1$s!</string>
-    <string name="unlink_child_action">Desvincular</string>
+    <string name="unlink_child_title">¿Desvincular a este hijo?</string>
+    <string name="unlink_child_message">La protección y las reglas en el teléfono de %1$s se detendrán. Para volver a conectarlo, escanea el código otra vez desde «Añadir hijo».</string>
+    <string name="unlink_child_action">Sí, desvincular</string>
     <string name="child_unlinked_success">Niño desvinculado correctamente</string>
     <string name="operator_kodi_topilmadi">No existe ese código de operador</string>
     <string name="kod_amal_qilish_muddati">Código válido durante: %1$s</string>
@@ -786,7 +786,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="farzand_tanlanmagan">No hay ningún niño seleccionado</string>
     <string name="vazifa_id_topilmadi">No se encontró el ID de la tarea</string>
     <string name="tahrirlangan">editada</string>
-    <string name="jadval_topilmadi">No se encontró el horario.</string>
+    <string name="jadval_topilmadi">No encontrado: puede que se haya eliminado. Vuelve atrás y ábrelo de nuevo.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d minuto</item>
         <item quantity="other">%1$d minutos</item>
@@ -819,8 +819,8 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="tarix_disabled">Desactivado</string>
     <string name="tarix_paused">En pausa</string>
     <string name="tarix_deleted">Eliminado</string>
-    <string name="tarix_quick_block_add">Bloqueo rápido añadido</string>
-    <string name="tarix_quick_block_remove">Bloqueo rápido quitado</string>
+    <string name="tarix_quick_block_add">Añadida a las apps siempre cerradas</string>
+    <string name="tarix_quick_block_remove">Quitada de las apps siempre cerradas</string>
     <string name="tarix_bosh">Aún no hay cambios</string>
     <string name="tarix_resumed">Reanudado</string>
     <string name="muddat">Duración</string>
@@ -844,26 +844,26 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="stat_row_sec">%1$d s</string>
     <string name="stat_hour_only">%1$d h</string>
     <string name="stat_per_day">~%1$s al día</string>
-    <string name="stat_quick_blocked">En bloqueo rápido</string>
-    <string name="stat_quick_blocked_paused">En bloqueo rápido · en pausa</string>
-    <string name="stat_quick_blocked_inactive">En bloqueo rápido · requiere Plus</string>
+    <string name="stat_quick_blocked">Siempre cerrada</string>
+    <string name="stat_quick_blocked_paused">Siempre cerrada · en pausa</string>
+    <string name="stat_quick_blocked_inactive">Siempre cerrada · necesita Plus</string>
     <string name="stat_blocked_by_child">Bloqueada por el niño</string>
     <string name="stat_blocked_by_child_paused">Bloqueada por el niño · en pausa</string>
     <string name="stat_blocked_by_child_inactive">Bloqueada por el niño · requiere Plus</string>
     <string name="stat_blocked_by_coparent">Bloqueada por el otro padre</string>
     <string name="stat_blocked_by_coparent_paused">Bloqueada por el otro padre · en pausa</string>
     <string name="stat_blocked_by_coparent_inactive">Bloqueada por el otro padre · requiere Plus</string>
-    <string name="stat_lock_hint">El candado añade una app al bloqueo rápido o la quita</string>
-    <string name="stat_quick_add_cd">Añadir al bloqueo rápido</string>
-    <string name="stat_quick_remove_cd">Quitar del bloqueo rápido</string>
-    <string name="stat_reenable_title">Se activará el bloqueo rápido</string>
-    <string name="stat_reenable_message">El bloqueo rápido está desactivado. Al bloquear esta app se vuelve a activar, y también se bloquearán las demás apps de su lista: %1$d.</string>
+    <string name="stat_lock_hint">El candado añade una app a las apps siempre cerradas o la quita</string>
+    <string name="stat_quick_add_cd">Añadir a las apps siempre cerradas</string>
+    <string name="stat_quick_remove_cd">Quitar de las apps siempre cerradas</string>
+    <string name="stat_reenable_title">Las apps siempre cerradas se volverán a activar</string>
+    <string name="stat_reenable_message">Las apps siempre cerradas están desactivadas. Si añades esta app, se vuelven a activar y también se cerrarán las demás apps de la lista: %1$d.</string>
     <string name="stat_reenable_confirm">Bloquear</string>
     <string name="stat_quick_paywall_title">Se requiere suscripción</string>
     <string name="stat_quick_paywall_message">Bloquear una app con un toque requiere una suscripción a Hoglt Plus.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Bloqueo rápido</string>
+    <string name="quick_title">Apps siempre cerradas</string>
     <string name="quick_enabled">Activado</string>
     <string name="quick_pause">Pausa</string>
     <string name="quick_blocked_apps">Apps bloqueadas</string>
@@ -872,15 +872,15 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="quick_info_always">Las apps de esta lista siempre están bloqueadas, sea cual sea la hora o el lugar.</string>
     <string name="quick_info_off">Ahora está desactivado: actívalo para bloquear estas apps.</string>
     <string name="quick_info_paused">En pausa hasta las %1$s: hasta entonces no se bloquea nada.</string>
-    <string name="quick_info_stats">También puedes añadir o quitar apps con un toque desde las estadísticas de uso.</string>
-    <string name="quick_info_readd">Si el bloqueo rápido está desactivado, al añadir una app se vuelve a activar.</string>
+    <string name="quick_info_stats">En la página «Tiempo en el teléfono» también puedes añadir una app a esta lista o quitarla con un toque.</string>
+    <string name="quick_info_readd">Si las apps siempre cerradas están desactivadas, añadir una app las vuelve a activar.</string>
     <string name="quick_child_blocks">Bloqueada por el niño</string>
     <string name="quick_coparent_blocks">Bloqueada por el otro padre</string>
     <string name="quick_others_note">Solo su propietario puede cambiar estas listas. Si hace falta, añade la app a tu propia lista.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Hora de dormir</string>
-    <string name="policy_preset_limit">Límite de tiempo</string>
+    <string name="policy_preset_limit">Tiempo al día</string>
     <string name="policy_preset_school">Horario escolar</string>
     <string name="policy_day_mon">Lun</string>
     <string name="policy_day_tue">Mar</string>
@@ -900,30 +900,30 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="policy_location">Ubicación</string>
     <string name="policy_active_now">Activo ahora: %1$s</string>
     <string name="policy_active_until">hasta las %1$s</string>
-    <string name="list_info_none">Ningún horario está activo ahora</string>
+    <string name="list_info_none">Ahora no hay ninguna regla activa</string>
     <string name="list_info_also">También activo: %1$s.</string>
-    <string name="list_info_many">Cuando varios horarios se ejecutan a la vez, una app se bloquea si cualquiera de ellos la bloquea.</string>
-    <string name="list_info_child_scope">Los horarios del propio niño no pueden anular los tuyos: una app que bloqueas sigue bloqueada.</string>
-    <string name="list_info_school_scope">Si un horario escolar cierra una app o la permite expresamente, tu horario no puede cambiarlo. En caso contrario, se aplica el horario más estricto.</string>
-    <string name="list_info_quick">El bloqueo rápido está activado: sus apps siempre están bloqueadas, sea cual sea la hora o el lugar.</string>
-    <string name="list_info_paused">Horarios en pausa: %1$d. No hacen nada hasta la hora establecida.</string>
-    <string name="list_info_how">Un horario se inicia solo cuando llega su hora y su lugar.</string>
-    <string name="policy_tab_templates">Plantillas</string>
+    <string name="list_info_many">Si varias reglas funcionan a la vez, una app se bloquea si cualquiera de ellas la bloquea.</string>
+    <string name="list_info_child_scope">Las reglas propias de tu hijo no pueden anular las tuyas: una app que bloqueas sigue bloqueada.</string>
+    <string name="list_info_school_scope">Si una regla de la escuela cierra una app o la permite expresamente, tu regla no puede cambiarlo. En los demás casos se aplica la regla más estricta.</string>
+    <string name="list_info_quick">Las apps siempre cerradas están activadas: las apps de esta lista siguen cerradas sin importar la hora o el lugar.</string>
+    <string name="list_info_paused">Reglas en pausa: %1$d. No hacen nada hasta la hora indicada.</string>
+    <string name="list_info_how">Una regla se activa sola cuando llegan su hora y su lugar.</string>
+    <string name="policy_tab_templates">Reglas listas</string>
     <string name="policy_tab_mine">Por mí</string>
     <string name="policy_tab_child">Por el niño</string>
-    <string name="policy_tab_coparent">Padres</string>
+    <string name="policy_tab_coparent">Otro padre o madre</string>
     <string name="policy_tab_school">Escuela</string>
     <string name="policy_enabled_count">%1$d activados</string>
-    <string name="policy_content_protection">Protección de contenido</string>
+    <string name="policy_content_protection">Protección contra sitios web dañinos</string>
     <string name="policy_content_protection_others">Activado por el niño o por el otro padre</string>
     <string name="policy_paused">En pausa</string>
-    <string name="policy_quick_blocks">Bloqueos rápidos</string>
+    <string name="policy_quick_blocks">Apps siempre cerradas</string>
     <string name="preset_all_apps">Todas las apps</string>
-    <string name="policy_paywall_protection">La protección de contenido funciona con Hoglt Plus.</string>
+    <string name="policy_paywall_protection">La protección contra sitios web dañinos funciona con Hoglt Plus.</string>
     <string name="policy_paywall_count">El plan gratuito limita el número de horarios. Hoglt Plus te da más.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Aún no hay nada elegido: este horario no bloquea nada.</string>
+    <string name="info_nothing">Aún no hay nada elegido: esta regla no bloquea nada.</string>
     <string name="info_always">Siempre</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s de %2$s a %3$s</string>
@@ -936,12 +936,12 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="info_what_all_apps_sites">todas las apps y sitios están bloqueados</string>
     <string name="info_what_selected">los elementos elegidos están bloqueados (%1$s)</string>
     <string name="info_stays_open">Siguen abiertas: %1$s.</string>
-    <string name="info_not_counted">No cuentan para el límite: %1$s.</string>
+    <string name="info_not_counted">Tiempo que no cuenta: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s se pueden usar durante %3$s en total. Cuando se acabe el tiempo, quedarán bloqueadas hasta mañana.</string>
     <string name="info_limit_hourly">%1$s: %2$s se pueden usar durante %3$s por hora. Cuando se acabe el tiempo, quedarán bloqueadas hasta la hora siguiente.</string>
     <string name="info_limit_all">todas las apps</string>
     <string name="info_limit_selected">los elementos elegidos</string>
-    <string name="info_limit_gate">El límite se aplica solo a: %1$s.</string>
+    <string name="info_limit_gate">El tiempo solo cuenta: %1$s.</string>
     <string name="info_protected">Las llamadas, los SMS y otras apps esenciales nunca se bloquean.</string>
     <string name="info_disabled">Ahora está desactivado: actívalo para aplicarlo.</string>
 
@@ -950,7 +950,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="preset_when">Cuándo</string>
     <string name="preset_starts">Comienza</string>
     <string name="preset_ends">Termina</string>
-    <string name="preset_limit">Límite</string>
+    <string name="preset_limit">Cuánto tiempo</string>
     <string name="preset_counted">Qué cuenta</string>
     <string name="preset_what_closed">Qué se bloquea</string>
     <string name="preset_only_selected">Solo las elegidas</string>
@@ -991,13 +991,13 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="targets_covered_by_category">Elegido mediante una categoría</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Dirección o palabra clave no válida. Ejemplo: youtube.com o kino</string>
-    <string name="editor_new_policy">Nuevo horario</string>
+    <string name="editor_new_policy">Nueva regla</string>
     <string name="editor_not_selected">Sin elegir</string>
     <string name="editor_when_hint">opcional · si no, siempre</string>
     <string name="editor_add_condition">Añadir condición</string>
     <string name="editor_added">Añadido</string>
     <string name="editor_condition_time">Hora</string>
-    <string name="editor_condition_limit">Límite</string>
+    <string name="editor_condition_limit">Cuánto tiempo</string>
     <string name="editor_in_this_time">Durante este tiempo</string>
     <string name="editor_closed_in_time">Se bloqueará</string>
     <string name="editor_closed_in_time_sub">Abierto en otros momentos</string>
@@ -1008,8 +1008,8 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="editor_inside">Dentro de la zona</string>
     <string name="editor_outside">Fuera de la zona</string>
     <string name="editor_rename">Renombrar</string>
-    <string name="editor_delete_title">¿Eliminar este horario?</string>
-    <string name="editor_delete_message">Se eliminará “%1$s”.</string>
+    <string name="editor_delete_title">¿Eliminar esta regla?</string>
+    <string name="editor_delete_message">Se eliminará «%1$s». Las apps que bloqueaba esta regla se abrirán de nuevo.</string>
     <string name="editor_paywall_allow">El modo “Solo las elegidas siguen abiertas” está disponible con Plus.</string>
     <string name="location_child_here">Ubicación de mi hijo</string>
     <string name="protection_section">Qué está protegido</string>
@@ -1027,24 +1027,24 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="protection_policies_pending">Aún no entregado</string>
     <string name="protection_gujanak_limits_note">La protección media solo cierra apps. Los sitios web y los videos cortos solo se bloquean con la protección estricta: en el teléfono de tu hijo, Hoglt → «Control» → «Modo Escudo».</string>
     <string name="editor_limit_days_follow_time">Igual que la hora: los días se eligen en la página de la hora</string>
-    <string name="editor_limit_in_window">límite durante este tiempo</string>
-    <string name="editor_limit_outside_window">límite fuera de este tiempo</string>
-    <string name="editor_limit_in_time">El límite se aplica durante este tiempo</string>
+    <string name="editor_limit_in_window">el tiempo cuenta en estas horas</string>
+    <string name="editor_limit_outside_window">el tiempo cuenta fuera de estas horas</string>
+    <string name="editor_limit_in_time">El tiempo solo cuenta en estas horas</string>
     <string name="editor_limit_in_time_sub">Sin restricción en otros momentos</string>
-    <string name="editor_limit_out_time">El límite se aplica fuera de este tiempo</string>
+    <string name="editor_limit_out_time">El tiempo cuenta fuera de estas horas</string>
     <string name="editor_limit_out_time_sub">Sin restricción durante este tiempo</string>
     <string name="info_limit_daily_window">%1$s: %2$s se pueden usar durante %3$s en total. Cuando se acabe el tiempo, quedan cerradas hasta que termine esta franja horaria.</string>
     <string name="targets_only_selected_open_sites_sub">Los demás sitios están cerrados</string>
     <string name="targets_only_selected_open_both_sub">Las demás apps y sitios están cerrados</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Aún no hay horarios</string>
-    <string name="policy_empty_mine_sub">Activa una plantilla o crea la tuya</string>
+    <string name="policy_empty_mine_title">Aún no hay reglas</string>
+    <string name="policy_empty_mine_sub">Activa una regla lista o crea la tuya</string>
     <string name="empty_search_title">No se encontró nada</string>
     <string name="empty_search_sub">Prueba con otra búsqueda</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Sitios para adultos y de apuestas</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Horario</string>
+    <string name="policy_name_schedule">Regla</string>
     <string name="policy_name_category_block">Bloquear por categorías</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Activado por tu hijo</string>
@@ -1139,7 +1139,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="ap_off_confirm">Desactivar</string>
     <string name="ap_keep_on">Mantenerlo activado</string>
     <string name="ap_retry_note">Lo intentaremos de nuevo mañana (%1$d/3).</string>
-    <string name="ap_retry_now">Reintentar</string>
+    <string name="ap_retry_now">Pagar ahora</string>
     <string name="ap_other_card">Otra tarjeta</string>
     <string name="ap_cards_empty_title">No hay tarjetas guardadas</string>
     <string name="ap_cards_empty_sub">Añade una tarjeta UZCARD o HUMO para el pago automático</string>
@@ -1185,7 +1185,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="ulash_tugma">Vincular</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Omitir</string>
+    <string name="ob_skip">Quizás más tarde</string>
     <string name="ob_start">Empecemos</string>
     <string name="ob_got_it">Entendido</string>
     <string name="ob_hello_title">Hola, soy Hoglt</string>
@@ -1199,10 +1199,10 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="ob_day_study">Estudio</string>
     <string name="ob_min_fmt">%1$d min</string>
     <string name="ob_rules_title">Define las reglas una sola vez</string>
-    <string name="ob_rules_body">La hora de dormir, el horario escolar y los límites diarios se activan solos.</string>
+    <string name="ob_rules_body">La hora de dormir, el horario escolar y el tiempo diario se activan solos.</string>
     <string name="ob_rule_sleep">Hora de dormir</string>
     <string name="ob_rule_school">Horario escolar</string>
-    <string name="ob_rule_limit">Límite diario</string>
+    <string name="ob_rule_limit">Tiempo al día</string>
     <string name="ob_rule_limit_value">2 h</string>
     <string name="ob_map_title">Sabe dónde están</string>
     <string name="ob_map_body">Mira a tu hijo en el mapa y define reglas para lugares como la escuela.</string>
@@ -1259,8 +1259,8 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="home_layout_list">Lista</string>
     <string name="home_layout_grid">Cuadrícula</string>
     <string name="home_greeting">Hola, %1$s</string>
-    <string name="kecha_sarfladi">Uso de ayer</string>
-    <string name="sana_sarfladi">Uso de %1$s</string>
+    <string name="kecha_sarfladi">Ayer en el teléfono</string>
+    <string name="sana_sarfladi">En el teléfono el %1$s</string>
     <string name="stat_no_usage_day">Aún no hay uso del teléfono en este día</string>
     <string name="kirish_usuli">Método de inicio de sesión</string>
     <string name="google_hisobi">Cuenta de Google</string>
@@ -1283,7 +1283,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="vazifa_muddati">Plazo</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Asistente</string>
+    <string name="ai_assistant_title">Asistente inteligente</string>
     <string name="ai_assistant_subtitle">Pregunta o crea una regla</string>
     <string name="ai_period_today">Hoy</string>
     <string name="ai_period_yesterday">Ayer</string>
@@ -1413,20 +1413,20 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Gratis: %1$d regla(s) activa(s) · Plus: sin límite</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">La app no puede ver qué apps se abren: el tiempo en el teléfono no se cuenta y las reglas no funcionan.</string>
+    <string name="perm_why_overlay">La pantalla de bloqueo no puede aparecer sobre una app bloqueada, así que las reglas no pueden cerrarla.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">No puedes ver dónde está tu hijo, y las reglas basadas en el lugar no funcionan.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Sin esto, los sitios web, YouTube Shorts e Instagram Reels no se bloquean, y la app se puede desinstalar sin problema.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">El plan gratis permite hasta %1$d apps en una regla. Con Plus, más.</string>
+    <string name="policy_paywall_app_limit">Esta regla llegó al límite de apps de tu plan.</string>
     <string name="clip_child_phone">En su teléfono</string>
     <string name="prot_default_note">Ahora mismo tus reglas no cierran ninguna app. Para cambiarlo, en el teléfono de tu hijo abre Hoglt → «Control» y activa la protección.</string>
     <string name="prot_strength">Nivel de protección</string>
@@ -1456,4 +1456,64 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="task_empty_done">Aún no hay tareas completadas</string>
     <string name="task_empty_overdue">No hay tareas vencidas</string>
     <string name="task_empty_filter_hint">Toca de nuevo el filtro seleccionado para ver todas las tareas.</string>
+    <string name="voice_listen">Escuchar</string>
+    <string name="voice_stop">Detener</string>
+    <string name="voice_unavailable">La explicación por voz aún no está disponible. Inténtalo más tarde.</string>
+    <string name="live_confirm_title">Ver en vivo</string>
+    <string name="live_confirm_body">%1$s recibirá una llamada. Si la acepta, se abrirá el video.</string>
+    <string name="live_child_fallback">Tu hijo</string>
+    <string name="live_call_button">Llamar</string>
+    <string name="live_ringing">Llamando a %1$s…</string>
+    <string name="live_connecting">Conectando…</string>
+    <string name="live_error_connect">No se pudo conectar. Inténtalo de nuevo en un rato.</string>
+    <string name="live_declined">Tu hijo rechazó la llamada</string>
+    <string name="live_no_answer">Sin respuesta</string>
+    <string name="live_end">Finalizar</string>
+    <string name="live_show_on_map">Ver en el mapa</string>
+    <string name="unlink_child_button">Desvincular hijo</string>
+    <string name="saqlandi">Guardado</string>
+    <string name="ap_retry_now_amount">Pagar ahora · %1$s</string>
+    <string name="pay_charge_body">Se cobrarán %2$s a la tarjeta •• %1$s.</string>
+    <string name="pay_charge_body_amount">Se cobrarán %1$s a tu tarjeta.</string>
+    <string name="pay_charge_body_plain">El precio de la suscripción se cobrará a tu tarjeta guardada.</string>
+    <string name="pay_confirm_pay">Pagar</string>
+    <string name="app_store_unavailable">El App Store no está disponible ahora. Inténtalo de nuevo en un rato.</string>
+    <string name="app_store_failed">El pago en el App Store no se completó. Inténtalo de nuevo.</string>
+    <string name="apple_activation_pending_title">Pago recibido</string>
+    <string name="login_subtitle_social">Elige cómo iniciar sesión. ¿Aún no tienes cuenta? Se crea automáticamente.</string>
+    <string name="login_telegram_not_opened">Telegram no se abrió. Comprueba que Telegram esté instalado o inicia sesión de otra forma.</string>
+    <string name="ob_notif_enable">Activar notificaciones</string>
+    <string name="comfort_title">¿Se lee bien?</string>
+    <string name="comfort_screen_color">Color de pantalla</string>
+    <string name="comfort_light">Claro</string>
+    <string name="comfort_dark">Oscuro</string>
+    <string name="comfort_done">Listo</string>
+    <string name="comfort_hint">También puedes cambiarlo más tarde.</string>
+    <string name="policy_turned_on">Activado: %1$s</string>
+    <string name="policy_turned_off">Desactivado: %1$s</string>
+    <string name="policy_off_title">¿Desactivar «%1$s»?</string>
+    <string name="policy_off_body">Esta regla deja de funcionar enseguida en el teléfono de tu hijo, y todo lo que bloqueaba se abre de nuevo. Puedes volver a activarla cuando quieras.</string>
+    <string name="policy_off_body_safety">Esta protección se detiene enseguida en el teléfono de tu hijo. Puedes volver a activarla cuando quieras.</string>
+    <string name="policy_off_confirm">Sí, desactivar</string>
+    <string name="policy_off_cancel">No, mantenerla</string>
+    <string name="policy_saved_sent">Guardado: enviado al teléfono de tu hijo</string>
+    <string name="policy_saved_queued">Guardado: llegará al teléfono de tu hijo cuando vuelvas a tener internet</string>
+    <string name="policy_unsaved_title">¿Guardar los cambios?</string>
+    <string name="policy_unsaved_body">Si no guardas, nada cambia en el teléfono de tu hijo.</string>
+    <string name="policy_unsaved_discard">Salir sin guardar</string>
+    <string name="quick_unblock_title">¿Desbloquear %1$s?</string>
+    <string name="quick_unblock_body">Esta app se abre enseguida en el teléfono de tu hijo.</string>
+    <string name="quick_unblock_confirm">Sí, desbloquear</string>
+    <string name="quick_unblock_action">Desbloquear</string>
+    <string name="quick_unblocked">Desbloqueada: %1$s</string>
+    <string name="policy_exception_remove">Quitar</string>
+    <string name="policy_load_failed">No se pudo cargar</string>
+    <string name="tg_more_settings">Más ajustes</string>
+    <string name="rules_on_count">Reglas activadas: %1$d</string>
+    <string name="task_accepted">Aceptada</string>
+    <string name="task_accepted_coins">%1$s recibe monedas: %2$d</string>
+    <string name="task_coins_explain">Cuando aceptas la tarea, las monedas pasan a tu hijo, que las usa para hacer preguntas al asistente inteligente.</string>
+    <string name="task_coins_not_enough">No hay suficientes monedas</string>
+    <string name="chat_support_title">Atención al cliente</string>
+    <string name="chat_ai_title">Asistente inteligente</string>
 </resources>

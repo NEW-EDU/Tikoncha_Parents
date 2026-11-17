@@ -28,11 +28,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalDensity
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.resources.pluralStringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.d
-import tikoncha_parents.composeapp.generated.resources.s
+import tikoncha_parents.composeapp.generated.resources.hours
+import tikoncha_parents.composeapp.generated.resources.minutes
 import uz.tikoncha_parent.domain.model.HourMinute
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
@@ -41,7 +42,7 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 import kotlin.math.ceil
 import kotlin.math.max
 
-private val AXIS_WIDTH       = 24.dp
+private val MIN_AXIS_WIDTH   = 24.dp
 private val GAP_AFTER_AXIS   = 4.dp
 private val CHART_HEIGHT     = 150.dp
 private val X_LABELS_HEIGHT  = 20.dp
@@ -91,7 +92,7 @@ private fun WeeklyChartContent(
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(modifier = Modifier.fillMaxWidth().height(CHART_HEIGHT)) {
-            AxisLeft(axis = axis, modifier = Modifier.width(AXIS_WIDTH).fillMaxHeight())
+            AxisLeft(axis = axis, modifier = Modifier.width(axis.width).fillMaxHeight())
             Spacer(Modifier.width(GAP_AFTER_AXIS))
             Box(modifier = Modifier.weight(1f).fillMaxHeight()) {
                 BarsCanvas(
@@ -117,7 +118,7 @@ private fun WeeklyChartContent(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(X_LABELS_HEIGHT)
-                .padding(start = AXIS_WIDTH + GAP_AFTER_AXIS, top = 2.dp)
+                .padding(start = axis.width + GAP_AFTER_AXIS, top = 2.dp)
         ) {
             bars.forEach { bar ->
                 Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
@@ -144,13 +145,13 @@ private fun DailyChartContent(
     val scroll = rememberScrollState()
 
     BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-        val barArea = (maxWidth - AXIS_WIDTH - GAP_AFTER_AXIS).coerceAtLeast(1.dp)
+        val barArea = (maxWidth - axis.width - GAP_AFTER_AXIS).coerceAtLeast(1.dp)
         val binWidth = (barArea / 8).coerceIn(40.dp, 64.dp)
         val contentWidth = binWidth * bars.size.coerceAtLeast(1)
 
         Column(modifier = Modifier.fillMaxWidth()) {
             Row(modifier = Modifier.fillMaxWidth().height(CHART_HEIGHT)) {
-                AxisLeft(axis = axis, modifier = Modifier.width(AXIS_WIDTH).fillMaxHeight())
+                AxisLeft(axis = axis, modifier = Modifier.width(axis.width).fillMaxHeight())
                 Spacer(Modifier.width(GAP_AFTER_AXIS))
                 Box(
                     modifier = Modifier
@@ -181,7 +182,7 @@ private fun DailyChartContent(
 
             // X labels — chart bilan birgalikda scroll
             Row(modifier = Modifier.fillMaxWidth().height(X_LABELS_HEIGHT).padding(top = 2.dp)) {
-                Spacer(Modifier.width(AXIS_WIDTH + GAP_AFTER_AXIS))
+                Spacer(Modifier.width(axis.width + GAP_AFTER_AXIS))
                 Box(
                     modifier = Modifier
                         .weight(1f)
@@ -207,7 +208,7 @@ private fun DailyChartContent(
                 scrollState = scroll,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 6.dp, start = AXIS_WIDTH + GAP_AFTER_AXIS)
+                    .padding(top = 6.dp, start = axis.width + GAP_AFTER_AXIS)
             )
         }
     }
@@ -219,27 +220,43 @@ private data class AxisModel(
     val maxMinutes: Double,
     val midLabel: String,
     val topLabel: String,
+    /** Yorliqlar to'liq so'z bilan ("2 soat", "30 daqiqa") — o'q kengligi ular sig'adigan qilib olinadi. */
+    val width: Dp,
 )
 
 @Composable
 private fun rememberAxisModel(maxMinutes: Double): AxisModel {
-    val s = stringResource(Res.string.s)
-    val d = stringResource(Res.string.d)
-    return remember(maxMinutes, s, d) { buildAxisModel(maxMinutes, s, d) }
+    val topHours = remember(maxMinutes) { axisTopHours(maxMinutes) }
+    // "2с / 1с" emas — "2 soat / 1 soat" (qisqartma "soniya" deb ham öqiladi)
+    val topLabel = pluralStringResource(Res.plurals.hours, topHours, topHours)
+    val midLabel = if (topHours == 1) pluralStringResource(Res.plurals.minutes, 30, 30)
+    else pluralStringResource(Res.plurals.hours, topHours / 2, topHours / 2)
+
+    val measurer = rememberTextMeasurer()
+    val style = AppTypography.bodySmRegular
+    val density = LocalDensity.current
+    return remember(topHours, topLabel, midLabel, style, density) {
+        val labelPx = maxOf(
+            measurer.measure(topLabel, style).size.width,
+            measurer.measure(midLabel, style).size.width,
+        )
+        val width = with(density) { labelPx.toDp() } + 2.dp
+        AxisModel(
+            maxMinutes = topHours * 60.0,
+            midLabel = midLabel,
+            topLabel = topLabel,
+            width = maxOf(MIN_AXIS_WIDTH, width),
+        )
+    }
 }
 
-private fun buildAxisModel(maxMinutesRaw: Double, s: String, d: String): AxisModel {
+private fun axisTopHours(maxMinutesRaw: Double): Int {
     val maxHours = max(0.0, maxMinutesRaw / 60.0)
-    val topHours = when {
+    return when {
         maxHours <= 1.0 -> 1
         maxHours <= 2.0 -> 2
         else            -> (ceil(maxHours / 2.0) * 2.0).toInt()
     }.coerceAtMost(24)
-
-    val midLabel = if (topHours == 1) "30$d" else "${topHours / 2}$s"
-    val topLabel = "${topHours}$s"
-
-    return AxisModel(maxMinutes = topHours * 60.0, midLabel = midLabel, topLabel = topLabel)
 }
 
 @Composable

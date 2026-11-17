@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.protection
 
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
 import androidx.compose.foundation.background
 import androidx.compose.animation.AnimatedVisibility
@@ -299,6 +300,7 @@ fun ProtectionUi(
             .background(AppColors.bg.secondary),
     ) {
         CustomHeader(
+            voice = VoiceScreen.PROTECTION,
             title = stringResource(Res.string.himoya),
             showBackButton = true,
             onBackClick = { navigator?.pop() },

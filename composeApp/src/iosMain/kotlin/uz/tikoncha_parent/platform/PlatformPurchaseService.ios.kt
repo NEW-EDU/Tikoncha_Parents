@@ -9,13 +9,20 @@ import uz.tikoncha_parent.domain.model.PurchaseResult
 actual class PlatformPurchaseService actual constructor() {
 
     actual suspend fun purchase(productId: String, appAccountToken: String?): PurchaseResult {
-        val bridge = StoreKitBridgeProvider.bridge ?: return PurchaseResult.Error("App Store is not available")
+        // StoreKit'ning inglizcha matni ekranga chiqmaydi — kod qaytadi, UI tarjima qilingan matnni ko'rsatadi
+        val bridge = StoreKitBridgeProvider.bridge ?: run {
+            Logger.e("PlatformPurchaseService", "StoreKit bridge is not set")
+            return PurchaseResult.Error(STORE_ERROR_UNAVAILABLE)
+        }
         return suspendCancellableCoroutine { cont ->
             bridge.purchase(productId, appAccountToken, object : StoreKitPurchaseCallback {
                 override fun onSigned(jws: String, transactionId: String) { if (cont.isActive) cont.resume(PurchaseResult.Signed(jws, transactionId)) }
                 override fun onCancel() { if (cont.isActive) cont.resume(PurchaseResult.Cancelled) }
                 override fun onPending() { if (cont.isActive) cont.resume(PurchaseResult.Pending) }
-                override fun onError(message: String) { if (cont.isActive) cont.resume(PurchaseResult.Error(message)) }
+                override fun onError(message: String) {
+                    Logger.e("PlatformPurchaseService", "StoreKit purchase error: $message")
+                    if (cont.isActive) cont.resume(PurchaseResult.Error(STORE_ERROR_FAILED))
+                }
             })
         }
     }

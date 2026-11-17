@@ -7,6 +7,31 @@ import uz.tikoncha_parent.ui.rememberCachedImage
 import tikoncha_parents.composeapp.generated.resources.ohirgi_faollik
 import tikoncha_parents.composeapp.generated.resources.profile_hedgehog_img
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.bekor_qilish
+import tikoncha_parents.composeapp.generated.resources.child_unlinked_success
+import tikoncha_parents.composeapp.generated.resources.dialog_failed
+import tikoncha_parents.composeapp.generated.resources.dialog_success
+import tikoncha_parents.composeapp.generated.resources.muvaffaqiyatli
+import tikoncha_parents.composeapp.generated.resources.ok
+import tikoncha_parents.composeapp.generated.resources.unlink_child_action
+import tikoncha_parents.composeapp.generated.resources.unlink_child_button
+import tikoncha_parents.composeapp.generated.resources.unlink_child_message
+import tikoncha_parents.composeapp.generated.resources.unlink_child_title
+import tikoncha_parents.composeapp.generated.resources.xatolik
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import uz.tikoncha_parent.presentation.base.CustomButton
+import uz.tikoncha_parent.presentation.base.CustomDialog
+import uz.tikoncha_parent.presentation.base.LoadingDialog
+import uz.tikoncha_parent.presentation.profile.ProfileEvent
+import uz.tikoncha_parent.presentation.ui_state.ResponseState
+import uz.tikoncha_parent.presentation.ui_state.errorText
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.painterResource
 import coil3.compose.AsyncImage
@@ -64,12 +89,112 @@ class ChildDetailScreen(
         LaunchedEffect(Unit) { viewModel.getChildren() }
 
         val current = state.children.firstOrNull { it.userId == child.userId } ?: child
+        val event = viewModel::onEvent
+
+        // ── Farzandni uziş: yozuvli qizil tugma → tasdiq ("Bekor qiliş" birinçi) → natija ──
+        var askUnlink by remember { mutableStateOf(false) }
+        val unlinkError = state.unlinkState.errorText()
+
+        LoadingDialog(state.unlinkState is ResponseState.Loading)
+
+        if (askUnlink) {
+            UnlinkChildSheet(
+                childName = current.name,
+                onCancel = {
+                    askUnlink = false
+                    event(ProfileEvent.DismissUnlinkDialog)
+                },
+                onConfirm = {
+                    askUnlink = false
+                    event(ProfileEvent.ConfirmUnlink)
+                },
+            )
+        }
+
+        CustomDialog(
+            painter = painterResource(Res.drawable.dialog_success),
+            show = state.unlinkState is ResponseState.Success,
+            title = stringResource(Res.string.muvaffaqiyatli),
+            message = stringResource(Res.string.child_unlinked_success),
+            buttonText = stringResource(Res.string.ok),
+            showCloseButton = false,
+            onDismiss = {
+                event(ProfileEvent.ClearUnlinkState)
+                navigator?.pop()
+            },
+            onButtonClick = {
+                event(ProfileEvent.ClearUnlinkState)
+                navigator?.pop()
+            },
+        )
+
+        CustomDialog(
+            painter = painterResource(Res.drawable.dialog_failed),
+            show = unlinkError.isNotEmpty(),
+            title = stringResource(Res.string.xatolik),
+            message = unlinkError,
+            buttonText = stringResource(Res.string.ok),
+            showCloseButton = false,
+            onDismiss = { event(ProfileEvent.ClearUnlinkState) },
+            onButtonClick = { event(ProfileEvent.ClearUnlinkState) },
+        )
 
         ChildDetailUi(
             navigator = navigator,
             child = current,
-            onEdit = { navigator?.push(ChildEditScreen(current)) }
+            onEdit = { navigator?.push(ChildEditScreen(current)) },
+            onUnlink = {
+                event(ProfileEvent.OnUnlinkClicked(current))
+                askUnlink = true
+            },
         )
+    }
+}
+
+/** Uziş tasdig'i: oqibat va qanday qayta ulaş aytiladi; xavfsiz tanlov ("Bekor qiliş") — birinçi va asosiy. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun UnlinkChildSheet(
+    childName: String,
+    onCancel: () -> Unit,
+    onConfirm: () -> Unit,
+) {
+    ModalBottomSheet(
+        onDismissRequest = onCancel,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        containerColor = AppColors.bg.elevated,
+    ) {
+        Column(Modifier.padding(start = 20.dp, end = 20.dp, bottom = 28.dp)) {
+            Text(
+                text = stringResource(Res.string.unlink_child_title),
+                style = AppTypography.titleLgSemiBold,
+                color = AppColors.text.primary,
+            )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = stringResource(Res.string.unlink_child_message, childName),
+                style = AppTypography.titleSmMedium,
+                color = AppColors.text.secondary,
+            )
+            Spacer(Modifier.height(20.dp))
+            CustomButton(
+                text = stringResource(Res.string.bekor_qilish),
+                onClick = onCancel,
+                modifier = Modifier.fillMaxWidth().height(52.dp),
+            )
+            Spacer(Modifier.height(10.dp))
+            Text(
+                text = stringResource(Res.string.unlink_child_action),
+                style = AppTypography.titleSmSemiBold,
+                color = AppColors.text.accentDanger,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(12.dp))
+                    .clickable(onClick = onConfirm)
+                    .padding(vertical = 14.dp),
+            )
+        }
     }
 }
 
@@ -78,6 +203,7 @@ fun ChildDetailUi(
     child: UserInfo,
     navigator: Navigator?,
     onEdit: () -> Unit = {},
+    onUnlink: () -> Unit = {},
 ) {
     val systemBars = rememberScreenSystemBars(
         statusBarColor = AppColors.bg.secondary,
@@ -131,6 +257,17 @@ fun ChildDetailUi(
             PersonalInfoItem(
                 userInfo = child,
                 onEdit = onEdit
+            )
+            // Yozuvli, qizil matnli tugma (belgisiz) — nima qilishi aniq; tasdiqsiz hech narsa uzilmaydi
+            Text(
+                text = stringResource(Res.string.unlink_child_button),
+                style = AppTypography.titleSmSemiBold,
+                color = AppColors.text.accentDanger,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .clip(RoundedCornerShape(12.dp))
+                    .clickable(onClick = onUnlink)
+                    .padding(horizontal = 20.dp, vertical = 14.dp),
             )
         }
     }

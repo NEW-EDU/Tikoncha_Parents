@@ -3,6 +3,7 @@ package uz.tikoncha_parent.presentation.profile
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.layout.heightIn
@@ -39,6 +40,7 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
  * Profil menyusi qatori — M3 Expressive guruhlangan ro'yxat elementi: guruhning tashqi burchaklari katta, ichkilari
  * kichik, elementlar orasida ingichka bo'shliq; chapda tonal doiradagi ikonka, o'ngda strelka. [divider] eskirgan —
  * guruh uslubida chiziq kerak emas (imzo mos kelishi uchun qoldirilgan).
+ * [tintIcon] = false — rangli 3D rasm (`ic3d_pr_*`): doirasiz, tintsiz, 40dp (qator balandligi özgarmaydi).
  */
 @Composable
 fun ProfileSectionItem(
@@ -50,6 +52,7 @@ fun ProfileSectionItem(
     iconColor: Color = AppColors.icon.accentPrimary,
     segmentIndex: Int = 0,
     segmentCount: Int = 1,
+    tintIcon: Boolean = true,
 ) {
     Row(
         modifier = Modifier
@@ -59,19 +62,23 @@ fun ProfileSectionItem(
             .padding(horizontal = 14.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(
-            modifier = Modifier
-                .size(40.dp)
-                .clip(CircleShape)
-                .background(iconColor.copy(alpha = 0.14f)),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                painter = icon,
-                contentDescription = null,
-                tint = iconColor,
-                modifier = Modifier.size(20.dp)
-            )
+        if (tintIcon) {
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(iconColor.copy(alpha = 0.14f)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painter = icon,
+                    contentDescription = null,
+                    tint = iconColor,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+        } else {
+            Image(painter = icon, contentDescription = null, modifier = Modifier.size(40.dp))
         }
         Spacer(Modifier.width(14.dp))
         Text(

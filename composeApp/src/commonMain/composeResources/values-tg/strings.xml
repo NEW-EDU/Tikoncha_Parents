@@ -94,7 +94,7 @@
     <string name="maktab">Мактаб</string>
     <string name="sozlamalar">Танзимот</string>
     <string name="bildirishnomalar">Огоҳиномаҳо</string>
-    <string name="tema">Мавзӯъ</string>
+    <string name="tema">Ранги экран</string>
     <string name="tasdiqlash">Тасдиқ кардан</string>
     <string name="tolov">Пардохт</string>
     <string name="obuna_pro">Обунаи Pro</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">ID-и шиноснома</string>
     <string name="reklama">Реклама</string>
     <string name="yorug">Равшан</string>
-    <string name="theme_system">Система</string>
+    <string name="theme_system">Мисли телефон</string>
     <string name="xavfli_zona">Минтақаи хатарнок</string>
     <string name="akkauntni_o_chirish">Нест кардани ҳисоб</string>
     <string name="pochta_orqali">Тавассути почтаи электронӣ</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Иҷозат пурсидан</string>
     <string name="joylashuv_uchun_ruxsat">Иҷозати ҷойгиршавӣ</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Барои пурра истифода бурдани харита дар танзимот иҷозати ҷойгиршавиро диҳед!</string>
-    <string name="xatolik">Хатогӣ</string>
-    <string name="ok">Хуб</string>
+    <string name="xatolik">Нашуд</string>
+    <string name="ok">Фаҳмо</string>
     <string name="qoshish">Илова кардан</string>
     <string name="ogil_bola">Писар</string>
     <string name="qiz_bola">Духтар</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Бомуваффақият</string>
     <string name="qisqartirish">Кӯтоҳ кардан</string>
     <string name="vazifa_tahrirlandi">Вазифа таҳрир шуд</string>
-    <string name="server_connection_error">Хатогии пайвастшавӣ ба сервер!</string>
+    <string name="server_connection_error">Ҳоло пайваст шудан нашуд. Каме баъдтар боз кӯшиш кунед.</string>
     <string name="faol">Фаъол</string>
     <string name="faol_emas">Ғайрифаъол</string>
     <string name="ohirgi_faollik">Охирин фаъолият:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Диққат!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Маҳдудияти истифода дар фосилаи вақти интихобкардаи шумо кор намекунад! Яъне ҷадвали вақт афзалияти баландтар дорад.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d барнома дар дастгоҳи шумо насб нашудааст</string>
-    <string name="cheklovlar">Маҳдудиятҳо</string>
+    <string name="cheklovlar">Қоидаҳо</string>
     <string name="ta_ilovaga">ба %1$d барнома</string>
     <string name="ta_vebsaytga">ба %1$d вебсайт</string>
     <string name="ustuvorligi">Афзалият</string>
-    <string name="jadval_nomini_kiriting">Номи ҷадвалро ворид кунед</string>
+    <string name="jadval_nomini_kiriting">Номи қоидаро ворид кунед</string>
     <string name="misol_o_quv_markaz">масалан: Маркази таълимӣ</string>
     <string name="ochirish">Нест кардан</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Бе захира кардани ҷадвал баромадан мехоҳед?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">ТАБРИК МЕГӮЕМ!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Акнун ин обуна аз они шумост</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Аз имкониятҳои махсус ва дастгирии афзалиятнок баҳра баред!</string>
-    <string name="statistika">Омор</string>
+    <string name="statistika">Вақти телефон</string>
     <string name="chegirmalar">Тахфифҳо</string>
     <string name="chegirma">Тахфиф</string>
-    <string name="topshiriqlar">Супоришҳо</string>
-    <string name="jadvallar">Ҷадвалҳо</string>
+    <string name="topshiriqlar">Вазифаҳо</string>
+    <string name="jadvallar">Қоидаҳо</string>
     <string name="ilova_cheklangan">%1$d барнома маҳдуд шудааст</string>
-    <string name="faol_vazifa">%1$d вазифаи фаъол</string>
-    <string name="bugun_sarfladi">Имрӯз сарф шуд</string>
+    <string name="faol_vazifa">Вазифаҳои фаъол: %1$d</string>
+    <string name="bugun_sarfladi">Имрӯз дар телефон</string>
     <string name="chiqish">Баромадан</string>
     <string name="chiqishni_xohlaysizmi">Мехоҳед бароед?</string>
     <string name="chiqishni_tasdiqlang">Баромаданро тасдиқ кунед.</string>
@@ -322,8 +322,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">Профил ва танзимоти шумо дар сервер нигоҳ дошта мешаванд.</string>
     <string name="qayta_kirsangiz_tiklanadi">Вақте ки аз нав ворид шавед, ҳама чиз барқарор мешавад.</string>
     <string name="farzand_qoshilmagan">Фарзанд илова нашудааст</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Ҷадвалҳо, чатҳо ва ҳисоботҳо пас аз илова кардани фарзанд пайдо мешаванд.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Хатогии ғайричашмдошт рух дод. Лутфан боз кӯшиш кунед.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Қоидаҳо, чатҳо ва вақти телефон пас аз илова шудани фарзанд пайдо мешаванд.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Нашуд. Каме баъдтар боз кӯшиш кунед.</string>
     <string name="hozircha_farzand_qoshilmagan">Шумо ҳанӯз фарзанд илова накардаед.</string>
     <string name="diqqat2">ДИҚҚАТ!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Пеш аз идома навъи барномаро интихоб кунед.</string>
@@ -343,10 +343,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">Интихоб кунед, ки коди тасдиқро \n чӣ тавр фиристем</string>
     <string name="tasdiqlash_kodini_olish">Гирифтани коди тасдиқ</string>
     <string name="telegram_kod_kiritish">Кодеро, ки ба Telegram-и ба %1$s пайвастшуда фиристода шуд, ворид кунед</string>
-    <string name="xato_kod_kiritdingiz">Шумо коди нодуруст ворид кардед</string>
+    <string name="xato_kod_kiritdingiz">Рамз мувофиқ наомад. Боз як бор нависед.</string>
     <string name="kod_olish_usulini_ozgartirish">Тағйир додани усули гирифтани код</string>
     <string name="versiya">Версия</string>
-    <string name="jadval_yaratish">Сохтани ҷадвал</string>
+    <string name="jadval_yaratish">Сохтани қоида</string>
     <string name="sizning_cheklovlaringiz">Маҳдудиятҳои шумо</string>
 
     <string name="avtomatik_bloklash_vaqti">Манъкунии худкор дар рӯзҳо ва соатҳои интихобшуда</string>
@@ -364,9 +364,9 @@
     <string name="noto_g_ri_url_format">Формати URL нодуруст аст</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Ин сайт аллакай дар рӯйхат ҳаст</string>
     <string name="to_liq_nazoratni_yoqing">Назорати пурраро фаъол кунед</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Барномаҳо, вақт ва истифодаро тавассути Hoglt идора кунед. Бо Plus бе маҳдудият кор кунед ва тавассути реҷаи Сипар ҳимояи ҳадди аксарро фаъол кунед.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Барномаҳо ва вақти телефонро тавассути Hoglt идора кунед. Бо Plus маҳдудият нест ва ҳимояи сахтро фаъол карда метавонед.</string>
     <string name="plus_imkoniyatlarini_ochish">Кушодани имкониятҳои Plus</string>
-    <string name="jadval_nomi">Номи ҷадвал</string>
+    <string name="jadval_nomi">Номи қоида</string>
     <string name="saytlar">Сайтҳо</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Муайян кунед, ки барномаҳо ва вебсайтҳо кай ва дар кадом шароит маҳдуд мешаванд</string>
 
@@ -395,7 +395,7 @@
     <string name="coins_help_close">Пӯшидан</string>
     <string name="qollash">Татбиқ кардан</string>
     <string name="promokod">Промокод:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Шумо тангаҳоро бомуваффақият харидед.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Тангаҳо харида шуданд.</string>
     <string name="narx">Нарх</string>
     <string name="jami">Ҳамагӣ</string>
     <string name="bekor_qilindi">Бекор карда шуд!</string>
@@ -412,11 +412,11 @@
     <string name="plus_obnuna_kerak">Обунаи PLUS лозим аст</string>
     <string name="toliq_nazorat_statistika">Назорати пурра ва омор</string>
     <string name="farzand_ilova_kuzatish">Пайгирӣ кунед, ки фарзандатон дар давоми рӯз кадом барномаҳоро ва чӣ қадар истифода мебарад.</string>
-    <string name="uchtagacha_jadval">То 3 ҷадвал</string>
+    <string name="uchtagacha_jadval">То 3 қоида</string>
     <string name="jadval_cheklovlar">Барои рӯзҳо, ҳафтаҳо ё вақтҳои махсус маҳдудиятҳои алоҳида гузоред.</string>
     <string name="qattiq_bloklash_qalqon">Ҳимояи сахт: сайтҳо ва видеоҳои кӯтоҳ низ манъ мешаванд</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Фарзандатон маҳдудиятҳоро хомӯш ё тағйир дода наметавонад.</string>
-    <string name="tez_bloklash_timer">Манъкунии зуд (Таймер)</string>
+    <string name="tez_bloklash_timer">Барномаҳои ҳамеша баста</string>
     <string name="vaqtinchalik_bloklash_tezi">Ҳангоми зарурат манъкунии муваққатиро дар чанд сония фаъол кунед.</string>
     <string name="hisobot_tahlil">Ҳисоботҳо ва таҳлил</string>
     <string name="farzand_nazorat_tavsifi">Истифодаи телефони фарзандатонро назорат кунед. Барномаҳои номатлубро манъ кунед, вақти истифодаро муқаррар кунед ва муҳити бехатар фароҳам оред.</string>
@@ -494,8 +494,8 @@
     <string name="danger_cat_tobacco">Тамоку ва вейпҳо</string>
     <string name="danger_distance_m">%1$d м</string>
     <string name="radius">Радиус</string>
-    <string name="farzandim">Фарзандам</string>
-    <string name="ozim">Худам</string>
+    <string name="farzandim">Худи фарзанд гузошта</string>
+    <string name="ozim">Аз ман</string>
     <string name="faol_vazifa_yo_q">Вазифаи фаъол нест</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Барои фарзандатон вазифа нест</string>
 
@@ -520,7 +520,7 @@
     <string name="weekday_sunday">Якшанбе</string>
 
     <string name="juda_muhim">Хеле муҳим</string>
-    <string name="tekshirildi">Санҷида шуд</string>
+    <string name="tekshirildi">Қабул мекунам</string>
     <string name="ko_rish">Дидан</string>
     <string name="vazifa_ochirilsinmi">Вазифа нест карда шавад?</string>
     <string name="vazifa_ochirish_tasdiq">Дар ҳақиқат мехоҳед ин вазифаро нест кунед?</string>
@@ -542,7 +542,7 @@
     <string name="tolovlar_tarixi_bos">Таърихи пардохтҳо холӣ аст</string>
     <string name="tolovlar_tarixi_bos_hint">Пас аз харидҳо дар ин ҷо пайдо мешавад</string>
     <string name="boshqa_yozuvlar_yoq">Дигар сабт нест</string>
-    <string name="xatolik_yuz_berdi">Хатогӣ рух дод</string>
+    <string name="xatolik_yuz_berdi">Бор нашуд. Боз кӯшиш кунед.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -573,7 +573,7 @@
 
     <string name="izoh_ixtiyoriy">Шарҳ (ихтиёрӣ)</string>
     <string name="vazifa_tangalari">Тангаҳое, ки барои иҷрои вазифа дода мешаванд</string>
-    <string name="vazifani_tekshirish">Санҷиши вазифа</string>
+    <string name="vazifani_tekshirish">Ҳама дуруст аст?</string>
     <string name="izoh">Шарҳ</string>
     <string name="muhimlilik_darajasi">Дараҷаи муҳимият</string>
     <string name="ragbatlantirish_tangachalari">Тангаҳои ҳавасмандкунӣ</string>
@@ -593,7 +593,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Фарзандатон бояд барномаи Hoglt-ро кушода, коди тасдиқро ворид кунад.</string>
     <string name="bola_hali_bajardim_bosmagan">Фарзанд ҳанӯз тугмаи «Иҷро кардам»-ро пахш накардааст</string>
     <string name="foydalanilmagan">Истифоданашуда</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Бояд аз нав ворид шавед</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Ворид шудан</string>
     <string name="profil_rasmi">Акси профил</string>
@@ -619,7 +619,7 @@
     <string name="telegram_orqali_kirish">Ворид шудан бо Telegram</string>
     <string name="yoki">ё</string>
     <string name="telefon_raqami">Рақами телефон</string>
-    <string name="kirish_subtitle">Барои идома ба ҳисоби худ ворид шавед</string>
+    <string name="kirish_subtitle">Тавассути Telegram ворид шавед. Агар ҳисоб надошта бошед, худаш сохта мешавад.</string>
     <string name="login_privacy">Бо идома додан шумо бо Сиёсати махфият ва Шартҳои истифода розӣ мешавед</string>
 
     <string name="telegram_ochilmoqda">Telegram кушода мешавад…</string>
@@ -755,8 +755,8 @@
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Шумо дархостро тасдиқ кардед — акнун фарзандатон метавонад барномаро нест кунад.</string>
     <string name="sorov_rad_etildi_desc">Шумо дархостро рад кардед.</string>
     <string name="unlink_child_title">Фарзанд ҷудо карда шавад?</string>
-    <string name="unlink_child_message">Пас аз ин амал мониторинг дар дастгоҳи %1$s қатъ мешавад!</string>
-    <string name="unlink_child_action">Ҷудо кардан</string>
+    <string name="unlink_child_message">Ҳимоя ва қоидаҳо дар телефони %1$s қатъ мешаванд. Барои аз нав пайваст кардан рамзро тавассути «Илова кардани фарзанд» боз скан кунед.</string>
+    <string name="unlink_child_action">Ҳа, ҷудо карда шавад</string>
     <string name="child_unlinked_success">Фарзанд бомуваффақият ҷудо карда шуд</string>
     <string name="operator_kodi_topilmadi">Чунин коди оператор вуҷуд надорад</string>
     <string name="kod_amal_qilish_muddati">Код эътибор дорад: %1$s</string>
@@ -770,7 +770,7 @@
     <string name="farzand_tanlanmagan">Фарзанд интихоб нашудааст</string>
     <string name="vazifa_id_topilmadi">ID-и вазифа ёфт нашуд</string>
     <string name="tahrirlangan">таҳриршуда</string>
-    <string name="jadval_topilmadi">Ҷадвал ёфт нашуд.</string>
+    <string name="jadval_topilmadi">Ёфт нашуд — шояд нест карда шудааст. Ба қафо баргардед ва аз нав кушоед.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d дақиқа</item>
         <item quantity="other">%1$d дақиқа</item>
@@ -803,8 +803,8 @@
     <string name="tarix_disabled">Хомӯш шуд</string>
     <string name="tarix_paused">Таваққуф шудааст</string>
     <string name="tarix_deleted">Нест карда шуд</string>
-    <string name="tarix_quick_block_add">Манъкунии зуд илова шуд</string>
-    <string name="tarix_quick_block_remove">Манъкунии зуд бардошта шуд</string>
+    <string name="tarix_quick_block_add">Ба барномаҳои ҳамеша баста илова шуд</string>
+    <string name="tarix_quick_block_remove">Аз барномаҳои ҳамеша баста хориҷ шуд</string>
     <string name="tarix_bosh">Ҳоло тағйирот нест</string>
     <string name="tarix_resumed">Идома ёфт</string>
     <string name="muddat">Давомнокӣ</string>
@@ -828,26 +828,26 @@
     <string name="stat_row_sec">%1$d сон</string>
     <string name="stat_hour_only">%1$d соат</string>
     <string name="stat_per_day">~%1$s дар як рӯз</string>
-    <string name="stat_quick_blocked">Дар манъкунии зуд</string>
-    <string name="stat_quick_blocked_paused">Дар манъкунии зуд · таваққуф</string>
-    <string name="stat_quick_blocked_inactive">Дар манъкунии зуд · Plus лозим аст</string>
+    <string name="stat_quick_blocked">Ҳамеша баста</string>
+    <string name="stat_quick_blocked_paused">Ҳамеша баста · боздошта шуд</string>
+    <string name="stat_quick_blocked_inactive">Ҳамеша баста · Plus лозим</string>
     <string name="stat_blocked_by_child">Фарзанд худаш манъ кардааст</string>
     <string name="stat_blocked_by_child_paused">Фарзанд худаш манъ кардааст · таваққуф</string>
     <string name="stat_blocked_by_child_inactive">Фарзанд худаш манъ кардааст · Plus лозим аст</string>
     <string name="stat_blocked_by_coparent">Волиди дигар манъ кардааст</string>
     <string name="stat_blocked_by_coparent_paused">Волиди дигар манъ кардааст · таваққуф</string>
     <string name="stat_blocked_by_coparent_inactive">Волиди дигар манъ кардааст · Plus лозим аст</string>
-    <string name="stat_lock_hint">Қулф барномаро ба манъкунии зуд илова ё аз он хориҷ мекунад</string>
-    <string name="stat_quick_add_cd">Илова ба манъкунии зуд</string>
-    <string name="stat_quick_remove_cd">Хориҷ аз манъкунии зуд</string>
-    <string name="stat_reenable_title">Манъкунии зуд фаъол мешавад</string>
-    <string name="stat_reenable_message">Манъкунии зуд хомӯш аст. Манъ кардани ин барнома онро дубора фаъол мекунад ва барномаҳои дигари рӯйхати он низ манъ мешаванд: %1$d.</string>
+    <string name="stat_lock_hint">Қулф барномаро ба барномаҳои ҳамеша баста илова ё аз он хориҷ мекунад</string>
+    <string name="stat_quick_add_cd">Ба барномаҳои ҳамеша баста илова кардан</string>
+    <string name="stat_quick_remove_cd">Аз барномаҳои ҳамеша баста хориҷ кардан</string>
+    <string name="stat_reenable_title">Барномаҳои ҳамеша баста боз фаъол мешаванд</string>
+    <string name="stat_reenable_message">«Барномаҳои ҳамеша баста» ҳоло хомӯш аст. Агар ин барномаро илова кунед, он боз фаъол мешавад ва боз %1$d барномаи рӯйхат баста мешаванд.</string>
     <string name="stat_reenable_confirm">Манъ кардан</string>
     <string name="stat_quick_paywall_title">Обуна лозим аст</string>
     <string name="stat_quick_paywall_message">Манъ кардани барнома бо як ламс обунаи Hoglt Plus-ро талаб мекунад.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Манъкунии зуд</string>
+    <string name="quick_title">Барномаҳои ҳамеша баста</string>
     <string name="quick_enabled">Фаъол</string>
     <string name="quick_pause">Таваққуф</string>
     <string name="quick_blocked_apps">Барномаҳои манъшуда</string>
@@ -856,15 +856,15 @@
     <string name="quick_info_always">Барномаҳои ин рӯйхат новобаста аз вақт ва ҷой ҳамеша манъ мебошанд.</string>
     <string name="quick_info_off">Ҳоло он хомӯш аст — барои манъ кардани ин барномаҳо онро фаъол кунед.</string>
     <string name="quick_info_paused">То %1$s таваққуф шудааст — то он вақт ҳеҷ чиз манъ намешавад.</string>
-    <string name="quick_info_stats">Шумо инчунин метавонед аз омори истифода бо як ламс барномаҳоро илова ё хориҷ кунед.</string>
-    <string name="quick_info_readd">Агар манъкунии зуд хомӯш бошад, илова кардани барнома онро дубора фаъол мекунад.</string>
+    <string name="quick_info_stats">Аз саҳифаи «Вақти телефон» низ метавонед барномаро бо як зер кардан ба ин рӯйхат илова ё аз он хориҷ кунед.</string>
+    <string name="quick_info_readd">Агар «Барномаҳои ҳамеша баста» хомӯш бошад, илова кардани барнома онро боз фаъол мекунад.</string>
     <string name="quick_child_blocks">Фарзанд худаш манъ кардааст</string>
     <string name="quick_coparent_blocks">Волиди дигар манъ кардааст</string>
     <string name="quick_others_note">Ин рӯйхатҳоро танҳо соҳибашон тағйир дода метавонад. Агар лозим бошад, барномаро ба рӯйхати худ илова кунед.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Вақти хоб</string>
-    <string name="policy_preset_limit">Маҳдудияти вақт</string>
+    <string name="policy_preset_limit">Дар як рӯз чӣ қадар вақт</string>
     <string name="policy_preset_school">Соатҳои дарс</string>
     <string name="policy_day_mon">Дш</string>
     <string name="policy_day_tue">Сш</string>
@@ -884,30 +884,30 @@
     <string name="policy_location">Ҷойгиршавӣ</string>
     <string name="policy_active_now">Ҳозир фаъол: %1$s</string>
     <string name="policy_active_until">то %1$s</string>
-    <string name="list_info_none">Ҳоло ягон ҷадвал фаъол нест</string>
+    <string name="list_info_none">Ҳоло ягон қоида кор намекунад</string>
     <string name="list_info_also">Инчунин фаъол: %1$s.</string>
-    <string name="list_info_many">Вақте ки якчанд ҷадвал якбора кор мекунанд, барнома манъ мешавад, агар ягонтои онҳо онро манъ кунад.</string>
-    <string name="list_info_child_scope">Ҷадвалҳои худи фарзанд ҷадвалҳои шуморо бекор карда наметавонанд — барномае, ки шумо манъ мекунед, манъ мемонад.</string>
-    <string name="list_info_school_scope">Агар ҷадвали мактаб барномаро бандад ё онро ошкоро иҷозат диҳад, ҷадвали шумо инро тағйир дода наметавонад. Дар акси ҳол ҷадвали сахттар амал мекунад.</string>
-    <string name="list_info_quick">Манъкунии зуд фаъол аст — барномаҳои он новобаста аз вақт ва ҷой ҳамеша манъ мебошанд.</string>
-    <string name="list_info_paused">Ҷадвалҳои таваққуфшуда: %1$d — то вақти муайяншуда ҳеҷ кор намекунанд.</string>
-    <string name="list_info_how">Ҷадвал вақте ки вақт ва ҷои он фаро мерасад, худ ба худ оғоз мешавад.</string>
-    <string name="policy_tab_templates">Қолабҳо</string>
+    <string name="list_info_many">Агар якчанд қоида якбора кор кунанд, барнома баста мешавад, вақте ки ақаллан яке аз онҳо онро мебандад.</string>
+    <string name="list_info_child_scope">Қоидаҳои худи фарзанд қарори шуморо тағйир дода наметавонанд — барномае, ки шумо бастед, баста мемонад.</string>
+    <string name="list_info_school_scope">Агар қоидаи мактаб барномаро бандад ё ба таври равшан иҷозат диҳад, қоидаи шумо инро тағйир дода наметавонад. Дар ҳолатҳои дигар қоидаи сахттар амал мекунад.</string>
+    <string name="list_info_quick">«Барномаҳои ҳамеша баста» фаъол аст — барномаҳои ин рӯйхат новобаста аз вақт ва ҷой ҳамеша баста мебошанд.</string>
+    <string name="list_info_paused">Қоидаҳои боздошташуда: %1$d — то вақти муқарраршуда кор намекунанд.</string>
+    <string name="list_info_how">Қоида худаш фаъол мешавад, вақте ки вақт ва ҷойи он мерасад.</string>
+    <string name="policy_tab_templates">Қоидаҳои тайёр</string>
     <string name="policy_tab_mine">Аз они ман</string>
     <string name="policy_tab_child">Фарзанд</string>
-    <string name="policy_tab_coparent">Волидайн</string>
+    <string name="policy_tab_coparent">Волиди дуюм</string>
     <string name="policy_tab_school">Мактаб</string>
     <string name="policy_enabled_count">%1$d фаъол</string>
-    <string name="policy_content_protection">Ҳифзи мундариҷа</string>
+    <string name="policy_content_protection">Ҳимоя аз сайтҳои бад</string>
     <string name="policy_content_protection_others">Фарзанд ё волиди дигар фаъол кардааст</string>
     <string name="policy_paused">Таваққуф шудааст</string>
-    <string name="policy_quick_blocks">Манъкуниҳои зуд</string>
+    <string name="policy_quick_blocks">Барномаҳои ҳамеша баста</string>
     <string name="preset_all_apps">Ҳамаи барномаҳо</string>
-    <string name="policy_paywall_protection">Ҳифзи мундариҷа бо Hoglt Plus кор мекунад.</string>
+    <string name="policy_paywall_protection">Ҳимоя аз сайтҳои бад бо Hoglt Plus кор мекунад.</string>
     <string name="policy_paywall_count">Нақшаи ройгон шумораи ҷадвалҳоро маҳдуд мекунад. Hoglt Plus ба шумо бештар медиҳад.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Ҳоло ҳеҷ чиз интихоб нашудааст — ин ҷадвал ҳеҷ чизро манъ намекунад.</string>
+    <string name="info_nothing">Ҳанӯз чизе интихоб нашудааст — ин қоида ҳеҷ чизро намебандад.</string>
     <string name="info_always">Ҳамеша</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s аз %2$s то %3$s</string>
@@ -920,12 +920,12 @@
     <string name="info_what_all_apps_sites">ҳамаи барномаҳо ва сайтҳо манъ мешаванд</string>
     <string name="info_what_selected">чизҳои интихобшуда манъ мешаванд (%1$s)</string>
     <string name="info_stays_open">Кушода мемонанд: %1$s.</string>
-    <string name="info_not_counted">Ба маҳдудият ҳисоб намешаванд: %1$s.</string>
+    <string name="info_not_counted">Вақт ҳисоб намешавад: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s метавонанд ҳамагӣ %3$s истифода шаванд. Пас аз тамом шудани вақт онҳо то фардо манъ мемонанд.</string>
     <string name="info_limit_hourly">%1$s: %2$s метавонанд дар як соат %3$s истифода шаванд. Пас аз тамом шудани вақт онҳо то соати навбатӣ манъ мемонанд.</string>
     <string name="info_limit_all">ҳамаи барномаҳо</string>
     <string name="info_limit_selected">чизҳои интихобшуда</string>
-    <string name="info_limit_gate">Маҳдудият танҳо амал мекунад: %1$s.</string>
+    <string name="info_limit_gate">Вақт танҳо дар ин вақт ҳисоб мешавад: %1$s.</string>
     <string name="info_protected">Зангҳо, SMS ва дигар барномаҳои муҳим ҳеҷ гоҳ манъ намешаванд.</string>
     <string name="info_disabled">Ҳоло он хомӯш аст — барои татбиқ онро фаъол кунед.</string>
 
@@ -934,7 +934,7 @@
     <string name="preset_when">Кай</string>
     <string name="preset_starts">Оғоз</string>
     <string name="preset_ends">Анҷом</string>
-    <string name="preset_limit">Маҳдудият</string>
+    <string name="preset_limit">Чӣ қадар вақт</string>
     <string name="preset_counted">Чӣ ҳисоб мешавад</string>
     <string name="preset_what_closed">Чӣ манъ мешавад</string>
     <string name="preset_only_selected">Танҳо интихобшудаҳо</string>
@@ -975,13 +975,13 @@
     <string name="targets_covered_by_category">Тавассути категория интихоб шудааст</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Суроға ё калимаи калидии нодуруст. Масалан: youtube.com ё kino</string>
-    <string name="editor_new_policy">Ҷадвали нав</string>
+    <string name="editor_new_policy">Қоидаи нав</string>
     <string name="editor_not_selected">Интихоб нашудааст</string>
     <string name="editor_when_hint">ихтиёрӣ · вагарна ҳамеша</string>
     <string name="editor_add_condition">Илова кардани шарт</string>
     <string name="editor_added">Илова шуд</string>
     <string name="editor_condition_time">Вақт</string>
-    <string name="editor_condition_limit">Маҳдудият</string>
+    <string name="editor_condition_limit">Чӣ қадар вақт</string>
     <string name="editor_in_this_time">Дар ин вақт</string>
     <string name="editor_closed_in_time">Манъ мешавад</string>
     <string name="editor_closed_in_time_sub">Дар вақтҳои дигар кушода</string>
@@ -992,8 +992,8 @@
     <string name="editor_inside">Дар дохили минтақа</string>
     <string name="editor_outside">Берун аз минтақа</string>
     <string name="editor_rename">Иваз кардани ном</string>
-    <string name="editor_delete_title">Ин ҷадвалро нест мекунед?</string>
-    <string name="editor_delete_message">«%1$s» нест карда мешавад.</string>
+    <string name="editor_delete_title">Қоида тамоман нест карда шавад?</string>
+    <string name="editor_delete_message">«%1$s» нест карда мешавад. Барномаҳое, ки ин қоида баста буд, боз кушода мешаванд.</string>
     <string name="editor_paywall_allow">Реҷаи «Танҳо интихобшудаҳо кушода мемонанд» бо Plus дастрас аст.</string>
     <string name="location_child_here">Ҷойгиршавии фарзандам</string>
     <string name="protection_section">Чӣ ҳифз мешавад</string>
@@ -1011,24 +1011,24 @@
     <string name="protection_policies_pending">Ҳанӯз расонида нашудааст</string>
     <string name="protection_gujanak_limits_note">Ҳимояи миёна танҳо барномаҳоро мебандад. Сайтҳо ва видеоҳои кӯтоҳ танҳо дар ҳимояи сахт манъ мешаванд: дар телефони фарзандатон Hoglt → «Назорат» → «Реҷаи Сипар».</string>
     <string name="editor_limit_days_follow_time">Мисли вақт — рӯзҳо дар саҳифаи вақт интихоб мешаванд</string>
-    <string name="editor_limit_in_window">маҳдудият дар ин вақт</string>
-    <string name="editor_limit_outside_window">маҳдудият берун аз ин вақт</string>
-    <string name="editor_limit_in_time">Маҳдудият дар ин вақт амал мекунад</string>
+    <string name="editor_limit_in_window">вақт дар ин соатҳо ҳисоб мешавад</string>
+    <string name="editor_limit_outside_window">вақт берун аз ин соатҳо ҳисоб мешавад</string>
+    <string name="editor_limit_in_time">Вақт танҳо дар ин соатҳо ҳисоб мешавад</string>
     <string name="editor_limit_in_time_sub">Дар вақтҳои дигар маҳдудият нест</string>
-    <string name="editor_limit_out_time">Маҳдудият берун аз ин вақт амал мекунад</string>
+    <string name="editor_limit_out_time">Вақт берун аз ин соатҳо ҳисоб мешавад</string>
     <string name="editor_limit_out_time_sub">Дар ин вақт маҳдудият нест</string>
     <string name="info_limit_daily_window">%1$s: %2$s метавонанд ҳамагӣ %3$s истифода шаванд. Вақте ки вақт тамом шавад, то анҷоми ин фосилаи вақт баста мемонанд.</string>
     <string name="targets_only_selected_open_sites_sub">Сайтҳои дигар баста мешаванд</string>
     <string name="targets_only_selected_open_both_sub">Барномаҳо ва сайтҳои дигар баста мешаванд</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Ҳоло ҷадвал нест</string>
-    <string name="policy_empty_mine_sub">Қолабро фаъол кунед ё ҷадвали худро созед</string>
+    <string name="policy_empty_mine_title">Ҳанӯз қоида нест</string>
+    <string name="policy_empty_mine_sub">Яке аз қоидаҳои тайёрро фаъол кунед ё худатон созед</string>
     <string name="empty_search_title">Ҳеҷ чиз ёфт нашуд</string>
     <string name="empty_search_sub">Ҷустуҷӯи дигарро санҷед</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Сайтҳои калонсолон ва қимор</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Ҷадвал</string>
+    <string name="policy_name_schedule">Қоида</string>
     <string name="policy_name_category_block">Манъкунӣ аз рӯи категорияҳо</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Фарзандатон фаъол кардааст</string>
@@ -1123,7 +1123,7 @@
     <string name="ap_off_confirm">Хомӯш кардан</string>
     <string name="ap_keep_on">Фаъол гузоштан</string>
     <string name="ap_retry_note">Мо фардо боз кӯшиш мекунем (%1$d/3).</string>
-    <string name="ap_retry_now">Такрор кардан</string>
+    <string name="ap_retry_now">Ҳозир пардохт кардан</string>
     <string name="ap_other_card">Корти дигар</string>
     <string name="ap_cards_empty_title">Корти захирашуда нест</string>
     <string name="ap_cards_empty_sub">Барои пардохти худкор корти UZCARD ё HUMO илова кунед</string>
@@ -1169,7 +1169,7 @@
     <string name="ulash_tugma">Пайваст кардан</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Гузаштан</string>
+    <string name="ob_skip">Баъдтар мебинам</string>
     <string name="ob_start">Биёед оғоз кунем</string>
     <string name="ob_got_it">Фаҳмидам</string>
     <string name="ob_hello_title">Салом, ман Hoglt ҳастам</string>
@@ -1183,10 +1183,10 @@
     <string name="ob_day_study">Таҳсил</string>
     <string name="ob_min_fmt">%1$d дақ</string>
     <string name="ob_rules_title">Қоидаҳоро як бор гузоред</string>
-    <string name="ob_rules_body">Вақти хоб, вақти дарс ва маҳдудиятҳои ҳаррӯза худ ба худ фаъол мешаванд.</string>
+    <string name="ob_rules_body">Вақти хоб, вақти дарс ва вақти рӯзона худ аз худ фаъол мешаванд.</string>
     <string name="ob_rule_sleep">Вақти хоб</string>
     <string name="ob_rule_school">Вақти дарс</string>
-    <string name="ob_rule_limit">Маҳдудияти ҳаррӯза</string>
+    <string name="ob_rule_limit">Дар як рӯз чӣ қадар вақт</string>
     <string name="ob_rule_limit_value">2 соат</string>
     <string name="ob_map_title">Бидонед, ки ӯ дар куҷост</string>
     <string name="ob_map_body">Фарзандатонро дар харита бинед ва барои ҷойҳое мисли мактаб қоида гузоред.</string>
@@ -1243,8 +1243,8 @@
     <string name="home_layout_list">Рӯйхат</string>
     <string name="home_layout_grid">Тӯр</string>
     <string name="home_greeting">Салом, %1$s</string>
-    <string name="kecha_sarfladi">Дирӯз сарф шуд</string>
-    <string name="sana_sarfladi">%1$s сарф шуд</string>
+    <string name="kecha_sarfladi">Дирӯз дар телефон</string>
+    <string name="sana_sarfladi">%1$s дар телефон</string>
     <string name="stat_no_usage_day">Дар ин рӯз ҳанӯз аз телефон истифода нашудааст</string>
     <string name="kirish_usuli">Усули воридшавӣ</string>
     <string name="google_hisobi">Ҳисоби Google</string>
@@ -1267,7 +1267,7 @@
     <string name="vazifa_muddati">Мӯҳлат</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Ёрдамчӣ</string>
+    <string name="ai_assistant_title">Ёрдамчии зирак</string>
     <string name="ai_assistant_subtitle">Пурсед ё қоида гузоред</string>
     <string name="ai_period_today">Имрӯз</string>
     <string name="ai_period_yesterday">Дирӯз</string>
@@ -1397,20 +1397,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Ройгон: %1$d қоидаи фаъол · Plus: бемаҳдуд</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Барнома намебинад, ки кадом барнома кушода мешавад: вақти телефон ҳисоб намешавад, қоидаҳо кор намекунанд.</string>
+    <string name="perm_why_overlay">Болои барномаи басташуда экрани манъ пайдо намешавад — қоидаҳо барномаро баста наметавонанд.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Шумо намебинед, ки фарзандатон дар куҷост; қоидаҳои ба ҷой вобаста низ кор намекунанд.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Бе ин сайтҳо, YouTube Shorts ва Instagram Reels манъ намешаванд ва барномаро ба осонӣ нест кардан мумкин аст.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">Дар тарифи ройгон ба як қоида то %1$d барнома илова кардан мумкин аст. Барои бештар Plus лозим аст.</string>
+    <string name="policy_paywall_app_limit">Шумораи барномаҳо дар як қоида ба ҳадди тарифи шумо расид.</string>
     <string name="clip_child_phone">Дар телефони ӯ</string>
     <string name="prot_default_note">Ҳоло қоидаҳои шумо ягон барномаро намебанданд. Барои он ки банданд, дар телефони фарзандатон Hoglt-ро кушоед → дар бахши «Назорат» ҳимояро фаъол кунед.</string>
     <string name="prot_strength">Дараҷаи ҳимоя</string>
@@ -1440,4 +1440,64 @@
     <string name="task_empty_done">Ҳанӯз вазифаи иҷрошуда нест</string>
     <string name="task_empty_overdue">Вазифаи мӯҳлаташ гузашта нест</string>
     <string name="task_empty_filter_hint">Барои дидани ҳамаи вазифаҳо филтри интихобшударо боз як бор зер кунед.</string>
+    <string name="voice_listen">Гӯш кардан</string>
+    <string name="voice_stop">Боздоштан</string>
+    <string name="voice_unavailable">Шарҳи овозӣ ҳоло нест. Баъдтар боз кӯшиш кунед.</string>
+    <string name="live_confirm_title">Тамошои зинда</string>
+    <string name="live_confirm_body">Ба %1$s занг меравад. Агар розӣ шавад, видео кушода мешавад.</string>
+    <string name="live_child_fallback">Фарзандатон</string>
+    <string name="live_call_button">Занг задан</string>
+    <string name="live_ringing">Занг задан ба %1$s…</string>
+    <string name="live_connecting">Пайваст шуда истодааст…</string>
+    <string name="live_error_connect">Пайваст шудан нашуд. Каме баъдтар боз кӯшиш кунед.</string>
+    <string name="live_declined">Фарзандатон рад кард</string>
+    <string name="live_no_answer">Ҷавоб нест</string>
+    <string name="live_end">Анҷом додан</string>
+    <string name="live_show_on_map">Дар харита нишон додан</string>
+    <string name="unlink_child_button">Ҷудо кардани фарзанд</string>
+    <string name="saqlandi">Нигоҳ дошта шуд</string>
+    <string name="ap_retry_now_amount">Ҳозир пардохт кардан · %1$s</string>
+    <string name="pay_charge_body">Аз корти •• %1$s %2$s гирифта мешавад.</string>
+    <string name="pay_charge_body_amount">Аз корт %1$s гирифта мешавад.</string>
+    <string name="pay_charge_body_plain">Ҳаққи обуна аз корти нигоҳдошташуда гирифта мешавад.</string>
+    <string name="pay_confirm_pay">Пардохт кардан</string>
+    <string name="app_store_unavailable">App Store ҳоло дастрас нест. Каме баъдтар боз кӯшиш кунед.</string>
+    <string name="app_store_failed">Тавассути App Store пардохт кардан нашуд. Боз кӯшиш кунед.</string>
+    <string name="apple_activation_pending_title">Пардохт қабул шуд</string>
+    <string name="login_subtitle_social">Усули қулайро интихоб кунед. Агар ҳисоб надошта бошед, худаш сохта мешавад.</string>
+    <string name="login_telegram_not_opened">Telegram кушода нашуд. Санҷед, ки Telegram насб шудааст ё бо роҳи дигар ворид шавед.</string>
+    <string name="ob_notif_enable">Фаъол кардани огоҳиномаҳо</string>
+    <string name="comfort_title">Хондан қулай аст?</string>
+    <string name="comfort_screen_color">Ранги экран</string>
+    <string name="comfort_light">Равшан</string>
+    <string name="comfort_dark">Торик</string>
+    <string name="comfort_done">Тайёр</string>
+    <string name="comfort_hint">Инро баъдтар низ тағйир додан мумкин аст.</string>
+    <string name="policy_turned_on">%1$s фаъол шуд</string>
+    <string name="policy_turned_off">%1$s хомӯш шуд</string>
+    <string name="policy_off_title">%1$s хомӯш карда шавад?</string>
+    <string name="policy_off_body">Дар телефони фарзандатон ин қоида фавран кор карданро бас мекунад ва ҳар чизе, ки баста буд, боз кушода мешавад. Ҳар вақт метавонед боз фаъол кунед.</string>
+    <string name="policy_off_body_safety">Дар телефони фарзандатон ин ҳимоя фавран қатъ мешавад. Ҳар вақт метавонед боз фаъол кунед.</string>
+    <string name="policy_off_confirm">Ҳа, хомӯш карда шавад</string>
+    <string name="policy_off_cancel">Не, бимонад</string>
+    <string name="policy_saved_sent">Нигоҳ дошта шуд — ба телефони фарзанд фиристода шуд</string>
+    <string name="policy_saved_queued">Нигоҳ дошта шуд — вақте интернет барқарор шавад, ба телефони фарзанд фиристода мешавад</string>
+    <string name="policy_unsaved_title">Тағйирот нигоҳ дошта шаванд?</string>
+    <string name="policy_unsaved_body">Агар нигоҳ надоред, дар телефони фарзандатон ҳеҷ чиз тағйир намеёбад.</string>
+    <string name="policy_unsaved_discard">Бе нигоҳ доштан баромадан</string>
+    <string name="quick_unblock_title">%1$s боз кушода шавад?</string>
+    <string name="quick_unblock_body">Ин барнома дар телефони фарзандатон фавран кушода мешавад.</string>
+    <string name="quick_unblock_confirm">Ҳа, кушода шавад</string>
+    <string name="quick_unblock_action">Кушодан</string>
+    <string name="quick_unblocked">%1$s кушода шуд</string>
+    <string name="policy_exception_remove">Хориҷ кардан</string>
+    <string name="policy_load_failed">Бор нашуд</string>
+    <string name="tg_more_settings">Танзимоти муфассал</string>
+    <string name="rules_on_count">Қоидаҳои фаъол: %1$d</string>
+    <string name="task_accepted">Қабул шуд</string>
+    <string name="task_accepted_coins">%1$s %2$d танга гирифт</string>
+    <string name="task_coins_explain">Вақте вазифаро қабул мекунед, тангаҳо ба фарзандатон мегузаранд. Ӯ онҳоро барои додани савол ба ёрдамчии зирак харҷ мекунад.</string>
+    <string name="task_coins_not_enough">Тангаатон намерасад</string>
+    <string name="chat_support_title">Хадамоти дастгирӣ</string>
+    <string name="chat_ai_title">Ёрдамчии зирак</string>
 </resources>

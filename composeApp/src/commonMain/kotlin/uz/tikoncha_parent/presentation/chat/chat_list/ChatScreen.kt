@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.chat.chat_list
 
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import uz.tikoncha_parent.presentation.assistant.AssistantScreen
 
 import androidx.compose.ui.unit.dp
@@ -52,6 +53,7 @@ import uz.tikoncha_parent.presentation.base.rememberInternetCheck
 import uz.tikoncha_parent.presentation.chat.ChatMessageAiScreen
 import uz.tikoncha_parent.presentation.chat.chat_room.ChatRoomScreen
 import uz.tikoncha_parent.presentation.model.ChatType
+import uz.tikoncha_parent.presentation.chat.ChatUtil.displayTitle
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.DividerHorizontal
 import uz.tikoncha_parent.ui.theme.AppColors
@@ -147,6 +149,7 @@ fun ChatUi(
         ) {
 
             CustomHeader(
+                voice = VoiceScreen.CHAT,
                 showBackButton = true,
                 onBackClick = {
                     navigator?.pop()
@@ -212,7 +215,8 @@ fun ChatUi(
                                 key = { _, it -> it.chatId },
                                 contentType = { _, _ -> "chat_item" }
                             ) { index, item ->
-                                val onClick = remember(item.chatId) {
+                                val title = item.displayTitle()
+                                val onClick = remember(item.chatId, title) {
                                     {
                                         if (item.type == ChatType.BOT) {
                                             // Bilimdon AI → ota-ona yordamçisi (native; eski WebView o'rniga)
@@ -222,7 +226,7 @@ fun ChatUi(
                                                 ChatRoomScreen(
                                                     chatId = item.chatId,
                                                     chatAvatar = item.avatar,
-                                                    chatTitle = item.title,
+                                                    chatTitle = title,
                                                     chatType = item.type
                                                 )
                                             )

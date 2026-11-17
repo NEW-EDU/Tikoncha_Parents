@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.task
 
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import uz.tikoncha_parent.presentation.base.island.roundedContentEdges
 import uz.tikoncha_parent.presentation.base.island.IslandFabSpace
 import uz.tikoncha_parent.presentation.base.island.IslandFab
@@ -73,6 +74,8 @@ import tikoncha_parents.composeapp.generated.resources.task_empty_in_progress
 import tikoncha_parents.composeapp.generated.resources.task_empty_done
 import tikoncha_parents.composeapp.generated.resources.task_empty_overdue
 import tikoncha_parents.composeapp.generated.resources.task_empty_filter_hint
+import tikoncha_parents.composeapp.generated.resources.task_accepted
+import tikoncha_parents.composeapp.generated.resources.task_accepted_coins
 import tikoncha_parents.composeapp.generated.resources.home_task
 import tikoncha_parents.composeapp.generated.resources.hozir_vazifalar_yo_q
 import tikoncha_parents.composeapp.generated.resources.jarayonda
@@ -97,6 +100,10 @@ import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.ErrorRetryState
 import uz.tikoncha_parent.presentation.base.PullToRefreshBox
+import uz.tikoncha_parent.presentation.base.LocalToastHost
+import uz.tikoncha_parent.presentation.base.ToastData
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import uz.tikoncha_parent.presentation.base.ToastType
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.singleClick
 import uz.tikoncha_parent.presentation.new_home.SelectionChildBottomSheet
@@ -124,13 +131,15 @@ class TaskScreen : Screen {
 
         // ✅ Effect'larni collect qilish — error/success uchun
         var localFailure by remember { mutableStateOf<Outcome.Failure?>(null) }
+        // Qabul qilingan vazifa — karta röyxatdan jimgina yöqolmasin, qisqa xabar körsatiladi
+        var accepted by remember { mutableStateOf<TaskListEffect.TaskMarkedAsCompleted?>(null) }
 
         LaunchedEffect(Unit) {
             viewModel.effect.collect { effect ->
                 when (effect) {
                     is TaskListEffect.ShowFailure -> localFailure = effect.failure
                     TaskListEffect.TaskDeleted -> {}
-                    TaskListEffect.TaskMarkedAsCompleted -> {}
+                    is TaskListEffect.TaskMarkedAsCompleted -> accepted = effect
                 }
             }
         }
@@ -152,11 +161,26 @@ class TaskScreen : Screen {
             onButtonClick = { localFailure = null }
         )
 
-        TaskUi(
-            navigator = navigator,
-            state = state,
-            event = event
-        )
+        ToastProvider {
+            val toast = LocalToastHost.current
+            val acceptedTitle = stringResource(Res.string.task_accepted)
+            val acceptedBody = accepted
+                ?.takeIf { it.coin > 0 && it.childName.isNotBlank() }
+                ?.let { stringResource(Res.string.task_accepted_coins, it.childName, it.coin) }
+
+            // "Qabul qilindi. Malika 25 ta tanga oldi."
+            LaunchedEffect(accepted) {
+                if (accepted == null) return@LaunchedEffect
+                toast.show(ToastData(type = ToastType.Success, title = acceptedTitle, body = acceptedBody))
+                accepted = null
+            }
+
+            TaskUi(
+                navigator = navigator,
+                state = state,
+                event = event
+            )
+        }
     }
 }
 
@@ -253,6 +277,7 @@ fun TaskUi(
             ) {
             // Sarlavha, orqaga, tarix va farzand tanlagich — pastdagi orolda (tepada joy egallamaydi)
             CustomHeader(
+                voice = VoiceScreen.TASKS,
                 showBackButton = true,
                 onBackClick = { navigator?.pop() },
                 title = stringResource(Res.string.vazifalar),

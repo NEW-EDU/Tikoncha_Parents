@@ -37,6 +37,10 @@ import uz.tikoncha_parent.domain.use_case.policy.ToggleContentProtectionUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePolicyUseCase
 import uz.tikoncha_parent.domain.use_case.policy.TogglePresetUseCase
 import uz.tikoncha_parent.domain.use_case.policy.UpdateOwnQuickBlockUseCase
+import uz.tikoncha_parent.domain.model.policy.PolicyName
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToast
+import uz.tikoncha_parent.presentation.policy.components.PolicyToasts
 import uz.tikoncha_parent.presentation.policy.model.PayWallReason
 import uz.tikoncha_parent.presentation.policy.model.PresetKind
 import uz.tikoncha_parent.presentation.policy.model.PolicyTab
@@ -134,7 +138,11 @@ class PolicyListViewModel(
             PolicyListEvent.SpecialClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenSpecial(it)) }
             PolicyListEvent.TikonchagramClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenTikonchagram(it)) }
 
-            is PolicyListEvent.PolicyToggled -> control(e.policyId, PayWallReason.POLICY_COUNT) { togglePolicy(e.policyId, e.enabled) }
+            is PolicyListEvent.PolicyToggled -> {
+                val name = policies.firstOrNull { it.id == e.policyId }?.let { PolicyName.of(it.name, it.kind, it.preset) }
+                    ?: PolicyName.custom("")
+                control(e.policyId, PayWallReason.POLICY_COUNT, PolicyToast.Toggled(name, e.enabled)) { togglePolicy(e.policyId, e.enabled) }
+            }
             is PolicyListEvent.PolicyClicked -> childId?.let { _effect.trySend(PolicyListEffect.OpenPolicy(it, e.policyId)) }
 
             PolicyListEvent.CreateClicked -> childId?.let { id ->
@@ -319,7 +327,8 @@ class PolicyListViewModel(
         val existing = policies.firstOrNull {
             it.isStandard && it.preset == kind.preset && it.isMine(myUserId)
         }
-        control(presetKey(kind), PayWallReason.POLICY_COUNT) { togglePreset(child, kind.preset, existing, enabled, title) }
+        val toast = PolicyToast.Toggled(PolicyName.of(title, preset = kind.preset), enabled)
+        control(presetKey(kind), PayWallReason.POLICY_COUNT, toast) { togglePreset(child, kind.preset, existing, enabled, title) }
     }
 
     /**
@@ -337,7 +346,8 @@ class PolicyListViewModel(
             if (enabled) _effect.trySend(PolicyListEffect.OpenQuickBlock(child))
             return
         }
-        control(KEY_QUICK, PayWallReason.QUICK_BLOCK) { updateOwnQuick.setEnabled(child, own, enabled) }
+        val toast = PolicyToast.Toggled(PolicyName("", PolicyName.Kind.QUICK_BLOCK), enabled)
+        control(KEY_QUICK, PayWallReason.QUICK_BLOCK, toast) { updateOwnQuick.setEnabled(child, own, enabled) }
     }
 
     /** Yoqish: men yoqmagan paketlarning hammasi. O'chirish: faqat o'zim yoqqanlarim. */
@@ -348,13 +358,17 @@ class PolicyListViewModel(
             return
         }
         val lang = LanguagePrefs.loadOrDefault().languageCode
-        control(KEY_PROTECTION, PayWallReason.PROTECTION) {
+        val toast = PolicyToast.Toggled(PolicyName("", PolicyName.Kind.CONTENT_PROTECTION), enabled)
+        control(KEY_PROTECTION, PayWallReason.PROTECTION, toast) {
             toggleProtection(child, myUserId, packs, enabled) { it.pack.title(lang) }
         }
     }
 
-    /** Bitta nishon uchun bitta so'rov: `busy` ga qo'yadi; pullik rad — paywall, boshqa xato — dialog. */
-    private fun control(key: String, reason: PayWallReason, action: suspend () -> Outcome<*>) {
+    /**
+     * Bitta nishon uchun bitta so'rov: `busy` ga qo'yadi; pullik rad — paywall, boshqa xato — dialog.
+     * Muvaffaqiyatda [toast] — "Uyqu vaqti yoqildi" (nima özgarganini oddiy söz bilan).
+     */
+    private fun control(key: String, reason: PayWallReason, toast: PolicyToast? = null, action: suspend () -> Outcome<*>) {
         if (_state.value.isBusy(key)) return
         screenModelScope.launch {
             _state.update { it.copy(busy = it.busy + key) }
@@ -367,6 +381,7 @@ class PolicyListViewModel(
                     else -> it.copy(busy = it.busy - key, error = failure)
                 }
             }
+            if (result !is Outcome.Failure && toast != null) PolicyToasts.post(toast, PolicyScreenId.LIST)
         }
     }
 

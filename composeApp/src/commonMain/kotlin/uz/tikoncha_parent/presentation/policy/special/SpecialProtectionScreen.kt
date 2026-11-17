@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,11 +30,11 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.blocklist
-import tikoncha_parents.composeapp.generated.resources.camera
-import tikoncha_parents.composeapp.generated.resources.chat_dialog_icon
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
-import tikoncha_parents.composeapp.generated.resources.location
+import tikoncha_parents.composeapp.generated.resources.ic3d_sp_chats
+import tikoncha_parents.composeapp.generated.resources.ic3d_sp_danger_places
+import tikoncha_parents.composeapp.generated.resources.ic3d_sp_images
+import tikoncha_parents.composeapp.generated.resources.ic3d_sp_incognito
 import tikoncha_parents.composeapp.generated.resources.parent_special_conv_desc
 import tikoncha_parents.composeapp.generated.resources.parent_special_conv_title
 import tikoncha_parents.composeapp.generated.resources.parent_special_footer
@@ -59,13 +60,20 @@ import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.haptics.ErrorHaptic
 import uz.tikoncha_parent.presentation.policy.components.GroupDivider
-import uz.tikoncha_parent.presentation.policy.components.IconTone
-import uz.tikoncha_parent.presentation.policy.components.PolicyIcon
+import uz.tikoncha_parent.presentation.policy.components.Policy3dIcon
 import uz.tikoncha_parent.presentation.policy.components.PolicyInfoBox
 import uz.tikoncha_parent.presentation.policy.components.PolicySwitch
 import uz.tikoncha_parent.presentation.policy.components.PolicyText
 import uz.tikoncha_parent.presentation.policy.components.SettingGroup
 import uz.tikoncha_parent.presentation.policy.components.SettingRow
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import uz.tikoncha_parent.presentation.policy.components.PlusBadge
+import uz.tikoncha_parent.presentation.policy.components.PolicyLoadFailed
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToastHost
+import uz.tikoncha_parent.presentation.policy.components.TurnOffConfirm
+import uz.tikoncha_parent.presentation.policy.components.rememberTurnOffGuard
+import tikoncha_parents.composeapp.generated.resources.policy_off_body_safety
 import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
 import uz.tikoncha_parent.ui.ContainerPadding
 import uz.tikoncha_parent.ui.theme.AppColors
@@ -84,53 +92,77 @@ class SpecialProtectionScreen(private val childId: String) : Screen {
         BackHandler(true) { navigator.pop() }
 
         val systemBars = rememberScreenSystemBars(statusBarColor = AppColors.bg.page, navigationBarColor = AppColors.bg.page)
-        Column(modifier = Modifier.fillMaxSize().background(AppColors.bg.page).then(systemBars.modifier)) {
-            CustomHeader(title = stringResource(Res.string.parent_special_title), showBackButton = true, onBackClick = { navigator.pop() })
-            if (!state.loaded) {
-                Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                    DelayedLoadingIndicator(color = AppColors.action.primary)
-                }
-                return@Column
-            }
-            Column(
-                modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = ContainerPadding),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
-                Spacer(Modifier.height(2.dp))
-                PolicyInfoBox(
-                    title = stringResource(Res.string.parent_special_info_title),
-                    lines = listOf(
-                        stringResource(Res.string.parent_special_info_1),
-                        stringResource(Res.string.parent_special_info_2),
-                        stringResource(Res.string.parent_special_info_3),
-                    ),
-                )
-                SettingGroup {
-                    ROWS.forEachIndexed { i, row ->
-                        SettingRow(
-                            title = stringResource(row.title),
-                            subtitle = stringResource(row.desc),
-                            leading = { PolicyIcon(icon = row.icon, tone = if (state.isOn(row.switch)) IconTone.SOLID else IconTone.GRAY, size = 44.dp) },
-                            trailing = {
-                                PolicySwitch(
-                                    checked = state.isOn(row.switch),
-                                    onCheckedChange = { viewModel.toggle(row.switch, it) },
-                                    busy = state.busy == row.switch,
-                                )
-                            },
-                        )
-                        if (i < ROWS.lastIndex) GroupDivider()
+        val guard = rememberTurnOffGuard()
+        ToastProvider {
+            Column(modifier = Modifier.fillMaxSize().background(AppColors.bg.page).then(systemBars.modifier)) {
+                CustomHeader(title = stringResource(Res.string.parent_special_title), showBackButton = true, onBackClick = { navigator.pop() })
+                if (!state.loaded) {
+                    Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+                        DelayedLoadingIndicator(color = AppColors.action.primary)
                     }
+                    return@Column
                 }
-                Text(
-                    text = stringResource(Res.string.parent_special_footer),
-                    style = PolicyText.hint,
-                    color = AppColors.text.tertiary,
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                )
-                Spacer(Modifier.height(8.dp))
+                // Yuklab bölmadi — standart holatlar haqiqiydek körsatilmaydi
+                val loadError = state.loadError
+                if (loadError != null) {
+                    PolicyLoadFailed(
+                        failure = loadError,
+                        onRetry = viewModel::retry,
+                        modifier = Modifier.weight(1f).fillMaxWidth(),
+                    )
+                    return@Column
+                }
+                Column(
+                    modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = ContainerPadding),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    Spacer(Modifier.height(2.dp))
+                    PolicyInfoBox(
+                        title = stringResource(Res.string.parent_special_info_title),
+                        lines = listOf(
+                            stringResource(Res.string.parent_special_info_1),
+                            stringResource(Res.string.parent_special_info_2),
+                            stringResource(Res.string.parent_special_info_3),
+                        ),
+                    )
+                    SettingGroup {
+                        ROWS.forEachIndexed { i, row ->
+                            val title = stringResource(row.title)
+                            val on = state.isOn(row.switch)
+                            SettingRow(
+                                title = title,
+                                subtitle = stringResource(row.desc),
+                                leading = { Policy3dIcon(icon = row.icon, dimmed = !on) },
+                                trailing = {
+                                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                        // PLUS himoya bepul tarifda — belgi bosişdan oldin körinadi
+                                        if (row.switch.plusOnly && state.paid == false && !on) PlusBadge()
+                                        PolicySwitch(
+                                            checked = on,
+                                            // Öçiriş — avval söraladi
+                                            onCheckedChange = { next ->
+                                                guard.toggle(title, next, Res.string.policy_off_body_safety) { viewModel.toggle(row.switch, it) }
+                                            },
+                                            busy = state.busy == row.switch,
+                                        )
+                                    }
+                                },
+                            )
+                            if (i < ROWS.lastIndex) GroupDivider()
+                        }
+                    }
+                    Text(
+                        text = stringResource(Res.string.parent_special_footer),
+                        style = PolicyText.hint,
+                        color = AppColors.text.tertiary,
+                        modifier = Modifier.padding(horizontal = 16.dp),
+                    )
+                    Spacer(Modifier.height(8.dp))
+                }
             }
+            PolicyToastHost(PolicyScreenId.SPECIAL)
         }
+        TurnOffConfirm(guard)
 
         SubscriptionBottomDialog(
             show = state.showPayWall,
@@ -151,14 +183,14 @@ class SpecialProtectionScreen(private val childId: String) : Screen {
         )
     }
 
-    private class Row(val switch: SafetySwitch, val title: StringResource, val desc: StringResource, val icon: DrawableResource)
+    private class SwitchRow(val switch: SafetySwitch, val title: StringResource, val desc: StringResource, val icon: DrawableResource)
 
     private companion object {
         val ROWS = listOf(
-            Row(SafetySwitch.IMAGE, Res.string.parent_special_nsfw_title, Res.string.parent_special_nsfw_desc, Res.drawable.camera),
-            Row(SafetySwitch.CONVERSATION, Res.string.parent_special_conv_title, Res.string.parent_special_conv_desc, Res.drawable.chat_dialog_icon),
-            Row(SafetySwitch.INCOGNITO, Res.string.parent_special_incognito_title, Res.string.parent_special_incognito_desc, Res.drawable.blocklist),
-            Row(SafetySwitch.DANGER_ZONES, Res.string.parent_special_zones_title, Res.string.parent_special_zones_desc, Res.drawable.location),
+            SwitchRow(SafetySwitch.IMAGE, Res.string.parent_special_nsfw_title, Res.string.parent_special_nsfw_desc, Res.drawable.ic3d_sp_images),
+            SwitchRow(SafetySwitch.CONVERSATION, Res.string.parent_special_conv_title, Res.string.parent_special_conv_desc, Res.drawable.ic3d_sp_chats),
+            SwitchRow(SafetySwitch.INCOGNITO, Res.string.parent_special_incognito_title, Res.string.parent_special_incognito_desc, Res.drawable.ic3d_sp_incognito),
+            SwitchRow(SafetySwitch.DANGER_ZONES, Res.string.parent_special_zones_title, Res.string.parent_special_zones_desc, Res.drawable.ic3d_sp_danger_places),
         )
     }
 }

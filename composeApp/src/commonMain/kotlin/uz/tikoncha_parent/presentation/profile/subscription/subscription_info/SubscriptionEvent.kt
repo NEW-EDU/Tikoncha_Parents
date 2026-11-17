@@ -25,4 +25,5 @@ sealed interface SubscriptionEvent {
     data object OpenCards : SubscriptionEvent
     data object OpenHistory : SubscriptionEvent
     data object AutopayErrorDismissed : SubscriptionEvent
+    data object RetryPaidDismissed : SubscriptionEvent
 }

@@ -12,8 +12,11 @@ import kotlinx.coroutines.launch
 import uz.tikoncha_parent.domain.repository.PaymentRegionRepository
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.tolov_amalga_oshmadi
-import tikoncha_parents.composeapp.generated.resources.apple_activation_pending
+import tikoncha_parents.composeapp.generated.resources.app_store_failed
+import tikoncha_parents.composeapp.generated.resources.app_store_unavailable
 import uz.tikoncha_parent.data.local.AppSettings
+import uz.tikoncha_parent.platform.STORE_ERROR_FAILED
+import uz.tikoncha_parent.platform.STORE_ERROR_UNAVAILABLE
 import uz.tikoncha_parent.data.remote.model.SubscriptionPaymentRequest
 import uz.tikoncha_parent.data.remote.model.subscription.PromoCodeValidationRequest
 import uz.tikoncha_parent.domain.model.PaymentStatus
@@ -98,7 +101,8 @@ class PaymentViewModel(
                 _state.update {
                     it.copy(
                         paymentResponseState = ResponseState.Idle,
-                        applePaymentResponseState = ResponseState.Idle
+                        applePaymentResponseState = ResponseState.Idle,
+                        appleActivationPending = false,
                     )
                 }
             }
@@ -206,23 +210,21 @@ class PaymentViewModel(
             _state.update { it.copy(applePaymentResponseState = ResponseState.Loading) }
             // Oilaviy tarif ota-onaning özi uçun: appAccountToken = ota-onaning id'si (server farzand tanlovini e'tiborsiz qoldiradi)
             when(val result = purchaseIApPremiumUseCase.invoke(productId, AppSettings.userId.ifBlank { null })){
+                // Ota-ona Apple oynasini özi yopdi — bu xato emas: hech narsa körsatilmaydi
                 PurchaseResult.Cancelled -> {
-                    _state.update {
-                        it.copy(
-                            applePaymentResponseState = ResponseState.Error(
-                                res = Res.string.tolov_amalga_oshmadi
-                            )
-                        )
-                    }
+                    _state.update { it.copy(applePaymentResponseState = ResponseState.Idle) }
                 }
                 is PurchaseResult.Error -> {
                     _state.update {
-                        it.copy(
-                            // Pul yechildi, server hali tasdiqlamadi — xarid ochiq qoladi va keyin qayta yuboriladi
-                            applePaymentResponseState = if (result.message == "activation_pending")
-                                ResponseState.Error(res = Res.string.apple_activation_pending)
-                            else ResponseState.Error(message = result.message)
-                        )
+                        when (result.message) {
+                            // Do'kon ochilmadi / StoreKit xarid xatosi — inglizcha matn örniga tarjima qilingan matn
+                            STORE_ERROR_UNAVAILABLE -> it.copy(applePaymentResponseState = ResponseState.Error(res = Res.string.app_store_unavailable))
+                            STORE_ERROR_FAILED -> it.copy(applePaymentResponseState = ResponseState.Error(res = Res.string.app_store_failed))
+                            // Apple pulni yeçdi, server hali tasdiqlamadi ("activation_pending" yoki server matni) —
+                            // xarid ochiq qoladi va keyin qayta yuboriladi. Bu xato emas: sokin "Tölov qabul qilindi".
+                            else -> if (isIos()) it.copy(applePaymentResponseState = ResponseState.Idle, appleActivationPending = true)
+                            else it.copy(applePaymentResponseState = ResponseState.Error(res = Res.string.tolov_amalga_oshmadi))
+                        }
                     }
                 }
                 is PurchaseResult.Signed -> Unit // use case serverga yuborib Success/Error qaytaradi

@@ -70,6 +70,12 @@ import uz.tikoncha_parent.presentation.policy.components.PolicyText
 import uz.tikoncha_parent.presentation.policy.components.SectionLabel
 import uz.tikoncha_parent.presentation.policy.components.SettingGroup
 import uz.tikoncha_parent.presentation.policy.components.SettingRow
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import uz.tikoncha_parent.presentation.policy.components.PlusBadge
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToastHost
+import uz.tikoncha_parent.presentation.policy.components.TurnOffConfirm
+import uz.tikoncha_parent.presentation.policy.components.rememberTurnOffGuard
 import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 import uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen
 import uz.tikoncha_parent.ui.ContainerPadding
@@ -94,15 +100,18 @@ class ContentProtectionScreen(private val childId: String) : Screen {
         LaunchedEffect(Unit) { viewModel.onEvent(ContentProtectionEvent.Init(childId)) }
         BackHandler(true) { navigator.pop() }
 
-        ContentProtectionUi(
-            state = state,
-            event = viewModel::onEvent,
-            onBack = { navigator.pop() },
-            onOpenSubscription = {
-                viewModel.onEvent(ContentProtectionEvent.PayWallDismissed)
-                navigator.push(SubscriptionPaymentScreen())
-            },
-        )
+        ToastProvider {
+            ContentProtectionUi(
+                state = state,
+                event = viewModel::onEvent,
+                onBack = { navigator.pop() },
+                onOpenSubscription = {
+                    viewModel.onEvent(ContentProtectionEvent.PayWallDismissed)
+                    navigator.push(SubscriptionPaymentScreen())
+                },
+            )
+            PolicyToastHost(PolicyScreenId.PROTECTION)
+        }
     }
 }
 
@@ -116,6 +125,8 @@ fun ContentProtectionUi(
     val systemBars = rememberScreenSystemBars(statusBarColor = AppColors.bg.page, navigationBarColor = AppColors.bg.page)
     val lang = remember { LanguagePrefs.loadOrDefault().languageCode }
     val active = state.isEnabled || state.byOthers
+    val guard = rememberTurnOffGuard()
+    TurnOffConfirm(guard)
 
     Column(modifier = Modifier.fillMaxSize().background(AppColors.bg.page).then(systemBars.modifier)) {
         CustomHeader(title = stringResource(Res.string.policy_content_protection), showBackButton = true, onBackClick = onBack)
@@ -147,15 +158,21 @@ fun ContentProtectionUi(
                         )
                     )
                 }
+                val title = stringResource(Res.string.policy_content_protection)
                 SettingRow(
                     title = stringResource(Res.string.preset_enabled),
                     trailing = {
-                        PolicySwitch(
-                            checked = state.isEnabled,
-                            onCheckedChange = { event(ContentProtectionEvent.Toggled(it)) },
-                            busy = state.busy,
-                            enabled = state.isAvailable,
-                        )
+                        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            // Bepul tarifda yoqiş — Plus: belgi bosişdan oldin körinadi
+                            if (state.paid == false && !state.isEnabled) PlusBadge()
+                            PolicySwitch(
+                                checked = state.isEnabled,
+                                // Öçiriş — avval söraladi
+                                onCheckedChange = { on -> guard.toggle(title, on) { event(ContentProtectionEvent.Toggled(it)) } },
+                                busy = state.busy,
+                                enabled = state.isAvailable,
+                            )
+                        }
                     },
                 )
             }

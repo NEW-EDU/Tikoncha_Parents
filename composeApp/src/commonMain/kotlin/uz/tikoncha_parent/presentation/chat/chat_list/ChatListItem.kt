@@ -47,6 +47,7 @@ import uz.tikoncha_parent.presentation.base.CustomText
 import uz.tikoncha_parent.presentation.base.CircularBadge
 import uz.tikoncha_parent.presentation.chat.ChatUtil
 import uz.tikoncha_parent.presentation.chat.ChatUtil.asText
+import uz.tikoncha_parent.presentation.chat.ChatUtil.displayTitle
 
 import uz.tikoncha_parent.presentation.chat.model.ChatDateLabel
 import uz.tikoncha_parent.presentation.model.ChatType
@@ -84,6 +85,9 @@ fun ChatListItem(
         verticalAlignment = Alignment.CenterVertically,
     ) {
 
+        // "Feedback" / "Bilimdon AI" emas — ilova tilida: "Yordam xizmati" / "Aqlli yordamçi"
+        val title = chatUi.displayTitle()
+
         val avatar = if (chatUi.type == ChatType.BOT){
             painterResource(Res.drawable.chat_ai_icon)
         }
@@ -112,7 +116,7 @@ fun ChatListItem(
             ){
                 Text(
                     text = ChatUtil.getInitials(
-                        fullName = chatUi.title
+                        fullName = title
                     ),
                     style = AppTypography.titleLgMedium,
                     color = AppColors.text.accentEmphasis,
@@ -142,7 +146,7 @@ fun ChatListItem(
 
                 Text(
                     maxLines = 1,
-                    text = chatUi.title,
+                    text = title,
                     color = AppColors.text.primary,
                     overflow = TextOverflow.Ellipsis,
                     style = AppTypography.titleMdMedium,

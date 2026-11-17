@@ -107,6 +107,7 @@ class SubscriptionViewModel(
             SubscriptionEvent.OpenCards -> _effect.trySend(SubscriptionEffect.OpenCards)
             SubscriptionEvent.OpenHistory -> _effect.trySend(SubscriptionEffect.OpenHistory)
             SubscriptionEvent.AutopayErrorDismissed -> _state.update { it.copy(autopayError = null, retryDeclinedText = null) }
+            SubscriptionEvent.RetryPaidDismissed -> _state.update { it.copy(retryPaid = false) }
         }
     }
 
@@ -239,6 +240,7 @@ class SubscriptionViewModel(
         }
     }
 
+    /** Kartadan darhol yeçadi — UI avval summa bilan tasdiq söraydi (AutopaySection → ChargeConfirmSheet). */
     private fun retry() {
         val child = childId ?: return
         if (_state.value.autopayBusy) return
@@ -248,7 +250,11 @@ class SubscriptionViewModel(
                 is Outcome.Success -> {
                     _state.update { it.copy(autopayBusy = false, autopay = r.data.autopay) }
                     when (r.data.status) {
-                        ChargeStatus.PAID -> { runCatching { paymentRepository.syncSubscriptionLimits() }; refreshStatusSilently() }
+                        ChargeStatus.PAID -> {
+                            _state.update { it.copy(retryPaid = true) }
+                            runCatching { paymentRepository.syncSubscriptionLimits() }
+                            refreshStatusSilently()
+                        }
                         ChargeStatus.FAILED -> _state.update { it.copy(retryDeclinedText = r.data.errorText.orEmpty()) }
                         else -> Unit
                     }

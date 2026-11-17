@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.task.create_task
 
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import uz.tikoncha_parent.ui.segmentShape
 import uz.tikoncha_parent.ui.rememberHapticSource
 import uz.tikoncha_parent.ui.expressiveSegment
@@ -30,6 +31,12 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material.icons.rounded.Check
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.ui.text.style.TextAlign
+import tikoncha_parents.composeapp.generated.resources.task_coins_explain
+import tikoncha_parents.composeapp.generated.resources.task_coins_not_enough
 import androidx.compose.material.icons.rounded.CalendarMonth
 import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.text.BasicTextField
@@ -280,6 +287,7 @@ fun CreateTaskUI(
             }
     ) {
         CustomHeader(
+            voice = VoiceScreen.TASK_CREATE,
             title = headerText,
             showBackButton = true,
             onBackClick = {
@@ -339,11 +347,12 @@ fun CreateTaskUI(
 
             // ── Muhimligi: bog'langan uch tugma; rang — kichik nuqtada
             ProfileSectionLabel(stringResource(Res.string.muhimligi))
-            Row(horizontalArrangement = Arrangement.spacedBy(SegmentGap)) {
+            // Bir xil balandlik: yorlig'i ikki qatorga tuşgan tugma qolganlaridan baland bölib qolmaydi
+            Row(Modifier.height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(SegmentGap)) {
                 val levels = listOf(ImportanceType.MEDIUM, ImportanceType.IMPORTANT, ImportanceType.MOST_IMPORTANT)
                 levels.forEachIndexed { i, level ->
                     ImportanceSegment(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(1f).fillMaxHeight(),
                         level = level,
                         index = i,
                         count = levels.size,
@@ -484,21 +493,26 @@ private fun ImportanceSegment(
                 debounceMs = 150L,
                 onClick = onClick,
             )
-            .padding(horizontal = 10.dp),
+            .padding(horizontal = 8.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
         Box(Modifier.size(8.dp).clip(CircleShape).background(dot))
-        Spacer(Modifier.width(8.dp))
+        Spacer(Modifier.width(6.dp))
+        // "Juda muhim" tor katakda kesilardi ("Жуда муҳ…") — endi kerak bölsa ikki qatorga tuşadi
         Text(
             text = label,
             style = AppTypography.titleSmSemiBold,
             color = AppColors.text.primary,
-            maxLines = 1,
+            textAlign = TextAlign.Center,
+            maxLines = 2,
             overflow = TextOverflow.Ellipsis,
         )
     }
 }
+
+/** Tayyor tanga miqdorlari. */
+private val CoinOptions = listOf(10, 25, 50, 100, 300, 500)
 
 /** Mukofot: tayyor miqdorlar (pill), o'z miqdori va jami — hammasi bitta oqimda. */
 @OptIn(ExperimentalLayoutApi::class)
@@ -534,8 +548,9 @@ private fun RewardSection(state: CreateTaskState, event: (CreateTaskEvent) -> Un
         maxItemsInEachRow = 3,
         modifier = Modifier.fillMaxWidth(),
     ) {
-        listOf(10, 25, 50, 100, 300, 500).forEach { amount ->
+        CoinOptions.forEach { amount ->
             val selected = amount in state.selectedChips
+            // Tanlab bölmaydi — faqat ota-onaning tangasi yetmagani uçun (pullik tarif bilan bog'liq emas)
             val canSelect = enabled && (selected || total + amount <= available)
             Row(
                 modifier = Modifier
@@ -557,10 +572,37 @@ private fun RewardSection(state: CreateTaskState, event: (CreateTaskEvent) -> Un
                 if (selected) {
                     Spacer(Modifier.width(6.dp))
                     Icon(Icons.Rounded.Check, contentDescription = null, tint = AppColors.icon.accentPrimary, modifier = Modifier.size(16.dp))
+                } else if (!canSelect) {
+                    // Xira tanga sababsiz turmasin: qulf + pastdagi "Tangangiz yetmaydi"
+                    Spacer(Modifier.width(4.dp))
+                    Icon(Icons.Rounded.Lock, contentDescription = null, tint = AppColors.icon.secondary, modifier = Modifier.size(14.dp))
                 }
             }
         }
     }
+
+    val anyLocked = CoinOptions.any { it !in state.selectedChips && !(enabled && total + it <= available) }
+    if (anyLocked) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(Icons.Rounded.Lock, contentDescription = null, tint = AppColors.icon.secondary, modifier = Modifier.size(14.dp))
+            Spacer(Modifier.width(6.dp))
+            Text(
+                text = stringResource(Res.string.task_coins_not_enough),
+                style = AppTypography.bodyMdMedium,
+                color = AppColors.text.secondary,
+            )
+        }
+    }
+    // Tanga nima ekanini bir qatorda: qabul qilinganda farzandga ötadi, u aqlli yordamçiga sarflaydi
+    Text(
+        text = stringResource(Res.string.task_coins_explain),
+        style = AppTypography.bodyMdMedium,
+        color = AppColors.text.secondary,
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp),
+    )
 
     Spacer(Modifier.height(SegmentGap * 3))
     Row(

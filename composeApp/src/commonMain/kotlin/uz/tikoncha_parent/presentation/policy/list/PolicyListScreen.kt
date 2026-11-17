@@ -1,5 +1,6 @@
 package uz.tikoncha_parent.presentation.policy.list
 
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.animateFloatAsState
@@ -81,7 +82,17 @@ import uz.tikoncha_parent.presentation.policy.components.QuickBlockCard
 import uz.tikoncha_parent.presentation.policy.components.SectionTitle
 import uz.tikoncha_parent.presentation.policy.components.SegmentedTabs
 import uz.tikoncha_parent.presentation.policy.components.lines
+import uz.tikoncha_parent.presentation.policy.components.text
 import uz.tikoncha_parent.presentation.policy.components.title
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToastHost
+import uz.tikoncha_parent.presentation.policy.components.TurnOffConfirm
+import uz.tikoncha_parent.presentation.policy.components.TurnOffGuard
+import uz.tikoncha_parent.presentation.policy.components.rememberTurnOffGuard
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import tikoncha_parents.composeapp.generated.resources.policy_content_protection
+import tikoncha_parents.composeapp.generated.resources.quick_title
+import tikoncha_parents.composeapp.generated.resources.targets_plus
 import uz.tikoncha_parent.presentation.policy.editor.PolicyEditorScreen
 import uz.tikoncha_parent.presentation.policy.model.PayWallReason
 import uz.tikoncha_parent.presentation.policy.preset.PresetPolicyScreen
@@ -135,7 +146,11 @@ class PolicyListScreen : Screen {
             }
         }
 
-        PolicyListUi(navigator = navigator, state = state, event = viewModel::onEvent)
+        ToastProvider {
+            PolicyListUi(navigator = navigator, state = state, event = viewModel::onEvent)
+            // Switch natijasi va ichki ekranda "Saqlaş"dan keyingi xabar şu yerda körinadi
+            PolicyToastHost(PolicyScreenId.LIST)
+        }
     }
 }
 
@@ -144,6 +159,8 @@ class PolicyListScreen : Screen {
 fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyListEvent) -> Unit) {
     val systemBars = rememberScreenSystemBars(statusBarColor = AppColors.bg.page, navigationBarColor = AppColors.bg.page)
     var showChildSheet by remember { mutableStateOf(false) }
+    // Switch'ni öçiriş — avval söraladi (nima oçilişi aytiladi); yoqiş — darhol
+    val guard = rememberTurnOffGuard()
 
     if (showChildSheet) {
         SelectionChildBottomSheet(
@@ -161,6 +178,7 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
 
     Column(modifier = Modifier.fillMaxSize().background(AppColors.bg.page).then(systemBars.modifier)) {
         CustomHeader(
+            voice = VoiceScreen.RULES,
             title = stringResource(Res.string.jadvallar),
             showBackButton = true,
             onBackClick = { navigator?.pop() },
@@ -218,7 +236,7 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
                 }
 
                 when (state.tab) {
-                    PolicyTab.TEMPLATES -> templates(state, event)
+                    PolicyTab.TEMPLATES -> templates(state, event, guard)
                     PolicyTab.MINE -> {
                         if (state.mine.isEmpty()) item(key = "empty") {
                             // Tablar ostidagi bo'sh joyning o'rtasida
@@ -229,21 +247,26 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
                                 modifier = Modifier.fillParentMaxHeight(0.7f),
                             )
                         }
-                        cards(state.mine, state, event)
+                        cards(state.mine, state, event, guard)
                     }
-                    PolicyTab.CHILD -> othersTab(state.child, state.childQuick, state, event)
-                    PolicyTab.COPARENT -> othersTab(state.coParent, state.coParentQuick, state, event)
-                    PolicyTab.SCHOOL -> cards(state.school, state, event)
+                    PolicyTab.CHILD -> othersTab(state.child, state.childQuick, state, event, guard)
+                    PolicyTab.COPARENT -> othersTab(state.coParent, state.coParentQuick, state, event, guard)
+                    PolicyTab.SCHOOL -> cards(state.school, state, event, guard)
                 }
             }
         }
 
         // "Jadval yaratish" — orol ustida, chap pastda alohida suzuvchi tugma
         if (state.tab == PolicyTab.MINE || state.tab == PolicyTab.TEMPLATES) {
-            // Bepul tarifda çegara yonida körinadi: "Jadval yaratiş · 1/1"
+            // Bepul tarifda çegara yonida körinadi: "Jadval yaratiş · 1/1"; çegara tölgan bölsa — "· Plus"
+            // (yangisini yoqiş Plus talab qiladi — paywall kutilmagan bölmasin)
             val createText = stringResource(Res.string.jadval_yaratish)
+            val plusText = stringResource(Res.string.targets_plus)
             IslandFab(
-                text = state.policyLimit?.let { "$createText · ${state.policyUsed}/$it" } ?: createText,
+                text = when {
+                    state.atPolicyLimit -> "$createText · $plusText"
+                    else -> state.policyLimit?.let { "$createText · ${state.policyUsed}/$it" } ?: createText
+                },
                 onClick = { event(PolicyListEvent.CreateClicked) },
                 modifier = Modifier.align(Alignment.BottomStart),
             )
@@ -270,6 +293,8 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
         onDismiss = { event(PolicyListEvent.PayWallDismissed) },
     )
 
+    TurnOffConfirm(guard)
+
     state.takeOver?.let { t ->
         TakeOverDialog(
             kind = t.kind,
@@ -293,17 +318,21 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
     )
 }
 
-private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEvent) -> Unit) {
+private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEvent) -> Unit, guard: TurnOffGuard) {
     // Himoya + maxsus himoya + shablonlar + tezkor blok — bitta guruhlangan blok
     val total = state.presets.size + 3
+    // Bepul tarif aniq bölsa: yoqiş Plus talab qiladi — belgi bosişdan oldin körinadi
+    val free = state.paid == false
     item(key = "protection") {
+        val title = stringResource(Res.string.policy_content_protection)
         ContentProtectionCard(
             ui = state.protection,
             busy = state.isBusy(PolicyListViewModel.KEY_PROTECTION),
-            onToggle = { event(PolicyListEvent.ProtectionToggled(it)) },
+            onToggle = { on -> guard.toggle(title, on) { event(PolicyListEvent.ProtectionToggled(it)) } },
             onClick = { event(PolicyListEvent.ProtectionClicked) },
             segmentIndex = 0,
             segmentCount = total,
+            plus = free && !state.protection.isEnabled,
         )
     }
     item(key = "special") {
@@ -318,20 +347,24 @@ private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEv
         PresetPolicyCard(
             ui = preset,
             busy = state.isBusy(PolicyListViewModel.presetKey(preset.kind)),
-            onToggle = { event(PolicyListEvent.PresetToggled(preset.kind, it, title)) },
+            onToggle = { on -> guard.toggle(title, on) { event(PolicyListEvent.PresetToggled(preset.kind, it, title)) } },
             onClick = { event(PolicyListEvent.PresetClicked(preset.kind)) },
             segmentIndex = i + 2,
             segmentCount = total,
+            // Bepul çegara tölgan: yana bittasini yoqiş — Plus (farzand yoqqanini olib qolsa son özgarmaydi)
+            plus = state.atPolicyLimit && !preset.isEnabled && preset.activeBy == null,
         )
     }
     item(key = "quick") {
+        val title = stringResource(Res.string.quick_title)
         QuickBlockCard(
             ui = state.quickBlock,
             busy = state.isBusy(PolicyListViewModel.KEY_QUICK),
-            onToggle = { event(PolicyListEvent.QuickBlockToggled(it)) },
+            onToggle = { on -> guard.toggle(title, on) { event(PolicyListEvent.QuickBlockToggled(it)) } },
             onClick = { event(PolicyListEvent.QuickBlockClicked) },
             segmentIndex = total - 1,
             segmentCount = total,
+            plus = free && !state.quickBlock.isOn,
         )
     }
     if (state.selectedChild != null) item(key = "tikonchagram") {
@@ -340,8 +373,14 @@ private fun LazyListScope.templates(state: PolicyListState, event: (PolicyListEv
 }
 
 /** Boshqa odamniki: jadvallar, keyin "Tezkor bloklar" bo'limi (Student'dagi ota-ona tabi kabi). */
-private fun LazyListScope.othersTab(policies: List<PolicyCardUi>, quick: List<PolicyCardUi>, state: PolicyListState, event: (PolicyListEvent) -> Unit) {
-    cards(policies, state, event)
+private fun LazyListScope.othersTab(
+    policies: List<PolicyCardUi>,
+    quick: List<PolicyCardUi>,
+    state: PolicyListState,
+    event: (PolicyListEvent) -> Unit,
+    guard: TurnOffGuard,
+) {
+    cards(policies, state, event, guard)
     if (quick.isNotEmpty()) {
         item(key = "others-quick") { Box(Modifier.padding(top = 12.dp, bottom = 6.dp)) { SectionTitle(stringResource(Res.string.policy_quick_blocks)) } }
         itemsIndexed(quick, key = { _, it -> "q-" + it.policyId }) { i, card ->
@@ -350,15 +389,17 @@ private fun LazyListScope.othersTab(policies: List<PolicyCardUi>, quick: List<Po
     }
 }
 
-private fun LazyListScope.cards(list: List<PolicyCardUi>, state: PolicyListState, event: (PolicyListEvent) -> Unit) {
+private fun LazyListScope.cards(list: List<PolicyCardUi>, state: PolicyListState, event: (PolicyListEvent) -> Unit, guard: TurnOffGuard) {
     itemsIndexed(list, key = { _, it -> it.policyId }) { i, card ->
+        val title = card.title.text()
         PolicyCard(
             ui = card,
             busy = state.isBusy(card.policyId),
-            onToggle = { event(PolicyListEvent.PolicyToggled(card.policyId, it)) },
+            onToggle = { on -> guard.toggle(title, on) { event(PolicyListEvent.PolicyToggled(card.policyId, it)) } },
             onClick = { event(PolicyListEvent.PolicyClicked(card.policyId)) },
             segmentIndex = i,
             segmentCount = list.size,
+            plus = card.canControl && state.atPolicyLimit && !card.isEnabled,
         )
     }
 }

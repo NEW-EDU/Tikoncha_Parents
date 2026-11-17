@@ -1,10 +1,9 @@
 package uz.tikoncha_parent.presentation.profile.children
 
-import uz.tikoncha_parent.ui.rememberHapticSource
 import uz.tikoncha_parent.ui.expressiveSegment
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.FilledTonalIconButton
 import uz.tikoncha_parent.ui.rememberCachedImage
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,7 +35,6 @@ import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.link
 import tikoncha_parents.composeapp.generated.resources.ohirgi_faollik
 import tikoncha_parents.composeapp.generated.resources.plus_home_sheet_subscribe
 import tikoncha_parents.composeapp.generated.resources.profile_hedgehog_img
@@ -52,7 +50,6 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
 fun ChildrenItem(
     modifier: Modifier = Modifier,
     endingIcon: (@Composable () -> Unit)? = null,
-    onMenuClick: () -> Unit = {},
     onClick: () -> Unit = {},
     imageUrl: String = "",
     lastSeen: String = "",
@@ -164,21 +161,14 @@ fun ChildrenItem(
         if (endingIcon != null) {
             endingIcon()
         } else {
-            FilledTonalIconButton(
-                onClick = onMenuClick,
-                interactionSource = rememberHapticSource(),
-                shapes = IconButtonDefaults.shapes(),
-                colors = IconButtonDefaults.filledTonalIconButtonColors(
-                    containerColor = AppColors.bg.secondary,
-                    contentColor = AppColors.icon.secondary,
-                ),
-            ) {
-                Icon(
-                    painter = painterResource(Res.drawable.link),
-                    contentDescription = "",
-                    modifier = Modifier.size(20.dp)
-                )
-            }
+            // Qator bosilsa — farzand tafsilotlari oçiladi ("Farzandni uziş" öşa yerda, yozuvli tugma bilan).
+            // Avvalgi yozuvsiz zanjir belgisi "ulaş" deb öqilardi.
+            Icon(
+                imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
+                contentDescription = null,
+                tint = AppColors.icon.tertiary,
+                modifier = Modifier.size(24.dp)
+            )
         }
     }
 }

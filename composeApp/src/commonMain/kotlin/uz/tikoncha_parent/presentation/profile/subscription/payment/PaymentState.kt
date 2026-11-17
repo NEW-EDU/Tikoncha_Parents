@@ -9,6 +9,8 @@ data class PaymentState(
     val selectedPaymentType: PaymentType? = PaymentType.Click,
     val paymentResponseState: ResponseState<Nothing> = ResponseState.Idle,
     val applePaymentResponseState: ResponseState<Nothing> = ResponseState.Idle,
+    /** App Store pulni yeçdi, server PLUS'ni hali yoqmadi (keyin qayta yuboriladi) — sokin xabar, xato emas. */
+    val appleActivationPending: Boolean = false,
     val merchantTransId: String = "",
     val serviceId: Int = 0,
     val merchantId: Int = 46788,

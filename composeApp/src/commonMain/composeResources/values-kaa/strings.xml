@@ -94,7 +94,7 @@
     <string name="maktab">Mektep</string>
     <string name="sozlamalar">Sazlawlar</string>
     <string name="bildirishnomalar">Bildiriwler</string>
-    <string name="tema">Tema</string>
+    <string name="tema">Ekran reńi</string>
     <string name="tasdiqlash">Tastıyıqlaw</string>
     <string name="tolov">Tólem</string>
     <string name="obuna_pro">Pro jazılıw</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">Pasport ID</string>
     <string name="reklama">Reklama</string>
     <string name="yorug">Jaqtı</string>
-    <string name="theme_system">Sistema</string>
+    <string name="theme_system">Telefondaǵıday</string>
     <string name="xavfli_zona">Qáwipli zona</string>
     <string name="akkauntni_o_chirish">Akkaunttı óshiriw</string>
     <string name="pochta_orqali">Email arqalı</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">Ruqsat soraw</string>
     <string name="joylashuv_uchun_ruxsat">Jaylasıwǵa ruqsat</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">Kartadan tolıq paydalanıw ushın sazlawlardan Jaylasıwǵa ruqsat beriń!</string>
-    <string name="xatolik">Qátelik</string>
-    <string name="ok">Jaqsı</string>
+    <string name="xatolik">Bolmadı</string>
+    <string name="ok">Túsinikli</string>
     <string name="qoshish">Qosıw</string>
     <string name="ogil_bola">Ul bala</string>
     <string name="qiz_bola">Qız bala</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">Tabıslı</string>
     <string name="qisqartirish">Qısqartıw</string>
     <string name="vazifa_tahrirlandi">Tapsırma ózgertildi</string>
-    <string name="server_connection_error">Serverge jalǵanıw qáteligi!</string>
+    <string name="server_connection_error">Házir baylanısıw múmkin bolmadı. Azdan keyin qayta urınıp kóriń.</string>
     <string name="faol">Aktiv</string>
     <string name="faol_emas">Aktiv emes</string>
     <string name="ohirgi_faollik">Sońǵı aktivlik:</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >Dıqqat!</string>
     <string name="siz_tanlagan_vaqt_oraligida">Siz tańlaǵan waqıt aralıǵında Paydalanıw limiti islemeydi! Yaǵnıy, waqıt kestesiniń ústinligi joqarı.</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">Qurılmańızda %1$d qosımsha ornatılmaǵan</string>
-    <string name="cheklovlar">Sheklewler</string>
+    <string name="cheklovlar">Qaǵıydalar</string>
     <string name="ta_ilovaga">%1$d qosımshaǵa</string>
     <string name="ta_vebsaytga">%1$d veb-saytqa</string>
     <string name="ustuvorligi">Áhmiyetliligi</string>
-    <string name="jadval_nomini_kiriting">Keste atın kiritiń</string>
+    <string name="jadval_nomini_kiriting">Qaǵıyda atın kirgiziń</string>
     <string name="misol_o_quv_markaz">mısalı: Oqıw orayı</string>
     <string name="ochirish">Óshiriw</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">Kesteni saqlamay shıǵıwǵa kelisesiz be?</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">QUTLÍQLAYMÍZ!</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">Endi bul jazılıw sizde</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">Ayrıqsha múmkinshiliklerden hám birinshi gezektegi qollap-quwatlawdan paydalanıń!</string>
-    <string name="statistika">Statistika</string>
+    <string name="statistika">Telefon waqtı</string>
     <string name="chegirmalar">Shegirmeler</string>
     <string name="chegirma">Shegirme</string>
     <string name="topshiriqlar">Tapsırmalar</string>
-    <string name="jadvallar">Kesteler</string>
+    <string name="jadvallar">Qaǵıydalar</string>
     <string name="ilova_cheklangan">%1$d qosımsha sheklengen</string>
-    <string name="faol_vazifa">%1$d aktiv tapsırma</string>
-    <string name="bugun_sarfladi">Búgin sarıpladı</string>
+    <string name="faol_vazifa">Aktiv tapsırma: %1$d</string>
+    <string name="bugun_sarfladi">Búgin telefonda</string>
     <string name="chiqish">Akkaunttan shıǵıw</string>
     <string name="chiqishni_xohlaysizmi">Shıǵıwdı qáleysiz be?</string>
     <string name="chiqishni_tasdiqlang">Shıǵıwdı tastıyıqlań.</string>
@@ -321,8 +321,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">Profilińiz hám sazlawlarıńız serverde saqlanadı.</string>
     <string name="qayta_kirsangiz_tiklanadi">Qayta kirgenińizde hámmesi tiklenedi.</string>
     <string name="farzand_qoshilmagan">Bala qosılmaǵan</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">Kesteler, chatlar hám esabatlar bala qosılǵannan keyin payda boladı.</string>
-    <string name="kutilmagan_xatolik_qayta_urining">Kútilmegen qátelik júz berdi. Qayta urınıp kóriń.</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">Qaǵıydalar, sáwbetler hám telefon waqtı bala qosılǵannan keyin kórinedi.</string>
+    <string name="kutilmagan_xatolik_qayta_urining">Bolmadı. Azdan keyin qayta urınıp kóriń.</string>
     <string name="hozircha_farzand_qoshilmagan">Siz ele bala qospadıńız.</string>
     <string name="diqqat2">DÍQQAT!</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">Dawam etiwden aldın qosımsha túrin tańlań.</string>
@@ -342,10 +342,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">Tastıyıqlaw kodın qalay jiberiwimizdi \n tańlań</string>
     <string name="tasdiqlash_kodini_olish">Tastıyıqlaw kodın alıw</string>
     <string name="telegram_kod_kiritish">%1$s nomerine baylanǵan Telegram-ǵa jiberilgen kodtı kiritiń</string>
-    <string name="xato_kod_kiritdingiz">Siz qáte kod kirittińiz</string>
+    <string name="xato_kod_kiritdingiz">Kod sáykes kelmedi. Qayta jazıp kóriń.</string>
     <string name="kod_olish_usulini_ozgartirish">Kod alıw usılın ózgertiw</string>
     <string name="versiya">Versiya</string>
-    <string name="jadval_yaratish">Keste dúziw</string>
+    <string name="jadval_yaratish">Qaǵıyda jaratıw</string>
     <string name="sizning_cheklovlaringiz">Sheklewlerińiz</string>
 
     <string name="avtomatik_bloklash_vaqti">Tańlanǵan kúnleri hám saatlarda avtomat bloklaw</string>
@@ -363,9 +363,9 @@
     <string name="noto_g_ri_url_format">URL formatı qáte</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">Bul sayt dizimde bar</string>
     <string name="to_liq_nazoratni_yoqing">Tolıq qadaǵalawdı qosıń</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Hoglt arqalı qosımshalardı, waqıttı hám paydalanıwdı basqarıń. Plus penen sheklewsiz isleń hám Qalqan rejimi arqalı maksimal qorǵawdı qosıń.</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Qosımshalar hám telefon waqtın Hoglt arqalı basqarıń. Plus penen sheklewsiz isleysiz hám qatań qorǵawdı qosa alasız.</string>
     <string name="plus_imkoniyatlarini_ochish">Plus múmkinshiliklerin ashıw</string>
-    <string name="jadval_nomi">Keste atı</string>
+    <string name="jadval_nomi">Qaǵıyda atı</string>
     <string name="saytlar">Saytlar</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">Qosımshalar hám veb-saytlar qashan hám qanday shártlerde sheklenetuǵının belgileń</string>
 
@@ -394,7 +394,7 @@
     <string name="coins_help_close">Jabıw</string>
     <string name="qollash">Qollanıw</string>
     <string name="promokod">Promokod:</string>
-    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Siz teńgelerdi tabıslı satıp aldıńız.</string>
+    <string name="siz_tangachalarni_muvaqqiyatli_sotib_oldingiz">Teńgeler satıp alındı.</string>
     <string name="narx">Bahası</string>
     <string name="jami">Jámi</string>
     <string name="bekor_qilindi">Biykar etildi!</string>
@@ -411,11 +411,11 @@
     <string name="plus_obnuna_kerak">PLUS jazılıwı kerek</string>
     <string name="toliq_nazorat_statistika">Tolıq qadaǵalaw hám statistika</string>
     <string name="farzand_ilova_kuzatish">Balańız kún dawamında qaysı qosımshalardan hám qansha paydalanatuǵının baqlań.</string>
-    <string name="uchtagacha_jadval">3 kestege shekem</string>
+    <string name="uchtagacha_jadval">3 qaǵıydaǵa shekem</string>
     <string name="jadval_cheklovlar">Kúnler, hápteler yamasa arnawlı waqıtlar ushın bólek sheklewler belgileń.</string>
     <string name="qattiq_bloklash_qalqon">Qatań qorǵaw: saytlar hám qısqa videolar da bloklanadı</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Balańız sheklewlerdi óshire yamasa ózgerte almaydı.</string>
-    <string name="tez_bloklash_timer">Tez bloklaw (Taymer)</string>
+    <string name="tez_bloklash_timer">Dayım jabıq qosımshalar</string>
     <string name="vaqtinchalik_bloklash_tezi">Kerek bolǵanda waqıtsha bloklawdı bir neshe sekundta qosıń.</string>
     <string name="hisobot_tahlil">Esabatlar hám analiz</string>
     <string name="farzand_nazorat_tavsifi">Balańızdıń telefonnan paydalanıwın qadaǵalań. Qálenbegen qosımshalardı bloklań, paydalanıw waqtın belgileń hám qáwipsiz ortalıq jaratıń.</string>
@@ -493,8 +493,8 @@
     <string name="danger_cat_tobacco">Temeki hám veyplar</string>
     <string name="danger_distance_m">%1$d m</string>
     <string name="radius">Radius</string>
-    <string name="farzandim">Balam</string>
-    <string name="ozim">Ózim</string>
+    <string name="farzandim">Balanıń ózi qoyǵanları</string>
+    <string name="ozim">Men bergenlerim</string>
     <string name="faol_vazifa_yo_q">Aktiv tapsırmalar joq</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">Balańız ushın tapsırmalar joq</string>
 
@@ -519,7 +519,7 @@
     <string name="weekday_sunday">Ekshembi</string>
 
     <string name="juda_muhim">Júdá áhmiyetli</string>
-    <string name="tekshirildi">Tekserildi</string>
+    <string name="tekshirildi">Qabıl etemen</string>
     <string name="ko_rish">Kóriw</string>
     <string name="vazifa_ochirilsinmi">Tapsırmanı óshiresiz be?</string>
     <string name="vazifa_ochirish_tasdiq">Haqıyqatında da bul tapsırmanı óshiresiz be?</string>
@@ -541,7 +541,7 @@
     <string name="tolovlar_tarixi_bos">Tólemler tariyxı bos</string>
     <string name="tolovlar_tarixi_bos_hint">Satıp alıwlardan keyin usı jerde payda boladı</string>
     <string name="boshqa_yozuvlar_yoq">Basqa jazıwlar joq</string>
-    <string name="xatolik_yuz_berdi">Qátelik júz berdi</string>
+    <string name="xatolik_yuz_berdi">Júklenbedi. Qayta urınıp kóriń.</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -572,7 +572,7 @@
 
     <string name="izoh_ixtiyoriy">Kommentariy (májbúriy emes)</string>
     <string name="vazifa_tangalari">Tapsırmanı orınlaǵanı ushın berilgen teńgeler</string>
-    <string name="vazifani_tekshirish">Tapsırmanı tekseriw</string>
+    <string name="vazifani_tekshirish">Hámmesi durıs pa?</string>
     <string name="izoh">Kommentariy</string>
     <string name="muhimlilik_darajasi">Áhmiyetlilik dárejesi</string>
     <string name="ragbatlantirish_tangachalari">Sıylıq teńgeleri</string>
@@ -592,7 +592,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">Balańız Hoglt qosımshasın ashıp, tastıyıqlaw kodın kiritiwi kerek.</string>
     <string name="bola_hali_bajardim_bosmagan">Bala ele «Orınladım» túymesin baspaǵan</string>
     <string name="foydalanilmagan">Paydalanılmaǵan</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">Qaytadan kiriw kerek</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">Kiriw</string>
     <string name="profil_rasmi">Profil súwreti</string>
@@ -618,7 +618,7 @@
     <string name="telegram_orqali_kirish">Telegram arqalı kiriw</string>
     <string name="yoki">yamasa</string>
     <string name="telefon_raqami">Telefon nomeri</string>
-    <string name="kirish_subtitle">Dawam etiw ushın akkauntıńızǵa kiriń</string>
+    <string name="kirish_subtitle">Telegram arqalı kiriń. Akkauntıńız bolmasa, ózi ashıladı.</string>
     <string name="login_privacy">Dawam etiw arqalı Qupıyalıq siyasatı hám Paydalanıw shártlerine kelisesiz</string>
 
     <string name="telegram_ochilmoqda">Telegram ashılmaqta…</string>
@@ -753,9 +753,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Siz sorawdı tastıyıqladıńız — endi balańız qosımshadan shıǵa aladı.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Siz sorawdı tastıyıqladıńız — endi balańız qosımshanı óshire aladı.</string>
     <string name="sorov_rad_etildi_desc">Siz sorawdı biykarladıńız.</string>
-    <string name="unlink_child_title">Balanı ajıratasız ba?</string>
-    <string name="unlink_child_message">Bul háreketten keyin %1$s qurılmasındaǵı baqlaw toqtatıladı!</string>
-    <string name="unlink_child_action">Ajıratıw</string>
+    <string name="unlink_child_title">Bala ajıratılsın ba?</string>
+    <string name="unlink_child_message">%1$s telefonındaǵı qorǵaw hám qaǵıydalar toqtaydı. Qayta jalǵaw ushın «Bala qosıw» arqalı kodtı qayta skanerleń.</string>
+    <string name="unlink_child_action">Awa, ajıratılsın</string>
     <string name="child_unlinked_success">Bala tabıslı ajıratıldı</string>
     <string name="operator_kodi_topilmadi">Bunday operator kodı joq</string>
     <string name="kod_amal_qilish_muddati">Kod ámel etiw múddeti: %1$s</string>
@@ -769,7 +769,7 @@
     <string name="farzand_tanlanmagan">Bala tańlanbaǵan</string>
     <string name="vazifa_id_topilmadi">Tapsırma ID tabılmadı</string>
     <string name="tahrirlangan">ózgertilgen</string>
-    <string name="jadval_topilmadi">Keste tabılmadı.</string>
+    <string name="jadval_topilmadi">Tabılmadı — bálkim óshirilgen. Artqa qaytıp, qayta ashıń.</string>
     <plurals name="minutes">
         <item quantity="one">%1$d minut</item>
         <item quantity="other">%1$d minut</item>
@@ -802,8 +802,8 @@
     <string name="tarix_disabled">Sóndirildi</string>
     <string name="tarix_paused">Toqtatılǵan</string>
     <string name="tarix_deleted">Joq etildi</string>
-    <string name="tarix_quick_block_add">Tez bloklaw qosıldı</string>
-    <string name="tarix_quick_block_remove">Tez bloklaw alıp taslandı</string>
+    <string name="tarix_quick_block_add">Dayım jabıq qosımshalarǵa qosıldı</string>
+    <string name="tarix_quick_block_remove">Dayım jabıq qosımshalardan alındı</string>
     <string name="tarix_bosh">Házirshe ózgerisler joq</string>
     <string name="tarix_resumed">Dawam ettirildi</string>
     <string name="muddat">Dawamlılıǵı</string>
@@ -827,26 +827,26 @@
     <string name="stat_row_sec">%1$d sek</string>
     <string name="stat_hour_only">%1$d s</string>
     <string name="stat_per_day">Kúnine ~%1$s</string>
-    <string name="stat_quick_blocked">Tez bloklawda</string>
-    <string name="stat_quick_blocked_paused">Tez bloklawda · toqtatılǵan</string>
-    <string name="stat_quick_blocked_inactive">Tez bloklawda · Plus kerek</string>
+    <string name="stat_quick_blocked">Dayım jabıq</string>
+    <string name="stat_quick_blocked_paused">Dayım jabıq · toqtatılǵan</string>
+    <string name="stat_quick_blocked_inactive">Dayım jabıq · Plus kerek</string>
     <string name="stat_blocked_by_child">Bala bloklaǵan</string>
     <string name="stat_blocked_by_child_paused">Bala bloklaǵan · toqtatılǵan</string>
     <string name="stat_blocked_by_child_inactive">Bala bloklaǵan · Plus kerek</string>
     <string name="stat_blocked_by_coparent">Basqa ata-ana bloklaǵan</string>
     <string name="stat_blocked_by_coparent_paused">Basqa ata-ana bloklaǵan · toqtatılǵan</string>
     <string name="stat_blocked_by_coparent_inactive">Basqa ata-ana bloklaǵan · Plus kerek</string>
-    <string name="stat_lock_hint">Qulıp qosımshanı tez bloklawǵa qosadı yamasa alıp taslaydı</string>
-    <string name="stat_quick_add_cd">Tez bloklawǵa qosıw</string>
-    <string name="stat_quick_remove_cd">Tez bloklawdan alıp taslaw</string>
-    <string name="stat_reenable_title">Tez bloklaw qosıladı</string>
-    <string name="stat_reenable_message">Tez bloklaw óshirilgen. Bul qosımshanı bloklaw onı qayta qosadı hám onıń dizimindegi basqa qosımshalar da bloklanadı: %1$d.</string>
+    <string name="stat_lock_hint">Qulıp qosımshanı dayım jabıq qosımshalarǵa qosadı yamasa alıp taslaydı</string>
+    <string name="stat_quick_add_cd">Dayım jabıq qosımshalarǵa qosıw</string>
+    <string name="stat_quick_remove_cd">Dayım jabıq qosımshalardan alıp taslaw</string>
+    <string name="stat_reenable_title">Dayım jabıq qosımshalar qayta qosıladı</string>
+    <string name="stat_reenable_message">«Dayım jabıq qosımshalar» házir óshik. Bul qosımshanı qossańız, ol qayta qosıladı hám dizimdegi jáne %1$d qosımsha jabıladı.</string>
     <string name="stat_reenable_confirm">Bloklaw</string>
     <string name="stat_quick_paywall_title">Jazılıw kerek</string>
     <string name="stat_quick_paywall_message">Qosımshanı bir basıw menen bloklaw ushın Hoglt Plus jazılıwı kerek.</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">Tez bloklaw</string>
+    <string name="quick_title">Dayım jabıq qosımshalar</string>
     <string name="quick_enabled">Qosılǵan</string>
     <string name="quick_pause">Pauza</string>
     <string name="quick_blocked_apps">Bloklanǵan qosımshalar</string>
@@ -855,15 +855,15 @@
     <string name="quick_info_always">Bul dizimdegi qosımshalar waqıt hám orınǵa qaramastan hámme waqıt bloklanadı.</string>
     <string name="quick_info_off">Ol házir óshirilgen — bul qosımshalardı bloklaw ushın onı qosıń.</string>
     <string name="quick_info_paused">%1$s waqtına shekem toqtatılǵan — oǵan shekem hesh nárse bloklanbaydı.</string>
-    <string name="quick_info_stats">Qosımshalardı paydalanıw statistikasınan da bir basıw menen qosıwıńız yamasa alıp taslawıńız múmkin.</string>
-    <string name="quick_info_readd">Eger tez bloklaw óshirilgen bolsa, qosımsha qosıw onı qayta qosadı.</string>
+    <string name="quick_info_stats">«Telefon waqtı» betinen de qosımshanı bir basıw menen usı dizimge qosıwǵa yamasa alıp taslawǵa boladı.</string>
+    <string name="quick_info_readd">«Dayım jabıq qosımshalar» óshik bolsa, qosımsha qosıw onı qayta qosadı.</string>
     <string name="quick_child_blocks">Bala bloklaǵan</string>
     <string name="quick_coparent_blocks">Basqa ata-ana bloklaǵan</string>
     <string name="quick_others_note">Bul dizimlerdi tek olardıń iyesi ózgerte aladı. Kerek bolsa, qosımshanı óz dizimińizge qosıń.</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">Uyqı waqtı</string>
-    <string name="policy_preset_limit">Waqıt limiti</string>
+    <string name="policy_preset_limit">Kúnine qansha waqıt</string>
     <string name="policy_preset_school">Sabaq waqtı</string>
     <string name="policy_day_mon">Dú</string>
     <string name="policy_day_tue">Si</string>
@@ -883,30 +883,30 @@
     <string name="policy_location">Jaylasıw</string>
     <string name="policy_active_now">Házir aktiv: %1$s</string>
     <string name="policy_active_until">%1$s waqtına shekem</string>
-    <string name="list_info_none">Házir hesh bir keste aktiv emes</string>
+    <string name="list_info_none">Házir hesh bir qaǵıyda islep turǵan joq</string>
     <string name="list_info_also">Sonday-aq aktiv: %1$s.</string>
-    <string name="list_info_many">Bir neshe keste bir waqıtta islegende, olardıń qálegen biri bloklasa, qosımsha bloklanadı.</string>
-    <string name="list_info_child_scope">Balanıń óz kesteleri sizdikinen ústin tura almaydı — siz bloklaǵan qosımsha bloklanǵan bolıp qaladı.</string>
-    <string name="list_info_school_scope">Eger mektep kestesi qosımshanı jabsa yamasa oǵan anıq ruqsat berse, sizdiń kesteńiz onı ózgerte almaydı. Basqa jaǵdaylarda qatańıraq keste qollanıladı.</string>
-    <string name="list_info_quick">Tez bloklaw qosılǵan — onıń qosımshaları waqıt hám orınǵa qaramastan hámme waqıt bloklanadı.</string>
-    <string name="list_info_paused">Toqtatılǵan kesteler: %1$d — olar belgilengen waqıtqa shekem hesh nárse islemeydi.</string>
-    <string name="list_info_how">Keste óz waqtı hám ornı kelgende ózi iske túsedi.</string>
-    <string name="policy_tab_templates">Úlgiler</string>
+    <string name="list_info_many">Bir waqıtta bir neshe qaǵıyda islese, olardıń birewi qosımshanı jawsa — ol jabıladı.</string>
+    <string name="list_info_child_scope">Balanıń óz qaǵıydaları sizdiń sheshimińizdi ózgerte almaydı — siz japqan qosımsha jabıq bolıp qaladı.</string>
+    <string name="list_info_school_scope">Mektep qaǵıydası qosımshanı jawsa yamasa anıq ruqsat berse, sizdiń qaǵıydańız onı ózgerte almaydı. Qalǵan jaǵdaylarda qatańıraq qaǵıyda isleydi.</string>
+    <string name="list_info_quick">«Dayım jabıq qosımshalar» qosılǵan — bul dizimdegi qosımshalar waqıt hám orınǵa qaramastan dayım jabıq.</string>
+    <string name="list_info_paused">Toqtatılǵan qaǵıydalar: %1$d — belgilengen waqıtqa shekem islemeydi.</string>
+    <string name="list_info_how">Qaǵıyda óz waqtı hám ornı kelgende ózi iske túsedi.</string>
+    <string name="policy_tab_templates">Tayar qaǵıydalar</string>
     <string name="policy_tab_mine">Men qoyǵan</string>
     <string name="policy_tab_child">Bala ózi</string>
-    <string name="policy_tab_coparent">Ata-ana</string>
+    <string name="policy_tab_coparent">Ekinshi ata-ana</string>
     <string name="policy_tab_school">Mektep</string>
     <string name="policy_enabled_count">%1$d qosılǵan</string>
-    <string name="policy_content_protection">Kontentti qorǵaw</string>
+    <string name="policy_content_protection">Jaman saytlardan qorǵaw</string>
     <string name="policy_content_protection_others">Bala yamasa basqa ata-ana qosqan</string>
     <string name="policy_paused">Toqtatılǵan</string>
-    <string name="policy_quick_blocks">Tez bloklawlar</string>
+    <string name="policy_quick_blocks">Dayım jabıq qosımshalar</string>
     <string name="preset_all_apps">Barlıq qosımshalar</string>
-    <string name="policy_paywall_protection">Kontentti qorǵaw Hoglt Plus penen isleydi.</string>
+    <string name="policy_paywall_protection">Jaman saytlardan qorǵaw Hoglt Plus penen isleydi.</string>
     <string name="policy_paywall_count">Biypul reje kesteler sanın shekleydi. Hoglt Plus kóbirek kestege imkan beredi.</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">Ele hesh nárse tańlanbaǵan — bul keste hesh nárseni bloklamaydı.</string>
+    <string name="info_nothing">Ele hesh nárse tańlanbaǵan — bul qaǵıyda hesh nárseni jappaydı.</string>
     <string name="info_always">Hámme waqıt</string>
     <string name="info_sentence">%1$s, %2$s.</string>
     <string name="info_when_time">%1$s %2$s – %3$s aralıǵında</string>
@@ -919,12 +919,12 @@
     <string name="info_what_all_apps_sites">barlıq qosımshalar hám saytlar bloklanadı</string>
     <string name="info_what_selected">tańlanǵanlar bloklanadı (%1$s)</string>
     <string name="info_stays_open">Ashıq qaladı: %1$s.</string>
-    <string name="info_not_counted">Limitke esapqa alınbaydı: %1$s.</string>
+    <string name="info_not_counted">Waqıt esaplanbaydı: %1$s.</string>
     <string name="info_limit_daily">%1$s: %2$s jámi %3$s paydalanılıwı múmkin. Waqıt pitkende, olar ertege shekem bloklanǵan bolıp qaladı.</string>
     <string name="info_limit_hourly">%1$s: %2$s saatına %3$s paydalanılıwı múmkin. Waqıt pitkende, olar keyingi saatqa shekem bloklanǵan bolıp qaladı.</string>
     <string name="info_limit_all">barlıq qosımshalar</string>
     <string name="info_limit_selected">tańlanǵanlar</string>
-    <string name="info_limit_gate">Limit tek %1$s qollanıladı.</string>
+    <string name="info_limit_gate">Waqıt tek usı waqıtta esaplanadı: %1$s.</string>
     <string name="info_protected">Qońırawlar, SMS hám basqa zárúr qosımshalar hesh qashan bloklanbaydı.</string>
     <string name="info_disabled">Ol házir óshirilgen — qollanıw ushın onı qosıń.</string>
 
@@ -933,7 +933,7 @@
     <string name="preset_when">Qashan</string>
     <string name="preset_starts">Baslanıwı</string>
     <string name="preset_ends">Tamamlanıwı</string>
-    <string name="preset_limit">Limit</string>
+    <string name="preset_limit">Qansha waqıt</string>
     <string name="preset_counted">Ne esapqa alınadı</string>
     <string name="preset_what_closed">Ne bloklanadı</string>
     <string name="preset_only_selected">Tek tańlanǵanlar</string>
@@ -974,13 +974,13 @@
     <string name="targets_covered_by_category">Kategoriya arqalı tańlanǵan</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">Sayt mánzili yamasa gilt sóz qáte. Mısalı: youtube.com yamasa kino</string>
-    <string name="editor_new_policy">Jańa keste</string>
+    <string name="editor_new_policy">Jańa qaǵıyda</string>
     <string name="editor_not_selected">Tańlanbaǵan</string>
     <string name="editor_when_hint">májbúriy emes · bolmasa hámme waqıt</string>
     <string name="editor_add_condition">Shárt qosıw</string>
     <string name="editor_added">Qosıldı</string>
     <string name="editor_condition_time">Waqıt</string>
-    <string name="editor_condition_limit">Limit</string>
+    <string name="editor_condition_limit">Qansha waqıt</string>
     <string name="editor_in_this_time">Usı waqıtta</string>
     <string name="editor_closed_in_time">Bloklanadı</string>
     <string name="editor_closed_in_time_sub">Basqa waqıtta ashıq</string>
@@ -991,8 +991,8 @@
     <string name="editor_inside">Aymaq ishinde</string>
     <string name="editor_outside">Aymaqtan tıs</string>
     <string name="editor_rename">Atın ózgertiw</string>
-    <string name="editor_delete_title">Bul kesteni óshiresiz be?</string>
-    <string name="editor_delete_message">«%1$s» óshiriledi.</string>
+    <string name="editor_delete_title">Qaǵıyda pútkilley óshirilsin be?</string>
+    <string name="editor_delete_message">«%1$s» óshiriledi. Bul qaǵıyda japqan qosımshalar qayta ashıladı.</string>
     <string name="editor_paywall_allow">«Tek tańlanǵanlar ashıq qaladı» rejimi Plus penen qoljetimli.</string>
     <string name="location_child_here">Balamnıń jaylasıwı</string>
     <string name="protection_section">Ne qorǵaladı</string>
@@ -1010,24 +1010,24 @@
     <string name="protection_policies_pending">Ele jetkerilmedi</string>
     <string name="protection_gujanak_limits_note">Orta qorǵaw tek qosımshalardı jabadı. Saytlar hám qısqa videolar tek qatań qorǵawda bloklanadı: balańızdıń telefonında Hoglt → «Qadaǵalaw» → «Qalqan rejimi».</string>
     <string name="editor_limit_days_follow_time">Waqıt penen birdey — kúnler waqıt betinde tańlanadı</string>
-    <string name="editor_limit_in_window">usı waqıttaǵı limit</string>
-    <string name="editor_limit_outside_window">usı waqıttan tıs limit</string>
-    <string name="editor_limit_in_time">Limit usı waqıtta qollanıladı</string>
+    <string name="editor_limit_in_window">waqıt usı saatlarda esaplanadı</string>
+    <string name="editor_limit_outside_window">waqıt usı saatlardan tıs esaplanadı</string>
+    <string name="editor_limit_in_time">Waqıt tek usı saatlarda esaplanadı</string>
     <string name="editor_limit_in_time_sub">Basqa waqıtta sheklew joq</string>
-    <string name="editor_limit_out_time">Limit usı waqıttan tıs qollanıladı</string>
+    <string name="editor_limit_out_time">Waqıt usı saatlardan tıs esaplanadı</string>
     <string name="editor_limit_out_time_sub">Usı waqıtta sheklew joq</string>
     <string name="info_limit_daily_window">%1$s: %2$s jámi %3$s paydalanılıwı múmkin. Waqıt pitkende, usı waqıt aralıǵı tamamlanǵansha jabıq boladı.</string>
     <string name="targets_only_selected_open_sites_sub">Basqa saytlar jabıladı</string>
     <string name="targets_only_selected_open_both_sub">Basqa qosımshalar hám saytlar jabıladı</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">Házirshe kesteler joq</string>
-    <string name="policy_empty_mine_sub">Úlgini qosıń yamasa óz kesteńizdi jaratıń</string>
+    <string name="policy_empty_mine_title">Ele qaǵıyda joq</string>
+    <string name="policy_empty_mine_sub">Tayar qaǵıydalardıń birin qosıń yamasa ózińiz jaratıń</string>
     <string name="empty_search_title">Hesh nárse tabılmadı</string>
     <string name="empty_search_sub">Basqasha izlep kóriń</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">Úlkenler ushın hám qumar oyın saytları</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">Keste</string>
+    <string name="policy_name_schedule">Qaǵıyda</string>
     <string name="policy_name_category_block">Kategoriyalar boyınsha bloklaw</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">Balańız qosqan</string>
@@ -1122,7 +1122,7 @@
     <string name="ap_off_confirm">Óshiriw</string>
     <string name="ap_keep_on">Qosılǵan qaldırıw</string>
     <string name="ap_retry_note">Erteń qayta urınıp kóremiz (%1$d/3).</string>
-    <string name="ap_retry_now">Qaytalaw</string>
+    <string name="ap_retry_now">Házir tólew</string>
     <string name="ap_other_card">Basqa karta</string>
     <string name="ap_cards_empty_title">Saqlanǵan kartalar joq</string>
     <string name="ap_cards_empty_sub">Avtotólem ushın UZCARD yamasa HUMO kartasın qosıń</string>
@@ -1168,7 +1168,7 @@
     <string name="ulash_tugma">Baylanıstırıw</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">Ótkerip jiberiw</string>
+    <string name="ob_skip">Keyinirek kóremen</string>
     <string name="ob_start">Baslayıq</string>
     <string name="ob_got_it">Túsinikli</string>
     <string name="ob_hello_title">Sálem, men Hoglt</string>
@@ -1182,10 +1182,10 @@
     <string name="ob_day_study">Oqıw</string>
     <string name="ob_min_fmt">%1$d min</string>
     <string name="ob_rules_title">Qaǵıydalardı bir ret ornatıń</string>
-    <string name="ob_rules_body">Uyqı waqtı, sabaq waqtı hám kúnlik limitler óz-ózinen qosıladı.</string>
+    <string name="ob_rules_body">Uyqı waqtı, sabaq waqtı hám kúnlik waqıt óz waqtında ózi qosıladı.</string>
     <string name="ob_rule_sleep">Uyqı waqtı</string>
     <string name="ob_rule_school">Sabaq waqtı</string>
-    <string name="ob_rule_limit">Kúnlik limit</string>
+    <string name="ob_rule_limit">Kúnine qansha waqıt</string>
     <string name="ob_rule_limit_value">2 saat</string>
     <string name="ob_map_title">Qay jerde ekenin biliń</string>
     <string name="ob_map_body">Balańızdı kartada kóriń hám mektep sıyaqlı orınlar ushın qaǵıydalar belgileń.</string>
@@ -1242,8 +1242,8 @@
     <string name="home_layout_list">Dizim</string>
     <string name="home_layout_grid">Tor</string>
     <string name="home_greeting">Sálem, %1$s</string>
-    <string name="kecha_sarfladi">Keshe sarıpladı</string>
-    <string name="sana_sarfladi">%1$s kúni sarıpladı</string>
+    <string name="kecha_sarfladi">Keshe telefonda</string>
+    <string name="sana_sarfladi">%1$s telefonda</string>
     <string name="stat_no_usage_day">Bul kúni ele telefonnan paydalanılmaǵan</string>
     <string name="kirish_usuli">Kiriw usılı</string>
     <string name="google_hisobi">Google akkauntı</string>
@@ -1266,7 +1266,7 @@
     <string name="vazifa_muddati">Múddet</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">Járdemshi</string>
+    <string name="ai_assistant_title">Aqıllı járdemshi</string>
     <string name="ai_assistant_subtitle">Sorań yamasa qaǵıyda belgileń</string>
     <string name="ai_period_today">Búgin</string>
     <string name="ai_period_yesterday">Keshe</string>
@@ -1396,20 +1396,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">Biypul: %1$d aktiv qaǵıyda · Plus: sheksiz</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">Qosımsha qaysı qosımsha ashılǵanın kóre almaydı: telefon waqtı esaplanbaydı, qaǵıydalar islemeydi.</string>
+    <string name="perm_why_overlay">Jabılǵan qosımshanıń ústine bloklaw aynası shıqpaydı — qaǵıydalar qosımshanı jaba almaydı.</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">Balańızdıń qay jerde ekenin kóre almaysız; orınǵa baylanǵan qaǵıydalar da islemeydi.</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">Bunısız saytlar, YouTube Shorts hám Instagram Reels bloklanbaydı, qosımshanı da ańsat óshirip taslawǵa boladı.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">Biypul tarifte bir qaǵıydaǵa %1$d qosımshaǵa shekem qosıwǵa boladı. Kóbirek qosımsha ushın Plus kerek.</string>
+    <string name="policy_paywall_app_limit">Bir qaǵıydadaǵı qosımshalar sanı tarif shegine jetti.</string>
     <string name="clip_child_phone">Onıń telefonında</string>
     <string name="prot_default_note">Házir qaǵıydalarıńız hesh bir qosımshanı jappaydı. Jabıwı ushın balańızdıń telefonında Hoglt-tı ashıń → «Qadaǵalaw» bóliminde qorǵawdı qosıń.</string>
     <string name="prot_strength">Qorǵaw dárejesi</string>
@@ -1439,4 +1439,64 @@
     <string name="task_empty_done">Orınlanǵan tapsırma ázirshe joq</string>
     <string name="task_empty_overdue">Múddeti ótken tapsırma joq</string>
     <string name="task_empty_filter_hint">Barlıq tapsırmalardı kóriw ushın tańlanǵan filtrdi qayta basıń.</string>
+    <string name="voice_listen">Tıńlaw</string>
+    <string name="voice_stop">Toqtatıw</string>
+    <string name="voice_unavailable">Dawıslı túsindirme ázirshe joq. Keyinirek qayta urınıp kóriń.</string>
+    <string name="live_confirm_title">Tikkeley kóriw</string>
+    <string name="live_confirm_body">%1$s qońıraw aladı. Razı bolsa, video ashıladı.</string>
+    <string name="live_child_fallback">Balańız</string>
+    <string name="live_call_button">Qońıraw etiw</string>
+    <string name="live_ringing">Qońıraw etilmekte: %1$s…</string>
+    <string name="live_connecting">Jalǵanbaqta…</string>
+    <string name="live_error_connect">Baylanısıw múmkin bolmadı. Azdan keyin qayta urınıp kóriń.</string>
+    <string name="live_declined">Balańız biykarladı</string>
+    <string name="live_no_answer">Juwap joq</string>
+    <string name="live_end">Tamamlaw</string>
+    <string name="live_show_on_map">Kartada kóriw</string>
+    <string name="unlink_child_button">Balanı ajıratıw</string>
+    <string name="saqlandi">Saqlandı</string>
+    <string name="ap_retry_now_amount">Házir tólew · %1$s</string>
+    <string name="pay_charge_body">•• %1$s kartadan %2$s alınadı.</string>
+    <string name="pay_charge_body_amount">Kartadan %1$s alınadı.</string>
+    <string name="pay_charge_body_plain">Saqlanǵan kartadan jazılıw tólemi alınadı.</string>
+    <string name="pay_confirm_pay">Tólew</string>
+    <string name="app_store_unavailable">App Store házir ashılmadı. Azdan keyin qayta urınıp kóriń.</string>
+    <string name="app_store_failed">App Store arqalı tólew múmkin bolmadı. Qayta urınıp kóriń.</string>
+    <string name="apple_activation_pending_title">Tólem qabıl etildi</string>
+    <string name="login_subtitle_social">Qolaylı usıldı tańlań. Akkauntıńız bolmasa, ózi ashıladı.</string>
+    <string name="login_telegram_not_opened">Telegram ashılmadı. Telegram ornatılǵanın tekseriń yamasa basqa usıl menen kiriń.</string>
+    <string name="ob_notif_enable">Bildiriwlerdi qosıw</string>
+    <string name="comfort_title">Oqıw qolaylı ma?</string>
+    <string name="comfort_screen_color">Ekran reńi</string>
+    <string name="comfort_light">Jaqtı</string>
+    <string name="comfort_dark">Qarańǵı</string>
+    <string name="comfort_done">Tayar</string>
+    <string name="comfort_hint">Bunı keyin de ózgertiwge boladı.</string>
+    <string name="policy_turned_on">%1$s qosıldı</string>
+    <string name="policy_turned_off">%1$s óshirildi</string>
+    <string name="policy_off_title">%1$s óshirilsin be?</string>
+    <string name="policy_off_body">Balańızdıń telefonında bul qaǵıyda dárhal islewden toqtaydı hám ol japqan nárseler qayta ashıladı. Qálegen waqıtta qayta qosıwǵa boladı.</string>
+    <string name="policy_off_body_safety">Balańızdıń telefonında bul qorǵaw dárhal toqtaydı. Qálegen waqıtta qayta qosıwǵa boladı.</string>
+    <string name="policy_off_confirm">Awa, óshirilsin</string>
+    <string name="policy_off_cancel">Yaq, qalsın</string>
+    <string name="policy_saved_sent">Saqlandı — bala telefonına jiberildi</string>
+    <string name="policy_saved_queued">Saqlandı — internet qaytqanda bala telefonına jiberiledi</string>
+    <string name="policy_unsaved_title">Ózgerisler saqlansın ba?</string>
+    <string name="policy_unsaved_body">Saqlamasańız, balańızdıń telefonında hesh nárse ózgermeydi.</string>
+    <string name="policy_unsaved_discard">Saqlamay shıǵıw</string>
+    <string name="quick_unblock_title">%1$s qayta ashılsın ba?</string>
+    <string name="quick_unblock_body">Bul qosımsha balańızdıń telefonında dárhal ashıladı.</string>
+    <string name="quick_unblock_confirm">Awa, ashılsın</string>
+    <string name="quick_unblock_action">Ashıw</string>
+    <string name="quick_unblocked">%1$s ashıldı</string>
+    <string name="policy_exception_remove">Alıp taslaw</string>
+    <string name="policy_load_failed">Júklenbedi</string>
+    <string name="tg_more_settings">Tolıq sazlaw</string>
+    <string name="rules_on_count">%1$d qaǵıyda qosılǵan</string>
+    <string name="task_accepted">Qabıl etildi</string>
+    <string name="task_accepted_coins">%1$s %2$d teńge aldı</string>
+    <string name="task_coins_explain">Tapsırmanı qabıl etkenińizde teńgeler balańızǵa ótedi. Ol olardı aqıllı járdemshige soraw beriw ushın jumsaydı.</string>
+    <string name="task_coins_not_enough">Teńgeńiz jetpeydi</string>
+    <string name="chat_support_title">Járdem xızmeti</string>
+    <string name="chat_ai_title">Aqıllı járdemshi</string>
 </resources>

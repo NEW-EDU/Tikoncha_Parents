@@ -43,7 +43,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -306,10 +309,27 @@ internal fun CtaButton(text: String, onClick: () -> Unit, modifier: Modifier = M
         enabled = enabled,
         shapes = expressiveButtonShapes(),
         colors = ButtonDefaults.buttonColors(containerColor = Night.caramel, contentColor = Color.White),
-        modifier = modifier.fillMaxWidth().height(ButtonDefaults.MediumContainerHeight),
+        // Katta şriftda tugma öziga sigmasa balandlaşadi (matn kesilmaydi)
+        modifier = modifier.fillMaxWidth().heightIn(min = ButtonDefaults.MediumContainerHeight),
     ) {
-        Text(text, style = labelStyle(17, FontWeight.ExtraBold, Color.White), modifier = Modifier.padding(horizontal = 16.dp))
+        Text(
+            text,
+            style = labelStyle(17, FontWeight.ExtraBold, Color.White),
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(horizontal = 16.dp),
+        )
     }
+}
+
+/**
+ * Sahna rasmlari — öqiladigan matn emas, ilova ekranining "miniatyurasi": ularni telefon/ilova şrift ölçamidan qat'i
+ * nazar loyiha ölçamida çizamiz, aks holda katta şriftda qatorlar kartaga sigmay ezilib qoladi. Tuşuntiriş matnlari
+ * (sarlavha, izoh, tugmalar) esa tanlangan ölçamda qoladi.
+ */
+@Composable
+internal fun ArtFontScale(content: @Composable () -> Unit) {
+    val d = LocalDensity.current
+    CompositionLocalProvider(LocalDensity provides Density(d.density, fontScale = 1f), content = content)
 }
 
 /** Sahna rasmlari turadigan shisha karta. */

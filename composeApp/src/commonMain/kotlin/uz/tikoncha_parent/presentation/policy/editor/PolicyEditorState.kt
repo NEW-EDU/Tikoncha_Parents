@@ -42,6 +42,8 @@ data class PolicyEditorState(
     val now: Instant = Instant.DISTANT_PAST,
     val draft: PolicyDraft? = null,
     val saved: PolicyDraft? = null,
+    /** Yaratişda boşlang'ich qoralama — orqaga bosilganda "özgarişlar bormi" şunga soliştiriladi. */
+    val initial: PolicyDraft? = null,
     val childApps: List<InstalledApp> = emptyList(),
     /** Hamma ilovalar (himoyalanganlari ham) — ko'rish sahifasida nomlar uchun. */
     val allChildApps: List<InstalledApp> = emptyList(),
@@ -85,6 +87,10 @@ data class PolicyEditorState(
 
     /** Yaratishda nishon bo'lsa yetadi; tahrirlashda o'zgarish ham kerak. */
     val canSave: Boolean get() = !readOnly && hasTargets && (!isDetail || hasChanges) && !saving && !deleting
+
+    /** Orqaga bosilganda yöqolib ketadigan tahrir bormi (yaratişda — boşlang'ich qoralamadan farq). */
+    val hasUnsavedChanges: Boolean
+        get() = !readOnly && !deleting && draft != null && (if (isDetail) hasChanges else draft != initial)
 
     val conditions: List<ConditionKind>
         get() = listOfNotNull(

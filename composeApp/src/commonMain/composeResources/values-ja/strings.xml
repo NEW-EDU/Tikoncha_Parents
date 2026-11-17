@@ -94,7 +94,7 @@
     <string name="maktab">学校</string>
     <string name="sozlamalar">設定</string>
     <string name="bildirishnomalar">通知</string>
-    <string name="tema">テーマ</string>
+    <string name="tema">画面の色</string>
     <string name="tasdiqlash">確認</string>
     <string name="tolov">お支払い</string>
     <string name="obuna_pro">Proサブスクリプション</string>
@@ -126,7 +126,7 @@
     <string name="pasport_id">パスポートID</string>
     <string name="reklama">広告</string>
     <string name="yorug">ライト</string>
-    <string name="theme_system">システム</string>
+    <string name="theme_system">スマホと同じ</string>
     <string name="xavfli_zona">危険エリア</string>
     <string name="akkauntni_o_chirish">アカウントを削除</string>
     <string name="pochta_orqali">メールで</string>
@@ -153,8 +153,8 @@
     <string name="ruxsat_so_rash">権限をリクエスト</string>
     <string name="joylashuv_uchun_ruxsat">位置情報の権限</string>
     <string name="xaritadan_to_liq_foydalanish_uchun_joylashuvga_sozlamalardan_turib_ruxsat_bering">マップをフルに使うには、設定で位置情報の権限を許可してください！</string>
-    <string name="xatolik">エラー</string>
-    <string name="ok">OK</string>
+    <string name="xatolik">うまくいきませんでした</string>
+    <string name="ok">わかりました</string>
     <string name="qoshish">追加</string>
     <string name="ogil_bola">男の子</string>
     <string name="qiz_bola">女の子</string>
@@ -172,7 +172,7 @@
     <string name="muvaffaqiyatli">成功しました</string>
     <string name="qisqartirish">短縮</string>
     <string name="vazifa_tahrirlandi">タスクを編集しました</string>
-    <string name="server_connection_error">サーバー接続エラー！</string>
+    <string name="server_connection_error">今は接続できませんでした。少したってからもう一度お試しください。</string>
     <string name="faol">有効</string>
     <string name="faol_emas">非アクティブ</string>
     <string name="ohirgi_faollik">最終アクティブ：</string>
@@ -216,11 +216,11 @@
     <string name="diqqat" >ご注意ください！</string>
     <string name="siz_tanlagan_vaqt_oraligida">選択した時間帯のあいだ、使用制限は働きません！つまり、時間のスケジュールが優先されます。</string>
     <string name="ta_ilova_sizda_o_rnatilmagan">%1$d個のアプリがお使いの端末にインストールされていません</string>
-    <string name="cheklovlar">制限</string>
+    <string name="cheklovlar">ルール</string>
     <string name="ta_ilovaga">%1$d個のアプリ</string>
     <string name="ta_vebsaytga">%1$d件のウェブサイト</string>
     <string name="ustuvorligi">優先度</string>
-    <string name="jadval_nomini_kiriting">スケジュール名を入力</string>
+    <string name="jadval_nomini_kiriting">ルール名を入力</string>
     <string name="misol_o_quv_markaz">例：学習センター</string>
     <string name="ochirish">削除</string>
     <string name="jadvalni_saqlamasdan_chiqishga_rozimisiz">スケジュールを保存せずに終了してもよろしいですか？</string>
@@ -250,14 +250,14 @@
     <string name="tabriklaymiz">おめでとうございます！</string>
     <string name="endi_siz_ushbu_obunaga_egasiz">このサブスクリプションが利用できるようになりました</string>
     <string name="maxsus_imkoniyatlar_va_qollab_quvvatlashdan_foydalaning">特別な機能と優先サポートをお楽しみください！</string>
-    <string name="statistika">統計</string>
+    <string name="statistika">スマホの時間</string>
     <string name="chegirmalar">割引</string>
     <string name="chegirma">割引</string>
-    <string name="topshiriqlar">課題</string>
-    <string name="jadvallar">スケジュール</string>
+    <string name="topshiriqlar">タスク</string>
+    <string name="jadvallar">ルール</string>
     <string name="ilova_cheklangan">%1$d個のアプリを制限中</string>
     <string name="faol_vazifa">進行中のタスク：%1$d件</string>
-    <string name="bugun_sarfladi">今日の使用</string>
+    <string name="bugun_sarfladi">今日のスマホ時間</string>
     <string name="chiqish">ログアウト</string>
     <string name="chiqishni_xohlaysizmi">ログアウトしますか？</string>
     <string name="chiqishni_tasdiqlang">ログアウトを確認してください。</string>
@@ -322,8 +322,8 @@
     <string name="profil_va_sozlamalar_saqlanadi">プロフィールと設定はサーバーに保存されます。</string>
     <string name="qayta_kirsangiz_tiklanadi">再度ログインすると、すべて元に戻ります。</string>
     <string name="farzand_qoshilmagan">子どもが追加されていません</string>
-    <string name="farzand_qoshilgandan_keyin_korinish">子どもを追加すると、スケジュール、チャット、レポートが表示されます。</string>
-    <string name="kutilmagan_xatolik_qayta_urining">予期しないエラーが発生しました。もう一度お試しください。</string>
+    <string name="farzand_qoshilgandan_keyin_korinish">子どもを追加すると、ルール、チャット、スマホの時間が表示されます。</string>
+    <string name="kutilmagan_xatolik_qayta_urining">うまくいきませんでした。少したってからもう一度お試しください。</string>
     <string name="hozircha_farzand_qoshilmagan">まだ子どもを追加していません。</string>
     <string name="diqqat2">ご注意ください！</string>
     <string name="davom_etishdan_oldin_ilova_turini_tanlang">続ける前に、アプリの種類を選択してください。</string>
@@ -343,10 +343,10 @@
     <string name="tasdiqlash_kodi_usulini_tanlash">確認コードの\n送信方法を選んでください</string>
     <string name="tasdiqlash_kodini_olish">確認コードを取得</string>
     <string name="telegram_kod_kiritish">%1$sにリンクされたTelegramに届いたコードを入力してください</string>
-    <string name="xato_kod_kiritdingiz">コードが正しくありません</string>
+    <string name="xato_kod_kiritdingiz">コードが一致しません。もう一度入力してください。</string>
     <string name="kod_olish_usulini_ozgartirish">コードの受け取り方法を変更</string>
     <string name="versiya">バージョン</string>
-    <string name="jadval_yaratish">スケジュールを作成</string>
+    <string name="jadval_yaratish">ルールを作成</string>
     <string name="sizning_cheklovlaringiz">あなたの制限</string>
 
     <string name="avtomatik_bloklash_vaqti">選んだ曜日と時間に自動でブロック</string>
@@ -364,9 +364,9 @@
     <string name="noto_g_ri_url_format">URLの形式が正しくありません</string>
     <string name="bu_sayt_allaqachon_ro_yxatda">このサイトはすでにリストにあります</string>
     <string name="to_liq_nazoratni_yoqing">完全な管理を有効にしましょう</string>
-    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Hogltでアプリ、時間、使用状況を管理。Plusなら制限なく使え、シールドモードで最大限の保護を有効にできます。</string>
+    <string name="tikoncha_orqali_ilovalar_vaqt_va_foydalanishni_boshqaring">Hoglt でアプリとスマホの時間を管理できます。Plus なら制限なしで、厳しい保護もオンにできます。</string>
     <string name="plus_imkoniyatlarini_ochish">Plusの機能を解放</string>
-    <string name="jadval_nomi">スケジュール名</string>
+    <string name="jadval_nomi">ルール名</string>
     <string name="saytlar">サイト</string>
     <string name="qachon_va_qanday_holatlarda_ilova_va_veb">アプリやウェブサイトをいつ、どんな場合に制限するかを指定します</string>
 
@@ -412,11 +412,11 @@
     <string name="plus_obnuna_kerak">PLUSサブスクリプションが必要です</string>
     <string name="toliq_nazorat_statistika">完全な管理と統計</string>
     <string name="farzand_ilova_kuzatish">お子さまが日中にどのアプリをどれだけ使っているかを確認できます。</string>
-    <string name="uchtagacha_jadval">最大3つのスケジュール</string>
+    <string name="uchtagacha_jadval">ルール3件まで</string>
     <string name="jadval_cheklovlar">曜日、週、特別な時間ごとに、個別の制限を設定できます。</string>
     <string name="qattiq_bloklash_qalqon">厳しい保護：サイトとショート動画もブロック</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">お子さまは制限を解除したり変更したりできません。</string>
-    <string name="tez_bloklash_timer">クイックブロック（タイマー）</string>
+    <string name="tez_bloklash_timer">常に閉じるアプリ</string>
     <string name="vaqtinchalik_bloklash_tezi">必要なときに、数秒で一時的なブロックをオンにできます。</string>
     <string name="hisobot_tahlil">レポートと分析</string>
     <string name="farzand_nazorat_tavsifi">お子さまのスマートフォンの使用を管理しましょう。不要なアプリをブロックし、使用時間を設定して、安全な環境をつくります。</string>
@@ -494,8 +494,8 @@
     <string name="danger_cat_tobacco">たばこ・電子たばこ</string>
     <string name="danger_distance_m">%1$d m</string>
     <string name="radius">半径</string>
-    <string name="farzandim">うちの子</string>
-    <string name="ozim">自分</string>
+    <string name="farzandim">お子さまが設定</string>
+    <string name="ozim">自分から</string>
     <string name="faol_vazifa_yo_q">進行中のタスクはありません</string>
     <string name="farzandingiz_uchun_vazifa_yo_q">お子さまのタスクはありません</string>
 
@@ -520,7 +520,7 @@
     <string name="weekday_sunday">日曜日</string>
 
     <string name="juda_muhim">とても重要</string>
-    <string name="tekshirildi">確認済み</string>
+    <string name="tekshirildi">承認する</string>
     <string name="ko_rish">表示</string>
     <string name="vazifa_ochirilsinmi">タスクを削除しますか？</string>
     <string name="vazifa_ochirish_tasdiq">このタスクを本当に削除しますか？</string>
@@ -542,7 +542,7 @@
     <string name="tolovlar_tarixi_bos">お支払い履歴はありません</string>
     <string name="tolovlar_tarixi_bos_hint">購入するとここに表示されます</string>
     <string name="boshqa_yozuvlar_yoq">これ以上の記録はありません</string>
-    <string name="xatolik_yuz_berdi">エラーが発生しました</string>
+    <string name="xatolik_yuz_berdi">読み込めませんでした。もう一度お試しください。</string>
 
     <!-- ===== Transaction Item — Title / Subtitle ===== -->
     <string name="tikoncha_plan_format">Hoglt %1$s</string>
@@ -573,7 +573,7 @@
 
     <string name="izoh_ixtiyoriy">コメント（任意）</string>
     <string name="vazifa_tangalari">タスク達成で付与されるコイン</string>
-    <string name="vazifani_tekshirish">タスクを確認</string>
+    <string name="vazifani_tekshirish">内容はこれで大丈夫ですか？</string>
     <string name="izoh">コメント</string>
     <string name="muhimlilik_darajasi">重要度</string>
     <string name="ragbatlantirish_tangachalari">ごほうびのコイン</string>
@@ -593,7 +593,7 @@
     <string name="farzandingiz_tikoncha_ilovasidan_kirib_tasdiqlash">お子さまは、Hogltアプリを開いて確認コードを入力する必要があります。</string>
     <string name="bola_hali_bajardim_bosmagan">お子さまはまだ「完了」ボタンを押していません</string>
     <string name="foydalanilmagan">未使用</string>
-    <string name="token_eskirgan">Session ended</string>
+    <string name="token_eskirgan">もう一度ログインしてください</string>
     <string name="tokenni_yangilash_uchun">Please sign in again to continue.</string>
     <string name="login_qilish">ログイン</string>
     <string name="profil_rasmi">プロフィール写真</string>
@@ -619,7 +619,7 @@
     <string name="telegram_orqali_kirish">Telegramでログイン</string>
     <string name="yoki">または</string>
     <string name="telefon_raqami">電話番号</string>
-    <string name="kirish_subtitle">続けるには、アカウントにログインしてください</string>
+    <string name="kirish_subtitle">Telegram でログインします。アカウントがない場合は自動で作成されます。</string>
     <string name="login_privacy">続けると、プライバシーポリシーと利用規約に同意したことになります</string>
 
     <string name="telegram_ochilmoqda">Telegramを開いています…</string>
@@ -754,9 +754,9 @@
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">リクエストを承認しました。お子さまはアプリからログアウトできるようになりました。</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">リクエストを承認しました。お子さまはアプリをアンインストールできるようになりました。</string>
     <string name="sorov_rad_etildi_desc">リクエストを辞退しました。</string>
-    <string name="unlink_child_title">お子さまとの接続を解除しますか？</string>
-    <string name="unlink_child_message">この操作のあと、%1$sさんの端末の見守りは停止します！</string>
-    <string name="unlink_child_action">接続を解除</string>
+    <string name="unlink_child_title">このお子さまとの連携を解除しますか？</string>
+    <string name="unlink_child_message">%1$sさんのスマホで保護とルールが止まります。再接続するには、「子どもを追加」からもう一度コードを読み取ってください。</string>
+    <string name="unlink_child_action">はい、解除する</string>
     <string name="child_unlinked_success">お子さまとの接続を解除しました</string>
     <string name="operator_kodi_topilmadi">このようなオペレーターコードはありません</string>
     <string name="kod_amal_qilish_muddati">コードの有効時間：%1$s</string>
@@ -770,7 +770,7 @@
     <string name="farzand_tanlanmagan">子どもが選択されていません</string>
     <string name="vazifa_id_topilmadi">タスクIDが見つかりません</string>
     <string name="tahrirlangan">編集済み</string>
-    <string name="jadval_topilmadi">スケジュールが見つかりません。</string>
+    <string name="jadval_topilmadi">見つかりません。削除された可能性があります。戻ってもう一度開いてください。</string>
     <plurals name="minutes">
         <item quantity="one">%1$d分</item>
         <item quantity="other">%1$d分</item>
@@ -803,8 +803,8 @@
     <string name="tarix_disabled">オフにしました</string>
     <string name="tarix_paused">一時停止中</string>
     <string name="tarix_deleted">削除しました</string>
-    <string name="tarix_quick_block_add">クイックブロックに追加しました</string>
-    <string name="tarix_quick_block_remove">クイックブロックから外しました</string>
+    <string name="tarix_quick_block_add">常に閉じるアプリに追加しました</string>
+    <string name="tarix_quick_block_remove">常に閉じるアプリから外しました</string>
     <string name="tarix_bosh">変更はまだありません</string>
     <string name="tarix_resumed">再開しました</string>
     <string name="muddat">長さ</string>
@@ -828,26 +828,26 @@
     <string name="stat_row_sec">%1$d秒</string>
     <string name="stat_hour_only">%1$d時間</string>
     <string name="stat_per_day">1日あたり約%1$s</string>
-    <string name="stat_quick_blocked">クイックブロック中</string>
-    <string name="stat_quick_blocked_paused">クイックブロック中・一時停止中</string>
-    <string name="stat_quick_blocked_inactive">クイックブロック中・Plusが必要</string>
+    <string name="stat_quick_blocked">常に閉じる</string>
+    <string name="stat_quick_blocked_paused">常に閉じる · 一時停止中</string>
+    <string name="stat_quick_blocked_inactive">常に閉じる · Plus が必要</string>
     <string name="stat_blocked_by_child">お子さま自身がブロック</string>
     <string name="stat_blocked_by_child_paused">お子さま自身がブロック・一時停止中</string>
     <string name="stat_blocked_by_child_inactive">お子さま自身がブロック・Plusが必要</string>
     <string name="stat_blocked_by_coparent">もう一人の保護者がブロック</string>
     <string name="stat_blocked_by_coparent_paused">もう一人の保護者がブロック・一時停止中</string>
     <string name="stat_blocked_by_coparent_inactive">もう一人の保護者がブロック・Plusが必要</string>
-    <string name="stat_lock_hint">ロックで、アプリをクイックブロックに追加・削除できます</string>
-    <string name="stat_quick_add_cd">クイックブロックに追加</string>
-    <string name="stat_quick_remove_cd">クイックブロックから外す</string>
-    <string name="stat_reenable_title">クイックブロックがオンになります</string>
-    <string name="stat_reenable_message">クイックブロックはオフです。このアプリをブロックするとオンに戻り、リストにある%1$d個のほかのアプリもブロックされます。</string>
+    <string name="stat_lock_hint">鍵マークでアプリを常に閉じるアプリに追加・削除できます</string>
+    <string name="stat_quick_add_cd">常に閉じるアプリに追加</string>
+    <string name="stat_quick_remove_cd">常に閉じるアプリから外す</string>
+    <string name="stat_reenable_title">常に閉じるアプリが再びオンになります</string>
+    <string name="stat_reenable_message">「常に閉じるアプリ」は今オフです。このアプリを追加すると再びオンになり、リストのほかのアプリも閉じられます：%1$d件。</string>
     <string name="stat_reenable_confirm">ブロック</string>
     <string name="stat_quick_paywall_title">サブスクリプションが必要です</string>
     <string name="stat_quick_paywall_message">ワンタップでアプリをブロックするには、Hoglt Plusサブスクリプションが必要です。</string>
 
     <!-- Tezkor blok ekrani -->
-    <string name="quick_title">クイックブロック</string>
+    <string name="quick_title">常に閉じるアプリ</string>
     <string name="quick_enabled">オン</string>
     <string name="quick_pause">一時停止</string>
     <string name="quick_blocked_apps">ブロック中のアプリ</string>
@@ -856,15 +856,15 @@
     <string name="quick_info_always">このリストのアプリは、時間や場所に関係なく常にブロックされます。</string>
     <string name="quick_info_off">現在オフです。これらのアプリをブロックするにはオンにしてください。</string>
     <string name="quick_info_paused">%1$sまで一時停止中です。それまでは何もブロックされません。</string>
-    <string name="quick_info_stats">使用統計からも、ワンタップでアプリを追加・削除できます。</string>
-    <string name="quick_info_readd">クイックブロックがオフのとき、アプリを追加するとオンに戻ります。</string>
+    <string name="quick_info_stats">「スマホの時間」ページでも、ワンタップでアプリをこのリストに追加したり外したりできます。</string>
+    <string name="quick_info_readd">「常に閉じるアプリ」がオフのときにアプリを追加すると、再びオンになります。</string>
     <string name="quick_child_blocks">お子さま自身がブロック</string>
     <string name="quick_coparent_blocks">もう一人の保護者がブロック</string>
     <string name="quick_others_note">これらのリストを変更できるのは、その持ち主だけです。必要なら、自分のリストにアプリを追加してください。</string>
 
     <!-- Jadvallar ro‘yxati (Student UI) -->
     <string name="policy_preset_sleep">就寝時間</string>
-    <string name="policy_preset_limit">時間制限</string>
+    <string name="policy_preset_limit">1日の時間</string>
     <string name="policy_preset_school">授業時間</string>
     <string name="policy_day_mon">月</string>
     <string name="policy_day_tue">火</string>
@@ -884,30 +884,30 @@
     <string name="policy_location">位置情報</string>
     <string name="policy_active_now">現在有効：%1$s</string>
     <string name="policy_active_until">%1$sまで</string>
-    <string name="list_info_none">現在有効なスケジュールはありません</string>
+    <string name="list_info_none">今は有効なルールがありません</string>
     <string name="list_info_also">ほかにも有効：%1$s。</string>
-    <string name="list_info_many">複数のスケジュールが同時に動いているときは、どれか1つでもブロックすればそのアプリはブロックされます。</string>
-    <string name="list_info_child_scope">お子さまのスケジュールであなたの設定を上書きすることはできません。あなたがブロックしたアプリはブロックされたままです。</string>
-    <string name="list_info_school_scope">学校のスケジュールがアプリを閉じている、または明示的に許可している場合、あなたのスケジュールでは変更できません。それ以外の場合は、より厳しいスケジュールが適用されます。</string>
-    <string name="list_info_quick">クイックブロックはオンです。時間や場所に関係なく、リストのアプリは常にブロックされます。</string>
-    <string name="list_info_paused">一時停止中のスケジュール：%1$d件。設定した時刻まで何もしません。</string>
-    <string name="list_info_how">スケジュールは、時間と場所が合うと自動で始まります。</string>
-    <string name="policy_tab_templates">テンプレート</string>
+    <string name="list_info_many">複数のルールが同時に動いているときは、どれか1つでもブロックすればアプリはブロックされます。</string>
+    <string name="list_info_child_scope">お子さま自身のルールで、あなたのルールを取り消すことはできません。あなたがブロックしたアプリはブロックされたままです。</string>
+    <string name="list_info_school_scope">学校のルールがアプリを閉じるか、はっきり許可している場合、あなたのルールでは変えられません。それ以外は、より厳しいルールが適用されます。</string>
+    <string name="list_info_quick">「常に閉じるアプリ」はオンです。このリストのアプリは、時間や場所に関係なく閉じたままです。</string>
+    <string name="list_info_paused">一時停止中のルール：%1$d件。設定した時間まで何もしません。</string>
+    <string name="list_info_how">ルールは、設定した時間と場所になると自動で始まります。</string>
+    <string name="policy_tab_templates">用意されたルール</string>
     <string name="policy_tab_mine">自分が設定</string>
     <string name="policy_tab_child">お子さまが設定</string>
-    <string name="policy_tab_coparent">保護者</string>
+    <string name="policy_tab_coparent">もう一人の保護者</string>
     <string name="policy_tab_school">学校</string>
     <string name="policy_enabled_count">%1$d件が有効</string>
-    <string name="policy_content_protection">コンテンツ保護</string>
+    <string name="policy_content_protection">有害サイトからの保護</string>
     <string name="policy_content_protection_others">お子さままたはもう一人の保護者がオンにしました</string>
     <string name="policy_paused">一時停止中</string>
-    <string name="policy_quick_blocks">クイックブロック</string>
+    <string name="policy_quick_blocks">常に閉じるアプリ</string>
     <string name="preset_all_apps">すべてのアプリ</string>
-    <string name="policy_paywall_protection">コンテンツ保護はHoglt Plusで利用できます。</string>
+    <string name="policy_paywall_protection">有害サイトからの保護は Hoglt Plus で使えます。</string>
     <string name="policy_paywall_count">無料プランではスケジュールの数に制限があります。Hoglt Plusならもっと作成できます。</string>
 
     <!-- Jadval izohi ("nima bo‘ladi") -->
-    <string name="info_nothing">まだ何も選択されていません。このスケジュールは何もブロックしません。</string>
+    <string name="info_nothing">まだ何も選ばれていません。このルールでは何もブロックされません。</string>
     <string name="info_always">常時</string>
     <string name="info_sentence">%1$s、%2$s。</string>
     <string name="info_when_time">%2$sから%3$sまで%1$s</string>
@@ -920,12 +920,12 @@
     <string name="info_what_all_apps_sites">すべてのアプリとサイトがブロックされます</string>
     <string name="info_what_selected">選択したもの（%1$s）がブロックされます</string>
     <string name="info_stays_open">開いたまま：%1$s。</string>
-    <string name="info_not_counted">上限にカウントされないもの：%1$s。</string>
+    <string name="info_not_counted">時間に含めない：%1$s。</string>
     <string name="info_limit_daily">%1$s：%2$sは合計で%3$sまで使えます。時間を使い切ると、明日までブロックされます。</string>
     <string name="info_limit_hourly">%1$s：%2$sは1時間あたり%3$sまで使えます。時間を使い切ると、次の1時間までブロックされます。</string>
     <string name="info_limit_all">すべてのアプリ</string>
     <string name="info_limit_selected">選択したもの</string>
-    <string name="info_limit_gate">上限が適用されるのは次の場合のみ：%1$s。</string>
+    <string name="info_limit_gate">時間に含めるのは次のときだけ：%1$s。</string>
     <string name="info_protected">通話、SMS、その他の必須アプリは決してブロックされません。</string>
     <string name="info_disabled">現在オフです。適用するにはオンにしてください。</string>
 
@@ -934,7 +934,7 @@
     <string name="preset_when">いつ</string>
     <string name="preset_starts">開始</string>
     <string name="preset_ends">終了</string>
-    <string name="preset_limit">上限</string>
+    <string name="preset_limit">どのくらいの時間</string>
     <string name="preset_counted">カウントされるもの</string>
     <string name="preset_what_closed">ブロックされるもの</string>
     <string name="preset_only_selected">選択したもののみ</string>
@@ -975,13 +975,13 @@
     <string name="targets_covered_by_category">カテゴリから選択</string>
     <string name="targets_plus">Plus</string>
     <string name="sayt_manzili_notogri">サイトのアドレスまたはキーワードが正しくありません。例：youtube.com または kino</string>
-    <string name="editor_new_policy">新しいスケジュール</string>
+    <string name="editor_new_policy">新しいルール</string>
     <string name="editor_not_selected">未選択</string>
     <string name="editor_when_hint">任意・指定しない場合は常時</string>
     <string name="editor_add_condition">条件を追加</string>
     <string name="editor_added">追加済み</string>
     <string name="editor_condition_time">時間</string>
-    <string name="editor_condition_limit">上限</string>
+    <string name="editor_condition_limit">どのくらいの時間</string>
     <string name="editor_in_this_time">この時間帯</string>
     <string name="editor_closed_in_time">ブロック</string>
     <string name="editor_closed_in_time_sub">それ以外の時間は開く</string>
@@ -992,8 +992,8 @@
     <string name="editor_inside">エリア内</string>
     <string name="editor_outside">エリア外</string>
     <string name="editor_rename">名前を変更</string>
-    <string name="editor_delete_title">このスケジュールを削除しますか？</string>
-    <string name="editor_delete_message">「%1$s」が削除されます。</string>
+    <string name="editor_delete_title">このルールを削除しますか？</string>
+    <string name="editor_delete_message">「%1$s」は削除されます。このルールでブロックしていたアプリは再び開けるようになります。</string>
     <string name="editor_paywall_allow">「選択したものだけ開く」モードはPlusで利用できます。</string>
     <string name="location_child_here">お子さまの現在地</string>
     <string name="protection_section">保護されるもの</string>
@@ -1011,24 +1011,24 @@
     <string name="protection_policies_pending">まだ配信されていません</string>
     <string name="protection_gujanak_limits_note">中程度の保護で閉じられるのはアプリだけです。サイトとショート動画は厳しい保護でのみブロックされます：お子さまのスマホで Hoglt →「管理」→「シールドモード」。</string>
     <string name="editor_limit_days_follow_time">時間と同じです。曜日は時間のページで選びます</string>
-    <string name="editor_limit_in_window">この時間の上限</string>
-    <string name="editor_limit_outside_window">この時間以外の上限</string>
-    <string name="editor_limit_in_time">この時間帯に上限を適用</string>
+    <string name="editor_limit_in_window">この時間帯に時間を数えます</string>
+    <string name="editor_limit_outside_window">この時間帯以外に時間を数えます</string>
+    <string name="editor_limit_in_time">この時間帯だけ時間を数えます</string>
     <string name="editor_limit_in_time_sub">それ以外の時間は制限なし</string>
-    <string name="editor_limit_out_time">この時間帯以外に上限を適用</string>
+    <string name="editor_limit_out_time">この時間帯以外に時間を数えます</string>
     <string name="editor_limit_out_time_sub">この時間帯は制限なし</string>
     <string name="info_limit_daily_window">%1$s：%2$sは合計で%3$sまで使えます。時間を使い切ると、この時間帯が終わるまで閉じられます。</string>
     <string name="targets_only_selected_open_sites_sub">それ以外のサイトは閉じます</string>
     <string name="targets_only_selected_open_both_sub">それ以外のアプリとサイトは閉じます</string>
     <!-- Bo'sh holat (EmptyState) -->
-    <string name="policy_empty_mine_title">スケジュールはまだありません</string>
-    <string name="policy_empty_mine_sub">テンプレートをオンにするか、自分で作成しましょう</string>
+    <string name="policy_empty_mine_title">まだルールがありません</string>
+    <string name="policy_empty_mine_sub">用意されたルールをオンにするか、自分で作成してください</string>
     <string name="empty_search_title">見つかりませんでした</string>
     <string name="empty_search_sub">別のキーワードでお試しください</string>
     <!-- Jadval kartalari: qisqa qatorlar -->
     <string name="policy_content_protection_short">アダルトサイトとギャンブルサイト</string>
     <!-- Standart jadval nomlari: server saqlagan tildan qat'i nazar ilova tilida (PolicyName) -->
-    <string name="policy_name_schedule">スケジュール</string>
+    <string name="policy_name_schedule">ルール</string>
     <string name="policy_name_category_block">カテゴリでブロック</string>
     <!-- Umumiy shablonlar: farzand / ikkinchi ota-ona yoqqan -->
     <string name="preset_by_child">お子さまがオンにしました</string>
@@ -1123,7 +1123,7 @@
     <string name="ap_off_confirm">オフにする</string>
     <string name="ap_keep_on">オンのままにする</string>
     <string name="ap_retry_note">明日もう一度試します（%1$d/3）。</string>
-    <string name="ap_retry_now">再試行</string>
+    <string name="ap_retry_now">今すぐ支払う</string>
     <string name="ap_other_card">別のカード</string>
     <string name="ap_cards_empty_title">保存されたカードはありません</string>
     <string name="ap_cards_empty_sub">自動払い用にUZCARDまたはHUMOのカードを追加してください</string>
@@ -1169,7 +1169,7 @@
     <string name="ulash_tugma">リンク</string>
 
     <!-- Onboarding (parent) -->
-    <string name="ob_skip">スキップ</string>
+    <string name="ob_skip">あとで見る</string>
     <string name="ob_start">はじめましょう</string>
     <string name="ob_got_it">わかりました</string>
     <string name="ob_hello_title">こんにちは、Hogltです</string>
@@ -1183,10 +1183,10 @@
     <string name="ob_day_study">勉強</string>
     <string name="ob_min_fmt">%1$d分</string>
     <string name="ob_rules_title">ルールは一度設定するだけ</string>
-    <string name="ob_rules_body">就寝時間、学校の時間、1日の上限は、自動で切り替わります。</string>
+    <string name="ob_rules_body">寝る時間、学校の時間、1日の時間は自動でオンになります。</string>
     <string name="ob_rule_sleep">就寝時間</string>
     <string name="ob_rule_school">学校の時間</string>
-    <string name="ob_rule_limit">1日の上限</string>
+    <string name="ob_rule_limit">1日の時間</string>
     <string name="ob_rule_limit_value">2時間</string>
     <string name="ob_map_title">居場所がわかる</string>
     <string name="ob_map_body">お子さまをマップで確認し、学校などの場所にルールを設定できます。</string>
@@ -1243,8 +1243,8 @@
     <string name="home_layout_list">リスト</string>
     <string name="home_layout_grid">グリッド</string>
     <string name="home_greeting">こんにちは、%1$sさん</string>
-    <string name="kecha_sarfladi">昨日の使用</string>
-    <string name="sana_sarfladi">%1$sの使用</string>
+    <string name="kecha_sarfladi">昨日のスマホ時間</string>
+    <string name="sana_sarfladi">%1$s のスマホ時間</string>
     <string name="stat_no_usage_day">この日はまだスマートフォンを使っていません</string>
     <string name="kirish_usuli">ログイン方法</string>
     <string name="google_hisobi">Googleアカウント</string>
@@ -1267,7 +1267,7 @@
     <string name="vazifa_muddati">期限</string>
 
     <!-- AI parent assistant -->
-    <string name="ai_assistant_title">アシスタント</string>
+    <string name="ai_assistant_title">かしこいアシスタント</string>
     <string name="ai_assistant_subtitle">質問またはルールを設定</string>
     <string name="ai_period_today">今日</string>
     <string name="ai_period_yesterday">昨日</string>
@@ -1397,20 +1397,20 @@
     <string name="tracking_child_no_permission_since">Location access off · last location: %1$s</string>
     <string name="tracking_fake_gps">Fake GPS</string>
     <string name="tracking_fake_gps_note">The phone is sending a fake location — don’t trust this point.</string>
-    <string name="policy_paywall_limits">Free: %1$d active schedule(s) · Plus: unlimited</string>
+    <string name="policy_paywall_limits">無料：有効なルール%1$d件 · Plus：無制限</string>
     <string name="perm_why_dangerous">Why is this risky?</string>
     <string name="perm_why_notification">Hoglt notifications are not shown on the child’s phone: tasks, your messages and reminders do not reach them.</string>
-    <string name="perm_why_usage_stats">The app cannot see which apps are opened: no usage statistics, and time limits and schedules do not work.</string>
-    <string name="perm_why_overlay">The block screen cannot appear over a blocked app, so schedules and limits cannot close it.</string>
+    <string name="perm_why_usage_stats">どのアプリが開かれたかわからないため、スマホの時間が数えられず、ルールも働きません。</string>
+    <string name="perm_why_overlay">ブロックしたアプリの上にブロック画面を出せないため、ルールでアプリを閉じられません。</string>
     <string name="perm_why_overlay_popup">On Xiaomi, Redmi and POCO phones the block screen cannot open from the background, so a blocked app stays usable.</string>
-    <string name="perm_why_location">You cannot see where your child is, and location-based schedules do not work.</string>
+    <string name="perm_why_location">お子さまの居場所がわからず、場所に応じたルールも働きません。</string>
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
     <string name="perm_why_accessibility">これがないと、サイト、YouTube Shorts、Instagram Reels がブロックされず、アプリも簡単に削除できてしまいます。</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
-    <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
-    <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
+    <string name="policy_paywall_app_limits">無料プランでは、1つのルールに追加できるアプリは%1$d個までです。Plus ならもっと追加できます。</string>
+    <string name="policy_paywall_app_limit">このルールは、ご利用プランのアプリ数の上限に達しました。</string>
     <string name="clip_child_phone">お子さまのスマートフォンで</string>
     <string name="prot_default_note">今のところ、ルールでアプリは閉じられません。閉じるには、お子さまのスマホで Hoglt を開き →「管理」で保護をオンにしてください。</string>
     <string name="prot_strength">保護の強さ</string>
@@ -1440,4 +1440,64 @@
     <string name="task_empty_done">完了済みのタスクはまだありません</string>
     <string name="task_empty_overdue">期限切れのタスクはありません</string>
     <string name="task_empty_filter_hint">選択中のフィルターをもう一度タップすると、すべてのタスクが表示されます。</string>
+    <string name="voice_listen">聞く</string>
+    <string name="voice_stop">停止</string>
+    <string name="voice_unavailable">音声での説明はまだ利用できません。あとでもう一度お試しください。</string>
+    <string name="live_confirm_title">ライブで見る</string>
+    <string name="live_confirm_body">%1$sさんに電話がかかります。応答すると映像が開きます。</string>
+    <string name="live_child_fallback">お子さま</string>
+    <string name="live_call_button">電話する</string>
+    <string name="live_ringing">%1$sさんに発信中…</string>
+    <string name="live_connecting">接続中…</string>
+    <string name="live_error_connect">接続できませんでした。少したってからもう一度お試しください。</string>
+    <string name="live_declined">お子さまが拒否しました</string>
+    <string name="live_no_answer">応答なし</string>
+    <string name="live_end">終了</string>
+    <string name="live_show_on_map">地図で見る</string>
+    <string name="unlink_child_button">お子さまとの連携を解除</string>
+    <string name="saqlandi">保存しました</string>
+    <string name="ap_retry_now_amount">今すぐ支払う · %1$s</string>
+    <string name="pay_charge_body">カード •• %1$s から %2$s が引き落とされます。</string>
+    <string name="pay_charge_body_amount">カードから %1$s が引き落とされます。</string>
+    <string name="pay_charge_body_plain">サブスクリプション料金は登録済みのカードから引き落とされます。</string>
+    <string name="pay_confirm_pay">支払う</string>
+    <string name="app_store_unavailable">App Store が今は利用できません。少したってからもう一度お試しください。</string>
+    <string name="app_store_failed">App Store での支払いが完了しませんでした。もう一度お試しください。</string>
+    <string name="apple_activation_pending_title">支払いを受け付けました</string>
+    <string name="login_subtitle_social">ログイン方法を選んでください。アカウントがない場合は自動で作成されます。</string>
+    <string name="login_telegram_not_opened">Telegram が開きませんでした。Telegram がインストールされているか確認するか、別の方法でログインしてください。</string>
+    <string name="ob_notif_enable">通知をオンにする</string>
+    <string name="comfort_title">読みやすいですか？</string>
+    <string name="comfort_screen_color">画面の色</string>
+    <string name="comfort_light">ライト</string>
+    <string name="comfort_dark">ダーク</string>
+    <string name="comfort_done">完了</string>
+    <string name="comfort_hint">あとからでも変更できます。</string>
+    <string name="policy_turned_on">%1$s をオンにしました</string>
+    <string name="policy_turned_off">%1$s をオフにしました</string>
+    <string name="policy_off_title">「%1$s」をオフにしますか？</string>
+    <string name="policy_off_body">このルールはお子さまのスマホですぐに効かなくなり、ブロックしていたものはすべて再び開けるようになります。いつでもオンに戻せます。</string>
+    <string name="policy_off_body_safety">この保護はお子さまのスマホですぐに止まります。いつでもオンに戻せます。</string>
+    <string name="policy_off_confirm">はい、オフにする</string>
+    <string name="policy_off_cancel">いいえ、オンのまま</string>
+    <string name="policy_saved_sent">保存しました。お子さまのスマホに送信しました</string>
+    <string name="policy_saved_queued">保存しました。オンラインに戻ったらお子さまのスマホに届きます</string>
+    <string name="policy_unsaved_title">変更を保存しますか？</string>
+    <string name="policy_unsaved_body">保存しないと、お子さまのスマホでは何も変わりません。</string>
+    <string name="policy_unsaved_discard">保存せずに戻る</string>
+    <string name="quick_unblock_title">%1$s のブロックを解除しますか？</string>
+    <string name="quick_unblock_body">このアプリはお子さまのスマホですぐに開けるようになります。</string>
+    <string name="quick_unblock_confirm">はい、解除する</string>
+    <string name="quick_unblock_action">ブロック解除</string>
+    <string name="quick_unblocked">%1$s のブロックを解除しました</string>
+    <string name="policy_exception_remove">削除</string>
+    <string name="policy_load_failed">読み込めませんでした</string>
+    <string name="tg_more_settings">その他の設定</string>
+    <string name="rules_on_count">オンのルール：%1$d件</string>
+    <string name="task_accepted">承認済み</string>
+    <string name="task_accepted_coins">%1$sさんにコイン：%2$d枚</string>
+    <string name="task_coins_explain">タスクを承認すると、コインはお子さまに渡ります。お子さまはそれを使って、かしこいアシスタントに質問します。</string>
+    <string name="task_coins_not_enough">コインが足りません</string>
+    <string name="chat_support_title">サポート窓口</string>
+    <string name="chat_ai_title">かしこいアシスタント</string>
 </resources>

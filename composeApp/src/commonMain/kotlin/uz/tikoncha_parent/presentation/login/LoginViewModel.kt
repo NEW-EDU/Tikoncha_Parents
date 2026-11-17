@@ -20,6 +20,7 @@ import uz.tikoncha_parent.domain.repository.SessionRepository
 import uz.tikoncha_parent.domain.repository.SocialAuthRepository
 import uz.tikoncha_parent.domain.repository.TelegramAuthRepository
 import uz.tikoncha_parent.platform.BuildConfig
+import uz.tikoncha_parent.presentation.domain.model.LanguageType
 import uz.tikoncha_parent.presentation.profile.language.LanguagePrefs
 
 class LoginViewModel(
@@ -40,18 +41,24 @@ class LoginViewModel(
     /** Telegram oynasi oçildi, lekin hali natija (muvaffaqiyat / xato / bekor qiliş) kelmadi. */
     private var telegramPending = false
     private var returnWatchJob: Job? = null
+    /** Telegram bosilgandan keyin heç narsa oçilmaganini kuzatadi ([TELEGRAM_OPEN_TIMEOUT_MS]). */
+    private var openWatchJob: Job? = null
+    /** Telegram bosilgandan keyin ilova fonga ketdimi (demak nimadir oçildi). */
+    private var leftForTelegram = false
     private var mascotTaps = 0
     private var lastMascotTap: kotlin.time.TimeMark? = null
 
     init {
-        val lang = LanguagePrefs.loadOrDefault().languageCode
+        val lang = LanguagePrefs.loadOrDefault()
         _state.update {
             it.copy(
                 // SMS OTP 2026-yil maydan o'chiq — telefon orqali kirish hech kimga ko'rinmaydi (debug'da ham); faqat App Review uchun
                 // (tipratikonni 5 marta bosish, sinov raqamlari +99811…). Telegram muvaffaqiyatsiz bo'lsa ham chiqmaydi.
                 showPhone = false,
                 appleAvailable = socialAuth.isAppleAvailable(),
-                socialFirst = lang != "uz" && lang != "ru",
+                // Özbek (lotin VA kirill — avval kirill "uz-Cyrl" bölgani uçun iPhone'da Apple/Google birinçi çiqardi), rus va
+                // qöşni tillarda Telegram birinçi: keksa ota-onalar Telegram'ni biladi, Apple ID / Google parolini emas.
+                socialFirst = lang !in TelegramFirstLanguages,
             )
         }
         observeTelegramResult()
@@ -79,7 +86,7 @@ class LoginViewModel(
         val s = _state.value
         if (s.loadingProvider != null || s.isTelegramLoading) return
         if (socialAuth.start(provider)) {
-            _state.update { it.copy(loadingProvider = provider, error = null, telegramFailed = false) }
+            _state.update { it.copy(loadingProvider = provider, error = null, telegramFailed = false, telegramNotOpened = false) }
         } else {
             _state.update { it.copy(loadingProvider = null, error = Outcome.Failure(ErrorCause.Unknown)) }
         }
@@ -127,7 +134,13 @@ class LoginViewModel(
             is LoginEvent.OnSocialClicked -> handleSocialClick(event.provider)
             LoginEvent.OnPhoneContinue -> handlePhoneContinue()
             LoginEvent.OnErrorDismissed ->
-                _state.update { it.copy(error = null, telegramFailed = false) }
+                _state.update { it.copy(error = null, telegramFailed = false, telegramNotOpened = false) }
+
+            LoginEvent.OnTelegramLeftApp -> {
+                // Nimadir oçildi (Telegram / brauzer / tizim oynasi) — "oçilmadi" kuzatuvçisi kerak emas
+                leftForTelegram = true
+                openWatchJob?.cancel()
+            }
 
             LoginEvent.OnDialogErrorDismissed ->
                 _state.update { it.copy(dialogError = null) }
@@ -168,16 +181,29 @@ class LoginViewModel(
     private fun handleTelegramClick() {
         if (_state.value.isTelegramLoading) return
         returnWatchJob?.cancel()
+        openWatchJob?.cancel()
+        leftForTelegram = false
         val started = telegramAuth.startLogin()
         telegramPending = started
         if (started) {
-            _state.update { it.copy(isTelegramLoading = true, error = null, telegramFailed = false) }
+            _state.update { it.copy(isTelegramLoading = true, error = null, telegramFailed = false, telegramNotOpened = false) }
+            // Telegram ilovasi yöq bölsa (masalan simulyator) SDK veb-oynaga ötadi; u ham oçilmasa heç qanday javob
+            // kelmaydi va "Telegram oçilmoqda…" abadiy aylanib turardi. Ilova fonga ketmagan va natija kelmagan bölsa —
+            // aniq xabar körsatamiz.
+            openWatchJob = screenModelScope.launch {
+                delay(TELEGRAM_OPEN_TIMEOUT_MS)
+                if (telegramPending && !leftForTelegram && exchangeJob?.isActive != true) {
+                    telegramPending = false
+                    _state.update { it.copy(isTelegramLoading = false, error = null, telegramFailed = false, telegramNotOpened = true) }
+                }
+            }
         } else {
             _state.update {
                 it.copy(
                     isTelegramLoading = false,
                     error = null,
-                    telegramFailed = true,
+                    telegramFailed = false,
+                    telegramNotOpened = true,
                 )
             }
         }
@@ -186,9 +212,11 @@ class LoginViewModel(
     private fun handleTelegramResult(result: TelegramAuthResult) {
         telegramPending = false
         returnWatchJob?.cancel()
+        openWatchJob?.cancel()
         when (result) {
+            // Bekor qilindi — demak oyna oçilgan edi: "oçilmadi" xabari ham olib taşlanadi
             TelegramAuthResult.Cancelled ->
-                _state.update { it.copy(isTelegramLoading = false) }
+                _state.update { it.copy(isTelegramLoading = false, telegramNotOpened = false) }
 
             // Xom texnik matn (NSError) foydalanuvchiga ko'rsatilmaydi: tarmoq — "internet yo'q",
             // qolgani — "Telegram orqali kirib bölmadi, boşqa usul bilan kiring".
@@ -199,6 +227,7 @@ class LoginViewModel(
                         isTelegramLoading = false,
                         error = if (network) Outcome.Failure(ErrorCause.NoInternet) else null,
                         telegramFailed = !network,
+                        telegramNotOpened = false,
                     )
                 }
             }
@@ -210,7 +239,7 @@ class LoginViewModel(
     private fun exchange(idToken: String) {
         exchangeJob?.cancel()
         exchangeJob = screenModelScope.launch {
-            _state.update { it.copy(isTelegramLoading = true, error = null, telegramFailed = false) }
+            _state.update { it.copy(isTelegramLoading = true, error = null, telegramFailed = false, telegramNotOpened = false) }
             when (val res = auth.telegramLogin(idToken)) {
                 is Outcome.Failure -> {
                     _state.update {
@@ -268,5 +297,12 @@ class LoginViewModel(
     private companion object {
         /** Ilovaga qaytgandan keyin Telegram natijasini (token almaşinuvi) kutiş vaqti. */
         const val TELEGRAM_RESULT_GRACE_MS = 5_000L
+        /** Telegram tugmasidan keyin heç narsa oçilmasa (ilova fonga ketmasa) — şunça kutib "Telegram oçilmadi" deymiz. */
+        const val TELEGRAM_OPEN_TIMEOUT_MS = 6_000L
+        /** Telegram birinçi turadigan tillar (qolganlarida Apple/Google birinçi). */
+        val TelegramFirstLanguages = setOf(
+            LanguageType.UZ, LanguageType.UZ_CYRL, LanguageType.KAA, LanguageType.RU,
+            LanguageType.KK, LanguageType.KY, LanguageType.TG, LanguageType.TK,
+        )
     }
 }

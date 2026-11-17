@@ -354,7 +354,10 @@ class TaskListViewModel(
                             completingIds = it.completingIds - task.id
                         )
                     }
-                    sendEffect(TaskListEffect.TaskMarkedAsCompleted)
+                    // Server qabul qilinganda tangani ota-onadan farzandga ötkazadi (todo complete) — xabarda aytiladi
+                    val childName = state.value.childrenList.firstOrNull { c -> c.userId == task.targetUserId }?.name
+                        ?: state.value.selectedChild?.name.orEmpty()
+                    sendEffect(TaskListEffect.TaskMarkedAsCompleted(task.id, childName, task.coin))
                 }
 
                 is Outcome.Failure -> {

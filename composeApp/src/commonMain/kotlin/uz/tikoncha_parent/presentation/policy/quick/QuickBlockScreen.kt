@@ -60,7 +60,19 @@ import tikoncha_parents.composeapp.generated.resources.quick_title
 import tikoncha_parents.composeapp.generated.resources.stat_quick_paywall_message
 import tikoncha_parents.composeapp.generated.resources.stat_quick_paywall_title
 import tikoncha_parents.composeapp.generated.resources.xatolik
+import tikoncha_parents.composeapp.generated.resources.quick_unblock_action
+import tikoncha_parents.composeapp.generated.resources.quick_unblock_body
+import tikoncha_parents.composeapp.generated.resources.quick_unblock_confirm
+import tikoncha_parents.composeapp.generated.resources.quick_unblock_title
+import tikoncha_parents.composeapp.generated.resources.yoq
 import uz.tikoncha_parent.presentation.base.ChildAppIcon
+import uz.tikoncha_parent.presentation.base.ConfirmationBottomSheet
+import uz.tikoncha_parent.presentation.base.ToastProvider
+import uz.tikoncha_parent.presentation.policy.components.PolicyScreenId
+import uz.tikoncha_parent.presentation.policy.components.PolicyToastHost
+import uz.tikoncha_parent.presentation.policy.components.TurnOffConfirm
+import uz.tikoncha_parent.presentation.policy.components.TurnOffGuard
+import uz.tikoncha_parent.presentation.policy.components.rememberTurnOffGuard
 import uz.tikoncha_parent.presentation.base.CustomDialog
 import uz.tikoncha_parent.presentation.base.CustomHeader
 import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
@@ -103,15 +115,18 @@ class QuickBlockScreen(private val childId: String) : Screen {
         LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { viewModel.onEvent(QuickBlockEvent.Resumed) }
         BackHandler(true) { navigator.pop() }
 
-        QuickBlockUi(
-            state = state,
-            event = viewModel::onEvent,
-            onBack = { navigator.pop() },
-            onOpenSubscription = {
-                viewModel.onEvent(QuickBlockEvent.PaywallDismissed)
-                navigator.push(SubscriptionPaymentScreen())
-            },
-        )
+        ToastProvider {
+            QuickBlockUi(
+                state = state,
+                event = viewModel::onEvent,
+                onBack = { navigator.pop() },
+                onOpenSubscription = {
+                    viewModel.onEvent(QuickBlockEvent.PaywallDismissed)
+                    navigator.push(SubscriptionPaymentScreen())
+                },
+            )
+            PolicyToastHost(PolicyScreenId.QUICK)
+        }
     }
 }
 
@@ -123,6 +138,9 @@ fun QuickBlockUi(
     onOpenSubscription: () -> Unit,
 ) {
     val systemBars = rememberScreenSystemBars(statusBarColor = AppColors.bg.page, navigationBarColor = AppColors.bg.page)
+    val guard = rememberTurnOffGuard()
+    /** Olib taşlaşdan oldin söraladigan ilova (bir bosişda ilova bola telefonida oçilib ketmasin). */
+    var confirmRemove by remember { mutableStateOf<String?>(null) }
 
     // Ro'yxat server javobidan keyin o'zgaradi — haptika aynan shu paytda
     val haptics = rememberAppHaptics()
@@ -153,7 +171,7 @@ fun QuickBlockUi(
             verticalArrangement = Arrangement.spacedBy(22.dp),
         ) {
             Spacer(modifier = Modifier.height(2.dp))
-            HeaderGroup(state = state, event = event)
+            HeaderGroup(state = state, event = event, guard = guard)
             PolicyInfoBox(lines = infoLines(state))
 
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -164,11 +182,18 @@ fun QuickBlockUi(
                             label = state.label(pkg),
                             iconUrl = state.iconUrl(pkg),
                             busy = state.isRemoving(pkg),
-                            onRemove = { event(QuickBlockEvent.AppRemoved(pkg)) },
+                            removeText = stringResource(Res.string.quick_unblock_action),
+                            onRemove = { confirmRemove = pkg },
                         )
                         GroupDivider()
                     }
-                    AddRow(text = stringResource(Res.string.quick_add_app), busy = state.adding, onClick = { event(QuickBlockEvent.AddClicked) })
+                    // Qöşiş — Plus: bepul tarifda belgi bosişdan oldin körinadi
+                    AddRow(
+                        text = stringResource(Res.string.quick_add_app),
+                        busy = state.adding,
+                        plus = state.quick.paid == false,
+                        onClick = { event(QuickBlockEvent.AddClicked) },
+                    )
                 }
             }
 
@@ -201,6 +226,23 @@ fun QuickBlockUi(
         }
     }
 
+    // "Instagram yana oçilsinmi?" — Ha, oçilsin / Yöq
+    confirmRemove?.let { pkg ->
+        val label = state.label(pkg)
+        ConfirmationBottomSheet(
+            title = stringResource(Res.string.quick_unblock_title, label),
+            subtitle = stringResource(Res.string.quick_unblock_body),
+            confirmText = stringResource(Res.string.quick_unblock_confirm),
+            cancelText = stringResource(Res.string.yoq),
+            onConfirm = {
+                confirmRemove = null
+                event(QuickBlockEvent.AppRemoved(pkg))
+            },
+            onDismiss = { confirmRemove = null },
+        )
+    }
+    TurnOffConfirm(guard)
+
     SubscriptionBottomDialog(
         show = state.showPaywall,
         title = stringResource(Res.string.stat_quick_paywall_title),
@@ -223,7 +265,7 @@ fun QuickBlockUi(
 
 /** Yoqilgan switch'i · Vaqtincha to'xtatish · to'xtatilgan banner (tayyor jadval bilan bir xil). */
 @Composable
-private fun HeaderGroup(state: QuickBlockState, event: (QuickBlockEvent) -> Unit) {
+private fun HeaderGroup(state: QuickBlockState, event: (QuickBlockEvent) -> Unit, guard: TurnOffGuard) {
     SettingGroup {
         val paused = state.pausedUntil
         if (paused != null) {
@@ -233,6 +275,7 @@ private fun HeaderGroup(state: QuickBlockState, event: (QuickBlockEvent) -> Unit
                 onResume = { event(QuickBlockEvent.ResumeClicked) },
             )
         }
+        val title = stringResource(Res.string.quick_title)
         SettingRow(
             title = stringResource(Res.string.quick_enabled),
             trailing = {
@@ -240,7 +283,8 @@ private fun HeaderGroup(state: QuickBlockState, event: (QuickBlockEvent) -> Unit
                     checked = state.isOn,
                     busy = state.pendingEnabled != null,
                     enabled = state.canToggle,
-                    onCheckedChange = { event(QuickBlockEvent.EnabledToggled(it)) },
+                    // Öçiriş — avval söraladi (ilovalar bola telefonida oçilib ketadi)
+                    onCheckedChange = { on -> guard.toggle(title, on) { event(QuickBlockEvent.EnabledToggled(it)) } },
                 )
             },
         )

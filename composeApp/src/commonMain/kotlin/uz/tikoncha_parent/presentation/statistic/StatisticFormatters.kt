@@ -54,18 +54,22 @@ fun durationStringShort(hm: HourMinute): String {
 }
 
 /**
- * Soat ham, daqiqa ham bo'lsa qisqa: "1 s 24 d".
- * Bittasi bo'lsa to'liq: "45 daqiqa", "2 soat".
+ * Bosh sahifa katagi uçun: doim to'liq so'z bilan — "2 soat 42 daqiqa" ("2 s 42 d" emas: "s" soniya deb ham
+ * öqiladi). Son va birlik orasida bölinmaydigan bo'şliq — tor katakda "2 soat / 42 daqiqa" bo'lib bölinadi,
+ * "2 soat 42 / daqiqa" emas.
  */
 @Composable
 fun durationStringCompact(hm: HourMinute): String {
-    if (hm.hour > 0 && hm.minute > 0) {
-        val hour = stringResource(Res.string.s)
-        val min = stringResource(Res.string.d)
-        return "${hm.hour} $hour  ${hm.minute} $min"
-    }
-    return durationString(hm)
+    val hourText = pluralStringResource(Res.plurals.hours, hm.hour, hm.hour).replace(' ', NBSP)
+    val minText = pluralStringResource(Res.plurals.minutes, hm.minute, hm.minute).replace(' ', NBSP)
+    if (hm.isEmpty()) return minText
+    return buildList {
+        if (hm.hour > 0) add(hourText)
+        if (hm.minute > 0) add(minText)
+    }.joinToString(" ")
 }
+
+private const val NBSP = '\u00A0'
 
 @Composable
 fun pageTitleString(title: PageTitle): String = when (title) {
