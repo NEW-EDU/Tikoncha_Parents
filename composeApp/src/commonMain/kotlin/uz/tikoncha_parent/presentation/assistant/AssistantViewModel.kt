@@ -429,7 +429,7 @@ class AssistantViewModel(
     }
 
     /**
-     * Nutq eşitilgaç ~1,6 s jimlik bölsa yoki 60 s ötsa — tugaydi. Hech narsa eşitilmasa 10 s'da töxtab, baribir
+     * Nutq eşitilgaç [SILENCE_MS] jimlik bölsa yoki 60 s ötsa — tugaydi. Hech narsa eşitilmasa 10 s'da töxtab, baribir
      * serverga yuboriladi (sath ölçovi xato qilishi mumkin — oxirgi söz serverniki).
      */
     private suspend fun watchSilence() {
@@ -481,9 +481,22 @@ class AssistantViewModel(
             } else {
                 _state.update { it.copy(voice = VoicePhase.IDLE) }
                 // Pufakda — ilova yozuvida (kirill / 2026 lotini), yordamçiga — serverning asl matni
-                send(text, display = UzbekScript.forDisplay(text, transcript?.language, lang), byVoice = true)
+                // STT ilova tili bilan yöllanadi (lang) — şunda u qaytargan til şu "majburiy" til bölib qoladi, hatto
+                // ota-ona rusça gapirsa ham. Faqat boşqa til aniqlansa yuboriladi; aks holda server matndan aniqlaydi.
+                val heardLang = transcript?.language?.takeUnless { sameLanguage(it, lang) }
+                send(text, display = UzbekScript.forDisplay(text, transcript?.language, lang), byVoice = true,
+                    inputLang = heardLang)
             }
         }
+    }
+
+    /** "uzb" ~ "uz-Cyrl", "rus" ~ "ru" … (ISO 639-3 / 639-1, yozuv va mintaqa qismisiz). */
+    private fun sameLanguage(a: String, b: String): Boolean {
+        fun norm(code: String): String {
+            val base = code.trim().lowercase().substringBefore('-').substringBefore('_')
+            return ISO3_TO_1[base] ?: base
+        }
+        return norm(a) == norm(b)
     }
 
     private fun cancelListening() {
@@ -548,7 +561,7 @@ class AssistantViewModel(
     /** Ota-ona ovoz bilan sörasa — javob ham ovoz bilan öqiladi (yozib sörasa, faqat "avtomatik öqiş" yoqilganda). */
     private var askedByVoice = false
 
-    private fun send(raw: String, display: String? = null, byVoice: Boolean = false) {
+    private fun send(raw: String, display: String? = null, byVoice: Boolean = false, inputLang: String? = null) {
         val text = raw.trim()
         if (text.isEmpty() || _state.value.streaming) return
         askedByVoice = byVoice
@@ -571,7 +584,7 @@ class AssistantViewModel(
         val turns = historyTurns(_state.value.items)
         askJob?.cancel()
         askJob = screenModelScope.launch {
-            ai.ask(turns, _state.value.child?.userId).collect { ev ->
+            ai.ask(turns, _state.value.child?.userId, inputLang).collect { ev ->
                 when (ev) {
                     is AssistantEvent.Status -> {
                         _state.update { it.copy(status = ev.text) }
@@ -747,7 +760,11 @@ class AssistantViewModel(
         const val TICK_MS = 60L
         const val CALIBRATE_MS = 300L
         const val MIN_SPEECH_MS = 180L
-        const val SILENCE_MS = 1_600L
+        // Keksa ota-onalar gap örtasida öylab to'xtaydi — 1,6 s'da gap kesilib qolardi; töxtatiş tugmasi baribir bor
+        const val SILENCE_MS = 2_200L
+        val ISO3_TO_1 = mapOf(
+            "uzb" to "uz", "rus" to "ru", "eng" to "en", "kaz" to "kk", "kir" to "ky", "tgk" to "tg", "aze" to "az",
+        )
         const val NO_SPEECH_MS = 10_000L
         const val MAX_LISTEN_MS = 60_000L
         const val MIN_AUDIO_MS = 400L

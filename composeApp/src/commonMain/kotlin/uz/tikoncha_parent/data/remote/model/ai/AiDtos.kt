@@ -10,6 +10,8 @@ data class ParentChatRequest(
     val messages: List<ParentChatMessageDto>,
     /** Ekranda tanlangan farzand — ism aytilmagan savollar shu farzand haqida. */
     val child_id: String? = null,
+    /** Ovozli savol tili (/ai/stt `language`: uzb, rus …) — javob şu tilda; yozilganda server özi aniqlaydi. */
+    val input_lang: String? = null,
 )
 
 /** GET /ai/parent/children/{id}/report — raqamlar (facts) bazadan, matn (summary) AI'dan. */

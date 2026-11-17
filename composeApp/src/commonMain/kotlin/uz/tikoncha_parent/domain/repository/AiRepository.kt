@@ -14,7 +14,8 @@ interface AiRepository {
     suspend fun report(childId: String, period: ReportPeriod): Outcome<ChildReport>
 
     /** Javob oqimi; har doim [AssistantEvent.Done] yoki [AssistantEvent.Failed] bilan tugaydi. */
-    fun ask(turns: List<AssistantTurn>, childId: String?): Flow<AssistantEvent>
+    /** [inputLang] — ovozli savolning STT aniqlagan tili (javob tili uçun); yozilgan savolda null. */
+    fun ask(turns: List<AssistantTurn>, childId: String?, inputLang: String? = null): Flow<AssistantEvent>
 
     /** Muvaffaqiyat — null; xato — server matni va maşina kodi. */
     suspend fun applyDraft(draftId: String, coin: Int? = null): DraftApplyError?

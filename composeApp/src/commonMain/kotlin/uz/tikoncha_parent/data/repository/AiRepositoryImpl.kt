@@ -43,10 +43,11 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
         else Outcome.Failure(ApiErrorMapper.fromCode(env.code), env.error)
     }
 
-    override fun ask(turns: List<AssistantTurn>, childId: String?): Flow<AssistantEvent> = flow {
+    override fun ask(turns: List<AssistantTurn>, childId: String?, inputLang: String?): Flow<AssistantEvent> = flow {
         val request = ParentChatRequest(
             messages = turns.takeLast(MAX_TURNS).map { ParentChatMessageDto(if (it.fromParent) "user" else "model", it.text) },
             child_id = childId,
+            input_lang = inputLang?.takeIf { it.isNotBlank() },
         )
         var finished = false
         var received = false
