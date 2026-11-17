@@ -40,6 +40,11 @@ data class RuleDraft(
     val childId: String = "",
     /** Topşiriq kartasi: mukofot (ota-ona kartada özgartira oladi). */
     val coins: Int? = null,
+    /**
+     * Qoida hozir işlamaydi (masalan, farzand telefoni "Faqat kuzatiş"da yoki ruxsat yetişmaydi) — bitta jumla,
+     * kartada sariq rangda. Server bermasa null.
+     */
+    val warning: String? = null,
 )
 
 /** Farzand telefonining oxirgi joylaşuvi (yordamçi javobi ostidagi karta). */

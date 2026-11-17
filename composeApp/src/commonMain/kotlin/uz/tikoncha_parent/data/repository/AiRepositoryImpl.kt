@@ -156,6 +156,7 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
                         confirm = d["confirm"]?.jsonPrimitive?.contentOrNull ?: "enable",
                         childId = d["child_id"]?.jsonPrimitive?.contentOrNull.orEmpty(),
                         coins = d["coins"]?.jsonPrimitive?.intOrNull,
+                        warning = d["warning"]?.jsonPrimitive?.contentOrNull?.trim()?.takeIf { it.isNotEmpty() },
                     )
                 )
             }

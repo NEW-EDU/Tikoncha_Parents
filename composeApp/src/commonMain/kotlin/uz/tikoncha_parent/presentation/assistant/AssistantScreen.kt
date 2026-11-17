@@ -138,6 +138,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.WarningAmber
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.KeyboardArrowDown
 import androidx.compose.material.icons.rounded.LocationOn
@@ -1506,6 +1507,20 @@ private fun DraftCard(
         if (meta != null) {
             Spacer(Modifier.height(if (lines.isEmpty()) 8.dp else 6.dp))
             Text(meta, style = AppTypography.bodyMdMedium, color = AppColors.text.tertiary)
+        }
+        // Qoida hozir işlamaydi (rejim yoki ruxsat) — ota-ona "yoqdim, ammo hech narsa yopilmadi" deb qolmasin
+        d.warning?.let { warning ->
+            Spacer(Modifier.height(12.dp))
+            Row(verticalAlignment = Alignment.Top) {
+                Icon(
+                    imageVector = Icons.Rounded.WarningAmber,
+                    contentDescription = null,
+                    tint = AppColors.text.accentWarning,
+                    modifier = Modifier.padding(top = 1.dp).size(20.dp),
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(warning, style = AppTypography.bodyMdMedium, color = AppColors.text.accentWarning)
+            }
         }
         if (d.kind == "task_create" && coins != null) {
             Spacer(Modifier.height(12.dp))

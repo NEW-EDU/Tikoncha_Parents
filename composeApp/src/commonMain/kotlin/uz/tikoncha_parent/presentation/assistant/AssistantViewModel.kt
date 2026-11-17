@@ -666,7 +666,8 @@ class AssistantViewModel(
                         DraftStatus.APPLYING, DraftStatus.APPLIED -> "the parent confirmed it, it is done"
                         DraftStatus.DISCARDED -> "the parent cancelled it, do not offer it again unless asked"
                     }
-                    AssistantTurn(false, "(Confirmation card for ${it.draft.childName}: $what — $outcome.)")
+                    val caveat = it.draft.warning?.let { w -> " Warning shown: $w" }.orEmpty()
+                    AssistantTurn(false, "(Confirmation card for ${it.draft.childName}: $what — $outcome.$caveat)")
                 }
                 is AssistantItem.Location -> AssistantTurn(false, "(Showed ${it.card.childName}'s location on a map card.)")
                 is AssistantItem.Protection -> AssistantTurn(false, "(Showed ${it.card.childName}'s protection status card.)")
