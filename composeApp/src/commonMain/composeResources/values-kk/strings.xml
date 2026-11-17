@@ -413,7 +413,7 @@
     <string name="farzand_ilova_kuzatish">Балаңыздың күн бойы қай қолданбаларды қанша пайдаланатынын бақылаңыз.</string>
     <string name="uchtagacha_jadval">3 кестеге дейін</string>
     <string name="jadval_cheklovlar">Күндерге, апталарға немесе арнайы уақыттарға бөлек шектеулер қойыңыз.</string>
-    <string name="qattiq_bloklash_qalqon">Қатаң бұғаттау («Қалқан» режимі)</string>
+    <string name="qattiq_bloklash_qalqon">Қатаң қорғаныс: сайттар мен қысқа бейнелер де бұғатталады</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Балаңыз шектеулерді өшіре немесе өзгерте алмайды.</string>
     <string name="tez_bloklash_timer">Жылдам бұғаттау (Таймер)</string>
     <string name="vaqtinchalik_bloklash_tezi">Қажет кезде уақытша бұғаттауды бірнеше секундта қосыңыз.</string>
@@ -652,27 +652,27 @@
     <string name="tugilgan_sanasi">Туған күні</string>
 
     <string name="farzand_himoyasi">Бала қорғанысы</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d рұқсат өшірілген</string>
+    <string name="ta_ruxsat_ochirilgan">Балаңыздың телефонында %1$d баптау өшірулі</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d жаңа сұрау күтуде</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Қорғаныс</string>
 
-    <string name="mode_default_title">Әдепкі</string>
-    <string name="mode_gujanak_title">Кірпі</string>
-    <string name="mode_qalqon_title">Қалқан</string>
+    <string name="mode_default_title">Тек қадағалау</string>
+    <string name="mode_gujanak_title">Орташа қорғаныс</string>
+    <string name="mode_qalqon_title">Қатаң қорғаныс</string>
 
-    <string name="mode_default_desc">Қорғаныс өшірулі — тек бақылау</string>
-    <string name="mode_gujanak_desc">Кесте бойынша бұғаттау белсенді</string>
-    <string name="mode_qalqon_desc">Толық қорғаныс — күшейтілген бұғаттау белсенді</string>
+    <string name="mode_default_desc">Экран уақыты мен орналасқан жері көрінеді. Қолданбалар жабылмайды.</string>
+    <string name="mode_gujanak_desc">Қолданбалар сіз белгілеген уақытта жабылады.</string>
+    <string name="mode_qalqon_desc">Қолданбалар, сайттар және қысқа бейнелер бұғатталады.</string>
 
-    <string name="holat_nomalum">Күйі белгісіз</string>
-    <string name="holat_nomalum_desc">Бала құрылғысы әлі синхрондалмаған</string>
+    <string name="holat_nomalum">Әзірге мәлімет жоқ</string>
+    <string name="holat_nomalum_desc">Балаңыздың телефоны интернетке қосылғанда пайда болады</string>
 
-    <string name="himoya_boshlangich">Негізгі</string>
+    <string name="himoya_boshlangich">Тек қадағалау</string>
     <string name="himoya_orta">Орташа қорғаныс</string>
-    <string name="himoya_toliq">Толық қорғаныс</string>
+    <string name="himoya_toliq">Қатаң қорғаныс</string>
 
     <!-- Sync -->
     <string name="sinxron">Синхрондалды:</string>
@@ -686,7 +686,7 @@
     <string name="oflayn">Желіден тыс</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">Өшіру тәсілі</string>
+    <string name="ochirish_usuli">Қалай өшіріледі</string>
     <string name="usul_taymer">Таймер</string>
     <string name="usul_maxfiy_kod">Құпия код</string>
     <string name="usul_maxfiy_matn">Құпия фраза</string>
@@ -699,8 +699,8 @@
     <string name="farzand_sorovlari">Бала сұраулары</string>
     <string name="n_ta_yangi">%1$d жаңа</string>
 
-    <string name="qalqonni_ochirish_sorovi">«Қалқанды» өшіру сұрауы</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Мақұлдасаңыз, балаңыздың құрылғысында «Қалқан» бірден өшіріледі</string>
+    <string name="qalqonni_ochirish_sorovi">Қатаң қорғанысты өшіру туралы өтініш</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Рұқсат етсеңіз, балаңыздың телефонында қатаң қорғаныс бірден өшеді</string>
 
     <string name="rad_etish">Қабылдамау</string>
 
@@ -708,8 +708,8 @@
     <string name="sorov_rad_etildi">Сұрау қабылданбады</string>
     <string name="sorov_muddati_tugadi">Сұрау мерзімі бітті</string>
 
-    <string name="qalqon_ochirishga_ruxsat">«Қалқанды» өшіруге рұқсат берілсін бе?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">Мақұлдасаңыз, балаңыз «Қалқанды» бірден өшіре алады.</string>
+    <string name="qalqon_ochirishga_ruxsat">Қатаң қорғаныс өшірілсін бе?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Рұқсат етсеңіз, балаңыз қатаң қорғанысты бірден өшіре алады.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">Рұқсаттар</string>
@@ -719,11 +719,11 @@
     <string name="berilmagan">Берілмеген</string>
 
     <string name="boshqa_rejimlar_uchun">Қазір басқа режимдер үшін қажет емес</string>
-    <string name="gujanak_uchun">«Кірпі» режимі үшін</string>
-    <string name="qalqon_uchun">«Қалқан» режимі үшін</string>
+    <string name="gujanak_uchun">Орташа қорғаныс үшін</string>
+    <string name="qalqon_uchun">Қатаң қорғаныс үшін</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d қажетті рұқсат өшірулі</string>
-    <string name="zarur_ruxsat_banner_desc">Бұл рұқсаттарсыз қорғаныс толық жұмыс істей алмайды — оларды балаңыздың құрылғысында қосыңыз</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Балаңыздың телефонында %1$d баптау өшірулі</string>
+    <string name="zarur_ruxsat_banner_desc">Өшірулі баптауды басыңыз — не үшін керек екені және қай жерде қосылатыны көрсетіледі.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Хабарландырулар</string>
@@ -737,19 +737,19 @@
     <string name="perm_accessibility">Арнайы мүмкіндіктер</string>
     <string name="perm_device_admin">Құрылғы әкімшісі</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Балаңыз «%1$s» үшін «Қалқанды» өшіруге рұқсат сұрап жатыр</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s қатаң қорғанысты өшіруге рұқсат сұрап жатыр</string>
     <string name="javob_uchun">Жауап беруге қалған уақыт: %1$s</string>
     <string name="rad_etildi">Қабылданбады</string>
 
-    <string name="oxirgi_sinxron">Соңғы синхрондау</string>
+    <string name="oxirgi_sinxron">Соңғы байланыс</string>
     <string name="kod">Код</string>
-    <string name="qalqonni_ochirish">«Қалқанды» өшіру</string>
-    <string name="himoya_ochiq_qisqa">Қорғаныс өшірулі</string>
-    <string name="gujanak_faol_qisqa">«Кірпі» белсенді</string>
-    <string name="toliq_himoya_faol_qisqa">Толық қорғаныс белсенді</string>
+    <string name="qalqonni_ochirish">Қатаң қорғанысты өшіру</string>
+    <string name="himoya_ochiq_qisqa">Экран уақыты мен орналасқан жері көрінеді. Қолданбалар жабылмайды.</string>
+    <string name="gujanak_faol_qisqa">Қолданбалар сіз белгілеген уақытта жабылады.</string>
+    <string name="toliq_himoya_faol_qisqa">Қолданбалар, сайттар және қысқа бейнелер бұғатталады.</string>
     <string name="ruxsat_berildi">Рұқсат берілді</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Сұрауды мақұлдадыңыз — балаңыздың құрылғысында «Қалқан» өшіріледі.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Сұрауды қабылдамадыңыз. «Қалқан» белсенді күйінде қалады.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Сіз рұқсат бердіңіз — балаңыздың телефонында қатаң қорғаныс өшеді.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Сіз бас тарттыңыз. Қатаң қорғаныс жұмыс істеп тұр.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Сұрауды мақұлдадыңыз — балаңыз енді қолданбадан шыға алады.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Сұрауды мақұлдадыңыз — балаңыз енді қолданбаны жоя алады.</string>
     <string name="sorov_rad_etildi_desc">Сұрауды қабылдамадыңыз.</string>
@@ -998,17 +998,17 @@
     <string name="protection_section">Не қорғалады</string>
     <string name="protection_footer">Hoglt тізімді өзекті күйде ұстайды.</string>
     <string name="location_show_area">Аймақты көрсету</string>
-    <string name="info_sites_shield">Сайттар тек балаңыздың телефонында «Қалқан» режимі қосулы кезде бұғатталады.</string>
-    <string name="protection_shield_note">Контенттен қорғау тек балаңыздың телефонында «Қалқан» режимі қосулы кезде жұмыс істейді.</string>
-    <string name="protection_shield_short">Тек «Қалқан» режимінде жұмыс істейді</string>
-    <string name="info_features_shield">YouTube Shorts пен Instagram Reels тек балаңыздың телефонында «Қалқан» режимі қосулы кезде бұғатталады.</string>
+    <string name="info_sites_shield">Сайттар тек балаңыздың телефонында қатаң қорғаныс қосулы кезде бұғатталады.</string>
+    <string name="protection_shield_note">Бұл тек балаңыздың телефонында қатаң қорғаныс қосулы кезде жұмыс істейді.</string>
+    <string name="protection_shield_short">Тек қатаң қорғаныста жұмыс істейді</string>
+    <string name="info_features_shield">YouTube Shorts және Instagram Reels тек балаңыздың телефонында қатаң қорғаныс қосулы кезде бұғатталады.</string>
     <string name="protection_by_child">Балаңыз қосқан — оны тек балаңыздың өзі өшіре алады</string>
     <string name="protection_by_coparent">Екінші ата-ана қосқан — оны тек өзі өшіре алады</string>
     <string name="protection_by_both">Балаңыз бен екінші ата-ана қосқан — оларды тек өздері өшіре алады</string>
-    <string name="protection_policies_label">Кестелер</string>
+    <string name="protection_policies_label">Сіздің ережелеріңіз</string>
     <string name="protection_policies_delivered">Телефонға жеткізілді</string>
     <string name="protection_policies_pending">Әлі жеткізілмеді</string>
-    <string name="protection_gujanak_limits_note">«Кірпі» режимі қолданбаларды бұғаттайды. Сайттар мен Shorts/Reels тек «Қалқан» режимінде бұғатталады.</string>
+    <string name="protection_gujanak_limits_note">Орташа қорғаныс тек қолданбаларды жабады. Сайттар мен қысқа бейнелер тек қатаң қорғаныста бұғатталады: балаңыздың телефонында Hoglt → «Бақылау» → «Қалқан» режимі.</string>
     <string name="editor_limit_days_follow_time">Уақытпен бірдей — күндер уақыт бетінде таңдалады</string>
     <string name="editor_limit_in_window">осы уақытта лимит</string>
     <string name="editor_limit_outside_window">осы уақыттан тыс лимит</string>
@@ -1331,7 +1331,7 @@
     <string name="parent_special_info_title">Балаңыздың телефонында жұмыс істейді</string>
     <string name="parent_special_info_1">Сіз қосқан қорғанысты балаңыз өшіре алмайды. Ол оны өз қолданбасында көреді.</string>
     <string name="parent_special_info_2">Қауіп болса, сіз тек тақырып пен қолданба атауын аласыз — хабарлама мәтінін не суретті ешқашан алмайсыз.</string>
-    <string name="parent_special_info_3">Android-те «Қалқан» режимі қажет. iPhone-да: 18+ сайттар және Hoglagram чаттары.</string>
+    <string name="parent_special_info_3">Android-те қатаң қорғаныс қажет. iPhone-да: 18+ сайттар және Hoglagram чаттары.</string>
     <string name="parent_special_nsfw_title">Орынсыз суреттер</string>
     <string name="parent_special_nsfw_desc">18+ суреттер жабылады және сізге хабарланады</string>
     <string name="parent_special_conv_title">Қауіпті чаттар</string>
@@ -1377,8 +1377,8 @@
     <string name="text_size_extra_large">Өте үлкен</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">Тағы 5 минут бересіз бе?</string>
+    <string name="ob_shield_hint">Балаңыз уақыт сұрап жатыр</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1406,9 +1406,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Онсыз сайттар, YouTube Shorts және Instagram Reels бұғатталмайды, ал қолданбаны оңай жоюға болады.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">Оның телефонында</string>
+    <string name="prot_default_note">Қазір ережелеріңіз ешбір қолданбаны жаппайды. Жабуы үшін балаңыздың телефонында Hoglt-ты ашыңыз → «Бақылау» бөлімінде қорғанысты қосыңыз.</string>
+    <string name="prot_strength">Қорғаныс деңгейі</string>
+    <string name="prot_phone_settings">Балаңыздың телефонындағы баптаулар</string>
+    <string name="prot_phone_settings_hint">Бұлар сіздің телефоныңызда емес, балаңыздың телефонында қосылады.</string>
+    <string name="prot_x_of_y_on">%2$d ішінен %1$d қосулы</string>
+    <string name="prot_on">Қосулы</string>
+    <string name="prot_off">Өшірулі</string>
+    <string name="prot_not_needed_now">Қазір қажет емес</string>
+    <string name="prot_why_needed">Бұл не үшін керек?</string>
+    <string name="prot_where_to_turn_on">Қайда қосылады: балаңыздың телефон баптауларында — «%1$s».</string>
+    <string name="prot_stronger_group">Күштірек қорғаныс үшін (%1$d)</string>
+    <string name="perm_title_notification">Хабарлар мен еске салғыштар</string>
+    <string name="perm_title_usage_stats">Әр қолданбада өткізген уақыт</string>
+    <string name="perm_title_overlay">Уақыт біткенде қолданбаны жабу</string>
+    <string name="perm_title_overlay_popup">Қолданбаларды жабу (Xiaomi телефондарында)</string>
+    <string name="perm_title_location">Балаңыздың қайда екенін көрсету</string>
+    <string name="perm_title_gps">Нақты орналасқан жер</string>
+    <string name="perm_title_battery">Батареяны үнемдеу кезінде де жұмыс істейді</string>
+    <string name="perm_title_auto_start">Телефон қайта қосылғанда қайта іске қосылады</string>
+    <string name="perm_title_accessibility">Сайттар мен қысқа бейнелерді бұғаттау</string>
+    <string name="perm_title_device_admin">Hoglt-ты жоюдан қорғау</string>
+    <string name="prot_btn_allow">Рұқсат етемін</string>
+    <string name="prot_btn_keep">Жоқ, қалсын</string>
+    <string name="prot_btn_delete_account">Иә, біржола жойылсын</string>
+    <string name="task_empty_in_progress">Қазір орындалып жатқан тапсырма жоқ</string>
+    <string name="task_empty_done">Орындалған тапсырма әзірге жоқ</string>
+    <string name="task_empty_overdue">Мерзімі өткен тапсырма жоқ</string>
+    <string name="task_empty_filter_hint">Барлық тапсырманы көру үшін таңдалған сүзгіні қайта басыңыз.</string>
 </resources>

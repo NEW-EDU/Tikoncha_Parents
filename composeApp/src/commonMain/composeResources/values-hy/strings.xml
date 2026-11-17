@@ -414,7 +414,7 @@
     <string name="farzand_ilova_kuzatish">Հետևեք, թե օրվա ընթացքում ձեր երեխան որ հավելվածներն է օգտագործում և որքան։</string>
     <string name="uchtagacha_jadval">Մինչև 3 ժամանակացույց</string>
     <string name="jadval_cheklovlar">Սահմանեք առանձին սահմանափակումներ օրերի, շաբաթների կամ հատուկ ժամանակների համար։</string>
-    <string name="qattiq_bloklash_qalqon">Խիստ արգելափակում («Վահան» ռեժիմ)</string>
+    <string name="qattiq_bloklash_qalqon">Խիստ պաշտպանություն՝ արգելափակվում են նաև կայքերը և կարճ տեսանյութերը</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Ձեր երեխան չի կարող անջատել կամ փոխել սահմանափակումները։</string>
     <string name="tez_bloklash_timer">Արագ արգելափակում (Ժամաչափ)</string>
     <string name="vaqtinchalik_bloklash_tezi">Անհրաժեշտության դեպքում միացրեք ժամանակավոր արգելափակում մի քանի վայրկյանում։</string>
@@ -669,27 +669,27 @@
     <string name="tugilgan_sanasi">Ծննդյան ամսաթիվ</string>
 
     <string name="farzand_himoyasi">Երեխայի պաշտպանություն</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d թույլտվություն անջատված է</string>
+    <string name="ta_ruxsat_ochirilgan">Երեխայի հեռախոսում անջատված կարգավորումներ՝ %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d նոր հարցում սպասում է</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Պաշտպանություն</string>
 
-    <string name="mode_default_title">Սովորական</string>
-    <string name="mode_gujanak_title">Ոզնի</string>
-    <string name="mode_qalqon_title">Վահան</string>
+    <string name="mode_default_title">Միայն հսկողություն</string>
+    <string name="mode_gujanak_title">Միջին պաշտպանություն</string>
+    <string name="mode_qalqon_title">Խիստ պաշտպանություն</string>
 
-    <string name="mode_default_desc">Պաշտպանությունն անջատված է՝ միայն դիտարկում</string>
-    <string name="mode_gujanak_desc">Ըստ ժամանակացույցի արգելափակումն ակտիվ է</string>
-    <string name="mode_qalqon_desc">Լիարժեք պաշտպանություն՝ ուժեղացված արգելափակումն ակտիվ է</string>
+    <string name="mode_default_desc">Երևում են էկրանի ժամանակը և գտնվելու վայրը։ Հավելվածները չեն փակվում։</string>
+    <string name="mode_gujanak_desc">Հավելվածները փակվում են ձեր նշած ժամերին։</string>
+    <string name="mode_qalqon_desc">Արգելափակվում են հավելվածները, կայքերը և կարճ տեսանյութերը։</string>
 
-    <string name="holat_nomalum">Անհայտ կարգավիճակ</string>
-    <string name="holat_nomalum_desc">Երեխայի սարքը դեռ չի համաժամացվել</string>
+    <string name="holat_nomalum">Տվյալներ դեռ չկան</string>
+    <string name="holat_nomalum_desc">Կհայտնվեն, երբ երեխայի հեռախոսը միանա ինտերնետին</string>
 
-    <string name="himoya_boshlangich">Հիմնական</string>
+    <string name="himoya_boshlangich">Միայն հսկողություն</string>
     <string name="himoya_orta">Միջին պաշտպանություն</string>
-    <string name="himoya_toliq">Լիարժեք պաշտպանություն</string>
+    <string name="himoya_toliq">Խիստ պաշտպանություն</string>
 
     <!-- Sync -->
     <string name="sinxron">Համաժամացված է:</string>
@@ -703,7 +703,7 @@
     <string name="oflayn">Անցանց</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">Անջատման եղանակ</string>
+    <string name="ochirish_usuli">Ինչպես է անջատվում</string>
     <string name="usul_taymer">Ժամաչափ</string>
     <string name="usul_maxfiy_kod">Գաղտնի կոդ</string>
     <string name="usul_maxfiy_matn">Գաղտնի արտահայտություն</string>
@@ -716,8 +716,8 @@
     <string name="farzand_sorovlari">Երեխայի հարցումներ</string>
     <string name="n_ta_yangi">%1$d նոր</string>
 
-    <string name="qalqonni_ochirish_sorovi">«Վահանն» անջատելու հարցում</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Հաստատելու դեպքում «Վահանն» անմիջապես կանջատվի ձեր երեխայի սարքում</string>
+    <string name="qalqonni_ochirish_sorovi">Խիստ պաշտպանությունն անջատելու խնդրանք</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Եթե թույլ տաք, երեխայի հեռախոսում խիստ պաշտպանությունն անմիջապես կանջատվի</string>
 
     <string name="rad_etish">Մերժել</string>
 
@@ -725,8 +725,8 @@
     <string name="sorov_rad_etildi">Հարցումը մերժված է</string>
     <string name="sorov_muddati_tugadi">Հարցման ժամկետն անցել է</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Թույլատրե՞լ «Վահանի» անջատումը</string>
-    <string name="qalqon_ochirish_ruxsat_desc">Հաստատելու դեպքում ձեր երեխան կկարողանա անմիջապես անջատել «Վահանը»։</string>
+    <string name="qalqon_ochirishga_ruxsat">Անջատե՞լ խիստ պաշտպանությունը</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Եթե թույլ տաք, երեխան կկարողանա անմիջապես անջատել խիստ պաշտպանությունը։</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">Թույլտվություններ</string>
@@ -736,11 +736,11 @@
     <string name="berilmagan">Տրամադրված չէ</string>
 
     <string name="boshqa_rejimlar_uchun">Այս պահին անհրաժեշտ չէ այլ ռեժիմների համար</string>
-    <string name="gujanak_uchun">«Ոզնի» ռեժիմի համար</string>
-    <string name="qalqon_uchun">«Վահան» ռեժիմի համար</string>
+    <string name="gujanak_uchun">Միջին պաշտպանության համար</string>
+    <string name="qalqon_uchun">Խիստ պաշտպանության համար</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d անհրաժեշտ թույլտվություն անջատված է</string>
-    <string name="zarur_ruxsat_banner_desc">Առանց այս թույլտվությունների պաշտպանությունը չի կարող լիարժեք աշխատել՝ միացրեք դրանք ձեր երեխայի սարքում</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Երեխայի հեռախոսում անջատված կարգավորումներ՝ %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">Հպեք անջատված կարգավորմանը՝ տեսնելու, թե ինչի համար է այն և որտեղ է միացվում։</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Ծանուցումներ</string>
@@ -754,19 +754,19 @@
     <string name="perm_accessibility">Հատուկ գործառույթներ</string>
     <string name="perm_device_admin">Սարքի ադմինիստրատոր</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Ձեր երեխան թույլտվություն է խնդրում անջատելու «Վահանը» «%1$s»-ի համար</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s խնդրում է անջատել խիստ պաշտպանությունը</string>
     <string name="javob_uchun">Պատասխանելու համար մնացած ժամանակը՝ %1$s</string>
     <string name="rad_etildi">Մերժված</string>
 
-    <string name="oxirgi_sinxron">Վերջին համաժամացում</string>
+    <string name="oxirgi_sinxron">Վերջին կապը</string>
     <string name="kod">Կոդ</string>
-    <string name="qalqonni_ochirish">Անջատել «Վահանը»</string>
-    <string name="himoya_ochiq_qisqa">Պաշտպանությունն անջատված է</string>
-    <string name="gujanak_faol_qisqa">«Ոզնին» ակտիվ է</string>
-    <string name="toliq_himoya_faol_qisqa">Լիարժեք պաշտպանությունն ակտիվ է</string>
+    <string name="qalqonni_ochirish">Խիստ պաշտպանության անջատում</string>
+    <string name="himoya_ochiq_qisqa">Երևում են էկրանի ժամանակը և գտնվելու վայրը։ Հավելվածները չեն փակվում։</string>
+    <string name="gujanak_faol_qisqa">Հավելվածները փակվում են ձեր նշած ժամերին։</string>
+    <string name="toliq_himoya_faol_qisqa">Արգելափակվում են հավելվածները, կայքերը և կարճ տեսանյութերը։</string>
     <string name="ruxsat_berildi">Թույլտվությունը տրված է</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Դուք հաստատեցիք հարցումը՝ «Վահանը» կանջատվի ձեր երեխայի սարքում։</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Դուք մերժեցիք հարցումը։ «Վահանը» մնում է ակտիվ։</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Դուք թույլ տվեցիք․ երեխայի հեռախոսում խիստ պաշտպանությունը կանջատվի։</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Դուք մերժեցիք։ Խիստ պաշտպանությունը շարունակում է աշխատել։</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Դուք հաստատեցիք հարցումը՝ ձեր երեխան այժմ կարող է դուրս գալ հավելվածից։</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Դուք հաստատեցիք հարցումը՝ ձեր երեխան այժմ կարող է ապատեղադրել հավելվածը։</string>
     <string name="sorov_rad_etildi_desc">Դուք մերժեցիք հարցումը։</string>
@@ -1015,17 +1015,17 @@
     <string name="protection_section">Ինչն է պաշտպանված</string>
     <string name="protection_footer">Hoglt-ը թարմ է պահում ցուցակը։</string>
     <string name="location_show_area">Ցույց տալ տարածքը</string>
-    <string name="info_sites_shield">Կայքերն արգելափակվում են միայն այն ժամանակ, երբ «Վահան» ռեժիմը միացված է ձեր երեխայի հեռախոսում։</string>
-    <string name="protection_shield_note">Բովանդակության պաշտպանությունն աշխատում է միայն այն ժամանակ, երբ «Վահան» ռեժիմը միացված է ձեր երեխայի հեռախոսում։</string>
-    <string name="protection_shield_short">Աշխատում է միայն «Վահան» ռեժիմում</string>
-    <string name="info_features_shield">YouTube Shorts-ը և Instagram Reels-ն արգելափակվում են միայն այն ժամանակ, երբ «Վահան» ռեժիմը միացված է ձեր երեխայի հեռախոսում։</string>
+    <string name="info_sites_shield">Կայքերը արգելափակվում են միայն այն ժամանակ, երբ երեխայի հեռախոսում միացված է խիստ պաշտպանությունը։</string>
+    <string name="protection_shield_note">Սա աշխատում է միայն այն ժամանակ, երբ երեխայի հեռախոսում միացված է խիստ պաշտպանությունը։</string>
+    <string name="protection_shield_short">Աշխատում է միայն խիստ պաշտպանությամբ</string>
+    <string name="info_features_shield">YouTube Shorts-ը և Instagram Reels-ը արգելափակվում են միայն այն ժամանակ, երբ երեխայի հեռախոսում միացված է խիստ պաշտպանությունը։</string>
     <string name="protection_by_child">Ձեր երեխան է այն միացրել՝ միայն ձեր երեխան կարող է անջատել իրենը</string>
     <string name="protection_by_coparent">Մյուս ծնողն է այն միացրել՝ միայն նա կարող է անջատել իրենը</string>
     <string name="protection_by_both">Ձեր երեխան և մյուս ծնողն են այն միացրել՝ միայն նրանք կարող են անջատել իրենցը</string>
-    <string name="protection_policies_label">Ժամանակացույցեր</string>
+    <string name="protection_policies_label">Ձեր կանոնները</string>
     <string name="protection_policies_delivered">Առաքված է հեռախոսին</string>
     <string name="protection_policies_pending">Դեռ առաքված չէ</string>
-    <string name="protection_gujanak_limits_note">«Ոզնի» ռեժիմն արգելափակում է հավելվածները։ Կայքերը և Shorts/Reels-ն արգելափակվում են միայն «Վահան» ռեժիմում։</string>
+    <string name="protection_gujanak_limits_note">Միջին պաշտպանությունը փակում է միայն հավելվածները։ Կայքերը և կարճ տեսանյութերը արգելափակվում են միայն խիստ պաշտպանությամբ՝ երեխայի հեռախոսում Hoglt → «Վերահսկողություն» → «Վահան» ռեժիմ։</string>
     <string name="editor_limit_days_follow_time">Ինչպես ժամանակը՝ օրերն ընտրվում են ժամանակի էջում</string>
     <string name="editor_limit_in_window">սահմանաչափ այս ժամանակահատվածում</string>
     <string name="editor_limit_outside_window">սահմանաչափ այս ժամանակահատվածից դուրս</string>
@@ -1348,7 +1348,7 @@
     <string name="parent_special_info_title">Աշխատում է ձեր երեխայի հեռախոսում</string>
     <string name="parent_special_info_1">Ձեր երեխան չի կարող անջատել ձեր միացրած պաշտպանությունը։ Նա դա կտեսնի իր հավելվածում։</string>
     <string name="parent_special_info_2">Ռիսկի դեպքում դուք ստանում եք միայն թեման և հավելվածի անունը՝ երբեք հաղորդագրության տեքստը կամ պատկերը։</string>
-    <string name="parent_special_info_3">Android-ում անհրաժեշտ է «Վահան» ռեժիմը։ iPhone-ում՝ 18+ կայքեր և Hoglagram-ի զրույցներ։</string>
+    <string name="parent_special_info_3">Android-ում անհրաժեշտ է խիստ պաշտպանություն։ iPhone-ում՝ 18+ կայքեր և Hoglagram-ի զրույցներ։</string>
     <string name="parent_special_nsfw_title">Անպատշաճ պատկերներ</string>
     <string name="parent_special_nsfw_desc">18+ պատկերները փակվում են, և դուք ծանուցում եք ստանում</string>
     <string name="parent_special_conv_title">Ռիսկային զրույցներ</string>
@@ -1394,8 +1394,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">Կարելի՞ է ևս 5 րոպե</string>
+    <string name="ob_shield_hint">Երեխան ավելի շատ ժամանակ է խնդրում</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1423,9 +1423,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Առանց սրա կայքերը, YouTube Shorts-ը և Instagram Reels-ը չեն արգելափակվում, իսկ հավելվածը հեշտությամբ կարելի է ջնջել։</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">Նրա հեռախոսում</string>
+    <string name="prot_default_note">Հիմա ձեր կանոնները ոչ մի հավելված չեն փակում։ Դրա համար երեխայի հեռախոսում բացեք Hoglt → «Վերահսկողություն» և միացրեք պաշտպանությունը։</string>
+    <string name="prot_strength">Պաշտպանության մակարդակ</string>
+    <string name="prot_phone_settings">Կարգավորումներ երեխայի հեռախոսում</string>
+    <string name="prot_phone_settings_hint">Դրանք միացվում են երեխայի հեռախոսում, ոչ թե ձերում։</string>
+    <string name="prot_x_of_y_on">Միացված է՝ %1$d / %2$d</string>
+    <string name="prot_on">Միացված է</string>
+    <string name="prot_off">Անջատված է</string>
+    <string name="prot_not_needed_now">Հիմա պետք չէ</string>
+    <string name="prot_why_needed">Ինչի՞ համար է սա</string>
+    <string name="prot_where_to_turn_on">Որտեղ միացնել՝ երեխայի հեռախոսի կարգավորումներում, «%1$s»։</string>
+    <string name="prot_stronger_group">Ավելի ուժեղ պաշտպանության համար (%1$d)</string>
+    <string name="perm_title_notification">Հաղորդագրություններ և հիշեցումներ</string>
+    <string name="perm_title_usage_stats">Ժամանակը յուրաքանչյուր հավելվածում</string>
+    <string name="perm_title_overlay">Հավելվածի փակում, երբ ժամանակը լրանում է</string>
+    <string name="perm_title_overlay_popup">Հավելվածների փակում (Xiaomi հեռախոսներում)</string>
+    <string name="perm_title_location">Ցույց տալ, թե որտեղ է երեխան</string>
+    <string name="perm_title_gps">Ճշգրիտ գտնվելու վայր</string>
+    <string name="perm_title_battery">Աշխատում է նաև մարտկոցի խնայողության ռեժիմում</string>
+    <string name="perm_title_auto_start">Հեռախոսը վերագործարկելուց հետո նորից միանում է</string>
+    <string name="perm_title_accessibility">Կայքերի և կարճ տեսանյութերի արգելափակում</string>
+    <string name="perm_title_device_admin">Պաշտպանում է Hoglt-ը ջնջվելուց</string>
+    <string name="prot_btn_allow">Թույլ եմ տալիս</string>
+    <string name="prot_btn_keep">Ոչ, թող մնա</string>
+    <string name="prot_btn_delete_account">Այո, ջնջել ընդմիշտ</string>
+    <string name="task_empty_in_progress">Հիմա ընթացքում գտնվող առաջադրանք չկա</string>
+    <string name="task_empty_done">Կատարված առաջադրանք դեռ չկա</string>
+    <string name="task_empty_overdue">Ժամկետանց առաջադրանք չկա</string>
+    <string name="task_empty_filter_hint">Բոլոր առաջադրանքները տեսնելու համար կրկին հպեք ընտրված ֆիլտրին։</string>
 </resources>

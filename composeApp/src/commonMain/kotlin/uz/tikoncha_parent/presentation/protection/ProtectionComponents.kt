@@ -17,12 +17,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.Logout
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.Error
 import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.KeyboardArrowDown
+import androidx.compose.material.icons.rounded.KeyboardArrowUp
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -40,7 +43,6 @@ import org.jetbrains.compose.resources.StringResource
 import tikoncha_parents.composeapp.generated.resources.perm_why_accessibility
 import tikoncha_parents.composeapp.generated.resources.perm_why_auto_start
 import tikoncha_parents.composeapp.generated.resources.perm_why_battery
-import tikoncha_parents.composeapp.generated.resources.perm_why_dangerous
 import tikoncha_parents.composeapp.generated.resources.perm_why_device_admin
 import tikoncha_parents.composeapp.generated.resources.perm_why_gps
 import tikoncha_parents.composeapp.generated.resources.perm_why_location
@@ -63,8 +65,6 @@ import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.acc_delete_req_done
 import tikoncha_parents.composeapp.generated.resources.acc_delete_req_pending
-import tikoncha_parents.composeapp.generated.resources.berilgan
-import tikoncha_parents.composeapp.generated.resources.berilmagan
 import tikoncha_parents.composeapp.generated.resources.boshqa_rejimlar_uchun
 import tikoncha_parents.composeapp.generated.resources.eye
 import tikoncha_parents.composeapp.generated.resources.eye_slash
@@ -75,7 +75,6 @@ import tikoncha_parents.composeapp.generated.resources.guard
 import tikoncha_parents.composeapp.generated.resources.guard_danger
 import tikoncha_parents.composeapp.generated.resources.guard_neutral
 import tikoncha_parents.composeapp.generated.resources.guard_warning
-import tikoncha_parents.composeapp.generated.resources.gujanak_uchun
 import tikoncha_parents.composeapp.generated.resources.hisobdan_chiqish_ruxsat_berildi_desc
 import tikoncha_parents.composeapp.generated.resources.ilovani_ochirish_ruxsat_berildi_desc
 import tikoncha_parents.composeapp.generated.resources.kod
@@ -88,14 +87,22 @@ import tikoncha_parents.composeapp.generated.resources.protection_policies_label
 import tikoncha_parents.composeapp.generated.resources.protection_policies_pending
 import tikoncha_parents.composeapp.generated.resources.qalqon_ochirish_rad_etildi_desc
 import tikoncha_parents.composeapp.generated.resources.qalqon_ochirish_tasdiqlandi_desc
-import tikoncha_parents.composeapp.generated.resources.qalqon_uchun
 import tikoncha_parents.composeapp.generated.resources.rad_etildi
 import tikoncha_parents.composeapp.generated.resources.ruxsat_berildi
-import tikoncha_parents.composeapp.generated.resources.ruxsatlar
 import tikoncha_parents.composeapp.generated.resources.sorov_rad_etildi_desc
 import tikoncha_parents.composeapp.generated.resources.tasdiqlandi
-import tikoncha_parents.composeapp.generated.resources.x_dan_y_berilgan
 import tikoncha_parents.composeapp.generated.resources.zarur_ruxsat_banner_desc
+import tikoncha_parents.composeapp.generated.resources.prot_phone_settings
+import tikoncha_parents.composeapp.generated.resources.prot_phone_settings_hint
+import tikoncha_parents.composeapp.generated.resources.prot_x_of_y_on
+import tikoncha_parents.composeapp.generated.resources.prot_on
+import tikoncha_parents.composeapp.generated.resources.prot_off
+import tikoncha_parents.composeapp.generated.resources.prot_not_needed_now
+import tikoncha_parents.composeapp.generated.resources.prot_why_needed
+import tikoncha_parents.composeapp.generated.resources.prot_where_to_turn_on
+import tikoncha_parents.composeapp.generated.resources.prot_stronger_group
+import tikoncha_parents.composeapp.generated.resources.prot_strength
+import tikoncha_parents.composeapp.generated.resources.prot_default_note
 import uz.tikoncha_parent.domain.model.protection.AccountRequest
 import uz.tikoncha_parent.domain.model.protection.ChildMode
 import uz.tikoncha_parent.domain.model.protection.ChildPermission
@@ -132,6 +139,8 @@ private fun ProtectionState.shieldLevel(): ShieldLevel = when {
     mode == ChildMode.UNKNOWN -> ShieldLevel.Unknown
     missingRequiredPermissions.isNotEmpty() -> ShieldLevel.Danger
     pendingRequestCount > 0 -> ShieldLevel.Warning
+    // "Faqat kuzatiş"da hech narsa yopilmaydi — kök "hammasi joyida" qalqoni notöğri taassurot beradi
+    mode == ChildMode.DEFAULT -> ShieldLevel.Unknown
     else -> ShieldLevel.Ok
 }
 
@@ -329,9 +338,11 @@ fun ProtectionStatusGroup(
         }
     }
 
-    // G'ujanak saytlar va Shorts/Reels'ni ko'rmaydi — ota-ona buni bilishi kerak
-    if (state.mode == ChildMode.GUJANAK) {
-        ProtectionFootnote(stringResource(Res.string.protection_gujanak_limits_note))
+    // Ota-ona qöygan qoidalar nimani yopişi (yoki yopmasligi) va kuçliroq himoya qayerda yoqilişi
+    when (state.mode) {
+        ChildMode.DEFAULT -> ProtectionFootnote(stringResource(Res.string.prot_default_note))
+        ChildMode.GUJANAK -> ProtectionFootnote(stringResource(Res.string.protection_gujanak_limits_note))
+        else -> Unit
     }
 }
 
@@ -359,14 +370,15 @@ private fun StatusHero(state: ProtectionState) {
             )
             if (step > 0) {
                 Spacer(Modifier.height(16.dp))
+                // Nomi tepada yozilgan — bu yerda faqat "qança kuçli" (3 tadan)
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    LevelTrack(step = step, modifier = Modifier.width(84.dp))
-                    Spacer(Modifier.width(10.dp))
                     Text(
-                        text = stringResource(state.mode.levelLabel()),
+                        text = stringResource(Res.string.prot_strength),
                         style = AppTypography.titleSmMedium,
                         color = AppColors.text.tertiary,
                     )
+                    Spacer(Modifier.width(10.dp))
+                    LevelTrack(step = step, modifier = Modifier.width(84.dp))
                 }
             }
             val missing = state.missingRequiredPermissions.size
@@ -441,6 +453,12 @@ private fun ChildPermission.whyRes(): StringResource = when (this) {
     ChildPermission.DEVICE_ADMIN -> Res.string.perm_why_device_admin
 }
 
+/**
+ * Farzand telefonidagi sozlamalar. Ota-ona (ko'pincha iPhone'da) ularni öz telefonida topa olmaydi, şuning uçun:
+ *  • sarlavha va izoh — bular FARZAND telefonida yoqiladi;
+ *  • har qator nomi — sozlama ota-onaga nima beradi (Android'dagi nomi faqat "qayerda yoqiladi" izohida);
+ *  • joriy himoyada kerak bölmaganlari — yopiq guruhda, ogohlantiriş belgisisiz.
+ */
 @Composable
 fun ProtectionPermissionsGroup(state: ProtectionState) {
     val required = state.requiredPermissions
@@ -449,39 +467,113 @@ fun ProtectionPermissionsGroup(state: ProtectionState) {
     if (required.isEmpty() && higher.isEmpty()) return
 
     ProtectionSectionLabel(
-        text = stringResource(Res.string.ruxsatlar),
+        text = stringResource(Res.string.prot_phone_settings),
         trailing = if (required.isEmpty()) null
-        else stringResource(Res.string.x_dan_y_berilgan, state.grantedRequiredCount, required.size),
+        else stringResource(Res.string.prot_x_of_y_on, state.grantedRequiredCount, required.size),
         trailingColor = if (missing.isEmpty()) AppColors.text.tertiary else AppColors.text.accentDanger,
     )
-    // Bitta röyxat: zarur bölib öçiq turganlari tepada, qolgani muhimlik tartibida.
-    // Yuqori rejim ruxsatlari ham haqiqiy holati bilan körinadi (ilgari holatsiz, pastda edi).
-    val ordered = (required + higher).sortedWith(
-        compareBy<ChildPermission>({ it !in missing }, { PermissionPriority.indexOf(it) })
+    Text(
+        text = stringResource(Res.string.prot_phone_settings_hint),
+        style = AppTypography.bodyMdRegular,
+        color = AppColors.text.secondary,
+        modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 10.dp),
     )
+
     var explained by rememberSaveable { mutableStateOf<String?>(null) }
-    Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
-        ordered.forEachIndexed { i, permission ->
-            val granted = permission in state.enabledPermissions
-            Segment(
-                index = i,
-                count = ordered.size,
-                // Öçiq ruxsat bosilsa — "Nega xavfli?" izohi oçiladi
-                onClick = if (granted) null else ({
-                    explained = if (explained == permission.name) null else permission.name
-                }),
+    val toggle: (ChildPermission) -> Unit = { p -> explained = if (explained == p.name) null else p.name }
+
+    if (required.isNotEmpty()) {
+        // Öçiq turganlari tepada, qolgani muhimlik tartibida
+        val ordered = required.sortedWith(
+            compareBy<ChildPermission>({ it !in missing }, { PermissionPriority.indexOf(it) })
+        )
+        PermissionList(ordered, state, required = true, explained = explained, onToggle = toggle)
+        if (missing.isNotEmpty()) {
+            ProtectionFootnote(stringResource(Res.string.zarur_ruxsat_banner_desc))
+        }
+    }
+
+    if (higher.isNotEmpty()) {
+        var showHigher by rememberSaveable { mutableStateOf(false) }
+        Spacer(Modifier.height(if (required.isEmpty()) 0.dp else 16.dp))
+        Segment(index = 0, count = 1, onClick = { showHigher = !showHigher }) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(min = 56.dp)
+                    .padding(horizontal = RowPaddingH, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = stringResource(Res.string.prot_stronger_group, higher.size),
+                        style = AppTypography.titleMdMedium,
+                        color = AppColors.text.primary,
+                    )
+                    Text(
+                        text = stringResource(Res.string.prot_not_needed_now),
+                        style = AppTypography.bodyMdRegular,
+                        color = AppColors.text.tertiary,
+                    )
+                }
+                Spacer(Modifier.width(12.dp))
+                Icon(
+                    imageVector = if (showHigher) Icons.Rounded.KeyboardArrowUp else Icons.Rounded.KeyboardArrowDown,
+                    contentDescription = null,
+                    tint = AppColors.text.tertiary,
+                    modifier = Modifier.size(24.dp),
+                )
+            }
+        }
+        AnimatedVisibility(visible = showHigher) {
+            Column {
+                Spacer(Modifier.height(SegmentGap))
+                val ordered = higher.sortedBy { PermissionPriority.indexOf(it) }
+                PermissionList(ordered, state, required = false, explained = explained, onToggle = toggle)
+            }
+        }
+    }
+}
+
+@Composable
+private fun PermissionList(
+    items: List<ChildPermission>,
+    state: ProtectionState,
+    required: Boolean,
+    explained: String?,
+    onToggle: (ChildPermission) -> Unit,
+) {
+    Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
+        items.forEachIndexed { i, permission ->
+            // Har qator bosiladi: nima uçun kerakligi va qayerda yoqilişi oçiladi
+            Segment(index = i, count = items.size, onClick = { onToggle(permission) }) {
                 PermissionRow(
                     permission = permission,
-                    granted = granted,
-                    required = permission in required,
+                    granted = permission in state.enabledPermissions,
+                    required = required,
                     expanded = explained == permission.name,
                 )
             }
         }
     }
-    if (missing.isNotEmpty()) {
-        ProtectionFootnote(stringResource(Res.string.zarur_ruxsat_banner_desc))
+}
+
+/** Sozlama belgisi — yumşoq fonli kvadrat içida; hozir kerak bölmagan sozlamalarda xiraroq. */
+@Composable
+private fun PermissionIcon(permission: ChildPermission, dimmed: Boolean) {
+    Box(
+        modifier = Modifier
+            .size(40.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(AppColors.action.primary.copy(alpha = if (dimmed) 0.07f else 0.14f)),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            imageVector = permission.icon(),
+            contentDescription = null,
+            tint = if (dimmed) AppColors.text.tertiary else AppColors.icon.accentPrimary,
+            modifier = Modifier.size(22.dp),
+        )
     }
 }
 
@@ -495,14 +587,15 @@ private fun PermissionRow(permission: ChildPermission, granted: Boolean, require
         verticalArrangement = Arrangement.Center,
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
+            PermissionIcon(permission, dimmed = !granted && !required)
+            Spacer(Modifier.width(14.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = stringResource(permission.label()),
+                    text = stringResource(permission.title()),
                     style = AppTypography.titleMdMedium,
                     color = AppColors.text.primary,
                 )
-                if (!granted) {
-                    // Izoh matni ekranda turmaydi — şu belgi ortida
+                if (!granted && required && !expanded) {
                     Row(modifier = Modifier.padding(top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
                         Icon(
                             imageVector = Icons.Rounded.Info,
@@ -512,7 +605,7 @@ private fun PermissionRow(permission: ChildPermission, granted: Boolean, require
                         )
                         Spacer(Modifier.width(4.dp))
                         Text(
-                            text = stringResource(Res.string.perm_why_dangerous),
+                            text = stringResource(Res.string.prot_why_needed),
                             style = AppTypography.bodyMdMedium,
                             color = AppColors.text.accentEmphasis,
                         )
@@ -522,38 +615,44 @@ private fun PermissionRow(permission: ChildPermission, granted: Boolean, require
             Spacer(Modifier.width(12.dp))
             Text(
                 text = when {
-                    granted -> stringResource(Res.string.berilgan)
-                    // Joriy rejimda şart emas — lekin holati yaşirilmaydi
-                    !required && permission.minMode == ChildMode.STRICT -> stringResource(Res.string.qalqon_uchun)
-                    !required && permission.minMode == ChildMode.GUJANAK -> stringResource(Res.string.gujanak_uchun)
-                    else -> stringResource(Res.string.berilmagan)
+                    granted -> stringResource(Res.string.prot_on)
+                    required -> stringResource(Res.string.prot_off)
+                    // Joriy himoyada kerak emas — xavf emas, ogohlantirmaymiz
+                    else -> stringResource(Res.string.prot_not_needed_now)
                 },
                 style = AppTypography.bodyMdMedium,
-                color = when {
-                    granted -> AppColors.text.tertiary
-                    required -> AppColors.text.accentDanger
-                    else -> AppColors.text.accentWarning
-                },
+                color = if (!granted && required) AppColors.text.accentDanger else AppColors.text.tertiary,
             )
-            Spacer(Modifier.width(8.dp))
-            Icon(
-                imageVector = if (granted) Icons.Rounded.CheckCircle else Icons.Rounded.Error,
-                contentDescription = null,
-                tint = when {
-                    granted -> AppColors.icon.accentPrimary
-                    required -> AppColors.icon.accentDanger
-                    else -> AppColors.icon.accentWarning
-                },
-                modifier = Modifier.size(22.dp),
-            )
+            if (granted || required) {
+                Spacer(Modifier.width(8.dp))
+                Icon(
+                    imageVector = if (granted) Icons.Rounded.CheckCircle else Icons.Rounded.Error,
+                    contentDescription = null,
+                    tint = if (granted) AppColors.icon.accentPrimary else AppColors.icon.accentDanger,
+                    modifier = Modifier.size(22.dp),
+                )
+            }
         }
-        AnimatedVisibility(visible = expanded && !granted) {
-            Text(
-                text = stringResource(permission.whyRes()),
-                style = AppTypography.bodyMdRegular,
-                color = AppColors.text.secondary,
-                modifier = Modifier.padding(top = 8.dp),
-            )
+        AnimatedVisibility(visible = expanded) {
+            Column(
+                // Matn sarlavha bilan bir chiziqda (belgi 40dp + 14dp oraliq)
+                modifier = Modifier.padding(top = 8.dp, start = 54.dp),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                Text(
+                    text = stringResource(permission.whyRes()),
+                    style = AppTypography.bodyMdRegular,
+                    color = AppColors.text.secondary,
+                )
+                // GPS — telefonning tezkor panelidagi tugma, sozlamalar röyxatida emas
+                if (permission != ChildPermission.GPS_ENABLED) {
+                    Text(
+                        text = stringResource(Res.string.prot_where_to_turn_on, stringResource(permission.label())),
+                        style = AppTypography.bodyMdRegular,
+                        color = AppColors.text.tertiary,
+                    )
+                }
+            }
         }
     }
 }

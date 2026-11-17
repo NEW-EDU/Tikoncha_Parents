@@ -414,7 +414,7 @@
     <string name="farzand_ilova_kuzatish">تابع التطبيقات التي يستخدمها طفلك وكم من الوقت خلال اليوم.</string>
     <string name="uchtagacha_jadval">حتى 3 جداول</string>
     <string name="jadval_cheklovlar">حدّد قيودًا منفصلة للأيام أو الأسابيع أو الأوقات الخاصة.</string>
-    <string name="qattiq_bloklash_qalqon">حظر صارم (وضع الدرع)</string>
+    <string name="qattiq_bloklash_qalqon">الحماية الصارمة: تُحظر المواقع والفيديوهات القصيرة أيضًا</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">لا يستطيع طفلك إيقاف القيود أو تغييرها.</string>
     <string name="tez_bloklash_timer">حظر سريع (مؤقت)</string>
     <string name="vaqtinchalik_bloklash_tezi">فعّل الحظر المؤقت في ثوانٍ قليلة عند الحاجة.</string>
@@ -669,27 +669,27 @@
     <string name="tugilgan_sanasi">تاريخ الميلاد</string>
 
     <string name="farzand_himoyasi">حماية الطفل</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d أذونات معطّلة</string>
+    <string name="ta_ruxsat_ochirilgan">إعدادات غير مفعّلة على هاتف طفلك: %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d طلبات جديدة قيد الانتظار</string>
 
 
     <!-- Himoya -->
     <string name="himoya">الحماية</string>
 
-    <string name="mode_default_title">افتراضي</string>
-    <string name="mode_gujanak_title">القنفذ</string>
-    <string name="mode_qalqon_title">الدرع</string>
+    <string name="mode_default_title">مراقبة فقط</string>
+    <string name="mode_gujanak_title">حماية متوسطة</string>
+    <string name="mode_qalqon_title">حماية صارمة</string>
 
-    <string name="mode_default_desc">الحماية معطّلة، مراقبة فقط</string>
-    <string name="mode_gujanak_desc">الحظر المجدول مفعّل</string>
-    <string name="mode_qalqon_desc">حماية كاملة، الحظر المعزّز مفعّل</string>
+    <string name="mode_default_desc">يظهر وقت الشاشة والموقع. لا يُغلق أي تطبيق.</string>
+    <string name="mode_gujanak_desc">تُغلق التطبيقات في الأوقات التي تحددها.</string>
+    <string name="mode_qalqon_desc">تُحظر التطبيقات والمواقع والفيديوهات القصيرة.</string>
 
-    <string name="holat_nomalum">حالة غير معروفة</string>
-    <string name="holat_nomalum_desc">لم يتزامن جهاز الطفل بعد</string>
+    <string name="holat_nomalum">لا توجد معلومات بعد</string>
+    <string name="holat_nomalum_desc">ستظهر عندما يتصل هاتف طفلك بالإنترنت</string>
 
-    <string name="himoya_boshlangich">أساسية</string>
+    <string name="himoya_boshlangich">مراقبة فقط</string>
     <string name="himoya_orta">حماية متوسطة</string>
-    <string name="himoya_toliq">حماية كاملة</string>
+    <string name="himoya_toliq">حماية صارمة</string>
 
     <!-- Sync -->
     <string name="sinxron">آخر مزامنة:</string>
@@ -716,8 +716,8 @@
     <string name="farzand_sorovlari">طلبات الطفل</string>
     <string name="n_ta_yangi">%1$d جديدة</string>
 
-    <string name="qalqonni_ochirish_sorovi">طلب إيقاف الدرع</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">إذا وافقت، سيتوقف الدرع فورًا على جهاز طفلك</string>
+    <string name="qalqonni_ochirish_sorovi">طلب إيقاف الحماية الصارمة</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">إذا سمحت، ستتوقف الحماية الصارمة فورًا على هاتف طفلك</string>
 
     <string name="rad_etish">رفض</string>
 
@@ -725,8 +725,8 @@
     <string name="sorov_rad_etildi">تم رفض الطلب</string>
     <string name="sorov_muddati_tugadi">انتهت صلاحية الطلب</string>
 
-    <string name="qalqon_ochirishga_ruxsat">السماح بإيقاف الدرع؟</string>
-    <string name="qalqon_ochirish_ruxsat_desc">إذا وافقت، سيتمكن طفلك من إيقاف الدرع فورًا.</string>
+    <string name="qalqon_ochirishga_ruxsat">إيقاف الحماية الصارمة؟</string>
+    <string name="qalqon_ochirish_ruxsat_desc">إذا سمحت، يستطيع طفلك إيقاف الحماية الصارمة فورًا.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">الأذونات</string>
@@ -736,11 +736,11 @@
     <string name="berilmagan">غير ممنوح</string>
 
     <string name="boshqa_rejimlar_uchun">غير مطلوب للأوضاع الأخرى حاليًا</string>
-    <string name="gujanak_uchun">لوضع القنفذ</string>
-    <string name="qalqon_uchun">لوضع الدرع</string>
+    <string name="gujanak_uchun">للحماية المتوسطة</string>
+    <string name="qalqon_uchun">للحماية الصارمة</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d من الأذونات المطلوبة معطّلة</string>
-    <string name="zarur_ruxsat_banner_desc">دون هذه الأذونات لا يمكن للحماية أن تعمل بالكامل، فعّلها على جهاز طفلك</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">إعدادات غير مفعّلة على هاتف طفلك: %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">اضغط على إعداد غير مفعّل لترى فائدته وأين تفعّله.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">الإشعارات</string>
@@ -754,19 +754,19 @@
     <string name="perm_accessibility">إمكانية الوصول</string>
     <string name="perm_device_admin">مسؤول الجهاز</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">يطلب طفلك إذنًا لإيقاف الدرع لـ «%1$s»</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s يطلب إيقاف الحماية الصارمة</string>
     <string name="javob_uchun">الوقت المتبقي للرد: %1$s</string>
     <string name="rad_etildi">مرفوض</string>
 
-    <string name="oxirgi_sinxron">آخر مزامنة</string>
+    <string name="oxirgi_sinxron">آخر اتصال</string>
     <string name="kod">الرمز</string>
-    <string name="qalqonni_ochirish">إيقاف الدرع</string>
-    <string name="himoya_ochiq_qisqa">الحماية معطّلة</string>
-    <string name="gujanak_faol_qisqa">القنفذ مفعّل</string>
-    <string name="toliq_himoya_faol_qisqa">الحماية الكاملة مفعّلة</string>
+    <string name="qalqonni_ochirish">إيقاف الحماية الصارمة</string>
+    <string name="himoya_ochiq_qisqa">يظهر وقت الشاشة والموقع. لا يُغلق أي تطبيق.</string>
+    <string name="gujanak_faol_qisqa">تُغلق التطبيقات في الأوقات التي تحددها.</string>
+    <string name="toliq_himoya_faol_qisqa">تُحظر التطبيقات والمواقع والفيديوهات القصيرة.</string>
     <string name="ruxsat_berildi">تم منح الإذن</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">وافقت على الطلب، وسيتوقف الدرع على جهاز طفلك.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">رفضت الطلب. يبقى الدرع مفعّلًا.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">لقد سمحت — ستتوقف الحماية الصارمة على هاتف طفلك.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">لقد رفضت. الحماية الصارمة ما زالت تعمل.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">وافقت على الطلب، ويمكن لطفلك الآن تسجيل الخروج من التطبيق.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">وافقت على الطلب، ويمكن لطفلك الآن إزالة التطبيق.</string>
     <string name="sorov_rad_etildi_desc">رفضت الطلب.</string>
@@ -1015,17 +1015,17 @@
     <string name="protection_section">ما الذي يتم حمايته</string>
     <string name="protection_footer">يحافظ Hoglt على تحديث القائمة.</string>
     <string name="location_show_area">عرض المنطقة</string>
-    <string name="info_sites_shield">لا تُحظر المواقع إلا أثناء تفعيل وضع الدرع على هاتف طفلك.</string>
-    <string name="protection_shield_note">لا تعمل حماية المحتوى إلا أثناء تفعيل وضع الدرع على هاتف طفلك.</string>
-    <string name="protection_shield_short">يعمل في وضع الدرع فقط</string>
-    <string name="info_features_shield">لا يُحظر YouTube Shorts وInstagram Reels إلا أثناء تفعيل وضع الدرع على هاتف طفلك.</string>
+    <string name="info_sites_shield">لا تُحظر المواقع إلا عندما تكون الحماية الصارمة مفعّلة على هاتف طفلك.</string>
+    <string name="protection_shield_note">يعمل هذا فقط عندما تكون الحماية الصارمة مفعّلة على هاتف طفلك.</string>
+    <string name="protection_shield_short">يعمل فقط مع الحماية الصارمة</string>
+    <string name="info_features_shield">لا تُحظر YouTube Shorts وInstagram Reels إلا عندما تكون الحماية الصارمة مفعّلة على هاتف طفلك.</string>
     <string name="protection_by_child">فعّله طفلك، وطفلك وحده يمكنه إيقاف ما فعّله</string>
     <string name="protection_by_coparent">فعّله ولي الأمر الآخر، وهو وحده يمكنه إيقاف ما فعّله</string>
     <string name="protection_by_both">فعّله طفلك وولي الأمر الآخر، وهما وحدهما يمكنهما إيقاف ما فعّلاه</string>
-    <string name="protection_policies_label">الجداول</string>
+    <string name="protection_policies_label">قواعدك</string>
     <string name="protection_policies_delivered">تم تسليمها إلى الهاتف</string>
     <string name="protection_policies_pending">لم تُسلَّم بعد</string>
-    <string name="protection_gujanak_limits_note">وضع القنفذ يحظر التطبيقات. أما المواقع وShorts/Reels فتُحظر في وضع الدرع فقط.</string>
+    <string name="protection_gujanak_limits_note">الحماية المتوسطة تغلق التطبيقات فقط. لا تُحظر المواقع والفيديوهات القصيرة إلا مع الحماية الصارمة: على هاتف طفلك Hoglt ← «التحكم» ← «وضع الدرع».</string>
     <string name="editor_limit_days_follow_time">مثل الوقت، تُختار الأيام في صفحة الوقت</string>
     <string name="editor_limit_in_window">الحد في هذا الوقت</string>
     <string name="editor_limit_outside_window">الحد خارج هذا الوقت</string>
@@ -1348,7 +1348,7 @@
     <string name="parent_special_info_title">تعمل على هاتف طفلك</string>
     <string name="parent_special_info_1">لا يمكن لطفلك إيقاف الحماية التي تفعّلها. سيراها في تطبيقه.</string>
     <string name="parent_special_info_2">إذا وُجد خطر، يصلك الموضوع واسم التطبيق فقط — وليس نص الرسالة أو الصورة أبدًا.</string>
-    <string name="parent_special_info_3">على Android يلزم وضع الدرع. على iPhone: مواقع +18 ومحادثات Hoglagram.</string>
+    <string name="parent_special_info_3">على Android تلزم الحماية الصارمة. على iPhone: مواقع +18 ومحادثات Hoglagram.</string>
     <string name="parent_special_nsfw_title">صور غير لائقة</string>
     <string name="parent_special_nsfw_desc">تُغلق صور +18 ويصلك إشعار</string>
     <string name="parent_special_conv_title">محادثات خطرة</string>
@@ -1394,8 +1394,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">ممكن 5 دقائق أخرى؟</string>
+    <string name="ob_shield_hint">طفلك يطلب وقتًا إضافيًا</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1423,9 +1423,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">بدون هذا الإعداد لا تُحظر المواقع وYouTube Shorts وInstagram Reels، ويمكن حذف التطبيق بسهولة.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">على هاتفه</string>
+    <string name="prot_default_note">حاليًا لا تغلق قواعدك أي تطبيق. لتغيير ذلك، افتح Hoglt على هاتف طفلك ← «التحكم» وفعّل الحماية.</string>
+    <string name="prot_strength">مستوى الحماية</string>
+    <string name="prot_phone_settings">الإعدادات على هاتف طفلك</string>
+    <string name="prot_phone_settings_hint">تُفعَّل هذه الإعدادات على هاتف طفلك، وليس على هاتفك.</string>
+    <string name="prot_x_of_y_on">%1$d من %2$d مفعّلة</string>
+    <string name="prot_on">مفعّل</string>
+    <string name="prot_off">غير مفعّل</string>
+    <string name="prot_not_needed_now">غير ضروري الآن</string>
+    <string name="prot_why_needed">ما فائدة هذا؟</string>
+    <string name="prot_where_to_turn_on">أين تفعّله: في إعدادات هاتف طفلك، «%1$s».</string>
+    <string name="prot_stronger_group">لحماية أقوى (%1$d)</string>
+    <string name="perm_title_notification">الرسائل والتذكيرات</string>
+    <string name="perm_title_usage_stats">الوقت في كل تطبيق</string>
+    <string name="perm_title_overlay">إغلاق التطبيق عند انتهاء الوقت</string>
+    <string name="perm_title_overlay_popup">إغلاق التطبيقات (على هواتف Xiaomi)</string>
+    <string name="perm_title_location">معرفة مكان طفلك</string>
+    <string name="perm_title_gps">الموقع الدقيق</string>
+    <string name="perm_title_battery">يعمل حتى في وضع توفير البطارية</string>
+    <string name="perm_title_auto_start">يعمل من جديد بعد إعادة تشغيل الهاتف</string>
+    <string name="perm_title_accessibility">حظر المواقع والفيديوهات القصيرة</string>
+    <string name="perm_title_device_admin">يمنع حذف Hoglt</string>
+    <string name="prot_btn_allow">أسمح</string>
+    <string name="prot_btn_keep">لا، اتركه كما هو</string>
+    <string name="prot_btn_delete_account">نعم، احذف نهائيًا</string>
+    <string name="task_empty_in_progress">لا توجد مهام قيد المعالجة الآن</string>
+    <string name="task_empty_done">لا توجد مهام مكتملة بعد</string>
+    <string name="task_empty_overdue">لا توجد مهام متأخرة</string>
+    <string name="task_empty_filter_hint">اضغط على الفلتر المحدد مرة أخرى لرؤية كل المهام.</string>
 </resources>

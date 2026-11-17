@@ -413,7 +413,7 @@
     <string name="farzand_ilova_kuzatish">Balańız kún dawamında qaysı qosımshalardan hám qansha paydalanatuǵının baqlań.</string>
     <string name="uchtagacha_jadval">3 kestege shekem</string>
     <string name="jadval_cheklovlar">Kúnler, hápteler yamasa arnawlı waqıtlar ushın bólek sheklewler belgileń.</string>
-    <string name="qattiq_bloklash_qalqon">Qatań bloklaw (Qalqan rejimi)</string>
+    <string name="qattiq_bloklash_qalqon">Qatań qorǵaw: saytlar hám qısqa videolar da bloklanadı</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Balańız sheklewlerdi óshire yamasa ózgerte almaydı.</string>
     <string name="tez_bloklash_timer">Tez bloklaw (Taymer)</string>
     <string name="vaqtinchalik_bloklash_tezi">Kerek bolǵanda waqıtsha bloklawdı bir neshe sekundta qosıń.</string>
@@ -652,27 +652,27 @@
     <string name="tugilgan_sanasi">Tuwılǵan sánesi</string>
 
     <string name="farzand_himoyasi">Bala qorǵawı</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d ruqsat óshirilgen</string>
+    <string name="ta_ruxsat_ochirilgan">Balańızdıń telefonında %1$d sazlaw óshik</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d jańa soraw kútilmekte</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Qorǵaw</string>
 
-    <string name="mode_default_title">Standart</string>
-    <string name="mode_gujanak_title">Kirpi</string>
-    <string name="mode_qalqon_title">Qalqan</string>
+    <string name="mode_default_title">Tek baqlaw</string>
+    <string name="mode_gujanak_title">Orta qorǵaw</string>
+    <string name="mode_qalqon_title">Qatań qorǵaw</string>
 
-    <string name="mode_default_desc">Qorǵaw óshirilgen — tek baqlaw</string>
-    <string name="mode_gujanak_desc">Keste boyınsha bloklaw aktiv</string>
-    <string name="mode_qalqon_desc">Tolıq qorǵaw — kúsheytilgen bloklaw aktiv</string>
+    <string name="mode_default_desc">Ekran waqtı hám turǵan jeri kórinedi. Qosımshalar jabılmaydı.</string>
+    <string name="mode_gujanak_desc">Qosımshalar siz belgilegen waqıtta jabıladı.</string>
+    <string name="mode_qalqon_desc">Qosımshalar, saytlar hám qısqa videolar bloklanadı.</string>
 
-    <string name="holat_nomalum">Belgisiz jaǵday</string>
-    <string name="holat_nomalum_desc">Bala qurılması ele sinxronlanbaǵan</string>
+    <string name="holat_nomalum">Ázirshe maǵlıwmat joq</string>
+    <string name="holat_nomalum_desc">Balańızdıń telefonı internetke qosılǵanda payda boladı</string>
 
-    <string name="himoya_boshlangich">Tiykarǵı</string>
-    <string name="himoya_orta">Ortasha qorǵaw</string>
-    <string name="himoya_toliq">Tolıq qorǵaw</string>
+    <string name="himoya_boshlangich">Tek baqlaw</string>
+    <string name="himoya_orta">Orta qorǵaw</string>
+    <string name="himoya_toliq">Qatań qorǵaw</string>
 
     <!-- Sync -->
     <string name="sinxron">Sinxronlandı:</string>
@@ -686,7 +686,7 @@
     <string name="oflayn">Oflayn</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">Óshiriw usılı</string>
+    <string name="ochirish_usuli">Qalay óshiriledi</string>
     <string name="usul_taymer">Taymer</string>
     <string name="usul_maxfiy_kod">Qupıya kod</string>
     <string name="usul_maxfiy_matn">Qupıya tekst</string>
@@ -699,8 +699,8 @@
     <string name="farzand_sorovlari">Bala sorawları</string>
     <string name="n_ta_yangi">%1$d jańa</string>
 
-    <string name="qalqonni_ochirish_sorovi">Qalqandı óshiriw sorawı</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Tastıyıqlasańız, balańızdıń qurılmasında Qalqan dárhal óshiriledi</string>
+    <string name="qalqonni_ochirish_sorovi">Qatań qorǵawdı óshiriw ótinishi</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Ruqsat berseńiz, balańızdıń telefonında qatań qorǵaw dárhal óshedi</string>
 
     <string name="rad_etish">Biykarlaw</string>
 
@@ -708,8 +708,8 @@
     <string name="sorov_rad_etildi">Soraw biykarlandı</string>
     <string name="sorov_muddati_tugadi">Soraw múddeti pitti</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Qalqandı óshiriwge ruqsat beresiz be?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">Tastıyıqlasańız, balańız Qalqandı dárhal óshire aladı.</string>
+    <string name="qalqon_ochirishga_ruxsat">Qatań qorǵaw óshirilsin be?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Ruqsat berseńiz, balańız qatań qorǵawdı dárhal óshire aladı.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">Ruqsatlar</string>
@@ -719,11 +719,11 @@
     <string name="berilmagan">Berilmegen</string>
 
     <string name="boshqa_rejimlar_uchun">Házirshe basqa rejimler ushın kerek emes</string>
-    <string name="gujanak_uchun">Kirpi rejimi ushın</string>
-    <string name="qalqon_uchun">Qalqan rejimi ushın</string>
+    <string name="gujanak_uchun">Orta qorǵaw ushın</string>
+    <string name="qalqon_uchun">Qatań qorǵaw ushın</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d zárúr ruqsat óshirilgen</string>
-    <string name="zarur_ruxsat_banner_desc">Bul ruqsatlarsız qorǵaw tolıq isley almaydı — olardı balańızdıń qurılmasında qosıń</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Balańızdıń telefonında %1$d sazlaw óshik</string>
+    <string name="zarur_ruxsat_banner_desc">Óshik sazlawdı basıń — ne ushın kerek ekeni hám qay jerde qosılatuǵını kórinedi.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Bildiriwler</string>
@@ -737,19 +737,19 @@
     <string name="perm_accessibility">Arnawlı múmkinshilikler</string>
     <string name="perm_device_admin">Qurılma administratorı</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Balańız «%1$s» ushın Qalqandı óshiriwge ruqsat soramaqta</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s qatań qorǵawdı óshiriwge ruqsat soramaqta</string>
     <string name="javob_uchun">Juwap beriw ushın qalǵan waqıt: %1$s</string>
     <string name="rad_etildi">Biykarlandı</string>
 
-    <string name="oxirgi_sinxron">Sońǵı sinxronlaw</string>
+    <string name="oxirgi_sinxron">Sońǵı baylanıs</string>
     <string name="kod">Kod</string>
-    <string name="qalqonni_ochirish">Qalqandı óshiriw</string>
-    <string name="himoya_ochiq_qisqa">Qorǵaw óshirilgen</string>
-    <string name="gujanak_faol_qisqa">Kirpi aktiv</string>
-    <string name="toliq_himoya_faol_qisqa">Tolıq qorǵaw aktiv</string>
+    <string name="qalqonni_ochirish">Qatań qorǵawdı óshiriw</string>
+    <string name="himoya_ochiq_qisqa">Ekran waqtı hám turǵan jeri kórinedi. Qosımshalar jabılmaydı.</string>
+    <string name="gujanak_faol_qisqa">Qosımshalar siz belgilegen waqıtta jabıladı.</string>
+    <string name="toliq_himoya_faol_qisqa">Qosımshalar, saytlar hám qısqa videolar bloklanadı.</string>
     <string name="ruxsat_berildi">Ruqsat berildi</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Siz sorawdı tastıyıqladıńız — balańızdıń qurılmasında Qalqan óshiriledi.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Siz sorawdı biykarladıńız. Qalqan aktiv bolıp qaladı.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Siz ruqsat berdińiz — balańızdıń telefonında qatań qorǵaw óshedi.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Siz biykarladıńız. Qatań qorǵaw islep tur.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Siz sorawdı tastıyıqladıńız — endi balańız qosımshadan shıǵa aladı.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Siz sorawdı tastıyıqladıńız — endi balańız qosımshanı óshire aladı.</string>
     <string name="sorov_rad_etildi_desc">Siz sorawdı biykarladıńız.</string>
@@ -998,17 +998,17 @@
     <string name="protection_section">Ne qorǵaladı</string>
     <string name="protection_footer">Hoglt dizimdi jańalap turadı.</string>
     <string name="location_show_area">Aymaqtı kórsetiw</string>
-    <string name="info_sites_shield">Saytlar tek balańızdıń telefonında Qalqan rejimi qosılǵanda bloklanadı.</string>
-    <string name="protection_shield_note">Kontentti qorǵaw tek balańızdıń telefonında Qalqan rejimi qosılǵanda isleydi.</string>
-    <string name="protection_shield_short">Tek Qalqan rejiminde isleydi</string>
-    <string name="info_features_shield">YouTube Shorts hám Instagram Reels tek balańızdıń telefonında Qalqan rejimi qosılǵanda bloklanadı.</string>
+    <string name="info_sites_shield">Saytlar tek balańızdıń telefonında qatań qorǵaw qosılǵanda bloklanadı.</string>
+    <string name="protection_shield_note">Bul tek balańızdıń telefonında qatań qorǵaw qosılǵanda isleydi.</string>
+    <string name="protection_shield_short">Tek qatań qorǵawda isleydi</string>
+    <string name="info_features_shield">YouTube Shorts hám Instagram Reels tek balańızdıń telefonında qatań qorǵaw qosılǵanda bloklanadı.</string>
     <string name="protection_by_child">Balańız qosqan — óziniki tek balańız óshire aladı</string>
     <string name="protection_by_coparent">Basqa ata-ana qosqan — óziniki tek ol óshire aladı</string>
     <string name="protection_by_both">Balańız hám basqa ata-ana qosqan — ózleriniki tek olar óshire aladı</string>
-    <string name="protection_policies_label">Kesteler</string>
+    <string name="protection_policies_label">Qaǵıydalarıńız</string>
     <string name="protection_policies_delivered">Telefonǵa jetkerildi</string>
     <string name="protection_policies_pending">Ele jetkerilmedi</string>
-    <string name="protection_gujanak_limits_note">Kirpi rejimi qosımshalardı bloklaydı. Saytlar hám Shorts/Reels tek Qalqan rejiminde bloklanadı.</string>
+    <string name="protection_gujanak_limits_note">Orta qorǵaw tek qosımshalardı jabadı. Saytlar hám qısqa videolar tek qatań qorǵawda bloklanadı: balańızdıń telefonında Hoglt → «Qadaǵalaw» → «Qalqan rejimi».</string>
     <string name="editor_limit_days_follow_time">Waqıt penen birdey — kúnler waqıt betinde tańlanadı</string>
     <string name="editor_limit_in_window">usı waqıttaǵı limit</string>
     <string name="editor_limit_outside_window">usı waqıttan tıs limit</string>
@@ -1331,7 +1331,7 @@
     <string name="parent_special_info_title">Balańızdıń telefonında isleydi</string>
     <string name="parent_special_info_1">Siz qosqan qorǵawdı balańız óshire almaydı. Ol onı óz qosımshasında kóredi.</string>
     <string name="parent_special_info_2">Qáwip bolsa, siz tek temanı hám qosımsha atın alasız — xabar tekstin yamasa súwretti hesh qashan almaysız.</string>
-    <string name="parent_special_info_3">Android-de Qalqan rejimi kerek. iPhone-da: 18+ saytlar hám Hoglagram sáwbetleri.</string>
+    <string name="parent_special_info_3">Android-de qatań qorǵaw kerek. iPhone-da: 18+ saytlar hám Hoglagram sáwbetleri.</string>
     <string name="parent_special_nsfw_title">Nadurıs súwretler</string>
     <string name="parent_special_nsfw_desc">18+ súwretler jabıladı hám sizge xabar beriledi</string>
     <string name="parent_special_conv_title">Qáwipli sáwbetler</string>
@@ -1377,8 +1377,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">Jáne 5 minut beresiz be?</string>
+    <string name="ob_shield_hint">Balańız waqıt soramaqta</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1406,9 +1406,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Bunısız saytlar, YouTube Shorts hám Instagram Reels bloklanbaydı, qosımshanı da ańsat óshirip taslawǵa boladı.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">Onıń telefonında</string>
+    <string name="prot_default_note">Házir qaǵıydalarıńız hesh bir qosımshanı jappaydı. Jabıwı ushın balańızdıń telefonında Hoglt-tı ashıń → «Qadaǵalaw» bóliminde qorǵawdı qosıń.</string>
+    <string name="prot_strength">Qorǵaw dárejesi</string>
+    <string name="prot_phone_settings">Balańızdıń telefonındaǵı sazlawlar</string>
+    <string name="prot_phone_settings_hint">Bular sizdiń telefonıńızda emes, balańızdıń telefonında qosıladı.</string>
+    <string name="prot_x_of_y_on">%2$d ishinen %1$d qosılǵan</string>
+    <string name="prot_on">Qosılǵan</string>
+    <string name="prot_off">Óshik</string>
+    <string name="prot_not_needed_now">Házir kerek emes</string>
+    <string name="prot_why_needed">Bul ne ushın kerek?</string>
+    <string name="prot_where_to_turn_on">Qay jerde qosıladı: balańızdıń telefon sazlawlarında — «%1$s».</string>
+    <string name="prot_stronger_group">Kúshlirek qorǵaw ushın (%1$d)</string>
+    <string name="perm_title_notification">Xabarlar hám eske salıwlar</string>
+    <string name="perm_title_usage_stats">Hár qosımshada ótkergen waqıt</string>
+    <string name="perm_title_overlay">Waqıt pitkende qosımshanı jabıw</string>
+    <string name="perm_title_overlay_popup">Qosımshalardı jabıw (Xiaomi telefonlarında)</string>
+    <string name="perm_title_location">Balańızdıń qay jerde ekenin kórsetiw</string>
+    <string name="perm_title_gps">Anıq turǵan jeri</string>
+    <string name="perm_title_battery">Batareya únemlengende de isleydi</string>
+    <string name="perm_title_auto_start">Telefon qayta qosılǵanda jáne isley baslaydı</string>
+    <string name="perm_title_accessibility">Saytlar hám qısqa videolardı bloklaw</string>
+    <string name="perm_title_device_admin">Hoglt-tı óshirip taslawdan qorǵaw</string>
+    <string name="prot_btn_allow">Ruqsat beremen</string>
+    <string name="prot_btn_keep">Yaq, qalsın</string>
+    <string name="prot_btn_delete_account">Awa, pútkilley óshirilsin</string>
+    <string name="task_empty_in_progress">Házir processte tapsırma joq</string>
+    <string name="task_empty_done">Orınlanǵan tapsırma ázirshe joq</string>
+    <string name="task_empty_overdue">Múddeti ótken tapsırma joq</string>
+    <string name="task_empty_filter_hint">Barlıq tapsırmalardı kóriw ushın tańlanǵan filtrdi qayta basıń.</string>
 </resources>

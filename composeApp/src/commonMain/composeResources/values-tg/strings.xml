@@ -414,7 +414,7 @@
     <string name="farzand_ilova_kuzatish">Пайгирӣ кунед, ки фарзандатон дар давоми рӯз кадом барномаҳоро ва чӣ қадар истифода мебарад.</string>
     <string name="uchtagacha_jadval">То 3 ҷадвал</string>
     <string name="jadval_cheklovlar">Барои рӯзҳо, ҳафтаҳо ё вақтҳои махсус маҳдудиятҳои алоҳида гузоред.</string>
-    <string name="qattiq_bloklash_qalqon">Манъкунии сахт (реҷаи Сипар)</string>
+    <string name="qattiq_bloklash_qalqon">Ҳимояи сахт: сайтҳо ва видеоҳои кӯтоҳ низ манъ мешаванд</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Фарзандатон маҳдудиятҳоро хомӯш ё тағйир дода наметавонад.</string>
     <string name="tez_bloklash_timer">Манъкунии зуд (Таймер)</string>
     <string name="vaqtinchalik_bloklash_tezi">Ҳангоми зарурат манъкунии муваққатиро дар чанд сония фаъол кунед.</string>
@@ -653,27 +653,27 @@
     <string name="tugilgan_sanasi">Санаи таваллуд</string>
 
     <string name="farzand_himoyasi">Ҳимояи фарзанд</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d иҷозат хомӯш аст</string>
+    <string name="ta_ruxsat_ochirilgan">Дар телефони фарзандатон танзимоти хомӯш: %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d дархости нав дар интизор</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Ҳимоя</string>
 
-    <string name="mode_default_title">Муқаррарӣ</string>
-    <string name="mode_gujanak_title">Хорпушт</string>
-    <string name="mode_qalqon_title">Сипар</string>
+    <string name="mode_default_title">Танҳо мушоҳида</string>
+    <string name="mode_gujanak_title">Ҳимояи миёна</string>
+    <string name="mode_qalqon_title">Ҳимояи сахт</string>
 
-    <string name="mode_default_desc">Ҳимоя хомӯш — танҳо мониторинг</string>
-    <string name="mode_gujanak_desc">Манъкунӣ аз рӯи ҷадвал фаъол аст</string>
-    <string name="mode_qalqon_desc">Ҳимояи пурра — манъкунии пурқувват фаъол аст</string>
+    <string name="mode_default_desc">Вақти экран ва ҷойгиршавӣ намоён аст. Барномаҳо баста намешаванд.</string>
+    <string name="mode_gujanak_desc">Барномаҳо дар вақти муқаррар кардаи шумо баста мешаванд.</string>
+    <string name="mode_qalqon_desc">Барномаҳо, сайтҳо ва видеоҳои кӯтоҳ манъ мешаванд.</string>
 
-    <string name="holat_nomalum">Ҳолати номаълум</string>
-    <string name="holat_nomalum_desc">Дастгоҳи фарзанд ҳанӯз ҳамоҳанг нашудааст</string>
+    <string name="holat_nomalum">Ҳоло маълумот нест</string>
+    <string name="holat_nomalum_desc">Вақте ки телефони фарзандатон ба интернет пайваст шавад, пайдо мешавад</string>
 
-    <string name="himoya_boshlangich">Ибтидоӣ</string>
+    <string name="himoya_boshlangich">Танҳо мушоҳида</string>
     <string name="himoya_orta">Ҳимояи миёна</string>
-    <string name="himoya_toliq">Ҳимояи пурра</string>
+    <string name="himoya_toliq">Ҳимояи сахт</string>
 
     <!-- Sync -->
     <string name="sinxron">Ҳамоҳангсозӣ:</string>
@@ -687,7 +687,7 @@
     <string name="oflayn">Офлайн</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">Усули хомӯш кардан</string>
+    <string name="ochirish_usuli">Чӣ тавр хомӯш мешавад</string>
     <string name="usul_taymer">Таймер</string>
     <string name="usul_maxfiy_kod">Коди махфӣ</string>
     <string name="usul_maxfiy_matn">Ибораи махфӣ</string>
@@ -700,8 +700,8 @@
     <string name="farzand_sorovlari">Дархостҳои фарзанд</string>
     <string name="n_ta_yangi">%1$d нав</string>
 
-    <string name="qalqonni_ochirish_sorovi">Дархости хомӯш кардани Сипар</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Агар тасдиқ кунед, Сипар дар дастгоҳи фарзандатон фавран хомӯш мешавад</string>
+    <string name="qalqonni_ochirish_sorovi">Дархости хомӯш кардани ҳимояи сахт</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Агар иҷозат диҳед, ҳимояи сахт дар телефони фарзандатон фавран хомӯш мешавад</string>
 
     <string name="rad_etish">Рад кардан</string>
 
@@ -709,8 +709,8 @@
     <string name="sorov_rad_etildi">Дархост рад шуд</string>
     <string name="sorov_muddati_tugadi">Мӯҳлати дархост гузашт</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Хомӯш кардани Сипарро иҷозат медиҳед?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">Агар тасдиқ кунед, фарзандатон метавонад Сипарро фавран хомӯш кунад.</string>
+    <string name="qalqon_ochirishga_ruxsat">Ҳимояи сахт хомӯш карда шавад?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Агар иҷозат диҳед, фарзандатон ҳимояи сахтро фавран хомӯш карда метавонад.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">Иҷозатҳо</string>
@@ -720,11 +720,11 @@
     <string name="berilmagan">Дода нашудааст</string>
 
     <string name="boshqa_rejimlar_uchun">Ҳоло барои реҷаҳои дигар лозим нест</string>
-    <string name="gujanak_uchun">Барои реҷаи Хорпушт</string>
-    <string name="qalqon_uchun">Барои реҷаи Сипар</string>
+    <string name="gujanak_uchun">Барои ҳимояи миёна</string>
+    <string name="qalqon_uchun">Барои ҳимояи сахт</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d иҷозати зарурӣ хомӯш аст</string>
-    <string name="zarur_ruxsat_banner_desc">Бе ин иҷозатҳо ҳимоя пурра кор карда наметавонад — онҳоро дар дастгоҳи фарзандатон фаъол кунед</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Дар телефони фарзандатон танзимоти хомӯш: %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">Ба танзими хомӯш зер кунед — мебинед, ки он барои чӣ лозим аст ва дар куҷо фаъол мешавад.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Огоҳиномаҳо</string>
@@ -738,19 +738,19 @@
     <string name="perm_accessibility">Имкониятҳои махсус</string>
     <string name="perm_device_admin">Маъмури дастгоҳ</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Фарзандатон барои хомӯш кардани Сипар барои «%1$s» иҷозат мепурсад</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s барои хомӯш кардани ҳимояи сахт иҷозат мепурсад</string>
     <string name="javob_uchun">Вақти боқимонда барои ҷавоб: %1$s</string>
     <string name="rad_etildi">Рад шуд</string>
 
-    <string name="oxirgi_sinxron">Ҳамоҳангсозии охирин</string>
+    <string name="oxirgi_sinxron">Охирин алоқа</string>
     <string name="kod">Код</string>
-    <string name="qalqonni_ochirish">Хомӯш кардани Сипар</string>
-    <string name="himoya_ochiq_qisqa">Ҳимоя хомӯш аст</string>
-    <string name="gujanak_faol_qisqa">Хорпушт фаъол аст</string>
-    <string name="toliq_himoya_faol_qisqa">Ҳимояи пурра фаъол аст</string>
+    <string name="qalqonni_ochirish">Хомӯш кардани ҳимояи сахт</string>
+    <string name="himoya_ochiq_qisqa">Вақти экран ва ҷойгиршавӣ намоён аст. Барномаҳо баста намешаванд.</string>
+    <string name="gujanak_faol_qisqa">Барномаҳо дар вақти муқаррар кардаи шумо баста мешаванд.</string>
+    <string name="toliq_himoya_faol_qisqa">Барномаҳо, сайтҳо ва видеоҳои кӯтоҳ манъ мешаванд.</string>
     <string name="ruxsat_berildi">Иҷозат дода шуд</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Шумо дархостро тасдиқ кардед — Сипар дар дастгоҳи фарзандатон хомӯш мешавад.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Шумо дархостро рад кардед. Сипар фаъол мемонад.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Шумо иҷозат додед — ҳимояи сахт дар телефони фарзандатон хомӯш мешавад.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Шумо рад кардед. Ҳимояи сахт кор карданро давом медиҳад.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Шумо дархостро тасдиқ кардед — акнун фарзандатон метавонад аз барнома барояд.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Шумо дархостро тасдиқ кардед — акнун фарзандатон метавонад барномаро нест кунад.</string>
     <string name="sorov_rad_etildi_desc">Шумо дархостро рад кардед.</string>
@@ -999,17 +999,17 @@
     <string name="protection_section">Чӣ ҳифз мешавад</string>
     <string name="protection_footer">Hoglt рӯйхатро навсозӣ мекунад.</string>
     <string name="location_show_area">Нишон додани минтақа</string>
-    <string name="info_sites_shield">Сайтҳо танҳо ҳангоми фаъол будани реҷаи Сипар дар телефони фарзандатон манъ мешаванд.</string>
-    <string name="protection_shield_note">Ҳифзи мундариҷа танҳо ҳангоми фаъол будани реҷаи Сипар дар телефони фарзандатон кор мекунад.</string>
-    <string name="protection_shield_short">Танҳо дар реҷаи Сипар кор мекунад</string>
-    <string name="info_features_shield">YouTube Shorts ва Instagram Reels танҳо ҳангоми фаъол будани реҷаи Сипар дар телефони фарзандатон манъ мешаванд.</string>
+    <string name="info_sites_shield">Сайтҳо танҳо вақте манъ мешаванд, ки дар телефони фарзандатон ҳимояи сахт фаъол бошад.</string>
+    <string name="protection_shield_note">Ин танҳо вақте кор мекунад, ки дар телефони фарзандатон ҳимояи сахт фаъол бошад.</string>
+    <string name="protection_shield_short">Танҳо дар ҳимояи сахт кор мекунад</string>
+    <string name="info_features_shield">YouTube Shorts ва Instagram Reels танҳо вақте манъ мешаванд, ки дар телефони фарзандатон ҳимояи сахт фаъол бошад.</string>
     <string name="protection_by_child">Фарзандатон онро фаъол кардааст — танҳо фарзандатон метавонад онро хомӯш кунад</string>
     <string name="protection_by_coparent">Волиди дигар онро фаъол кардааст — танҳо худи ӯ метавонад онро хомӯш кунад</string>
     <string name="protection_by_both">Фарзандатон ва волиди дигар онро фаъол кардаанд — танҳо худи онҳо метавонанд хомӯш кунанд</string>
-    <string name="protection_policies_label">Ҷадвалҳо</string>
+    <string name="protection_policies_label">Қоидаҳои шумо</string>
     <string name="protection_policies_delivered">Ба телефон расонида шуд</string>
     <string name="protection_policies_pending">Ҳанӯз расонида нашудааст</string>
-    <string name="protection_gujanak_limits_note">Реҷаи Хорпушт барномаҳоро манъ мекунад. Сайтҳо ва Shorts/Reels танҳо дар реҷаи Сипар манъ мешаванд.</string>
+    <string name="protection_gujanak_limits_note">Ҳимояи миёна танҳо барномаҳоро мебандад. Сайтҳо ва видеоҳои кӯтоҳ танҳо дар ҳимояи сахт манъ мешаванд: дар телефони фарзандатон Hoglt → «Назорат» → «Реҷаи Сипар».</string>
     <string name="editor_limit_days_follow_time">Мисли вақт — рӯзҳо дар саҳифаи вақт интихоб мешаванд</string>
     <string name="editor_limit_in_window">маҳдудият дар ин вақт</string>
     <string name="editor_limit_outside_window">маҳдудият берун аз ин вақт</string>
@@ -1332,7 +1332,7 @@
     <string name="parent_special_info_title">Дар телефони фарзандатон кор мекунад</string>
     <string name="parent_special_info_1">Фарзандатон ҳимояеро, ки шумо фаъол мекунед, хомӯш карда наметавонад. Ӯ онро дар барномаи худ мебинад.</string>
     <string name="parent_special_info_2">Агар хатар бошад, шумо танҳо мавзӯъ ва номи барномаро мегиред — ҳеҷ гоҳ матни паём ё тасвирро не.</string>
-    <string name="parent_special_info_3">Дар Android реҷаи Сипар лозим аст. Дар iPhone: сайтҳои 18+ ва чатҳои Hoglagram.</string>
+    <string name="parent_special_info_3">Дар Android ҳимояи сахт лозим аст. Дар iPhone: сайтҳои 18+ ва чатҳои Hoglagram.</string>
     <string name="parent_special_nsfw_title">Тасвирҳои номатлуб</string>
     <string name="parent_special_nsfw_desc">Тасвирҳои 18+ пӯшида мешаванд ва ба шумо хабар дода мешавад</string>
     <string name="parent_special_conv_title">Чатҳои хатарнок</string>
@@ -1378,8 +1378,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">Боз 5 дақиқа медиҳед?</string>
+    <string name="ob_shield_hint">Фарзандатон вақт мепурсад</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1407,9 +1407,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Бе ин сайтҳо, YouTube Shorts ва Instagram Reels манъ намешаванд ва барномаро ба осонӣ нест кардан мумкин аст.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">Дар телефони ӯ</string>
+    <string name="prot_default_note">Ҳоло қоидаҳои шумо ягон барномаро намебанданд. Барои он ки банданд, дар телефони фарзандатон Hoglt-ро кушоед → дар бахши «Назорат» ҳимояро фаъол кунед.</string>
+    <string name="prot_strength">Дараҷаи ҳимоя</string>
+    <string name="prot_phone_settings">Танзимоти телефони фарзандатон</string>
+    <string name="prot_phone_settings_hint">Инҳо дар телефони фарзандатон фаъол мешаванд, на дар телефони шумо.</string>
+    <string name="prot_x_of_y_on">Аз %2$d %1$d фаъол</string>
+    <string name="prot_on">Фаъол</string>
+    <string name="prot_off">Хомӯш</string>
+    <string name="prot_not_needed_now">Ҳоло лозим нест</string>
+    <string name="prot_why_needed">Ин барои чӣ лозим?</string>
+    <string name="prot_where_to_turn_on">Дар куҷо фаъол мешавад: дар танзимоти телефони фарзандатон — «%1$s».</string>
+    <string name="prot_stronger_group">Барои ҳимояи қавитар (%1$d)</string>
+    <string name="perm_title_notification">Паёмҳо ва ёдраскуниҳо</string>
+    <string name="perm_title_usage_stats">Вақт дар ҳар барнома</string>
+    <string name="perm_title_overlay">Бастани барнома, вақте ки вақт тамом шуд</string>
+    <string name="perm_title_overlay_popup">Бастани барномаҳо (дар телефонҳои Xiaomi)</string>
+    <string name="perm_title_location">Нишон додани ҷои фарзанд</string>
+    <string name="perm_title_gps">Ҷойгиршавии дақиқ</string>
+    <string name="perm_title_battery">Ҳангоми сарфаи батарея ҳам кор мекунад</string>
+    <string name="perm_title_auto_start">Пас аз бозоғозии телефон боз кор мекунад</string>
+    <string name="perm_title_accessibility">Манъ кардани сайтҳо ва видеоҳои кӯтоҳ</string>
+    <string name="perm_title_device_admin">Ҳимоя аз нест кардани Hoglt</string>
+    <string name="prot_btn_allow">Иҷозат медиҳам</string>
+    <string name="prot_btn_keep">Не, бимонад</string>
+    <string name="prot_btn_delete_account">Ҳа, тамоман нест карда шавад</string>
+    <string name="task_empty_in_progress">Ҳоло вазифаи дар ҷараён нест</string>
+    <string name="task_empty_done">Ҳанӯз вазифаи иҷрошуда нест</string>
+    <string name="task_empty_overdue">Вазифаи мӯҳлаташ гузашта нест</string>
+    <string name="task_empty_filter_hint">Барои дидани ҳамаи вазифаҳо филтри интихобшударо боз як бор зер кунед.</string>
 </resources>

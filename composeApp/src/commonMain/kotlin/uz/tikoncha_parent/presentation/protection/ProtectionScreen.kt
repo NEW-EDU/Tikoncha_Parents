@@ -49,7 +49,9 @@ import tikoncha_parents.composeapp.generated.resources.dialog_failed
 import tikoncha_parents.composeapp.generated.resources.dialog_warning
 import tikoncha_parents.composeapp.generated.resources.farzand_chiqish_ruxsat
 import tikoncha_parents.composeapp.generated.resources.farzand_ilovani_ochirmoqchi
-import tikoncha_parents.composeapp.generated.resources.ha
+import tikoncha_parents.composeapp.generated.resources.prot_btn_allow
+import tikoncha_parents.composeapp.generated.resources.prot_btn_delete_account
+import tikoncha_parents.composeapp.generated.resources.prot_btn_keep
 import tikoncha_parents.composeapp.generated.resources.himoya
 import tikoncha_parents.composeapp.generated.resources.hisobdan_chiqish
 import tikoncha_parents.composeapp.generated.resources.hisobdan_chiqishni_tasdiqlaysizmi
@@ -60,7 +62,6 @@ import tikoncha_parents.composeapp.generated.resources.qalqon_ochirishga_ruxsat
 import tikoncha_parents.composeapp.generated.resources.qalqon_ochirish_ruxsat_desc
 import tikoncha_parents.composeapp.generated.resources.sorovlar
 import tikoncha_parents.composeapp.generated.resources.xatolik
-import tikoncha_parents.composeapp.generated.resources.yoq
 import uz.tikoncha_parent.data.local.AppSettings
 import uz.tikoncha_parent.domain.model.protection.AccountRequestAction
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
@@ -159,8 +160,8 @@ fun ProtectionUi(
         show = approveStrictDialog,
         title = stringResource(Res.string.qalqon_ochirishga_ruxsat),
         message = stringResource(Res.string.qalqon_ochirish_ruxsat_desc),
-        buttonText = stringResource(Res.string.ha),
-        buttonText2 = stringResource(Res.string.yoq),
+        buttonText = stringResource(Res.string.prot_btn_allow),
+        buttonText2 = stringResource(Res.string.prot_btn_keep),
         showCloseButton = true,
         onDismiss = { approveStrictDialog = false },
         onButtonClick = {
@@ -177,8 +178,8 @@ fun ProtectionUi(
         show = allowLogoutDialog,
         title = stringResource(Res.string.hisobdan_chiqishni_tasdiqlaysizmi),
         message = stringResource(Res.string.farzand_chiqish_ruxsat),
-        buttonText = stringResource(Res.string.ha),
-        buttonText2 = stringResource(Res.string.yoq),
+        buttonText = stringResource(Res.string.prot_btn_allow),
+        buttonText2 = stringResource(Res.string.prot_btn_keep),
         showCloseButton = true,
         onDismiss = { allowLogoutDialog = false },
         onButtonClick = {
@@ -193,8 +194,8 @@ fun ProtectionUi(
         show = allowDeleteDialog,
         title = stringResource(Res.string.ilovani_ochirishni_tasdiqlaysizmi),
         message = stringResource(Res.string.farzand_ilovani_ochirmoqchi),
-        buttonText = stringResource(Res.string.ha),
-        buttonText2 = stringResource(Res.string.yoq),
+        buttonText = stringResource(Res.string.prot_btn_allow),
+        buttonText2 = stringResource(Res.string.prot_btn_keep),
         showCloseButton = true,
         onDismiss = { allowDeleteDialog = false },
         onButtonClick = {
@@ -209,8 +210,8 @@ fun ProtectionUi(
         show = allowAccountDeleteDialog,
         title = stringResource(Res.string.acc_delete_req_confirm_title),
         message = stringResource(Res.string.acc_delete_req_confirm_msg, childName),
-        buttonText = stringResource(Res.string.ha),
-        buttonText2 = stringResource(Res.string.yoq),
+        buttonText = stringResource(Res.string.prot_btn_delete_account),
+        buttonText2 = stringResource(Res.string.prot_btn_keep),
         showCloseButton = true,
         onDismiss = { allowAccountDeleteDialog = false },
         onButtonClick = {

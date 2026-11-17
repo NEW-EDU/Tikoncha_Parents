@@ -414,7 +414,7 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="farzand_ilova_kuzatish">Çocuğunun hangi uygulamaları ve gün içinde ne kadar kullandığını takip et.</string>
     <string name="uchtagacha_jadval">3 programa kadar</string>
     <string name="jadval_cheklovlar">Günler, haftalar veya özel zamanlar için ayrı kısıtlamalar belirle.</string>
-    <string name="qattiq_bloklash_qalqon">Sert engelleme (Kalkan modu)</string>
+    <string name="qattiq_bloklash_qalqon">Sıkı koruma: siteler ve kısa videolar da engellenir</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Çocuğun kısıtlamaları kapatamaz veya değiştiremez.</string>
     <string name="tez_bloklash_timer">Hızlı engelleme (Zamanlayıcı)</string>
     <string name="vaqtinchalik_bloklash_tezi">Gerektiğinde birkaç saniyede geçici engellemeyi aç.</string>
@@ -669,27 +669,27 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="tugilgan_sanasi">Doğum tarihi</string>
 
     <string name="farzand_himoyasi">Çocuk koruması</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d izin devre dışı</string>
+    <string name="ta_ruxsat_ochirilgan">Çocuğunun telefonunda kapalı ayar: %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d yeni istek bekliyor</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Koruma</string>
 
-    <string name="mode_default_title">Varsayılan</string>
-    <string name="mode_gujanak_title">Kirpi</string>
-    <string name="mode_qalqon_title">Kalkan</string>
+    <string name="mode_default_title">Sadece izleme</string>
+    <string name="mode_gujanak_title">Orta koruma</string>
+    <string name="mode_qalqon_title">Sıkı koruma</string>
 
-    <string name="mode_default_desc">Koruma devre dışı, yalnızca izleme</string>
-    <string name="mode_gujanak_desc">Zamanlanmış engelleme aktif</string>
-    <string name="mode_qalqon_desc">Tam koruma, gelişmiş engelleme aktif</string>
+    <string name="mode_default_desc">Ekran süresi ve konum görünür. Uygulamalar kapatılmaz.</string>
+    <string name="mode_gujanak_desc">Uygulamalar belirlediğin saatlerde kapatılır.</string>
+    <string name="mode_qalqon_desc">Uygulamalar, siteler ve kısa videolar engellenir.</string>
 
-    <string name="holat_nomalum">Bilinmeyen durum</string>
-    <string name="holat_nomalum_desc">Çocuğun cihazı henüz senkronize olmadı</string>
+    <string name="holat_nomalum">Henüz bilgi yok</string>
+    <string name="holat_nomalum_desc">Çocuğunun telefonu internete bağlanınca görünecek</string>
 
-    <string name="himoya_boshlangich">Temel</string>
-    <string name="himoya_orta">Orta düzey koruma</string>
-    <string name="himoya_toliq">Tam koruma</string>
+    <string name="himoya_boshlangich">Sadece izleme</string>
+    <string name="himoya_orta">Orta koruma</string>
+    <string name="himoya_toliq">Sıkı koruma</string>
 
     <!-- Sync -->
     <string name="sinxron">Senkronize edildi:</string>
@@ -703,7 +703,7 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="oflayn">Çevrimdışı</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">Kapatma yöntemi</string>
+    <string name="ochirish_usuli">Nasıl kapatılır</string>
     <string name="usul_taymer">Zamanlayıcı</string>
     <string name="usul_maxfiy_kod">Gizli kod</string>
     <string name="usul_maxfiy_matn">Gizli ifade</string>
@@ -716,8 +716,8 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="farzand_sorovlari">Çocuk istekleri</string>
     <string name="n_ta_yangi">%1$d yeni</string>
 
-    <string name="qalqonni_ochirish_sorovi">Kalkan’ı kapatma isteği</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Onaylarsan Kalkan, çocuğunun cihazında hemen kapatılır</string>
+    <string name="qalqonni_ochirish_sorovi">Sıkı korumayı kapatma isteği</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">İzin verirsen çocuğunun telefonunda sıkı koruma hemen kapanır</string>
 
     <string name="rad_etish">Reddet</string>
 
@@ -725,8 +725,8 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="sorov_rad_etildi">İstek reddedildi</string>
     <string name="sorov_muddati_tugadi">İsteğin süresi doldu</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Kalkan’ı kapatmaya izin verilsin mi?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">Onaylarsan çocuğun Kalkan’ı hemen kapatabilir.</string>
+    <string name="qalqon_ochirishga_ruxsat">Sıkı koruma kapatılsın mı?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">İzin verirsen çocuğun sıkı korumayı hemen kapatabilir.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">İzinler</string>
@@ -736,11 +736,11 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="berilmagan">Verilmedi</string>
 
     <string name="boshqa_rejimlar_uchun">Şu anda diğer modlar için gerekli değil</string>
-    <string name="gujanak_uchun">Kirpi modu için</string>
-    <string name="qalqon_uchun">Kalkan modu için</string>
+    <string name="gujanak_uchun">Orta koruma için</string>
+    <string name="qalqon_uchun">Sıkı koruma için</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d gerekli izin devre dışı</string>
-    <string name="zarur_ruxsat_banner_desc">Bu izinler olmadan koruma tam çalışamaz, çocuğunun cihazında etkinleştir</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Çocuğunun telefonunda kapalı ayar: %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">Ne işe yaradığını ve nereden açılacağını görmek için kapalı bir ayara dokun.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Bildirimler</string>
@@ -754,19 +754,19 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="perm_accessibility">Erişilebilirlik</string>
     <string name="perm_device_admin">Cihaz yöneticisi</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Çocuğun “%1$s” için Kalkan’ı kapatma izni istiyor</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s sıkı korumayı kapatmak için izin istiyor</string>
     <string name="javob_uchun">Yanıt için kalan süre: %1$s</string>
     <string name="rad_etildi">Reddedildi</string>
 
-    <string name="oxirgi_sinxron">Son senkronizasyon</string>
+    <string name="oxirgi_sinxron">Son bağlantı</string>
     <string name="kod">Kod</string>
-    <string name="qalqonni_ochirish">Kalkan’ı kapat</string>
-    <string name="himoya_ochiq_qisqa">Koruma kapalı</string>
-    <string name="gujanak_faol_qisqa">Kirpi aktif</string>
-    <string name="toliq_himoya_faol_qisqa">Tam koruma aktif</string>
+    <string name="qalqonni_ochirish">Sıkı korumayı kapatma</string>
+    <string name="himoya_ochiq_qisqa">Ekran süresi ve konum görünür. Uygulamalar kapatılmaz.</string>
+    <string name="gujanak_faol_qisqa">Uygulamalar belirlediğin saatlerde kapatılır.</string>
+    <string name="toliq_himoya_faol_qisqa">Uygulamalar, siteler ve kısa videolar engellenir.</string>
     <string name="ruxsat_berildi">İzin verildi</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">İsteği onayladın, Kalkan çocuğunun cihazında kapatılacak.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">İsteği reddettin. Kalkan aktif kalıyor.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">İzin verdin, çocuğunun telefonunda sıkı koruma kapanacak.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Reddettin. Sıkı koruma açık kalıyor.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">İsteği onayladın, çocuğun artık uygulamadan çıkış yapabilir.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">İsteği onayladın, çocuğun artık uygulamayı kaldırabilir.</string>
     <string name="sorov_rad_etildi_desc">İsteği reddettin.</string>
@@ -1015,17 +1015,17 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="protection_section">Neler korunur</string>
     <string name="protection_footer">Hoglt listeyi güncel tutar.</string>
     <string name="location_show_area">Alanı göster</string>
-    <string name="info_sites_shield">Siteler yalnızca çocuğunun telefonunda Kalkan modu açıkken engellenir.</string>
-    <string name="protection_shield_note">İçerik koruması yalnızca çocuğunun telefonunda Kalkan modu açıkken çalışır.</string>
-    <string name="protection_shield_short">Yalnızca Kalkan modunda çalışır</string>
-    <string name="info_features_shield">YouTube Shorts ve Instagram Reels yalnızca çocuğunun telefonunda Kalkan modu açıkken engellenir.</string>
+    <string name="info_sites_shield">Siteler yalnızca çocuğunun telefonunda sıkı koruma açıkken engellenir.</string>
+    <string name="protection_shield_note">Bu yalnızca çocuğunun telefonunda sıkı koruma açıkken çalışır.</string>
+    <string name="protection_shield_short">Yalnızca sıkı korumada çalışır</string>
+    <string name="info_features_shield">YouTube Shorts ve Instagram Reels yalnızca çocuğunun telefonunda sıkı koruma açıkken engellenir.</string>
     <string name="protection_by_child">Çocuğun açtı, kendi açtığını yalnızca çocuğun kapatabilir</string>
     <string name="protection_by_coparent">Diğer ebeveyn açtı, kendi açtığını yalnızca o kapatabilir</string>
     <string name="protection_by_both">Çocuğun ve diğer ebeveyn açtı, kendi açtıklarını yalnızca onlar kapatabilir</string>
-    <string name="protection_policies_label">Programlar</string>
+    <string name="protection_policies_label">Kuralların</string>
     <string name="protection_policies_delivered">Telefona iletildi</string>
     <string name="protection_policies_pending">Henüz iletilmedi</string>
-    <string name="protection_gujanak_limits_note">Kirpi modu uygulamaları engeller. Siteler ve Shorts/Reels yalnızca Kalkan modunda engellenir.</string>
+    <string name="protection_gujanak_limits_note">Orta koruma yalnızca uygulamaları kapatır. Siteler ve kısa videolar yalnızca sıkı korumada engellenir: çocuğunun telefonunda Hoglt → “Kontrol” → “Kalkan modu”.</string>
     <string name="editor_limit_days_follow_time">Saatle aynı, günler saat sayfasında seçilir</string>
     <string name="editor_limit_in_window">bu saatte sınır</string>
     <string name="editor_limit_outside_window">bu saatin dışında sınır</string>
@@ -1348,7 +1348,7 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="parent_special_info_title">Çocuğunun telefonunda çalışır</string>
     <string name="parent_special_info_1">Açtığın korumayı çocuğun kapatamaz. Bunu kendi uygulamasında görür.</string>
     <string name="parent_special_info_2">Bir risk olursa sana yalnızca konu ve uygulama adı gelir, mesaj metni veya görsel asla gelmez.</string>
-    <string name="parent_special_info_3">Android’de Kalkan modu gerekir. iPhone’da: 18+ siteler ve Hoglagram sohbetleri.</string>
+    <string name="parent_special_info_3">Android’de sıkı koruma gerekir. iPhone’da: 18+ siteler ve Hoglagram sohbetleri.</string>
     <string name="parent_special_nsfw_title">Uygunsuz görseller</string>
     <string name="parent_special_nsfw_desc">18+ görseller kapatılır ve sana bildirilir</string>
     <string name="parent_special_conv_title">Riskli sohbetler</string>
@@ -1394,8 +1394,8 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="text_size_extra_large">Çok büyük</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">5 dakika daha alabilir miyim?</string>
+    <string name="ob_shield_hint">Çocuğun biraz daha süre istiyor</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1423,9 +1423,37 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Bu olmadan siteler, YouTube Shorts ve Instagram Reels engellenmez ve uygulama kolayca silinebilir.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">Onun telefonunda</string>
+    <string name="prot_default_note">Şu anda kuralların hiçbir uygulamayı kapatmıyor. Bunu değiştirmek için çocuğunun telefonunda Hoglt → “Kontrol” bölümüne gir ve korumayı aç.</string>
+    <string name="prot_strength">Koruma düzeyi</string>
+    <string name="prot_phone_settings">Çocuğunun telefonundaki ayarlar</string>
+    <string name="prot_phone_settings_hint">Bunlar senin telefonunda değil, çocuğunun telefonunda açılır.</string>
+    <string name="prot_x_of_y_on">Açık: %1$d / %2$d</string>
+    <string name="prot_on">Açık</string>
+    <string name="prot_off">Kapalı</string>
+    <string name="prot_not_needed_now">Şimdilik gerekmiyor</string>
+    <string name="prot_why_needed">Bu ne işe yarar?</string>
+    <string name="prot_where_to_turn_on">Nereden açılır: çocuğunun telefonunun ayarlarında, “%1$s”.</string>
+    <string name="prot_stronger_group">Daha güçlü koruma için (%1$d)</string>
+    <string name="perm_title_notification">Mesajlar ve hatırlatmalar</string>
+    <string name="perm_title_usage_stats">Her uygulamada geçen süre</string>
+    <string name="perm_title_overlay">Süre bitince uygulamayı kapatma</string>
+    <string name="perm_title_overlay_popup">Uygulamaları kapatma (Xiaomi telefonlarda)</string>
+    <string name="perm_title_location">Çocuğunun nerede olduğunu gösterme</string>
+    <string name="perm_title_gps">Tam konum</string>
+    <string name="perm_title_battery">Pil tasarrufunda da çalışır</string>
+    <string name="perm_title_auto_start">Telefon yeniden açılınca tekrar başlar</string>
+    <string name="perm_title_accessibility">Siteleri ve kısa videoları engelleme</string>
+    <string name="perm_title_device_admin">Hoglt’un silinmesini önler</string>
+    <string name="prot_btn_allow">İzin ver</string>
+    <string name="prot_btn_keep">Hayır, böyle kalsın</string>
+    <string name="prot_btn_delete_account">Evet, tamamen sil</string>
+    <string name="task_empty_in_progress">Şu anda devam eden görev yok</string>
+    <string name="task_empty_done">Henüz tamamlanan görev yok</string>
+    <string name="task_empty_overdue">Süresi geçen görev yok</string>
+    <string name="task_empty_filter_hint">Tüm görevleri görmek için seçili filtreye tekrar dokun.</string>
 </resources>

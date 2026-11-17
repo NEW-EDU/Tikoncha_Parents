@@ -73,6 +73,8 @@ import tikoncha_parents.composeapp.generated.resources.global
 import tikoncha_parents.composeapp.generated.resources.id_card
 import tikoncha_parents.composeapp.generated.resources.info_profile_us
 import tikoncha_parents.composeapp.generated.resources.logout
+import tikoncha_parents.composeapp.generated.resources.akkauntni_o_chirish
+import tikoncha_parents.composeapp.generated.resources.delete
 import tikoncha_parents.composeapp.generated.resources.obuna
 import tikoncha_parents.composeapp.generated.resources.ochirish
 import tikoncha_parents.composeapp.generated.resources.ok
@@ -481,13 +483,26 @@ fun ProfileUi(
                 Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
                     ProfileSectionItem(
                         segmentIndex = 0,
-                        segmentCount = 1,
+                        segmentCount = 2,
                         title = stringResource(Res.string.chiqish),
                         icon = painterResource(Res.drawable.logout),
                         iconColor = AppColors.icon.accentDanger,
                         textColor = AppColors.text.accentDanger,
                         onItemClick = {
                             navigator?.push(LogoutScreen())
+                        }
+                    )
+                    // Akkauntni öçiriş — App Store talabi (5.1.1(v)): ilova içida topiladigan bölişi şart.
+                    // Ilgari faqat Sozlamalar ekranida edi, u esa hech qayerdan oçilmaydi.
+                    ProfileSectionItem(
+                        segmentIndex = 1,
+                        segmentCount = 2,
+                        title = stringResource(Res.string.akkauntni_o_chirish),
+                        icon = painterResource(Res.drawable.delete),
+                        iconColor = AppColors.icon.accentDanger,
+                        textColor = AppColors.text.accentDanger,
+                        onItemClick = {
+                            navigator?.push(uz.tikoncha_parent.presentation.profile.logout.DeleteAccountScreen())
                         }
                     )
                 }

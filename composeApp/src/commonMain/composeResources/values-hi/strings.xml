@@ -413,7 +413,7 @@
     <string name="farzand_ilova_kuzatish">देखें कि आपका बच्चा कौन-से ऐप्स और दिन में कितना इस्तेमाल करता है।</string>
     <string name="uchtagacha_jadval">3 शेड्यूल तक</string>
     <string name="jadval_cheklovlar">दिनों, हफ़्तों या खास समय के लिए अलग-अलग पाबंदियाँ तय करें।</string>
-    <string name="qattiq_bloklash_qalqon">सख़्त ब्लॉकिंग (शील्ड मोड)</string>
+    <string name="qattiq_bloklash_qalqon">सख़्त सुरक्षा: वेबसाइटें और छोटे वीडियो भी ब्लॉक होते हैं</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">आपका बच्चा पाबंदियाँ बंद या बदल नहीं सकता।</string>
     <string name="tez_bloklash_timer">फ़टाफ़ट ब्लॉक (टाइमर)</string>
     <string name="vaqtinchalik_bloklash_tezi">ज़रूरत पड़ने पर कुछ ही सेकंड में अस्थायी ब्लॉकिंग चालू करें।</string>
@@ -652,27 +652,27 @@
     <string name="tugilgan_sanasi">जन्म तिथि</string>
 
     <string name="farzand_himoyasi">बच्चे की सुरक्षा</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d अनुमतियाँ बंद हैं</string>
+    <string name="ta_ruxsat_ochirilgan">आपके बच्चे के फ़ोन पर बंद सेटिंग्स: %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d नई रिक्वेस्ट इंतज़ार में</string>
 
 
     <!-- Himoya -->
     <string name="himoya">सुरक्षा</string>
 
-    <string name="mode_default_title">डिफ़ॉल्ट</string>
-    <string name="mode_gujanak_title">साही</string>
-    <string name="mode_qalqon_title">शील्ड</string>
+    <string name="mode_default_title">सिर्फ़ निगरानी</string>
+    <string name="mode_gujanak_title">मध्यम सुरक्षा</string>
+    <string name="mode_qalqon_title">सख़्त सुरक्षा</string>
 
-    <string name="mode_default_desc">सुरक्षा बंद है, सिर्फ़ निगरानी</string>
-    <string name="mode_gujanak_desc">शेड्यूल के हिसाब से ब्लॉकिंग चालू है</string>
-    <string name="mode_qalqon_desc">पूरी सुरक्षा, बेहतर ब्लॉकिंग चालू है</string>
+    <string name="mode_default_desc">स्क्रीन टाइम और लोकेशन दिखती है। कोई ऐप बंद नहीं होता।</string>
+    <string name="mode_gujanak_desc">आपके तय किए समय पर ऐप्स बंद हो जाते हैं।</string>
+    <string name="mode_qalqon_desc">ऐप्स, वेबसाइटें और छोटे वीडियो ब्लॉक होते हैं।</string>
 
-    <string name="holat_nomalum">स्थिति अज्ञात</string>
-    <string name="holat_nomalum_desc">बच्चे का डिवाइस अभी सिंक नहीं हुआ है</string>
+    <string name="holat_nomalum">अभी कोई जानकारी नहीं</string>
+    <string name="holat_nomalum_desc">बच्चे का फ़ोन इंटरनेट से जुड़ने पर जानकारी आएगी</string>
 
-    <string name="himoya_boshlangich">बेसिक</string>
+    <string name="himoya_boshlangich">सिर्फ़ निगरानी</string>
     <string name="himoya_orta">मध्यम सुरक्षा</string>
-    <string name="himoya_toliq">पूरी सुरक्षा</string>
+    <string name="himoya_toliq">सख़्त सुरक्षा</string>
 
     <!-- Sync -->
     <string name="sinxron">सिंक:</string>
@@ -686,7 +686,7 @@
     <string name="oflayn">ऑफ़लाइन</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">बंद करने का तरीका</string>
+    <string name="ochirish_usuli">कैसे बंद होता है</string>
     <string name="usul_taymer">टाइमर</string>
     <string name="usul_maxfiy_kod">सीक्रेट कोड</string>
     <string name="usul_maxfiy_matn">सीक्रेट वाक्य</string>
@@ -699,8 +699,8 @@
     <string name="farzand_sorovlari">बच्चे की रिक्वेस्ट</string>
     <string name="n_ta_yangi">%1$d नई</string>
 
-    <string name="qalqonni_ochirish_sorovi">शील्ड बंद करने की रिक्वेस्ट</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">मंज़ूर करने पर आपके बच्चे के डिवाइस पर शील्ड तुरंत बंद हो जाएगा</string>
+    <string name="qalqonni_ochirish_sorovi">सख़्त सुरक्षा बंद करने का अनुरोध</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">अनुमति देने पर बच्चे के फ़ोन पर सख़्त सुरक्षा तुरंत बंद हो जाएगी</string>
 
     <string name="rad_etish">नामंज़ूर करें</string>
 
@@ -708,8 +708,8 @@
     <string name="sorov_rad_etildi">रिक्वेस्ट नामंज़ूर हुई</string>
     <string name="sorov_muddati_tugadi">रिक्वेस्ट की समय-सीमा खत्म हो गई</string>
 
-    <string name="qalqon_ochirishga_ruxsat">शील्ड बंद करने की इजाज़त दें?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">मंज़ूर करने पर आपका बच्चा शील्ड तुरंत बंद कर सकेगा।</string>
+    <string name="qalqon_ochirishga_ruxsat">सख़्त सुरक्षा बंद करें?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">अनुमति देने पर आपका बच्चा सख़्त सुरक्षा तुरंत बंद कर सकेगा।</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">अनुमतियाँ</string>
@@ -719,11 +719,11 @@
     <string name="berilmagan">नहीं दी गई</string>
 
     <string name="boshqa_rejimlar_uchun">अभी दूसरे मोड के लिए ज़रूरी नहीं</string>
-    <string name="gujanak_uchun">साही मोड के लिए</string>
-    <string name="qalqon_uchun">शील्ड मोड के लिए</string>
+    <string name="gujanak_uchun">मध्यम सुरक्षा के लिए</string>
+    <string name="qalqon_uchun">सख़्त सुरक्षा के लिए</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d ज़रूरी अनुमतियाँ बंद हैं</string>
-    <string name="zarur_ruxsat_banner_desc">इन अनुमतियों के बिना सुरक्षा पूरी तरह काम नहीं कर सकती, इन्हें अपने बच्चे के डिवाइस पर चालू करें</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">आपके बच्चे के फ़ोन पर बंद सेटिंग्स: %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">बंद सेटिंग पर टैप करें — देखें कि यह किस लिए है और इसे कहाँ चालू करें।</string>
 
     <!-- Permission names -->
     <string name="perm_notification">नोटिफ़िकेशन</string>
@@ -737,19 +737,19 @@
     <string name="perm_accessibility">एक्सेसिबिलिटी</string>
     <string name="perm_device_admin">डिवाइस एडमिनिस्ट्रेटर</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">आपका बच्चा “%1$s” के लिए शील्ड बंद करने की अनुमति माँग रहा है</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s ने सख़्त सुरक्षा बंद करने की अनुमति माँगी है</string>
     <string name="javob_uchun">जवाब देने के लिए बचा समय: %1$s</string>
     <string name="rad_etildi">नामंज़ूर</string>
 
-    <string name="oxirgi_sinxron">आख़िरी सिंक</string>
+    <string name="oxirgi_sinxron">आख़िरी संपर्क</string>
     <string name="kod">कोड</string>
-    <string name="qalqonni_ochirish">शील्ड बंद करें</string>
-    <string name="himoya_ochiq_qisqa">सुरक्षा बंद है</string>
-    <string name="gujanak_faol_qisqa">साही चालू है</string>
-    <string name="toliq_himoya_faol_qisqa">पूरी सुरक्षा चालू है</string>
+    <string name="qalqonni_ochirish">सख़्त सुरक्षा बंद करना</string>
+    <string name="himoya_ochiq_qisqa">स्क्रीन टाइम और लोकेशन दिखती है। कोई ऐप बंद नहीं होता।</string>
+    <string name="gujanak_faol_qisqa">आपके तय किए समय पर ऐप्स बंद हो जाते हैं।</string>
+    <string name="toliq_himoya_faol_qisqa">ऐप्स, वेबसाइटें और छोटे वीडियो ब्लॉक होते हैं।</string>
     <string name="ruxsat_berildi">अनुमति मिल गई</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">आपने रिक्वेस्ट मंज़ूर कर दी, आपके बच्चे के डिवाइस पर शील्ड बंद हो जाएगा।</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">आपने रिक्वेस्ट नामंज़ूर कर दी। शील्ड चालू रहेगा।</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">आपने अनुमति दे दी — बच्चे के फ़ोन पर सख़्त सुरक्षा बंद हो जाएगी।</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">आपने मना कर दिया। सख़्त सुरक्षा चालू रहेगी।</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">आपने रिक्वेस्ट मंज़ूर कर दी, अब आपका बच्चा ऐप से साइन आउट कर सकता है।</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">आपने रिक्वेस्ट मंज़ूर कर दी, अब आपका बच्चा ऐप अनइंस्टॉल कर सकता है।</string>
     <string name="sorov_rad_etildi_desc">आपने रिक्वेस्ट नामंज़ूर कर दी।</string>
@@ -998,17 +998,17 @@
     <string name="protection_section">क्या सुरक्षित है</string>
     <string name="protection_footer">Hoglt सूची को अपडेट रखता है।</string>
     <string name="location_show_area">इलाका दिखाएँ</string>
-    <string name="info_sites_shield">साइट्स तभी ब्लॉक होती हैं जब आपके बच्चे के फ़ोन पर शील्ड मोड चालू हो।</string>
-    <string name="protection_shield_note">कंटेंट सुरक्षा तभी काम करती है जब आपके बच्चे के फ़ोन पर शील्ड मोड चालू हो।</string>
-    <string name="protection_shield_short">सिर्फ़ शील्ड मोड में काम करता है</string>
-    <string name="info_features_shield">YouTube Shorts और Instagram Reels तभी ब्लॉक होते हैं जब आपके बच्चे के फ़ोन पर शील्ड मोड चालू हो।</string>
+    <string name="info_sites_shield">वेबसाइटें तभी ब्लॉक होती हैं जब बच्चे के फ़ोन पर सख़्त सुरक्षा चालू हो।</string>
+    <string name="protection_shield_note">यह तभी काम करता है जब बच्चे के फ़ोन पर सख़्त सुरक्षा चालू हो।</string>
+    <string name="protection_shield_short">सिर्फ़ सख़्त सुरक्षा में काम करता है</string>
+    <string name="info_features_shield">YouTube Shorts और Instagram Reels तभी ब्लॉक होते हैं जब बच्चे के फ़ोन पर सख़्त सुरक्षा चालू हो।</string>
     <string name="protection_by_child">आपके बच्चे ने चालू किया है, इसे सिर्फ़ आपका बच्चा बंद कर सकता है</string>
     <string name="protection_by_coparent">दूसरे पैरेंट ने चालू किया है, इसे सिर्फ़ वही बंद कर सकते हैं</string>
     <string name="protection_by_both">आपके बच्चे और दूसरे पैरेंट ने चालू किया है, इसे सिर्फ़ वही बंद कर सकते हैं</string>
-    <string name="protection_policies_label">शेड्यूल</string>
+    <string name="protection_policies_label">आपके नियम</string>
     <string name="protection_policies_delivered">फ़ोन पर पहुँच गए</string>
     <string name="protection_policies_pending">अभी पहुँचे नहीं</string>
-    <string name="protection_gujanak_limits_note">साही मोड ऐप्स ब्लॉक करता है। साइट्स और Shorts/Reels सिर्फ़ शील्ड मोड में ब्लॉक होते हैं।</string>
+    <string name="protection_gujanak_limits_note">मध्यम सुरक्षा सिर्फ़ ऐप्स बंद करती है। वेबसाइटें और छोटे वीडियो सिर्फ़ सख़्त सुरक्षा में ब्लॉक होते हैं: बच्चे के फ़ोन पर Hoglt → “कंट्रोल” → “शील्ड मोड”।</string>
     <string name="editor_limit_days_follow_time">समय जैसा ही, दिन समय वाले पेज पर चुने जाते हैं</string>
     <string name="editor_limit_in_window">इस समय में लिमिट</string>
     <string name="editor_limit_outside_window">इस समय के बाहर लिमिट</string>
@@ -1331,7 +1331,7 @@
     <string name="parent_special_info_title">आपके बच्चे के फ़ोन पर काम करता है</string>
     <string name="parent_special_info_1">आपकी चालू की गई सुरक्षा आपका बच्चा बंद नहीं कर सकता। वह इसे अपने ऐप में देखेगा।</string>
     <string name="parent_special_info_2">जोखिम होने पर आपको सिर्फ़ विषय और ऐप का नाम मिलता है — मैसेज का टेक्स्ट या तस्वीर कभी नहीं।</string>
-    <string name="parent_special_info_3">Android पर शील्ड मोड ज़रूरी है। iPhone पर: 18+ वेबसाइटें और Hoglagram चैट।</string>
+    <string name="parent_special_info_3">Android पर सख़्त सुरक्षा ज़रूरी है। iPhone पर: 18+ वेबसाइटें और Hoglagram चैट।</string>
     <string name="parent_special_nsfw_title">अनुचित तस्वीरें</string>
     <string name="parent_special_nsfw_desc">18+ तस्वीरें बंद हो जाती हैं और आपको सूचना मिलती है</string>
     <string name="parent_special_conv_title">जोखिम भरी चैट</string>
@@ -1377,8 +1377,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">क्या 5 मिनट और मिल सकते हैं?</string>
+    <string name="ob_shield_hint">आपका बच्चा और समय माँग रहा है</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1406,9 +1406,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">इसके बिना वेबसाइटें, YouTube Shorts और Instagram Reels ब्लॉक नहीं होते, और ऐप आसानी से हटाया जा सकता है।</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">उसके फ़ोन पर</string>
+    <string name="prot_default_note">अभी आपके नियम कोई ऐप बंद नहीं करते। इसके लिए बच्चे के फ़ोन पर Hoglt खोलें → “कंट्रोल” में सुरक्षा चालू करें।</string>
+    <string name="prot_strength">सुरक्षा का स्तर</string>
+    <string name="prot_phone_settings">बच्चे के फ़ोन की सेटिंग्स</string>
+    <string name="prot_phone_settings_hint">ये बच्चे के फ़ोन पर चालू होती हैं, आपके फ़ोन पर नहीं।</string>
+    <string name="prot_x_of_y_on">%2$d में से %1$d चालू</string>
+    <string name="prot_on">चालू</string>
+    <string name="prot_off">बंद</string>
+    <string name="prot_not_needed_now">अभी ज़रूरी नहीं</string>
+    <string name="prot_why_needed">यह किसलिए है?</string>
+    <string name="prot_where_to_turn_on">कहाँ चालू करें: बच्चे के फ़ोन की सेटिंग्स में, “%1$s”।</string>
+    <string name="prot_stronger_group">ज़्यादा मज़बूत सुरक्षा के लिए (%1$d)</string>
+    <string name="perm_title_notification">मैसेज और रिमाइंडर</string>
+    <string name="perm_title_usage_stats">हर ऐप में बिताया समय</string>
+    <string name="perm_title_overlay">समय ख़त्म होने पर ऐप बंद करना</string>
+    <string name="perm_title_overlay_popup">ऐप्स बंद करना (Xiaomi फ़ोन पर)</string>
+    <string name="perm_title_location">बच्चा कहाँ है, यह दिखाना</string>
+    <string name="perm_title_gps">सटीक लोकेशन</string>
+    <string name="perm_title_battery">बैटरी सेवर में भी काम करता है</string>
+    <string name="perm_title_auto_start">फ़ोन दोबारा चालू होने पर फिर शुरू होता है</string>
+    <string name="perm_title_accessibility">वेबसाइटें और छोटे वीडियो ब्लॉक करना</string>
+    <string name="perm_title_device_admin">Hoglt को हटाने से रोकता है</string>
+    <string name="prot_btn_allow">अनुमति दें</string>
+    <string name="prot_btn_keep">नहीं, ऐसे ही रहने दें</string>
+    <string name="prot_btn_delete_account">हाँ, हमेशा के लिए हटाएँ</string>
+    <string name="task_empty_in_progress">अभी प्रक्रिया में कोई टास्क नहीं है</string>
+    <string name="task_empty_done">अभी तक कोई टास्क पूरा नहीं हुआ</string>
+    <string name="task_empty_overdue">ऐसा कोई टास्क नहीं जिसका समय बीत चुका हो</string>
+    <string name="task_empty_filter_hint">सभी टास्क देखने के लिए चुने गए फ़िल्टर पर दोबारा टैप करें।</string>
 </resources>

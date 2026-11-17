@@ -413,7 +413,7 @@
     <string name="farzand_ilova_kuzatish">Jejaki apl yang digunakan anak anda dan berapa lama sepanjang hari.</string>
     <string name="uchtagacha_jadval">Sehingga 3 jadual</string>
     <string name="jadval_cheklovlar">Tetapkan sekatan berasingan untuk hari, minggu atau waktu khas.</string>
-    <string name="qattiq_bloklash_qalqon">Sekatan tegar (mod Perisai)</string>
+    <string name="qattiq_bloklash_qalqon">Perlindungan ketat: laman web dan video pendek turut disekat</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Anak anda tidak boleh mematikan atau mengubah sekatan.</string>
     <string name="tez_bloklash_timer">Sekatan pantas (Pemasa)</string>
     <string name="vaqtinchalik_bloklash_tezi">Hidupkan sekatan sementara dalam beberapa saat apabila perlu.</string>
@@ -652,27 +652,27 @@
     <string name="tugilgan_sanasi">Tarikh lahir</string>
 
     <string name="farzand_himoyasi">Perlindungan Anak</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d kebenaran dimatikan</string>
+    <string name="ta_ruxsat_ochirilgan">Tetapan yang dimatikan pada telefon anak anda: %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d permintaan baharu menunggu</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Perlindungan</string>
 
-    <string name="mode_default_title">Lalai</string>
-    <string name="mode_gujanak_title">Landak</string>
-    <string name="mode_qalqon_title">Perisai</string>
+    <string name="mode_default_title">Pantau sahaja</string>
+    <string name="mode_gujanak_title">Perlindungan sederhana</string>
+    <string name="mode_qalqon_title">Perlindungan ketat</string>
 
-    <string name="mode_default_desc">Perlindungan dimatikan — pemantauan sahaja</string>
-    <string name="mode_gujanak_desc">Sekatan berjadual aktif</string>
-    <string name="mode_qalqon_desc">Perlindungan penuh — sekatan dipertingkat aktif</string>
+    <string name="mode_default_desc">Masa skrin dan lokasi boleh dilihat. Tiada apl yang ditutup.</string>
+    <string name="mode_gujanak_desc">Apl ditutup pada waktu yang anda tetapkan.</string>
+    <string name="mode_qalqon_desc">Apl, laman web dan video pendek disekat.</string>
 
-    <string name="holat_nomalum">Status tidak diketahui</string>
-    <string name="holat_nomalum_desc">Peranti anak belum disegerakkan</string>
+    <string name="holat_nomalum">Belum ada maklumat</string>
+    <string name="holat_nomalum_desc">Akan muncul apabila telefon anak anda disambungkan ke internet</string>
 
-    <string name="himoya_boshlangich">Asas</string>
+    <string name="himoya_boshlangich">Pantau sahaja</string>
     <string name="himoya_orta">Perlindungan sederhana</string>
-    <string name="himoya_toliq">Perlindungan penuh</string>
+    <string name="himoya_toliq">Perlindungan ketat</string>
 
     <!-- Sync -->
     <string name="sinxron">Disegerakkan:</string>
@@ -686,7 +686,7 @@
     <string name="oflayn">Luar talian</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">Kaedah mematikan</string>
+    <string name="ochirish_usuli">Cara mematikannya</string>
     <string name="usul_taymer">Pemasa</string>
     <string name="usul_maxfiy_kod">Kod rahsia</string>
     <string name="usul_maxfiy_matn">Frasa rahsia</string>
@@ -699,8 +699,8 @@
     <string name="farzand_sorovlari">Permintaan anak</string>
     <string name="n_ta_yangi">%1$d baharu</string>
 
-    <string name="qalqonni_ochirish_sorovi">Permintaan mematikan Perisai</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Jika diluluskan, Perisai akan dimatikan serta-merta pada peranti anak anda</string>
+    <string name="qalqonni_ochirish_sorovi">Permintaan untuk mematikan perlindungan ketat</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Jika anda benarkan, perlindungan ketat pada telefon anak anda akan terus dimatikan</string>
 
     <string name="rad_etish">Tolak</string>
 
@@ -708,8 +708,8 @@
     <string name="sorov_rad_etildi">Permintaan ditolak</string>
     <string name="sorov_muddati_tugadi">Permintaan tamat tempoh</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Benarkan mematikan Perisai?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">Jika diluluskan, anak anda akan dapat mematikan Perisai serta-merta.</string>
+    <string name="qalqon_ochirishga_ruxsat">Matikan perlindungan ketat?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Jika anda benarkan, anak anda boleh terus mematikan perlindungan ketat.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">Kebenaran</string>
@@ -719,11 +719,11 @@
     <string name="berilmagan">Tidak diberikan</string>
 
     <string name="boshqa_rejimlar_uchun">Tidak diperlukan untuk mod lain buat masa ini</string>
-    <string name="gujanak_uchun">Untuk mod Landak</string>
-    <string name="qalqon_uchun">Untuk mod Perisai</string>
+    <string name="gujanak_uchun">Untuk perlindungan sederhana</string>
+    <string name="qalqon_uchun">Untuk perlindungan ketat</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d kebenaran wajib dimatikan</string>
-    <string name="zarur_ruxsat_banner_desc">Tanpa kebenaran ini perlindungan tidak dapat berfungsi sepenuhnya — aktifkannya pada peranti anak anda</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Tetapan yang dimatikan pada telefon anak anda: %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">Ketik tetapan yang dimatikan untuk melihat fungsinya dan tempat menghidupkannya.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Pemberitahuan</string>
@@ -737,19 +737,19 @@
     <string name="perm_accessibility">Kebolehcapaian</string>
     <string name="perm_device_admin">Pentadbir peranti</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Anak anda meminta kebenaran untuk mematikan Perisai bagi “%1$s”</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s meminta untuk mematikan perlindungan ketat</string>
     <string name="javob_uchun">Masa berbaki untuk menjawab: %1$s</string>
     <string name="rad_etildi">Ditolak</string>
 
-    <string name="oxirgi_sinxron">Penyegerakan terakhir</string>
+    <string name="oxirgi_sinxron">Hubungan terakhir</string>
     <string name="kod">Kod</string>
-    <string name="qalqonni_ochirish">Matikan Perisai</string>
-    <string name="himoya_ochiq_qisqa">Perlindungan dimatikan</string>
-    <string name="gujanak_faol_qisqa">Landak aktif</string>
-    <string name="toliq_himoya_faol_qisqa">Perlindungan penuh aktif</string>
+    <string name="qalqonni_ochirish">Mematikan perlindungan ketat</string>
+    <string name="himoya_ochiq_qisqa">Masa skrin dan lokasi boleh dilihat. Tiada apl yang ditutup.</string>
+    <string name="gujanak_faol_qisqa">Apl ditutup pada waktu yang anda tetapkan.</string>
+    <string name="toliq_himoya_faol_qisqa">Apl, laman web dan video pendek disekat.</string>
     <string name="ruxsat_berildi">Kebenaran diberikan</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Anda meluluskan permintaan — Perisai akan dimatikan pada peranti anak anda.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Anda menolak permintaan. Perisai kekal aktif.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Anda telah membenarkan — perlindungan ketat pada telefon anak anda akan dimatikan.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Anda menolak. Perlindungan ketat terus berfungsi.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Anda meluluskan permintaan — anak anda kini boleh log keluar daripada apl.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Anda meluluskan permintaan — anak anda kini boleh menyahpasang apl.</string>
     <string name="sorov_rad_etildi_desc">Anda menolak permintaan.</string>
@@ -998,17 +998,17 @@
     <string name="protection_section">Apa yang dilindungi</string>
     <string name="protection_footer">Hoglt memastikan senarai ini sentiasa dikemas kini.</string>
     <string name="location_show_area">Tunjuk kawasan</string>
-    <string name="info_sites_shield">Laman web disekat hanya semasa mod Perisai dihidupkan pada telefon anak anda.</string>
-    <string name="protection_shield_note">Perlindungan kandungan berfungsi hanya semasa mod Perisai dihidupkan pada telefon anak anda.</string>
-    <string name="protection_shield_short">Berfungsi dalam mod Perisai sahaja</string>
-    <string name="info_features_shield">YouTube Shorts dan Instagram Reels disekat hanya semasa mod Perisai dihidupkan pada telefon anak anda.</string>
+    <string name="info_sites_shield">Laman web hanya disekat semasa perlindungan ketat dihidupkan pada telefon anak anda.</string>
+    <string name="protection_shield_note">Ini hanya berfungsi semasa perlindungan ketat dihidupkan pada telefon anak anda.</string>
+    <string name="protection_shield_short">Hanya berfungsi dengan perlindungan ketat</string>
+    <string name="info_features_shield">YouTube Shorts dan Instagram Reels hanya disekat semasa perlindungan ketat dihidupkan pada telefon anak anda.</string>
     <string name="protection_by_child">Anak anda menghidupkannya — hanya anak anda boleh mematikan miliknya</string>
     <string name="protection_by_coparent">Ibu bapa lain menghidupkannya — hanya mereka boleh mematikan milik mereka</string>
     <string name="protection_by_both">Anak anda dan ibu bapa lain menghidupkannya — hanya mereka boleh mematikan milik mereka</string>
-    <string name="protection_policies_label">Jadual</string>
+    <string name="protection_policies_label">Peraturan anda</string>
     <string name="protection_policies_delivered">Dihantar ke telefon</string>
     <string name="protection_policies_pending">Belum dihantar</string>
-    <string name="protection_gujanak_limits_note">Mod Landak menyekat apl. Laman web dan Shorts/Reels disekat hanya dalam mod Perisai.</string>
+    <string name="protection_gujanak_limits_note">Perlindungan sederhana hanya menutup apl. Laman web dan video pendek hanya disekat dengan perlindungan ketat: pada telefon anak anda, Hoglt → “Kawalan” → “Mod Perisai”.</string>
     <string name="editor_limit_days_follow_time">Sama seperti masa — hari dipilih pada halaman masa</string>
     <string name="editor_limit_in_window">had pada masa ini</string>
     <string name="editor_limit_outside_window">had di luar masa ini</string>
@@ -1331,7 +1331,7 @@
     <string name="parent_special_info_title">Berfungsi pada telefon anak anda</string>
     <string name="parent_special_info_1">Anak anda tidak boleh mematikan perlindungan yang anda hidupkan. Mereka akan melihatnya dalam apl mereka.</string>
     <string name="parent_special_info_2">Jika ada risiko, anda hanya menerima topik dan nama apl — tidak sekali-kali teks mesej atau imej.</string>
-    <string name="parent_special_info_3">Pada Android, mod Perisai diperlukan. Pada iPhone: laman web 18+ dan sembang Hoglagram.</string>
+    <string name="parent_special_info_3">Pada Android, perlindungan ketat diperlukan. Pada iPhone: laman web 18+ dan sembang Hoglagram.</string>
     <string name="parent_special_nsfw_title">Imej tidak sesuai</string>
     <string name="parent_special_nsfw_desc">Imej 18+ ditutup dan anda dimaklumkan</string>
     <string name="parent_special_conv_title">Sembang berisiko</string>
@@ -1377,8 +1377,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">Boleh tambah 5 minit lagi?</string>
+    <string name="ob_shield_hint">Anak anda meminta masa tambahan</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1406,9 +1406,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Tanpanya, laman web, YouTube Shorts dan Instagram Reels tidak disekat, dan apl boleh dinyahpasang dengan mudah.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">Pada telefonnya</string>
+    <string name="prot_default_note">Buat masa ini peraturan anda tidak menutup sebarang apl. Untuk mengubahnya, pada telefon anak anda buka Hoglt → “Kawalan” dan hidupkan perlindungan.</string>
+    <string name="prot_strength">Tahap perlindungan</string>
+    <string name="prot_phone_settings">Tetapan pada telefon anak anda</string>
+    <string name="prot_phone_settings_hint">Ini dihidupkan pada telefon anak anda, bukan pada telefon anda.</string>
+    <string name="prot_x_of_y_on">%1$d daripada %2$d hidup</string>
+    <string name="prot_on">Hidup</string>
+    <string name="prot_off">Mati</string>
+    <string name="prot_not_needed_now">Belum perlu sekarang</string>
+    <string name="prot_why_needed">Ini untuk apa?</string>
+    <string name="prot_where_to_turn_on">Tempat menghidupkan: dalam tetapan telefon anak anda, “%1$s”.</string>
+    <string name="prot_stronger_group">Untuk perlindungan lebih kuat (%1$d)</string>
+    <string name="perm_title_notification">Mesej dan peringatan</string>
+    <string name="perm_title_usage_stats">Masa dalam setiap apl</string>
+    <string name="perm_title_overlay">Menutup apl apabila masa tamat</string>
+    <string name="perm_title_overlay_popup">Menutup apl (pada telefon Xiaomi)</string>
+    <string name="perm_title_location">Menunjukkan lokasi anak anda</string>
+    <string name="perm_title_gps">Lokasi tepat</string>
+    <string name="perm_title_battery">Terus berfungsi semasa penjimat bateri</string>
+    <string name="perm_title_auto_start">Bermula semula selepas telefon dihidupkan semula</string>
+    <string name="perm_title_accessibility">Menyekat laman web dan video pendek</string>
+    <string name="perm_title_device_admin">Menghalang Hoglt daripada dinyahpasang</string>
+    <string name="prot_btn_allow">Benarkan</string>
+    <string name="prot_btn_keep">Tidak, biarkan</string>
+    <string name="prot_btn_delete_account">Ya, padam selama-lamanya</string>
+    <string name="task_empty_in_progress">Tiada tugasan yang sedang diproses sekarang</string>
+    <string name="task_empty_done">Belum ada tugasan yang telah selesai</string>
+    <string name="task_empty_overdue">Tiada tugasan yang tertunggak</string>
+    <string name="task_empty_filter_hint">Ketik penapis yang dipilih sekali lagi untuk melihat semua tugasan.</string>
 </resources>

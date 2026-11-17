@@ -414,7 +414,7 @@ Ces informations ne sont utilisées que pour ces fonctions et ne sont pas partag
     <string name="farzand_ilova_kuzatish">Suivez les applis que votre enfant utilise et combien de temps dans la journée.</string>
     <string name="uchtagacha_jadval">Jusqu’à 3 plannings</string>
     <string name="jadval_cheklovlar">Définissez des restrictions distinctes pour des jours, des semaines ou des moments particuliers.</string>
-    <string name="qattiq_bloklash_qalqon">Blocage strict (mode Bouclier)</string>
+    <string name="qattiq_bloklash_qalqon">Protection stricte : les sites et les vidéos courtes sont aussi bloqués</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Votre enfant ne peut pas désactiver ni modifier les restrictions.</string>
     <string name="tez_bloklash_timer">Blocage rapide (minuteur)</string>
     <string name="vaqtinchalik_bloklash_tezi">Activez un blocage temporaire en quelques secondes en cas de besoin.</string>
@@ -663,27 +663,27 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="tugilgan_sanasi">Date de naissance</string>
 
     <string name="farzand_himoyasi">Protection de l’enfant</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d autorisations désactivées</string>
+    <string name="ta_ruxsat_ochirilgan">Réglages désactivés sur le téléphone de votre enfant : %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d nouvelles demandes en attente</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Protection</string>
 
-    <string name="mode_default_title">Par défaut</string>
-    <string name="mode_gujanak_title">Hérisson</string>
-    <string name="mode_qalqon_title">Bouclier</string>
+    <string name="mode_default_title">Surveillance seule</string>
+    <string name="mode_gujanak_title">Protection moyenne</string>
+    <string name="mode_qalqon_title">Protection stricte</string>
 
-    <string name="mode_default_desc">Protection désactivée : surveillance uniquement</string>
-    <string name="mode_gujanak_desc">Le blocage planifié est actif</string>
-    <string name="mode_qalqon_desc">Protection complète : le blocage renforcé est actif</string>
+    <string name="mode_default_desc">Le temps d’écran et la position sont visibles. Aucune appli n’est fermée.</string>
+    <string name="mode_gujanak_desc">Les applis sont fermées aux heures que vous choisissez.</string>
+    <string name="mode_qalqon_desc">Les applis, les sites et les vidéos courtes sont bloqués.</string>
 
-    <string name="holat_nomalum">Statut inconnu</string>
-    <string name="holat_nomalum_desc">L’appareil de l’enfant ne s’est pas encore synchronisé</string>
+    <string name="holat_nomalum">Pas encore d’informations</string>
+    <string name="holat_nomalum_desc">Elles apparaîtront quand le téléphone de votre enfant sera connecté à Internet</string>
 
-    <string name="himoya_boshlangich">Basique</string>
-    <string name="himoya_orta">Protection modérée</string>
-    <string name="himoya_toliq">Protection complète</string>
+    <string name="himoya_boshlangich">Surveillance seule</string>
+    <string name="himoya_orta">Protection moyenne</string>
+    <string name="himoya_toliq">Protection stricte</string>
 
     <!-- Sync -->
     <string name="sinxron">Synchronisation :</string>
@@ -697,7 +697,7 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="oflayn">Hors ligne</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">Méthode de désactivation</string>
+    <string name="ochirish_usuli">Comment la désactiver</string>
     <string name="usul_taymer">Minuteur</string>
     <string name="usul_maxfiy_kod">Code secret</string>
     <string name="usul_maxfiy_matn">Phrase secrète</string>
@@ -710,8 +710,8 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="farzand_sorovlari">Demandes de l’enfant</string>
     <string name="n_ta_yangi">%1$d nouvelles</string>
 
-    <string name="qalqonni_ochirish_sorovi">Demande de désactivation du Bouclier</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Si vous approuvez, le Bouclier sera désactivé immédiatement sur l’appareil de votre enfant</string>
+    <string name="qalqonni_ochirish_sorovi">Demande de désactiver la protection stricte</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Si vous acceptez, la protection stricte se désactive tout de suite sur le téléphone de votre enfant</string>
 
     <string name="rad_etish">Refuser</string>
 
@@ -719,8 +719,8 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="sorov_rad_etildi">Demande refusée</string>
     <string name="sorov_muddati_tugadi">Demande expirée</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Autoriser la désactivation du Bouclier ?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">Si vous approuvez, votre enfant pourra désactiver le Bouclier immédiatement.</string>
+    <string name="qalqon_ochirishga_ruxsat">Désactiver la protection stricte ?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Si vous acceptez, votre enfant pourra désactiver la protection stricte tout de suite.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">Autorisations</string>
@@ -730,11 +730,11 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="berilmagan">Non accordée</string>
 
     <string name="boshqa_rejimlar_uchun">Non requis pour les autres modes pour le moment</string>
-    <string name="gujanak_uchun">Pour le mode Hérisson</string>
-    <string name="qalqon_uchun">Pour le mode Bouclier</string>
+    <string name="gujanak_uchun">Pour la protection moyenne</string>
+    <string name="qalqon_uchun">Pour la protection stricte</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d autorisations requises désactivées</string>
-    <string name="zarur_ruxsat_banner_desc">Sans ces autorisations, la protection ne peut pas fonctionner pleinement : activez-les sur l’appareil de votre enfant</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Réglages désactivés sur le téléphone de votre enfant : %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">Touchez un réglage désactivé pour voir à quoi il sert et où l’activer.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Notifications</string>
@@ -748,19 +748,19 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="perm_accessibility">Accessibilité</string>
     <string name="perm_device_admin">Administrateur de l’appareil</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Votre enfant demande l’autorisation de désactiver le Bouclier pour « %1$s »</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s demande à désactiver la protection stricte</string>
     <string name="javob_uchun">Temps restant pour répondre : %1$s</string>
     <string name="rad_etildi">Refusée</string>
 
-    <string name="oxirgi_sinxron">Dernière synchronisation</string>
+    <string name="oxirgi_sinxron">Dernier contact</string>
     <string name="kod">Code</string>
-    <string name="qalqonni_ochirish">Désactiver le Bouclier</string>
-    <string name="himoya_ochiq_qisqa">Protection désactivée</string>
-    <string name="gujanak_faol_qisqa">Hérisson actif</string>
-    <string name="toliq_himoya_faol_qisqa">Protection complète active</string>
+    <string name="qalqonni_ochirish">Désactivation de la protection stricte</string>
+    <string name="himoya_ochiq_qisqa">Le temps d’écran et la position sont visibles. Aucune appli n’est fermée.</string>
+    <string name="gujanak_faol_qisqa">Les applis sont fermées aux heures que vous choisissez.</string>
+    <string name="toliq_himoya_faol_qisqa">Les applis, les sites et les vidéos courtes sont bloqués.</string>
     <string name="ruxsat_berildi">Autorisation accordée</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Vous avez approuvé la demande : le Bouclier sera désactivé sur l’appareil de votre enfant.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Vous avez refusé la demande. Le Bouclier reste actif.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Vous avez accepté : la protection stricte va se désactiver sur le téléphone de votre enfant.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Vous avez refusé. La protection stricte reste active.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Vous avez approuvé la demande : votre enfant peut maintenant se déconnecter de l’appli.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Vous avez approuvé la demande : votre enfant peut maintenant désinstaller l’appli.</string>
     <string name="sorov_rad_etildi_desc">Vous avez refusé la demande.</string>
@@ -1009,17 +1009,17 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="protection_section">Ce qui est protégé</string>
     <string name="protection_footer">Hoglt tient la liste à jour.</string>
     <string name="location_show_area">Afficher la zone</string>
-    <string name="info_sites_shield">Les sites ne sont bloqués que lorsque le mode Bouclier est activé sur le téléphone de votre enfant.</string>
-    <string name="protection_shield_note">La protection du contenu ne fonctionne que lorsque le mode Bouclier est activé sur le téléphone de votre enfant.</string>
-    <string name="protection_shield_short">Fonctionne uniquement en mode Bouclier</string>
-    <string name="info_features_shield">YouTube Shorts et Instagram Reels ne sont bloqués que lorsque le mode Bouclier est activé sur le téléphone de votre enfant.</string>
+    <string name="info_sites_shield">Les sites ne sont bloqués que lorsque la protection stricte est active sur le téléphone de votre enfant.</string>
+    <string name="protection_shield_note">Cela ne fonctionne que lorsque la protection stricte est active sur le téléphone de votre enfant.</string>
+    <string name="protection_shield_short">Fonctionne seulement avec la protection stricte</string>
+    <string name="info_features_shield">YouTube Shorts et Instagram Reels ne sont bloqués que lorsque la protection stricte est active sur le téléphone de votre enfant.</string>
     <string name="protection_by_child">Votre enfant l’a activé : seul votre enfant peut désactiver le sien</string>
     <string name="protection_by_coparent">L’autre parent l’a activé : seul lui peut désactiver le sien</string>
     <string name="protection_by_both">Votre enfant et l’autre parent l’ont activé : seuls eux peuvent désactiver le leur</string>
-    <string name="protection_policies_label">Plannings</string>
+    <string name="protection_policies_label">Vos règles</string>
     <string name="protection_policies_delivered">Livré au téléphone</string>
     <string name="protection_policies_pending">Pas encore livrés</string>
-    <string name="protection_gujanak_limits_note">Le mode Hérisson bloque les applis. Les sites et Shorts/Reels ne sont bloqués qu’en mode Bouclier.</string>
+    <string name="protection_gujanak_limits_note">La protection moyenne ferme seulement les applis. Les sites et les vidéos courtes ne sont bloqués qu’avec la protection stricte : sur le téléphone de votre enfant, Hoglt → « Contrôle » → « Mode Bouclier ».</string>
     <string name="editor_limit_days_follow_time">Comme pour l’horaire : les jours se choisissent sur la page de l’horaire</string>
     <string name="editor_limit_in_window">limite pendant cette période</string>
     <string name="editor_limit_outside_window">limite en dehors de cette période</string>
@@ -1342,7 +1342,7 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="parent_special_info_title">Fonctionne sur le téléphone de votre enfant</string>
     <string name="parent_special_info_1">Votre enfant ne peut pas désactiver la protection que vous activez. Il la verra dans son appli.</string>
     <string name="parent_special_info_2">En cas de risque, vous recevez seulement le sujet et le nom de l’appli, jamais le texte du message ni l’image.</string>
-    <string name="parent_special_info_3">Sur Android, le mode Bouclier est requis. Sur iPhone : sites 18+ et conversations Hoglagram.</string>
+    <string name="parent_special_info_3">Sur Android, la protection stricte est nécessaire. Sur iPhone : sites 18+ et conversations Hoglagram.</string>
     <string name="parent_special_nsfw_title">Images inappropriées</string>
     <string name="parent_special_nsfw_desc">Les images 18+ sont fermées et vous êtes prévenu</string>
     <string name="parent_special_conv_title">Conversations à risque</string>
@@ -1388,8 +1388,8 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="text_size_extra_large">Très grand</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">Je peux avoir encore 5 minutes ?</string>
+    <string name="ob_shield_hint">Votre enfant demande un peu plus de temps</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1417,9 +1417,37 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Sans ce réglage, les sites, YouTube Shorts et Instagram Reels ne sont pas bloqués, et l’appli peut être supprimée librement.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">Sur son téléphone</string>
+    <string name="prot_default_note">Pour l’instant, vos règles ne ferment aucune appli. Pour changer cela, sur le téléphone de votre enfant, ouvrez Hoglt → « Contrôle » et activez la protection.</string>
+    <string name="prot_strength">Niveau de protection</string>
+    <string name="prot_phone_settings">Réglages sur le téléphone de votre enfant</string>
+    <string name="prot_phone_settings_hint">Ils s’activent sur le téléphone de votre enfant, pas sur le vôtre.</string>
+    <string name="prot_x_of_y_on">%1$d sur %2$d activés</string>
+    <string name="prot_on">Activé</string>
+    <string name="prot_off">Désactivé</string>
+    <string name="prot_not_needed_now">Pas nécessaire pour l’instant</string>
+    <string name="prot_why_needed">À quoi ça sert ?</string>
+    <string name="prot_where_to_turn_on">Où l’activer : dans les réglages du téléphone de votre enfant, « %1$s ».</string>
+    <string name="prot_stronger_group">Pour une protection plus forte (%1$d)</string>
+    <string name="perm_title_notification">Messages et rappels</string>
+    <string name="perm_title_usage_stats">Temps passé dans chaque appli</string>
+    <string name="perm_title_overlay">Fermer les applis quand le temps est écoulé</string>
+    <string name="perm_title_overlay_popup">Fermer les applis (téléphones Xiaomi)</string>
+    <string name="perm_title_location">Voir où est votre enfant</string>
+    <string name="perm_title_gps">Position précise</string>
+    <string name="perm_title_battery">Fonctionne aussi en économie de batterie</string>
+    <string name="perm_title_auto_start">Se relance quand le téléphone redémarre</string>
+    <string name="perm_title_accessibility">Bloquer les sites et les vidéos courtes</string>
+    <string name="perm_title_device_admin">Empêche de supprimer Hoglt</string>
+    <string name="prot_btn_allow">Autoriser</string>
+    <string name="prot_btn_keep">Non, laisser ainsi</string>
+    <string name="prot_btn_delete_account">Oui, supprimer définitivement</string>
+    <string name="task_empty_in_progress">Aucune tâche en cours pour le moment</string>
+    <string name="task_empty_done">Aucune tâche terminée pour l’instant</string>
+    <string name="task_empty_overdue">Aucune tâche en retard</string>
+    <string name="task_empty_filter_hint">Touchez à nouveau le filtre sélectionné pour voir toutes les tâches.</string>
 </resources>

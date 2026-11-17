@@ -414,7 +414,7 @@
     <string name="farzand_ilova_kuzatish">자녀가 어떤 앱을 하루에 얼마나 쓰는지 확인해요.</string>
     <string name="uchtagacha_jadval">일정 최대 3개</string>
     <string name="jadval_cheklovlar">요일, 주간 또는 특별한 시간에 대해 따로 제한을 정해요.</string>
-    <string name="qattiq_bloklash_qalqon">강력 차단(방패 모드)</string>
+    <string name="qattiq_bloklash_qalqon">엄격한 보호: 웹사이트와 짧은 동영상도 차단돼요</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">자녀가 제한을 해제하거나 바꿀 수 없어요.</string>
     <string name="tez_bloklash_timer">빠른 차단(타이머)</string>
     <string name="vaqtinchalik_bloklash_tezi">필요할 때 몇 초 만에 임시 차단을 켜요.</string>
@@ -653,27 +653,27 @@
     <string name="tugilgan_sanasi">생년월일</string>
 
     <string name="farzand_himoyasi">자녀 보호</string>
-    <string name="ta_ruxsat_ochirilgan">권한 %1$d개 꺼짐</string>
+    <string name="ta_ruxsat_ochirilgan">자녀 휴대폰에서 꺼진 설정: %1$d개</string>
     <string name="ta_yangi_sorov_kutilmoqda">대기 중인 새 요청 %1$d개</string>
 
 
     <!-- Himoya -->
     <string name="himoya">보호</string>
 
-    <string name="mode_default_title">기본</string>
-    <string name="mode_gujanak_title">고슴도치</string>
-    <string name="mode_qalqon_title">방패</string>
+    <string name="mode_default_title">지켜보기만</string>
+    <string name="mode_gujanak_title">중간 보호</string>
+    <string name="mode_qalqon_title">엄격한 보호</string>
 
-    <string name="mode_default_desc">보호 꺼짐 — 모니터링만 해요</string>
-    <string name="mode_gujanak_desc">예약 차단이 작동 중이에요</string>
-    <string name="mode_qalqon_desc">완전 보호 — 강화된 차단이 작동 중이에요</string>
+    <string name="mode_default_desc">사용 시간과 위치를 볼 수 있어요. 앱은 닫히지 않아요.</string>
+    <string name="mode_gujanak_desc">정해 둔 시간에 앱이 닫혀요.</string>
+    <string name="mode_qalqon_desc">앱, 웹사이트, 짧은 동영상이 차단돼요.</string>
 
-    <string name="holat_nomalum">알 수 없는 상태</string>
-    <string name="holat_nomalum_desc">자녀 기기가 아직 동기화되지 않았어요</string>
+    <string name="holat_nomalum">아직 정보가 없어요</string>
+    <string name="holat_nomalum_desc">자녀 휴대폰이 인터넷에 연결되면 표시돼요</string>
 
-    <string name="himoya_boshlangich">기본</string>
+    <string name="himoya_boshlangich">지켜보기만</string>
     <string name="himoya_orta">중간 보호</string>
-    <string name="himoya_toliq">완전 보호</string>
+    <string name="himoya_toliq">엄격한 보호</string>
 
     <!-- Sync -->
     <string name="sinxron">동기화:</string>
@@ -687,7 +687,7 @@
     <string name="oflayn">오프라인</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">해제 방법</string>
+    <string name="ochirish_usuli">끄는 방법</string>
     <string name="usul_taymer">타이머</string>
     <string name="usul_maxfiy_kod">비밀 코드</string>
     <string name="usul_maxfiy_matn">비밀 문구</string>
@@ -700,8 +700,8 @@
     <string name="farzand_sorovlari">자녀 요청</string>
     <string name="n_ta_yangi">새 요청 %1$d개</string>
 
-    <string name="qalqonni_ochirish_sorovi">방패 해제 요청</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">승인하면 자녀의 기기에서 방패가 바로 해제돼요</string>
+    <string name="qalqonni_ochirish_sorovi">엄격한 보호 끄기 요청</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">허락하면 자녀 휴대폰의 엄격한 보호가 바로 꺼져요</string>
 
     <string name="rad_etish">거절</string>
 
@@ -709,8 +709,8 @@
     <string name="sorov_rad_etildi">요청을 거절했어요</string>
     <string name="sorov_muddati_tugadi">요청이 만료되었어요</string>
 
-    <string name="qalqon_ochirishga_ruxsat">방패 해제를 허용할까요?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">승인하면 자녀가 방패를 바로 해제할 수 있어요.</string>
+    <string name="qalqon_ochirishga_ruxsat">엄격한 보호를 끌까요?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">허락하면 자녀가 엄격한 보호를 바로 끌 수 있어요.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">권한</string>
@@ -720,11 +720,11 @@
     <string name="berilmagan">허용 안 됨</string>
 
     <string name="boshqa_rejimlar_uchun">다른 모드에서는 지금 필요하지 않아요</string>
-    <string name="gujanak_uchun">고슴도치 모드용</string>
-    <string name="qalqon_uchun">방패 모드용</string>
+    <string name="gujanak_uchun">중간 보호용</string>
+    <string name="qalqon_uchun">엄격한 보호용</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">필수 권한 %1$d개가 꺼져 있어요</string>
-    <string name="zarur_ruxsat_banner_desc">이 권한이 없으면 보호가 완전히 작동하지 않아요. 자녀의 기기에서 켜 주세요</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">자녀 휴대폰에서 꺼진 설정: %1$d개</string>
+    <string name="zarur_ruxsat_banner_desc">꺼진 설정을 누르면 어디에 쓰이는지, 어디서 켜는지 볼 수 있어요.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">알림</string>
@@ -738,19 +738,19 @@
     <string name="perm_accessibility">접근성</string>
     <string name="perm_device_admin">기기 관리자</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">자녀가 '%1$s'의 방패 해제를 허락해 달라고 요청하고 있어요</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s의 요청: 엄격한 보호 끄기</string>
     <string name="javob_uchun">응답 가능 시간: %1$s</string>
     <string name="rad_etildi">거절됨</string>
 
-    <string name="oxirgi_sinxron">마지막 동기화</string>
+    <string name="oxirgi_sinxron">마지막 연결</string>
     <string name="kod">코드</string>
-    <string name="qalqonni_ochirish">방패 해제</string>
-    <string name="himoya_ochiq_qisqa">보호 꺼짐</string>
-    <string name="gujanak_faol_qisqa">고슴도치 작동 중</string>
-    <string name="toliq_himoya_faol_qisqa">완전 보호 작동 중</string>
+    <string name="qalqonni_ochirish">엄격한 보호 끄기</string>
+    <string name="himoya_ochiq_qisqa">사용 시간과 위치를 볼 수 있어요. 앱은 닫히지 않아요.</string>
+    <string name="gujanak_faol_qisqa">정해 둔 시간에 앱이 닫혀요.</string>
+    <string name="toliq_himoya_faol_qisqa">앱, 웹사이트, 짧은 동영상이 차단돼요.</string>
     <string name="ruxsat_berildi">권한이 허용되었어요</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">요청을 승인했어요. 자녀의 기기에서 방패가 해제돼요.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">요청을 거절했어요. 방패는 계속 켜져 있어요.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">허락했어요. 자녀 휴대폰의 엄격한 보호가 꺼져요.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">거절했어요. 엄격한 보호가 계속 켜져 있어요.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">요청을 승인했어요. 이제 자녀가 앱에서 로그아웃할 수 있어요.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">요청을 승인했어요. 이제 자녀가 앱을 삭제할 수 있어요.</string>
     <string name="sorov_rad_etildi_desc">요청을 거절했어요.</string>
@@ -999,17 +999,17 @@
     <string name="protection_section">보호 대상</string>
     <string name="protection_footer">Hoglt가 목록을 최신으로 관리해요.</string>
     <string name="location_show_area">구역 보기</string>
-    <string name="info_sites_shield">사이트는 자녀 휴대폰에서 방패 모드가 켜져 있는 동안에만 차단돼요.</string>
-    <string name="protection_shield_note">콘텐츠 보호는 자녀 휴대폰에서 방패 모드가 켜져 있는 동안에만 작동해요.</string>
-    <string name="protection_shield_short">방패 모드에서만 작동해요</string>
-    <string name="info_features_shield">YouTube Shorts와 Instagram Reels는 자녀 휴대폰에서 방패 모드가 켜져 있는 동안에만 차단돼요.</string>
+    <string name="info_sites_shield">웹사이트는 자녀 휴대폰에서 엄격한 보호가 켜져 있을 때만 차단돼요.</string>
+    <string name="protection_shield_note">자녀 휴대폰에서 엄격한 보호가 켜져 있을 때만 작동해요.</string>
+    <string name="protection_shield_short">엄격한 보호에서만 작동해요</string>
+    <string name="info_features_shield">YouTube Shorts와 Instagram Reels는 자녀 휴대폰에서 엄격한 보호가 켜져 있을 때만 차단돼요.</string>
     <string name="protection_by_child">자녀가 켰어요. 자녀만 끌 수 있어요</string>
     <string name="protection_by_coparent">다른 부모님이 켰어요. 그분만 끌 수 있어요</string>
     <string name="protection_by_both">자녀와 다른 부모님이 켰어요. 그들만 끌 수 있어요</string>
-    <string name="protection_policies_label">일정</string>
+    <string name="protection_policies_label">내 규칙</string>
     <string name="protection_policies_delivered">휴대폰에 전달됨</string>
     <string name="protection_policies_pending">아직 전달되지 않음</string>
-    <string name="protection_gujanak_limits_note">고슴도치 모드는 앱을 차단해요. 사이트와 Shorts/Reels는 방패 모드에서만 차단돼요.</string>
+    <string name="protection_gujanak_limits_note">중간 보호는 앱만 닫아요. 웹사이트와 짧은 동영상은 엄격한 보호에서만 차단돼요: 자녀 휴대폰에서 Hoglt → ‘관리’ → ‘방패 모드’.</string>
     <string name="editor_limit_days_follow_time">시간과 같아요. 요일은 시간 페이지에서 선택해요</string>
     <string name="editor_limit_in_window">이 시간대의 한도</string>
     <string name="editor_limit_outside_window">이 시간대 밖의 한도</string>
@@ -1332,7 +1332,7 @@
     <string name="parent_special_info_title">자녀의 휴대폰에서 작동해요</string>
     <string name="parent_special_info_1">내가 켠 보호 기능은 자녀가 끌 수 없어요. 자녀의 앱에도 표시돼요.</string>
     <string name="parent_special_info_2">위험이 있으면 주제와 앱 이름만 받고, 메시지 내용이나 이미지는 절대 받지 않아요.</string>
-    <string name="parent_special_info_3">Android에서는 방패 모드가 필요해요. iPhone에서는: 19금 웹사이트와 Hoglagram 대화.</string>
+    <string name="parent_special_info_3">Android에서는 엄격한 보호가 필요해요. iPhone에서는: 19금 웹사이트와 Hoglagram 대화.</string>
     <string name="parent_special_nsfw_title">부적절한 이미지</string>
     <string name="parent_special_nsfw_desc">19금 이미지가 닫히고 알림을 받아요</string>
     <string name="parent_special_conv_title">위험한 대화</string>
@@ -1378,8 +1378,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">5분만 더 해도 돼요?</string>
+    <string name="ob_shield_hint">자녀가 시간을 더 달라고 해요</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1407,9 +1407,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">이 설정이 없으면 웹사이트, YouTube Shorts, Instagram Reels가 차단되지 않고, 앱도 쉽게 삭제될 수 있어요.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">자녀 휴대폰에서</string>
+    <string name="prot_default_note">지금은 규칙이 어떤 앱도 닫지 않아요. 닫히게 하려면 자녀 휴대폰에서 Hoglt를 열고 → ‘관리’에서 보호를 켜 주세요.</string>
+    <string name="prot_strength">보호 강도</string>
+    <string name="prot_phone_settings">자녀 휴대폰의 설정</string>
+    <string name="prot_phone_settings_hint">이 설정은 내 휴대폰이 아니라 자녀 휴대폰에서 켜요.</string>
+    <string name="prot_x_of_y_on">%2$d개 중 %1$d개 켜짐</string>
+    <string name="prot_on">켜짐</string>
+    <string name="prot_off">꺼짐</string>
+    <string name="prot_not_needed_now">지금은 필요 없어요</string>
+    <string name="prot_why_needed">이건 어디에 쓰여요?</string>
+    <string name="prot_where_to_turn_on">켜는 곳: 자녀 휴대폰 설정의 ‘%1$s’.</string>
+    <string name="prot_stronger_group">더 강한 보호를 위해 (%1$d)</string>
+    <string name="perm_title_notification">메시지와 알림</string>
+    <string name="perm_title_usage_stats">앱별 사용 시간</string>
+    <string name="perm_title_overlay">시간이 끝나면 앱 닫기</string>
+    <string name="perm_title_overlay_popup">앱 닫기 (Xiaomi 휴대폰)</string>
+    <string name="perm_title_location">자녀 위치 보기</string>
+    <string name="perm_title_gps">정확한 위치</string>
+    <string name="perm_title_battery">절전 모드에서도 작동</string>
+    <string name="perm_title_auto_start">휴대폰을 다시 켜면 다시 실행</string>
+    <string name="perm_title_accessibility">웹사이트와 짧은 동영상 차단</string>
+    <string name="perm_title_device_admin">Hoglt 삭제 막기</string>
+    <string name="prot_btn_allow">허락하기</string>
+    <string name="prot_btn_keep">아니요, 그대로 두기</string>
+    <string name="prot_btn_delete_account">네, 완전히 삭제</string>
+    <string name="task_empty_in_progress">지금 진행 중인 할 일이 없어요</string>
+    <string name="task_empty_done">아직 완료된 할 일이 없어요</string>
+    <string name="task_empty_overdue">기한이 지난 할 일이 없어요</string>
+    <string name="task_empty_filter_hint">선택한 필터를 한 번 더 누르면 모든 할 일을 볼 수 있어요.</string>
 </resources>

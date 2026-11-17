@@ -417,7 +417,7 @@
     <string name="farzand_ilova_kuzatish">Отслеживайте, какими приложениями и сколько времени пользуется ваш ребёнок в течение дня.</string>
     <string name="uchtagacha_jadval">Создание до 3 расписаний</string>
     <string name="jadval_cheklovlar">Устанавливайте отдельные ограничения для дня, недели или специальных периодов.</string>
-    <string name="qattiq_bloklash_qalqon">Жёсткая блокировка (режим «Щит»)</string>
+    <string name="qattiq_bloklash_qalqon">Строгая защита: закрываются и сайты, и короткие видео</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Ваш ребёнок не сможет отключить или изменить ограничения.</string>
     <string name="tez_bloklash_timer">Быстрая блокировка (Таймер)</string>
     <string name="vaqtinchalik_bloklash_tezi">При необходимости включайте временную блокировку за несколько секунд.</string>
@@ -646,25 +646,25 @@
     <string name="tugilgan_sanasi">Дата рождения</string>
 
     <string name="farzand_himoyasi">Защита ребёнка</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d разрешений отключено</string>
+    <string name="ta_ruxsat_ochirilgan">На телефоне ребёнка выключено настроек: %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">Ожидается %1$d новых запросов</string>
 
     <string name="himoya">Защита</string>
 
-    <string name="mode_default_title">По умолчанию</string>
-    <string name="mode_gujanak_title">Ғужанак</string>
-    <string name="mode_qalqon_title">Щит</string>
+    <string name="mode_default_title">Только наблюдение</string>
+    <string name="mode_gujanak_title">Средняя защита</string>
+    <string name="mode_qalqon_title">Строгая защита</string>
 
-    <string name="mode_default_desc">Защита отключена — работает только мониторинг</string>
-    <string name="mode_gujanak_desc">Блокировка по расписанию активна</string>
-    <string name="mode_qalqon_desc">Полная защита — усиленная блокировка активна</string>
+    <string name="mode_default_desc">Видно время и местоположение. Приложения не закрываются.</string>
+    <string name="mode_gujanak_desc">Приложения закрываются в заданное время.</string>
+    <string name="mode_qalqon_desc">Закрываются приложения, сайты и короткие видео.</string>
 
-    <string name="holat_nomalum">Статус неизвестен</string>
-    <string name="holat_nomalum_desc">Устройство ребёнка ещё не синхронизировано</string>
+    <string name="holat_nomalum">Данных пока нет</string>
+    <string name="holat_nomalum_desc">Данные появятся, когда телефон ребёнка выйдет в интернет</string>
 
-    <string name="himoya_boshlangich">Базовая</string>
+    <string name="himoya_boshlangich">Только наблюдение</string>
     <string name="himoya_orta">Средняя защита</string>
-    <string name="himoya_toliq">Полная защита</string>
+    <string name="himoya_toliq">Строгая защита</string>
 
     <string name="sinxron">Синхронизация:</string>
     <string name="sinxron_yoq">ещё не было</string>
@@ -676,7 +676,7 @@
     <string name="onlayn">Онлайн</string>
     <string name="oflayn">Офлайн</string>
 
-    <string name="ochirish_usuli">Способ отключения</string>
+    <string name="ochirish_usuli">Как отключается</string>
     <string name="usul_taymer">Таймер</string>
     <string name="usul_maxfiy_kod">Секретный код</string>
     <string name="usul_maxfiy_matn">Секретная фраза</string>
@@ -688,8 +688,8 @@
     <string name="farzand_sorovlari">Запросы ребёнка</string>
     <string name="n_ta_yangi">%1$d новых</string>
 
-    <string name="qalqonni_ochirish_sorovi">Запрос на отключение Щита</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Если подтвердить, Щит будет немедленно отключён на устройстве ребёнка</string>
+    <string name="qalqonni_ochirish_sorovi">Просьба отключить строгую защиту</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Если разрешите, строгая защита на телефоне ребёнка сразу отключится</string>
 
     <string name="rad_etish">Отклонить</string>
 
@@ -697,8 +697,8 @@
     <string name="sorov_rad_etildi">Запрос отклонён</string>
     <string name="sorov_muddati_tugadi">Срок запроса истёк</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Разрешить отключение Щита?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">После подтверждения ребёнок сможет немедленно отключить Щит.</string>
+    <string name="qalqon_ochirishga_ruxsat">Отключить строгую защиту?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Если разрешите, ребёнок сможет сразу отключить строгую защиту.</string>
 
     <string name="ruxsatlar">Разрешения</string>
     <string name="x_dan_y_berilgan">%1$d из %2$d предоставлено</string>
@@ -707,11 +707,11 @@
     <string name="berilmagan">Не предоставлено</string>
 
     <string name="boshqa_rejimlar_uchun">Для других режимов пока не требуется</string>
-    <string name="gujanak_uchun">Для режима Ғужанак</string>
-    <string name="qalqon_uchun">Для режима Щит</string>
+    <string name="gujanak_uchun">Для средней защиты</string>
+    <string name="qalqon_uchun">Для строгой защиты</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d обязательных разрешений отключено</string>
-    <string name="zarur_ruxsat_banner_desc">Без этих разрешений защита не сможет работать полноценно — включите их на устройстве ребёнка</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">На телефоне ребёнка выключено настроек: %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">Нажмите на выключенную строку — увидите, зачем она нужна и где её включить.</string>
 
     <string name="perm_notification">Уведомления</string>
     <string name="perm_usage_stats">Статистика использования</string>
@@ -744,22 +744,22 @@
 
     <string name="qayta_yuborish">Отправить повторно</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Ваш ребёнок запрашивает разрешение на отключение режима «Щит» для «%1$s»</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s просит разрешить отключить строгую защиту</string>
 
     <string name="javob_uchun">Время на ответ: %1$s</string>
 
     <string name="rad_etildi">Отклонено</string>
 
 
-    <string name="oxirgi_sinxron">Последняя синхронизация</string>
+    <string name="oxirgi_sinxron">Последняя связь с телефоном</string>
     <string name="kod">Код</string>
-    <string name="qalqonni_ochirish">Отключить Щит</string>
-    <string name="himoya_ochiq_qisqa">Защита отключена</string>
-    <string name="gujanak_faol_qisqa">Ёжик активен</string>
-    <string name="toliq_himoya_faol_qisqa">Полная защита активна</string>
+    <string name="qalqonni_ochirish">Отключение строгой защиты</string>
+    <string name="himoya_ochiq_qisqa">Видно время и местоположение. Приложения не закрываются.</string>
+    <string name="gujanak_faol_qisqa">Приложения закрываются в заданное время.</string>
+    <string name="toliq_himoya_faol_qisqa">Закрываются приложения, сайты и короткие видео.</string>
     <string name="ruxsat_berildi">Разрешено</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Вы дали разрешение — у вашего ребёнка Щит будет отключён.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Вы отклонили запрос. Щит остался активным.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Вы разрешили — строгая защита на телефоне ребёнка отключится.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Вы отказали. Строгая защита продолжает работать.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Вы дали разрешение — ваш ребёнок может выйти из приложения.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Вы дали разрешение — ваш ребёнок может удалить приложение.</string>
     <string name="sorov_rad_etildi_desc">Вы отклонили запрос.</string>
@@ -1022,17 +1022,17 @@
     <string name="protection_section">Что защищается</string>
     <string name="protection_footer">Список обновляет Tikoncha.</string>
     <string name="location_show_area">Показать зону</string>
-    <string name="info_sites_shield">Сайты закрываются, только когда на телефоне ребёнка включён режим «Щит».</string>
-    <string name="protection_shield_note">Защита контента работает, только когда на телефоне ребёнка включён режим «Щит».</string>
-    <string name="protection_shield_short">Работает только в режиме «Щит»</string>
-    <string name="info_features_shield">YouTube Shorts и Instagram Reels закрываются, только когда на телефоне ребёнка включён режим «Щит».</string>
+    <string name="info_sites_shield">Сайты закрываются, только когда на телефоне ребёнка включена строгая защита.</string>
+    <string name="protection_shield_note">Это работает, только когда на телефоне ребёнка включена строгая защита.</string>
+    <string name="protection_shield_short">Работает только при строгой защите</string>
+    <string name="info_features_shield">YouTube Shorts и Instagram Reels закрываются, только когда на телефоне ребёнка включена строгая защита.</string>
     <string name="protection_by_child">Ребёнок включил у себя — отключить это может только он</string>
     <string name="protection_by_coparent">Второй родитель включил — отключить это может только он</string>
     <string name="protection_by_both">Включили ребёнок и второй родитель — отключить это могут только они сами</string>
-    <string name="protection_policies_label">Расписания</string>
+    <string name="protection_policies_label">Ваши правила</string>
     <string name="protection_policies_delivered">Доставлены на телефон</string>
     <string name="protection_policies_pending">Ещё не доставлены</string>
-    <string name="protection_gujanak_limits_note">В режиме «Ғужанак» блокируются приложения. Сайты и Shorts/Reels блокируются только в режиме «Щит».</string>
+    <string name="protection_gujanak_limits_note">В средней защите закрываются только приложения. Сайты и короткие видео — только в строгой: на телефоне ребёнка Hoglt → «Контроль» → «Щит».</string>
     <string name="editor_limit_days_follow_time">Как у времени — дни выбираются на странице времени</string>
     <string name="editor_limit_in_window">лимит в это время</string>
     <string name="editor_limit_outside_window">лимит вне этого времени</string>
@@ -1355,7 +1355,7 @@
     <string name="parent_special_info_title">Работает на телефоне ребёнка</string>
     <string name="parent_special_info_1">Включённую вами защиту ребёнок отключить не сможет. Он увидит это в приложении.</string>
     <string name="parent_special_info_2">При опасности вы получите только тему и название приложения — не текст переписки и не фото.</string>
-    <string name="parent_special_info_3">На Android нужен режим «Щит». На iPhone: сайты 18+ и переписки в Tikonchagram.</string>
+    <string name="parent_special_info_3">На Android нужна строгая защита. На iPhone: сайты 18+ и переписки в Tikonchagram.</string>
     <string name="parent_special_nsfw_title">Неприличные картинки</string>
     <string name="parent_special_nsfw_desc">Картинка 18+ закрывается, вам — уведомление</string>
     <string name="parent_special_conv_title">Опасные переписки</string>
@@ -1442,8 +1442,8 @@
     <string name="text_size_extra_large">Очень крупный</string>
     <string name="text_size_preview">Сегодня ваш ребёнок провёл в телефоне 2 часа 15 минут.</string>
     <string name="text_size_footer">Выбор сразу применяется ко всему приложению. Размер шрифта из настроек телефона тоже учитывается.</string>
-    <string name="ob_shield_request">Запрос: отключить строгую защиту</string>
-    <string name="ob_shield_hint">Щит — режим самой строгой защиты</string>
+    <string name="ob_shield_request">Можно ещё 5 минут?</string>
+    <string name="ob_shield_hint">Ребёнок просит ещё времени</string>
     <string name="register_role_label">Кем вы приходитесь ребёнку?</string>
     <string name="add_child_scan_qr">Сканировать QR-код</string>
     <string name="add_child_scan_hint">Наведите камеру на QR-код на телефоне ребёнка</string>
@@ -1471,9 +1471,37 @@
     <string name="perm_why_gps">При выключенном GPS местоположение не обновляется — на карте остаётся старая точка.</string>
     <string name="perm_why_battery">Телефон экономит батарею и останавливает Tikoncha в фоне: защита и местоположение время от времени пропадают.</string>
     <string name="perm_why_auto_start">После перезагрузки телефона или закрытия приложения Tikoncha не запускается сам — защита не работает, пока ребёнок не откроет приложение. На Xiaomi, Redmi и POCO включается в настройках телефона: Приложения → Tikoncha → Автозапуск.</string>
-    <string name="perm_why_accessibility">Основа режима «Щит»: без него не закрываются сайты, YouTube Shorts и Instagram Reels и не работает защита от удаления приложения.</string>
+    <string name="perm_why_accessibility">Без этого не закрываются сайты, YouTube Shorts и Instagram Reels, и не работает защита от удаления приложения.</string>
     <string name="perm_why_device_admin">Ребёнок может удалить Tikoncha как обычное приложение, не спрашивая вас.</string>
     <string name="policy_paywall_app_limits">На бесплатном тарифе в одно расписание можно добавить не больше %1$d приложений. Для большего нужен Plus.</string>
     <string name="policy_paywall_app_limit">Достигнут лимит приложений в одном расписании для вашего тарифа.</string>
     <string name="clip_child_phone">На его телефоне</string>
+    <string name="prot_default_note">Сейчас ваши правила не закрывают приложения. Чтобы закрывали, на телефоне ребёнка откройте Hoglt → «Контроль» и включите защиту.</string>
+    <string name="prot_strength">Сила защиты</string>
+    <string name="prot_phone_settings">Настройки на телефоне ребёнка</string>
+    <string name="prot_phone_settings_hint">Они включаются на телефоне ребёнка, а не на вашем.</string>
+    <string name="prot_x_of_y_on">Включено %1$d из %2$d</string>
+    <string name="prot_on">Включено</string>
+    <string name="prot_off">Выключено</string>
+    <string name="prot_not_needed_now">Сейчас не нужно</string>
+    <string name="prot_why_needed">Зачем это нужно?</string>
+    <string name="prot_where_to_turn_on">Где включить: в настройках телефона ребёнка — «%1$s».</string>
+    <string name="prot_stronger_group">Для более сильной защиты (%1$d)</string>
+    <string name="perm_title_notification">Сообщения и напоминания</string>
+    <string name="perm_title_usage_stats">Сколько времени в каждом приложении</string>
+    <string name="perm_title_overlay">Закрытие приложения, когда время вышло</string>
+    <string name="perm_title_overlay_popup">Закрытие приложений (на Xiaomi)</string>
+    <string name="perm_title_location">Где находится ребёнок</string>
+    <string name="perm_title_gps">Точное местоположение</string>
+    <string name="perm_title_battery">Работа при экономии батареи</string>
+    <string name="perm_title_auto_start">Запуск после перезагрузки телефона</string>
+    <string name="perm_title_accessibility">Закрытие сайтов и коротких видео</string>
+    <string name="perm_title_device_admin">Защита от удаления Hoglt</string>
+    <string name="prot_btn_allow">Разрешаю</string>
+    <string name="prot_btn_keep">Нет, оставить</string>
+    <string name="prot_btn_delete_account">Да, удалить навсегда</string>
+    <string name="task_empty_in_progress">Сейчас нет задач в работе</string>
+    <string name="task_empty_done">Выполненных задач пока нет</string>
+    <string name="task_empty_overdue">Просроченных задач нет</string>
+    <string name="task_empty_filter_hint">Чтобы увидеть все задачи, нажмите на выбранный фильтр ещё раз.</string>
 </resources>

@@ -414,7 +414,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="farzand_ilova_kuzatish">Consulta qué apps usa tu hijo y cuánto durante el día.</string>
     <string name="uchtagacha_jadval">Hasta 3 horarios</string>
     <string name="jadval_cheklovlar">Establece restricciones distintas para días, semanas u horas especiales.</string>
-    <string name="qattiq_bloklash_qalqon">Bloqueo estricto (modo Escudo)</string>
+    <string name="qattiq_bloklash_qalqon">Protección estricta: también se bloquean sitios web y videos cortos</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Tu hijo no puede desactivar ni cambiar las restricciones.</string>
     <string name="tez_bloklash_timer">Bloqueo rápido (temporizador)</string>
     <string name="vaqtinchalik_bloklash_tezi">Activa un bloqueo temporal en pocos segundos cuando lo necesites.</string>
@@ -669,27 +669,27 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="tugilgan_sanasi">Fecha de nacimiento</string>
 
     <string name="farzand_himoyasi">Protección infantil</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d permisos desactivados</string>
+    <string name="ta_ruxsat_ochirilgan">Ajustes desactivados en el teléfono de tu hijo: %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d solicitudes nuevas pendientes</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Protección</string>
 
-    <string name="mode_default_title">Predeterminado</string>
-    <string name="mode_gujanak_title">Erizo</string>
-    <string name="mode_qalqon_title">Escudo</string>
+    <string name="mode_default_title">Solo supervisión</string>
+    <string name="mode_gujanak_title">Protección media</string>
+    <string name="mode_qalqon_title">Protección estricta</string>
 
-    <string name="mode_default_desc">Protección desactivada: solo supervisión</string>
-    <string name="mode_gujanak_desc">El bloqueo programado está activo</string>
-    <string name="mode_qalqon_desc">Protección total: el bloqueo reforzado está activo</string>
+    <string name="mode_default_desc">Se ven el tiempo de pantalla y la ubicación. No se cierra ninguna app.</string>
+    <string name="mode_gujanak_desc">Las apps se cierran a las horas que tú elijas.</string>
+    <string name="mode_qalqon_desc">Se bloquean apps, sitios web y videos cortos.</string>
 
-    <string name="holat_nomalum">Estado desconocido</string>
-    <string name="holat_nomalum_desc">El dispositivo del niño aún no se ha sincronizado</string>
+    <string name="holat_nomalum">Aún no hay información</string>
+    <string name="holat_nomalum_desc">Aparecerá cuando el teléfono de tu hijo se conecte a internet</string>
 
-    <string name="himoya_boshlangich">Básica</string>
-    <string name="himoya_orta">Protección moderada</string>
-    <string name="himoya_toliq">Protección total</string>
+    <string name="himoya_boshlangich">Solo supervisión</string>
+    <string name="himoya_orta">Protección media</string>
+    <string name="himoya_toliq">Protección estricta</string>
 
     <!-- Sync -->
     <string name="sinxron">Sincronizado:</string>
@@ -703,7 +703,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="oflayn">Sin conexión</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">Método de desactivación</string>
+    <string name="ochirish_usuli">Cómo se desactiva</string>
     <string name="usul_taymer">Temporizador</string>
     <string name="usul_maxfiy_kod">Código secreto</string>
     <string name="usul_maxfiy_matn">Frase secreta</string>
@@ -716,8 +716,8 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="farzand_sorovlari">Solicitudes del niño</string>
     <string name="n_ta_yangi">%1$d nuevas</string>
 
-    <string name="qalqonni_ochirish_sorovi">Solicitud para desactivar el Escudo</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Si la apruebas, el Escudo se desactivará de inmediato en el dispositivo de tu hijo</string>
+    <string name="qalqonni_ochirish_sorovi">Solicitud para desactivar la protección estricta</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Si lo permites, la protección estricta se desactivará enseguida en el teléfono de tu hijo</string>
 
     <string name="rad_etish">Rechazar</string>
 
@@ -725,8 +725,8 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="sorov_rad_etildi">Solicitud rechazada</string>
     <string name="sorov_muddati_tugadi">La solicitud ha caducado</string>
 
-    <string name="qalqon_ochirishga_ruxsat">¿Permitir desactivar el Escudo?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">Si la apruebas, tu hijo podrá desactivar el Escudo de inmediato.</string>
+    <string name="qalqon_ochirishga_ruxsat">¿Desactivar la protección estricta?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Si lo permites, tu hijo podrá desactivar la protección estricta enseguida.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">Permisos</string>
@@ -736,11 +736,11 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="berilmagan">No concedido</string>
 
     <string name="boshqa_rejimlar_uchun">No se requiere por ahora para otros modos</string>
-    <string name="gujanak_uchun">Para el modo Erizo</string>
-    <string name="qalqon_uchun">Para el modo Escudo</string>
+    <string name="gujanak_uchun">Para la protección media</string>
+    <string name="qalqon_uchun">Para la protección estricta</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d permisos necesarios desactivados</string>
-    <string name="zarur_ruxsat_banner_desc">Sin estos permisos la protección no puede funcionar por completo: actívalos en el dispositivo de tu hijo</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Ajustes desactivados en el teléfono de tu hijo: %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">Toca un ajuste desactivado para ver para qué sirve y dónde activarlo.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Notificaciones</string>
@@ -754,19 +754,19 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="perm_accessibility">Accesibilidad</string>
     <string name="perm_device_admin">Administrador del dispositivo</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Tu hijo solicita permiso para desactivar el Escudo de “%1$s”</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s pide desactivar la protección estricta</string>
     <string name="javob_uchun">Tiempo restante para responder: %1$s</string>
     <string name="rad_etildi">Rechazada</string>
 
-    <string name="oxirgi_sinxron">Última sincronización</string>
+    <string name="oxirgi_sinxron">Última conexión</string>
     <string name="kod">Código</string>
-    <string name="qalqonni_ochirish">Desactivar el Escudo</string>
-    <string name="himoya_ochiq_qisqa">Protección desactivada</string>
-    <string name="gujanak_faol_qisqa">Erizo activo</string>
-    <string name="toliq_himoya_faol_qisqa">Protección total activa</string>
+    <string name="qalqonni_ochirish">Desactivar la protección estricta</string>
+    <string name="himoya_ochiq_qisqa">Se ven el tiempo de pantalla y la ubicación. No se cierra ninguna app.</string>
+    <string name="gujanak_faol_qisqa">Las apps se cierran a las horas que tú elijas.</string>
+    <string name="toliq_himoya_faol_qisqa">Se bloquean apps, sitios web y videos cortos.</string>
     <string name="ruxsat_berildi">Permiso concedido</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Aprobaste la solicitud: el Escudo se desactivará en el dispositivo de tu hijo.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Rechazaste la solicitud. El Escudo sigue activo.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Lo permitiste: la protección estricta se desactivará en el teléfono de tu hijo.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Lo rechazaste. La protección estricta sigue activa.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Aprobaste la solicitud: tu hijo ya puede cerrar sesión en la app.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Aprobaste la solicitud: tu hijo ya puede desinstalar la app.</string>
     <string name="sorov_rad_etildi_desc">Rechazaste la solicitud.</string>
@@ -1015,17 +1015,17 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="protection_section">Qué está protegido</string>
     <string name="protection_footer">Hoglt mantiene la lista actualizada.</string>
     <string name="location_show_area">Mostrar zona</string>
-    <string name="info_sites_shield">Los sitios solo se bloquean mientras el modo Escudo está activado en el teléfono de tu hijo.</string>
-    <string name="protection_shield_note">La protección de contenido solo funciona mientras el modo Escudo está activado en el teléfono de tu hijo.</string>
-    <string name="protection_shield_short">Solo funciona en modo Escudo</string>
-    <string name="info_features_shield">YouTube Shorts e Instagram Reels solo se bloquean mientras el modo Escudo está activado en el teléfono de tu hijo.</string>
+    <string name="info_sites_shield">Los sitios web solo se bloquean mientras la protección estricta está activada en el teléfono de tu hijo.</string>
+    <string name="protection_shield_note">Esto solo funciona mientras la protección estricta está activada en el teléfono de tu hijo.</string>
+    <string name="protection_shield_short">Solo funciona con la protección estricta</string>
+    <string name="info_features_shield">YouTube Shorts e Instagram Reels solo se bloquean mientras la protección estricta está activada en el teléfono de tu hijo.</string>
     <string name="protection_by_child">Lo activó tu hijo: solo tu hijo puede desactivar el suyo</string>
     <string name="protection_by_coparent">Lo activó el otro padre: solo él puede desactivar el suyo</string>
     <string name="protection_by_both">Lo activaron tu hijo y el otro padre: solo ellos pueden desactivar el suyo</string>
-    <string name="protection_policies_label">Horarios</string>
+    <string name="protection_policies_label">Tus reglas</string>
     <string name="protection_policies_delivered">Entregado al teléfono</string>
     <string name="protection_policies_pending">Aún no entregado</string>
-    <string name="protection_gujanak_limits_note">El modo Erizo bloquea apps. Los sitios y Shorts/Reels solo se bloquean en el modo Escudo.</string>
+    <string name="protection_gujanak_limits_note">La protección media solo cierra apps. Los sitios web y los videos cortos solo se bloquean con la protección estricta: en el teléfono de tu hijo, Hoglt → «Control» → «Modo Escudo».</string>
     <string name="editor_limit_days_follow_time">Igual que la hora: los días se eligen en la página de la hora</string>
     <string name="editor_limit_in_window">límite durante este tiempo</string>
     <string name="editor_limit_outside_window">límite fuera de este tiempo</string>
@@ -1348,7 +1348,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="parent_special_info_title">Funciona en el teléfono de tu hijo</string>
     <string name="parent_special_info_1">Tu hijo no puede desactivar la protección que actives. La verá en su app.</string>
     <string name="parent_special_info_2">Si hay un riesgo, solo recibes el tema y el nombre de la app, nunca el texto del mensaje ni la imagen.</string>
-    <string name="parent_special_info_3">En Android se necesita el modo Escudo. En iPhone: sitios web +18 y chats de Hoglagram.</string>
+    <string name="parent_special_info_3">En Android se necesita la protección estricta. En iPhone: sitios web +18 y chats de Hoglagram.</string>
     <string name="parent_special_nsfw_title">Imágenes inapropiadas</string>
     <string name="parent_special_nsfw_desc">Las imágenes +18 se cierran y recibes un aviso</string>
     <string name="parent_special_conv_title">Chats de riesgo</string>
@@ -1394,8 +1394,8 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="text_size_extra_large">Muy grande</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">¿Me das 5 minutos más?</string>
+    <string name="ob_shield_hint">Tu hijo pide más tiempo</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1423,9 +1423,37 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Sin esto, los sitios web, YouTube Shorts e Instagram Reels no se bloquean, y la app se puede desinstalar sin problema.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">En su teléfono</string>
+    <string name="prot_default_note">Ahora mismo tus reglas no cierran ninguna app. Para cambiarlo, en el teléfono de tu hijo abre Hoglt → «Control» y activa la protección.</string>
+    <string name="prot_strength">Nivel de protección</string>
+    <string name="prot_phone_settings">Ajustes en el teléfono de tu hijo</string>
+    <string name="prot_phone_settings_hint">Se activan en el teléfono de tu hijo, no en el tuyo.</string>
+    <string name="prot_x_of_y_on">%1$d de %2$d activados</string>
+    <string name="prot_on">Activado</string>
+    <string name="prot_off">Desactivado</string>
+    <string name="prot_not_needed_now">No hace falta ahora</string>
+    <string name="prot_why_needed">¿Para qué sirve?</string>
+    <string name="prot_where_to_turn_on">Dónde activarlo: en los ajustes del teléfono de tu hijo, «%1$s».</string>
+    <string name="prot_stronger_group">Para una protección más fuerte (%1$d)</string>
+    <string name="perm_title_notification">Mensajes y recordatorios</string>
+    <string name="perm_title_usage_stats">Tiempo en cada app</string>
+    <string name="perm_title_overlay">Cerrar apps cuando se acaba el tiempo</string>
+    <string name="perm_title_overlay_popup">Cerrar apps (en teléfonos Xiaomi)</string>
+    <string name="perm_title_location">Ver dónde está tu hijo</string>
+    <string name="perm_title_gps">Ubicación exacta</string>
+    <string name="perm_title_battery">Sigue funcionando en ahorro de batería</string>
+    <string name="perm_title_auto_start">Se inicia de nuevo al reiniciar el teléfono</string>
+    <string name="perm_title_accessibility">Bloquear sitios web y videos cortos</string>
+    <string name="perm_title_device_admin">Evita que se desinstale Hoglt</string>
+    <string name="prot_btn_allow">Permitir</string>
+    <string name="prot_btn_keep">No, dejarlo así</string>
+    <string name="prot_btn_delete_account">Sí, eliminar para siempre</string>
+    <string name="task_empty_in_progress">No hay tareas en curso ahora mismo</string>
+    <string name="task_empty_done">Aún no hay tareas completadas</string>
+    <string name="task_empty_overdue">No hay tareas vencidas</string>
+    <string name="task_empty_filter_hint">Toca de nuevo el filtro seleccionado para ver todas las tareas.</string>
 </resources>

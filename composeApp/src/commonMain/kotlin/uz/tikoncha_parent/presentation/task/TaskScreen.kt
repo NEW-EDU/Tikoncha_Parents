@@ -69,6 +69,10 @@ import tikoncha_parents.composeapp.generated.resources.farzand_vazifalari_desc
 import tikoncha_parents.composeapp.generated.resources.farzandim
 import tikoncha_parents.composeapp.generated.resources.farzandlaringiz
 import tikoncha_parents.composeapp.generated.resources.hali_vazifa_yoq
+import tikoncha_parents.composeapp.generated.resources.task_empty_in_progress
+import tikoncha_parents.composeapp.generated.resources.task_empty_done
+import tikoncha_parents.composeapp.generated.resources.task_empty_overdue
+import tikoncha_parents.composeapp.generated.resources.task_empty_filter_hint
 import tikoncha_parents.composeapp.generated.resources.home_task
 import tikoncha_parents.composeapp.generated.resources.hozir_vazifalar_yo_q
 import tikoncha_parents.composeapp.generated.resources.jarayonda
@@ -374,15 +378,22 @@ fun TaskUi(
 
                         state.taskList.isEmpty() -> {
                             item(key = "empty") {
+                                // Filtr tanlangan bölsa "hali vazifa bermagansiz" demaymiz — ota-ona
+                                // vazifasi yöqolib qoldi deb öylaydi. Shu filtrning öz matni + qanday qaytiş.
+                                val chip = state.activeChip
                                 EmptyTaskState(
-                                    title = if (isParentTab)
-                                        stringResource(Res.string.hali_vazifa_yoq)
-                                    else
-                                        stringResource(Res.string.hozir_vazifalar_yo_q),
-                                    subtitle = if (isParentTab)
-                                        stringResource(Res.string.ota_ona_vazifalari_desc)
-                                    else
-                                        stringResource(Res.string.farzand_vazifalari_desc),
+                                    title = when {
+                                        chip == TaskFilterChip.IN_PROGRESS -> stringResource(Res.string.task_empty_in_progress)
+                                        chip == TaskFilterChip.DONE_BY_CHILD -> stringResource(Res.string.task_empty_done)
+                                        chip == TaskFilterChip.OVERDUE -> stringResource(Res.string.task_empty_overdue)
+                                        isParentTab -> stringResource(Res.string.hali_vazifa_yoq)
+                                        else -> stringResource(Res.string.hozir_vazifalar_yo_q)
+                                    },
+                                    subtitle = when {
+                                        chip != null -> stringResource(Res.string.task_empty_filter_hint)
+                                        isParentTab -> stringResource(Res.string.ota_ona_vazifalari_desc)
+                                        else -> stringResource(Res.string.farzand_vazifalari_desc)
+                                    },
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .fillParentMaxHeight(0.7f),

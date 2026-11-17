@@ -414,7 +414,7 @@
     <string name="farzand_ilova_kuzatish">お子さまが日中にどのアプリをどれだけ使っているかを確認できます。</string>
     <string name="uchtagacha_jadval">最大3つのスケジュール</string>
     <string name="jadval_cheklovlar">曜日、週、特別な時間ごとに、個別の制限を設定できます。</string>
-    <string name="qattiq_bloklash_qalqon">強力なブロック（シールドモード）</string>
+    <string name="qattiq_bloklash_qalqon">厳しい保護：サイトとショート動画もブロック</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">お子さまは制限を解除したり変更したりできません。</string>
     <string name="tez_bloklash_timer">クイックブロック（タイマー）</string>
     <string name="vaqtinchalik_bloklash_tezi">必要なときに、数秒で一時的なブロックをオンにできます。</string>
@@ -653,27 +653,27 @@
     <string name="tugilgan_sanasi">生年月日</string>
 
     <string name="farzand_himoyasi">子どもの保護</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d件の権限が無効</string>
+    <string name="ta_ruxsat_ochirilgan">お子さまのスマホでオフの設定：%1$d件</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d件の新しいリクエストが保留中</string>
 
 
     <!-- Himoya -->
     <string name="himoya">保護</string>
 
-    <string name="mode_default_title">デフォルト</string>
-    <string name="mode_gujanak_title">ハリネズミ</string>
-    <string name="mode_qalqon_title">シールド</string>
+    <string name="mode_default_title">見守りのみ</string>
+    <string name="mode_gujanak_title">中程度の保護</string>
+    <string name="mode_qalqon_title">厳しい保護</string>
 
-    <string name="mode_default_desc">保護は無効：見守りのみ</string>
-    <string name="mode_gujanak_desc">スケジュールによるブロックが有効です</string>
-    <string name="mode_qalqon_desc">フル保護：強化されたブロックが有効です</string>
+    <string name="mode_default_desc">画面の利用時間と位置がわかります。アプリは閉じられません。</string>
+    <string name="mode_gujanak_desc">設定した時間にアプリが閉じられます。</string>
+    <string name="mode_qalqon_desc">アプリ、サイト、ショート動画がブロックされます。</string>
 
-    <string name="holat_nomalum">状態不明</string>
-    <string name="holat_nomalum_desc">お子さまの端末がまだ同期されていません</string>
+    <string name="holat_nomalum">まだ情報がありません</string>
+    <string name="holat_nomalum_desc">お子さまのスマホがネットにつながると表示されます</string>
 
-    <string name="himoya_boshlangich">基本</string>
+    <string name="himoya_boshlangich">見守りのみ</string>
     <string name="himoya_orta">中程度の保護</string>
-    <string name="himoya_toliq">フル保護</string>
+    <string name="himoya_toliq">厳しい保護</string>
 
     <!-- Sync -->
     <string name="sinxron">同期：</string>
@@ -687,7 +687,7 @@
     <string name="oflayn">オフライン</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">解除方法</string>
+    <string name="ochirish_usuli">オフにする方法</string>
     <string name="usul_taymer">タイマー</string>
     <string name="usul_maxfiy_kod">秘密のコード</string>
     <string name="usul_maxfiy_matn">秘密のフレーズ</string>
@@ -700,8 +700,8 @@
     <string name="farzand_sorovlari">お子さまからのリクエスト</string>
     <string name="n_ta_yangi">新着%1$d件</string>
 
-    <string name="qalqonni_ochirish_sorovi">シールドの解除リクエスト</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">承認すると、お子さまの端末のシールドがすぐに解除されます</string>
+    <string name="qalqonni_ochirish_sorovi">厳しい保護をオフにするお願い</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">許可すると、お子さまのスマホの厳しい保護がすぐにオフになります</string>
 
     <string name="rad_etish">拒否</string>
 
@@ -709,8 +709,8 @@
     <string name="sorov_rad_etildi">リクエストを拒否しました</string>
     <string name="sorov_muddati_tugadi">リクエストの有効期限が切れました</string>
 
-    <string name="qalqon_ochirishga_ruxsat">シールドの解除を許可しますか？</string>
-    <string name="qalqon_ochirish_ruxsat_desc">承認すると、お子さまはすぐにシールドを解除できるようになります。</string>
+    <string name="qalqon_ochirishga_ruxsat">厳しい保護をオフにしますか？</string>
+    <string name="qalqon_ochirish_ruxsat_desc">許可すると、お子さまは厳しい保護をすぐにオフにできます。</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">権限</string>
@@ -720,11 +720,11 @@
     <string name="berilmagan">未許可</string>
 
     <string name="boshqa_rejimlar_uchun">現在、ほかのモードでは不要です</string>
-    <string name="gujanak_uchun">ハリネズミモード用</string>
-    <string name="qalqon_uchun">シールドモード用</string>
+    <string name="gujanak_uchun">中程度の保護用</string>
+    <string name="qalqon_uchun">厳しい保護用</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">必要な権限が%1$d件無効です</string>
-    <string name="zarur_ruxsat_banner_desc">これらの権限がないと、保護を十分に働かせることができません。お子さまの端末で有効にしてください</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">お子さまのスマホでオフの設定：%1$d件</string>
+    <string name="zarur_ruxsat_banner_desc">オフの設定をタップすると、何のための設定か、どこでオンにするかがわかります。</string>
 
     <!-- Permission names -->
     <string name="perm_notification">通知</string>
@@ -738,19 +738,19 @@
     <string name="perm_accessibility">アクセシビリティ</string>
     <string name="perm_device_admin">デバイス管理者</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">お子さまが「%1$s」のシールドを解除する許可を求めています</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$sさんが厳しい保護のオフをお願いしています</string>
     <string name="javob_uchun">回答の残り時間：%1$s</string>
     <string name="rad_etildi">拒否済み</string>
 
-    <string name="oxirgi_sinxron">最終同期</string>
+    <string name="oxirgi_sinxron">最後の接続</string>
     <string name="kod">コード</string>
-    <string name="qalqonni_ochirish">シールドを解除</string>
-    <string name="himoya_ochiq_qisqa">保護は無効</string>
-    <string name="gujanak_faol_qisqa">ハリネズミ有効</string>
-    <string name="toliq_himoya_faol_qisqa">フル保護が有効</string>
+    <string name="qalqonni_ochirish">厳しい保護をオフにする</string>
+    <string name="himoya_ochiq_qisqa">画面の利用時間と位置がわかります。アプリは閉じられません。</string>
+    <string name="gujanak_faol_qisqa">設定した時間にアプリが閉じられます。</string>
+    <string name="toliq_himoya_faol_qisqa">アプリ、サイト、ショート動画がブロックされます。</string>
     <string name="ruxsat_berildi">許可しました</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">リクエストを承認しました。お子さまの端末のシールドが解除されます。</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">リクエストを辞退しました。シールドは有効のままです。</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">許可しました。お子さまのスマホの厳しい保護はオフになります。</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">お断りしました。厳しい保護はオンのままです。</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">リクエストを承認しました。お子さまはアプリからログアウトできるようになりました。</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">リクエストを承認しました。お子さまはアプリをアンインストールできるようになりました。</string>
     <string name="sorov_rad_etildi_desc">リクエストを辞退しました。</string>
@@ -999,17 +999,17 @@
     <string name="protection_section">保護されるもの</string>
     <string name="protection_footer">リストはHogltが最新に保ちます。</string>
     <string name="location_show_area">エリアを表示</string>
-    <string name="info_sites_shield">サイトは、お子さまのスマートフォンでシールドモードがオンの間だけブロックされます。</string>
-    <string name="protection_shield_note">コンテンツ保護は、お子さまのスマートフォンでシールドモードがオンの間だけ働きます。</string>
-    <string name="protection_shield_short">シールドモードでのみ動作</string>
-    <string name="info_features_shield">YouTubeショートとInstagramリールは、お子さまのスマートフォンでシールドモードがオンの間だけブロックされます。</string>
+    <string name="info_sites_shield">サイトがブロックされるのは、お子さまのスマホで厳しい保護がオンのときだけです。</string>
+    <string name="protection_shield_note">これはお子さまのスマホで厳しい保護がオンのときだけ働きます。</string>
+    <string name="protection_shield_short">厳しい保護のときだけ働きます</string>
+    <string name="info_features_shield">YouTube Shorts と Instagram Reels がブロックされるのは、お子さまのスマホで厳しい保護がオンのときだけです。</string>
     <string name="protection_by_child">お子さまがオンにしました。オフにできるのはお子さまだけです</string>
     <string name="protection_by_coparent">もう一人の保護者がオンにしました。オフにできるのはその保護者だけです</string>
     <string name="protection_by_both">お子さまともう一人の保護者がオンにしました。オフにできるのは本人たちだけです</string>
-    <string name="protection_policies_label">スケジュール</string>
+    <string name="protection_policies_label">あなたのルール</string>
     <string name="protection_policies_delivered">スマートフォンに配信済み</string>
     <string name="protection_policies_pending">まだ配信されていません</string>
-    <string name="protection_gujanak_limits_note">ハリネズミモードはアプリをブロックします。サイトとショート／リールは、シールドモードでのみブロックされます。</string>
+    <string name="protection_gujanak_limits_note">中程度の保護で閉じられるのはアプリだけです。サイトとショート動画は厳しい保護でのみブロックされます：お子さまのスマホで Hoglt →「管理」→「シールドモード」。</string>
     <string name="editor_limit_days_follow_time">時間と同じです。曜日は時間のページで選びます</string>
     <string name="editor_limit_in_window">この時間の上限</string>
     <string name="editor_limit_outside_window">この時間以外の上限</string>
@@ -1332,7 +1332,7 @@
     <string name="parent_special_info_title">お子さまのスマートフォンで機能します</string>
     <string name="parent_special_info_1">あなたがオンにした保護は、お子さまがオフにすることはできません。お子さまのアプリにも表示されます。</string>
     <string name="parent_special_info_2">危険があった場合、届くのは話題とアプリ名だけで、メッセージの本文や画像が届くことはありません。</string>
-    <string name="parent_special_info_3">Androidではシールドモードが必要です。iPhoneでは：18歳以上向けのWebサイトとHoglagramのチャット。</string>
+    <string name="parent_special_info_3">Androidでは厳しい保護が必要です。iPhoneでは：18歳以上向けのWebサイトとHoglagramのチャット。</string>
     <string name="parent_special_nsfw_title">不適切な画像</string>
     <string name="parent_special_nsfw_desc">18歳以上向けの画像を閉じて、あなたに通知します</string>
     <string name="parent_special_conv_title">危険なチャット</string>
@@ -1378,8 +1378,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">あと5分だけいい？</string>
+    <string name="ob_shield_hint">お子さまがもう少し時間をほしがっています</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1407,9 +1407,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">これがないと、サイト、YouTube Shorts、Instagram Reels がブロックされず、アプリも簡単に削除できてしまいます。</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">お子さまのスマートフォンで</string>
+    <string name="prot_default_note">今のところ、ルールでアプリは閉じられません。閉じるには、お子さまのスマホで Hoglt を開き →「管理」で保護をオンにしてください。</string>
+    <string name="prot_strength">保護の強さ</string>
+    <string name="prot_phone_settings">お子さまのスマホの設定</string>
+    <string name="prot_phone_settings_hint">これらはあなたのスマホではなく、お子さまのスマホでオンにします。</string>
+    <string name="prot_x_of_y_on">%2$d件中%1$d件オン</string>
+    <string name="prot_on">オン</string>
+    <string name="prot_off">オフ</string>
+    <string name="prot_not_needed_now">今は不要</string>
+    <string name="prot_why_needed">これは何のため？</string>
+    <string name="prot_where_to_turn_on">オンにする場所：お子さまのスマホの設定の「%1$s」。</string>
+    <string name="prot_stronger_group">より強く守るために（%1$d）</string>
+    <string name="perm_title_notification">メッセージとリマインダー</string>
+    <string name="perm_title_usage_stats">アプリごとの利用時間</string>
+    <string name="perm_title_overlay">時間切れでアプリを閉じる</string>
+    <string name="perm_title_overlay_popup">アプリを閉じる（Xiaomiのスマホ）</string>
+    <string name="perm_title_location">お子さまの居場所を表示</string>
+    <string name="perm_title_gps">正確な位置</string>
+    <string name="perm_title_battery">省電力モードでも動く</string>
+    <string name="perm_title_auto_start">スマホの再起動後にまた動く</string>
+    <string name="perm_title_accessibility">サイトとショート動画をブロック</string>
+    <string name="perm_title_device_admin">Hoglt の削除を防ぐ</string>
+    <string name="prot_btn_allow">許可する</string>
+    <string name="prot_btn_keep">いいえ、このまま</string>
+    <string name="prot_btn_delete_account">はい、完全に削除する</string>
+    <string name="task_empty_in_progress">今、処理中のタスクはありません</string>
+    <string name="task_empty_done">完了済みのタスクはまだありません</string>
+    <string name="task_empty_overdue">期限切れのタスクはありません</string>
+    <string name="task_empty_filter_hint">選択中のフィルターをもう一度タップすると、すべてのタスクが表示されます。</string>
 </resources>

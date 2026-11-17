@@ -420,7 +420,7 @@ This information is used only for these features and is not shared with third pa
     <string name="farzand_ilova_kuzatish">Track which apps your child uses and how much during the day.</string>
     <string name="uchtagacha_jadval">Up to 3 schedules</string>
     <string name="jadval_cheklovlar">Set separate restrictions for days, weeks or special times.</string>
-    <string name="qattiq_bloklash_qalqon">Hard blocking (Shield mode)</string>
+    <string name="qattiq_bloklash_qalqon">Strict protection: websites and short videos are blocked too</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Your child cannot disable or change restrictions.</string>
     <string name="tez_bloklash_timer">Quick blocking (Timer)</string>
     <string name="vaqtinchalik_bloklash_tezi">Turn on temporary blocking in a few seconds when needed.</string>
@@ -665,25 +665,25 @@ This information is used only for these features and is not shared with third pa
     <string name="tugilgan_sanasi">Date of birth</string>
 
     <string name="farzand_himoyasi">Child Protection</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d permissions disabled</string>
+    <string name="ta_ruxsat_ochirilgan">%1$d setting(s) off on your child’s phone</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d new requests pending</string>
 
     <string name="himoya">Protection</string>
 
-    <string name="mode_default_title">Default</string>
-    <string name="mode_gujanak_title">Hedgehog</string>
-    <string name="mode_qalqon_title">Shield</string>
+    <string name="mode_default_title">Watching only</string>
+    <string name="mode_gujanak_title">Medium protection</string>
+    <string name="mode_qalqon_title">Strict protection</string>
 
-    <string name="mode_default_desc">Protection disabled — monitoring only</string>
-    <string name="mode_gujanak_desc">Scheduled blocking is active</string>
-    <string name="mode_qalqon_desc">Full protection — enhanced blocking is active</string>
+    <string name="mode_default_desc">Screen time and location are visible. No apps are closed.</string>
+    <string name="mode_gujanak_desc">Apps are closed at the times you set.</string>
+    <string name="mode_qalqon_desc">Apps, websites and short videos are blocked.</string>
 
-    <string name="holat_nomalum">Unknown status</string>
-    <string name="holat_nomalum_desc">Child device has not synchronized yet</string>
+    <string name="holat_nomalum">No information yet</string>
+    <string name="holat_nomalum_desc">It will appear when your child’s phone goes online</string>
 
-    <string name="himoya_boshlangich">Basic</string>
-    <string name="himoya_orta">Moderate protection</string>
-    <string name="himoya_toliq">Full protection</string>
+    <string name="himoya_boshlangich">Watching only</string>
+    <string name="himoya_orta">Medium protection</string>
+    <string name="himoya_toliq">Strict protection</string>
 
     <string name="sinxron">Synced:</string>
     <string name="sinxron_yoq">not yet</string>
@@ -695,7 +695,7 @@ This information is used only for these features and is not shared with third pa
     <string name="onlayn">Online</string>
     <string name="oflayn">Offline</string>
 
-    <string name="ochirish_usuli">Disable method</string>
+    <string name="ochirish_usuli">How it’s turned off</string>
     <string name="usul_taymer">Timer</string>
     <string name="usul_maxfiy_kod">Secret code</string>
     <string name="usul_maxfiy_matn">Secret phrase</string>
@@ -707,8 +707,8 @@ This information is used only for these features and is not shared with third pa
     <string name="farzand_sorovlari">Child requests</string>
     <string name="n_ta_yangi">%1$d new</string>
 
-    <string name="qalqonni_ochirish_sorovi">Shield disable request</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">If approved, Shield will be disabled immediately on your child's device</string>
+    <string name="qalqonni_ochirish_sorovi">Request to turn off strict protection</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">If you allow it, strict protection turns off on your child’s phone right away</string>
 
     <string name="rad_etish">Reject</string>
 
@@ -716,8 +716,8 @@ This information is used only for these features and is not shared with third pa
     <string name="sorov_rad_etildi">Request rejected</string>
     <string name="sorov_muddati_tugadi">Request expired</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Allow disabling Shield?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">If approved, your child will be able to disable Shield immediately.</string>
+    <string name="qalqon_ochirishga_ruxsat">Turn off strict protection?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">If you allow it, your child can turn off strict protection right away.</string>
 
     <string name="ruxsatlar">Permissions</string>
     <string name="x_dan_y_berilgan">%1$d/%2$d granted</string>
@@ -726,11 +726,11 @@ This information is used only for these features and is not shared with third pa
     <string name="berilmagan">Not granted</string>
 
     <string name="boshqa_rejimlar_uchun">Not required for other modes at the moment</string>
-    <string name="gujanak_uchun">For Hedgehog mode</string>
-    <string name="qalqon_uchun">For Shield mode</string>
+    <string name="gujanak_uchun">For medium protection</string>
+    <string name="qalqon_uchun">For strict protection</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d required permissions disabled</string>
-    <string name="zarur_ruxsat_banner_desc">Without these permissions protection cannot work fully — enable them on your child's device</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">%1$d setting(s) off on your child’s phone</string>
+    <string name="zarur_ruxsat_banner_desc">Tap a setting that’s off to see what it’s for and where to turn it on.</string>
 
     <string name="perm_notification">Notifications</string>
     <string name="perm_usage_stats">Usage access</string>
@@ -753,19 +753,19 @@ This information is used only for these features and is not shared with third pa
     <string name="telegram_ochilmoqda">Opening Telegram…</string>
     <string name="telegram_phone_note">When signing in with Telegram, your phone number will be requested — you will see this in the Telegram window</string>
     <string name="qayta_yuborish">Resend</string>
-    <string name="farzand_qalqon_ochirish_sorovi">Your child is requesting permission to disable Shield for "%1$s"</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s is asking to turn off strict protection</string>
     <string name="javob_uchun">Time remaining to respond: %1$s</string>
     <string name="rad_etildi">Rejected</string>
 
-    <string name="oxirgi_sinxron">Last sync</string>
+    <string name="oxirgi_sinxron">Last in touch</string>
     <string name="kod">Code</string>
-    <string name="qalqonni_ochirish">Disable Shield</string>
-    <string name="himoya_ochiq_qisqa">Protection disabled</string>
-    <string name="gujanak_faol_qisqa">Hedgehog active</string>
-    <string name="toliq_himoya_faol_qisqa">Full protection active</string>
+    <string name="qalqonni_ochirish">Turning off strict protection</string>
+    <string name="himoya_ochiq_qisqa">Screen time and location are visible. No apps are closed.</string>
+    <string name="gujanak_faol_qisqa">Apps are closed at the times you set.</string>
+    <string name="toliq_himoya_faol_qisqa">Apps, websites and short videos are blocked.</string>
     <string name="ruxsat_berildi">Permission granted</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">You approved the request — Shield will be disabled on your child's device.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">You declined the request. Shield remains active.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">You allowed it — strict protection will turn off on your child’s phone.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">You declined. Strict protection stays on.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">You approved the request — your child can now sign out of the app.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">You approved the request — your child can now uninstall the app.</string>
     <string name="sorov_rad_etildi_desc">You declined the request.</string>
@@ -1015,17 +1015,17 @@ This information is used only for these features and is not shared with third pa
     <string name="protection_section">What is protected</string>
     <string name="protection_footer">Hoglt keeps the list up to date.</string>
     <string name="location_show_area">Show area</string>
-    <string name="info_sites_shield">Sites are blocked only while Shield mode is on on your child’s phone.</string>
-    <string name="protection_shield_note">Content protection works only while Shield mode is on on your child’s phone.</string>
-    <string name="protection_shield_short">Works only in Shield mode</string>
-    <string name="info_features_shield">YouTube Shorts and Instagram Reels are blocked only while Shield mode is on on your child’s phone.</string>
+    <string name="info_sites_shield">Websites are blocked only while strict protection is on on your child’s phone.</string>
+    <string name="protection_shield_note">This works only while strict protection is on on your child’s phone.</string>
+    <string name="protection_shield_short">Works only with strict protection</string>
+    <string name="info_features_shield">YouTube Shorts and Instagram Reels are blocked only while strict protection is on on your child’s phone.</string>
     <string name="protection_by_child">Your child turned it on — only your child can turn theirs off</string>
     <string name="protection_by_coparent">The other parent turned it on — only they can turn theirs off</string>
     <string name="protection_by_both">Your child and the other parent turned it on — only they can turn theirs off</string>
-    <string name="protection_policies_label">Schedules</string>
+    <string name="protection_policies_label">Your rules</string>
     <string name="protection_policies_delivered">Delivered to the phone</string>
     <string name="protection_policies_pending">Not delivered yet</string>
-    <string name="protection_gujanak_limits_note">Hedgehog mode blocks apps. Sites and Shorts/Reels are blocked only in Shield mode.</string>
+    <string name="protection_gujanak_limits_note">Medium protection closes apps only. Websites and short videos are blocked only with strict protection: on your child’s phone, Hoglt → Control → Shield.</string>
     <string name="editor_limit_days_follow_time">Same as the time — days are chosen on the time page</string>
     <string name="editor_limit_in_window">limit during this time</string>
     <string name="editor_limit_outside_window">limit outside this time</string>
@@ -1435,8 +1435,8 @@ This information is used only for these features and is not shared with third pa
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">Can I have 5 more minutes?</string>
+    <string name="ob_shield_hint">Your child is asking for more time</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1464,9 +1464,37 @@ This information is used only for these features and is not shared with third pa
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Without it, websites, YouTube Shorts and Instagram Reels aren’t blocked, and the app can be uninstalled freely.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">On their phone</string>
+    <string name="prot_default_note">Right now your rules don’t close any apps. To change that, open Hoglt on your child’s phone → Control, and turn protection on.</string>
+    <string name="prot_strength">Protection level</string>
+    <string name="prot_phone_settings">Settings on your child’s phone</string>
+    <string name="prot_phone_settings_hint">These are turned on on your child’s phone, not on yours.</string>
+    <string name="prot_x_of_y_on">%1$d of %2$d on</string>
+    <string name="prot_on">On</string>
+    <string name="prot_off">Off</string>
+    <string name="prot_not_needed_now">Not needed now</string>
+    <string name="prot_why_needed">What is this for?</string>
+    <string name="prot_where_to_turn_on">Where to turn it on: in your child’s phone settings, “%1$s”.</string>
+    <string name="prot_stronger_group">For stronger protection (%1$d)</string>
+    <string name="perm_title_notification">Messages and reminders</string>
+    <string name="perm_title_usage_stats">Time spent in each app</string>
+    <string name="perm_title_overlay">Closing apps when time is up</string>
+    <string name="perm_title_overlay_popup">Closing apps (on Xiaomi phones)</string>
+    <string name="perm_title_location">Showing where your child is</string>
+    <string name="perm_title_gps">Precise location</string>
+    <string name="perm_title_battery">Keeps working in battery saver</string>
+    <string name="perm_title_auto_start">Starts again after the phone restarts</string>
+    <string name="perm_title_accessibility">Blocking websites and short videos</string>
+    <string name="perm_title_device_admin">Stops Hoglt from being uninstalled</string>
+    <string name="prot_btn_allow">Allow</string>
+    <string name="prot_btn_keep">No, keep it</string>
+    <string name="prot_btn_delete_account">Yes, delete for good</string>
+    <string name="task_empty_in_progress">No tasks in progress right now</string>
+    <string name="task_empty_done">No finished tasks yet</string>
+    <string name="task_empty_overdue">No overdue tasks</string>
+    <string name="task_empty_filter_hint">Tap the selected filter again to see all tasks.</string>
 </resources>

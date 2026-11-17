@@ -414,7 +414,7 @@
     <string name="farzand_ilova_kuzatish">আপনার সন্তান কোন অ্যাপ কতক্ষণ ব্যবহার করে তা দিনভর ট্র্যাক করুন।</string>
     <string name="uchtagacha_jadval">3টি পর্যন্ত সময়সূচি</string>
     <string name="jadval_cheklovlar">দিন, সপ্তাহ বা বিশেষ সময়ের জন্য আলাদা সীমাবদ্ধতা ঠিক করুন।</string>
-    <string name="qattiq_bloklash_qalqon">কঠোর ব্লকিং (ঢাল মোড)</string>
+    <string name="qattiq_bloklash_qalqon">কড়া সুরক্ষা: ওয়েবসাইট ও ছোট ভিডিও-ও ব্লক হয়</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">আপনার সন্তান সীমাবদ্ধতা বন্ধ বা বদলাতে পারে না।</string>
     <string name="tez_bloklash_timer">দ্রুত ব্লকিং (টাইমার)</string>
     <string name="vaqtinchalik_bloklash_tezi">প্রয়োজনে কয়েক সেকেন্ডে সাময়িক ব্লকিং চালু করুন।</string>
@@ -669,27 +669,27 @@
     <string name="tugilgan_sanasi">জন্ম তারিখ</string>
 
     <string name="farzand_himoyasi">শিশু সুরক্ষা</string>
-    <string name="ta_ruxsat_ochirilgan">%1$dটি অনুমতি বন্ধ</string>
+    <string name="ta_ruxsat_ochirilgan">আপনার সন্তানের ফোনে বন্ধ সেটিং: %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$dটি নতুন অনুরোধ অপেক্ষমাণ</string>
 
 
     <!-- Himoya -->
     <string name="himoya">সুরক্ষা</string>
 
-    <string name="mode_default_title">ডিফল্ট</string>
-    <string name="mode_gujanak_title">শজারু</string>
-    <string name="mode_qalqon_title">ঢাল</string>
+    <string name="mode_default_title">শুধু নজর রাখা</string>
+    <string name="mode_gujanak_title">মাঝারি সুরক্ষা</string>
+    <string name="mode_qalqon_title">কড়া সুরক্ষা</string>
 
-    <string name="mode_default_desc">সুরক্ষা বন্ধ — শুধু পর্যবেক্ষণ</string>
-    <string name="mode_gujanak_desc">নির্ধারিত ব্লকিং সক্রিয়</string>
-    <string name="mode_qalqon_desc">পূর্ণ সুরক্ষা — উন্নত ব্লকিং সক্রিয়</string>
+    <string name="mode_default_desc">স্ক্রিন টাইম ও লোকেশন দেখা যায়। কোনো অ্যাপ বন্ধ হয় না।</string>
+    <string name="mode_gujanak_desc">আপনার ঠিক করা সময়ে অ্যাপ বন্ধ হয়ে যায়।</string>
+    <string name="mode_qalqon_desc">অ্যাপ, ওয়েবসাইট ও ছোট ভিডিও ব্লক হয়।</string>
 
-    <string name="holat_nomalum">অজানা অবস্থা</string>
-    <string name="holat_nomalum_desc">সন্তানের ডিভাইস এখনো সিঙ্ক হয়নি</string>
+    <string name="holat_nomalum">এখনো কোনো তথ্য নেই</string>
+    <string name="holat_nomalum_desc">সন্তানের ফোন ইন্টারনেটে যুক্ত হলে তথ্য আসবে</string>
 
-    <string name="himoya_boshlangich">মৌলিক</string>
+    <string name="himoya_boshlangich">শুধু নজর রাখা</string>
     <string name="himoya_orta">মাঝারি সুরক্ষা</string>
-    <string name="himoya_toliq">পূর্ণ সুরক্ষা</string>
+    <string name="himoya_toliq">কড়া সুরক্ষা</string>
 
     <!-- Sync -->
     <string name="sinxron">সিঙ্ক: </string>
@@ -703,7 +703,7 @@
     <string name="oflayn">অফলাইন</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">বন্ধ করার পদ্ধতি</string>
+    <string name="ochirish_usuli">কীভাবে বন্ধ হয়</string>
     <string name="usul_taymer">টাইমার</string>
     <string name="usul_maxfiy_kod">গোপন কোড</string>
     <string name="usul_maxfiy_matn">গোপন বাক্য</string>
@@ -716,8 +716,8 @@
     <string name="farzand_sorovlari">সন্তানের অনুরোধ</string>
     <string name="n_ta_yangi">%1$dটি নতুন</string>
 
-    <string name="qalqonni_ochirish_sorovi">ঢাল বন্ধ করার অনুরোধ</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">অনুমোদন করলে আপনার সন্তানের ডিভাইসে ঢাল সঙ্গে সঙ্গে বন্ধ হয়ে যাবে</string>
+    <string name="qalqonni_ochirish_sorovi">কড়া সুরক্ষা বন্ধের অনুরোধ</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">অনুমতি দিলে সন্তানের ফোনে কড়া সুরক্ষা সঙ্গে সঙ্গে বন্ধ হবে</string>
 
     <string name="rad_etish">প্রত্যাখ্যান করুন</string>
 
@@ -725,8 +725,8 @@
     <string name="sorov_rad_etildi">অনুরোধ প্রত্যাখ্যাত</string>
     <string name="sorov_muddati_tugadi">অনুরোধের মেয়াদ শেষ</string>
 
-    <string name="qalqon_ochirishga_ruxsat">ঢাল বন্ধ করার অনুমতি দেবেন?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">অনুমোদন করলে আপনার সন্তান সঙ্গে সঙ্গে ঢাল বন্ধ করতে পারবে।</string>
+    <string name="qalqon_ochirishga_ruxsat">কড়া সুরক্ষা বন্ধ করবেন?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">অনুমতি দিলে আপনার সন্তান সঙ্গে সঙ্গে কড়া সুরক্ষা বন্ধ করতে পারবে।</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">অনুমতি</string>
@@ -736,11 +736,11 @@
     <string name="berilmagan">দেওয়া হয়নি</string>
 
     <string name="boshqa_rejimlar_uchun">অন্য মোডের জন্য আপাতত প্রয়োজন নেই</string>
-    <string name="gujanak_uchun">শজারু মোডের জন্য</string>
-    <string name="qalqon_uchun">ঢাল মোডের জন্য</string>
+    <string name="gujanak_uchun">মাঝারি সুরক্ষার জন্য</string>
+    <string name="qalqon_uchun">কড়া সুরক্ষার জন্য</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$dটি প্রয়োজনীয় অনুমতি বন্ধ</string>
-    <string name="zarur_ruxsat_banner_desc">এই অনুমতি ছাড়া সুরক্ষা পুরোপুরি কাজ করতে পারে না — আপনার সন্তানের ডিভাইসে এগুলো চালু করুন</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">আপনার সন্তানের ফোনে বন্ধ সেটিং: %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">বন্ধ সেটিংয়ে চাপুন — দেখবেন এটি কেন দরকার আর কোথায় চালু করতে হয়।</string>
 
     <!-- Permission names -->
     <string name="perm_notification">নোটিফিকেশন</string>
@@ -754,19 +754,19 @@
     <string name="perm_accessibility">অ্যাক্সেসিবিলিটি</string>
     <string name="perm_device_admin">ডিভাইস অ্যাডমিনিস্ট্রেটর</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">আপনার সন্তান “%1$s”-এর জন্য ঢাল বন্ধ করার অনুমতি চাইছে</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s কড়া সুরক্ষা বন্ধ করার অনুমতি চাইছে</string>
     <string name="javob_uchun">সাড়া দেওয়ার বাকি সময়: %1$s</string>
     <string name="rad_etildi">প্রত্যাখ্যাত</string>
 
-    <string name="oxirgi_sinxron">সর্বশেষ সিঙ্ক</string>
+    <string name="oxirgi_sinxron">শেষ যোগাযোগ</string>
     <string name="kod">কোড</string>
-    <string name="qalqonni_ochirish">ঢাল বন্ধ করুন</string>
-    <string name="himoya_ochiq_qisqa">সুরক্ষা বন্ধ</string>
-    <string name="gujanak_faol_qisqa">শজারু সক্রিয়</string>
-    <string name="toliq_himoya_faol_qisqa">পূর্ণ সুরক্ষা সক্রিয়</string>
+    <string name="qalqonni_ochirish">কড়া সুরক্ষা বন্ধ করা</string>
+    <string name="himoya_ochiq_qisqa">স্ক্রিন টাইম ও লোকেশন দেখা যায়। কোনো অ্যাপ বন্ধ হয় না।</string>
+    <string name="gujanak_faol_qisqa">আপনার ঠিক করা সময়ে অ্যাপ বন্ধ হয়ে যায়।</string>
+    <string name="toliq_himoya_faol_qisqa">অ্যাপ, ওয়েবসাইট ও ছোট ভিডিও ব্লক হয়।</string>
     <string name="ruxsat_berildi">অনুমতি দেওয়া হয়েছে</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">আপনি অনুরোধ অনুমোদন করেছেন — আপনার সন্তানের ডিভাইসে ঢাল বন্ধ হবে।</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">আপনি অনুরোধ প্রত্যাখ্যান করেছেন। ঢাল সক্রিয় থাকছে।</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">আপনি অনুমতি দিয়েছেন — সন্তানের ফোনে কড়া সুরক্ষা বন্ধ হবে।</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">আপনি না বলেছেন। কড়া সুরক্ষা চালু থাকবে।</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">আপনি অনুরোধ অনুমোদন করেছেন — আপনার সন্তান এখন অ্যাপ থেকে সাইন আউট করতে পারবে।</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">আপনি অনুরোধ অনুমোদন করেছেন — আপনার সন্তান এখন অ্যাপ আনইনস্টল করতে পারবে।</string>
     <string name="sorov_rad_etildi_desc">আপনি অনুরোধ প্রত্যাখ্যান করেছেন।</string>
@@ -1015,17 +1015,17 @@
     <string name="protection_section">কী সুরক্ষিত</string>
     <string name="protection_footer">Hoglt তালিকা হালনাগাদ রাখে।</string>
     <string name="location_show_area">এলাকা দেখান</string>
-    <string name="info_sites_shield">আপনার সন্তানের ফোনে ঢাল মোড চালু থাকলেই সাইট ব্লক হয়।</string>
-    <string name="protection_shield_note">আপনার সন্তানের ফোনে ঢাল মোড চালু থাকলেই কনটেন্ট সুরক্ষা কাজ করে।</string>
-    <string name="protection_shield_short">শুধু ঢাল মোডে কাজ করে</string>
-    <string name="info_features_shield">আপনার সন্তানের ফোনে ঢাল মোড চালু থাকলেই YouTube Shorts ও Instagram Reels ব্লক হয়।</string>
+    <string name="info_sites_shield">সন্তানের ফোনে কড়া সুরক্ষা চালু থাকলেই শুধু ওয়েবসাইট ব্লক হয়।</string>
+    <string name="protection_shield_note">এটি শুধু তখনই কাজ করে, যখন সন্তানের ফোনে কড়া সুরক্ষা চালু থাকে।</string>
+    <string name="protection_shield_short">শুধু কড়া সুরক্ষায় কাজ করে</string>
+    <string name="info_features_shield">সন্তানের ফোনে কড়া সুরক্ষা চালু থাকলেই শুধু YouTube Shorts ও Instagram Reels ব্লক হয়।</string>
     <string name="protection_by_child">আপনার সন্তান চালু করেছে — শুধু আপনার সন্তানই নিজেরটি বন্ধ করতে পারে</string>
     <string name="protection_by_coparent">অন্য অভিভাবক চালু করেছেন — শুধু তিনিই নিজেরটি বন্ধ করতে পারেন</string>
     <string name="protection_by_both">আপনার সন্তান ও অন্য অভিভাবক চালু করেছেন — শুধু তাঁরাই নিজেদেরটি বন্ধ করতে পারেন</string>
-    <string name="protection_policies_label">সময়সূচি</string>
+    <string name="protection_policies_label">আপনার নিয়ম</string>
     <string name="protection_policies_delivered">ফোনে পৌঁছেছে</string>
     <string name="protection_policies_pending">এখনো পৌঁছায়নি</string>
-    <string name="protection_gujanak_limits_note">শজারু মোড অ্যাপ ব্লক করে। সাইট এবং Shorts/Reels শুধু ঢাল মোডে ব্লক হয়।</string>
+    <string name="protection_gujanak_limits_note">মাঝারি সুরক্ষা শুধু অ্যাপ বন্ধ করে। ওয়েবসাইট ও ছোট ভিডিও শুধু কড়া সুরক্ষায় ব্লক হয়: সন্তানের ফোনে Hoglt → “নিয়ন্ত্রণ” → “ঢাল মোড”।</string>
     <string name="editor_limit_days_follow_time">সময়ের মতোই — দিন সময়ের পেজে বেছে নেওয়া হয়</string>
     <string name="editor_limit_in_window">এই সময়ে সীমা</string>
     <string name="editor_limit_outside_window">এই সময়ের বাইরে সীমা</string>
@@ -1348,7 +1348,7 @@
     <string name="parent_special_info_title">আপনার সন্তানের ফোনে কাজ করে</string>
     <string name="parent_special_info_1">আপনার চালু করা সুরক্ষা আপনার সন্তান বন্ধ করতে পারবে না। সে এটি নিজের অ্যাপে দেখতে পাবে।</string>
     <string name="parent_special_info_2">ঝুঁকি থাকলে আপনি শুধু বিষয় ও অ্যাপের নাম পান — বার্তার লেখা বা ছবি কখনো নয়।</string>
-    <string name="parent_special_info_3">Android-এ ঢাল মোড প্রয়োজন। iPhone-এ: 18+ ওয়েবসাইট ও Hoglagram চ্যাট।</string>
+    <string name="parent_special_info_3">Android-এ কড়া সুরক্ষা প্রয়োজন। iPhone-এ: 18+ ওয়েবসাইট ও Hoglagram চ্যাট।</string>
     <string name="parent_special_nsfw_title">অনুপযুক্ত ছবি</string>
     <string name="parent_special_nsfw_desc">18+ ছবি বন্ধ হয়ে যায় এবং আপনাকে জানানো হয়</string>
     <string name="parent_special_conv_title">ঝুঁকিপূর্ণ চ্যাট</string>
@@ -1394,8 +1394,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">আর 5 মিনিট পাব?</string>
+    <string name="ob_shield_hint">আপনার সন্তান আরও সময় চাইছে</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1423,9 +1423,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">এটি ছাড়া ওয়েবসাইট, YouTube Shorts ও Instagram Reels ব্লক হয় না, আর অ্যাপটি সহজেই মুছে ফেলা যায়।</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">তার ফোনে</string>
+    <string name="prot_default_note">এখন আপনার নিয়ম কোনো অ্যাপ বন্ধ করে না। বন্ধ করাতে সন্তানের ফোনে Hoglt খুলুন → “নিয়ন্ত্রণ”-এ গিয়ে সুরক্ষা চালু করুন।</string>
+    <string name="prot_strength">সুরক্ষার মাত্রা</string>
+    <string name="prot_phone_settings">সন্তানের ফোনের সেটিংস</string>
+    <string name="prot_phone_settings_hint">এগুলো সন্তানের ফোনে চালু করতে হয়, আপনার ফোনে নয়।</string>
+    <string name="prot_x_of_y_on">%2$dটির মধ্যে %1$dটি চালু</string>
+    <string name="prot_on">চালু</string>
+    <string name="prot_off">বন্ধ</string>
+    <string name="prot_not_needed_now">এখন দরকার নেই</string>
+    <string name="prot_why_needed">এটি কেন দরকার?</string>
+    <string name="prot_where_to_turn_on">কোথায় চালু করবেন: সন্তানের ফোনের সেটিংসে, “%1$s”।</string>
+    <string name="prot_stronger_group">আরও জোরালো সুরক্ষার জন্য (%1$d)</string>
+    <string name="perm_title_notification">মেসেজ ও রিমাইন্ডার</string>
+    <string name="perm_title_usage_stats">কোন অ্যাপে কত সময়</string>
+    <string name="perm_title_overlay">সময় শেষ হলে অ্যাপ বন্ধ করা</string>
+    <string name="perm_title_overlay_popup">অ্যাপ বন্ধ করা (Xiaomi ফোনে)</string>
+    <string name="perm_title_location">সন্তান কোথায় আছে দেখানো</string>
+    <string name="perm_title_gps">সঠিক লোকেশন</string>
+    <string name="perm_title_battery">ব্যাটারি সেভারেও চালু থাকে</string>
+    <string name="perm_title_auto_start">ফোন আবার চালু হলে নিজে থেকে চালু হয়</string>
+    <string name="perm_title_accessibility">ওয়েবসাইট ও ছোট ভিডিও ব্লক করা</string>
+    <string name="perm_title_device_admin">Hoglt মুছে ফেলা আটকায়</string>
+    <string name="prot_btn_allow">অনুমতি দিচ্ছি</string>
+    <string name="prot_btn_keep">না, যেমন আছে থাক</string>
+    <string name="prot_btn_delete_account">হ্যাঁ, চিরতরে মুছে দিন</string>
+    <string name="task_empty_in_progress">এখন প্রক্রিয়াধীন কোনো কাজ নেই</string>
+    <string name="task_empty_done">এখনো কোনো কাজ সম্পন্ন হয়নি</string>
+    <string name="task_empty_overdue">মেয়াদোত্তীর্ণ কোনো কাজ নেই</string>
+    <string name="task_empty_filter_hint">সব কাজ দেখতে বেছে নেওয়া ফিল্টারে আবার চাপুন।</string>
 </resources>

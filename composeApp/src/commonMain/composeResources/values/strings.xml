@@ -420,7 +420,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="farzand_ilova_kuzatish">Farzandingiz kun davomida qaysi ilovalardan qança foydalanganini kuzating.</string>
     <string name="uchtagacha_jadval">3 tagaça jadval yaratiş</string>
     <string name="jadval_cheklovlar">Kun, hafta yoki maxsus vaqtlar uçun alohida çeklovlar belgilang.</string>
-    <string name="qattiq_bloklash_qalqon">Qattiq bloklaş (Qalqon rejimi)</string>
+    <string name="qattiq_bloklash_qalqon">Qattiq himoya: saytlar va qisqa videolar ham yopiladi</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Farzandingiz çeklovlarni öçirib yoki özgartira olmaydi.</string>
     <string name="tez_bloklash_timer">Tez bloklaş (Timer)</string>
     <string name="vaqtinchalik_bloklash_tezi">Kerak bölganda bir neça soniyada vaqtinçalik bloklaşni yoqing.</string>
@@ -677,27 +677,27 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="tugilgan_sanasi">Tuğilgan sanasi</string>
 
     <string name="farzand_himoyasi">Farzand himoyasi</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d ta ruxsat öçirilgan</string>
+    <string name="ta_ruxsat_ochirilgan">Farzand telefonida %1$d ta sozlama öçiq</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d ta yangi sörov kutilmoqda</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Himoya</string>
 
-    <string name="mode_default_title">Default</string>
-    <string name="mode_gujanak_title">Ğujanak</string>
-    <string name="mode_qalqon_title">Qalqon</string>
+    <string name="mode_default_title">Faqat kuzatiş</string>
+    <string name="mode_gujanak_title">Örta himoya</string>
+    <string name="mode_qalqon_title">Qattiq himoya</string>
 
-    <string name="mode_default_desc">Himoya öçiq — faqat kuzatuv işlaydi</string>
-    <string name="mode_gujanak_desc">Jadval böyiça bloklaş faol</string>
-    <string name="mode_qalqon_desc">Töliq himoya — kuçaytirilgan bloklaş faol</string>
+    <string name="mode_default_desc">Vaqt va joylaşuv körinadi. Ilovalar yopilmaydi.</string>
+    <string name="mode_gujanak_desc">Belgilangan vaqtda ilovalar yopiladi.</string>
+    <string name="mode_qalqon_desc">Ilovalar, saytlar va qisqa videolar yopiladi.</string>
 
-    <string name="holat_nomalum">Holat noma’lum</string>
-    <string name="holat_nomalum_desc">Farzand qurilmasi hali sinxron bölmagan</string>
+    <string name="holat_nomalum">Hali ma’lumot kelmadi</string>
+    <string name="holat_nomalum_desc">Farzand telefoni internetga ulanganda ma’lumot keladi</string>
 
-    <string name="himoya_boshlangich">Boşlanğiç</string>
+    <string name="himoya_boshlangich">Faqat kuzatiş</string>
     <string name="himoya_orta">Örta himoya</string>
-    <string name="himoya_toliq">Töliq himoya</string>
+    <string name="himoya_toliq">Qattiq himoya</string>
 
     <!-- Sync -->
     <string name="sinxron">Sinxron:</string>
@@ -711,7 +711,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="oflayn">Oflayn</string>
 
     <!-- Disable methods -->
-    <string name="ochirish_usuli">Öçiriş usuli</string>
+    <string name="ochirish_usuli">Qanday öçiriladi</string>
     <string name="usul_taymer">Taymer</string>
     <string name="usul_maxfiy_kod">Maxfiy kod</string>
     <string name="usul_maxfiy_matn">Maxfiy matn</string>
@@ -724,8 +724,8 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="farzand_sorovlari">Farzand sörovlari</string>
     <string name="n_ta_yangi">%1$d ta yangi</string>
 
-    <string name="qalqonni_ochirish_sorovi">Qalqonni öçiriş sörovi</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Tasdiqlasangiz farzandingizda Qalqon darhol öçadi</string>
+    <string name="qalqonni_ochirish_sorovi">Qattiq himoyani öçiriş söralmoqda</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Rozi bölsangiz, farzandingiz telefonida qattiq himoya darhol öçadi</string>
 
     <string name="rad_etish">Rad etiş</string>
 
@@ -733,10 +733,8 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="sorov_rad_etildi">Sörov rad etildi</string>
     <string name="sorov_muddati_tugadi">Sörov muddati tugadi</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Qalqonni öçirişga ruxsat berasizmi?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">
-    Tasdiqlasangiz farzandingiz Qalqonni darhol öçira oladi.
-</string>
+    <string name="qalqon_ochirishga_ruxsat">Qattiq himoya öçirilsinmi?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Rozi bölsangiz, farzandingiz qattiq himoyani darhol öçira oladi.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">Ruxsatlar</string>
@@ -746,11 +744,11 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="berilmagan">Berilmagan</string>
 
     <string name="boshqa_rejimlar_uchun">Boşqa rejimlar uçun — hozirça şart emas</string>
-    <string name="gujanak_uchun">Ğujanak uçun</string>
-    <string name="qalqon_uchun">Qalqon uçun</string>
+    <string name="gujanak_uchun">Örta himoya uçun</string>
+    <string name="qalqon_uchun">Qattiq himoya uçun</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d ta zarur ruxsat öçiq</string>
-    <string name="zarur_ruxsat_banner_desc">Bularsiz himoya töliq işlamaydi — farzandingiz qurilmasida yoqib qöying</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Farzand telefonida %1$d ta sozlama öçiq</string>
+    <string name="zarur_ruxsat_banner_desc">Öçiq qatorni bosing — nima uçun kerakligi va qayerda yoqilişi çiqadi.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Bildirişnomalar</string>
@@ -764,19 +762,19 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="perm_accessibility">Maxsus imkoniyatlar</string>
     <string name="perm_device_admin">Qurilma administratori</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Farzandingiz "%1$s" Qalqonni öçiriş uçun sizdan ruxsat söramoqda</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s qattiq himoyani öçirişga ruxsat söramoqda</string>
     <string name="javob_uchun">Javob uçun: %1$s</string>
     <string name="rad_etildi">Rad etildi</string>
 
-    <string name="oxirgi_sinxron">Oxirgi sinxron</string>
+    <string name="oxirgi_sinxron">Oxirgi marta aloqada</string>
     <string name="kod">Kod</string>
-    <string name="qalqonni_ochirish">Qalqonni öçiriş</string>
-    <string name="himoya_ochiq_qisqa">Himoya öçiq</string>
-    <string name="gujanak_faol_qisqa">Ğujanak faol</string>
-    <string name="toliq_himoya_faol_qisqa">Töliq himoya faol</string>
+    <string name="qalqonni_ochirish">Qattiq himoyani öçiriş</string>
+    <string name="himoya_ochiq_qisqa">Vaqt va joylaşuv körinadi. Ilovalar yopilmaydi.</string>
+    <string name="gujanak_faol_qisqa">Belgilangan vaqtda ilovalar yopiladi.</string>
+    <string name="toliq_himoya_faol_qisqa">Ilovalar, saytlar va qisqa videolar yopiladi.</string>
     <string name="ruxsat_berildi">Ruxsat berildi</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Siz ruxsat berdingiz — farzandingizda Qalqon öçiriladi.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Siz sörovni rad etdingiz. Qalqon faol qoldi.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Siz ruxsat berdingiz — farzandingiz telefonida qattiq himoya öçadi.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Siz rad etdingiz. Qattiq himoya işlayapti.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Siz ruxsat berdingiz — farzandingiz ilovadan çiqişi mumkin.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Siz ruxsat berdingiz — farzandingiz ilovani öçirişi mumkin.</string>
     <string name="sorov_rad_etildi_desc">Siz sörovni rad etdingiz.</string>
@@ -1025,17 +1023,17 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="protection_section">Nimalar himoya qilinadi</string>
     <string name="protection_footer">Röyxatni Tikoncha yangilab turadi.</string>
     <string name="location_show_area">Hududni körsatiş</string>
-    <string name="info_sites_shield">Saytlar farzandingiz telefonida faqat Qalqon rejimi yoqilganda yopiladi.</string>
-    <string name="protection_shield_note">Kontent himoya farzandingiz telefonida faqat Qalqon rejimi yoqilganda işlaydi.</string>
-    <string name="protection_shield_short">Faqat Qalqon rejimida işlaydi</string>
-    <string name="info_features_shield">YouTube Shorts va Instagram Reels farzandingiz telefonida faqat Qalqon rejimi yoqilganda yopiladi.</string>
+    <string name="info_sites_shield">Saytlar faqat farzandingiz telefonida qattiq himoya yoqilganda yopiladi.</string>
+    <string name="protection_shield_note">Bu faqat farzandingiz telefonida qattiq himoya yoqilganda işlaydi.</string>
+    <string name="protection_shield_short">Faqat qattiq himoyada işlaydi</string>
+    <string name="info_features_shield">YouTube Shorts va Instagram Reels faqat farzandingiz telefonida qattiq himoya yoqilganda yopiladi.</string>
     <string name="protection_by_child">Farzandingiz özida yoqqan — uni faqat farzandingiz öçira oladi</string>
     <string name="protection_by_coparent">Ikkinçi ota-ona yoqqan — uni faqat özi öçira oladi</string>
     <string name="protection_by_both">Farzandingiz va ikkinçi ota-ona yoqqan — ularnikini faqat özlari öçira oladi</string>
-    <string name="protection_policies_label">Jadvallar</string>
+    <string name="protection_policies_label">Qoidalaringiz</string>
     <string name="protection_policies_delivered">Telefonga yetib bordi</string>
     <string name="protection_policies_pending">Hali yetib bormadi</string>
-    <string name="protection_gujanak_limits_note">Ğujanak rejimida ilovalar bloklanadi. Saytlar va Shorts/Reels faqat Qalqon rejimida bloklanadi.</string>
+    <string name="protection_gujanak_limits_note">Örta himoyada faqat ilovalar yopiladi. Saytlar va qisqa videolar faqat qattiq himoyada yopiladi: farzandingiz telefonida Hoglt → «Nazorat» → «Qalqon».</string>
     <string name="editor_limit_days_follow_time">Vaqt bilan bir xil — kunlar vaqt sahifasida tanlanadi</string>
     <string name="editor_limit_in_window">limit şu vaqtda</string>
     <string name="editor_limit_outside_window">limit şu vaqtdan taşqarida</string>
@@ -1358,7 +1356,7 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="parent_special_info_title">Farzand telefonida işlaydi</string>
     <string name="parent_special_info_1">Siz yoqqan himoyani farzandingiz öçira olmaydi. U buni ilovada köradi.</string>
     <string name="parent_special_info_2">Xavf bölsa, sizga faqat toifa va ilova nomi keladi — yozişma matni yoki rasm emas.</string>
-    <string name="parent_special_info_3">Android'da Qalqon rejimi kerak. iPhone'da: 18+ saytlar va Tikonchagram yozişmalari.</string>
+    <string name="parent_special_info_3">Android’da qattiq himoya kerak. iPhone’da: 18+ saytlar va Tikonchagram yozişmalari.</string>
     <string name="parent_special_nsfw_title">Nomaqbul rasmlar</string>
     <string name="parent_special_nsfw_desc">18+ tasvir yopiladi, sizga xabar boradi</string>
     <string name="parent_special_conv_title">Xavfli yozişmalar</string>
@@ -1445,8 +1443,8 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="text_size_extra_large">Juda katta</string>
     <string name="text_size_preview">Farzandingiz bugun telefonda 2 soat 15 daqiqa ötkazdi.</string>
     <string name="text_size_footer">Tanlov darhol butun ilovaga qöllanadi. Telefon sozlamalaridagi şrift ölçami ham hisobga olinadi.</string>
-    <string name="ob_shield_request">Qattiq himoyani öçiriş sörovi</string>
-    <string name="ob_shield_hint">Qalqon — eng qattiq himoya rejimi</string>
+    <string name="ob_shield_request">Yana 5 daqiqa berasizmi?</string>
+    <string name="ob_shield_hint">Farzandingiz vaqt söramoqda</string>
     <string name="register_role_label">Siz farzandga kim bölasiz?</string>
     <string name="add_child_scan_qr">QR kodni skanerlaş</string>
     <string name="add_child_scan_hint">Kamerani farzand telefonidagi QR kodga qarating</string>
@@ -1474,9 +1472,37 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="perm_why_gps">GPS öçiq bölsa joylaşuv yangilanmaydi — xaritada eski joy körinadi.</string>
     <string name="perm_why_battery">Telefon batareyani tejab, Tikoncha’ni fonda töxtatib qöyadi: himoya va joylaşuv vaqti-vaqti bilan uzilib qoladi.</string>
     <string name="perm_why_auto_start">Telefon öçib yoqilgaç yoki ilova yopilgaç Tikoncha özi işga tuşmaydi — farzand ilovani oçmaguniça himoya işlamaydi. Xiaomi, Redmi va POCO’da telefon sozlamalarida yoqiladi: Ilovalar → Tikoncha → Avto-işga tuşiş.</string>
-    <string name="perm_why_accessibility">Qalqon rejimining asosi: usiz saytlar, YouTube Shorts va Instagram Reels yopilmaydi, ilovani öçirib taşlaşdan himoya ham işlamaydi.</string>
+    <string name="perm_why_accessibility">Usiz saytlar, YouTube Shorts va Instagram Reels yopilmaydi, ilovani öçirib taşlaşdan himoya ham işlamaydi.</string>
     <string name="perm_why_device_admin">Farzand Tikoncha’ni oddiy ilova kabi, sizdan söramasdan öçirib taşlay oladi.</string>
     <string name="policy_paywall_app_limits">Bepul tarifda bitta jadvalga %1$d tagaça ilova qöşiş mumkin. Köproq ilova uçun Plus kerak.</string>
     <string name="policy_paywall_app_limit">Bitta jadvaldagi ilovalar soni tarif çegarasiga yetdi.</string>
     <string name="clip_child_phone">Uning telefonida</string>
+    <string name="prot_default_note">Qoidalaringiz hozir heç bir ilovani yopmaydi. Yopişi uçun farzandingiz telefonida Hoglt’ni oçing → «Nazorat» bölimida himoyani yoqing.</string>
+    <string name="prot_strength">Himoya kuçi</string>
+    <string name="prot_phone_settings">Farzandingiz telefonidagi sozlamalar</string>
+    <string name="prot_phone_settings_hint">Bular farzandingiz telefonida yoqiladi — sizning telefoningizda emas.</string>
+    <string name="prot_x_of_y_on">%2$d tadan %1$d tasi yoqilgan</string>
+    <string name="prot_on">Yoqilgan</string>
+    <string name="prot_off">Öçiq</string>
+    <string name="prot_not_needed_now">Hozir şart emas</string>
+    <string name="prot_why_needed">Nima uçun kerak?</string>
+    <string name="prot_where_to_turn_on">Qayerda yoqiladi: farzandingiz telefoni sozlamalarida «%1$s».</string>
+    <string name="prot_stronger_group">Kuçliroq himoya uçun (%1$d)</string>
+    <string name="perm_title_notification">Xabar va eslatmalar</string>
+    <string name="perm_title_usage_stats">Qaysi ilovada qança ötirgani</string>
+    <string name="perm_title_overlay">Vaqt tugaganda ilovani yopiş</string>
+    <string name="perm_title_overlay_popup">Ilovani yopiş (Xiaomi telefonlarida)</string>
+    <string name="perm_title_location">Qayerda ekanini körsatiş</string>
+    <string name="perm_title_gps">Aniq joylaşuv</string>
+    <string name="perm_title_battery">Batareya tejalganda ham işlaş</string>
+    <string name="perm_title_auto_start">Telefon qayta yoqilganda işlaş</string>
+    <string name="perm_title_accessibility">Saytlar va qisqa videolarni yopiş</string>
+    <string name="perm_title_device_admin">Hoglt’ni öçirib taşlaşdan himoya</string>
+    <string name="prot_btn_allow">Ruxsat beraman</string>
+    <string name="prot_btn_keep">Yöq, qolsin</string>
+    <string name="prot_btn_delete_account">Ha, butunlay öçirilsin</string>
+    <string name="task_empty_in_progress">Hozir bajarilayotgan vazifa yöq</string>
+    <string name="task_empty_done">Bajarilgan vazifa hali yöq</string>
+    <string name="task_empty_overdue">Muddati ötgan vazifa yöq</string>
+    <string name="task_empty_filter_hint">Barça vazifalarni körish uçun tanlangan belgini qayta bosing.</string>
 </resources>

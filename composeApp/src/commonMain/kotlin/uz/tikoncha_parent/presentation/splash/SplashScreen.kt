@@ -72,6 +72,14 @@ class SplashScreen : Screen {
                         "task" -> TaskScreen()
                         "createtask" -> uz.tikoncha_parent.presentation.task.create_task.CreateTaskScreen()
                         "protection" -> ProtectionScreen()
+                        // -hoglt.screen protectionsample [default|gujanak|strict] [-hoglt.missing] — kirmasdan, namuna holat
+                        "protectionsample" -> uz.tikoncha_parent.presentation.protection.ProtectionSampleScreen(
+                            mode = uz.tikoncha_parent.domain.model.protection.ChildMode
+                                .from(debugArgs.getOrNull(debugArgs.indexOf("-hoglt.screen") + 2))
+                                .takeIf { it != uz.tikoncha_parent.domain.model.protection.ChildMode.UNKNOWN }
+                                ?: uz.tikoncha_parent.domain.model.protection.ChildMode.DEFAULT,
+                            withMissing = "-hoglt.missing" in debugArgs,
+                        )
                         "chat" -> ChatScreen()
                         "children" -> ChildrenSelectScreen()
                         "theme" -> uz.tikoncha_parent.presentation.profile.settings.theme.ThemeScreen()

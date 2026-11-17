@@ -6,6 +6,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.GppMaybe
 import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.Shield
+import androidx.compose.material.icons.rounded.AppBlocking
+import androidx.compose.material.icons.rounded.BatteryChargingFull
+import androidx.compose.material.icons.rounded.GpsFixed
+import androidx.compose.material.icons.rounded.HourglassBottom
+import androidx.compose.material.icons.rounded.Language
+import androidx.compose.material.icons.rounded.LocationOn
+import androidx.compose.material.icons.rounded.Notifications
+import androidx.compose.material.icons.rounded.PhonelinkLock
+import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -76,6 +85,33 @@ fun ChildPermission.label(): StringResource = when (this) {
     ChildPermission.AUTO_START -> Res.string.perm_auto_start
     ChildPermission.ACCESSIBILITY -> Res.string.perm_accessibility
     ChildPermission.DEVICE_ADMIN -> Res.string.perm_device_admin
+}
+
+/** Ota-ona uçun nom: sozlama nima beradi (Android sozlamasining nomi emas — u [label] da, "qayerda yoqiladi" uçun). */
+fun ChildPermission.title(): StringResource = when (this) {
+    ChildPermission.NOTIFICATION -> Res.string.perm_title_notification
+    ChildPermission.USAGE_STATS -> Res.string.perm_title_usage_stats
+    ChildPermission.OVERLAY -> Res.string.perm_title_overlay
+    ChildPermission.OVERLAY_POPUP -> Res.string.perm_title_overlay_popup
+    ChildPermission.LOCATION -> Res.string.perm_title_location
+    ChildPermission.GPS_ENABLED -> Res.string.perm_title_gps
+    ChildPermission.BATTERY -> Res.string.perm_title_battery
+    ChildPermission.AUTO_START -> Res.string.perm_title_auto_start
+    ChildPermission.ACCESSIBILITY -> Res.string.perm_title_accessibility
+    ChildPermission.DEVICE_ADMIN -> Res.string.perm_title_device_admin
+}
+
+/** Qator belgisi: matndan oldin ma'noni rasm bilan beradi (keyin 3D rasmlar bilan almaştiriladi). */
+fun ChildPermission.icon(): ImageVector = when (this) {
+    ChildPermission.NOTIFICATION -> Icons.Rounded.Notifications
+    ChildPermission.USAGE_STATS -> Icons.Rounded.HourglassBottom
+    ChildPermission.OVERLAY, ChildPermission.OVERLAY_POPUP -> Icons.Rounded.AppBlocking
+    ChildPermission.LOCATION -> Icons.Rounded.LocationOn
+    ChildPermission.GPS_ENABLED -> Icons.Rounded.GpsFixed
+    ChildPermission.BATTERY -> Icons.Rounded.BatteryChargingFull
+    ChildPermission.AUTO_START -> Icons.Rounded.RestartAlt
+    ChildPermission.ACCESSIBILITY -> Icons.Rounded.Language
+    ChildPermission.DEVICE_ADMIN -> Icons.Rounded.PhonelinkLock
 }
 
 // ─────────── Vaqt helpers ───────────

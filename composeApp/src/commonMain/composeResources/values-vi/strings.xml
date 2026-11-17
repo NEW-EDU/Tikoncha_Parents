@@ -414,7 +414,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="farzand_ilova_kuzatish">Theo dõi con bạn dùng những ứng dụng nào và dùng bao lâu trong ngày.</string>
     <string name="uchtagacha_jadval">Tối đa 3 lịch</string>
     <string name="jadval_cheklovlar">Đặt hạn chế riêng cho từng ngày, tuần hoặc thời điểm đặc biệt.</string>
-    <string name="qattiq_bloklash_qalqon">Chặn cứng (chế độ Khiên)</string>
+    <string name="qattiq_bloklash_qalqon">Bảo vệ nghiêm ngặt: chặn cả trang web và video ngắn</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">Con bạn không thể tắt hoặc thay đổi các hạn chế.</string>
     <string name="tez_bloklash_timer">Chặn nhanh (Hẹn giờ)</string>
     <string name="vaqtinchalik_bloklash_tezi">Bật chặn tạm thời chỉ trong vài giây khi cần.</string>
@@ -669,27 +669,27 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="tugilgan_sanasi">Ngày sinh</string>
 
     <string name="farzand_himoyasi">Bảo vệ trẻ em</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d quyền đã tắt</string>
+    <string name="ta_ruxsat_ochirilgan">Cài đặt đang tắt trên điện thoại của con: %1$d</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d yêu cầu mới đang chờ</string>
 
 
     <!-- Himoya -->
     <string name="himoya">Bảo vệ</string>
 
-    <string name="mode_default_title">Mặc định</string>
-    <string name="mode_gujanak_title">Nhím</string>
-    <string name="mode_qalqon_title">Khiên</string>
+    <string name="mode_default_title">Chỉ theo dõi</string>
+    <string name="mode_gujanak_title">Bảo vệ trung bình</string>
+    <string name="mode_qalqon_title">Bảo vệ nghiêm ngặt</string>
 
-    <string name="mode_default_desc">Bảo vệ đã tắt — chỉ giám sát</string>
-    <string name="mode_gujanak_desc">Đang chặn theo lịch</string>
-    <string name="mode_qalqon_desc">Bảo vệ toàn diện — chặn nâng cao đang hoạt động</string>
+    <string name="mode_default_desc">Xem được thời gian dùng máy và vị trí. Không ứng dụng nào bị đóng.</string>
+    <string name="mode_gujanak_desc">Ứng dụng bị đóng vào giờ bạn đặt.</string>
+    <string name="mode_qalqon_desc">Ứng dụng, trang web và video ngắn bị chặn.</string>
 
-    <string name="holat_nomalum">Trạng thái không xác định</string>
-    <string name="holat_nomalum_desc">Thiết bị của con chưa đồng bộ</string>
+    <string name="holat_nomalum">Chưa có thông tin</string>
+    <string name="holat_nomalum_desc">Thông tin sẽ hiện khi điện thoại của con kết nối mạng</string>
 
-    <string name="himoya_boshlangich">Cơ bản</string>
-    <string name="himoya_orta">Bảo vệ vừa phải</string>
-    <string name="himoya_toliq">Bảo vệ toàn diện</string>
+    <string name="himoya_boshlangich">Chỉ theo dõi</string>
+    <string name="himoya_orta">Bảo vệ trung bình</string>
+    <string name="himoya_toliq">Bảo vệ nghiêm ngặt</string>
 
     <!-- Sync -->
     <string name="sinxron">Đã đồng bộ:</string>
@@ -716,8 +716,8 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="farzand_sorovlari">Yêu cầu của con</string>
     <string name="n_ta_yangi">%1$d mới</string>
 
-    <string name="qalqonni_ochirish_sorovi">Yêu cầu tắt Khiên</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">Nếu bạn chấp thuận, Khiên sẽ được tắt ngay trên thiết bị của con bạn</string>
+    <string name="qalqonni_ochirish_sorovi">Yêu cầu tắt bảo vệ nghiêm ngặt</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">Nếu bạn cho phép, bảo vệ nghiêm ngặt trên điện thoại của con sẽ tắt ngay</string>
 
     <string name="rad_etish">Từ chối</string>
 
@@ -725,8 +725,8 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="sorov_rad_etildi">Đã từ chối yêu cầu</string>
     <string name="sorov_muddati_tugadi">Yêu cầu đã hết hạn</string>
 
-    <string name="qalqon_ochirishga_ruxsat">Cho phép tắt Khiên?</string>
-    <string name="qalqon_ochirish_ruxsat_desc">Nếu bạn chấp thuận, con bạn sẽ có thể tắt Khiên ngay lập tức.</string>
+    <string name="qalqon_ochirishga_ruxsat">Tắt bảo vệ nghiêm ngặt?</string>
+    <string name="qalqon_ochirish_ruxsat_desc">Nếu bạn cho phép, con có thể tắt bảo vệ nghiêm ngặt ngay.</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">Quyền</string>
@@ -736,11 +736,11 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="berilmagan">Chưa cấp</string>
 
     <string name="boshqa_rejimlar_uchun">Hiện không cần cho các chế độ khác</string>
-    <string name="gujanak_uchun">Cho chế độ Nhím</string>
-    <string name="qalqon_uchun">Cho chế độ Khiên</string>
+    <string name="gujanak_uchun">Cho bảo vệ trung bình</string>
+    <string name="qalqon_uchun">Cho bảo vệ nghiêm ngặt</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d quyền cần thiết đã bị tắt</string>
-    <string name="zarur_ruxsat_banner_desc">Thiếu các quyền này, việc bảo vệ không thể hoạt động đầy đủ — hãy bật chúng trên thiết bị của con bạn</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">Cài đặt đang tắt trên điện thoại của con: %1$d</string>
+    <string name="zarur_ruxsat_banner_desc">Chạm vào mục đang tắt để xem mục đó dùng để làm gì và bật ở đâu.</string>
 
     <!-- Permission names -->
     <string name="perm_notification">Thông báo</string>
@@ -754,19 +754,19 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="perm_accessibility">Trợ năng</string>
     <string name="perm_device_admin">Quản trị viên thiết bị</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">Con bạn đang xin phép tắt Khiên cho "%1$s"</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s xin tắt bảo vệ nghiêm ngặt</string>
     <string name="javob_uchun">Thời gian còn lại để phản hồi: %1$s</string>
     <string name="rad_etildi">Đã từ chối</string>
 
-    <string name="oxirgi_sinxron">Lần đồng bộ cuối</string>
+    <string name="oxirgi_sinxron">Lần liên lạc cuối</string>
     <string name="kod">Mã</string>
-    <string name="qalqonni_ochirish">Tắt Khiên</string>
-    <string name="himoya_ochiq_qisqa">Bảo vệ đã tắt</string>
-    <string name="gujanak_faol_qisqa">Nhím đang hoạt động</string>
-    <string name="toliq_himoya_faol_qisqa">Bảo vệ toàn diện đang hoạt động</string>
+    <string name="qalqonni_ochirish">Tắt bảo vệ nghiêm ngặt</string>
+    <string name="himoya_ochiq_qisqa">Xem được thời gian dùng máy và vị trí. Không ứng dụng nào bị đóng.</string>
+    <string name="gujanak_faol_qisqa">Ứng dụng bị đóng vào giờ bạn đặt.</string>
+    <string name="toliq_himoya_faol_qisqa">Ứng dụng, trang web và video ngắn bị chặn.</string>
     <string name="ruxsat_berildi">Đã cấp quyền</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">Bạn đã chấp thuận yêu cầu — Khiên sẽ được tắt trên thiết bị của con bạn.</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">Bạn đã từ chối yêu cầu. Khiên vẫn đang hoạt động.</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">Bạn đã cho phép — bảo vệ nghiêm ngặt trên điện thoại của con sẽ tắt.</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">Bạn đã từ chối. Bảo vệ nghiêm ngặt vẫn bật.</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">Bạn đã chấp thuận yêu cầu — con bạn giờ có thể đăng xuất khỏi ứng dụng.</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">Bạn đã chấp thuận yêu cầu — con bạn giờ có thể gỡ cài đặt ứng dụng.</string>
     <string name="sorov_rad_etildi_desc">Bạn đã từ chối yêu cầu.</string>
@@ -1015,17 +1015,17 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="protection_section">Những gì được bảo vệ</string>
     <string name="protection_footer">Hoglt luôn cập nhật danh sách.</string>
     <string name="location_show_area">Hiện khu vực</string>
-    <string name="info_sites_shield">Trang web chỉ bị chặn khi chế độ Khiên đang bật trên điện thoại của con bạn.</string>
-    <string name="protection_shield_note">Bảo vệ nội dung chỉ hoạt động khi chế độ Khiên đang bật trên điện thoại của con bạn.</string>
-    <string name="protection_shield_short">Chỉ hoạt động ở chế độ Khiên</string>
-    <string name="info_features_shield">YouTube Shorts và Instagram Reels chỉ bị chặn khi chế độ Khiên đang bật trên điện thoại của con bạn.</string>
+    <string name="info_sites_shield">Trang web chỉ bị chặn khi bảo vệ nghiêm ngặt đang bật trên điện thoại của con.</string>
+    <string name="protection_shield_note">Mục này chỉ hoạt động khi bảo vệ nghiêm ngặt đang bật trên điện thoại của con.</string>
+    <string name="protection_shield_short">Chỉ hoạt động khi bật bảo vệ nghiêm ngặt</string>
+    <string name="info_features_shield">YouTube Shorts và Instagram Reels chỉ bị chặn khi bảo vệ nghiêm ngặt đang bật trên điện thoại của con.</string>
     <string name="protection_by_child">Con bạn đã bật — chỉ con bạn mới có thể tắt phần của mình</string>
     <string name="protection_by_coparent">Phụ huynh còn lại đã bật — chỉ họ mới có thể tắt phần của mình</string>
     <string name="protection_by_both">Con bạn và phụ huynh còn lại đã bật — chỉ họ mới có thể tắt phần của mình</string>
-    <string name="protection_policies_label">Lịch</string>
+    <string name="protection_policies_label">Quy tắc của bạn</string>
     <string name="protection_policies_delivered">Đã gửi đến điện thoại</string>
     <string name="protection_policies_pending">Chưa được gửi</string>
-    <string name="protection_gujanak_limits_note">Chế độ Nhím chặn ứng dụng. Trang web và Shorts/Reels chỉ bị chặn ở chế độ Khiên.</string>
+    <string name="protection_gujanak_limits_note">Bảo vệ trung bình chỉ đóng ứng dụng. Trang web và video ngắn chỉ bị chặn khi bật bảo vệ nghiêm ngặt: trên điện thoại của con, Hoglt → “Kiểm soát” → “Chế độ Khiên”.</string>
     <string name="editor_limit_days_follow_time">Giống như thời gian — các ngày được chọn ở trang thời gian</string>
     <string name="editor_limit_in_window">giới hạn trong thời gian này</string>
     <string name="editor_limit_outside_window">giới hạn ngoài thời gian này</string>
@@ -1348,7 +1348,7 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="parent_special_info_title">Hoạt động trên điện thoại của con</string>
     <string name="parent_special_info_1">Con không thể tắt bảo vệ do bạn bật. Con sẽ thấy điều này trong ứng dụng của mình.</string>
     <string name="parent_special_info_2">Nếu có rủi ro, bạn chỉ nhận được chủ đề và tên ứng dụng — không bao giờ nhận nội dung tin nhắn hay hình ảnh.</string>
-    <string name="parent_special_info_3">Trên Android cần chế độ Khiên. Trên iPhone: trang web 18+ và trò chuyện Hoglagram.</string>
+    <string name="parent_special_info_3">Trên Android cần bảo vệ nghiêm ngặt. Trên iPhone: trang web 18+ và trò chuyện Hoglagram.</string>
     <string name="parent_special_nsfw_title">Hình ảnh không phù hợp</string>
     <string name="parent_special_nsfw_desc">Ảnh 18+ bị đóng và bạn được thông báo</string>
     <string name="parent_special_conv_title">Trò chuyện rủi ro</string>
@@ -1394,8 +1394,8 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">Cho con thêm 5 phút nhé?</string>
+    <string name="ob_shield_hint">Con đang xin thêm thời gian</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1423,9 +1423,37 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">Thiếu mục này, trang web, YouTube Shorts và Instagram Reels sẽ không bị chặn, và ứng dụng có thể bị gỡ dễ dàng.</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">Trên điện thoại của con</string>
+    <string name="prot_default_note">Hiện quy tắc của bạn chưa đóng ứng dụng nào. Để đóng được, trên điện thoại của con hãy mở Hoglt → “Kiểm soát” và bật bảo vệ.</string>
+    <string name="prot_strength">Mức bảo vệ</string>
+    <string name="prot_phone_settings">Cài đặt trên điện thoại của con</string>
+    <string name="prot_phone_settings_hint">Các mục này được bật trên điện thoại của con, không phải trên điện thoại của bạn.</string>
+    <string name="prot_x_of_y_on">Đã bật %1$d/%2$d</string>
+    <string name="prot_on">Đang bật</string>
+    <string name="prot_off">Đang tắt</string>
+    <string name="prot_not_needed_now">Chưa cần lúc này</string>
+    <string name="prot_why_needed">Mục này để làm gì?</string>
+    <string name="prot_where_to_turn_on">Bật ở đâu: trong cài đặt điện thoại của con, “%1$s”.</string>
+    <string name="prot_stronger_group">Để bảo vệ mạnh hơn (%1$d)</string>
+    <string name="perm_title_notification">Tin nhắn và lời nhắc</string>
+    <string name="perm_title_usage_stats">Thời gian dùng từng ứng dụng</string>
+    <string name="perm_title_overlay">Đóng ứng dụng khi hết giờ</string>
+    <string name="perm_title_overlay_popup">Đóng ứng dụng (trên điện thoại Xiaomi)</string>
+    <string name="perm_title_location">Cho biết con đang ở đâu</string>
+    <string name="perm_title_gps">Vị trí chính xác</string>
+    <string name="perm_title_battery">Vẫn chạy khi tiết kiệm pin</string>
+    <string name="perm_title_auto_start">Tự chạy lại khi máy khởi động lại</string>
+    <string name="perm_title_accessibility">Chặn trang web và video ngắn</string>
+    <string name="perm_title_device_admin">Không cho gỡ Hoglt</string>
+    <string name="prot_btn_allow">Cho phép</string>
+    <string name="prot_btn_keep">Không, giữ nguyên</string>
+    <string name="prot_btn_delete_account">Có, xóa vĩnh viễn</string>
+    <string name="task_empty_in_progress">Hiện không có nhiệm vụ nào đang xử lý</string>
+    <string name="task_empty_done">Chưa có nhiệm vụ nào đã hoàn thành</string>
+    <string name="task_empty_overdue">Không có nhiệm vụ nào quá hạn</string>
+    <string name="task_empty_filter_hint">Chạm lại vào bộ lọc đang chọn để xem tất cả nhiệm vụ.</string>
 </resources>

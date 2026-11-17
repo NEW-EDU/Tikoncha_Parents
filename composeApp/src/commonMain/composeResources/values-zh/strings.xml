@@ -414,7 +414,7 @@
     <string name="farzand_ilova_kuzatish">了解你的孩子使用了哪些应用，以及一天用了多久。</string>
     <string name="uchtagacha_jadval">最多 3 个日程</string>
     <string name="jadval_cheklovlar">为不同的日子、周或特殊时段分别设置限制。</string>
-    <string name="qattiq_bloklash_qalqon">强力屏蔽（护盾模式）</string>
+    <string name="qattiq_bloklash_qalqon">严格保护：网站和短视频也会被屏蔽</string>
     <string name="farzand_cheklov_ozgartira_olmaydi">你的孩子无法关闭或更改限制。</string>
     <string name="tez_bloklash_timer">快速屏蔽（计时器）</string>
     <string name="vaqtinchalik_bloklash_tezi">需要时，几秒钟即可开启临时屏蔽。</string>
@@ -653,27 +653,27 @@
     <string name="tugilgan_sanasi">出生日期</string>
 
     <string name="farzand_himoyasi">儿童保护</string>
-    <string name="ta_ruxsat_ochirilgan">%1$d 项权限已关闭</string>
+    <string name="ta_ruxsat_ochirilgan">孩子手机上已关闭的设置：%1$d 项</string>
     <string name="ta_yangi_sorov_kutilmoqda">%1$d 个新请求待处理</string>
 
 
     <!-- Himoya -->
     <string name="himoya">保护</string>
 
-    <string name="mode_default_title">默认</string>
-    <string name="mode_gujanak_title">刺猬</string>
-    <string name="mode_qalqon_title">护盾</string>
+    <string name="mode_default_title">仅查看</string>
+    <string name="mode_gujanak_title">中等保护</string>
+    <string name="mode_qalqon_title">严格保护</string>
 
-    <string name="mode_default_desc">保护已关闭，仅监测</string>
-    <string name="mode_gujanak_desc">定时屏蔽已启用</string>
-    <string name="mode_qalqon_desc">全面保护，增强屏蔽已启用</string>
+    <string name="mode_default_desc">可以看到屏幕使用时间和位置。不会关闭任何应用。</string>
+    <string name="mode_gujanak_desc">在你设定的时间关闭应用。</string>
+    <string name="mode_qalqon_desc">屏蔽应用、网站和短视频。</string>
 
-    <string name="holat_nomalum">状态未知</string>
-    <string name="holat_nomalum_desc">孩子的设备尚未同步</string>
+    <string name="holat_nomalum">暂无信息</string>
+    <string name="holat_nomalum_desc">孩子的手机联网后就会显示</string>
 
-    <string name="himoya_boshlangich">基础</string>
+    <string name="himoya_boshlangich">仅查看</string>
     <string name="himoya_orta">中等保护</string>
-    <string name="himoya_toliq">全面保护</string>
+    <string name="himoya_toliq">严格保护</string>
 
     <!-- Sync -->
     <string name="sinxron">已同步：</string>
@@ -700,8 +700,8 @@
     <string name="farzand_sorovlari">孩子的请求</string>
     <string name="n_ta_yangi">%1$d 条新请求</string>
 
-    <string name="qalqonni_ochirish_sorovi">关闭护盾请求</string>
-    <string name="tasdiqlasangiz_qalqon_ochadi">如果批准，护盾将立即在你孩子的设备上关闭</string>
+    <string name="qalqonni_ochirish_sorovi">请求关闭严格保护</string>
+    <string name="tasdiqlasangiz_qalqon_ochadi">如果你允许，孩子手机上的严格保护会立即关闭</string>
 
     <string name="rad_etish">拒绝</string>
 
@@ -709,8 +709,8 @@
     <string name="sorov_rad_etildi">请求已拒绝</string>
     <string name="sorov_muddati_tugadi">请求已过期</string>
 
-    <string name="qalqon_ochirishga_ruxsat">允许关闭护盾？</string>
-    <string name="qalqon_ochirish_ruxsat_desc">如果批准，你的孩子将可以立即关闭护盾。</string>
+    <string name="qalqon_ochirishga_ruxsat">要关闭严格保护吗？</string>
+    <string name="qalqon_ochirish_ruxsat_desc">如果你允许，孩子可以立即关闭严格保护。</string>
 
     <!-- Permissions -->
     <string name="ruxsatlar">权限</string>
@@ -720,11 +720,11 @@
     <string name="berilmagan">未授予</string>
 
     <string name="boshqa_rejimlar_uchun">其他模式目前不需要</string>
-    <string name="gujanak_uchun">用于刺猬模式</string>
-    <string name="qalqon_uchun">用于护盾模式</string>
+    <string name="gujanak_uchun">用于中等保护</string>
+    <string name="qalqon_uchun">用于严格保护</string>
 
-    <string name="n_ta_zarur_ruxsat_ochiq">%1$d 项必需权限已关闭</string>
-    <string name="zarur_ruxsat_banner_desc">没有这些权限，保护无法完全生效，请在你孩子的设备上开启它们</string>
+    <string name="n_ta_zarur_ruxsat_ochiq">孩子手机上已关闭的设置：%1$d 项</string>
+    <string name="zarur_ruxsat_banner_desc">点一下已关闭的设置，就能看到它的用途和开启位置。</string>
 
     <!-- Permission names -->
     <string name="perm_notification">通知</string>
@@ -738,19 +738,19 @@
     <string name="perm_accessibility">无障碍</string>
     <string name="perm_device_admin">设备管理员</string>
 
-    <string name="farzand_qalqon_ochirish_sorovi">你的孩子请求允许关闭“%1$s”的护盾</string>
+    <string name="farzand_qalqon_ochirish_sorovi">%1$s 请求关闭严格保护</string>
     <string name="javob_uchun">剩余回复时间：%1$s</string>
     <string name="rad_etildi">已拒绝</string>
 
-    <string name="oxirgi_sinxron">上次同步</string>
+    <string name="oxirgi_sinxron">最后联系时间</string>
     <string name="kod">验证码</string>
-    <string name="qalqonni_ochirish">关闭护盾</string>
-    <string name="himoya_ochiq_qisqa">保护已关闭</string>
-    <string name="gujanak_faol_qisqa">刺猬已启用</string>
-    <string name="toliq_himoya_faol_qisqa">全面保护已启用</string>
+    <string name="qalqonni_ochirish">关闭严格保护</string>
+    <string name="himoya_ochiq_qisqa">可以看到屏幕使用时间和位置。不会关闭任何应用。</string>
+    <string name="gujanak_faol_qisqa">在你设定的时间关闭应用。</string>
+    <string name="toliq_himoya_faol_qisqa">屏蔽应用、网站和短视频。</string>
     <string name="ruxsat_berildi">权限已授予</string>
-    <string name="qalqon_ochirish_tasdiqlandi_desc">你已批准请求，护盾将在你孩子的设备上关闭。</string>
-    <string name="qalqon_ochirish_rad_etildi_desc">你已拒绝请求。护盾保持开启。</string>
+    <string name="qalqon_ochirish_tasdiqlandi_desc">你已允许，孩子手机上的严格保护将会关闭。</string>
+    <string name="qalqon_ochirish_rad_etildi_desc">你已拒绝。严格保护继续开启。</string>
     <string name="hisobdan_chiqish_ruxsat_berildi_desc">你已批准请求，你的孩子现在可以退出应用登录。</string>
     <string name="ilovani_ochirish_ruxsat_berildi_desc">你已批准请求，你的孩子现在可以卸载应用。</string>
     <string name="sorov_rad_etildi_desc">你已拒绝请求。</string>
@@ -999,17 +999,17 @@
     <string name="protection_section">保护内容</string>
     <string name="protection_footer">Hoglt 会持续更新该列表。</string>
     <string name="location_show_area">显示区域</string>
-    <string name="info_sites_shield">仅当你孩子的手机开启护盾模式时，才会屏蔽网站。</string>
-    <string name="protection_shield_note">仅当你孩子的手机开启护盾模式时，内容防护才会生效。</string>
-    <string name="protection_shield_short">仅在护盾模式下生效</string>
-    <string name="info_features_shield">仅当你孩子的手机开启护盾模式时，才会屏蔽 YouTube Shorts 和 Instagram Reels。</string>
+    <string name="info_sites_shield">只有孩子手机开启严格保护时，网站才会被屏蔽。</string>
+    <string name="protection_shield_note">只有孩子手机开启严格保护时，此功能才有效。</string>
+    <string name="protection_shield_short">仅在严格保护下有效</string>
+    <string name="info_features_shield">只有孩子手机开启严格保护时，YouTube Shorts 和 Instagram Reels 才会被屏蔽。</string>
     <string name="protection_by_child">由你的孩子开启，只有你的孩子才能关闭他们的设置</string>
     <string name="protection_by_coparent">由另一位家长开启，只有他们才能关闭他们的设置</string>
     <string name="protection_by_both">由你的孩子和另一位家长开启，只有他们才能关闭他们的设置</string>
-    <string name="protection_policies_label">日程</string>
+    <string name="protection_policies_label">你的规则</string>
     <string name="protection_policies_delivered">已送达手机</string>
     <string name="protection_policies_pending">尚未送达</string>
-    <string name="protection_gujanak_limits_note">刺猬模式屏蔽应用。网站和 Shorts/Reels 仅在护盾模式下才会被屏蔽。</string>
+    <string name="protection_gujanak_limits_note">中等保护只会关闭应用。网站和短视频只有在严格保护下才会被屏蔽：在孩子的手机上打开 Hoglt →“管控”→“护盾模式”。</string>
     <string name="editor_limit_days_follow_time">与时间相同，日期在时间页面中选择</string>
     <string name="editor_limit_in_window">此时间内的限额</string>
     <string name="editor_limit_outside_window">此时间外的限额</string>
@@ -1332,7 +1332,7 @@
     <string name="parent_special_info_title">在孩子的手机上运行</string>
     <string name="parent_special_info_1">你开启的保护孩子无法关闭，孩子会在自己的应用中看到。</string>
     <string name="parent_special_info_2">如有风险，你只会收到话题和应用名称，绝不会收到消息文字或图片。</string>
-    <string name="parent_special_info_3">Android 上需要护盾模式。iPhone 上：18+ 网站和 Hoglagram 聊天。</string>
+    <string name="parent_special_info_3">Android 上需要严格保护。iPhone 上：18+ 网站和 Hoglagram 聊天。</string>
     <string name="parent_special_nsfw_title">不当图片</string>
     <string name="parent_special_nsfw_desc">18+ 图片会被关闭，并通知你</string>
     <string name="parent_special_conv_title">高风险聊天</string>
@@ -1378,8 +1378,8 @@
     <string name="text_size_extra_large">Extra large</string>
     <string name="text_size_preview">Your child spent 2 hours 15 minutes on the phone today.</string>
     <string name="text_size_footer">Your choice applies to the whole app right away. The font size from your phone settings is also respected.</string>
-    <string name="ob_shield_request">Request to turn off strict protection</string>
-    <string name="ob_shield_hint">Shield — the strictest protection mode</string>
+    <string name="ob_shield_request">能再给我 5 分钟吗？</string>
+    <string name="ob_shield_hint">孩子想要更多时间</string>
     <string name="register_role_label">Who are you to the child?</string>
     <string name="add_child_scan_qr">Scan QR code</string>
     <string name="add_child_scan_hint">Point the camera at the QR code on your child’s phone</string>
@@ -1407,9 +1407,37 @@
     <string name="perm_why_gps">With GPS off the location is not updated — the map shows an old position.</string>
     <string name="perm_why_battery">The phone saves battery by stopping Hoglt in the background: protection and location drop out from time to time.</string>
     <string name="perm_why_auto_start">After the phone restarts or the app is closed, Hoglt does not start by itself — protection is off until the child opens the app. On Xiaomi, Redmi and POCO it is turned on in the phone’s settings: Apps → Hoglt → Autostart.</string>
-    <string name="perm_why_accessibility">The core of Shield mode: without it websites, YouTube Shorts and Instagram Reels are not blocked, and protection against removing the app does not work.</string>
+    <string name="perm_why_accessibility">没有它，网站、YouTube Shorts 和 Instagram Reels 不会被屏蔽，应用也能被随意卸载。</string>
     <string name="perm_why_device_admin">The child can uninstall Hoglt like any ordinary app, without asking you.</string>
     <string name="policy_paywall_app_limits">The free plan allows up to %1$d apps in one schedule. Plus gives you more.</string>
     <string name="policy_paywall_app_limit">This schedule has reached your plan’s app limit.</string>
     <string name="clip_child_phone">在他们的手机上</string>
+    <string name="prot_default_note">目前你的规则不会关闭任何应用。如需关闭，请在孩子的手机上打开 Hoglt →“管控”，然后开启保护。</string>
+    <string name="prot_strength">保护强度</string>
+    <string name="prot_phone_settings">孩子手机上的设置</string>
+    <string name="prot_phone_settings_hint">这些要在孩子的手机上开启，不是在你的手机上。</string>
+    <string name="prot_x_of_y_on">已开启 %1$d/%2$d</string>
+    <string name="prot_on">已开启</string>
+    <string name="prot_off">已关闭</string>
+    <string name="prot_not_needed_now">现在不需要</string>
+    <string name="prot_why_needed">这有什么用？</string>
+    <string name="prot_where_to_turn_on">开启位置：孩子手机的设置中，“%1$s”。</string>
+    <string name="prot_stronger_group">用于更强的保护（%1$d）</string>
+    <string name="perm_title_notification">消息和提醒</string>
+    <string name="perm_title_usage_stats">每个应用的使用时间</string>
+    <string name="perm_title_overlay">时间到后关闭应用</string>
+    <string name="perm_title_overlay_popup">关闭应用（Xiaomi 手机）</string>
+    <string name="perm_title_location">显示孩子在哪里</string>
+    <string name="perm_title_gps">精确位置</string>
+    <string name="perm_title_battery">省电模式下也能运行</string>
+    <string name="perm_title_auto_start">手机重启后自动运行</string>
+    <string name="perm_title_accessibility">屏蔽网站和短视频</string>
+    <string name="perm_title_device_admin">防止卸载 Hoglt</string>
+    <string name="prot_btn_allow">允许</string>
+    <string name="prot_btn_keep">不，保持不变</string>
+    <string name="prot_btn_delete_account">是，永久删除</string>
+    <string name="task_empty_in_progress">目前没有处理中的任务</string>
+    <string name="task_empty_done">还没有已完成的任务</string>
+    <string name="task_empty_overdue">没有已逾期的任务</string>
+    <string name="task_empty_filter_hint">再点一下已选的筛选项，即可查看全部任务。</string>
 </resources>
