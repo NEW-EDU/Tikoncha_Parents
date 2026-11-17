@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.presentation.policy.components
 
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
@@ -107,7 +109,7 @@ fun SegmentedTabs(
                 Box(
                     modifier = Modifier
                         .weight(weight)
-                        .height(44.dp)
+                        .heightIn(min = 44.dp)
                         // clip qatlami yo'q: Android 10 (Galaxy A31) da to'liq yumaloq burchakli kesilgan
                         // qatlam matni bilan birga chizilmay qolardi — shakl faqat fonga beriladi
                         .background(bg, RoundedCornerShape(topStart = start, bottomStart = start, topEnd = end, bottomEnd = end))
@@ -122,7 +124,9 @@ fun SegmentedTabs(
                         text = label,
                         style = base.copy(fontSize = fontSize, fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium),
                         color = fg,
-                        maxLines = 1,
+                        // Uzun nom ("Tayyor qoidalar") kesilmasin — kerak bölsa ikki qatorga tuşadi
+                        maxLines = 2,
+                        textAlign = TextAlign.Center,
                         overflow = TextOverflow.Ellipsis,
                     )
                 }

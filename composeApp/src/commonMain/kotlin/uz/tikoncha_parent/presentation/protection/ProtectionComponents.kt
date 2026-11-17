@@ -591,7 +591,6 @@ private fun PermissionRow(permission: ChildPermission, granted: Boolean, require
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = HomeItemHeight)
-            .iconBlob(tileBlobColor(), TileIcon, TileEndPad, TileTopPad)
             .padding(start = RowPaddingH, end = TileEndPad, top = TileTopPad, bottom = 16.dp),
     ) {
         Row(verticalAlignment = Alignment.Top) {

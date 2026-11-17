@@ -221,7 +221,7 @@ fun PolicyListUi(navigator: Navigator?, state: PolicyListState, event: (PolicyLi
             )
             LazyColumn(
                 modifier = Modifier.fillMaxSize().graphicsLayer { alpha = listAlpha },
-                contentPadding = PaddingValues(start = ContainerPadding, end = ContainerPadding, bottom = IslandFabSpace + 12.dp),
+                contentPadding = PaddingValues(start = ContainerPadding, end = ContainerPadding, bottom = IslandFabSpace + 84.dp),
                 // M3 Expressive: kartalar bitta guruhlangan blok bo'lib turadi — oralig'i ingichka
                 verticalArrangement = Arrangement.spacedBy(SegmentGap),
             ) {

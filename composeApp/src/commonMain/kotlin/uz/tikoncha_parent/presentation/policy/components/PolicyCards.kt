@@ -72,7 +72,6 @@ fun PolicyCardBody(
             .fillMaxWidth()
             .heightIn(min = TileMinHeight)
             .then(surface)
-            .tileBlob(tileBlobColor(), LeadBlobs[segmentIndex.mod(LeadBlobs.size)])
             .padding(start = 14.dp, end = 16.dp, top = 14.dp, bottom = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(14.dp),

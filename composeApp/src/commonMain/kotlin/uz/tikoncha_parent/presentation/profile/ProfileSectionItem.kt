@@ -172,21 +172,11 @@ fun ProfileTileGroup(
                     modifier = Modifier.weight(1f),
                 )
                 Spacer(Modifier.width(12.dp))
-                Box(
-                    modifier = Modifier
-                        .size(ProfileTileIconSize)
-                        // Doira rasm markazida — har qatorda bir xil joyda
-                        .drawBehind {
-                            drawCircle(color = blobColor, radius = size.minDimension * 0.56f)
-                        },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Image(
-                        painter = tile.icon,
-                        contentDescription = null,
-                        modifier = Modifier.size(ProfileTileIconSize),
-                    )
-                }
+                Image(
+                    painter = tile.icon,
+                    contentDescription = null,
+                    modifier = Modifier.size(ProfileTileIconSize),
+                )
             }
         }
     }
