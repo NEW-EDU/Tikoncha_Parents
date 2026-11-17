@@ -121,9 +121,8 @@ import uz.tikoncha_parent.presentation.base.multi_phone_input.Country
 import uz.tikoncha_parent.presentation.base.multi_phone_input.CountryPhoneInputField
 import uz.tikoncha_parent.presentation.otp.OtpInput
 import uz.tikoncha_parent.presentation.task.TaskSegmentedToggle
-import uz.tikoncha_parent.presentation.video_tutorial.TutorialType
-import uz.tikoncha_parent.presentation.video_tutorial.hasTutorialVideo
-import uz.tikoncha_parent.presentation.video_tutorial.openTutorial
+import uz.tikoncha_parent.presentation.tutorial_clips.TutorialClip
+import uz.tikoncha_parent.presentation.tutorial_clips.TutorialClipDialog
 import uz.tikoncha_parent.ui.NormalIconSize
 import uz.tikoncha_parent.ui.Space
 import uz.tikoncha_parent.ui.SpaceUltraSmall
@@ -144,6 +143,12 @@ class AddChildScreen : Screen {
         val state by screenModel.state.collectAsStateWithLifecycle()
         val clipboardManager = LocalClipboard.current
         val coroutineScope = rememberCoroutineScope()
+
+        // Qo'llanma: haqiqiy ekranlardan klip (barça tillarda) — skanerlab va kod bilan ulash
+        var showClips by remember { mutableStateOf(false) }
+        if (showClips) {
+            TutorialClipDialog(listOf(TutorialClip.ADD_CHILD, TutorialClip.ADD_CHILD_CODE)) { showClips = false }
+        }
 
         ToastProvider {
 
@@ -224,9 +229,7 @@ class AddChildScreen : Screen {
                     }
                     screenModel.onEvent(intent)
                 },
-                onTutorial = {
-                    navigator.openTutorial(TutorialType.BIND_CHILD)
-                },
+                onTutorial = { showClips = true },
                 onBack = {
                     navigator.pop()
                 }
@@ -276,8 +279,8 @@ private fun AddChildContent(
         statusBarColor = AppColors.bg.page,
         navigationBarColor = AppColors.bg.page
     )
-    // Qo'llanma videosi faqat o'zbekcha — boshqa tillarda sahifaning o'zi qadam-baqadam qo'llanma
-    val hasVideo = hasTutorialVideo()
+    // Qo'llanma kliplari ilovaning özida (har tilda eng yaqin til bilan) — tugma doim körinadi
+    val hasVideo = true   // klip ilovaning özida, har bir tilda bor
 
     if (scanning) {
         Column(
