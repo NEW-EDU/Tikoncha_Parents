@@ -81,7 +81,13 @@ data class NavTarget(val screen: NavScreen, val childId: String?)
 
 enum class NavScreen(val key: String) {
     MAP("map"), PROTECTION("protection"), RULES("rules"), TASKS("tasks"), ADD_CHILD("add_child"),
-    SUBSCRIPTION("subscription"), COINS("coins"), LIVE("live"), STATS("stats"), CHAT("chat"), PROFILE("profile");
+    SUBSCRIPTION("subscription"), COINS("coins"), LIVE("live"), STATS("stats"), CHAT("chat"), PROFILE("profile"),
+
+    // Ilova sozlamalari va yordam — yordamçi ilovaning hamma joyiga olib bora olsin ("şriftni kattalaştir",
+    // "tungi rejim", "tilni rusçaga özgartir", "qanday işlataman — video", "yordam xizmati" …)
+    SETTINGS("settings"), TEXT_SIZE("text_size"), THEME("theme"), LANGUAGE("language"),
+    NOTIFICATIONS("notifications"), TUTORIALS("tutorials"), PAYMENT_HISTORY("payment_history"),
+    CHILDREN("children"), SUPPORT("support");
 
     companion object {
         /** Noma'lum ekran — null (eski ilova yangi server qiymatini jimgina ötkazib yuboradi). */

@@ -1,5 +1,23 @@
 package uz.tikoncha_parent.presentation.assistant
 
+import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.FormatSize
+import androidx.compose.material.icons.rounded.DarkMode
+import androidx.compose.material.icons.rounded.Language
+import androidx.compose.material.icons.rounded.Notifications
+import androidx.compose.material.icons.rounded.PlayCircle
+import androidx.compose.material.icons.rounded.Payments
+import androidx.compose.material.icons.rounded.Groups
+import androidx.compose.material.icons.rounded.SupportAgent
+import tikoncha_parents.composeapp.generated.resources.sozlamalar
+import tikoncha_parents.composeapp.generated.resources.text_size_title
+import tikoncha_parents.composeapp.generated.resources.tema
+import tikoncha_parents.composeapp.generated.resources.til
+import tikoncha_parents.composeapp.generated.resources.notification
+import tikoncha_parents.composeapp.generated.resources.video_qollanma
+import tikoncha_parents.composeapp.generated.resources.tolovlar_tarixi
+import tikoncha_parents.composeapp.generated.resources.farzandlarim
+import tikoncha_parents.composeapp.generated.resources.biz_bilan_aloqa
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
@@ -351,6 +369,15 @@ internal fun navLabel(screen: NavScreen): StringResource = when (screen) {
     NavScreen.STATS -> Res.string.statistika
     NavScreen.CHAT -> Res.string.suhbat
     NavScreen.PROFILE -> Res.string.profil
+    NavScreen.SETTINGS -> Res.string.sozlamalar
+    NavScreen.TEXT_SIZE -> Res.string.text_size_title
+    NavScreen.THEME -> Res.string.tema
+    NavScreen.LANGUAGE -> Res.string.til
+    NavScreen.NOTIFICATIONS -> Res.string.notification
+    NavScreen.TUTORIALS -> Res.string.video_qollanma
+    NavScreen.PAYMENT_HISTORY -> Res.string.tolovlar_tarixi
+    NavScreen.CHILDREN -> Res.string.farzandlarim
+    NavScreen.SUPPORT -> Res.string.biz_bilan_aloqa
 }
 
 private fun navIcon(screen: NavScreen): ImageVector = when (screen) {
@@ -365,6 +392,15 @@ private fun navIcon(screen: NavScreen): ImageVector = when (screen) {
     NavScreen.STATS -> Icons.Rounded.Analytics
     NavScreen.CHAT -> Icons.Rounded.ChatBubble
     NavScreen.PROFILE -> Icons.Rounded.Person
+    NavScreen.SETTINGS -> Icons.Rounded.Settings
+    NavScreen.TEXT_SIZE -> Icons.Rounded.FormatSize
+    NavScreen.THEME -> Icons.Rounded.DarkMode
+    NavScreen.LANGUAGE -> Icons.Rounded.Language
+    NavScreen.NOTIFICATIONS -> Icons.Rounded.Notifications
+    NavScreen.TUTORIALS -> Icons.Rounded.PlayCircle
+    NavScreen.PAYMENT_HISTORY -> Icons.Rounded.Payments
+    NavScreen.CHILDREN -> Icons.Rounded.Groups
+    NavScreen.SUPPORT -> Icons.Rounded.SupportAgent
 }
 
 /** Katta tonal tugma: "Oçiş: Xarita". */

@@ -310,8 +310,11 @@ class AssistantScreen(
     }
 }
 
-/** Yordamçi tavsiya qilgan ekran (SSE `nav`). [childId] bölsa — öşa farzand tanlanadi. */
-private fun navTarget(target: NavTarget, selectedChildId: String?): Screen = when (target.screen) {
+/**
+ * Yordamçi tavsiya qilgan ekran (SSE `nav`). [childId] bölsa — öşa farzand tanlanadi.
+ * null — ekran emas (yordam xizmati — pastdan oçiladigan oyna, [AssistantUi] özi körsatadi).
+ */
+private fun navTarget(target: NavTarget, selectedChildId: String?): Screen? = when (target.screen) {
     NavScreen.MAP -> TrackingScreen()
     NavScreen.PROTECTION -> ProtectionScreen()
     NavScreen.RULES -> PolicyListScreen()
@@ -323,6 +326,15 @@ private fun navTarget(target: NavTarget, selectedChildId: String?): Screen = whe
     NavScreen.STATS -> StatisticScreen()
     NavScreen.CHAT -> ChatScreen()
     NavScreen.PROFILE -> ProfileScreen()
+    NavScreen.SETTINGS -> uz.tikoncha_parent.presentation.profile.settings.SettingsScreen()
+    NavScreen.TEXT_SIZE -> uz.tikoncha_parent.presentation.profile.settings.text_size.TextSizeScreen()
+    NavScreen.THEME -> uz.tikoncha_parent.presentation.profile.settings.theme.ThemeScreen()
+    NavScreen.LANGUAGE -> uz.tikoncha_parent.presentation.profile.language.LanguageScreen()
+    NavScreen.NOTIFICATIONS -> uz.tikoncha_parent.presentation.notification.NotificationScreen()
+    NavScreen.TUTORIALS -> uz.tikoncha_parent.presentation.tutorial_clips.TutorialClipsScreen()
+    NavScreen.PAYMENT_HISTORY -> uz.tikoncha_parent.presentation.profile.payment_history.PaymentHistoryScreen()
+    NavScreen.CHILDREN -> uz.tikoncha_parent.presentation.profile.children.ChildrenSelectScreen()
+    NavScreen.SUPPORT -> null
 }
 
 @Composable
@@ -340,9 +352,12 @@ private fun AssistantUi(
     var fieldFocused by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
 
+    var showSupport by remember { mutableStateOf(false) }
+    if (showSupport) uz.tikoncha_parent.presentation.support.SupportSheet(onDismiss = { showSupport = false })
     val openNav: (AssistantItem.Nav) -> Unit = { item ->
         item.target.childId?.let { event(AssistantEventUi.ShowOnMap(it)) }  // farzandni tanlaydi
-        navigator?.push(navTarget(item.target, state.child?.userId))
+        val screen = navTarget(item.target, state.child?.userId)
+        if (screen != null) navigator?.push(screen) else showSupport = true
     }
     // Javob faqat "Oçiş: …" bölsa — ekran özi oçiladi (bir marta)
     LaunchedEffect(state.autoOpen?.id) {
