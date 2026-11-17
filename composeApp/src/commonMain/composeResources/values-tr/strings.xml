@@ -1516,4 +1516,6 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="task_coins_not_enough">Yeterli jeton yok</string>
     <string name="chat_support_title">Destek hattı</string>
     <string name="chat_ai_title">Akıllı yardımcı</string>
+    <string name="profile_variant_a">Profile: A (simple)</string>
+    <string name="profile_variant_b">Profile: B (3D)</string>
 </resources>

@@ -1516,4 +1516,6 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="task_coins_not_enough">No hay suficientes monedas</string>
     <string name="chat_support_title">Atención al cliente</string>
     <string name="chat_ai_title">Asistente inteligente</string>
+    <string name="profile_variant_a">Profile: A (simple)</string>
+    <string name="profile_variant_b">Profile: B (3D)</string>
 </resources>

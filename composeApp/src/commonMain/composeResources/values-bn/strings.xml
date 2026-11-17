@@ -1516,4 +1516,6 @@
     <string name="task_coins_not_enough">যথেষ্ট কয়েন নেই</string>
     <string name="chat_support_title">সহায়তা কেন্দ্র</string>
     <string name="chat_ai_title">স্মার্ট সহকারী</string>
+    <string name="profile_variant_a">Profile: A (simple)</string>
+    <string name="profile_variant_b">Profile: B (3D)</string>
 </resources>

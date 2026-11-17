@@ -1510,4 +1510,6 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="task_coins_not_enough">Pas assez de pièces</string>
     <string name="chat_support_title">Service d’aide</string>
     <string name="chat_ai_title">Assistant malin</string>
+    <string name="profile_variant_a">Profile: A (simple)</string>
+    <string name="profile_variant_b">Profile: B (3D)</string>
 </resources>

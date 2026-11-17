@@ -1516,4 +1516,6 @@ Thông tin này chỉ được dùng cho các tính năng đó và không chia s
     <string name="task_coins_not_enough">Không đủ xu</string>
     <string name="chat_support_title">Trung tâm hỗ trợ</string>
     <string name="chat_ai_title">Trợ lý thông minh</string>
+    <string name="profile_variant_a">Profile: A (simple)</string>
+    <string name="profile_variant_b">Profile: B (3D)</string>
 </resources>

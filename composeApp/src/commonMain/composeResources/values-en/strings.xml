@@ -1557,4 +1557,6 @@ This information is used only for these features and is not shared with third pa
     <string name="task_coins_not_enough">Not enough coins</string>
     <string name="chat_support_title">Help desk</string>
     <string name="chat_ai_title">Smart helper</string>
+    <string name="profile_variant_a">Profile: A (simple)</string>
+    <string name="profile_variant_b">Profile: B (3D)</string>
 </resources>

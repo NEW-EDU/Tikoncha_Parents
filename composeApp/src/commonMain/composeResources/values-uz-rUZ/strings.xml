@@ -1556,4 +1556,6 @@
     <string name="task_coins_not_enough">Тангангиз етмайди</string>
     <string name="chat_support_title">Ёрдам хизмати</string>
     <string name="chat_ai_title">Ақлли ёрдамчи</string>
+    <string name="profile_variant_a">Профил: A (оддий)</string>
+    <string name="profile_variant_b">Профил: B (3D)</string>
 </resources>

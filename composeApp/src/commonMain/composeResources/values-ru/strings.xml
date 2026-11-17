@@ -1564,4 +1564,6 @@
     <string name="task_coins_not_enough">Не хватает монет</string>
     <string name="chat_support_title">Служба поддержки</string>
     <string name="chat_ai_title">Умный помощник</string>
+    <string name="profile_variant_a">Профиль: A (простой)</string>
+    <string name="profile_variant_b">Профиль: B (3D)</string>
 </resources>

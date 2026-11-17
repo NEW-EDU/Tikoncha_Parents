@@ -66,8 +66,8 @@ import uz.tikoncha_parent.ui.theme.TikonchaParentTheme
  * Profil menyusi qatori — M3 Expressive guruhlangan ro'yxat elementi: guruhning tashqi burchaklari katta, ichkilari
  * kichik, elementlar orasida ingichka bo'shliq; chapda tonal doiradagi ikonka, o'ngda strelka. [divider] eskirgan —
  * guruh uslubida chiziq kerak emas (imzo mos kelishi uchun qoldirilgan).
- * Faqat tekis (bir rangli) ikonkalar uchun (Tangalar, Qöllanma kliplari, Sozlamalar). 3D rasmlar (`ic3d_*`) kiçik
- * qatorga sig'maydi — ular uçun [ProfileTileGroup].
+ * Faqat tekis (bir rangli) ikonkalar uchun (Profil — A variant, Tangalar, Qöllanma kliplari, Sozlamalar). 3D rasmlar
+ * (`ic3d_*`) kiçik qatorga sig'maydi — ular uçun [ProfileTileGroup] (Profil — B variant, [ProfileVariant]).
  */
 @Composable
 fun ProfileSectionItem(

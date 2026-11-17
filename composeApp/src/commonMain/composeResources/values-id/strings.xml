@@ -1516,4 +1516,6 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="task_coins_not_enough">Koin tidak cukup</string>
     <string name="chat_support_title">Pusat bantuan</string>
     <string name="chat_ai_title">Asisten pintar</string>
+    <string name="profile_variant_a">Profile: A (simple)</string>
+    <string name="profile_variant_b">Profile: B (3D)</string>
 </resources>

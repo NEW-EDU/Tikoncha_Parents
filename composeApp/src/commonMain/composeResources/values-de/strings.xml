@@ -1499,4 +1499,6 @@
     <string name="task_coins_not_enough">Nicht genug Münzen</string>
     <string name="chat_support_title">Kundenservice</string>
     <string name="chat_ai_title">Kluger Helfer</string>
+    <string name="profile_variant_a">Profile: A (simple)</string>
+    <string name="profile_variant_b">Profile: B (3D)</string>
 </resources>

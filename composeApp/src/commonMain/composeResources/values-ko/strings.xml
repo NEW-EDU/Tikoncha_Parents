@@ -1500,4 +1500,6 @@
     <string name="task_coins_not_enough">코인이 부족해요</string>
     <string name="chat_support_title">고객센터</string>
     <string name="chat_ai_title">똑똑한 도우미</string>
+    <string name="profile_variant_a">Profile: A (simple)</string>
+    <string name="profile_variant_b">Profile: B (3D)</string>
 </resources>

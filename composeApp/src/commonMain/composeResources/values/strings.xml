@@ -1565,4 +1565,6 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="task_coins_not_enough">Tangangiz yetmaydi</string>
     <string name="chat_support_title">Yordam xizmati</string>
     <string name="chat_ai_title">Aqlli yordamçi</string>
+    <string name="profile_variant_a">Profil: A (oddiy)</string>
+    <string name="profile_variant_b">Profil: B (3D)</string>
 </resources>
