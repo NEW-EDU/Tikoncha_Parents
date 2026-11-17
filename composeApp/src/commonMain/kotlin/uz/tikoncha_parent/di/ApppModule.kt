@@ -365,7 +365,7 @@ val sharedModule = module {
     factory { SubscriptionPaymentViewModel(get(), get()) }
     single<uz.tikoncha_parent.domain.repository.PaymentRegionRepository> { uz.tikoncha_parent.data.repository.PaymentRegionRepositoryImpl(get()) }
     factory { CoinsViewModel(get(), get(), get()) }
-    factory { uz.tikoncha_parent.presentation.assistant.AssistantViewModel(get()) }
+    factory { uz.tikoncha_parent.presentation.assistant.AssistantViewModel(get(), get(), get(), get(), get(), get()) }
     factory { (child: UserInfo) ->
         ChildInfoEditViewModel(
             loginRepository = get(),

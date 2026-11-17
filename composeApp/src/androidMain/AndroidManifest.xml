@@ -17,6 +17,9 @@
     <!-- Farzandni ulaş: farzand ilovasidagi QR kodni skanerlaş (faqat skaner oynasi oçiq payt) -->
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <!-- Aqlli yordamçiga ovoz bilan gapiriş (faqat mikrofon tugmasi bosilganda yoziladi) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-feature android:name="android.hardware.microphone" android:required="false"/>
 
     <queries>
         <intent>

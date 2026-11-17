@@ -19,8 +19,12 @@ import uz.tikoncha_parent.data.remote.model.ai.ParentChatRequest
 import uz.tikoncha_parent.domain.model.ai.AssistantEvent
 import uz.tikoncha_parent.domain.model.ai.AssistantTurn
 import uz.tikoncha_parent.domain.model.ai.ChildReport
+import uz.tikoncha_parent.domain.model.ai.DraftApplyError
+import uz.tikoncha_parent.domain.model.ai.Transcript
 import uz.tikoncha_parent.domain.model.ai.SafetyAlert
 import uz.tikoncha_parent.domain.model.ai.LocationCard
+import uz.tikoncha_parent.domain.model.ai.NavScreen
+import uz.tikoncha_parent.domain.model.ai.NavTarget
 import uz.tikoncha_parent.domain.model.ai.ProtectionCard
 import uz.tikoncha_parent.domain.model.ai.TopApp
 import uz.tikoncha_parent.domain.model.ai.ReportPeriod
@@ -63,9 +67,14 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
         }
     }
 
-    override suspend fun applyDraft(draftId: String, coin: Int?): Outcome<Unit> = apiCall(TAG) {
-        val env = api.applyDraft(draftId, coin)
-        if (env.success) Outcome.Success(Unit) else Outcome.Failure(ApiErrorMapper.fromCode(env.code), env.error)
+    override suspend fun applyDraft(draftId: String, coin: Int?): DraftApplyError? {
+        var errorCode: String? = null
+        val r = apiCall(TAG) {
+            val env = api.applyDraft(draftId, coin)
+            errorCode = env.errorCode
+            if (env.success) Outcome.Success(Unit) else Outcome.Failure(ApiErrorMapper.fromCode(env.code), env.error)
+        }
+        return (r as? Outcome.Failure)?.let { DraftApplyError(it, errorCode) }
     }
 
     override suspend fun remind(childId: String, kind: String): Outcome<Unit> = apiCall(TAG) {
@@ -92,6 +101,29 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
 
     override suspend fun discardDraft(draftId: String) {
         runCatching { api.discardDraft(draftId) }
+    }
+
+    override suspend fun transcribe(audio: ByteArray, fileName: String, mimeType: String, lang: String): Outcome<Transcript> =
+        apiCall(TAG) {
+            val env = api.transcribe(audio, fileName, mimeType, lang)
+            val data = env.data
+            if (env.success && data != null) Outcome.Success(Transcript(data.text.trim(), data.language?.takeIf { it.isNotBlank() }))
+            else Outcome.Failure(ApiErrorMapper.fromCode(env.code), env.error)
+        }
+
+    override var ttsUnsupported: Boolean = false
+        private set
+
+    override suspend fun speech(text: String, lang: String): Outcome<ByteArray> = apiCall(TAG) {
+        val r = api.speech(text, lang)
+        val audio = r.audio
+        if (audio != null && audio.isNotEmpty()) {
+            Outcome.Success(audio)
+        } else {
+            // 404 / 405 — serverda yöq, 503 — ovoz xizmati sozlanmagan: tugma yaşiriladi (429 — faqat bugun)
+            if (r.code == 404 || r.code == 405 || r.code == 503) ttsUnsupported = true
+            Outcome.Failure(ApiErrorMapper.fromCode(r.code), null)
+        }
     }
 
     private fun map(ev: JsonObject): AssistantEvent? {
@@ -134,6 +166,13 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
                     )
                 )
             }
+            // {type: nav, screen, child_id?} — maydonlar tepada yoki `data` ichida; noma'lum ekran — e'tiborsiz
+            "nav" -> runCatching {
+                val d = ev["data"] as? JsonObject ?: ev
+                NavScreen.from(d["screen"]?.jsonPrimitive?.contentOrNull)?.let { screen ->
+                    AssistantEvent.Nav(NavTarget(screen, d["child_id"]?.jsonPrimitive?.contentOrNull?.takeIf { it.isNotBlank() }))
+                }
+            }.getOrNull()
             "done" -> AssistantEvent.Done(ev["coins"]?.jsonPrimitive?.intOrNull)
             "error" -> AssistantEvent.Failed(ev["code"]?.jsonPrimitive?.contentOrNull ?: "server", text)
             else -> null

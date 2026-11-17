@@ -1,5 +1,56 @@
 package uz.tikoncha_parent.presentation.assistant
 
+import androidx.compose.ui.unit.sp
+import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.shrinkHorizontally
+import androidx.compose.foundation.layout.offset
+import androidx.compose.material.icons.automirrored.rounded.VolumeOff
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
+import androidx.compose.material.icons.rounded.Block
+import androidx.compose.material.icons.rounded.ChatBubble
+import androidx.compose.material.icons.rounded.FilterAlt
+import androidx.compose.material.icons.rounded.Mic
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import tikoncha_parents.composeapp.generated.resources.ai_ask_where
+import tikoncha_parents.composeapp.generated.resources.ai_auto_speak_off
+import tikoncha_parents.composeapp.generated.resources.ai_auto_speak_on
+import tikoncha_parents.composeapp.generated.resources.ai_done_verified
+import tikoncha_parents.composeapp.generated.resources.ai_err_forbidden
+import tikoncha_parents.composeapp.generated.resources.ai_err_no_coins_todo
+import tikoncha_parents.composeapp.generated.resources.ai_err_plus_button
+import tikoncha_parents.composeapp.generated.resources.ai_err_plus_only
+import tikoncha_parents.composeapp.generated.resources.ai_err_todo_not_done
+import tikoncha_parents.composeapp.generated.resources.ai_hero_hint
+import tikoncha_parents.composeapp.generated.resources.ai_mic_denied_body
+import tikoncha_parents.composeapp.generated.resources.ai_mic_denied_title
+import tikoncha_parents.composeapp.generated.resources.ai_read_aloud
+import tikoncha_parents.composeapp.generated.resources.ai_suggest_task_named
+import tikoncha_parents.composeapp.generated.resources.ai_suggest_today
+import tikoncha_parents.composeapp.generated.resources.ai_suggest_youtube
+import tikoncha_parents.composeapp.generated.resources.ai_voice_mic
+import tikoncha_parents.composeapp.generated.resources.tracking_permission_settings_open
+import uz.tikoncha_parent.domain.model.ai.DraftApplyError
+import uz.tikoncha_parent.domain.model.ai.NavScreen
+import uz.tikoncha_parent.domain.model.ai.NavTarget
+import uz.tikoncha_parent.platform.openAppSettings
+import uz.tikoncha_parent.presentation.assistant.voice.rememberMicPermissionRequest
+import uz.tikoncha_parent.presentation.chat.chat_list.ChatScreen
+import uz.tikoncha_parent.presentation.live.ParentLiveScreen
+import uz.tikoncha_parent.presentation.policy.list.PolicyListScreen
+import uz.tikoncha_parent.presentation.profile.ProfileScreen
+import uz.tikoncha_parent.presentation.profile.subscription.info.SubscriptionScreen
+import uz.tikoncha_parent.presentation.statistic.StatisticScreen
+import uz.tikoncha_parent.presentation.task.TaskScreen
 import kotlinx.datetime.toLocalDateTime
 import uz.tikoncha_parent.domain.model.ai.SafetyAlert
 import coil3.compose.AsyncImage
@@ -174,8 +225,6 @@ import tikoncha_parents.composeapp.generated.resources.ai_report_top_apps
 import tikoncha_parents.composeapp.generated.resources.ai_send
 import tikoncha_parents.composeapp.generated.resources.ai_stop
 import tikoncha_parents.composeapp.generated.resources.ai_suggest_games
-import tikoncha_parents.composeapp.generated.resources.ai_suggest_night
-import tikoncha_parents.composeapp.generated.resources.ai_suggest_permissions
 import tikoncha_parents.composeapp.generated.resources.ai_suggest_task
 import tikoncha_parents.composeapp.generated.resources.ai_suggest_week
 import tikoncha_parents.composeapp.generated.resources.ai_suggest_where
@@ -183,7 +232,7 @@ import tikoncha_parents.composeapp.generated.resources.ai_summary_label
 import tikoncha_parents.composeapp.generated.resources.ai_thinking
 import tikoncha_parents.composeapp.generated.resources.arrow_left
 import tikoncha_parents.composeapp.generated.resources.bekor_qilish
-import tikoncha_parents.composeapp.generated.resources.chat_ai_icon
+import tikoncha_parents.composeapp.generated.resources.ai_avatar
 import tikoncha_parents.composeapp.generated.resources.coin_3d
 import tikoncha_parents.composeapp.generated.resources.qayta_urinish
 import tikoncha_parents.composeapp.generated.resources.yopish
@@ -206,9 +255,10 @@ import uz.tikoncha_parent.ui.theme.AppTypography
 import uz.tikoncha_parent.ui.theme.rememberScreenSystemBars
 
 /**
- * Ota-ona yordamçisi. Tepada farzand hisoboti (suhbat boşlanganda yig'iladi), pastda suhbat: savol yoki
- * "qoida ayting" → tasdiqlaş kartasi (jadval, to'xtatiş, öçiriş, topşiriq, sörov javobi), joylaşuv kartasi.
- * Eng köp işlatiladigani — yoziş maydoni — bosh barmoq ostida.
+ * Ota-ona yordamçisi — ilovaning hamma imkoniyati bitta joyda. Tepada katta tipratikan (holatini körsatadi),
+ * "Bugun qisqaça" kartalari va farzand hisoboti (suhbat boşlanganda yig'iladi), pastda suhbat: savol yoki
+ * "qoida ayting" → tasdiqlaş kartasi, joylaşuv / himoya kartasi, "Oçiş: …" tugmasi.
+ * Asosiy kiritiş — bosh barmoq ostidagi katta mikrofon; yoziş maydoni — ikkinçi yöl.
  */
 class AssistantScreen(
     /** Faqat debug: ekran ochilishi bilan beriladigan savol (SplashScreen `-hoglt.ask`). */
@@ -217,12 +267,28 @@ class AssistantScreen(
     private val initialPeriod: String? = null,
     /** Hoglt Chat ro'yxatidagi "Bilimdon AI" suhbati — oçilganda öqilgan deb belgilanadi (ogohlantirişlar shu yerda). */
     private val botChatId: String? = null,
+    /** Oçilişi bilan tinglaşni boşlaydi (navbar'dagi mikrofon tugmasi). */
+    private val startListening: Boolean = false,
 ) : Screen {
 
     @Composable
     override fun Content() {
         val viewModel = koinScreenModel<AssistantViewModel>()
         val state by viewModel.state.collectAsStateWithLifecycle()
+        val requestMic = rememberMicPermissionRequest()
+        val scope = rememberCoroutineScope()
+        // Bosilgan paytdagi holat öqiladi (lambda eski holatni ushlab qolmasin)
+        val onMic: () -> Unit = {
+            val s = viewModel.state.value
+            when {
+                s.streaming -> viewModel.onEvent(AssistantEventUi.Stop)
+                s.voice == VoicePhase.LISTENING -> viewModel.onEvent(AssistantEventUi.StopListening)
+                s.voice == VoicePhase.UNDERSTANDING -> Unit
+                else -> scope.launch {
+                    viewModel.onEvent(if (requestMic()) AssistantEventUi.StartListening else AssistantEventUi.MicDenied)
+                }
+            }
+        }
         var started by rememberSaveable { mutableStateOf(false) }
         LaunchedEffect(Unit) {
             if (started) return@LaunchedEffect
@@ -232,38 +298,113 @@ class AssistantScreen(
                 viewModel.onEvent(AssistantEventUi.SelectPeriod(it))
             }
             initialQuestion?.takeIf { it.isNotBlank() }?.let { viewModel.onEvent(AssistantEventUi.Ask(it)) }
+            if (startListening && initialQuestion.isNullOrBlank()) {
+                viewModel.onEvent(if (requestMic()) AssistantEventUi.StartListening else AssistantEventUi.MicDenied)
+            }
         }
-        AssistantUi(state = state, event = viewModel::onEvent)
+        // Boşqa ekranga ötilsa — yozuv taşlanadi, ovoz töxtaydi
+        DisposableEffect(Unit) {
+            onDispose { viewModel.onEvent(AssistantEventUi.CancelListening) }
+        }
+        AssistantUi(state = state, voiceLevel = viewModel.voiceLevel, event = viewModel::onEvent, onMic = onMic)
     }
 }
 
+/** Yordamçi tavsiya qilgan ekran (SSE `nav`). [childId] bölsa — öşa farzand tanlanadi. */
+private fun navTarget(target: NavTarget, selectedChildId: String?): Screen = when (target.screen) {
+    NavScreen.MAP -> TrackingScreen()
+    NavScreen.PROTECTION -> ProtectionScreen()
+    NavScreen.RULES -> PolicyListScreen()
+    NavScreen.TASKS -> TaskScreen()
+    NavScreen.ADD_CHILD -> uz.tikoncha_parent.presentation.add_child.AddChildScreen()
+    NavScreen.SUBSCRIPTION -> SubscriptionScreen()
+    NavScreen.COINS -> CoinsScreen()
+    NavScreen.LIVE -> ParentLiveScreen(childUserId = target.childId ?: selectedChildId)
+    NavScreen.STATS -> StatisticScreen()
+    NavScreen.CHAT -> ChatScreen()
+    NavScreen.PROFILE -> ProfileScreen()
+}
+
 @Composable
-private fun AssistantUi(state: AssistantState, event: (AssistantEventUi) -> Unit) {
+private fun AssistantUi(
+    state: AssistantState,
+    voiceLevel: StateFlow<Float>,
+    event: (AssistantEventUi) -> Unit,
+    onMic: () -> Unit,
+) {
     val navigator = LocalNavigator.current
     val listState = rememberLazyListState()
     val density = LocalDensity.current
     var bottomHeight by remember { mutableStateOf(120.dp) }
     var confirmNewChat by remember { mutableStateOf(false) }
+    var fieldFocused by remember { mutableStateOf(false) }
+    val focusManager = LocalFocusManager.current
+
+    val openNav: (AssistantItem.Nav) -> Unit = { item ->
+        item.target.childId?.let { event(AssistantEventUi.ShowOnMap(it)) }  // farzandni tanlaydi
+        navigator?.push(navTarget(item.target, state.child?.userId))
+    }
+    // Javob faqat "Oçiş: …" bölsa — ekran özi oçiladi (bir marta)
+    LaunchedEffect(state.autoOpen?.id) {
+        val nav = state.autoOpen ?: return@LaunchedEffect
+        delay(400)  // ota-ona tugmani körib ulgursin
+        // Ikkalasi ham to'xtovsiz (suspend emas): holat özgarib effekt qayta boşlansa ham ekran oçiladi
+        event(AssistantEventUi.AutoOpenHandled)
+        openNav(nav)
+    }
 
     // Suhbat boşlangach hisobot tepada bir qatorga yig'iladi (bosilsa oçiladi), suhbat esa pastdan ösadi
     val conversation = state.items.isNotEmpty() || state.streaming
     var reportOpen by rememberSaveable { mutableStateOf(false) }
-    LaunchedEffect(conversation) { if (!conversation) reportOpen = false }
-
-    val itemCount = state.items.size + (if (state.streaming) 1 else 0) + (if (conversation) 0 else 1)
-    LaunchedEffect(state.items.size, state.streaming, state.streamingText.length / 80) {
-        if (conversation && itemCount > 0) listState.animateScrollToItem(itemCount - 1)
+    LaunchedEffect(conversation) {
+        if (!conversation) {
+            reportOpen = false
+            listState.scrollToItem(0)  // yangi suhbat — yana tepadan: tipratikan va "Bugun qisqaça"
+        }
     }
 
-    state.draftError?.let { failure ->
+    // Tepada katta tipratikan (1-element) + suhbat
+    val itemCount = 1 + state.items.size + (if (state.streaming) 1 else 0)
+    LaunchedEffect(state.items.size, state.streaming, state.streamingText.length / 80) {
+        if (conversation) listState.animateScrollToItem(itemCount - 1)
+    }
+    // Katta tipratikan körinmay qolsa — sarlavhada kiçkinasi (56dp) çiqadi
+    val heroHidden by remember {
+        derivedStateOf {
+            val hero = listState.layoutInfo.visibleItemsInfo.firstOrNull { it.key == "hero" }
+            hero == null || -hero.offset > hero.size * 0.55f
+        }
+    }
+
+    state.draftError?.let { error ->
+        DraftErrorDialog(
+            error = error,
+            onDismiss = { event(AssistantEventUi.DismissDraftError) },
+            onPlus = {
+                event(AssistantEventUi.DismissDraftError)
+                navigator?.push(SubscriptionScreen())
+            },
+            onCoins = {
+                event(AssistantEventUi.DismissDraftError)
+                navigator?.push(CoinsScreen())
+            },
+        )
+    }
+    if (state.micDenied) {
         AlertDialog(
-            onDismissRequest = { event(AssistantEventUi.DismissDraftError) },
+            onDismissRequest = { event(AssistantEventUi.DismissMicDenied) },
             confirmButton = {
-                TextButton(onClick = { event(AssistantEventUi.DismissDraftError) }) {
-                    Text(stringResource(Res.string.yopish))
+                TextButton(onClick = { event(AssistantEventUi.DismissMicDenied); openAppSettings() }) {
+                    Text(stringResource(Res.string.tracking_permission_settings_open), color = AppColors.text.accentEmphasis)
                 }
             },
-            text = { Text(failure.asText(), style = AppTypography.bodyLgRegular, color = AppColors.text.primary) },
+            dismissButton = {
+                TextButton(onClick = { event(AssistantEventUi.DismissMicDenied) }) {
+                    Text(stringResource(Res.string.bekor_qilish), color = AppColors.text.secondary)
+                }
+            },
+            title = { Text(stringResource(Res.string.ai_mic_denied_title), style = AppTypography.titleMdSemiBold, color = AppColors.text.primary) },
+            text = { Text(stringResource(Res.string.ai_mic_denied_body), style = AppTypography.bodyLgRegular, color = AppColors.text.primary) },
             containerColor = AppColors.bg.elevated,
         )
     }
@@ -297,8 +438,11 @@ private fun AssistantUi(state: AssistantState, event: (AssistantEventUi) -> Unit
             .background(AppColors.bg.page)
     ) {
         Header(
-            streaming = state.streaming,
-            status = state.status,
+            mascot = state.mascot,
+            showMascot = heroHidden,
+            autoSpeak = state.autoSpeak,
+            showAutoSpeak = state.ttsAvailable,
+            onToggleAutoSpeak = { event(AssistantEventUi.ToggleAutoSpeak) },
             coins = state.coins,
             canReset = conversation && !state.streaming,
             onBack = { navigator?.pop() },
@@ -341,12 +485,34 @@ private fun AssistantUi(state: AssistantState, event: (AssistantEventUi) -> Unit
                     top = 12.dp,
                     bottom = bottomHeight + 16.dp,
                 ),
-                // Javob va kartalar pastdan, yoziş maydoni yonida (bosh barmoq) ösadi
-                verticalArrangement = Arrangement.spacedBy(14.dp, if (conversation) Alignment.Bottom else Alignment.Top),
+                verticalArrangement = Arrangement.spacedBy(14.dp),
             ) {
+                item(key = "hero") {
+                    Hero(mascot = state.mascot, listening = state.voice == VoicePhase.LISTENING, voiceLevel = voiceLevel)
+                }
                 if (!conversation) {
+                    val child = state.child
+                    if (child != null) {
+                        item(key = "glance") {
+                            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                                if (state.children.size > 1) {
+                                    ChildChips(
+                                        children = state.children,
+                                        selected = child,
+                                        onSelect = { event(AssistantEventUi.SelectChild(it)) },
+                                        contentPadding = PaddingValues(0.dp),
+                                    )
+                                }
+                                GlanceGrid(
+                                    glance = state.glance,
+                                    childName = child.firstName(),
+                                    onAsk = { event(AssistantEventUi.Ask(it)) },
+                                )
+                            }
+                        }
+                    }
                     item(key = "report") {
-                        ReportCard(state = state, open = true, onToggle = {}, event = event)
+                        ReportCard(state = state, open = true, onToggle = {}, event = event, showChildChips = false)
                     }
                     // Farzand Bilimdonga yuborgan xavotirli xabarlar (oxirgi 7 kun) — hisobot ostida, birinçi körinadi
                     items(state.alerts, key = { "alert-" + it.id }) { alert -> SafetyAlertCard(alert) }
@@ -354,7 +520,14 @@ private fun AssistantUi(state: AssistantState, event: (AssistantEventUi) -> Unit
                 items(state.items, key = { it.id }) { item ->
                     when (item) {
                         is AssistantItem.Parent -> ParentBubble(item.text)
-                        is AssistantItem.Reply -> AssistantReply(item.text, streaming = false)
+                        is AssistantItem.Reply -> AssistantReply(
+                            item.text,
+                            streaming = false,
+                            speaker = state.ttsAvailable,
+                            speaking = state.speakingId == item.id,
+                            onSpeak = { event(AssistantEventUi.Speak(item.id)) },
+                        )
+                        is AssistantItem.Nav -> NavCardView(item.target.screen, onOpen = { openNav(item) })
                         is AssistantItem.Draft -> DraftCard(
                             item = item,
                             children = state.children,
@@ -389,7 +562,7 @@ private fun AssistantUi(state: AssistantState, event: (AssistantEventUi) -> Unit
                 if (state.streaming) {
                     item(key = "streaming") {
                         if (state.streamingText.isBlank()) ThinkingRow(state.status)
-                        else AssistantReply(state.streamingText, streaming = true)
+                        else AssistantReply(state.streamingText, streaming = true, speaker = false, speaking = false, onSpeak = {})
                     }
                 }
             }
@@ -401,19 +574,38 @@ private fun AssistantUi(state: AssistantState, event: (AssistantEventUi) -> Unit
                     .onSizeChanged { bottomHeight = with(density) { it.height.toDp() } }
                     .background(AppColors.bg.page)
             ) {
-                if (!state.streaming) {
+                val voiceBusy = state.voice != VoicePhase.IDLE
+                if (!state.streaming && !voiceBusy) {
                     SuggestionChips(
                         conversation = conversation,
                         asked = state.items.mapNotNull { (it as? AssistantItem.Parent)?.text }.toSet(),
+                        childName = state.child?.firstName(),
                         onAsk = { event(AssistantEventUi.Ask(it)) },
+                    )
+                }
+                // Klaviatura oçiq bölsa katta mikrofon yaşirinadi (joy yozişga), maydonda kiçkinasi qoladi
+                val dockVisible = !fieldFocused || voiceBusy
+                AnimatedVisibility(visible = dockVisible, enter = fadeIn() + expandVertically(), exit = fadeOut() + shrinkVertically()) {
+                    VoiceDock(
+                        phase = state.voice,
+                        streaming = state.streaming,
+                        missed = state.voiceMissed,
+                        level = voiceLevel,
+                        onTap = onMic,
                     )
                 }
                 InputBar(
                     value = state.text,
                     streaming = state.streaming,
+                    dockVisible = dockVisible,
+                    onFocus = { fieldFocused = it },
                     onChange = { event(AssistantEventUi.OnText(it)) },
                     onSend = { event(AssistantEventUi.Send) },
                     onStop = { event(AssistantEventUi.Stop) },
+                    onMic = {
+                        focusManager.clearFocus()
+                        onMic()
+                    },
                 )
             }
         }
@@ -425,14 +617,69 @@ private fun String.cleanName(): String =
     split(' ').filter { it.isNotBlank() && !it.equals("null", ignoreCase = true) }.joinToString(" ")
 
 /** Oltin tugmalar ustidagi matn: oq emas, to'q jigarrang — kontrast ~6:1. */
-private val OnAccent = Color(0xFF2B1D12)
+internal val OnAccent = Color(0xFF2B1D12)
+
+/** Farzandning ismi (savollarda): "Malika". */
+private fun UserInfo.firstName(): String = name.ifBlank { fullName.cleanName().split(' ').firstOrNull().orEmpty() }
+
+/** Katta tipratikan (≈150dp) va bir qator — tepada, suhbat qisqa bölganda körinadi. */
+@Composable
+private fun Hero(mascot: MascotState, listening: Boolean, voiceLevel: StateFlow<Float>) {
+    val level by voiceLevel.collectAsState()
+    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+        Mascot(state = mascot, size = 150.dp, rings = listening, level = { level })
+        Spacer(Modifier.height(6.dp))
+        Text(
+            stringResource(Res.string.ai_hero_hint),
+            style = AppTypography.titleMdSemiBold,
+            color = AppColors.text.primary,
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+        )
+    }
+}
+
+/** Qoidani tasdiqlaş xatosi: maşina kodi böyiça oddiy matn; Plus kerak bölsa — obuna ekraniga tugma. */
+@Composable
+private fun DraftErrorDialog(error: DraftApplyError, onDismiss: () -> Unit, onPlus: () -> Unit, onCoins: () -> Unit) {
+    val paid = error.errorCode == "quick_block_paid" || error.errorCode == "protection_paid"
+    val coins = error.errorCode == "insufficient_coins_for_todo"
+    val message = when (error.errorCode) {
+        "quick_block_paid", "protection_paid" -> stringResource(Res.string.ai_err_plus_only)
+        "todo_not_child_done" -> stringResource(Res.string.ai_err_todo_not_done)
+        "insufficient_coins_for_todo" -> stringResource(Res.string.ai_err_no_coins_todo)
+        "forbidden" -> stringResource(Res.string.ai_err_forbidden)
+        else -> error.failure.asText()
+    }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            when {
+                paid -> TextButton(onClick = onPlus) {
+                    Text(stringResource(Res.string.ai_err_plus_button), color = AppColors.text.accentEmphasis)
+                }
+                coins -> TextButton(onClick = onCoins) {
+                    Text(stringResource(Res.string.ai_buy_coins), color = AppColors.text.accentEmphasis)
+                }
+                else -> TextButton(onClick = onDismiss) { Text(stringResource(Res.string.yopish)) }
+            }
+        },
+        dismissButton = if (paid || coins) {
+            { TextButton(onClick = onDismiss) { Text(stringResource(Res.string.yopish), color = AppColors.text.secondary) } }
+        } else null,
+        text = { Text(message, style = AppTypography.bodyLgRegular, color = AppColors.text.primary) },
+        containerColor = AppColors.bg.elevated,
+    )
+}
 
 // ── tepa qism ──
 
 @Composable
 private fun Header(
-    streaming: Boolean,
-    status: String,
+    mascot: MascotState,
+    showMascot: Boolean,
+    autoSpeak: Boolean,
+    showAutoSpeak: Boolean,
+    onToggleAutoSpeak: () -> Unit,
     coins: Int?,
     canReset: Boolean,
     onBack: () -> Unit,
@@ -462,22 +709,48 @@ private fun Header(
             )
         }
         Spacer(Modifier.width(6.dp))
-        MascotAvatar(size = 40.dp, active = false)
-        Spacer(Modifier.width(10.dp))
+        // Katta tipratikan yuqoriga surilib ketgaç — şu yerda kiçkinasi (holati bilan)
+        AnimatedVisibility(
+            visible = showMascot,
+            enter = fadeIn() + expandHorizontally(),
+            exit = fadeOut() + shrinkHorizontally(),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Mascot(state = mascot, size = 56.dp)
+                Spacer(Modifier.width(8.dp))
+            }
+        }
         Column(Modifier.weight(1f)) {
-            Text(
+            // Tor sarlavhada nom kesilmasin ("Aqlli…") — şrift kiçrayadi
+            androidx.compose.foundation.text.BasicText(
                 text = stringResource(Res.string.ai_assistant_title),
-                style = AppTypography.titleMdSemiBold,
-                color = AppColors.text.primary,
+                style = AppTypography.titleMdSemiBold.copy(color = AppColors.text.primary),
                 maxLines = 1,
+                autoSize = androidx.compose.foundation.text.TextAutoSize.StepBased(
+                    minFontSize = 11.sp, maxFontSize = AppTypography.titleMdSemiBold.fontSize, stepSize = 0.5.sp,
+                ),
             )
             // Holat (nima qilayotgani) — faqat suhbatdagi pufakda, sarlavhada takrorlanmaydi
+        }
+        if (showAutoSpeak) {
+            // Javoblarni avtomatik ovoz bilan öqiş (standart — öçiq)
+            IconButton(
+                onClick = onToggleAutoSpeak,
+                interactionSource = rememberHapticSource(),
+                modifier = Modifier.size(48.dp),
+            ) {
+                Icon(
+                    if (autoSpeak) Icons.AutoMirrored.Rounded.VolumeUp else Icons.AutoMirrored.Rounded.VolumeOff,
+                    contentDescription = stringResource(if (autoSpeak) Res.string.ai_auto_speak_on else Res.string.ai_auto_speak_off),
+                    tint = if (autoSpeak) AppColors.icon.accentPrimary else AppColors.icon.secondary,
+                )
+            }
         }
         AnimatedVisibility(visible = canReset, enter = fadeIn(), exit = fadeOut()) {
             IconButton(
                 onClick = onNewChat,
                 interactionSource = rememberHapticSource(),
-                modifier = Modifier.size(40.dp),
+                modifier = Modifier.size(48.dp),
             ) {
                 Icon(
                     Icons.Outlined.AddComment,
@@ -526,7 +799,7 @@ private fun MascotAvatar(size: androidx.compose.ui.unit.Dp, active: Boolean) {
         contentAlignment = Alignment.Center,
     ) {
         Image(
-            painter = painterResource(Res.drawable.chat_ai_icon),
+            painter = painterResource(Res.drawable.ai_avatar),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.size(size).clip(CircleShape).background(AppColors.bg.secondary),
@@ -588,6 +861,8 @@ private fun ReportCard(
     onToggle: () -> Unit,
     event: (AssistantEventUi) -> Unit,
     modifier: Modifier = Modifier,
+    /** Bösh suhbatda farzand tanlaş "Bugun qisqaça" ustida — kartada takrorlanmaydi. */
+    showChildChips: Boolean = true,
 ) {
     val conversation = state.items.isNotEmpty() || state.streaming
     Column(
@@ -606,7 +881,8 @@ private fun ReportCard(
             ReportCollapsed(state, onToggle)
             return@Column
         }
-        if (state.children.size > 1) {
+        val chips = showChildChips && state.children.size > 1
+        if (chips) {
             // Chiplar kartaning çetigaça boradi (ichki chekinish ularni kesmasin)
             ChildChips(
                 children = state.children,
@@ -615,7 +891,7 @@ private fun ReportCard(
                 modifier = Modifier.padding(top = 16.dp),
             )
         }
-        Column(Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp, top = if (state.children.size > 1) 12.dp else 16.dp)) {
+        Column(Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp, top = if (chips) 12.dp else 16.dp)) {
             PeriodSegments(selected = state.period, onSelect = { event(AssistantEventUi.SelectPeriod(it)) })
             Spacer(Modifier.height(18.dp))
 
@@ -894,7 +1170,13 @@ private fun PeriodSegments(selected: ReportPeriod, onSelect: (ReportPeriod) -> U
 }
 
 @Composable
-private fun ChildChips(children: List<UserInfo>, selected: UserInfo?, onSelect: (UserInfo) -> Unit, modifier: Modifier = Modifier) {
+private fun ChildChips(
+    children: List<UserInfo>,
+    selected: UserInfo?,
+    onSelect: (UserInfo) -> Unit,
+    modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp),
+) {
     // Tanlangan farzand ko'rinib tursin (hisobot aynan u haqida)
     val rowState = rememberLazyListState()
     val density = LocalDensity.current
@@ -916,7 +1198,7 @@ private fun ChildChips(children: List<UserInfo>, selected: UserInfo?, onSelect: 
     LazyRow(
         state = rowState,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp),
+        contentPadding = contentPadding,
         modifier = modifier.fillMaxWidth(),
     ) {
         items(children, key = { it.userId }) { child ->
@@ -928,10 +1210,11 @@ private fun ChildChips(children: List<UserInfo>, selected: UserInfo?, onSelect: 
             )
             Row(
                 modifier = Modifier
+                    .heightIn(min = 48.dp)
                     .clip(CircleShape)
                     .background(bg)
                     .clickable(interactionSource = rememberHapticSource(), indication = null) { onSelect(child) }
-                    .padding(start = 4.dp, end = 12.dp, top = 4.dp, bottom = 4.dp),
+                    .padding(start = 6.dp, end = 14.dp, top = 6.dp, bottom = 6.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 ChildAvatar(child.avatarUrl, Modifier.size(28.dp))
@@ -950,25 +1233,24 @@ private fun ChildChips(children: List<UserInfo>, selected: UserInfo?, onSelect: 
 
 // ── suhbat ──
 
-/** Tezkor savollar — yoziş maydoni ustida bitta qator; suhbatdan keyin — davomi uçun. */
+/**
+ * Tezkor buyruqlar — mikrofon ustida bitta qator. Qisqa, gapirgandek: yordamçi faqat javob bermay, işni
+ * özi qiladi (öyinlarni yopadi, vazifa beradi). Suhbatdan keyin — davomi uçun.
+ */
 @Composable
-private fun SuggestionChips(conversation: Boolean, asked: Set<String>, onAsk: (String) -> Unit) {
-    val starters = listOf(
-        Res.string.ai_suggest_week,
-        Res.string.ai_suggest_permissions,
-        Res.string.ai_suggest_where,
-        Res.string.ai_suggest_night,
-        Res.string.ai_suggest_task,
-        Res.string.ai_suggest_games,
-    )
-    val followUps = listOf(
-        Res.string.ai_suggest_task,
-        Res.string.ai_suggest_permissions,
-        Res.string.ai_suggest_week,
-        Res.string.ai_suggest_where,
-    )
+private fun SuggestionChips(conversation: Boolean, asked: Set<String>, childName: String?, onAsk: (String) -> Unit) {
+    val games = stringResource(Res.string.ai_suggest_games)
+    val task = if (!childName.isNullOrBlank()) stringResource(Res.string.ai_suggest_task_named, childName)
+    else stringResource(Res.string.ai_suggest_task)
+    val youtube = stringResource(Res.string.ai_suggest_youtube)
+    val today = stringResource(Res.string.ai_suggest_today)
+    val where = if (!childName.isNullOrBlank()) stringResource(Res.string.ai_ask_where, childName)
+    else stringResource(Res.string.ai_suggest_where)
+    val week = stringResource(Res.string.ai_suggest_week)
+    val starters = listOf(games, task, youtube, today, where, week)
+    val followUps = listOf(today, task, games, where)
     val prompts = (if (conversation) followUps + starters else starters).distinct()
-        .map { stringResource(it) }.filter { it !in asked }.take(if (conversation) 4 else 6)
+        .filter { it !in asked }.take(if (conversation) 4 else 6)
     if (prompts.isEmpty()) return
     LazyRow(
         contentPadding = PaddingValues(horizontal = ContainerPadding),
@@ -982,11 +1264,11 @@ private fun SuggestionChips(conversation: Boolean, asked: Set<String>, onAsk: (S
                 color = AppColors.text.primary,
                 maxLines = 1,
                 modifier = Modifier
-                    .heightIn(min = 40.dp)
+                    .heightIn(min = 48.dp)
                     .clip(CircleShape)
                     .background(AppColors.bg.surface)
                     .clickable(interactionSource = rememberHapticSource(), indication = null) { onAsk(text) }
-                    .padding(horizontal = 14.dp, vertical = 9.dp),
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
             )
         }
     }
@@ -1008,33 +1290,62 @@ private fun ParentBubble(text: String) {
     }
 }
 
-/** Yordamçi javobi: kiçkina tipratikan + matn. Yozilayotganda oxirida milt-milt kursor. */
+/**
+ * Yordamçi javobi: kiçkina tipratikan + matn. Yozilayotganda oxirida milt-milt kursor. [speaker] — ostida
+ * "Ovoz çiqarib öqiş" tugmasi (öqilayotganda — töxtatiş).
+ */
 @Composable
-private fun AssistantReply(text: String, streaming: Boolean) {
+private fun AssistantReply(text: String, streaming: Boolean, speaker: Boolean, speaking: Boolean, onSpeak: () -> Unit) {
     val caretAlpha = if (streaming) {
         val t = rememberInfiniteTransition(label = "caret")
         t.animateFloat(0f, 1f, infiniteRepeatable(tween(520), RepeatMode.Reverse), label = "c").value
     } else 0f
     Row(Modifier.fillMaxWidth().padding(end = 12.dp), verticalAlignment = Alignment.Top) {
         Image(
-            painter = painterResource(Res.drawable.chat_ai_icon),
+            painter = painterResource(Res.drawable.ai_avatar),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.padding(top = 2.dp).size(26.dp).clip(CircleShape).background(Color.White),
+            modifier = Modifier.padding(top = 2.dp).size(26.dp).clip(CircleShape).background(AppColors.bg.secondary),
         )
         Spacer(Modifier.width(10.dp))
         val body = markdownLite(text)
-        Text(
-            text = if (streaming) buildAnnotatedString {
-                append(body)
-                val start = length
-                append(" ▍")
-                addStyle(SpanStyle(color = AppColors.text.accentEmphasis.copy(alpha = caretAlpha)), start, length)
-            } else body,
-            style = AppTypography.titleSmRegular,
-            color = AppColors.text.primary,
-            modifier = Modifier.weight(1f),
-        )
+        Column(Modifier.weight(1f)) {
+            Text(
+                text = if (streaming) buildAnnotatedString {
+                    append(body)
+                    val start = length
+                    append(" ▍")
+                    addStyle(SpanStyle(color = AppColors.text.accentEmphasis.copy(alpha = caretAlpha)), start, length)
+                } else body,
+                style = AppTypography.titleSmRegular,
+                color = AppColors.text.primary,
+            )
+            if (speaker) {
+                IconButton(
+                    onClick = onSpeak,
+                    interactionSource = rememberHapticSource(),
+                    modifier = Modifier.padding(top = 2.dp).size(48.dp).offset(x = (-12).dp),
+                ) {
+                    if (speaking) {
+                        val stopLabel = stringResource(Res.string.ai_stop)
+                        Box(
+                            Modifier
+                                .size(14.dp)
+                                .clip(RoundedCornerShape(3.dp))
+                                .background(AppColors.icon.accentPrimary)
+                                .semantics { contentDescription = stopLabel },
+                        )
+                    } else {
+                        Icon(
+                            Icons.AutoMirrored.Rounded.VolumeUp,
+                            contentDescription = stringResource(Res.string.ai_read_aloud),
+                            tint = AppColors.icon.secondary,
+                            modifier = Modifier.size(22.dp),
+                        )
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -1074,11 +1385,16 @@ private fun ThinkingRow(status: String) {
     }
 }
 
+/** Qoralama turi belgisi; noma'lum (yangi) tur — qalqon. Turlar ro'yxati çeklanmaydi: karta har qandayini körsatadi. */
 private fun kindIcon(kind: String): ImageVector = when (kind) {
     "policy_update" -> Icons.Rounded.PauseCircle
-    "policy_delete" -> Icons.Rounded.DeleteOutline
-    "task_create" -> Icons.Rounded.TaskAlt
+    "policy_delete", "task_delete" -> Icons.Rounded.DeleteOutline
+    "task_create", "task_verify" -> Icons.Rounded.TaskAlt
+    "task_remind" -> Icons.Rounded.NotificationsActive
     "request_decide" -> Icons.Rounded.MarkEmailUnread
+    "quick_block" -> Icons.Rounded.Block
+    "content_filter" -> Icons.Rounded.FilterAlt
+    "chat_message" -> Icons.Rounded.ChatBubble
     else -> Icons.Rounded.Shield
 }
 
@@ -1091,8 +1407,10 @@ private fun DraftCard(
 ) {
     val d = item.draft
     val danger = d.confirm == "delete" || d.confirm == "reject"
+    // Xabar / eslatma — "Yuboriş" (server fe'li baribir "confirm")
+    val sends = d.kind == "chat_message" || d.kind == "task_remind"
     val confirmLabel = when (d.confirm) {
-        "confirm" -> Res.string.ai_draft_do_confirm
+        "confirm" -> if (sends) Res.string.ai_send else Res.string.ai_draft_do_confirm
         "delete" -> Res.string.ai_draft_do_delete
         "approve" -> Res.string.ai_draft_do_approve
         "reject" -> Res.string.ai_draft_do_reject
@@ -1270,10 +1588,11 @@ private fun ResolvedDraftRow(d: uz.tikoncha_parent.domain.model.ai.RuleDraft, ap
             stringResource(
                 when {
                     !applied -> Res.string.ai_draft_discarded
-                    d.kind == "task_create" -> Res.string.ai_done_task_sent
-                    d.kind == "request_decide" && d.confirm == "reject" -> Res.string.ai_done_rejected
+                    d.kind == "task_create" || d.kind == "task_remind" || d.kind == "chat_message" -> Res.string.ai_done_task_sent
+                    d.kind == "task_verify" -> Res.string.ai_done_verified
+                    d.confirm == "reject" -> Res.string.ai_done_rejected
                     d.kind == "request_decide" -> Res.string.ai_done_approved
-                    d.kind == "policy_delete" -> Res.string.ai_done_deleted
+                    d.confirm == "delete" -> Res.string.ai_done_deleted
                     else -> Res.string.ai_done_saved
                 }
             ),
@@ -1330,7 +1649,7 @@ private fun StepButton(label: String, enabled: Boolean, onClick: () -> Unit) {
 }
 
 @Composable
-private fun agoText(minutes: Int): String = when {
+internal fun agoText(minutes: Int): String = when {
     minutes < 1 -> stringResource(Res.string.ai_location_now)
     minutes < 60 -> stringResource(Res.string.ai_location_ago, stringResource(Res.string.ai_ago_minutes, minutes))
     minutes < 48 * 60 -> stringResource(Res.string.ai_location_ago, stringResource(Res.string.ai_ago_hours, minutes / 60))
@@ -1565,21 +1884,29 @@ private fun ProblemCard(item: AssistantItem.Problem, onRetry: () -> Unit, onBuyC
 
 // ── yoziş maydoni ──
 
+/**
+ * Yoziş maydoni — ikkinçi yöl (asosiysi — mikrofon). Ön tugma: matn bölsa — yuboriş; javob yozilayotganda va
+ * katta mikrofon yaşirin bölsa — töxtatiş; klaviatura oçiq va matn böş bölsa — kiçkina mikrofon.
+ */
 @Composable
 private fun InputBar(
     value: String,
     streaming: Boolean,
+    dockVisible: Boolean,
+    onFocus: (Boolean) -> Unit,
     onChange: (String) -> Unit,
     onSend: () -> Unit,
     onStop: () -> Unit,
+    onMic: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val canSend = value.isNotBlank() && !streaming
-    val sendBg by animateColorAsState(
-        if (canSend || streaming) AppColors.action.primary else AppColors.bg.surface,
-        tween(180),
-        label = "send",
-    )
+    val trailing = when {
+        streaming -> if (dockVisible) null else TrailingAction.STOP
+        canSend -> TrailingAction.SEND
+        !dockVisible -> TrailingAction.MIC
+        else -> null
+    }
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -1615,41 +1942,54 @@ private fun InputBar(
                     imeAction = ImeAction.Send,
                 ),
                 keyboardActions = KeyboardActions(onSend = { if (canSend) onSend() }),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().onFocusChanged { onFocus(it.isFocused) },
             )
         }
-        Spacer(Modifier.width(8.dp))
-        Box(
-            modifier = Modifier
-                .size(50.dp)
-                .clip(CircleShape)
-                .background(sendBg)
-                .clickable(
-                    enabled = canSend || streaming,
-                    interactionSource = rememberHapticSource(),
-                    indication = null,
-                    onClick = if (streaming) onStop else onSend,
-                ),
-            contentAlignment = Alignment.Center,
-        ) {
-            if (streaming) {
-                Box(
-                    Modifier
-                        .size(14.dp)
-                        .clip(RoundedCornerShape(3.dp))
-                        .background(OnAccent)
-                )
-            } else {
-                Icon(
-                    Icons.Rounded.ArrowUpward,
-                    contentDescription = stringResource(Res.string.ai_send),
-                    tint = if (canSend) OnAccent else AppColors.text.placeholder,
-                    modifier = Modifier.size(22.dp),
-                )
+        if (trailing != null) {
+            Spacer(Modifier.width(8.dp))
+            val accent = trailing != TrailingAction.MIC
+            Box(
+                modifier = Modifier
+                    .size(50.dp)
+                    .clip(CircleShape)
+                    .background(if (accent) AppColors.action.primary else AppColors.bg.surface)
+                    .clickable(
+                        interactionSource = rememberHapticSource(),
+                        indication = null,
+                        onClick = when (trailing) {
+                            TrailingAction.STOP -> onStop
+                            TrailingAction.SEND -> onSend
+                            TrailingAction.MIC -> onMic
+                        },
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                when (trailing) {
+                    TrailingAction.STOP -> Box(
+                        Modifier
+                            .size(14.dp)
+                            .clip(RoundedCornerShape(3.dp))
+                            .background(OnAccent)
+                    )
+                    TrailingAction.SEND -> Icon(
+                        Icons.Rounded.ArrowUpward,
+                        contentDescription = stringResource(Res.string.ai_send),
+                        tint = OnAccent,
+                        modifier = Modifier.size(22.dp),
+                    )
+                    TrailingAction.MIC -> Icon(
+                        Icons.Rounded.Mic,
+                        contentDescription = stringResource(Res.string.ai_voice_mic),
+                        tint = AppColors.icon.accentPrimary,
+                        modifier = Modifier.size(24.dp),
+                    )
+                }
             }
         }
     }
 }
+
+private enum class TrailingAction { STOP, SEND, MIC }
 
 /** **qalin** va "* " / "- " ro'yxatlari — yordamçi javoblari shundan ortig'ini ishlatmaydi. */
 private fun markdownLite(text: String): AnnotatedString = buildAnnotatedString {

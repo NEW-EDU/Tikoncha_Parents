@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -64,7 +63,6 @@ import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.bajarilgan
 import tikoncha_parents.composeapp.generated.resources.bekor_qilish
 import tikoncha_parents.composeapp.generated.resources.circle_clock
-import tikoncha_parents.composeapp.generated.resources.media_play
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
 import tikoncha_parents.composeapp.generated.resources.farzand_vazifalari_desc
 import tikoncha_parents.composeapp.generated.resources.farzandim
@@ -91,8 +89,6 @@ import tikoncha_parents.composeapp.generated.resources.xatolik
 import uz.tikoncha_parent.domain.model.app_error.Outcome
 import uz.tikoncha_parent.presentation.add_child.AddChildScreen
 import uz.tikoncha_parent.presentation.base.rememberDelayedLoading
-import uz.tikoncha_parent.presentation.tutorial_clips.TutorialClip
-import uz.tikoncha_parent.presentation.tutorial_clips.TutorialClipDialog
 import uz.tikoncha_parent.presentation.base.ChildSelectionButton
 import uz.tikoncha_parent.presentation.base.ConfirmationBottomSheet
 import uz.tikoncha_parent.presentation.base.CustomButton
@@ -193,10 +189,6 @@ fun TaskUi(
     val isParentTab = state.taskIndex == 0
     var showChildSelector by remember { mutableStateOf(false) }
     var taskToDelete by remember { mutableStateOf<Task?>(null) }
-    var showClips by remember { mutableStateOf(false) }
-    if (showClips) {
-        TutorialClipDialog(listOf(TutorialClip.GIVE_TASK, TutorialClip.CHILD_DO_TASK, TutorialClip.CHECK_TASK)) { showClips = false }
-    }
     val loadFailure = state.error
     // Shimmer faqat yuklash 300 ms dan uzoq cho'zilsa (tez javobda chaqnab o'tmaydi).
     val showShimmer = rememberDelayedLoading(state.isInitialLoading)
@@ -275,7 +267,8 @@ fun TaskUi(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-            // Sarlavha, orqaga, tarix va farzand tanlagich — pastdagi orolda (tepada joy egallamaydi)
+            // Sarlavha, orqaga, tarix va farzand tanlagich — pastdagi orolda (tepada joy egallamaydi).
+            // Kliplar (vazifa beriş, bajariş, tekşiriş) — silkitiş / sarlavhani uzoq bosiş → «Video köriş»
             CustomHeader(
                 voice = VoiceScreen.TASKS,
                 showBackButton = true,
@@ -288,16 +281,6 @@ fun TaskUi(
                     onAddChild = { navigator?.push(AddChildScreen()) },
                 ),
                 trailingIcon = {
-                    // Qo'llanma: vazifa beriş va bajarilganini tekşiriş kliplari
-                    Icon(
-                        painter = painterResource(Res.drawable.media_play),
-                        contentDescription = null,
-                        tint = AppColors.icon.accentPrimary,
-                        modifier = Modifier
-                            .size(24.dp)
-                            .singleClick { showClips = true }
-                    )
-                    Spacer(Modifier.width(14.dp))
                     Icon(
                         painter = painterResource(Res.drawable.circle_clock),
                         contentDescription = null,

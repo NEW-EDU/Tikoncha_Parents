@@ -522,7 +522,7 @@ fun TrackingContent(
     val bottomReserved = islandReservedFromBottom()
     val locatedCount = state.people.count { it.location != null }
 
-    // Orol: [‹ Xarita] [sxema/sun'iy yo'ldosh] [hammasini ko'rsatish] [men] [Tinglaş]
+    // Orol: [‹ Xarita] [sxema/sun'iy yo'ldosh] [hammasini ko'rsatish] [men]
     CustomHeader(
         title = stringResource(Res.string.xarita),
         showBackButton = true,

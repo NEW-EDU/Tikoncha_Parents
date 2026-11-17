@@ -61,6 +61,8 @@ class SplashScreen : Screen {
             delay(1000) // 1 sekund
             // Faqat debug: tanishtiruv ekranlarini tizimga kirgan holda ham ko'rish (ekran rasmlari uchun)
             val debugArgs = BuildConfig.debugLaunchArgs
+            // Ekran yordamini qayta sinaş: hamma ekran yana "birinçi kiriş" (avto-tuşuntiriş, "silkiting" maslahati)
+            if ("-hoglt.resethelp" in debugArgs) uz.tikoncha_parent.presentation.voice_help.VoiceHelpPrefs.resetFirstVisit()
             when {
                 "-hoglt.onboarding" in debugArgs -> { navigator?.replaceAll(OnboardingScreen()); return@LaunchedEffect }
                 "-hoglt.notif" in debugArgs -> { navigator?.replaceAll(NotificationPermissionScreen()); return@LaunchedEffect }
@@ -95,12 +97,13 @@ class SplashScreen : Screen {
                         "childdetail" -> AppSettings.selectedChild?.let { uz.tikoncha_parent.presentation.profile.children.ChildDetailScreen(it) } ?: ChildrenSelectScreen()
                         "subscription" -> SubscriptionScreen()
                         "coins" -> CoinsScreen()
-                        // -hoglt.screen assistant [-hoglt.ask "savol"] [-hoglt.period week]
+                        // -hoglt.screen assistant [-hoglt.ask "savol"] [-hoglt.period week] [-hoglt.listen]
                         "assistant" -> uz.tikoncha_parent.presentation.assistant.AssistantScreen(
                             initialQuestion = debugArgs.getOrNull(debugArgs.indexOf("-hoglt.ask") + 1)
                                 ?.takeIf { "-hoglt.ask" in debugArgs },
                             initialPeriod = debugArgs.getOrNull(debugArgs.indexOf("-hoglt.period") + 1)
                                 ?.takeIf { "-hoglt.period" in debugArgs },
+                            startListening = "-hoglt.listen" in debugArgs,
                         )
                         "paywall" -> SubscriptionPaymentScreen()
                         "paymethod" -> PaymentMethodScreen(

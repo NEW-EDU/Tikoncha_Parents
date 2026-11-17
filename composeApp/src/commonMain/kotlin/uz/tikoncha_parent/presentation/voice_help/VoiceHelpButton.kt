@@ -268,9 +268,9 @@ private class AboveAnchorPositionProvider(
     }
 }
 
-/** Ijro paytida: uçta ustunça navbat bilan kötarilib-tuşadi. */
+/** Ijro paytida: uçta ustunça navbat bilan kötarilib-tuşadi ("ijro etilmoqda" pill'ida ham, [VoiceHelpLayer]). */
 @Composable
-private fun SoundBars(color: Color, modifier: Modifier = Modifier) {
+internal fun SoundBars(color: Color, modifier: Modifier = Modifier) {
     val transition = rememberInfiniteTransition(label = "voiceBars")
     val scales = listOf(0, 140, 280).map { offsetMs ->
         transition.animateFloat(

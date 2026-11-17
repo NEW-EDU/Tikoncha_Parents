@@ -21,6 +21,8 @@
 	<false/>
     <key>NSCameraUsageDescription</key>
     <string>Farzandni ulaş uçun uning telefonidagi QR kodni skanerlaşga kamera kerak</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Aqlli yordamçiga ovoz bilan gapiriş uçun mikrofon kerak</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Bolaning va öz joylaşuvingizni xaritada köriş uçun joylaşuvga ruxsat kerak</string>
 

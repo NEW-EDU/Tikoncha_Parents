@@ -17,7 +17,10 @@ import tikoncha_parents.composeapp.generated.resources.dialog_warning
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
+import tikoncha_parents.composeapp.generated.resources.voice_sheet_title
+import uz.tikoncha_parent.presentation.base.island.LocalIsland
+import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
 import tikoncha_parents.composeapp.generated.resources.parent_avatar_default
 import uz.tikoncha_parent.presentation.base.island.ChildAvatar
 import uz.tikoncha_parent.ui.homeSubtitleColor
@@ -309,7 +312,8 @@ fun NewHomeUi(
                 .then(systemBars.modifier)
         ) {
             // Tepada: çapda — profil (avatar + tişli belgi + ism, AI tugmasi uslubida), öngda — yordam (aloqa).
-            // «Tinglaş» — pastki orolda; «Hoglt nima?» tanişuvi — Profilda (Yordam bölimi).
+            // Profil pill'ini uzoq bosiş — «Bu ekran haqida» (silkita olmaydiganlar uçun); «Hoglt nima?» — Profilda.
+            val island = LocalIsland.current
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -321,6 +325,7 @@ fun NewHomeUi(
                     imageUrl = state.userImageUrl,
                     name = state.userName,
                     onClick = { navigator?.push(ProfileScreen()) },
+                    onLongClick = { island?.openHelp() },
                     // Uzun ism — kesiladi, yordam tugmasini itarib çiqarmaydi
                     modifier = Modifier.weight(1f, fill = false).padding(end = 12.dp),
                 )
@@ -342,7 +347,8 @@ fun NewHomeUi(
                 }
             }
 
-            // Pastki orol: [AI] [Tinglaş] [farzand ▴] — farzand tanlagich har ekrandagidek o'ng burchakda
+            // Pastki orol: [AI] [farzand ▴] — farzand tanlagich har ekrandagidek o'ng burchakda.
+            // voice — ekran yordami (birinçi kirişda tuşuntiriş, silkitiş varag'i), orolda tugma yöq
             val pickerOpen = remember { MutableTransitionState("-hoglt.picker" in BuildConfig.debugLaunchArgs) }
             val latestState by rememberUpdatedState(state)
             val islandSpec = remember {
@@ -351,11 +357,12 @@ fun NewHomeUi(
                         state = latestState,
                         pickerOpen = pickerOpen,
                         onAssistant = { navigator?.push(uz.tikoncha_parent.presentation.assistant.AssistantScreen()) },
+                        onAssistantVoice = { navigator?.push(uz.tikoncha_parent.presentation.assistant.AssistantScreen(startListening = true)) },
                         onProfile = { navigator?.push(ProfileScreen()) },
                         onAddChild = { navigator?.push(AddChildScreen()) },
                         onChildSelected = { event(HomeEvent.OnChildSelected(it)) },
                     )
-                }, roundTop = false)
+                }, roundTop = false, voice = VoiceScreen.HOME)
             }
             ProvideIsland(islandSpec)
 
@@ -762,16 +769,26 @@ private fun HomeProfilePill(
     imageUrl: String?,
     name: String,
     onClick: () -> Unit,
+    onLongClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val source = remember { MutableInteractionSource() }
+    val longClickLabel = stringResource(Res.string.voice_sheet_title)
     Row(
         modifier = modifier
             .heightIn(min = 48.dp)
             .expressivePress(source, pressedScale = 0.96f)
             .clip(CircleShape)
             .background(AppColors.action.primary.copy(alpha = 0.14f))
-            .clickable(interactionSource = source, indication = null, onClick = onClick)
+            // Uzoq bosiş — ekran yordami; taktil zarba ilovaning özidan (Sozlamalar → Tebranish), tizimnikidan emas
+            .combinedClickable(
+                interactionSource = source,
+                indication = null,
+                onLongClickLabel = longClickLabel,
+                onLongClick = onLongClick,
+                hapticFeedbackEnabled = false,
+                onClick = onClick,
+            )
             .padding(start = 6.dp, end = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

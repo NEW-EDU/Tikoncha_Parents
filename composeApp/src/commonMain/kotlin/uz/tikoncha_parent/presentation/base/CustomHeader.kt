@@ -51,8 +51,8 @@ fun CustomHeader(
     /** Farzand tanlagich — orolda, Bosh sahifadagi bilan bir xil (ro'yxat yuqoriga ochiladi). */
     childPicker: ChildPickerSpec? = null,
     /**
-     * "Tinglaş" — ekranning ovozli tuşuntirişi: orolda, faqat ikonka (amallardan keyin, farzand tanlagichdan oldin).
-     * Profilda "Ovozli yordam" öçirilsa — körinmaydi.
+     * Ekran yordami id'si (ovozli tuşuntiriş + video kliplar). Tugma yöq: birinçi kirişda tuşuntiriş özi boşlanadi,
+     * telefon silkitilsa yoki "‹ nom" pill'i uzoq bosilsa — «Bu ekran haqida» varag'i.
      */
     voice: VoiceScreen? = null,
 ) {
@@ -63,13 +63,18 @@ fun CustomHeader(
     val currentPicker by rememberUpdatedState(childPicker)
     val hasTrailing = trailingIcon != null
     val hasPicker = childPicker != null
-    val spec = remember(title, showBackButton, hasTrailing, hasPicker, voice) {
+    // AI mikrofoni har ichki ekran orolida: bosilsa yordamçi darhol tinglaydi
+    val navigator = cafe.adriel.voyager.navigator.LocalNavigator.current
+    val spec = remember(title, showBackButton, hasTrailing, hasPicker, voice, navigator) {
         IslandSpec(
             title = title.takeIf { it.isNotBlank() },
             onBack = if (showBackButton) ({ currentBack() }) else null,
             picker = if (hasPicker) ({ currentPicker }) else null,
             actions = if (hasTrailing) ({ currentTrailing?.invoke() }) else null,
             voice = voice,
+            onAiMic = if (showBackButton && navigator != null) ({
+                navigator.push(uz.tikoncha_parent.presentation.assistant.AssistantScreen(startListening = true))
+            }) else null,
         )
     }
     ProvideIsland(spec)

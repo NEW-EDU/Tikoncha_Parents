@@ -1,7 +1,9 @@
 package uz.tikoncha_parent.presentation.new_home
 
-import uz.tikoncha_parent.presentation.voice_help.VoiceHelpIconButton
-import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.Icon
+import androidx.compose.material.icons.rounded.Mic
+import androidx.compose.material.icons.Icons
 import tikoncha_parents.composeapp.generated.resources.parent_avatar_default
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.background
@@ -19,7 +21,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.foundation.Image
 import androidx.compose.ui.layout.ContentScale
-import tikoncha_parents.composeapp.generated.resources.chat_ai_icon
+import tikoncha_parents.composeapp.generated.resources.ai_avatar
+import tikoncha_parents.composeapp.generated.resources.ai_voice_mic
 import tikoncha_parents.composeapp.generated.resources.ai_assistant_title
 import tikoncha_parents.composeapp.generated.resources.profil
 import uz.tikoncha_parent.ui.theme.AppTypography
@@ -46,7 +49,7 @@ import uz.tikoncha_parent.ui.theme.AppColors
 /*
  * Bosh sahifa oroli — boshqa ekranlar bilan bir xil joylashuv: chapda keng AI tugmasi,
  * o'ng burchakda farzand tanlagich (har ekranda shu joyda, shu o'lchamda — [IslandChildPicker], ro'yxat yuqoriga
- * ochiladi), ular orasida «Tinglaş» (faqat ikonka; Profilda öçirilsa — yöq). Yordam (aloqa) — tepada, öngda.
+ * ochiladi). Yordam (aloqa) — tepada, öngda. Ekran tuşuntirişi — tugmasiz: silkitiş yoki profil pill'ini uzoq bosiş.
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -54,6 +57,8 @@ fun RowScope.HomeIslandContent(
     state: HomeState,
     pickerOpen: MutableTransitionState<Boolean>,
     onAssistant: () -> Unit,
+    /** Mikrofon: AI yordamçi darhol tinglay boşlaydi. */
+    onAssistantVoice: () -> Unit = onAssistant,
     onProfile: () -> Unit,
     onAddChild: () -> Unit,
     onChildSelected: (UserInfo) -> Unit,
@@ -68,27 +73,37 @@ fun RowScope.HomeIslandContent(
             .clip(CircleShape)
             .background(AppColors.action.primary.copy(alpha = 0.14f))
             .clickable(interactionSource = aiSource, indication = null, onClick = onAssistant)
-            .padding(start = 6.dp, end = 14.dp),
+            .padding(start = 6.dp, end = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
-            painter = painterResource(Res.drawable.chat_ai_icon),
+            painter = painterResource(Res.drawable.ai_avatar),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier.size(36.dp).clip(CircleShape),
         )
-        Spacer(Modifier.width(10.dp))
-        Text(
-            text = "AI",  // qisqa: farzand tanlagich yonida "Yordamçi" kesilib qolardi
-            style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
-            color = AppColors.text.primary,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-        )
+        Spacer(Modifier.width(8.dp))
+        // Yozuv yöq: farzand tanlagich yonida "Yordamçi" kesilib qolardi — avatar (quloqçinli tipratikon) + mikrofon yetarli
+        Spacer(Modifier.weight(1f))
+        // Mikrofon — eng tez yöl: bosilişi bilan yordamçi oçiladi va darhol tinglaydi (egasining talabi)
+        val micSource = remember { MutableInteractionSource() }
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .expressivePress(micSource, pressedScale = 0.9f)
+                .clip(CircleShape)
+                .background(AppColors.action.primary)
+                .clickable(interactionSource = micSource, indication = null, onClick = onAssistantVoice),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Mic,
+                contentDescription = stringResource(Res.string.ai_voice_mic),
+                tint = AppColors.text.inverse,
+                modifier = Modifier.size(24.dp),
+            )
+        }
     }
-
-    // Ovozli tuşuntiriş: bu ekran nima ekanini eşitib biliş (yordam tugmasi örnida; u tepaga, öngga ötdi)
-    VoiceHelpIconButton(VoiceScreen.HOME)
 
     IslandChildPicker(
         spec = ChildPickerSpec(state.childrenList, state.selectedChild, onChildSelected, onAddChild),

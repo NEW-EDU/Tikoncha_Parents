@@ -56,4 +56,9 @@ internal object VoiceHelpPlayback {
         _owner.value = null
         player.stop(failed = false)
     }
+
+    /** Kim ijro etayotganidan qat'i nazar töxtatadi (Profilda "Ovozli yordam" öçirilganda). */
+    fun stopAll() {
+        _owner.value?.let { stop(it) }
+    }
 }

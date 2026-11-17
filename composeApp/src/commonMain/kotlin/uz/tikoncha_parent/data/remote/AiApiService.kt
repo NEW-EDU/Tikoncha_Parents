@@ -1,17 +1,27 @@
 package uz.tikoncha_parent.data.remote
 
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.plugins.timeout
+import io.ktor.client.request.forms.formData
+import io.ktor.client.request.forms.submitFormWithBinaryData
 import io.ktor.client.request.parameter
+import io.ktor.client.request.post
 import io.ktor.client.request.preparePost
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsBytes
 import io.ktor.client.statement.bodyAsChannel
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
+import io.ktor.http.Headers
+import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.http.contentType
 import io.ktor.http.isSuccess
+import uz.tikoncha_parent.data.local.AppSettings
+import uz.tikoncha_parent.data.remote.model.ai.SttDto
+import uz.tikoncha_parent.data.remote.model.ai.TtsRequest
 import io.ktor.utils.io.readUTF8Line
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -142,6 +152,79 @@ class AiApiService(private val client: HttpClient) {
 
     suspend fun discardDraft(draftId: String): ApiEnvelope<JsonElement> =
         client.safeRequest(method = HttpMethod.Delete, url = "ai/parent/drafts/$draftId")
+
+    /**
+     * Ovozli savol → matn: multipart `file` (m4a) + `lang` (ilova tili; server bilmasa e'tiborsiz qoldiradi).
+     * Tanib oliş bir necha soniya — umumiy 15 s chegarasi uzaytiriladi. 401 bölsa token yangilanib qayta yuboriladi.
+     */
+    suspend fun transcribe(audio: ByteArray, fileName: String, mimeType: String, lang: String): ApiEnvelope<SttDto> {
+        val parts = formData {
+            append(
+                key = "file",
+                value = audio,
+                Headers.build {
+                    append(HttpHeaders.ContentType, mimeType)
+                    append(HttpHeaders.ContentDisposition, "filename=\"$fileName\"")
+                },
+            )
+            append("lang", lang)
+        }
+        suspend fun post(): HttpResponse = client.submitFormWithBinaryData(url = "ai/stt", formData = parts) {
+            timeout {
+                requestTimeoutMillis = 60_000
+                socketTimeoutMillis = 60_000
+            }
+        }
+        var response = post()
+        if (isUnauthorized(response.status, response.bodyAsText()) && AppSettings.accessToken.isNotBlank()) {
+            when (val r = refreshAccessToken(client)) {
+                RefreshResult.Success -> response = post()
+                RefreshResult.InvalidToken -> {
+                    handleSessionExpired()
+                    throw SessionExpiredException()
+                }
+                is RefreshResult.Temporary -> throw r.cause ?: IOException("Tokenni yangilab bo'lmadi")
+            }
+        }
+        return response.body()
+    }
+
+    /** Matn → ovoz natijasi: [audio] (MP3) yoki server kodi ([code]: 429 — kunlik chegara, 503 — sozlanmagan …). */
+    class SpeechResult(val audio: ByteArray?, val code: Int?)
+
+    /**
+     * Javobni ovoz bilan öqiş: `POST /ai/tts {text, lang}` → audio/mpeg. Audio boşlanmasidan oldingi xato —
+     * JSON envelope (ai_text_empty, ai_rate_limited, ai_voice_failed, ai_voice_unavailable).
+     */
+    suspend fun speech(text: String, lang: String): SpeechResult {
+        suspend fun post() = readSpeech(
+            client.post("ai/tts") {
+                contentType(ContentType.Application.Json)
+                setBody(TtsRequest(text = text, lang = lang))
+                timeout {
+                    requestTimeoutMillis = 60_000
+                    socketTimeoutMillis = 30_000
+                }
+            }
+        )
+        var result = post()
+        if (result.code == 401 && AppSettings.accessToken.isNotBlank() && refreshAccessToken(client) == RefreshResult.Success) {
+            result = post()
+        }
+        return result
+    }
+
+    private suspend fun readSpeech(response: HttpResponse): SpeechResult {
+        val type = response.contentType()
+        if (response.status.isSuccess() && type?.contentType == "audio") {
+            return SpeechResult(response.bodyAsBytes(), response.status.value)
+        }
+        if (!response.status.isSuccess()) return SpeechResult(null, response.status.value)
+        // Xato — envelope (HTTP 200, haqiqiy kod tanada)
+        val code = runCatching { json.parseToJsonElement(response.bodyAsText()).jsonObject["code"]?.jsonPrimitive?.intOrNull }
+            .getOrNull()
+        return SpeechResult(null, code ?: 500)
+    }
 
     private fun isEnvelope(response: HttpResponse): Boolean =
         response.contentType()?.match(ContentType.Application.Json) == true

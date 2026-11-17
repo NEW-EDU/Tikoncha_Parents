@@ -38,6 +38,11 @@ class MainActivity : AppCompatActivity() {
             intent?.getStringExtra("simulate_server_down")?.let {
                 uz.tikoncha_parent.data.local.AppSettings.setOfflineValue("simulate_server_down", it.takeIf { v -> v == "1" })
             }
+            // Ekran yordami: hamma ekran yana "birinçi kiriş" (avto-tuşuntiriş, "silkiting" maslahati) —
+            //   adb shell am start -S -n uz.tikoncha.parent/uz.tikoncha_parent.MainActivity --es reset_help 1
+            if (intent?.getStringExtra("reset_help") != null) {
+                uz.tikoncha_parent.presentation.voice_help.VoiceHelpPrefs.resetFirstVisit()
+            }
         }
 
         TelegramLoginCoordinator.bindActivity(this)

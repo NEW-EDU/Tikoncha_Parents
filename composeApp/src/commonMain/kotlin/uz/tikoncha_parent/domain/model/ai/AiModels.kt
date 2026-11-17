@@ -1,5 +1,7 @@
 package uz.tikoncha_parent.domain.model.ai
 
+import uz.tikoncha_parent.domain.model.app_error.Outcome
+
 /** Hisobot davri — server `period` qiymatlari. */
 enum class ReportPeriod(val key: String) { TODAY("day"), YESTERDAY("yesterday"), WEEK("week") }
 
@@ -65,12 +67,27 @@ sealed interface AssistantEvent {
     data class Draft(val draft: RuleDraft) : AssistantEvent
     data class Location(val card: LocationCard) : AssistantEvent
     data class Protection(val card: ProtectionCard) : AssistantEvent
+    /** Yordamçi ilovaning bir ekranini tavsiya qildi: javob ostida "Oçiş: …" tugmasi. */
+    data class Nav(val target: NavTarget) : AssistantEvent
     data class Done(val coins: Int?) : AssistantEvent
     /** Oxirgi hodisa. [code]: rate_limited · no_coins · ai_unavailable · bad_request · network. */
     data class Failed(val code: String, val text: String?) : AssistantEvent
 }
 
 data class AssistantTurn(val fromParent: Boolean, val text: String)
+
+/** SSE `nav` hodisasidagi ekran ([screen] — server qiymati), [childId] — qaysi farzand uçun (bölsa). */
+data class NavTarget(val screen: NavScreen, val childId: String?)
+
+enum class NavScreen(val key: String) {
+    MAP("map"), PROTECTION("protection"), RULES("rules"), TASKS("tasks"), ADD_CHILD("add_child"),
+    SUBSCRIPTION("subscription"), COINS("coins"), LIVE("live"), STATS("stats"), CHAT("chat"), PROFILE("profile");
+
+    companion object {
+        /** Noma'lum ekran — null (eski ilova yangi server qiymatini jimgina ötkazib yuboradi). */
+        fun from(key: String?): NavScreen? = entries.firstOrNull { it.key == key }
+    }
+}
 
 
 /** Farzand Bilimdonga yuborgan xavotirli xabar (giyohvand modda, qurol, zöravonlik, öziga zarar, jinsiy mazmun). */
@@ -84,3 +101,9 @@ data class SafetyAlert(
     /** Server vaqti (UTC ISO). */
     val createdAt: String,
 )
+
+/** Ovozli savol matni: [language] — ISO 639-3 ("uzb", "rus" …), server bermasa null. Özbekça — eski lotinda. */
+data class Transcript(val text: String, val language: String?)
+
+/** Qoralamani tasdiqlaş xatosi: [errorCode] — maşina kodi (quick_block_paid, todo_not_child_done …). */
+data class DraftApplyError(val failure: Outcome.Failure, val errorCode: String?)

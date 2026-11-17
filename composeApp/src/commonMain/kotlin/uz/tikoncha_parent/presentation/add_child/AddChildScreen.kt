@@ -6,6 +6,7 @@
 package uz.tikoncha_parent.presentation.add_child
 
 import uz.tikoncha_parent.presentation.voice_help.VoiceScreen
+import uz.tikoncha_parent.presentation.voice_help.helpClips
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.material3.MaterialTheme
@@ -44,8 +45,6 @@ import androidx.compose.material.icons.outlined.ContentCopy
 import androidx.compose.material.icons.outlined.Keyboard
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -94,7 +93,6 @@ import tikoncha_parents.composeapp.generated.resources.farzandingiz_tikoncha_ilo
 import tikoncha_parents.composeapp.generated.resources.kod_amal_qilish_muddati
 import tikoncha_parents.composeapp.generated.resources.kod_muddati_tugadi
 import tikoncha_parents.composeapp.generated.resources.kod_nusxalandi
-import tikoncha_parents.composeapp.generated.resources.media_play
 import tikoncha_parents.composeapp.generated.resources.muvaffaqiyatli
 import tikoncha_parents.composeapp.generated.resources.ochish
 import tikoncha_parents.composeapp.generated.resources.ok
@@ -122,11 +120,8 @@ import uz.tikoncha_parent.presentation.base.multi_phone_input.Country
 import uz.tikoncha_parent.presentation.base.multi_phone_input.CountryPhoneInputField
 import uz.tikoncha_parent.presentation.otp.OtpInput
 import uz.tikoncha_parent.presentation.task.TaskSegmentedToggle
-import uz.tikoncha_parent.presentation.tutorial_clips.TutorialClip
 import uz.tikoncha_parent.presentation.tutorial_clips.TutorialClipDialog
-import uz.tikoncha_parent.ui.NormalIconSize
 import uz.tikoncha_parent.ui.Space
-import uz.tikoncha_parent.ui.SpaceUltraSmall
 import uz.tikoncha_parent.ui.TextFieldCornerRadius
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
@@ -145,10 +140,11 @@ class AddChildScreen : Screen {
         val clipboardManager = LocalClipboard.current
         val coroutineScope = rememberCoroutineScope()
 
-        // Qo'llanma: haqiqiy ekranlardan klip (barça tillarda) — farzand telefonida, skanerlab va kod bilan ulash
+        // Qo'llanma: haqiqiy ekranlardan klip (barça tillarda) — farzand telefonida, skanerlab va kod bilan ulash.
+        // Kontentdagi karta oçadi; öşa kliplar — silkitiş / sarlavhani uzoq bosiş → «Video köriş» da ham
         var showClips by remember { mutableStateOf(false) }
         if (showClips) {
-            TutorialClipDialog(listOf(TutorialClip.CHILD_ADD_PARENT, TutorialClip.CHILD_ADD_PARENT_IOS, TutorialClip.ADD_CHILD, TutorialClip.ADD_CHILD_CODE)) { showClips = false }
+            TutorialClipDialog(VoiceScreen.ADD_CHILD.helpClips) { showClips = false }
         }
 
         ToastProvider {
@@ -280,9 +276,6 @@ private fun AddChildContent(
         statusBarColor = AppColors.bg.page,
         navigationBarColor = AppColors.bg.page
     )
-    // Qo'llanma kliplari ilovaning özida (har tilda eng yaqin til bilan) — tugma doim körinadi
-    val hasVideo = true   // klip ilovaning özida, har bir tilda bor
-
     if (scanning) {
         Column(
             modifier = Modifier
@@ -295,9 +288,6 @@ private fun AddChildContent(
                 title = stringResource(Res.string.farzand_qo_shish),
                 onBackClick = onBack,
                 showBackButton = true,
-                trailingIcon = if (hasVideo) {
-                    { TutorialIconButton(onTutorial) }
-                } else null
             )
             LinkQrScanner(
                 isLinking = state.isLoading,
@@ -340,11 +330,6 @@ private fun AddChildContent(
             title = stringResource(Res.string.farzand_qo_shish),
             onBackClick = { scanning = true },
             showBackButton = true,
-            trailingIcon = {
-                if (hasVideo && !state.showBindChildTutorial) {
-                    TutorialIconButton(onTutorial)
-                }
-            }
         )
 
         Column(
@@ -354,7 +339,7 @@ private fun AddChildContent(
                 .verticalScroll(rememberScrollState()),
         ) {
             AnimatedVisibility(
-                visible = hasVideo && state.showBindChildTutorial,
+                visible = state.showBindChildTutorial,
                 enter = fadeIn() + expandVertically(),
                 exit = fadeOut() + shrinkVertically()
             ) {
@@ -481,25 +466,6 @@ private fun AddChildContent(
             Space(24.dp)
         }
     }
-}
-
-@Composable
-private fun TutorialIconButton(onClick: () -> Unit) {
-    IconButton(
-        onClick = onClick,
-        modifier = Modifier.size(44.dp),
-        colors = IconButtonDefaults.iconButtonColors(
-            containerColor = AppColors.bg.surfaceTertiary,
-            contentColor = AppColors.icon.accentPrimary
-        )
-    ) {
-        Icon(
-            painter = painterResource(Res.drawable.media_play),
-            contentDescription = "",
-            modifier = Modifier.size(NormalIconSize)
-        )
-    }
-    SpaceUltraSmall()
 }
 
 /**

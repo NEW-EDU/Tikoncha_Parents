@@ -36,7 +36,7 @@ import coil3.compose.AsyncImage
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.chat_ai_icon
+import tikoncha_parents.composeapp.generated.resources.ai_avatar
 import tikoncha_parents.composeapp.generated.resources.chat_bot
 import tikoncha_parents.composeapp.generated.resources.chat_group
 import tikoncha_parents.composeapp.generated.resources.chat_icon
@@ -89,7 +89,7 @@ fun ChatListItem(
         val title = chatUi.displayTitle()
 
         val avatar = if (chatUi.type == ChatType.BOT){
-            painterResource(Res.drawable.chat_ai_icon)
+            painterResource(Res.drawable.ai_avatar)
         }
         else{
             painterResource(Res.drawable.chat_icon)

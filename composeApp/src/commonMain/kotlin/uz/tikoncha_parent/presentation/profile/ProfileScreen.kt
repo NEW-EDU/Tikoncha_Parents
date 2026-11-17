@@ -546,7 +546,7 @@ private fun ProfileMenuFlat(
                 navigator?.push(LanguageScreen())
             }
         )
-        // Ovozli yordam: har ekrandagi «Tinglaş» tugmasi (öçirilsa — hamma ekranda yaşirinadi)
+        // Ovozli yordam: birinçi kirişda tuşuntiriş, silkitsa — «Bu ekran haqida» (öçirilsa — ijro töxtaydi, hammasi öçadi)
         ProfileSectionItem(
             segmentIndex = 3,
             segmentCount = 4,

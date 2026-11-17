@@ -76,3 +76,14 @@ data class SafetyAlertDto(
     val image_url: String? = null,
     val created_at: String = "",
 )
+
+/**
+ * POST /ai/stt javobi: tanilgan matn (nutq topilmasa — böş) va tili (ISO 639-3, masalan "uzb").
+ * Özbekça matn eski lotinda keladi (o', g', sh, ch).
+ */
+@Serializable
+data class SttDto(val text: String = "", val language: String? = null)
+
+/** POST /ai/tts — javobni ovoz bilan öqiş (MP3). */
+@Serializable
+data class TtsRequest(val text: String, val lang: String)
