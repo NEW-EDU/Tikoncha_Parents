@@ -1,6 +1,5 @@
 package uz.tikoncha_parent.presentation.policy.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
@@ -9,7 +8,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.DrawableResource
@@ -35,18 +33,3 @@ fun PolicyIcon(icon: DrawableResource, tone: IconTone, modifier: Modifier = Modi
         Icon(painter = painterResource(icon), contentDescription = null, modifier = Modifier.size(size / 2), tint = tint)
     }
 }
-
-/**
- * Qoida qatorining 3D rasmi (2026-11, Himoya ekranidagi `PermissionIcon` kabi): rasm matndan oldin öqiladi.
- * Tint ham, fon ham yöq — rangli rasm buziladi. Öçiq holat ([dimmed]) xiraroq körinadi.
- */
-@Composable
-fun Policy3dIcon(icon: DrawableResource, dimmed: Boolean, modifier: Modifier = Modifier, size: Dp = 44.dp) {
-    Image(
-        painter = painterResource(icon),
-        contentDescription = null,
-        modifier = modifier.size(size).alpha(if (dimmed) DimmedAlpha else 1f),
-    )
-}
-
-private const val DimmedAlpha = 0.45f

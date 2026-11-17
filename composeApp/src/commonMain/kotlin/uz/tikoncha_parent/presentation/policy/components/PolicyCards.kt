@@ -31,9 +31,7 @@ private val CardShape = RoundedCornerShape(24.dp)
  */
 @Composable
 fun PolicyCardBody(
-    /** 3D rasm (`ic3d_rule_*`) — tintsiz, fonsiz çiziladi ([Policy3dIcon]). */
     icon: DrawableResource,
-    /** [IconTone.GRAY] — öçiq: rasm xiraroq. */
     tone: IconTone,
     title: String,
     subtitle: String?,
@@ -54,7 +52,7 @@ fun PolicyCardBody(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        Policy3dIcon(icon = icon, dimmed = tone == IconTone.GRAY)
+        PolicyIcon(icon = icon, tone = tone)
         Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
             Text(
                 text = title,

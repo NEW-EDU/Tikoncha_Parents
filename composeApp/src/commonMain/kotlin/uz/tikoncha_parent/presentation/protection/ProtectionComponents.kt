@@ -552,14 +552,23 @@ private fun PermissionList(
     }
 }
 
-/** Sozlama belgisi (3D rasm); hozir kerak bölmagan sozlamalarda xiraroq. */
+/** Sozlama belgisi — tekis ikonka yumşoq fonli kvadratda; hozir kerak bölmagan sozlamalarda xiraroq. */
 @Composable
 private fun PermissionIcon(permission: ChildPermission, dimmed: Boolean) {
-    Image(
-        painter = painterResource(permission.icon3d()),
-        contentDescription = null,
-        modifier = Modifier.size(40.dp).alpha(if (dimmed) 0.45f else 1f),
-    )
+    Box(
+        modifier = Modifier
+            .size(40.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(AppColors.action.primary.copy(alpha = if (dimmed) 0.07f else 0.14f)),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            imageVector = permission.icon(),
+            contentDescription = null,
+            tint = if (dimmed) AppColors.text.tertiary else AppColors.icon.accentPrimary,
+            modifier = Modifier.size(22.dp),
+        )
+    }
 }
 
 @Composable

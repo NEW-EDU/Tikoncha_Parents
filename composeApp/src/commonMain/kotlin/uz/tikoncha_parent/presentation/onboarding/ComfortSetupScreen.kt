@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -47,6 +46,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
@@ -65,7 +65,6 @@ import tikoncha_parents.composeapp.generated.resources.comfort_screen_color
 import tikoncha_parents.composeapp.generated.resources.comfort_title
 import tikoncha_parents.composeapp.generated.resources.ic3d_cf_dark
 import tikoncha_parents.composeapp.generated.resources.ic3d_cf_light
-import tikoncha_parents.composeapp.generated.resources.ic3d_cf_text_size
 import tikoncha_parents.composeapp.generated.resources.text_size_extra_large
 import tikoncha_parents.composeapp.generated.resources.text_size_large
 import tikoncha_parents.composeapp.generated.resources.text_size_standard
@@ -148,7 +147,7 @@ private fun ComfortSetupUi(onDone: () -> Unit) {
                 )
                 Spacer(Modifier.height(28.dp))
 
-                ComfortLabel(stringResource(Res.string.text_size_title), icon = Res.drawable.ic3d_cf_text_size)
+                ComfortLabel(stringResource(Res.string.text_size_title))
                 Row(horizontalArrangement = Arrangement.spacedBy(SegmentGap)) {
                     SizeChoices.forEachIndexed { index, choice ->
                         ComfortTile(
@@ -206,33 +205,25 @@ private fun ComfortSetupUi(onDone: () -> Unit) {
     }
 }
 
-/** Bölim sarlavhasi; [icon] — oldida 3D rasm (tintsiz): keksa ota-ona avval rasmni körsin. */
+/** Bölim sarlavhasi (ikonkasiz: kiçik qatorda 3D rasm juda mayda körinadi). */
 @Composable
-private fun ComfortLabel(text: String, icon: DrawableResource? = null) {
-    Row(
+private fun ComfortLabel(text: String) {
+    Text(
+        text = text,
+        style = AppTypography.titleMdSemiBold,
+        color = AppColors.text.secondary,
         modifier = Modifier.padding(start = 4.dp, bottom = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        if (icon != null) {
-            Image(painter = painterResource(icon), contentDescription = null, modifier = Modifier.size(40.dp))
-            Spacer(Modifier.width(10.dp))
-        }
-        Text(
-            text = text,
-            style = AppTypography.titleMdSemiBold,
-            color = AppColors.text.secondary,
-            modifier = Modifier.weight(1f, fill = false),
-        )
-    }
+    )
 }
 
 @Composable
 private fun RowScope.ThemeTile(index: Int, isSelected: Boolean, icon: DrawableResource, label: String, onClick: () -> Unit) {
-    ComfortTile(index = index, count = 2, isSelected = isSelected, description = label, onClick = onClick) {
+    // Katta katak — 3D rasmga joy kerak
+    ComfortTile(index = index, count = 2, isSelected = isSelected, description = label, minHeight = 136.dp, onClick = onClick) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             // 3D rasm (quyoş / oy) — tintsiz
-            Image(painter = painterResource(icon), contentDescription = null, modifier = Modifier.size(44.dp))
-            Spacer(Modifier.height(6.dp))
+            Image(painter = painterResource(icon), contentDescription = null, modifier = Modifier.size(60.dp))
+            Spacer(Modifier.height(8.dp))
             Text(
                 text = label,
                 style = AppTypography.titleMdSemiBold,
@@ -244,8 +235,8 @@ private fun RowScope.ThemeTile(index: Int, isSelected: Boolean, icon: DrawableRe
 }
 
 /**
- * Katta tanlov katagi (kamida 72dp — keksa barmoq uçun): tanlangani tonal rangda, burçaklari töliq yumaloq, ✓ belgili
- * (Sozlamalar → Mavzu ekranidagi kataklar bilan bir uslub).
+ * Katta tanlov katagi (kamida [minHeight], odatda 72dp — keksa barmoq uçun): tanlangani tonal rangda, burçaklari töliq
+ * yumaloq, ✓ belgili (Sozlamalar → Mavzu ekranidagi kataklar bilan bir uslub).
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -254,6 +245,7 @@ private fun RowScope.ComfortTile(
     count: Int,
     isSelected: Boolean,
     description: String,
+    minHeight: Dp = 72.dp,
     onClick: () -> Unit,
     content: @Composable BoxScope.() -> Unit,
 ) {
@@ -270,7 +262,7 @@ private fun RowScope.ComfortTile(
     Box(
         modifier = Modifier
             .weight(1f)
-            .heightIn(min = 72.dp)
+            .heightIn(min = minHeight)
             .expressiveSegment(index, count, color = container, horizontal = true, selected = isSelected, debounceMs = 150L, onClick = onClick)
             .semantics {
                 contentDescription = description
