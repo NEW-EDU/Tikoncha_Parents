@@ -52,6 +52,7 @@ import tikoncha_parents.composeapp.generated.resources.perm_why_overlay_popup
 import tikoncha_parents.composeapp.generated.resources.perm_why_usage_stats
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -71,7 +72,6 @@ import tikoncha_parents.composeapp.generated.resources.eye_slash
 import tikoncha_parents.composeapp.generated.resources.farzand_ilovadan_chiqish_sorovi
 import tikoncha_parents.composeapp.generated.resources.farzand_ilovani_ochirish_sorovi
 import tikoncha_parents.composeapp.generated.resources.farzand_qalqon_ochirish_sorovi
-import tikoncha_parents.composeapp.generated.resources.guard
 import tikoncha_parents.composeapp.generated.resources.guard_danger
 import tikoncha_parents.composeapp.generated.resources.guard_neutral
 import tikoncha_parents.composeapp.generated.resources.guard_warning
@@ -127,21 +127,15 @@ private val RowPaddingH = 20.dp
 
 // ═══════════════════════ Umumiy ═══════════════════════
 
-/** Qalqon rasmi Bosh sahifadagi "Farzand himoyasi" bilan bir xil ma'noda. */
-private enum class ShieldLevel(val drawable: DrawableResource) {
-    Ok(Res.drawable.guard),
-    Warning(Res.drawable.guard_warning),
-    Danger(Res.drawable.guard_danger),
-    Unknown(Res.drawable.guard_neutral),
-}
-
-private fun ProtectionState.shieldLevel(): ShieldLevel = when {
-    mode == ChildMode.UNKNOWN -> ShieldLevel.Unknown
-    missingRequiredPermissions.isNotEmpty() -> ShieldLevel.Danger
-    pendingRequestCount > 0 -> ShieldLevel.Warning
-    // "Faqat kuzatiş"da hech narsa yopilmaydi — kök "hammasi joyida" qalqoni notöğri taassurot beradi
-    mode == ChildMode.DEFAULT -> ShieldLevel.Unknown
-    else -> ShieldLevel.Ok
+/**
+ * Holat rasmi: muammo bölsa — qizil/sariq qalqon (Bosh sahifadagi "Farzand himoyasi" bilan bir xil ma'noda),
+ * hammasi joyida bölsa — joriy himoya darajasining 3D rasmi (köz / soat / qulf).
+ */
+private fun ProtectionState.heroImage(): DrawableResource = when {
+    mode == ChildMode.UNKNOWN -> Res.drawable.guard_neutral
+    missingRequiredPermissions.isNotEmpty() -> Res.drawable.guard_danger
+    pendingRequestCount > 0 -> Res.drawable.guard_warning
+    else -> mode.icon3d() ?: Res.drawable.guard_neutral
 }
 
 /** Rejim darajasi: 0 — noma'lum, 1..3 — Default / G'ujanak / Qalqon. */
@@ -393,7 +387,7 @@ private fun StatusHero(state: ProtectionState) {
         }
         Spacer(Modifier.width(8.dp))
         Image(
-            painter = painterResource(state.shieldLevel().drawable),
+            painter = painterResource(state.heroImage()),
             // Holatni yuqoridagi matn aytadi; qalqon — uning rangli belgisi
             contentDescription = null,
             modifier = Modifier.size(84.dp),
@@ -558,23 +552,14 @@ private fun PermissionList(
     }
 }
 
-/** Sozlama belgisi — yumşoq fonli kvadrat içida; hozir kerak bölmagan sozlamalarda xiraroq. */
+/** Sozlama belgisi (3D rasm); hozir kerak bölmagan sozlamalarda xiraroq. */
 @Composable
 private fun PermissionIcon(permission: ChildPermission, dimmed: Boolean) {
-    Box(
-        modifier = Modifier
-            .size(40.dp)
-            .clip(RoundedCornerShape(12.dp))
-            .background(AppColors.action.primary.copy(alpha = if (dimmed) 0.07f else 0.14f)),
-        contentAlignment = Alignment.Center,
-    ) {
-        Icon(
-            imageVector = permission.icon(),
-            contentDescription = null,
-            tint = if (dimmed) AppColors.text.tertiary else AppColors.icon.accentPrimary,
-            modifier = Modifier.size(22.dp),
-        )
-    }
+    Image(
+        painter = painterResource(permission.icon3d()),
+        contentDescription = null,
+        modifier = Modifier.size(40.dp).alpha(if (dimmed) 0.45f else 1f),
+    )
 }
 
 @Composable

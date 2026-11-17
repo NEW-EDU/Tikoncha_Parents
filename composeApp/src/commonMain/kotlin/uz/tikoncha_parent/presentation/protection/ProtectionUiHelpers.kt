@@ -6,15 +6,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.GppMaybe
 import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.Shield
-import androidx.compose.material.icons.rounded.AppBlocking
-import androidx.compose.material.icons.rounded.BatteryChargingFull
-import androidx.compose.material.icons.rounded.GpsFixed
-import androidx.compose.material.icons.rounded.HourglassBottom
-import androidx.compose.material.icons.rounded.Language
-import androidx.compose.material.icons.rounded.LocationOn
-import androidx.compose.material.icons.rounded.Notifications
-import androidx.compose.material.icons.rounded.PhonelinkLock
-import androidx.compose.material.icons.rounded.RestartAlt
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -101,17 +92,25 @@ fun ChildPermission.title(): StringResource = when (this) {
     ChildPermission.DEVICE_ADMIN -> Res.string.perm_title_device_admin
 }
 
-/** Qator belgisi: matndan oldin ma'noni rasm bilan beradi (keyin 3D rasmlar bilan almaştiriladi). */
-fun ChildPermission.icon(): ImageVector = when (this) {
-    ChildPermission.NOTIFICATION -> Icons.Rounded.Notifications
-    ChildPermission.USAGE_STATS -> Icons.Rounded.HourglassBottom
-    ChildPermission.OVERLAY, ChildPermission.OVERLAY_POPUP -> Icons.Rounded.AppBlocking
-    ChildPermission.LOCATION -> Icons.Rounded.LocationOn
-    ChildPermission.GPS_ENABLED -> Icons.Rounded.GpsFixed
-    ChildPermission.BATTERY -> Icons.Rounded.BatteryChargingFull
-    ChildPermission.AUTO_START -> Icons.Rounded.RestartAlt
-    ChildPermission.ACCESSIBILITY -> Icons.Rounded.Language
-    ChildPermission.DEVICE_ADMIN -> Icons.Rounded.PhonelinkLock
+/** Qator belgisi (3D): matndan oldin ma'noni rasm bilan beradi. */
+fun ChildPermission.icon3d(): DrawableResource = when (this) {
+    ChildPermission.NOTIFICATION -> Res.drawable.ic3d_perm_notification
+    ChildPermission.USAGE_STATS -> Res.drawable.ic3d_perm_usage_stats
+    ChildPermission.OVERLAY, ChildPermission.OVERLAY_POPUP -> Res.drawable.ic3d_perm_overlay
+    ChildPermission.LOCATION -> Res.drawable.ic3d_perm_location
+    ChildPermission.GPS_ENABLED -> Res.drawable.ic3d_perm_gps
+    ChildPermission.BATTERY -> Res.drawable.ic3d_perm_battery
+    ChildPermission.AUTO_START -> Res.drawable.ic3d_perm_auto_start
+    ChildPermission.ACCESSIBILITY -> Res.drawable.ic3d_perm_accessibility
+    ChildPermission.DEVICE_ADMIN -> Res.drawable.ic3d_perm_device_admin
+}
+
+/** Himoya darajasi rasmi (3D): köz bilan kuzatiş / soat / qulf. */
+fun ChildMode.icon3d(): DrawableResource? = when (this) {
+    ChildMode.DEFAULT -> Res.drawable.ic3d_mode_watching
+    ChildMode.GUJANAK -> Res.drawable.ic3d_mode_medium
+    ChildMode.STRICT -> Res.drawable.ic3d_mode_strict
+    ChildMode.UNKNOWN -> null
 }
 
 // ─────────── Vaqt helpers ───────────
