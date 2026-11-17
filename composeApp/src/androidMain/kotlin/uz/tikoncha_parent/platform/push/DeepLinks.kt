@@ -19,6 +19,7 @@ object DeepLinks {
     object Param {
         const val CHAT_ID = "chatId"
         const val CHAT_TITLE = "chatTitle"
+        const val CHAT_TYPE = "chatType"
         const val SESSION_ID = "sessionId"
         const val CHILD_ID = "childId"
         const val KIND = "kind"
@@ -28,6 +29,7 @@ object DeepLinks {
         is DeepLink.Chat -> build(Host.CHAT) {
             appendQueryParameter(Param.CHAT_ID, link.chatId)
             appendQueryParameter(Param.CHAT_TITLE, link.chatTitle ?: "")
+            link.chatType?.let { appendQueryParameter(Param.CHAT_TYPE, it) }
         }
         DeepLink.ParentalRequest -> build(Host.PARENTAL_REQUEST)
         DeepLink.StrictDisable -> build(Host.STRICT_DISABLE)

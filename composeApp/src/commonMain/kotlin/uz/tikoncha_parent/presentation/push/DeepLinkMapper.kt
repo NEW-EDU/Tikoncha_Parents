@@ -7,7 +7,7 @@ import uz.tikoncha_parent.domain.model.push.PayloadType
 /** FcmPayload -> DeepLink (yagona joy; eski MapPayloadToDeepLinkUseCase o'rniga) */
 fun FcmPayload.toDeepLink(): DeepLink? = when (type) {
     PayloadType.CHAT -> body?.message?.chatId?.let {
-        DeepLink.Chat(chatId = it, chatTitle = body.message.chatTitle, text = body.message.text)
+        DeepLink.Chat(chatId = it, chatTitle = body.message.chatTitle, text = body.message.text, chatType = body.message.chatType)
     }
     PayloadType.PARENTAL_REQUEST -> DeepLink.ParentalRequest
     PayloadType.STRICT_DISABLE -> DeepLink.StrictDisable

@@ -11,5 +11,11 @@ enum class ChatType {
     SIBLINGS,
     /** Yordam xizmati — odam javob beradi (server nomi "Feedback"). */
     SUPPORT,
-    NONE
+    NONE;
+
+    companion object {
+        /** Server `chat.type` / push `chat_type` → tur (notanişi NONE). */
+        fun fromServer(value: String?): ChatType =
+            entries.firstOrNull { it != NONE && it.name == value?.trim()?.uppercase() } ?: NONE
+    }
 }

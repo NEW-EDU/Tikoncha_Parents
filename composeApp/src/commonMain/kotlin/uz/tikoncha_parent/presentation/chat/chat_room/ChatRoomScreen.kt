@@ -362,7 +362,7 @@ fun ChatRoomScreenUi(
                 ) {
                     Text(
                         maxLines = 1,
-                        text = state.chatTitle,
+                        text = ChatUtil.titleFor(state.chatType, state.chatTitle),
                         style = AppTypography.titleMdSemiBold,
                         color = AppColors.text.primary
                     )

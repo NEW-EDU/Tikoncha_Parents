@@ -11,7 +11,11 @@ object AndroidDeepLinkParser {
 
         return when(uri.host){
             DeepLinks.Host.CHAT -> uri.getQueryParameter(DeepLinks.Param.CHAT_ID)?. let {
-                DeepLink.Chat(chatId = it, chatTitle = uri.getQueryParameter(DeepLinks.Param.CHAT_TITLE))
+                DeepLink.Chat(
+                    chatId = it,
+                    chatTitle = uri.getQueryParameter(DeepLinks.Param.CHAT_TITLE),
+                    chatType = uri.getQueryParameter(DeepLinks.Param.CHAT_TYPE),
+                )
             }
 
             DeepLinks.Host.PARENTAL_REQUEST -> DeepLink.ParentalRequest

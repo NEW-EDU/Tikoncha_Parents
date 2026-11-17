@@ -5,6 +5,8 @@ sealed class DeepLink {
         val chatId: String,
         val chatTitle: String? = null,
         val text: String? = null,
+        /** Server turi (SUPPORT, BOT, …) — push'dan oçilgan suhbat ham ilova tilidagi nom bilan çiqsin. */
+        val chatType: String? = null,
     ) : DeepLink()
 
     data object ParentalRequest : DeepLink()

@@ -36,7 +36,11 @@ object ChatUtil {
      * (tarjima qilinmagan) — bu ikkisi turiga qarab ilova tilida körsatiladi; qolganlari serverdagi nomi bilan.
      */
     @Composable
-    fun ChatUi.displayTitle(): String = when (type) {
+    fun ChatUi.displayTitle(): String = titleFor(type, title)
+
+    /** [displayTitle] bilan bir xil — ChatUi yöq joyda (suhbat ekrani, push'dan oçilganda). */
+    @Composable
+    fun titleFor(type: ChatType, title: String): String = when (type) {
         ChatType.SUPPORT -> stringResource(Res.string.chat_support_title)
         ChatType.BOT -> stringResource(Res.string.chat_ai_title)
         else -> title

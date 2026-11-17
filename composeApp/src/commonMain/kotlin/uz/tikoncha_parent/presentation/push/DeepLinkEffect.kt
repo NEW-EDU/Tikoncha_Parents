@@ -32,7 +32,8 @@ fun navigateByDeepLink(navigator: Navigator, link: DeepLink){
                     chatId = link.chatId,
                     chatAvatar = "",
                     chatTitle = link.chatTitle?:"",
-                    chatType = ChatType.NONE
+                    // Ilgari doim NONE edi: yordam xizmati push'dan oçilsa sarlavha serverniki ("Feedback") çiqardi.
+                    chatType = ChatType.fromServer(link.chatType)
                 )
             )
         )
