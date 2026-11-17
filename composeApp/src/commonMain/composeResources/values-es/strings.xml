@@ -1222,7 +1222,7 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="ac_hero_title">Vincula el teléfono de tu hijo</string>
     <string name="ac_hero_sub">Lleva un minuto: ten a mano el teléfono de tu hijo.</string>
     <string name="ac_step_install">Instala Hoglt en el teléfono de tu hijo</string>
-    <string name="ac_step_show_code">En su teléfono: Perfil → Añadir un padre → Mostrar mi código</string>
+    <string name="ac_step_show_code">En su teléfono: Otros → Añadir un padre</string>
     <string name="ac_step_enter_code">Introduce el código de 8 dígitos que veas</string>
     <string name="ac_step_phone">Introduce el número de teléfono de tu hijo</string>
     <string name="ac_step_child_enters">Introduce el código en el teléfono de tu hijo</string>

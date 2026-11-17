@@ -1206,7 +1206,7 @@
     <string name="ac_hero_title">자녀의 휴대폰 연결</string>
     <string name="ac_hero_sub">1분이면 돼요. 자녀의 휴대폰을 가까이에 두세요.</string>
     <string name="ac_step_install">자녀의 휴대폰에 Hoglt 설치</string>
-    <string name="ac_step_show_code">자녀 휴대폰에서: 프로필 → 부모님 추가 → 내 코드 보기</string>
+    <string name="ac_step_show_code">자녀 휴대폰에서: 기타 → 부모님 추가</string>
     <string name="ac_step_enter_code">표시된 8자리 코드를 입력해 주세요</string>
     <string name="ac_step_phone">자녀의 전화번호를 입력해 주세요</string>
     <string name="ac_step_child_enters">자녀의 휴대폰에 표시된 코드를 입력해 주세요</string>

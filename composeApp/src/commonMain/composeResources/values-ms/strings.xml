@@ -1205,7 +1205,7 @@
     <string name="ac_hero_title">Pautkan telefon anak anda</string>
     <string name="ac_hero_sub">Ia mengambil masa seminit — simpan telefon anak anda berdekatan.</string>
     <string name="ac_step_install">Pasang Hoglt pada telefon anak anda</string>
-    <string name="ac_step_show_code">Pada telefonnya: Profil → Tambah ibu bapa → Tunjukkan kod saya</string>
+    <string name="ac_step_show_code">Pada telefonnya: Lain-lain → Tambah ibu bapa</string>
     <string name="ac_step_enter_code">Masukkan kod 8 digit yang anda lihat</string>
     <string name="ac_step_phone">Masukkan nombor telefon anak anda</string>
     <string name="ac_step_child_enters">Masukkan kod pada telefon anak anda</string>

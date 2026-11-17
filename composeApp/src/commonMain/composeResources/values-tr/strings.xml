@@ -1222,7 +1222,7 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="ac_hero_title">Çocuğunun telefonunu bağla</string>
     <string name="ac_hero_sub">Bir dakika sürer, çocuğunun telefonunu yakınında tut.</string>
     <string name="ac_step_install">Hoglt’u çocuğunun telefonuna yükle</string>
-    <string name="ac_step_show_code">Onun telefonunda: Profil → Ebeveyn ekle → Kodumu göster</string>
+    <string name="ac_step_show_code">Onun telefonunda: Diğer → Ebeveyn ekle</string>
     <string name="ac_step_enter_code">Gördüğün 8 haneli kodu gir</string>
     <string name="ac_step_phone">Çocuğunun telefon numarasını gir</string>
     <string name="ac_step_child_enters">Kodu çocuğunun telefonuna gir</string>

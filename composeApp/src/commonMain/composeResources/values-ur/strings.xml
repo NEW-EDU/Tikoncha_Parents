@@ -1222,7 +1222,7 @@
     <string name="ac_hero_title">اپنے بچے کا فون لنک کریں</string>
     <string name="ac_hero_sub">اس میں ایک منٹ لگتا ہے — اپنے بچے کا فون قریب رکھیں۔</string>
     <string name="ac_step_install">اپنے بچے کے فون پر Hoglt انسٹال کریں</string>
-    <string name="ac_step_show_code">ان کے فون پر: پروفائل ← والدین شامل کریں ← میرا کوڈ دکھائیں</string>
+    <string name="ac_step_show_code">ان کے فون پر: دیگر ← والدین شامل کریں</string>
     <string name="ac_step_enter_code">نظر آنے والا 8 ہندسوں کا کوڈ درج کریں</string>
     <string name="ac_step_phone">اپنے بچے کا فون نمبر درج کریں</string>
     <string name="ac_step_child_enters">اپنے بچے کے فون پر کوڈ درج کریں</string>

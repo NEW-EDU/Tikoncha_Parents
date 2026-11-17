@@ -1222,7 +1222,7 @@
     <string name="ac_hero_title">اربط هاتف طفلك</string>
     <string name="ac_hero_sub">يستغرق دقيقة، أبقِ هاتف طفلك قريبًا.</string>
     <string name="ac_step_install">ثبّت Hoglt على هاتف طفلك</string>
-    <string name="ac_step_show_code">على هاتفه: الملف الشخصي ← إضافة ولي أمر ← عرض رمزي</string>
+    <string name="ac_step_show_code">على هاتفه: أخرى ← إضافة ولي أمر</string>
     <string name="ac_step_enter_code">أدخل الرمز المكوّن من 8 أرقام الذي تراه</string>
     <string name="ac_step_phone">أدخل رقم هاتف طفلك</string>
     <string name="ac_step_child_enters">أدخل الرمز على هاتف طفلك</string>

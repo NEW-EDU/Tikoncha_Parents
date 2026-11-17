@@ -1222,7 +1222,7 @@ This information is used only for these features and is not shared with third pa
     <string name="ac_hero_title">Link your child’s phone</string>
     <string name="ac_hero_sub">It takes a minute — keep your child’s phone nearby.</string>
     <string name="ac_step_install">Install Hoglt on your child’s phone</string>
-    <string name="ac_step_show_code">On their phone: Profile → Add a parent → Show my code</string>
+    <string name="ac_step_show_code">On their phone: Other → Add a parent</string>
     <string name="ac_step_enter_code">Enter the 8-digit code you see</string>
     <string name="ac_step_phone">Enter your child’s phone number</string>
     <string name="ac_step_child_enters">Enter the code on your child’s phone</string>

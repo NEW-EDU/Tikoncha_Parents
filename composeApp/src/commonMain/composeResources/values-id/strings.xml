@@ -1222,7 +1222,7 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="ac_hero_title">Tautkan ponsel anakmu</string>
     <string name="ac_hero_sub">Hanya butuh semenit, siapkan ponsel anakmu di dekatmu.</string>
     <string name="ac_step_install">Pasang Hoglt di ponsel anakmu</string>
-    <string name="ac_step_show_code">Di ponselnya: Profil → Tambah orang tua → Tampilkan kodeku</string>
+    <string name="ac_step_show_code">Di ponselnya: Lainnya → Tambah orang tua</string>
     <string name="ac_step_enter_code">Masukkan kode 8 digit yang kamu lihat</string>
     <string name="ac_step_phone">Masukkan nomor telepon anakmu</string>
     <string name="ac_step_child_enters">Masukkan kode di ponsel anakmu</string>

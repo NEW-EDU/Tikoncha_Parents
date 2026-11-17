@@ -1206,7 +1206,7 @@
     <string name="ac_hero_title">Телефони фарзандатонро пайваст кунед</string>
     <string name="ac_hero_sub">Ин як дақиқа вақт мегирад — телефони фарзандатонро дар наздатон нигоҳ доред.</string>
     <string name="ac_step_install">Hoglt-ро ба телефони фарзандатон насб кунед</string>
-    <string name="ac_step_show_code">Дар телефони ӯ: Профил → Илова кардани волидайн → Нишон додани коди ман</string>
+    <string name="ac_step_show_code">Дар телефони ӯ: Дигар → Илова кардани волидайн</string>
     <string name="ac_step_enter_code">Коди 8-рақамаеро, ки мебинед, ворид кунед</string>
     <string name="ac_step_phone">Рақами телефони фарзандатонро ворид кунед</string>
     <string name="ac_step_child_enters">Кодро дар телефони фарзандатон ворид кунед</string>

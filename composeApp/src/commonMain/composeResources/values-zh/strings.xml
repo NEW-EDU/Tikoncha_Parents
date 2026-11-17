@@ -1206,7 +1206,7 @@
     <string name="ac_hero_title">关联你孩子的手机</string>
     <string name="ac_hero_sub">只需一分钟，请把孩子的手机放在身边。</string>
     <string name="ac_step_install">在你孩子的手机上安装 Hoglt</string>
-    <string name="ac_step_show_code">在他们的手机上：我的 → 添加家长 → 显示我的验证码</string>
+    <string name="ac_step_show_code">在他们的手机上：其他 → 添加家长</string>
     <string name="ac_step_enter_code">输入你看到的 8 位数字码</string>
     <string name="ac_step_phone">输入你孩子的手机号</string>
     <string name="ac_step_child_enters">在你孩子的手机上输入验证码</string>

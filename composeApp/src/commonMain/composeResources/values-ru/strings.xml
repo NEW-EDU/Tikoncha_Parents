@@ -1229,7 +1229,7 @@
     <string name="ac_hero_title">Подключите телефон ребёнка</string>
     <string name="ac_hero_sub">Это займёт минуту — держите телефон ребёнка рядом.</string>
     <string name="ac_step_install">Установите Tikoncha на телефон ребёнка</string>
-    <string name="ac_step_show_code">На его телефоне: Профиль → Добавить родителя → Показать мой код</string>
+    <string name="ac_step_show_code">На его телефоне: Другое → Добавить родителя</string>
     <string name="ac_step_enter_code">Введите показанный 8-значный код</string>
     <string name="ac_step_phone">Введите номер телефона ребёнка</string>
     <string name="ac_step_child_enters">Введите код на телефоне ребёнка</string>

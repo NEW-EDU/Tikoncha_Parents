@@ -1206,7 +1206,7 @@
     <string name="ac_hero_title">گوشی فرزندتان را متصل کنید</string>
     <string name="ac_hero_sub">یک دقیقه طول می‌کشد — گوشی فرزندتان را نزدیک نگه دارید.</string>
     <string name="ac_step_install">Hoglt را روی گوشی فرزندتان نصب کنید</string>
-    <string name="ac_step_show_code">روی گوشی او: پروفایل ← افزودن والدین ← نمایش کد من</string>
+    <string name="ac_step_show_code">روی گوشی او: سایر ← افزودن والدین</string>
     <string name="ac_step_enter_code">کد 8 رقمی را که می‌بینید وارد کنید</string>
     <string name="ac_step_phone">شمارهٔ تلفن فرزندتان را وارد کنید</string>
     <string name="ac_step_child_enters">کد را روی گوشی فرزندتان وارد کنید</string>
