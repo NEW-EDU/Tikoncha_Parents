@@ -1427,4 +1427,5 @@
     <string name="perm_why_device_admin">Фарзанд Tikoncha’ни оддий илова каби, сиздан сўрамасдан ўчириб ташлай олади.</string>
     <string name="policy_paywall_app_limits">Бепул тарифда битта жадвалга %1$d тагача илова қўшиш мумкин. Кўпроқ илова учун Plus керак.</string>
     <string name="policy_paywall_app_limit">Битта жадвалдаги иловалар сони тариф чегарасига етди.</string>
+    <string name="clip_child_phone">Унинг телефонида</string>
 </resources>

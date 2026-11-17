@@ -1,6 +1,8 @@
 package uz.tikoncha_parent.presentation.tutorial_clips
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,7 +38,6 @@ import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
 import tikoncha_parents.composeapp.generated.resources.close_remove
 import tikoncha_parents.composeapp.generated.resources.yopish
-import uz.tikoncha_parent.presentation.task.TaskSegmentedToggle
 import uz.tikoncha_parent.ui.Space
 import uz.tikoncha_parent.ui.theme.AppColors
 import uz.tikoncha_parent.ui.theme.AppTypography
@@ -65,7 +66,7 @@ fun TutorialClipDialog(clips: List<TutorialClip>, onDismiss: () -> Unit) {
         ) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    text = stringResource(clip.title),
+                    text = clip.withPlatform(stringResource(clip.longTitle ?: clip.title)),
                     style = AppTypography.titleMdSemiBold,
                     color = AppColors.text.primary,
                     modifier = Modifier.weight(1f),
@@ -93,12 +94,28 @@ fun TutorialClipDialog(clips: List<TutorialClip>, onDismiss: () -> Unit) {
             }
             if (clips.size > 1) {
                 Space(12.dp)
-                TaskSegmentedToggle(
-                    options = clips.map { stringResource(it.title) to null },
-                    selectedIndex = index,
-                    onOptionSelected = { index = it },
-                    modifier = Modifier.fillMaxWidth(),
-                )
+                // Nomlar qisqarmasin: matnga mos chiplar, sig'masa yonga suriladi
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+                    modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                ) {
+                    clips.forEachIndexed { i, c ->
+                        val selected = i == index
+                        Surface(
+                            onClick = { index = i },
+                            shape = CircleShape,
+                            color = if (selected) AppColors.button.primary else AppColors.bg.surfaceTertiary,
+                        ) {
+                            Text(
+                                text = c.withPlatform(stringResource(c.title)),
+                                style = AppTypography.bodyLgSemiBold,
+                                color = if (selected) AppColors.text.onPrimary else AppColors.text.primary,
+                                maxLines = 1,
+                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+                            )
+                        }
+                    }
+                }
             }
         }
     }

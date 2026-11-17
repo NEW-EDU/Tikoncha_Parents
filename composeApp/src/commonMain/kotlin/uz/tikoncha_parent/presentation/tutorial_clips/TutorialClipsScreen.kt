@@ -52,7 +52,7 @@ class TutorialClipsScreen : Screen {
                     ProfileSectionItem(
                         segmentIndex = i,
                         segmentCount = all.size,
-                        title = stringResource(clip.title),
+                        title = clip.withPlatform(stringResource(clip.longTitle ?: clip.title)),
                         icon = painterResource(Res.drawable.media_play),
                         onItemClick = { open = clip },
                     )

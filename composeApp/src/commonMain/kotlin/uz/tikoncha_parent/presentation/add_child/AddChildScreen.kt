@@ -144,10 +144,10 @@ class AddChildScreen : Screen {
         val clipboardManager = LocalClipboard.current
         val coroutineScope = rememberCoroutineScope()
 
-        // Qo'llanma: haqiqiy ekranlardan klip (barça tillarda) — skanerlab va kod bilan ulash
+        // Qo'llanma: haqiqiy ekranlardan klip (barça tillarda) — farzand telefonida, skanerlab va kod bilan ulash
         var showClips by remember { mutableStateOf(false) }
         if (showClips) {
-            TutorialClipDialog(listOf(TutorialClip.ADD_CHILD, TutorialClip.ADD_CHILD_CODE)) { showClips = false }
+            TutorialClipDialog(listOf(TutorialClip.CHILD_ADD_PARENT, TutorialClip.CHILD_ADD_PARENT_IOS, TutorialClip.ADD_CHILD, TutorialClip.ADD_CHILD_CODE)) { showClips = false }
         }
 
         ToastProvider {

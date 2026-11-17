@@ -167,7 +167,7 @@ fun TaskUi(
     var taskToDelete by remember { mutableStateOf<Task?>(null) }
     var showClips by remember { mutableStateOf(false) }
     if (showClips) {
-        TutorialClipDialog(listOf(TutorialClip.GIVE_TASK, TutorialClip.CHECK_TASK)) { showClips = false }
+        TutorialClipDialog(listOf(TutorialClip.GIVE_TASK, TutorialClip.CHILD_DO_TASK, TutorialClip.CHECK_TASK)) { showClips = false }
     }
     val loadFailure = state.error
     // Shimmer faqat yuklash 300 ms dan uzoq cho'zilsa (tez javobda chaqnab o'tmaydi).
