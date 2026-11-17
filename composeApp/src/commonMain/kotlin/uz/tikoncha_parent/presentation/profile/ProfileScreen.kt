@@ -3,6 +3,9 @@ package uz.tikoncha_parent.presentation.profile
 import tikoncha_parents.composeapp.generated.resources.text_size_title
 import tikoncha_parents.composeapp.generated.resources.file_text
 import tikoncha_parents.composeapp.generated.resources.pr_section_help
+import uz.tikoncha_parent.presentation.tutorial_clips.TutorialClipsScreen
+import tikoncha_parents.composeapp.generated.resources.media_play
+import tikoncha_parents.composeapp.generated.resources.video_qollanma
 import tikoncha_parents.composeapp.generated.resources.pr_section_payments
 import tikoncha_parents.composeapp.generated.resources.pr_section_prefs
 import tikoncha_parents.composeapp.generated.resources.pr_section_account
@@ -449,9 +452,17 @@ fun ProfileUi(
                 }
                 ProfileSectionLabel(stringResource(Res.string.pr_section_help))
                 Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
+                    // Ilovadagi qo'llanma kliplari (haqiqiy ekranlar, qayerga bosiş körsatilgan)
                     ProfileSectionItem(
                         segmentIndex = 0,
-                        segmentCount = 2,
+                        segmentCount = 3,
+                        title = stringResource(Res.string.video_qollanma),
+                        icon = painterResource(Res.drawable.media_play),
+                        onItemClick = { navigator?.push(TutorialClipsScreen()) }
+                    )
+                    ProfileSectionItem(
+                        segmentIndex = 1,
+                        segmentCount = 3,
                         title = stringResource(Res.string.biz_haqimizda),
                         icon = painterResource(Res.drawable.info_profile_us),
                         onItemClick = {
@@ -459,8 +470,8 @@ fun ProfileUi(
                         }
                     )
                     ProfileSectionItem(
-                        segmentIndex = 1,
-                        segmentCount = 2,
+                        segmentIndex = 2,
+                        segmentCount = 3,
                         title = stringResource(Res.string.biz_bilan_aloqa),
                         icon = painterResource(Res.drawable.call_filled),
                         onItemClick = { showSupport = true }

@@ -1478,4 +1478,5 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="perm_why_device_admin">Farzand Tikoncha’ni oddiy ilova kabi, sizdan söramasdan öçirib taşlay oladi.</string>
     <string name="policy_paywall_app_limits">Bepul tarifda bitta jadvalga %1$d tagaça ilova qöşiş mumkin. Köproq ilova uçun Plus kerak.</string>
     <string name="policy_paywall_app_limit">Bitta jadvaldagi ilovalar soni tarif çegarasiga yetdi.</string>
+    <string name="clip_child_phone">Uning telefonida</string>
 </resources>

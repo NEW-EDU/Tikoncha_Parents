@@ -1475,4 +1475,5 @@
     <string name="perm_why_device_admin">Ребёнок может удалить Tikoncha как обычное приложение, не спрашивая вас.</string>
     <string name="policy_paywall_app_limits">На бесплатном тарифе в одно расписание можно добавить не больше %1$d приложений. Для большего нужен Plus.</string>
     <string name="policy_paywall_app_limit">Достигнут лимит приложений в одном расписании для вашего тарифа.</string>
+    <string name="clip_child_phone">На его телефоне</string>
 </resources>
