@@ -9,6 +9,7 @@ import tikoncha_parents.composeapp.generated.resources.kutilmagan_xatolik_qayta_
 import tikoncha_parents.composeapp.generated.resources.muhimlilikni_tanlang
 import tikoncha_parents.composeapp.generated.resources.sarlavha_bosh
 import tikoncha_parents.composeapp.generated.resources.server_connection_error
+import tikoncha_parents.composeapp.generated.resources.ruxsat_yoq
 import tikoncha_parents.composeapp.generated.resources.tanga_balansi_yetarli_emas
 import tikoncha_parents.composeapp.generated.resources.tanga_manfiy_bolmasin
 import tikoncha_parents.composeapp.generated.resources.token_eskirgan
@@ -72,7 +73,8 @@ fun ErrorCause.asFallbackText(): String = when (this) {
     ErrorCause.NoInternet,
     ErrorCause.Timeout -> stringResource(Res.string.iltimos_internetga_ulang)
     ErrorCause.SessionExpired -> stringResource(Res.string.token_eskirgan)
-    ErrorCause.Forbidden,
+    // 403 — "ruxsat yöq", "ulanib bölmadi" emas (audit 2026-11-17: ota-ona internetni tekşirib övora bölardi).
+    ErrorCause.Forbidden -> stringResource(Res.string.ruxsat_yoq)
     is ErrorCause.Server -> stringResource(Res.string.server_connection_error)
     is ErrorCause.PremiumRequired -> stringResource(Res.string.obuna_dialog_message)
     ErrorCause.NotFound -> stringResource(Res.string.jadval_topilmadi)
