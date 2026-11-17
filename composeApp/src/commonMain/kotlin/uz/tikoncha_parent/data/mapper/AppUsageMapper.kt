@@ -3,6 +3,7 @@ package uz.tikoncha_parent.data.mapper
 import kotlinx.datetime.LocalDate
 import uz.tikoncha_parent.data.remote.model.AppUsageDataDto
 import uz.tikoncha_parent.domain.model.app_usage.AppUsage
+import uz.tikoncha_parent.domain.policy.NeverBlock
 
 private fun parseDateDdMMyyyy(s: String): LocalDate {
     val (d, m, y) = s.split("-").map { it.toInt() }
@@ -17,7 +18,10 @@ private fun parseHour(s: String): Int =
  * Har bir item — bitta ilova, ichida kun va soat bo'yicha guruhlangan ms.
  */
 fun AppUsageDataDto.toAppUsageList(): List<AppUsage> =
-    items.map { item ->
+    // Tikoncha ilovalari ekran vaqti emas: bola telefonida old planda turgan Tikoncha — asosan blok ekrani
+    // (masalan, kechasi uyqu jadvalida) yoki Bilimdon. Server yordamçisi ham ularni sanamaydi (`OWN_PACKAGES`) —
+    // Bosh sahifa va yordamçi bir xil raqam aytsin.
+    items.filterNot { NeverBlock.isNeverBlocked(it.packageName) }.map { item ->
         val usageMap: Map<LocalDate, Map<Int, Long>> = item.usage
             .entries
             .associate { (dateStr, hourMap) ->

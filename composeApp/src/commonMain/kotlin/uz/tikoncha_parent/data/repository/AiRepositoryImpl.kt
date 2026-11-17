@@ -49,11 +49,24 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
             child_id = childId,
         )
         var finished = false
+        var received = false
+        var attempt = 0
         try {
-            api.chat(request).collect { ev ->
-                val mapped = map(ev) ?: return@collect
-                emit(mapped)
-                if (mapped is AssistantEvent.Done || mapped is AssistantEvent.Failed) finished = true
+            while (true) {
+                try {
+                    api.chat(request).collect { ev ->
+                        val mapped = map(ev) ?: return@collect
+                        received = true
+                        emit(mapped)
+                        if (mapped is AssistantEvent.Done || mapped is AssistantEvent.Failed) finished = true
+                    }
+                    break
+                } catch (e: AiApiService.EnvelopeException) {
+                    // Server yangilanayotganda nginx ~30 s 502/503 qaytaradi: so'rov ilovaga yetmagan — tanga
+                    // olinmagan, karta yaratilmagan. Hech narsa kelmagan bo'lsa jimgina qayta urinamiz.
+                    if (received || e.code !in RETRY_CODES || attempt >= RETRY_DELAYS_MS.size) throw e
+                    kotlinx.coroutines.delay(RETRY_DELAYS_MS[attempt++])
+                }
             }
             if (!finished) emit(AssistantEvent.Done(null))
         } catch (e: CancellationException) {
@@ -203,5 +216,8 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
     private companion object {
         const val TAG = "AiRepository"
         const val MAX_TURNS = 16
+        val RETRY_CODES = setOf(502, 503)
+        /** Jami ~33 s — server qayta işga tuşişi (~25–35 s) qamrab olinadi. */
+        val RETRY_DELAYS_MS = longArrayOf(3_000, 5_000, 8_000, 8_000, 9_000)
     }
 }
