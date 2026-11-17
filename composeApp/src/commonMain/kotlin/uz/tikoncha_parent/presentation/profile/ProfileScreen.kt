@@ -1,10 +1,8 @@
 package uz.tikoncha_parent.presentation.profile
 
 import tikoncha_parents.composeapp.generated.resources.text_size_title
-import tikoncha_parents.composeapp.generated.resources.file_text
 import tikoncha_parents.composeapp.generated.resources.pr_section_help
 import uz.tikoncha_parent.presentation.tutorial_clips.TutorialClipsScreen
-import tikoncha_parents.composeapp.generated.resources.media_play
 import tikoncha_parents.composeapp.generated.resources.video_qollanma
 import tikoncha_parents.composeapp.generated.resources.pr_section_payments
 import tikoncha_parents.composeapp.generated.resources.pr_section_prefs
@@ -13,9 +11,6 @@ import androidx.compose.foundation.layout.Arrangement
 import uz.tikoncha_parent.ui.SegmentGap
 import uz.tikoncha_parent.presentation.profile.subscription.autopay.cards.AutopayCardsScreen
 import tikoncha_parents.composeapp.generated.resources.ap_my_cards
-import androidx.compose.material.icons.rounded.CreditCard
-import androidx.compose.material.icons.Icons
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -59,36 +54,39 @@ import tikoncha_parents.composeapp.generated.resources.add
 import tikoncha_parents.composeapp.generated.resources.bekor_qilish
 import tikoncha_parents.composeapp.generated.resources.biz_bilan_aloqa
 import tikoncha_parents.composeapp.generated.resources.biz_haqimizda
-import tikoncha_parents.composeapp.generated.resources.call_filled
 import tikoncha_parents.composeapp.generated.resources.chiqish
 import tikoncha_parents.composeapp.generated.resources.coin_3d
-import tikoncha_parents.composeapp.generated.resources.coins_profile
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
-import tikoncha_parents.composeapp.generated.resources.family
 import tikoncha_parents.composeapp.generated.resources.faol_vazifalar
 import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
 import tikoncha_parents.composeapp.generated.resources.farzandlarim
 import tikoncha_parents.composeapp.generated.resources.file_3d
-import tikoncha_parents.composeapp.generated.resources.global
-import tikoncha_parents.composeapp.generated.resources.id_card
-import tikoncha_parents.composeapp.generated.resources.info_profile_us
-import tikoncha_parents.composeapp.generated.resources.logout
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_about
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_cards
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_children
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_coins
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_contact
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_delete_account
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_language
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_logout
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_payments
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_personal
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_screen_colour
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_subscription
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_text_size
+import tikoncha_parents.composeapp.generated.resources.ic3d_pr_video_help
 import tikoncha_parents.composeapp.generated.resources.akkauntni_o_chirish
-import tikoncha_parents.composeapp.generated.resources.delete
 import tikoncha_parents.composeapp.generated.resources.obuna
 import tikoncha_parents.composeapp.generated.resources.ochirish
 import tikoncha_parents.composeapp.generated.resources.ok
-import tikoncha_parents.composeapp.generated.resources.person
 import tikoncha_parents.composeapp.generated.resources.profil
 import tikoncha_parents.composeapp.generated.resources.profil_rasmi_olib_tashlanadi
 import tikoncha_parents.composeapp.generated.resources.rasmni_ochirish
 import tikoncha_parents.composeapp.generated.resources.shaxsiy_malumotlar
-import tikoncha_parents.composeapp.generated.resources.star_vector
 import tikoncha_parents.composeapp.generated.resources.ta
 import tikoncha_parents.composeapp.generated.resources.tangachalar
 import tikoncha_parents.composeapp.generated.resources.tangachalaringiz
 import tikoncha_parents.composeapp.generated.resources.tema
-import tikoncha_parents.composeapp.generated.resources.theme_mode
 import tikoncha_parents.composeapp.generated.resources.til
 import tikoncha_parents.composeapp.generated.resources.tolovlar_tarixi
 import tikoncha_parents.composeapp.generated.resources.versiya
@@ -366,7 +364,8 @@ fun ProfileUi(
                         segmentIndex = 0,
                         segmentCount = 2,
                         title = stringResource(Res.string.shaxsiy_malumotlar),
-                        icon = painterResource(Res.drawable.person),
+                        icon = painterResource(Res.drawable.ic3d_pr_personal),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(PersonalInformationScreen())
                         }
@@ -375,7 +374,8 @@ fun ProfileUi(
                         segmentIndex = 1,
                         segmentCount = 2,
                         title = stringResource(Res.string.farzandlarim),
-                        icon = painterResource(Res.drawable.family),
+                        icon = painterResource(Res.drawable.ic3d_pr_children),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(ChildrenSelectScreen())
                         }
@@ -387,7 +387,8 @@ fun ProfileUi(
                         segmentIndex = 0,
                         segmentCount = 3,
                         title = stringResource(Res.string.tema),
-                        icon = painterResource(Res.drawable.theme_mode),
+                        icon = painterResource(Res.drawable.ic3d_pr_screen_colour),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(ThemeScreen())
                         }
@@ -397,7 +398,8 @@ fun ProfileUi(
                         segmentIndex = 1,
                         segmentCount = 3,
                         title = stringResource(Res.string.text_size_title),
-                        icon = painterResource(Res.drawable.file_text),
+                        icon = painterResource(Res.drawable.ic3d_pr_text_size),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(uz.tikoncha_parent.presentation.profile.settings.text_size.TextSizeScreen())
                         }
@@ -406,7 +408,8 @@ fun ProfileUi(
                         segmentIndex = 2,
                         segmentCount = 3,
                         title = stringResource(Res.string.til),
-                        icon = painterResource(Res.drawable.global),
+                        icon = painterResource(Res.drawable.ic3d_pr_language),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(LanguageScreen())
                         }
@@ -418,7 +421,8 @@ fun ProfileUi(
                         segmentIndex = 0,
                         segmentCount = 4,
                         title = stringResource(Res.string.obuna),
-                        icon = painterResource(Res.drawable.star_vector),
+                        icon = painterResource(Res.drawable.ic3d_pr_subscription),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(SubscriptionScreen())
                         }
@@ -428,7 +432,8 @@ fun ProfileUi(
                         segmentIndex = 1,
                         segmentCount = 4,
                         title = stringResource(Res.string.ap_my_cards),
-                        icon = rememberVectorPainter(Icons.Rounded.CreditCard),
+                        icon = painterResource(Res.drawable.ic3d_pr_cards),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(AutopayCardsScreen())
                         }
@@ -437,7 +442,8 @@ fun ProfileUi(
                         segmentIndex = 2,
                         segmentCount = 4,
                         title = stringResource(Res.string.tangachalar),
-                        icon = painterResource(Res.drawable.coins_profile),
+                        icon = painterResource(Res.drawable.ic3d_pr_coins),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(CoinsScreen())
                         }
@@ -446,7 +452,8 @@ fun ProfileUi(
                         segmentIndex = 3,
                         segmentCount = 4,
                         title = stringResource(Res.string.tolovlar_tarixi),
-                        icon = painterResource(Res.drawable.id_card),
+                        icon = painterResource(Res.drawable.ic3d_pr_payments),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(PaymentHistoryScreen())
                         }
@@ -459,14 +466,16 @@ fun ProfileUi(
                         segmentIndex = 0,
                         segmentCount = 3,
                         title = stringResource(Res.string.video_qollanma),
-                        icon = painterResource(Res.drawable.media_play),
+                        icon = painterResource(Res.drawable.ic3d_pr_video_help),
+                        tintIcon = false,
                         onItemClick = { navigator?.push(TutorialClipsScreen()) }
                     )
                     ProfileSectionItem(
                         segmentIndex = 1,
                         segmentCount = 3,
                         title = stringResource(Res.string.biz_haqimizda),
-                        icon = painterResource(Res.drawable.info_profile_us),
+                        icon = painterResource(Res.drawable.ic3d_pr_about),
+                        tintIcon = false,
                         onItemClick = {
                             navigator?.push(AboutUsScreen())
                         }
@@ -475,7 +484,8 @@ fun ProfileUi(
                         segmentIndex = 2,
                         segmentCount = 3,
                         title = stringResource(Res.string.biz_bilan_aloqa),
-                        icon = painterResource(Res.drawable.call_filled),
+                        icon = painterResource(Res.drawable.ic3d_pr_contact),
+                        tintIcon = false,
                         onItemClick = { showSupport = true }
                     )
                 }
@@ -485,8 +495,8 @@ fun ProfileUi(
                         segmentIndex = 0,
                         segmentCount = 2,
                         title = stringResource(Res.string.chiqish),
-                        icon = painterResource(Res.drawable.logout),
-                        iconColor = AppColors.icon.accentDanger,
+                        icon = painterResource(Res.drawable.ic3d_pr_logout),
+                        tintIcon = false,
                         textColor = AppColors.text.accentDanger,
                         onItemClick = {
                             navigator?.push(LogoutScreen())
@@ -498,8 +508,8 @@ fun ProfileUi(
                         segmentIndex = 1,
                         segmentCount = 2,
                         title = stringResource(Res.string.akkauntni_o_chirish),
-                        icon = painterResource(Res.drawable.delete),
-                        iconColor = AppColors.icon.accentDanger,
+                        icon = painterResource(Res.drawable.ic3d_pr_delete_account),
+                        tintIcon = false,
                         textColor = AppColors.text.accentDanger,
                         onItemClick = {
                             navigator?.push(uz.tikoncha_parent.presentation.profile.logout.DeleteAccountScreen())

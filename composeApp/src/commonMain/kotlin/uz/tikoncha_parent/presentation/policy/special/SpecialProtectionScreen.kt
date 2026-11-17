@@ -30,11 +30,11 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
-import tikoncha_parents.composeapp.generated.resources.blocklist
-import tikoncha_parents.composeapp.generated.resources.camera
-import tikoncha_parents.composeapp.generated.resources.chat_dialog_icon
 import tikoncha_parents.composeapp.generated.resources.dialog_failed
-import tikoncha_parents.composeapp.generated.resources.location
+import tikoncha_parents.composeapp.generated.resources.ic3d_sp_chats
+import tikoncha_parents.composeapp.generated.resources.ic3d_sp_danger_places
+import tikoncha_parents.composeapp.generated.resources.ic3d_sp_images
+import tikoncha_parents.composeapp.generated.resources.ic3d_sp_incognito
 import tikoncha_parents.composeapp.generated.resources.parent_special_conv_desc
 import tikoncha_parents.composeapp.generated.resources.parent_special_conv_title
 import tikoncha_parents.composeapp.generated.resources.parent_special_footer
@@ -60,8 +60,7 @@ import uz.tikoncha_parent.presentation.base.SubscriptionBottomDialog
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.haptics.ErrorHaptic
 import uz.tikoncha_parent.presentation.policy.components.GroupDivider
-import uz.tikoncha_parent.presentation.policy.components.IconTone
-import uz.tikoncha_parent.presentation.policy.components.PolicyIcon
+import uz.tikoncha_parent.presentation.policy.components.Policy3dIcon
 import uz.tikoncha_parent.presentation.policy.components.PolicyInfoBox
 import uz.tikoncha_parent.presentation.policy.components.PolicySwitch
 import uz.tikoncha_parent.presentation.policy.components.PolicyText
@@ -133,7 +132,7 @@ class SpecialProtectionScreen(private val childId: String) : Screen {
                             SettingRow(
                                 title = title,
                                 subtitle = stringResource(row.desc),
-                                leading = { PolicyIcon(icon = row.icon, tone = if (on) IconTone.SOLID else IconTone.GRAY, size = 44.dp) },
+                                leading = { Policy3dIcon(icon = row.icon, dimmed = !on) },
                                 trailing = {
                                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                                         // PLUS himoya bepul tarifda — belgi bosişdan oldin körinadi
@@ -188,10 +187,10 @@ class SpecialProtectionScreen(private val childId: String) : Screen {
 
     private companion object {
         val ROWS = listOf(
-            SwitchRow(SafetySwitch.IMAGE, Res.string.parent_special_nsfw_title, Res.string.parent_special_nsfw_desc, Res.drawable.camera),
-            SwitchRow(SafetySwitch.CONVERSATION, Res.string.parent_special_conv_title, Res.string.parent_special_conv_desc, Res.drawable.chat_dialog_icon),
-            SwitchRow(SafetySwitch.INCOGNITO, Res.string.parent_special_incognito_title, Res.string.parent_special_incognito_desc, Res.drawable.blocklist),
-            SwitchRow(SafetySwitch.DANGER_ZONES, Res.string.parent_special_zones_title, Res.string.parent_special_zones_desc, Res.drawable.location),
+            SwitchRow(SafetySwitch.IMAGE, Res.string.parent_special_nsfw_title, Res.string.parent_special_nsfw_desc, Res.drawable.ic3d_sp_images),
+            SwitchRow(SafetySwitch.CONVERSATION, Res.string.parent_special_conv_title, Res.string.parent_special_conv_desc, Res.drawable.ic3d_sp_chats),
+            SwitchRow(SafetySwitch.INCOGNITO, Res.string.parent_special_incognito_title, Res.string.parent_special_incognito_desc, Res.drawable.ic3d_sp_incognito),
+            SwitchRow(SafetySwitch.DANGER_ZONES, Res.string.parent_special_zones_title, Res.string.parent_special_zones_desc, Res.drawable.ic3d_sp_danger_places),
         )
     }
 }
