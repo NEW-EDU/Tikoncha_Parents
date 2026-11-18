@@ -170,13 +170,19 @@ internal fun Mascot(
         else -> 0f
     }
 
+    // Hamma kadrlar birdaniga yuklanadi: iOS'da painterResource rasmni birinçi körsatişda asinxron yuklaydi va
+    // u payt böş bölardi — holat almaşganda tipratikan bir zum yöqolib qolardi. Endi almaşiş faqat tayyor rasmlar orasida.
+    val painters = MascotState.entries.map { st ->
+        val (fa, fb) = frames(st)
+        painterResource(fa) to painterResource(fb)
+    }
+
     Box(modifier.size(size), contentAlignment = Alignment.Center) {
         if (rings && state == MascotState.LISTENING) ListeningRings(reduce, level)
         Crossfade(targetState = state, animationSpec = tween(if (reduce) 0 else 220), label = "frame") { s ->
             val (a, b) = frames(s)
             // Ikkala kadr ham yuklangan va üst-üstida: almaşiş — shaffoflik bilan, böş kadr yöq
-            val pa = painterResource(a)
-            val pb = painterResource(b)
+            val (pa, pb) = painters[s.ordinal]
             val current = s == state
             Box(
                 Modifier

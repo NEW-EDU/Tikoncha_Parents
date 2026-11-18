@@ -24,6 +24,7 @@ import uz.tikoncha_parent.data.remote.model.ai.SttDto
 import uz.tikoncha_parent.data.remote.model.ai.TtsRequest
 import io.ktor.utils.io.readUTF8Line
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.io.IOException
 import kotlinx.serialization.json.Json
@@ -64,7 +65,12 @@ class AiApiService(private val client: HttpClient) {
             }
         )
 
-    fun chat(request: ParentChatRequest): Flow<JsonObject> = flow {
+    /**
+     * SSE oqimi. channelFlow — oddiy flow emas: iOS'da (Darwin) Ktor `execute {}` blokini Dispatchers.IO'da
+     * ishlatadi, flow {} esa boşqa kontekstdan emit'ni taqiqlaydi ("Flow invariant is violated") — iPhone'da
+     * har bir javob şu sababli tashlab yuborilardi (2026-11-18). send() har qanday kontekstdan xavfsiz.
+     */
+    fun chat(request: ParentChatRequest): Flow<JsonObject> = channelFlow {
         var refreshed = false
         while (true) {
             var unauthorized = false
@@ -93,10 +99,10 @@ class AiApiService(private val client: HttpClient) {
                     val payload = line.removePrefix("data:").trim()
                     if (payload.isEmpty()) continue
                     val event = runCatching { json.parseToJsonElement(payload).jsonObject }.getOrNull() ?: continue
-                    emit(event)
+                    send(event)
                 }
             }
-            if (!unauthorized) return@flow
+            if (!unauthorized) return@channelFlow
             refreshed = true
             when (val r = refreshAccessToken(client)) {
                 RefreshResult.Success -> Unit
