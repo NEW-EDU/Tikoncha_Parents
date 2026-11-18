@@ -1,6 +1,5 @@
 package uz.tikoncha_parent.presentation.assistant
 
-import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
@@ -177,41 +176,64 @@ internal fun Mascot(
         painterResource(fa) to painterResource(fb)
     }
 
+    // Holat almaşişi "ustiga çiqiş" bilan: yangi holat eski (töla körinib turgan) kadr USTIDA paydo böladi, eski
+    // faqat yangisi töla qoplagaç olib taşlanadi. Ilgari Crossfade ikkalasini bir vaqtda xiralaştirardi — örtada
+    // tipratikan yarim şaffof bölib "miltillardi" (2026-11-18, iPhone).
+    var shown by remember { mutableStateOf(state) }
+    var under by remember { mutableStateOf<MascotState?>(null) }
+    val enter = remember { Animatable(1f) }
+    LaunchedEffect(state, reduce) {
+        if (state == shown) return@LaunchedEffect
+        under = shown
+        shown = state
+        if (!reduce) {
+            enter.snapTo(0f)
+            enter.animateTo(1f, tween(200, easing = FastOutSlowInEasing))
+        }
+        under = null
+    }
+
     Box(modifier.size(size), contentAlignment = Alignment.Center) {
         if (rings && state == MascotState.LISTENING) ListeningRings(reduce, level)
-        Crossfade(targetState = state, animationSpec = tween(if (reduce) 0 else 220), label = "frame") { s ->
-            val (a, b) = frames(s)
-            // Ikkala kadr ham yuklangan va üst-üstida: almaşiş — shaffoflik bilan, böş kadr yöq
-            val (pa, pb) = painters[s.ordinal]
-            val current = s == state
-            Box(
-                Modifier
-                    .fillMaxSize()
-                    .graphicsLayer {
-                        if (reduce) return@graphicsLayer
-                        transformOrigin = TransformOrigin(0.5f, 1f)
-                        if (s == MascotState.IDLE || s == MascotState.WAVE || s == MascotState.LISTENING) {
-                            scaleY = 1f + 0.018f * breath
-                            scaleX = 1f - 0.008f * breath
-                        }
-                        translationY = hop.value * this.size.height * 0.10f
-                        rotationZ = tilt + (if (current) swayDeg * sway else 0f)
-                    },
-            ) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .graphicsLayer {
+                    if (reduce) return@graphicsLayer
+                    transformOrigin = TransformOrigin(0.5f, 1f)
+                    if (shown == MascotState.IDLE || shown == MascotState.WAVE || shown == MascotState.LISTENING) {
+                        scaleY = 1f + 0.018f * breath
+                        scaleX = 1f - 0.008f * breath
+                    }
+                    translationY = hop.value * this.size.height * 0.10f
+                    rotationZ = tilt + swayDeg * sway
+                },
+        ) {
+            // Pastda — oldingi holat kadri, töla körinadi (yangisi ustida paydo bölgunça)
+            under?.let { u ->
+                Image(
+                    painter = painters[u.ordinal].first,
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
+            val (pa, pb) = painters[shown.ordinal]
+            Box(Modifier.fillMaxSize().graphicsLayer { alpha = if (under != null) enter.value else 1f }) {
+                // Kadr almaşişi ham "ustiga": a töla turadi, b ustida paydo böladi; b töla bölgaç a yaşirinadi —
+                // tanasi hech qaçon şaffoflaşmaydi
                 Image(
                     painter = pa,
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
-                    modifier = Modifier.fillMaxSize().graphicsLayer { alpha = if (current) 1f - blend * 0.999f else 1f },
+                    modifier = Modifier.fillMaxSize().graphicsLayer { alpha = if (blend >= 0.999f) 0f else 1f },
                 )
-                if (a != b) {
-                    Image(
-                        painter = pb,
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.fillMaxSize().graphicsLayer { alpha = if (current) blend else 0f },
-                    )
-                }
+                Image(
+                    painter = pb,
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxSize().graphicsLayer { alpha = blend },
+                )
             }
         }
     }
