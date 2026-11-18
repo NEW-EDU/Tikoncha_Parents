@@ -128,13 +128,20 @@ private const val STATUS_REPEAT_MS = 10 * 60_000L
 /** Oxirgi aytilgan holat xabari (audio manzili) va vaqti — ilova böyiça. */
 private object StatusMemory {
     var lastUrl: String? = null
+    var lastScreen: VoiceScreen? = null
     var lastAt: kotlin.time.TimeSource.Monotonic.ValueTimeMark? = null
     fun recentlySaid(url: String): Boolean {
         val at = lastAt ?: return false
         return url == lastUrl && at.elapsedNow().inWholeMilliseconds < STATUS_REPEAT_MS
     }
-    fun said(url: String) {
+    /** Bu ekranda holat yaqinda aytildi — serverga sörov ham, sanoq ham kerak emas (owner, 2026-11-18). */
+    fun recentlyOn(screen: VoiceScreen): Boolean {
+        val at = lastAt ?: return false
+        return screen == lastScreen && at.elapsedNow().inWholeMilliseconds < STATUS_REPEAT_MS
+    }
+    fun said(url: String, screen: VoiceScreen) {
         lastUrl = url
+        lastScreen = screen
         lastAt = kotlin.time.TimeSource.Monotonic.markNow()
     }
 }
@@ -211,6 +218,8 @@ fun BoxScope.VoiceHelpLayer(
         if (screen == null || !isTop || !enabled) return@LaunchedEffect
         val explainer = VoiceHelpPrefs.shouldAutoPlay(screen)
         val source = if (explainer) null else statusNow ?: return@LaunchedEffect
+        // Holat 10 daqiqa içida aytilgan — serverga sörov yuborilmaydi, sanoq ham körsatilmaydi
+        if (!explainer && StatusMemory.recentlyOn(screen)) return@LaunchedEffect
         val statusUrl = source?.let { src -> async { runCatching { src() }.getOrNull() } }
         delay(AUTO_PLAY_DELAY_MS)
         if (run != null || sheetOpenNow) return@LaunchedEffect
@@ -253,7 +262,7 @@ fun BoxScope.VoiceHelpLayer(
             // Tugadi yoki töxtatildi
             VoiceState.Idle -> {
                 run = null
-                if (r.status && r.started) r.url?.let { StatusMemory.said(it) }
+                if (r.status && r.started) r.url?.let { StatusMemory.said(it, r.screen) }
                 val showHint = r.auto && !r.status && r.started && !r.skipHint && topNow && enabledNow && !sheetOpenNow
                 if (showHint && VoiceHelpPrefs.takeShakeHint()) hint = true
             }
