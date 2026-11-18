@@ -187,6 +187,9 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.ai_voice_listening
+import tikoncha_parents.composeapp.generated.resources.ai_voice_understanding
+import tikoncha_parents.composeapp.generated.resources.ai_voice_missed
 import tikoncha_parents.composeapp.generated.resources.ai_no_child_body
 import tikoncha_parents.composeapp.generated.resources.farzand_qo_shish
 import tikoncha_parents.composeapp.generated.resources.no_child_title
@@ -245,6 +248,11 @@ import uz.tikoncha_parent.domain.model.ai.LocationCard
 import uz.tikoncha_parent.domain.model.ai.ReportPeriod
 import uz.tikoncha_parent.presentation.base.asText
 import uz.tikoncha_parent.presentation.base.island.ChildAvatar
+import uz.tikoncha_parent.presentation.base.island.ChildPickerSpec
+import uz.tikoncha_parent.presentation.base.island.IslandSpec
+import uz.tikoncha_parent.presentation.base.island.ProvideIsland
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.material.icons.rounded.Analytics
 import uz.tikoncha_parent.presentation.profile.coins.CoinsScreen
 import uz.tikoncha_parent.presentation.tracking.TrackingScreen
 import uz.tikoncha_parent.ui.ContainerPadding
@@ -464,9 +472,51 @@ private fun AssistantUi(
         )
     }
 
+    // Pastki orol — boşqa ekranlardagi kabi: ‹ Yordamçi · yangi suhbat · mikrofon (holati bilan) · farzand tanlagiç.
+    // Tepada sarlavha yöq; klaviatura oçilsa orol yaşirinadi, maydonda kiçkina mikrofon çiqadi.
+    val latestState by rememberUpdatedState(state)
+    val latestEvent by rememberUpdatedState(event)
+    val latestMic by rememberUpdatedState(onMic)
+    val startNewChat: () -> Unit = {
+        val pending = latestState.items.any { it is AssistantItem.Draft && it.status == DraftStatus.PENDING }
+        if (pending) confirmNewChat = true else latestEvent(AssistantEventUi.NewChat)
+    }
+    val latestNewChat by rememberUpdatedState(startNewChat)
+    val islandTitle = stringResource(Res.string.ai_assistant_title)
+    val hasChildren = state.children.isNotEmpty()
+    val islandSpec = remember(islandTitle, hasChildren, navigator, voiceLevel) {
+        IslandSpec(
+            title = islandTitle,
+            onBack = { navigator?.pop() },
+            picker = if (hasChildren) ({
+                ChildPickerSpec(
+                    children = latestState.children,
+                    selected = latestState.child,
+                    onSelect = { latestEvent(AssistantEventUi.SelectChild(it)) },
+                    onAddChild = { navigator?.push(uz.tikoncha_parent.presentation.add_child.AddChildScreen()) },
+                )
+            }) else null,
+            actions = {
+                val s = latestState
+                val canReset = (s.items.isNotEmpty() || s.streaming) && !s.streaming && s.voice == VoicePhase.IDLE
+                AnimatedVisibility(visible = canReset, enter = fadeIn() + expandHorizontally(), exit = fadeOut() + shrinkHorizontally()) {
+                    IconButton(
+                        onClick = { latestNewChat() },
+                        interactionSource = rememberHapticSource(),
+                        modifier = Modifier.size(48.dp),
+                    ) {
+                        Icon(Icons.Outlined.AddComment, contentDescription = stringResource(Res.string.ai_new_chat), tint = AppColors.icon.secondary)
+                    }
+                }
+                MicButton(phase = s.voice, streaming = s.streaming, level = voiceLevel, onTap = { latestMic() }, size = 44.dp)
+            },
+        )
+    }
+    ProvideIsland(islandSpec)
+
     val systemBars = rememberScreenSystemBars(
-        statusBarColor = AppColors.bg.elevated,
-        navigationBarColor = AppColors.bg.surface,
+        statusBarColor = AppColors.bg.page,
+        navigationBarColor = AppColors.bg.page,
     )
 
     Column(
@@ -482,12 +532,6 @@ private fun AssistantUi(
             showAutoSpeak = state.ttsAvailable,
             onToggleAutoSpeak = { event(AssistantEventUi.ToggleAutoSpeak) },
             coins = state.coins,
-            canReset = conversation && !state.streaming,
-            onBack = { navigator?.pop() },
-            onNewChat = {
-                val pending = state.items.any { it is AssistantItem.Draft && it.status == DraftStatus.PENDING }
-                if (pending) confirmNewChat = true else event(AssistantEventUi.NewChat)
-            },
             onCoins = { navigator?.push(CoinsScreen()) },
         )
 
@@ -498,7 +542,8 @@ private fun AssistantUi(
                 open = reportOpen,
                 onToggle = { reportOpen = !reportOpen },
                 event = event,
-                modifier = Modifier.padding(start = ContainerPadding, end = ContainerPadding, top = 10.dp),
+                showChildChips = false,
+                modifier = Modifier.padding(start = ContainerPadding, end = ContainerPadding, top = 4.dp),
             )
         }
 
@@ -532,15 +577,8 @@ private fun AssistantUi(
                     val child = state.child
                     if (child != null) {
                         item(key = "glance") {
+                            // Farzand tanlaş — orolda (boşqa ekranlardagi kabi)
                             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                                if (state.children.size > 1) {
-                                    ChildChips(
-                                        children = state.children,
-                                        selected = child,
-                                        onSelect = { event(AssistantEventUi.SelectChild(it)) },
-                                        contentPadding = PaddingValues(0.dp),
-                                    )
-                                }
                                 GlanceGrid(
                                     glance = state.glance,
                                     childName = child.firstName(),
@@ -622,19 +660,18 @@ private fun AssistantUi(
                         onAsk = { event(AssistantEventUi.Ask(it)) },
                     )
                 }
-                // Klaviatura oçiq bölsa katta mikrofon yaşirinadi (joy yozişga), maydonda kiçkinasi qoladi
+                // Mikrofon — orolda; klaviatura oçiq (orol yaşirin) bölsa maydonda kiçkinasi. Ovoz holati alohida
+                // qatorda emas — maydonning öz matnida ("Gapiring, tinglayapman…").
                 val dockVisible = !fieldFocused || voiceBusy
-                AnimatedVisibility(visible = dockVisible, enter = fadeIn() + expandVertically(), exit = fadeOut() + shrinkVertically()) {
-                    VoiceDock(
-                        phase = state.voice,
-                        streaming = state.streaming,
-                        missed = state.voiceMissed,
-                        level = voiceLevel,
-                        onTap = onMic,
-                    )
-                }
                 InputBar(
                     value = state.text,
+                    placeholder = when {
+                        state.voice == VoicePhase.LISTENING -> stringResource(Res.string.ai_voice_listening)
+                        state.voice == VoicePhase.UNDERSTANDING -> stringResource(Res.string.ai_voice_understanding)
+                        state.voiceMissed -> stringResource(Res.string.ai_voice_missed)
+                        else -> stringResource(Res.string.ai_input_hint)
+                    },
+                    placeholderWarning = state.voiceMissed && state.voice == VoicePhase.IDLE,
                     streaming = state.streaming,
                     dockVisible = dockVisible,
                     onFocus = { fieldFocused = it },
@@ -661,19 +698,12 @@ internal val OnAccent = Color(0xFF2B1D12)
 /** Farzandning ismi (savollarda): "Malika". */
 private fun UserInfo.firstName(): String = name.ifBlank { fullName.cleanName().split(' ').firstOrNull().orEmpty() }
 
-/** Katta tipratikan (≈150dp) va bir qator — tepada, suhbat qisqa bölganda körinadi. */
+/** Katta tipratikan (≈150dp) — tepada, suhbat qisqa bölganda körinadi. Şior yöq: tipratikan va mikrofon yetarli. */
 @Composable
 private fun Hero(mascot: MascotState, listening: Boolean, voiceLevel: StateFlow<Float>) {
     val level by voiceLevel.collectAsState()
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Mascot(state = mascot, size = 150.dp, rings = listening, level = { level })
-        Spacer(Modifier.height(6.dp))
-        Text(
-            stringResource(Res.string.ai_hero_hint),
-            style = AppTypography.titleMdSemiBold,
-            color = AppColors.text.primary,
-            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-        )
     }
 }
 
@@ -712,6 +742,10 @@ private fun DraftErrorDialog(error: DraftApplyError, onDismiss: () -> Unit, onPl
 
 // ── tepa qism ──
 
+/**
+ * Tepa qator — sarlavhasiz (nom, orqaga va yangi suhbat — pastki orolda). Çapda: katta tipratikan surilib
+ * ketgaç kiçkinasi (holati bilan); öngda: javoblarni ovoz bilan öqiş va tangalar.
+ */
 @Composable
 private fun Header(
     mascot: MascotState,
@@ -720,57 +754,23 @@ private fun Header(
     showAutoSpeak: Boolean,
     onToggleAutoSpeak: () -> Unit,
     coins: Int?,
-    canReset: Boolean,
-    onBack: () -> Unit,
-    onNewChat: () -> Unit,
     onCoins: () -> Unit,
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(AppColors.bg.elevated)
-            .height(HeaderHeight + 8.dp)
+            .height(56.dp)
             .padding(start = ContainerPadding - 4.dp, end = ContainerPadding),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconButton(
-            modifier = Modifier.size(NormalIconButtonSize),
-            onClick = onBack,
-            colors = IconButtonDefaults.iconButtonColors(
-                containerColor = Color.Transparent,
-                contentColor = AppColors.icon.primary,
-            ),
-        ) {
-            Icon(
-                painter = painterResource(Res.drawable.arrow_left),
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize().padding(NormalIconButtonPadding),
-            )
-        }
-        Spacer(Modifier.width(6.dp))
-        // Katta tipratikan yuqoriga surilib ketgaç — şu yerda kiçkinasi (holati bilan)
         AnimatedVisibility(
             visible = showMascot,
             enter = fadeIn() + expandHorizontally(),
             exit = fadeOut() + shrinkHorizontally(),
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Mascot(state = mascot, size = 56.dp)
-                Spacer(Modifier.width(8.dp))
-            }
+            Mascot(state = mascot, size = 52.dp)
         }
-        Column(Modifier.weight(1f)) {
-            // Tor sarlavhada nom kesilmasin ("Aqlli…") — şrift kiçrayadi
-            androidx.compose.foundation.text.BasicText(
-                text = stringResource(Res.string.ai_assistant_title),
-                style = AppTypography.titleMdSemiBold.copy(color = AppColors.text.primary),
-                maxLines = 1,
-                autoSize = androidx.compose.foundation.text.TextAutoSize.StepBased(
-                    minFontSize = 11.sp, maxFontSize = AppTypography.titleMdSemiBold.fontSize, stepSize = 0.5.sp,
-                ),
-            )
-            // Holat (nima qilayotgani) — faqat suhbatdagi pufakda, sarlavhada takrorlanmaydi
-        }
+        Spacer(Modifier.weight(1f))
         if (showAutoSpeak) {
             // Javoblarni avtomatik ovoz bilan öqiş (standart — öçiq)
             IconButton(
@@ -782,19 +782,6 @@ private fun Header(
                     if (autoSpeak) Icons.AutoMirrored.Rounded.VolumeUp else Icons.AutoMirrored.Rounded.VolumeOff,
                     contentDescription = stringResource(if (autoSpeak) Res.string.ai_auto_speak_on else Res.string.ai_auto_speak_off),
                     tint = if (autoSpeak) AppColors.icon.accentPrimary else AppColors.icon.secondary,
-                )
-            }
-        }
-        AnimatedVisibility(visible = canReset, enter = fadeIn(), exit = fadeOut()) {
-            IconButton(
-                onClick = onNewChat,
-                interactionSource = rememberHapticSource(),
-                modifier = Modifier.size(48.dp),
-            ) {
-                Icon(
-                    Icons.Outlined.AddComment,
-                    contentDescription = stringResource(Res.string.ai_new_chat),
-                    tint = AppColors.icon.secondary,
                 )
             }
         }
@@ -1006,18 +993,24 @@ private fun ReportCollapsed(state: AssistantState, onToggle: () -> Unit) {
             .padding(horizontal = 14.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        state.child?.let { ChildAvatar(it.avatarUrl, Modifier.size(32.dp)) }
+        // Farzand — orolda; bu yerda hisobotning özi: "Bugun · 2 soat 27 daq"
+        Icon(Icons.Rounded.Analytics, contentDescription = null, tint = AppColors.icon.accentPrimary, modifier = Modifier.size(22.dp))
         Spacer(Modifier.width(10.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                text = state.child?.let { it.name.ifBlank { it.fullName.cleanName() } }.orEmpty(),
-                style = AppTypography.titleSmSemiBold,
-                color = AppColors.text.primary,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-
-        }
+        val period = stringResource(
+            when (state.period) {
+                ReportPeriod.TODAY -> Res.string.ai_period_today
+                ReportPeriod.YESTERDAY -> Res.string.ai_period_yesterday
+                ReportPeriod.WEEK -> Res.string.ai_period_week
+            }
+        )
+        Text(
+            text = state.report?.takeIf { it.hasData }?.let { "$period · ${it.totalText}" } ?: period,
+            style = AppTypography.titleSmSemiBold,
+            color = AppColors.text.primary,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.weight(1f),
+        )
         Icon(Icons.Rounded.KeyboardArrowDown, contentDescription = null, tint = AppColors.icon.primary)
     }
 }
@@ -1081,14 +1074,6 @@ private fun ReportBody(report: ChildReport, loading: Boolean) {
         val summary = report.summary ?: if (!report.hasData) stringResource(Res.string.ai_report_no_data) else null
         if (summary != null) {
             Spacer(Modifier.height(16.dp))
-            if (report.summary != null) {
-                Text(
-                    stringResource(Res.string.ai_summary_label),
-                    style = AppTypography.bodyMdMedium,
-                    color = AppColors.text.tertiary,
-                )
-                Spacer(Modifier.height(4.dp))
-            }
             Text(text = summary, style = AppTypography.titleSmRegular, color = AppColors.text.primary)
         }
     }
@@ -1588,12 +1573,6 @@ private fun DraftCard(
                         Text(stringResource(Res.string.bekor_qilish), color = AppColors.text.secondary)
                     }
                 }
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    stringResource(Res.string.ai_draft_hint),
-                    style = AppTypography.bodyMdRegular,
-                    color = AppColors.text.placeholder,
-                )
             }
             DraftStatus.APPLIED -> Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.Rounded.CheckCircle, null, tint = AppColors.icon.accentPrimary, modifier = Modifier.size(20.dp))
@@ -1734,17 +1713,15 @@ private fun LocationCardView(card: LocationCard, reminded: Boolean, onRemind: ()
             }
             Spacer(Modifier.width(12.dp))
             Column(Modifier.weight(1f)) {
-                Text(stringResource(Res.string.ai_location_title), style = AppTypography.titleSmSemiBold, color = AppColors.text.primary)
-                Row {
-                    if (card.childName.isNotBlank()) {
-                        Text("${card.childName} · ", style = AppTypography.bodyMdMedium, color = AppColors.text.tertiary)
-                    }
-                    Text(
-                        agoText(card.minutesAgo),
-                        style = AppTypography.bodyMdMedium,
-                        color = if (stale) AppColors.text.accentWarning else AppColors.text.tertiary,
-                    )
+                // Sarlavha yöq ("Oxirgi joylaşuv" xarita va belgi bilan körinib turibdi): ism va qaçonligi
+                if (card.childName.isNotBlank()) {
+                    Text(card.childName, style = AppTypography.titleSmSemiBold, color = AppColors.text.primary)
                 }
+                Text(
+                    agoText(card.minutesAgo),
+                    style = AppTypography.bodyMdMedium,
+                    color = if (stale) AppColors.text.accentWarning else AppColors.text.tertiary,
+                )
             }
         }
         if (card.gpsOff) {
@@ -1947,6 +1924,8 @@ private fun ProblemCard(item: AssistantItem.Problem, onRetry: () -> Unit, onBuyC
 @Composable
 private fun InputBar(
     value: String,
+    placeholder: String,
+    placeholderWarning: Boolean,
     streaming: Boolean,
     dockVisible: Boolean,
     onFocus: (Boolean) -> Unit,
@@ -1980,9 +1959,9 @@ private fun InputBar(
         ) {
             if (value.isEmpty()) {
                 Text(
-                    stringResource(Res.string.ai_input_hint),
+                    placeholder,
                     style = AppTypography.titleSmRegular,
-                    color = AppColors.text.placeholder,
+                    color = if (placeholderWarning) AppColors.text.accentWarning else AppColors.text.placeholder,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )

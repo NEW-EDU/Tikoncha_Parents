@@ -106,12 +106,12 @@ internal fun Mascot(
                 alt = !alt
             }
             MascotState.TALKING -> while (true) {
-                delay(180)
+                delay(210)
                 alt = !alt
             }
             // Qöl u yoqqa-bu yoqqa
             MascotState.WAVE -> while (true) {
-                delay(320)
+                delay(380)
                 alt = !alt
             }
             // Barmoq — keyin köz qisib uçqunlar
@@ -127,7 +127,7 @@ internal fun Mascot(
                 alt = !alt
             }
             MascotState.CELEBRATE -> while (true) {
-                delay(260)
+                delay(300)
                 alt = !alt
             }
         }
@@ -136,6 +136,10 @@ internal fun Mascot(
     val t = rememberInfiniteTransition(label = "mascot")
     val breath by t.animateFloat(
         0f, 1f, infiniteRepeatable(tween(1_800, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "breath",
+    )
+    // Uzluksiz yumşoq tebraniş — ikki kadr almaşişi "sakrab" körinmasin, tipratikan tirik harakatlansin
+    val sway by t.animateFloat(
+        -1f, 1f, infiniteRepeatable(tween(1_400, easing = FastOutSlowInEasing), RepeatMode.Reverse), label = "sway",
     )
     val hop = remember { Animatable(0f) }
     LaunchedEffect(state, reduce) {
@@ -153,19 +157,29 @@ internal fun Mascot(
     val tilt by animateFloatAsState(
         if (state == MascotState.CONFUSED && !reduce) -7f else 0f, spring(dampingRatio = 0.45f), label = "tilt",
     )
+    // Kadrlar orasida qisqa qorişiş (keskin almaşiş — "titraş"): köz yumiş tez, qöl va bos harakati sekinroq
+    val blend by animateFloatAsState(
+        targetValue = if (alt) 1f else 0f,
+        animationSpec = tween(if (reduce) 0 else crossfadeMs(state), easing = FastOutSlowInEasing),
+        label = "blend",
+    )
+    val swayDeg = when (state) {
+        MascotState.TALKING, MascotState.WAVE -> 1.6f
+        MascotState.CELEBRATE -> 2.4f
+        MascotState.LISTENING, MascotState.THINKING -> 1.0f
+        else -> 0f
+    }
 
     Box(modifier.size(size), contentAlignment = Alignment.Center) {
         if (rings && state == MascotState.LISTENING) ListeningRings(reduce, level)
-        Crossfade(targetState = state, animationSpec = tween(if (reduce) 0 else 160), label = "frame") { s ->
+        Crossfade(targetState = state, animationSpec = tween(if (reduce) 0 else 220), label = "frame") { s ->
             val (a, b) = frames(s)
-            // Ikkala kadr ham yuklangan tursin — almaşganda bir zum böş qolmasin
+            // Ikkala kadr ham yuklangan va üst-üstida: almaşiş — shaffoflik bilan, böş kadr yöq
             val pa = painterResource(a)
             val pb = painterResource(b)
-            Image(
-                painter = if (alt && s == state) pb else pa,
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
+            val current = s == state
+            Box(
+                Modifier
                     .fillMaxSize()
                     .graphicsLayer {
                         if (reduce) return@graphicsLayer
@@ -175,11 +189,38 @@ internal fun Mascot(
                             scaleX = 1f - 0.008f * breath
                         }
                         translationY = hop.value * this.size.height * 0.10f
-                        rotationZ = tilt
+                        rotationZ = tilt + (if (current) swayDeg * sway else 0f)
                     },
-            )
+            ) {
+                Image(
+                    painter = pa,
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxSize().graphicsLayer { alpha = if (current) 1f - blend * 0.999f else 1f },
+                )
+                if (a != b) {
+                    Image(
+                        painter = pb,
+                        contentDescription = null,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.fillMaxSize().graphicsLayer { alpha = if (current) blend else 0f },
+                    )
+                }
+            }
         }
     }
+}
+
+/** Kadrlar qorişiş davomiyligi (ms): köz yumiş va gapiriş — tez, qöl silkitiş va bos harakati — sekinroq. */
+private fun crossfadeMs(state: MascotState): Int = when (state) {
+    MascotState.IDLE -> 70
+    MascotState.TALKING -> 110
+    MascotState.LISTENING -> 160
+    MascotState.CELEBRATE -> 150
+    MascotState.WAVE -> 180
+    MascotState.DONE -> 200
+    MascotState.THINKING -> 320
+    MascotState.CONFUSED -> 420
 }
 
 /** Tinglayotganda: ikkita kengayib yöqoladigan halqa, ovoz baland bölsa kattaroq. */

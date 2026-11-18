@@ -176,12 +176,19 @@ internal fun VoiceDock(
     }
 }
 
+/** Mikrofon tugmasi: tinglaş (ovozga qarab halqa), tuşuniş (aylana), javob yozilayotganda — töxtatiş. [size] — orolda 44dp. */
 @Composable
-private fun MicButton(phase: VoicePhase, streaming: Boolean, level: StateFlow<Float>, onTap: () -> Unit) {
+internal fun MicButton(
+    phase: VoicePhase,
+    streaming: Boolean,
+    level: StateFlow<Float>,
+    onTap: () -> Unit,
+    size: androidx.compose.ui.unit.Dp = MicSize,
+) {
     val reduce = remember { isReducedMotion() }
     val listening = phase == VoicePhase.LISTENING
     val description = stringResource(if (listening || streaming) Res.string.ai_stop else Res.string.ai_voice_mic)
-    Box(contentAlignment = Alignment.Center, modifier = Modifier.size(MicSize + 8.dp)) {
+    Box(contentAlignment = Alignment.Center, modifier = Modifier.size(size + 4.dp)) {
         if (listening) {
             // Ovoz balandligiga qarab kengayadigan halqa + sekin "nafas" halqasi
             val raw by level.collectAsState()
@@ -190,7 +197,7 @@ private fun MicButton(phase: VoicePhase, streaming: Boolean, level: StateFlow<Fl
             val pulse by t.animateFloat(0f, 1f, infiniteRepeatable(tween(900), RepeatMode.Reverse), label = "p")
             Box(
                 Modifier
-                    .size(MicSize)
+                    .size(size)
                     .graphicsLayer {
                         val s = 1.06f + 0.40f * l + if (reduce) 0f else 0.06f * pulse
                         scaleX = s
@@ -203,7 +210,7 @@ private fun MicButton(phase: VoicePhase, streaming: Boolean, level: StateFlow<Fl
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .size(MicSize)
+                .size(size)
                 .clip(CircleShape)
                 .background(AppColors.action.primary)
                 .clickable(
@@ -219,17 +226,17 @@ private fun MicButton(phase: VoicePhase, streaming: Boolean, level: StateFlow<Fl
         ) {
             when {
                 phase == VoicePhase.UNDERSTANDING -> CircularProgressIndicator(
-                    modifier = Modifier.size(30.dp),
+                    modifier = Modifier.size(size * 0.4f),
                     strokeWidth = 3.dp,
                     color = OnAccent,
                 )
                 listening || streaming -> Box(
                     Modifier
-                        .size(22.dp)
+                        .size(size * 0.29f)
                         .clip(RoundedCornerShape(5.dp))
                         .background(OnAccent)
                 )
-                else -> Icon(Icons.Rounded.Mic, contentDescription = null, tint = OnAccent, modifier = Modifier.size(36.dp))
+                else -> Icon(Icons.Rounded.Mic, contentDescription = null, tint = OnAccent, modifier = Modifier.size(size * 0.5f))
             }
         }
     }
@@ -270,13 +277,8 @@ internal fun GlanceGrid(glance: AssistantGlance, childName: String, onAsk: (Stri
     val askTasks = stringResource(Res.string.ai_ask_tasks)
     val askRules = stringResource(Res.string.ai_ask_rules)
 
+    // Sarlavhasiz ("Bugun qisqaça" — kartalarning özi aytib turibdi)
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Text(
-            stringResource(Res.string.ai_glance_title),
-            style = AppTypography.titleMdSemiBold,
-            color = AppColors.text.primary,
-            modifier = Modifier.padding(start = 4.dp, bottom = 2.dp),
-        )
         GlanceRow(
             { GlanceCard(Icons.Rounded.LocationOn, stringResource(Res.string.ai_glance_where), where, null, false, it) { onAsk(askWhere) } },
             { GlanceCard(Icons.Rounded.Smartphone, stringResource(Res.string.bugun_sarfladi), usage, null, false, it) { onAsk(askTime) } },
