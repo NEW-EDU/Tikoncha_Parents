@@ -155,6 +155,11 @@ class IslandSpec(
      * boşlanadi, silkitilsa yoki sarlavha pill'i uzoq bosilsa — «Bu ekran haqida» varag'i ([VoiceHelpLayer]).
      */
     val voice: VoiceScreen? = null,
+    /**
+     * Keyingi kirişlarda (tuşuntiriş allaqaçon eşitilgaç) — holat haqida ovozli xabar: tayyor audio manzilini
+     * qaytaradi (server ovozga aylantirgan, keşda); null — aytadigan narsa yöq. 3 s sanoqdan keyin ijro etiladi.
+     */
+    val voiceStatus: (suspend () -> String?)? = null,
     /** AI yordamçi mikrofoni: bosilsa yordamçi oçiladi va darhol tinglaydi (har ekrandan bir bosişda). */
     val onAiMic: (() -> Unit)? = null,
     /** Kontent tepasi (status bar ostida) yumaloqlansinmi — ro'yxat [CustomHeader] dan keyin darhol boshlansa. */
@@ -197,6 +202,7 @@ fun ScreenWithIsland(key: Any, content: @Composable () -> Unit) {
             state.dropUp?.invoke()
             VoiceHelpLayer(
                 screen = state.spec?.voice,
+                status = state.spec?.voiceStatus,
                 isTop = isTop,
                 sheetOpen = state.helpSheet,
                 onSheetOpenChange = { state.helpSheet = it },

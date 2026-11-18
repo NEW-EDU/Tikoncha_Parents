@@ -1600,4 +1600,5 @@ This information is used only for these features and is not shared with third pa
     <string name="ai_island_label">Helper</string>
     <string name="ai_undo">Undo</string>
     <string name="ai_setting_undone">Undone</string>
+    <string name="prot_rules_not_closing">Don’t close apps</string>
 </resources>

@@ -1543,4 +1543,5 @@
     <string name="ai_island_label">دستیار</string>
     <string name="ai_undo">واگرد</string>
     <string name="ai_setting_undone">واگردانی شد</string>
+    <string name="prot_rules_not_closing">برنامه‌ها را نمی‌بندد</string>
 </resources>

@@ -1559,4 +1559,5 @@ Esta información se usa solo para estas funciones y no se comparte con terceros
     <string name="ai_island_label">Asistente</string>
     <string name="ai_undo">Deshacer</string>
     <string name="ai_setting_undone">Deshecho</string>
+    <string name="prot_rules_not_closing">No cierran apps</string>
 </resources>

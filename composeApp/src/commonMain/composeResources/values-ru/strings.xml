@@ -1607,4 +1607,5 @@
     <string name="ai_island_label">Помощник</string>
     <string name="ai_undo">Вернуть</string>
     <string name="ai_setting_undone">Возвращено</string>
+    <string name="prot_rules_not_closing">Не закрывают приложения</string>
 </resources>

@@ -81,6 +81,14 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
         }
     }
 
+    override suspend fun statusVoiceUrl(childId: String, screen: String, lang: String): String? = runCatching {
+        val env = api.statusVoice(childId, screen, lang)
+        if (!env.success) return@runCatching null
+        val url = (env.data as? JsonObject)?.get("audio_url")?.jsonPrimitive?.contentOrNull?.takeIf { it.isNotBlank() }
+            ?: return@runCatching null
+        if (url.startsWith("http")) url else "https://${uz.tikoncha_parent.data.remote.TikonchaClient.BASE_URL}/${url.trimStart('/')}"
+    }.getOrNull()
+
     override suspend fun applyDraft(draftId: String, coin: Int?): DraftApplyError? {
         var errorCode: String? = null
         val r = apiCall(TAG) {

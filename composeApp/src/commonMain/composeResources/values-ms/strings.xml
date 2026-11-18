@@ -1542,4 +1542,5 @@
     <string name="ai_island_label">Pembantu</string>
     <string name="ai_undo">Buat asal</string>
     <string name="ai_setting_undone">Dibuat asal</string>
+    <string name="prot_rules_not_closing">Tidak menutup apl</string>
 </resources>

@@ -17,6 +17,9 @@ interface AiRepository {
     /** [inputLang] — ovozli savolning STT aniqlagan tili (javob tili uçun); yozilgan savolda null. */
     fun ask(turns: List<AssistantTurn>, childId: String?, inputLang: String? = null): Flow<AssistantEvent>
 
+    /** Ekran holati ovozda: tayyor audio manzili (to'liq URL); yöq yoki xato — null (ekran jim qoladi). */
+    suspend fun statusVoiceUrl(childId: String, screen: String, lang: String): String?
+
     /** Muvaffaqiyat — null; xato — server matni va maşina kodi. */
     suspend fun applyDraft(draftId: String, coin: Int? = null): DraftApplyError?
 

@@ -72,6 +72,7 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.prot_rules_not_closing
 import tikoncha_parents.composeapp.generated.resources.acc_delete_req_done
 import tikoncha_parents.composeapp.generated.resources.acc_delete_req_pending
 import tikoncha_parents.composeapp.generated.resources.boshqa_rejimlar_uchun
@@ -289,6 +290,7 @@ fun ProtectionStatusGroup(
         }
     }
     val count = rows.size + 1
+    var notesOpen by rememberSaveable { mutableStateOf(false) }
 
     Column(verticalArrangement = Arrangement.spacedBy(SegmentGap)) {
         Segment(index = 0, count = count) { StatusHero(state) }
@@ -303,15 +305,47 @@ fun ProtectionStatusGroup(
                 }
 
                 // Jadvallar telefonga yetib bordimi (farzand ilovasining oxirgi hisoboti bo'yicha)
-                is StatusRow.Policies -> Segment(index, count) {
-                    ValueRow(stringResource(Res.string.protection_policies_label)) {
-                        if (row.upToDate) {
-                            ValueText(stringResource(Res.string.protection_policies_delivered))
-                        } else {
-                            ValueText(
-                                stringResource(Res.string.protection_policies_pending),
-                                color = AppColors.text.accentWarning,
-                            )
+                // "Faqat kuzatiş"da qoidalar ilovalarni yopmaydi — qisqa qiymat; batafsil (qayerda yoqiliši) — qator
+                // bosilganda (ilgari doim oçiq turgan uzun izoh edi). Örta himoyada — saytlar haqidagi izoh ham şu yerda.
+                is StatusRow.Policies -> {
+                    val note = when (state.mode) {
+                        ChildMode.DEFAULT -> Res.string.prot_default_note
+                        ChildMode.GUJANAK -> Res.string.protection_gujanak_limits_note
+                        else -> null
+                    }
+                    Segment(index, count, onClick = note?.let { { notesOpen = !notesOpen } }) {
+                        Column {
+                            ValueRow(stringResource(Res.string.protection_policies_label)) {
+                                // Belgi qiymatdan OLDIN — uzun qiymat uni siqib çiqarmasin (bosilsa izoh oçiladi)
+                                if (note != null) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.Info,
+                                        contentDescription = null,
+                                        tint = AppColors.icon.secondary,
+                                        modifier = Modifier.size(18.dp),
+                                    )
+                                    Spacer(Modifier.width(6.dp))
+                                }
+                                when {
+                                    state.mode == ChildMode.DEFAULT -> ValueText(
+                                        stringResource(Res.string.prot_rules_not_closing),
+                                        color = AppColors.text.accentWarning,
+                                    )
+                                    row.upToDate -> ValueText(stringResource(Res.string.protection_policies_delivered))
+                                    else -> ValueText(
+                                        stringResource(Res.string.protection_policies_pending),
+                                        color = AppColors.text.accentWarning,
+                                    )
+                                }
+                            }
+                            if (note != null && notesOpen) {
+                                Text(
+                                    text = stringResource(note),
+                                    style = AppTypography.bodyMdRegular,
+                                    color = AppColors.text.secondary,
+                                    modifier = Modifier.padding(start = RowPaddingH, end = RowPaddingH, bottom = 14.dp),
+                                )
+                            }
                         }
                     }
                 }
@@ -345,12 +379,6 @@ fun ProtectionStatusGroup(
         }
     }
 
-    // Ota-ona qöygan qoidalar nimani yopişi (yoki yopmasligi) va kuçliroq himoya qayerda yoqilişi
-    when (state.mode) {
-        ChildMode.DEFAULT -> ProtectionFootnote(stringResource(Res.string.prot_default_note))
-        ChildMode.GUJANAK -> ProtectionFootnote(stringResource(Res.string.protection_gujanak_limits_note))
-        else -> Unit
-    }
 }
 
 /** Holat bloki: rejim nomi (katta), qisqa holat, daraja chizig'i; o'ngda qalqon. */
@@ -369,24 +397,10 @@ private fun StatusHero(state: ProtectionState) {
                 style = AppTypography.displaySmRegular.copy(fontWeight = FontWeight.Bold),
                 color = AppColors.text.primary,
             )
-            Spacer(Modifier.height(2.dp))
-            Text(
-                text = stringResource(state.mode.shortDesc()),
-                style = AppTypography.bodyLgRegular,
-                color = AppColors.text.secondary,
-            )
+            // Izoh matni yöq (rejim nomi, daraja çizig'i va ovozli holat xabari yetarli)
             if (step > 0) {
-                Spacer(Modifier.height(16.dp))
-                // Nomi tepada yozilgan — bu yerda faqat "qança kuçli" (3 tadan)
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = stringResource(Res.string.prot_strength),
-                        style = AppTypography.titleSmMedium,
-                        color = AppColors.text.tertiary,
-                    )
-                    Spacer(Modifier.width(10.dp))
-                    LevelTrack(step = step, modifier = Modifier.width(84.dp))
-                }
+                Spacer(Modifier.height(14.dp))
+                LevelTrack(step = step, modifier = Modifier.width(96.dp))
             }
             val missing = state.missingRequiredPermissions.size
             if (missing > 0) {
@@ -479,12 +493,7 @@ fun ProtectionPermissionsGroup(state: ProtectionState) {
         else stringResource(Res.string.prot_x_of_y_on, state.grantedRequiredCount, required.size),
         trailingColor = if (missing.isEmpty()) AppColors.text.tertiary else AppColors.text.accentDanger,
     )
-    Text(
-        text = stringResource(Res.string.prot_phone_settings_hint),
-        style = AppTypography.bodyMdRegular,
-        color = AppColors.text.secondary,
-        modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 10.dp),
-    )
+    Spacer(Modifier.height(4.dp))
 
     var explained by rememberSaveable { mutableStateOf<String?>(null) }
     val toggle: (ChildPermission) -> Unit = { p -> explained = if (explained == p.name) null else p.name }
@@ -495,9 +504,7 @@ fun ProtectionPermissionsGroup(state: ProtectionState) {
             compareBy<ChildPermission>({ it !in missing }, { PermissionPriority.indexOf(it) })
         )
         PermissionList(ordered, state, required = true, explained = explained, onToggle = toggle)
-        if (missing.isNotEmpty()) {
-            ProtectionFootnote(stringResource(Res.string.zarur_ruxsat_banner_desc))
-        }
+        // "Öçiq qatorni bosing" maslahati olib taşlandi — qatorlar bosiladigani körinib turibdi
     }
 
     if (higher.isNotEmpty()) {

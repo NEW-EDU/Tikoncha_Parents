@@ -1543,4 +1543,5 @@
     <string name="ai_island_label">Ёрдамчӣ</string>
     <string name="ai_undo">Бозгардонӣ</string>
     <string name="ai_setting_undone">Бозгардонида шуд</string>
+    <string name="prot_rules_not_closing">Барномаҳоро намебандад</string>
 </resources>

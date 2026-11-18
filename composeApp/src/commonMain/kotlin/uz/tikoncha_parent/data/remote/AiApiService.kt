@@ -115,6 +115,24 @@ class AiApiService(private val client: HttpClient) {
         }
     }
 
+    /**
+     * Ekran holati ovozda (masalan, Himoya): server qisqa matn tuzadi, ovozga aylantiradi va keşlaydi —
+     * `{text, audio_url}`. Bepul (tangasiz).
+     */
+    suspend fun statusVoice(childId: String, screen: String, lang: String): ApiEnvelope<JsonElement> =
+        client.safeRequest(
+            method = HttpMethod.Post,
+            url = "ai/parent/status-voice",
+            block = {
+                contentType(ContentType.Application.Json)
+                setBody(kotlinx.serialization.json.buildJsonObject {
+                    put("child_id", kotlinx.serialization.json.JsonPrimitive(childId))
+                    put("screen", kotlinx.serialization.json.JsonPrimitive(screen))
+                    put("lang", kotlinx.serialization.json.JsonPrimitive(lang))
+                })
+            },
+        )
+
     /** [coin] — topşiriq kartasida ota-ona özgartirgan mukofot. */
     suspend fun applyDraft(draftId: String, coin: Int? = null): ApiEnvelope<JsonElement> =
         client.safeRequest(

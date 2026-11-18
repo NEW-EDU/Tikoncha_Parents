@@ -1608,4 +1608,5 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ai_island_label">Yordamçi</string>
     <string name="ai_undo">Qaytariş</string>
     <string name="ai_setting_undone">Qaytarildi</string>
+    <string name="prot_rules_not_closing">Ilovalarni yopmaydi</string>
 </resources>

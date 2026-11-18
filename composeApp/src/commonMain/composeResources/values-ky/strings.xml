@@ -1559,4 +1559,5 @@
     <string name="ai_island_label">Жардамчы</string>
     <string name="ai_undo">Кайтаруу</string>
     <string name="ai_setting_undone">Кайтарылды</string>
+    <string name="prot_rules_not_closing">Тиркемелерди жаппайт</string>
 </resources>

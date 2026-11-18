@@ -1543,4 +1543,5 @@
     <string name="ai_island_label">도우미</string>
     <string name="ai_undo">되돌리기</string>
     <string name="ai_setting_undone">되돌렸습니다</string>
+    <string name="prot_rules_not_closing">앱을 닫지 않음</string>
 </resources>

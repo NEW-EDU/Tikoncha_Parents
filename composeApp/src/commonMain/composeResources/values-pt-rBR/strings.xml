@@ -1559,4 +1559,5 @@
     <string name="ai_island_label">Assistente</string>
     <string name="ai_undo">Desfazer</string>
     <string name="ai_setting_undone">Desfeito</string>
+    <string name="prot_rules_not_closing">Não fecham apps</string>
 </resources>

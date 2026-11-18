@@ -1559,4 +1559,5 @@
     <string name="ai_island_label">დამხმარე</string>
     <string name="ai_undo">გაუქმება</string>
     <string name="ai_setting_undone">გაუქმდა</string>
+    <string name="prot_rules_not_closing">აპებს არ ხურავს</string>
 </resources>

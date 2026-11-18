@@ -1559,4 +1559,5 @@
     <string name="ai_island_label">Օգնական</string>
     <string name="ai_undo">Հետարկել</string>
     <string name="ai_setting_undone">Հետարկվեց</string>
+    <string name="prot_rules_not_closing">Հավելվածները չեն փակվում</string>
 </resources>

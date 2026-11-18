@@ -1559,4 +1559,5 @@ Bu bilgiler yalnızca bu özellikler için kullanılır ve üçüncü taraflarla
     <string name="ai_island_label">Yardımcı</string>
     <string name="ai_undo">Geri al</string>
     <string name="ai_setting_undone">Geri alındı</string>
+    <string name="prot_rules_not_closing">Uygulamaları kapatmıyor</string>
 </resources>

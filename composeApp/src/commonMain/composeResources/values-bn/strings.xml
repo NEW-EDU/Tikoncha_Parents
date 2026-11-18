@@ -1559,4 +1559,5 @@
     <string name="ai_island_label">সহকারী</string>
     <string name="ai_undo">আগের মতো করুন</string>
     <string name="ai_setting_undone">আগের মতো করা হয়েছে</string>
+    <string name="prot_rules_not_closing">অ্যাপ বন্ধ করে না</string>
 </resources>

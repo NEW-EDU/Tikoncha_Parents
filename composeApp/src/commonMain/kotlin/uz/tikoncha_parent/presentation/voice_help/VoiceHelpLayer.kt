@@ -68,7 +68,19 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.height
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import uz.tikoncha_parent.presentation.base.island.islandReservedFromBottom
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 import tikoncha_parents.composeapp.generated.resources.Res
@@ -108,13 +120,31 @@ val VoiceScreen.helpClips: List<TutorialClip>
     }
 
 private const val AUTO_PLAY_DELAY_MS = 600L
+/** Avto-ijrodan oldingi sanoq (pastda çapda, orol ustida) — bosilsa ijro bekor. */
+private const val COUNTDOWN_MS = 3_000L
+/** Bir xil holat xabari şu muddatda qayta aytilmaydi (ekranga kirib-çiqib tursa ham). */
+private const val STATUS_REPEAT_MS = 10 * 60_000L
+
+/** Oxirgi aytilgan holat xabari (audio manzili) va vaqti — ilova böyiça. */
+private object StatusMemory {
+    var lastUrl: String? = null
+    var lastAt: kotlin.time.TimeSource.Monotonic.ValueTimeMark? = null
+    fun recentlySaid(url: String): Boolean {
+        val at = lastAt ?: return false
+        return url == lastUrl && at.elapsedNow().inWholeMilliseconds < STATUS_REPEAT_MS
+    }
+    fun said(url: String) {
+        lastUrl = url
+        lastAt = kotlin.time.TimeSource.Monotonic.markNow()
+    }
+}
 private const val SHAKE_HINT_MS = 4_000L
 private const val UNAVAILABLE_MS = 3_500L
 
 private enum class Notice { LOADING, PLAYING, HINT, UNAVAILABLE }
 
 /** Bitta ijro: avto (birinçi kiriş) yoki varaqdagi «Tinglaş». [started] — ovoz haqiqatan boşlandi. */
-private class HelpRun(val screen: VoiceScreen, val auto: Boolean) {
+private class HelpRun(val screen: VoiceScreen, val auto: Boolean, val status: Boolean = false, val url: String? = null) {
     var started = false
     /** Ijro paytida "Bu ekran haqida" oçildi — foydalanuvçi yordamni biladi, maslahat kerak emas. */
     var skipHint = false
@@ -133,6 +163,8 @@ private class HelpRun(val screen: VoiceScreen, val auto: Boolean) {
 fun BoxScope.VoiceHelpLayer(
     screen: VoiceScreen?,
     isTop: Boolean,
+    /** Keyingi kirişlarda — holat xabari (audio manzili); null — faqat birinçi kirişdagi tuşuntiriş. */
+    status: (suspend () -> String?)? = null,
     sheetOpen: Boolean,
     onSheetOpenChange: (Boolean) -> Unit,
 ) {
@@ -155,6 +187,12 @@ fun BoxScope.VoiceHelpLayer(
         run = HelpRun(target, auto)
         VoiceHelpPlayback.play(token, voiceUrl(target))
     }
+    val statusNow by rememberUpdatedState(status)
+    val scope = rememberCoroutineScope()
+    // Avto-ijro oldidan 3 s sanoq: ota-ona bosib bekor qila oladi (ovoz kutilmaganda boşlanib qolmasin)
+    var counting by remember { mutableStateOf(false) }
+    val countdown = remember { Animatable(1f) }
+    var cancelled by remember { mutableStateOf(false) }
 
     // Ekrandan çiqilsa (yoki ustiga boşqasi oçilsa) — ovoz töxtaydi
     DisposableEffect(token) { onDispose { VoiceHelpPlayback.stop(token) } }
@@ -167,12 +205,34 @@ fun BoxScope.VoiceHelpLayer(
     }
     LaunchedEffect(enabled) { if (!enabled) hint = false }
 
-    // Birinçi kiriş: ekran körinib bölgaç (ötiş animatsiyasi tugagaç) tuşuntiriş özi boşlanadi
+    // Birinçi kiriş — ekran tuşuntirişi; keyingilari — holat xabari (bor bölsa). Ekran körinib bölgaç 3 s sanoq
+    // (pastda çapda), keyin özi ijro etiladi; sanoq paytida bosilsa — bekor. Holat audiosi sanoq paytida tayyorlanadi.
     LaunchedEffect(screen, isTop, enabled) {
-        if (screen == null || !isTop || !enabled || !VoiceHelpPrefs.shouldAutoPlay(screen)) return@LaunchedEffect
+        if (screen == null || !isTop || !enabled) return@LaunchedEffect
+        val explainer = VoiceHelpPrefs.shouldAutoPlay(screen)
+        val source = if (explainer) null else statusNow ?: return@LaunchedEffect
+        val statusUrl = source?.let { src -> async { runCatching { src() }.getOrNull() } }
         delay(AUTO_PLAY_DELAY_MS)
         if (run != null || sheetOpenNow) return@LaunchedEffect
-        play(screen, true)
+        cancelled = false
+        counting = true
+        countdown.snapTo(1f)
+        try {
+            countdown.animateTo(0f, tween(COUNTDOWN_MS.toInt(), easing = LinearEasing))
+        } finally {
+            counting = false
+        }
+        if (cancelled || run != null || sheetOpenNow || !topNow || !enabledNow) return@LaunchedEffect
+        if (explainer) {
+            play(screen, true)
+        } else {
+            val url = statusUrl?.await() ?: return@LaunchedEffect
+            if (StatusMemory.recentlySaid(url)) return@LaunchedEffect
+            hint = false
+            unavailable = false
+            run = HelpRun(screen, auto = true, status = true, url = url)
+            VoiceHelpPlayback.play(token, url)
+        }
     }
 
     LaunchedEffect(state) {
@@ -181,18 +241,20 @@ fun BoxScope.VoiceHelpLayer(
             VoiceState.Loading -> Unit
             VoiceState.Playing -> if (!r.started) {
                 r.started = true
-                if (r.auto) VoiceHelpPrefs.markSeen(r.screen)
+                if (r.auto && !r.status) VoiceHelpPrefs.markSeen(r.screen)
             }
             // Internet yöq, 404, 20 s javob yöq: avto — jim (keyingi işga tuşirişda yana), qöl bilan — xabar
             VoiceState.Error -> {
                 run = null
                 VoiceHelpPlayback.stop(token)
-                if (r.auto) VoiceHelpPrefs.markAutoPlayFailed(r.screen) else unavailable = true
+                if (r.status) Unit
+                else if (r.auto) VoiceHelpPrefs.markAutoPlayFailed(r.screen) else unavailable = true
             }
             // Tugadi yoki töxtatildi
             VoiceState.Idle -> {
                 run = null
-                val showHint = r.auto && r.started && !r.skipHint && topNow && enabledNow && !sheetOpenNow
+                if (r.status && r.started) r.url?.let { StatusMemory.said(it) }
+                val showHint = r.auto && !r.status && r.started && !r.skipHint && topNow && enabledNow && !sheetOpenNow
                 if (showHint && VoiceHelpPrefs.takeShakeHint()) hint = true
             }
         }
@@ -227,10 +289,24 @@ fun BoxScope.VoiceHelpLayer(
     )
 
     val current = run
+    // Ijro va sanoq — pastda çapda, orol ustidagi kiçkina tugmada; tepada faqat maslahat va "hozir yöq"
+    val playingNow = current != null && state == VoiceState.Playing
+    val loadingNow = current != null && state == VoiceState.Loading && !current.auto
+    VoiceChip(
+        counting = counting,
+        progress = { countdown.value },
+        playing = playingNow,
+        loading = loadingNow,
+        onStop = {
+            if (counting) {
+                cancelled = true
+                scope.launch { countdown.stop() }
+            } else {
+                VoiceHelpPlayback.stop(token)
+            }
+        },
+    )
     val notice = when {
-        current != null && state == VoiceState.Playing -> Notice.PLAYING
-        // Avto-ijro yuklanayotganda jim (internet yöq bölsa — heç narsa çiqmaydi); qöl bilan — darhol
-        current != null && state == VoiceState.Loading && !current.auto -> Notice.LOADING
         unavailable -> Notice.UNAVAILABLE
         hint -> Notice.HINT
         else -> null
@@ -261,6 +337,76 @@ fun BoxScope.VoiceHelpLayer(
     }
     if (clipsOpen && screen != null) {
         TutorialClipDialog(screen.helpClips) { clipsOpen = false }
+    }
+}
+
+/**
+ * Pastda çapda, orol ustida: avto-ijrodan oldin 3 s sanoq (halqa + raqam), ijro paytida tovuş çiziqlari.
+ * Matnsiz; butun tugma bosiladi — sanoqda bekor qiladi, ijroda töxtatadi.
+ */
+@Composable
+private fun BoxScope.VoiceChip(
+    counting: Boolean,
+    progress: () -> Float,
+    playing: Boolean,
+    loading: Boolean,
+    onStop: () -> Unit,
+) {
+    val stopLabel = stringResource(Res.string.voice_stop)
+    AnimatedVisibility(
+        visible = counting || playing || loading,
+        modifier = Modifier
+            .align(Alignment.BottomStart)
+            .padding(start = 16.dp, bottom = islandReservedFromBottom() + 2.dp),
+        enter = fadeIn() + scaleIn(initialScale = 0.8f),
+        exit = fadeOut() + scaleOut(targetScale = 0.8f),
+    ) {
+        Surface(
+            onClick = onStop,
+            interactionSource = rememberHapticSource(),
+            shape = CircleShape,
+            color = AppColors.bg.surface,
+            border = BorderStroke(1.dp, AppColors.border.secondarySubtle),
+            modifier = Modifier.semantics { contentDescription = stopLabel },
+        ) {
+            Row(
+                modifier = Modifier.height(48.dp).padding(start = 6.dp, end = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Box(Modifier.size(36.dp), contentAlignment = Alignment.Center) {
+                    when {
+                        counting -> {
+                            val p = progress()
+                            CircularProgressIndicator(
+                                progress = { p },
+                                modifier = Modifier.size(32.dp),
+                                strokeWidth = 3.dp,
+                                color = AppColors.icon.accentPrimary,
+                                trackColor = AppColors.border.secondarySubtle,
+                            )
+                            Text(
+                                text = "${kotlin.math.ceil(p * (COUNTDOWN_MS / 1000f)).toInt().coerceAtLeast(1)}",
+                                style = AppTypography.titleSmSemiBold,
+                                color = AppColors.text.primary,
+                            )
+                        }
+                        loading -> CircularProgressIndicator(
+                            modifier = Modifier.size(22.dp),
+                            strokeWidth = 2.dp,
+                            color = AppColors.icon.accentPrimary,
+                        )
+                        else -> SoundBars(color = AppColors.icon.accentPrimary)
+                    }
+                }
+                Spacer(Modifier.width(6.dp))
+                Icon(
+                    imageVector = Icons.Rounded.Stop,
+                    contentDescription = null,
+                    tint = AppColors.icon.secondary,
+                    modifier = Modifier.size(20.dp),
+                )
+            }
+        }
     }
 }
 

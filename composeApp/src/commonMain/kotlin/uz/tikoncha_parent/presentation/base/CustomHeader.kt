@@ -55,6 +55,8 @@ fun CustomHeader(
      * telefon silkitilsa yoki "‹ nom" pill'i uzoq bosilsa — «Bu ekran haqida» varag'i.
      */
     voice: VoiceScreen? = null,
+    /** Keyingi kirişlarda — holat haqida ovozli xabar (audio manzili); [IslandSpec.voiceStatus]. */
+    voiceStatus: (suspend () -> String?)? = null,
 ) {
     // Bir qo'l bilan ishlatish: sarlavha, orqaga, amallar va farzand tanlagich — hammasi pastki orolda (BottomIsland).
     // Tepada faqat kichik bo'shliq qoladi — joy kontentga.
@@ -63,15 +65,18 @@ fun CustomHeader(
     val currentPicker by rememberUpdatedState(childPicker)
     val hasTrailing = trailingIcon != null
     val hasPicker = childPicker != null
+    val currentStatus by rememberUpdatedState(voiceStatus)
+    val hasStatus = voiceStatus != null
     // AI mikrofoni har ichki ekran orolida: bosilsa yordamçi darhol tinglaydi
     val navigator = cafe.adriel.voyager.navigator.LocalNavigator.current
-    val spec = remember(title, showBackButton, hasTrailing, hasPicker, voice, navigator) {
+    val spec = remember(title, showBackButton, hasTrailing, hasPicker, voice, hasStatus, navigator) {
         IslandSpec(
             title = title.takeIf { it.isNotBlank() },
             onBack = if (showBackButton) ({ currentBack() }) else null,
             picker = if (hasPicker) ({ currentPicker }) else null,
             actions = if (hasTrailing) ({ currentTrailing?.invoke() }) else null,
             voice = voice,
+            voiceStatus = if (hasStatus) ({ currentStatus?.invoke() }) else null,
             onAiMic = if (showBackButton && navigator != null) ({
                 navigator.push(uz.tikoncha_parent.presentation.assistant.AssistantScreen(startListening = true))
             }) else null,

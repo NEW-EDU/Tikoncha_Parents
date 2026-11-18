@@ -1542,4 +1542,5 @@
     <string name="ai_island_label">Helfer</string>
     <string name="ai_undo">Rückgängig</string>
     <string name="ai_setting_undone">Rückgängig gemacht</string>
+    <string name="prot_rules_not_closing">Schließen keine Apps</string>
 </resources>

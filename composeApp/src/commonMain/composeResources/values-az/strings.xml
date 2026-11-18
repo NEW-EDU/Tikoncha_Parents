@@ -1542,4 +1542,5 @@
     <string name="ai_island_label">Köməkçi</string>
     <string name="ai_undo">Geri qaytar</string>
     <string name="ai_setting_undone">Geri qaytarıldı</string>
+    <string name="prot_rules_not_closing">Tətbiqləri bağlamır</string>
 </resources>

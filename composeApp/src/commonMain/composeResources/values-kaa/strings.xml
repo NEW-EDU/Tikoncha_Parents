@@ -1542,4 +1542,5 @@
     <string name="ai_island_label">Járdemshi</string>
     <string name="ai_undo">Qaytarıw</string>
     <string name="ai_setting_undone">Qaytarıldı</string>
+    <string name="prot_rules_not_closing">Qosımshalardı jappaydı</string>
 </resources>

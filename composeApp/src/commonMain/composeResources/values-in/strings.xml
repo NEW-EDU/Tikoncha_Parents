@@ -1559,4 +1559,5 @@ Informasi ini hanya digunakan untuk fitur tersebut dan tidak dibagikan kepada pi
     <string name="ai_island_label">Asisten</string>
     <string name="ai_undo">Urungkan</string>
     <string name="ai_setting_undone">Diurungkan</string>
+    <string name="prot_rules_not_closing">Tidak menutup aplikasi</string>
 </resources>

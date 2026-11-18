@@ -299,8 +299,20 @@ fun ProtectionUi(
             .then(systemBars.modifier)
             .background(AppColors.bg.secondary),
     ) {
+        // Keyingi kirişlarda — tanlangan farzand himoyasi haqida ovozli xabar (server tuzadi va ovozga aylantiradi)
+        val ai = org.koin.compose.koinInject<uz.tikoncha_parent.domain.repository.AiRepository>()
+        val statusChildId by androidx.compose.runtime.rememberUpdatedState(childId)
         CustomHeader(
             voice = VoiceScreen.PROTECTION,
+            voiceStatus = {
+                statusChildId.takeIf { it.isNotEmpty() }?.let { id ->
+                    ai.statusVoiceUrl(
+                        childId = id,
+                        screen = "protection",
+                        lang = uz.tikoncha_parent.presentation.profile.language.LanguagePrefs.loadOrDefault().languageCode,
+                    )
+                }
+            },
             title = stringResource(Res.string.himoya),
             showBackButton = true,
             onBackClick = { navigator?.pop() },
