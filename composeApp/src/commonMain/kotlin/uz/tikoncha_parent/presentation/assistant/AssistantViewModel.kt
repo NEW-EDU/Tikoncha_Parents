@@ -783,13 +783,16 @@ class AssistantViewModel(
                 null -> {
                     setDraft(itemId, DraftStatus.APPLIED)
                     val s = _state.value
-                    if (!s.streaming && s.voice == VoicePhase.IDLE && s.speakingId == null) mascot(MascotState.DONE, holdMs = 2_000)
+                    // Tasdiqlandi — tipratikan quvonadi (qöllar tepada, konfetti)
+                    if (!s.streaming && s.voice == VoicePhase.IDLE && s.speakingId == null) mascot(MascotState.CELEBRATE, holdMs = 2_200)
                     // Vazifa / sörov / himoya raqamlari özgargan bölişi mumkin
                     loadGlance()
                 }
                 else -> {
                     setDraft(itemId, DraftStatus.PENDING)
                     _state.update { it.copy(draftError = error) }
+                    val s = _state.value
+                    if (!s.streaming && s.voice == VoicePhase.IDLE && s.speakingId == null) mascot(MascotState.CONFUSED, holdMs = 2_000)
                 }
             }
         }

@@ -35,8 +35,13 @@ import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.ai_celebrate_a
+import tikoncha_parents.composeapp.generated.resources.ai_celebrate_b
 import tikoncha_parents.composeapp.generated.resources.ai_confused
+import tikoncha_parents.composeapp.generated.resources.ai_confused_b
 import tikoncha_parents.composeapp.generated.resources.ai_done
+import tikoncha_parents.composeapp.generated.resources.ai_done_b
+import tikoncha_parents.composeapp.generated.resources.ai_wave_b
 import tikoncha_parents.composeapp.generated.resources.ai_idle
 import tikoncha_parents.composeapp.generated.resources.ai_idle_blink
 import tikoncha_parents.composeapp.generated.resources.ai_listen_a
@@ -51,17 +56,19 @@ import uz.tikoncha_parent.ui.theme.AppColors
 import kotlin.random.Random
 
 /** Yordamçi tipratikanining holati — ViewModel boşqaradi. */
-enum class MascotState { IDLE, WAVE, LISTENING, THINKING, TALKING, DONE, CONFUSED }
+/** CELEBRATE — ota-ona kartani tasdiqladi (qoida, vazifa, javob saqlandi): qöllar tepada, konfetti. */
+enum class MascotState { IDLE, WAVE, LISTENING, THINKING, TALKING, DONE, CONFUSED, CELEBRATE }
 
-/** Holat kadrlari: ikkinçisi — almaşadigan (köz yumiş, quloq, öylaş, gapiriş). */
+/** Holat kadrlari: ikkinçisi — almaşadigan (köz yumiş, qöl silkitiş, quloq, öylaş, gapiriş, uçqun, qaşiniş). */
 private fun frames(state: MascotState): Pair<DrawableResource, DrawableResource> = when (state) {
     MascotState.IDLE -> Res.drawable.ai_idle to Res.drawable.ai_idle_blink
-    MascotState.WAVE -> Res.drawable.ai_wave to Res.drawable.ai_wave
+    MascotState.WAVE -> Res.drawable.ai_wave to Res.drawable.ai_wave_b
     MascotState.LISTENING -> Res.drawable.ai_listen_a to Res.drawable.ai_listen_b
     MascotState.THINKING -> Res.drawable.ai_think_a to Res.drawable.ai_think_b
     MascotState.TALKING -> Res.drawable.ai_talk_a to Res.drawable.ai_talk_b
-    MascotState.DONE -> Res.drawable.ai_done to Res.drawable.ai_done
-    MascotState.CONFUSED -> Res.drawable.ai_confused to Res.drawable.ai_confused
+    MascotState.DONE -> Res.drawable.ai_done to Res.drawable.ai_done_b
+    MascotState.CONFUSED -> Res.drawable.ai_confused to Res.drawable.ai_confused_b
+    MascotState.CELEBRATE -> Res.drawable.ai_celebrate_a to Res.drawable.ai_celebrate_b
 }
 
 /**
@@ -102,7 +109,27 @@ internal fun Mascot(
                 delay(180)
                 alt = !alt
             }
-            else -> Unit
+            // Qöl u yoqqa-bu yoqqa
+            MascotState.WAVE -> while (true) {
+                delay(320)
+                alt = !alt
+            }
+            // Barmoq — keyin köz qisib uçqunlar
+            MascotState.DONE -> while (true) {
+                delay(520)
+                alt = true
+                delay(460)
+                alt = false
+            }
+            // Sekin: goh u tomonini, goh bu tomonini qaşiydi
+            MascotState.CONFUSED -> while (true) {
+                delay(1_000)
+                alt = !alt
+            }
+            MascotState.CELEBRATE -> while (true) {
+                delay(260)
+                alt = !alt
+            }
         }
     }
 
@@ -113,7 +140,7 @@ internal fun Mascot(
     val hop = remember { Animatable(0f) }
     LaunchedEffect(state, reduce) {
         hop.snapTo(0f)
-        if (state == MascotState.DONE && !reduce) {
+        if ((state == MascotState.DONE || state == MascotState.CELEBRATE) && !reduce) {
             hop.animateTo(0f, keyframes {
                 durationMillis = 650
                 -1f at 160 using FastOutSlowInEasing
