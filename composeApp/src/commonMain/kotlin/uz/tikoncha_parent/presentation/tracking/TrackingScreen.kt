@@ -69,6 +69,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import tikoncha_parents.composeapp.generated.resources.Res
+import tikoncha_parents.composeapp.generated.resources.home_map
 import tikoncha_parents.composeapp.generated.resources.bekor_qilish
 import tikoncha_parents.composeapp.generated.resources.dialog_info
 import tikoncha_parents.composeapp.generated.resources.dialog_warning
@@ -293,6 +294,7 @@ class TrackingScreen : Screen {
             message = stringResource(Res.string.farzandingizni_qayerda_ekanini_kuzatish),
             childName = lockedChild?.name?.takeIf { it.isNotBlank() }
                 ?: state.people.firstOrNull { it.id == lockedChildId }?.name,
+            icon = Res.drawable.home_map,
             onConfirm = {
                 screenModel.onEvent(TrackingEvent.DismissSubscriptionDialog)
                 navigator?.push(SubscriptionPaymentScreen(selectedChild = lockedChild))
