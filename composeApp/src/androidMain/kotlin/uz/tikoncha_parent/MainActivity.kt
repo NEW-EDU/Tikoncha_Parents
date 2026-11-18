@@ -43,6 +43,14 @@ class MainActivity : AppCompatActivity() {
             if (intent?.getStringExtra("reset_help") != null) {
                 uz.tikoncha_parent.presentation.voice_help.VoiceHelpPrefs.resetFirstVisit()
             }
+            // iOS `-hoglt.*` sinov argumentlari (masalan AI ekranini savol bilan oçiş) — BuildConfig.android.kt'ga qarang
+            intent?.extras?.let { ex ->
+                val args = ex.keySet().filter { it.startsWith("hoglt.") }.sorted().flatMap { key ->
+                    val v = ex.getString(key).orEmpty()
+                    if (v == "1") listOf("-$key") else listOf("-$key", v)
+                }
+                if (args.isNotEmpty()) uz.tikoncha_parent.platform.BuildConfig.launchArgs = args
+            }
         }
 
         TelegramLoginCoordinator.bindActivity(this)
