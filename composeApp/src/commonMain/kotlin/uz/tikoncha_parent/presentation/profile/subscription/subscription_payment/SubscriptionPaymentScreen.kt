@@ -225,7 +225,7 @@ fun SubscriptionPaymentUi(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
-                    painter = painterResource(Res.drawable.tikoncha_plus_new),
+                    painter = painterResource(Res.drawable.mascot_cheer), // ilgari qizil yurak uşlagan tipratikan — egasi "qöröqinçli" dedi
                     contentDescription = "Tikoncha mascot",
                     modifier = Modifier.size(140.dp)
                 )
