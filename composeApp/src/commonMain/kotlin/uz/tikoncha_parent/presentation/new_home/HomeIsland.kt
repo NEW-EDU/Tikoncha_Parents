@@ -83,7 +83,14 @@ fun RowScope.HomeIslandContent(
             modifier = Modifier.size(36.dp).clip(CircleShape),
         )
         Spacer(Modifier.width(8.dp))
-        // Yozuv yöq: farzand tanlagich yonida "Yordamçi" kesilib qolardi — avatar (quloqçinli tipratikon) + mikrofon yetarli
+        // "AI" (qisqa: farzand tanlagich yonida "Yordamçi" kesilib qolardi). Mikrofon qöşilganda olib taşlangan edi —
+        // egasi qaytarişni söradi (2026-11-18): tugma nima ekani yozuvsiz tuşunarsiz
+        Text(
+            text = "AI",
+            style = AppTypography.titleMdSemiBold.copy(fontWeight = FontWeight.ExtraBold),
+            color = AppColors.text.primary,
+            maxLines = 1,
+        )
         Spacer(Modifier.weight(1f))
         // Mikrofon — eng tez yöl: bosilişi bilan yordamçi oçiladi va darhol tinglaydi (egasining talabi)
         val micSource = remember { MutableInteractionSource() }
