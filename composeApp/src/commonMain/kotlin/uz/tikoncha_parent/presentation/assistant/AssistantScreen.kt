@@ -78,7 +78,7 @@ import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Shield
 import androidx.compose.material.icons.rounded.MarkEmailUnread
 import androidx.compose.material.icons.rounded.DeleteOutline
-import androidx.compose.material.icons.rounded.PauseCircle
+import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material.icons.rounded.School
 import androidx.compose.material.icons.rounded.TaskAlt
 import androidx.compose.material.icons.rounded.Bedtime
@@ -1403,7 +1403,8 @@ private fun ThinkingRow(status: String) {
 
 /** Qoralama turi belgisi; noma'lum (yangi) tur — qalqon. Turlar ro'yxati çeklanmaydi: karta har qandayini körsatadi. */
 private fun kindIcon(kind: String): ImageVector = when (kind) {
-    "policy_update" -> Icons.Rounded.PauseCircle
+    // To'xtatiş, davom ettiriş, öçiriş/yoqiş va vaqt/kun/ilovalarni özgartiriş — hammasi bitta tur
+    "policy_update" -> Icons.Rounded.Tune
     "policy_delete", "task_delete" -> Icons.Rounded.DeleteOutline
     "task_create", "task_verify" -> Icons.Rounded.TaskAlt
     "task_remind" -> Icons.Rounded.NotificationsActive
