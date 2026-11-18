@@ -14,6 +14,8 @@ import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.NotificationsActive
 import androidx.compose.material.icons.rounded.Vibration
 import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.DeleteOutline
+import androidx.compose.material.icons.automirrored.rounded.Logout
 import tikoncha_parents.composeapp.generated.resources.sozlamalar
 import tikoncha_parents.composeapp.generated.resources.text_size_title
 import tikoncha_parents.composeapp.generated.resources.tema
@@ -28,6 +30,8 @@ import tikoncha_parents.composeapp.generated.resources.ozgarishlar_tarixi
 import tikoncha_parents.composeapp.generated.resources.bildirishnomalar
 import tikoncha_parents.composeapp.generated.resources.haptics_title
 import tikoncha_parents.composeapp.generated.resources.biz_haqimizda
+import tikoncha_parents.composeapp.generated.resources.akkauntdan_chiqish
+import tikoncha_parents.composeapp.generated.resources.akkauntni_o_chirish
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
@@ -395,6 +399,9 @@ internal fun navLabel(screen: NavScreen): StringResource = when (screen) {
     NavScreen.NOTIFICATION_SETTINGS -> Res.string.bildirishnomalar
     NavScreen.HAPTICS -> Res.string.haptics_title
     NavScreen.ABOUT -> Res.string.biz_haqimizda
+    NavScreen.LOGOUT -> Res.string.akkauntdan_chiqish
+    NavScreen.DELETE_ACCOUNT -> Res.string.akkauntni_o_chirish
+    NavScreen.PLUS_PAYMENT -> Res.string.obuna
 }
 
 private fun navIcon(screen: NavScreen): ImageVector = when (screen) {
@@ -423,6 +430,9 @@ private fun navIcon(screen: NavScreen): ImageVector = when (screen) {
     NavScreen.NOTIFICATION_SETTINGS -> Icons.Rounded.NotificationsActive
     NavScreen.HAPTICS -> Icons.Rounded.Vibration
     NavScreen.ABOUT -> Icons.Rounded.Info
+    NavScreen.LOGOUT -> Icons.AutoMirrored.Rounded.Logout
+    NavScreen.DELETE_ACCOUNT -> Icons.Rounded.DeleteOutline
+    NavScreen.PLUS_PAYMENT -> Icons.Rounded.WorkspacePremium
 }
 
 /** Katta tonal tugma: "Oçiş: Xarita". */

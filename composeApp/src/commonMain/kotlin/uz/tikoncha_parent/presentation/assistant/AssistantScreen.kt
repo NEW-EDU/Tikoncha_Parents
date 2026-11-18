@@ -352,6 +352,12 @@ private fun navTarget(target: NavTarget, selectedChildId: String?): Screen? = wh
     NavScreen.NOTIFICATION_SETTINGS -> uz.tikoncha_parent.presentation.profile.settings.notification.NotificationSettingsScreen()
     NavScreen.HAPTICS -> uz.tikoncha_parent.presentation.profile.settings.haptics.HapticsScreen()
     NavScreen.ABOUT -> uz.tikoncha_parent.presentation.profile.about_us.AboutUsScreen()
+    NavScreen.LOGOUT -> uz.tikoncha_parent.presentation.profile.logout.LogoutScreen()
+    NavScreen.DELETE_ACCOUNT -> uz.tikoncha_parent.presentation.profile.logout.DeleteAccountScreen()
+    // Plus — har farzand uçun alohida: tölov ekrani öşa farzand bilan oçiladi
+    NavScreen.PLUS_PAYMENT -> uz.tikoncha_parent.presentation.profile.subscription.subscription_payment.SubscriptionPaymentScreen(
+        selectedChild = (target.childId ?: selectedChildId)?.let { id -> uz.tikoncha_parent.data.local.AppSettings.children.firstOrNull { c -> c.userId == id } },
+    )
 }
 
 @Composable

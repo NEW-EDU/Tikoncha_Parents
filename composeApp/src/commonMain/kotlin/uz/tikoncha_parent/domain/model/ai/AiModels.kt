@@ -101,7 +101,13 @@ enum class NavScreen(val key: String) {
 
     // Farzandning Tikonchagram (Telegram) qoidalari, qoidalar tarixi, bildiriş sozlamalari, tebraniş, ilova haqida
     TIKONCHAGRAM("tikonchagram"), RULES_HISTORY("rules_history"), NOTIFICATION_SETTINGS("notification_settings"),
-    HAPTICS("haptics"), ABOUT("about");
+    HAPTICS("haptics"), ABOUT("about"),
+
+    // Hisob amallari va Plus tölovi — ekranning özi tasdiq söraydi; yordamçi faqat oça oladi (avto-oçilmaydi)
+    LOGOUT("logout"), DELETE_ACCOUNT("delete_account"), PLUS_PAYMENT("plus_payment");
+
+    /** Bu ekranlar javobdan keyin özi oçilmaydi — ota-ona tugmani bosişi şart. */
+    val needsTap: Boolean get() = this == LOGOUT || this == DELETE_ACCOUNT
 
     companion object {
         /** Noma'lum ekran — null (eski ilova yangi server qiymatini jimgina ötkazib yuboradi). */

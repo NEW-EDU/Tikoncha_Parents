@@ -693,7 +693,7 @@ class AssistantViewModel(
             answered = replyItem != null || cards.isNotEmpty()
             // Javob faqat "Oçiş: …" tugmasi (yoki u va bitta qisqa jumla) — ekran özi oçiladi
             val onlyNav = cards.singleOrNull() as? AssistantItem.Nav
-            val autoOpen = if (!stoppedByUser && onlyNav != null && isOneLine(reply)) onlyNav else null
+            val autoOpen = if (!stoppedByUser && onlyNav != null && !onlyNav.target.screen.needsTap && isOneLine(reply)) onlyNav else null
             it.copy(
                 items = if (replyItem != null) before + replyItem + cards else it.items,
                 streaming = false,
