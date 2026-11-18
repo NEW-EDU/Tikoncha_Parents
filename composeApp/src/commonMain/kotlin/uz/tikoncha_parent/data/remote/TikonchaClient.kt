@@ -79,6 +79,11 @@ class TikonchaClient(private val engine: HttpClientEngine) {
                 }
                 level = LogLevel.ALL
                 sanitizeHeader { it.equals("Authorization", ignoreCase = true) }
+                // Yordamçi oqimi (SSE) va ovoz fayllari logga yozilmasin: tanani öqiş oqimni ushlab turadi
+                filter { request ->
+                    val path = request.url.buildString()
+                    !path.contains("ai/parent/chat") && !path.contains("ai/stt") && !path.contains("ai/tts")
+                }
             }
         }
 
