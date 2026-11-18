@@ -1606,4 +1606,6 @@ Bu ma’lumot faqat uşbu funksiyalar uçun qöllaniladi va uçinçi şaxslarga 
     <string name="ai_auto_speak_on">Javoblar ovoz bilan öqiladi</string>
     <string name="ai_auto_speak_off">Javoblar ovozsiz</string>
     <string name="ai_island_label">Yordamçi</string>
+    <string name="ai_undo">Qaytariş</string>
+    <string name="ai_setting_undone">Qaytarildi</string>
 </resources>

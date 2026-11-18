@@ -1541,4 +1541,6 @@
     <string name="ai_auto_speak_on">Answers are read aloud</string>
     <string name="ai_auto_speak_off">Answers are not read aloud</string>
     <string name="ai_island_label">助手</string>
+    <string name="ai_undo">撤销</string>
+    <string name="ai_setting_undone">已撤销</string>
 </resources>

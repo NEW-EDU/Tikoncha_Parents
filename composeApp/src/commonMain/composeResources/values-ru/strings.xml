@@ -1605,4 +1605,6 @@
     <string name="ai_auto_speak_on">Ответы читаются вслух</string>
     <string name="ai_auto_speak_off">Ответы без озвучки</string>
     <string name="ai_island_label">Помощник</string>
+    <string name="ai_undo">Вернуть</string>
+    <string name="ai_setting_undone">Возвращено</string>
 </resources>

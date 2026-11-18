@@ -74,6 +74,11 @@ sealed interface AssistantEvent {
     data class Protection(val card: ProtectionCard) : AssistantEvent
     /** Yordamçi ilovaning bir ekranini tavsiya qildi: javob ostida "Oçiş: …" tugmasi. */
     data class Nav(val target: NavTarget) : AssistantEvent
+    /**
+     * Ota-onaning öz telefonidagi ilova sozlamasi (şrift, mavzu, til, tebraniş, bosh sahifa körinişi, ovozli javoblar)
+     * — darhol qöllanadi, "Qaytariş" bilan bekor qilinadi. [key]/[value] — server qiymatlari (masalan text_size/large).
+     */
+    data class Setting(val key: String, val value: String) : AssistantEvent
     data class Done(val coins: Int?) : AssistantEvent
     /** Oxirgi hodisa. [code]: rate_limited · no_coins · ai_unavailable · bad_request · network. */
     data class Failed(val code: String, val text: String?) : AssistantEvent
@@ -92,7 +97,11 @@ enum class NavScreen(val key: String) {
     // "tungi rejim", "tilni rusçaga özgartir", "qanday işlataman — video", "yordam xizmati" …)
     SETTINGS("settings"), TEXT_SIZE("text_size"), THEME("theme"), LANGUAGE("language"),
     NOTIFICATIONS("notifications"), TUTORIALS("tutorials"), PAYMENT_HISTORY("payment_history"),
-    CHILDREN("children"), SUPPORT("support");
+    CHILDREN("children"), SUPPORT("support"),
+
+    // Farzandning Tikonchagram (Telegram) qoidalari, qoidalar tarixi, bildiriş sozlamalari, tebraniş, ilova haqida
+    TIKONCHAGRAM("tikonchagram"), RULES_HISTORY("rules_history"), NOTIFICATION_SETTINGS("notification_settings"),
+    HAPTICS("haptics"), ABOUT("about");
 
     companion object {
         /** Noma'lum ekran — null (eski ilova yangi server qiymatini jimgina ötkazib yuboradi). */

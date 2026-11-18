@@ -1540,4 +1540,6 @@
     <string name="ai_auto_speak_on">Answers are read aloud</string>
     <string name="ai_auto_speak_off">Answers are not read aloud</string>
     <string name="ai_island_label">Помічник</string>
+    <string name="ai_undo">Скасувати</string>
+    <string name="ai_setting_undone">Скасовано</string>
 </resources>

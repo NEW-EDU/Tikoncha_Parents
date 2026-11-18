@@ -9,6 +9,11 @@ import androidx.compose.material.icons.rounded.PlayCircle
 import androidx.compose.material.icons.rounded.Payments
 import androidx.compose.material.icons.rounded.Groups
 import androidx.compose.material.icons.rounded.SupportAgent
+import androidx.compose.material.icons.rounded.Forum
+import androidx.compose.material.icons.rounded.History
+import androidx.compose.material.icons.rounded.NotificationsActive
+import androidx.compose.material.icons.rounded.Vibration
+import androidx.compose.material.icons.rounded.Info
 import tikoncha_parents.composeapp.generated.resources.sozlamalar
 import tikoncha_parents.composeapp.generated.resources.text_size_title
 import tikoncha_parents.composeapp.generated.resources.tema
@@ -18,6 +23,11 @@ import tikoncha_parents.composeapp.generated.resources.video_qollanma
 import tikoncha_parents.composeapp.generated.resources.tolovlar_tarixi
 import tikoncha_parents.composeapp.generated.resources.farzandlarim
 import tikoncha_parents.composeapp.generated.resources.biz_bilan_aloqa
+import tikoncha_parents.composeapp.generated.resources.tg_rules_title
+import tikoncha_parents.composeapp.generated.resources.ozgarishlar_tarixi
+import tikoncha_parents.composeapp.generated.resources.bildirishnomalar
+import tikoncha_parents.composeapp.generated.resources.haptics_title
+import tikoncha_parents.composeapp.generated.resources.biz_haqimizda
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
@@ -378,6 +388,11 @@ internal fun navLabel(screen: NavScreen): StringResource = when (screen) {
     NavScreen.PAYMENT_HISTORY -> Res.string.tolovlar_tarixi
     NavScreen.CHILDREN -> Res.string.farzandlarim
     NavScreen.SUPPORT -> Res.string.biz_bilan_aloqa
+    NavScreen.TIKONCHAGRAM -> Res.string.tg_rules_title
+    NavScreen.RULES_HISTORY -> Res.string.ozgarishlar_tarixi
+    NavScreen.NOTIFICATION_SETTINGS -> Res.string.bildirishnomalar
+    NavScreen.HAPTICS -> Res.string.haptics_title
+    NavScreen.ABOUT -> Res.string.biz_haqimizda
 }
 
 private fun navIcon(screen: NavScreen): ImageVector = when (screen) {
@@ -401,6 +416,11 @@ private fun navIcon(screen: NavScreen): ImageVector = when (screen) {
     NavScreen.PAYMENT_HISTORY -> Icons.Rounded.Payments
     NavScreen.CHILDREN -> Icons.Rounded.Groups
     NavScreen.SUPPORT -> Icons.Rounded.SupportAgent
+    NavScreen.TIKONCHAGRAM -> Icons.Rounded.Forum
+    NavScreen.RULES_HISTORY -> Icons.Rounded.History
+    NavScreen.NOTIFICATION_SETTINGS -> Icons.Rounded.NotificationsActive
+    NavScreen.HAPTICS -> Icons.Rounded.Vibration
+    NavScreen.ABOUT -> Icons.Rounded.Info
 }
 
 /** Katta tonal tugma: "Oçiş: Xarita". */

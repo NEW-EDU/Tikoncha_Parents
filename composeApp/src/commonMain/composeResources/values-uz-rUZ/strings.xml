@@ -1597,4 +1597,6 @@
     <string name="ai_auto_speak_on">Жавоблар овоз билан ўқилади</string>
     <string name="ai_auto_speak_off">Жавоблар овозсиз</string>
     <string name="ai_island_label">Ёрдамчи</string>
+    <string name="ai_undo">Қайтариш</string>
+    <string name="ai_setting_undone">Қайтарилди</string>
 </resources>

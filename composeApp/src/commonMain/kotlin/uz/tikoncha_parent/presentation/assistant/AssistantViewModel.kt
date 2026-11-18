@@ -63,6 +63,19 @@ sealed interface AssistantItem {
     /** Yordamçi ekranni tavsiya qildi — "Oçiş: Xarita" tugmasi. */
     data class Nav(override val id: Long, val target: NavTarget) : AssistantItem
 
+    /**
+     * Yordamçi ilova sozlamasini özgartirdi (şrift, mavzu, til …). Ekran qöllaydi va [previous] ni qaytaradi —
+     * "Qaytariş" şu qiymatga olib boradi. [applied] = false — hali qöllanmagan.
+     */
+    data class Setting(
+        override val id: Long,
+        val key: String,
+        val value: String,
+        val previous: String? = null,
+        val applied: Boolean = false,
+        val undone: Boolean = false,
+    ) : AssistantItem
+
     /** Javob kelmadi. [code]: no_coins · rate_limited · network · server … ; [text] — server matni bo'lsa. */
     data class Problem(override val id: Long, val code: String, val text: String?) : AssistantItem
 }
@@ -158,6 +171,10 @@ sealed interface AssistantEventUi {
     data class Speak(val itemId: Long) : AssistantEventUi
     data object StopSpeaking : AssistantEventUi
     data object ToggleAutoSpeak : AssistantEventUi
+    /** Ekran sozlamani qölladi: [previous] — eski qiymat; null — tanilmadi (qator olib taşlanadi). */
+    data class SettingApplied(val itemId: Long, val previous: String?) : AssistantEventUi
+    /** "Qaytariş" bosildi (ekran eski qiymatni allaqaçon qaytargan; ovozli javoblarni ViewModel qaytaradi). */
+    data class SettingUndone(val itemId: Long) : AssistantEventUi
 }
 
 class AssistantViewModel(
@@ -293,13 +310,27 @@ class AssistantViewModel(
                 if (_state.value.speakingId == event.itemId) stopSpeaking() else speak(event.itemId)
             }
             AssistantEventUi.StopSpeaking -> stopSpeaking()
-            AssistantEventUi.ToggleAutoSpeak -> {
-                val on = !_state.value.autoSpeak
-                prefs[KEY_AUTO_SPEAK] = on
-                _state.update { it.copy(autoSpeak = on) }
-                if (!on) stopSpeaking()
+            AssistantEventUi.ToggleAutoSpeak -> setAutoSpeak(!_state.value.autoSpeak)
+            is AssistantEventUi.SettingApplied -> _state.update { s ->
+                s.copy(items = if (event.previous == null) s.items.filterNot { it.id == event.itemId } else s.items.map {
+                    if (it is AssistantItem.Setting && it.id == event.itemId) it.copy(previous = event.previous, applied = true) else it
+                })
+            }
+            is AssistantEventUi.SettingUndone -> {
+                val item = _state.value.items.firstOrNull { it.id == event.itemId } as? AssistantItem.Setting ?: return
+                if (item.undone) return
+                if (item.key == AssistantSettings.VOICE_REPLIES) item.previous?.let { setAutoSpeak(AssistantSettings.isOn(it)) }
+                _state.update { s ->
+                    s.copy(items = s.items.map { if (it.id == event.itemId && it is AssistantItem.Setting) it.copy(undone = true) else it })
+                }
             }
         }
+    }
+
+    private fun setAutoSpeak(on: Boolean) {
+        prefs[KEY_AUTO_SPEAK] = on
+        _state.update { it.copy(autoSpeak = on) }
+        if (!on) stopSpeaking()
     }
 
     // ── tipratikan ──
@@ -607,6 +638,17 @@ class AssistantViewModel(
                     is AssistantEvent.Nav -> _state.update {
                         it.copy(items = it.items + AssistantItem.Nav(nextId++, ev.target))
                     }
+                    is AssistantEvent.Setting -> if (ev.key == AssistantSettings.VOICE_REPLIES) {
+                        // Yordamçining öz sozlamasi — şu yerda; qolganini ekran qöllaydi (til uçun LanguageController kerak)
+                        val on = AssistantSettings.isOn(ev.value)
+                        val previous = if (_state.value.autoSpeak) "on" else "off"
+                        setAutoSpeak(on)
+                        _state.update {
+                            it.copy(items = it.items + AssistantItem.Setting(nextId++, ev.key, if (on) "on" else "off", previous, applied = true))
+                        }
+                    } else _state.update {
+                        it.copy(items = it.items + AssistantItem.Setting(nextId++, ev.key, ev.value))
+                    }
                     is AssistantEvent.Done -> finish(coins = ev.coins)
                     is AssistantEvent.Failed -> fail(ev.code, ev.text)
                 }
@@ -672,6 +714,12 @@ class AssistantViewModel(
                 is AssistantItem.Location -> AssistantTurn(false, "(Showed ${it.card.childName}'s location on a map card.)")
                 is AssistantItem.Protection -> AssistantTurn(false, "(Showed ${it.card.childName}'s protection status card.)")
                 is AssistantItem.Nav -> AssistantTurn(false, "(Offered a button to open the ${it.target.screen.key} screen.)")
+                is AssistantItem.Setting -> AssistantTurn(
+                    false,
+                    if (it.undone) "(Changed the app setting ${it.key} to ${it.value}; the parent pressed Undo, so it is back to ${it.previous}.)"
+                    else "(Changed the app setting ${it.key} to ${it.value} on the parent's phone" +
+                        (it.previous?.let { p -> "; it was $p" } ?: "") + ".)",
+                )
                 is AssistantItem.Problem -> AssistantTurn(false, "(No answer: error ${it.code}.)")
             }
         }

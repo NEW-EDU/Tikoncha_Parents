@@ -79,6 +79,7 @@ import androidx.compose.material.icons.rounded.Shield
 import androidx.compose.material.icons.rounded.MarkEmailUnread
 import androidx.compose.material.icons.rounded.DeleteOutline
 import androidx.compose.material.icons.rounded.Tune
+import androidx.compose.material.icons.rounded.Forum
 import androidx.compose.material.icons.rounded.School
 import androidx.compose.material.icons.rounded.TaskAlt
 import androidx.compose.material.icons.rounded.Bedtime
@@ -336,6 +337,12 @@ private fun navTarget(target: NavTarget, selectedChildId: String?): Screen? = wh
     NavScreen.PAYMENT_HISTORY -> uz.tikoncha_parent.presentation.profile.payment_history.PaymentHistoryScreen()
     NavScreen.CHILDREN -> uz.tikoncha_parent.presentation.profile.children.ChildrenSelectScreen()
     NavScreen.SUPPORT -> null
+    NavScreen.TIKONCHAGRAM -> (target.childId ?: selectedChildId)
+        ?.let { uz.tikoncha_parent.presentation.policy.tikonchagram.TikonchagramRulesScreen(it) } ?: PolicyListScreen()
+    NavScreen.RULES_HISTORY -> uz.tikoncha_parent.presentation.policy.history.PolicyHistoryScreen()
+    NavScreen.NOTIFICATION_SETTINGS -> uz.tikoncha_parent.presentation.profile.settings.notification.NotificationSettingsScreen()
+    NavScreen.HAPTICS -> uz.tikoncha_parent.presentation.profile.settings.haptics.HapticsScreen()
+    NavScreen.ABOUT -> uz.tikoncha_parent.presentation.profile.about_us.AboutUsScreen()
 }
 
 @Composable
@@ -367,6 +374,20 @@ private fun AssistantUi(
         // Ikkalasi ham to'xtovsiz (suspend emas): holat özgarib effekt qayta boşlansa ham ekran oçiladi
         event(AssistantEventUi.AutoOpenHandled)
         openNav(nav)
+    }
+
+    // Yordamçi özgartirgan ilova sozlamalari (şrift, mavzu, til …) — darhol qöllanadi; eski qiymat "Qaytariş" uçun
+    val languageController = uz.tikoncha_parent.presentation.profile.language.LocalLanguageController.current
+    LaunchedEffect(state.items) {
+        state.items.filterIsInstance<AssistantItem.Setting>().filter { !it.applied }.forEach { s ->
+            val previous = AssistantSettings.current(s.key, languageController)
+            val ok = previous != null && AssistantSettings.apply(s.key, s.value, languageController)
+            event(AssistantEventUi.SettingApplied(s.id, previous.takeIf { ok }))
+        }
+    }
+    val undoSetting: (AssistantItem.Setting) -> Unit = { s ->
+        if (s.key != AssistantSettings.VOICE_REPLIES) s.previous?.let { AssistantSettings.apply(s.key, it, languageController) }
+        event(AssistantEventUi.SettingUndone(s.id))
     }
 
     // Suhbat boşlangach hisobot tepada bir qatorga yig'iladi (bosilsa oçiladi), suhbat esa pastdan ösadi
@@ -544,6 +565,7 @@ private fun AssistantUi(
                             onSpeak = { event(AssistantEventUi.Speak(item.id)) },
                         )
                         is AssistantItem.Nav -> NavCardView(item.target.screen, onOpen = { openNav(item) })
+                        is AssistantItem.Setting -> SettingRow(item, onUndo = { undoSetting(item) })
                         is AssistantItem.Draft -> DraftCard(
                             item = item,
                             children = state.children,
@@ -1412,6 +1434,7 @@ private fun kindIcon(kind: String): ImageVector = when (kind) {
     "quick_block" -> Icons.Rounded.Block
     "content_filter" -> Icons.Rounded.FilterAlt
     "chat_message" -> Icons.Rounded.ChatBubble
+    "tikonchagram" -> Icons.Rounded.Forum
     else -> Icons.Rounded.Shield
 }
 

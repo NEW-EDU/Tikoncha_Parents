@@ -1598,4 +1598,6 @@ This information is used only for these features and is not shared with third pa
     <string name="ai_auto_speak_on">Answers are read aloud</string>
     <string name="ai_auto_speak_off">Answers are not read aloud</string>
     <string name="ai_island_label">Helper</string>
+    <string name="ai_undo">Undo</string>
+    <string name="ai_setting_undone">Undone</string>
 </resources>

@@ -188,6 +188,13 @@ class AiRepositoryImpl(private val api: AiApiService) : AiRepository {
                     AssistantEvent.Nav(NavTarget(screen, d["child_id"]?.jsonPrimitive?.contentOrNull?.takeIf { it.isNotBlank() }))
                 }
             }.getOrNull()
+            // {type: setting, data: {key, value}} — noma'lum kalit/qiymatni ilova özi taşlab yuboradi
+            "setting" -> runCatching {
+                val d = ev["data"] as? JsonObject ?: ev
+                val key = d["key"]?.jsonPrimitive?.contentOrNull?.trim().orEmpty()
+                val value = d["value"]?.jsonPrimitive?.contentOrNull?.trim().orEmpty()
+                if (key.isEmpty() || value.isEmpty()) null else AssistantEvent.Setting(key, value)
+            }.getOrNull()
             "done" -> AssistantEvent.Done(ev["coins"]?.jsonPrimitive?.intOrNull)
             "error" -> AssistantEvent.Failed(ev["code"]?.jsonPrimitive?.contentOrNull ?: "server", text)
             else -> null

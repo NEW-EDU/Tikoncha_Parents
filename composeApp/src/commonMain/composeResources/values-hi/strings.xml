@@ -1540,4 +1540,6 @@
     <string name="ai_auto_speak_on">Answers are read aloud</string>
     <string name="ai_auto_speak_off">Answers are not read aloud</string>
     <string name="ai_island_label">सहायक</string>
+    <string name="ai_undo">पहले जैसा करें</string>
+    <string name="ai_setting_undone">पहले जैसा किया गया</string>
 </resources>

@@ -1557,4 +1557,6 @@
     <string name="ai_auto_speak_on">Answers are read aloud</string>
     <string name="ai_auto_speak_off">Answers are not read aloud</string>
     <string name="ai_island_label">সহকারী</string>
+    <string name="ai_undo">আগের মতো করুন</string>
+    <string name="ai_setting_undone">আগের মতো করা হয়েছে</string>
 </resources>

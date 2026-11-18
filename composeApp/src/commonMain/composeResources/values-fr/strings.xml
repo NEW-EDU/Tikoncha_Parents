@@ -1551,4 +1551,6 @@ C’est un pas vers la construction d’une culture numérique dans l’éducati
     <string name="ai_auto_speak_on">Answers are read aloud</string>
     <string name="ai_auto_speak_off">Answers are not read aloud</string>
     <string name="ai_island_label">Assistant</string>
+    <string name="ai_undo">Annuler</string>
+    <string name="ai_setting_undone">Annulé</string>
 </resources>
