@@ -80,6 +80,7 @@ import androidx.compose.material.icons.rounded.MarkEmailUnread
 import androidx.compose.material.icons.rounded.DeleteOutline
 import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material.icons.rounded.Forum
+import androidx.compose.material.icons.rounded.PersonAdd
 import androidx.compose.material.icons.rounded.School
 import androidx.compose.material.icons.rounded.TaskAlt
 import androidx.compose.material.icons.rounded.Bedtime
@@ -1435,6 +1436,7 @@ private fun kindIcon(kind: String): ImageVector = when (kind) {
     "content_filter" -> Icons.Rounded.FilterAlt
     "chat_message" -> Icons.Rounded.ChatBubble
     "tikonchagram" -> Icons.Rounded.Forum
+    "child_link" -> Icons.Rounded.PersonAdd
     else -> Icons.Rounded.Shield
 }
 

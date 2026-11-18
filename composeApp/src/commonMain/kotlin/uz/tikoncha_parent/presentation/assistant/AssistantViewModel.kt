@@ -327,6 +327,27 @@ class AssistantViewModel(
         }
     }
 
+    /** Farzandlar röyxatini serverdan qayta oladi; tanlangan farzand yöq bölsa — birinçisi (yangi ulangan). */
+    private fun refreshChildren() {
+        screenModelScope.launch {
+            val res = childRepository.children()
+            if (res is Outcome.Success) {
+                AppSettings.children = res.data
+                val keep = _state.value.child?.userId?.let { id -> res.data.firstOrNull { it.userId == id } }
+                val child = keep ?: res.data.firstOrNull()
+                if (child != null && (AppSettings.selectedChild == null || keep == null)) {
+                    AppSettings.selectedChild = child
+                    AppSettings.selectedChildId = child.userId
+                }
+                _state.update { it.copy(children = res.data, child = child) }
+                if (keep == null && child != null) {
+                    loadReport()
+                    loadAlerts()
+                }
+            }
+        }
+    }
+
     private fun setAutoSpeak(on: Boolean) {
         prefs[KEY_AUTO_SPEAK] = on
         _state.update { it.copy(autoSpeak = on) }
@@ -785,6 +806,8 @@ class AssistantViewModel(
                     val s = _state.value
                     // Tasdiqlandi — tipratikan quvonadi (qöllar tepada, konfetti)
                     if (!s.streaming && s.voice == VoicePhase.IDLE && s.speakingId == null) mascot(MascotState.CELEBRATE, holdMs = 2_200)
+                    // Yangi farzand ulandi — tanlagiç (va butun ilova) yangi röyxatni körsin
+                    if (item.draft.kind == "child_link") refreshChildren()
                     // Vazifa / sörov / himoya raqamlari özgargan bölişi mumkin
                     loadGlance()
                 }
